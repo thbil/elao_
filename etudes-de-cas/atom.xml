@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="fr">
+  <id>https://cecil.local/etudes-de-cas/</id>
+  <title>Elao_ - Etudes-de-cas</title>
+  <subtitle><![CDATA[Elao est un atelier de co-conception d'applications web et mobile sur mesure.]]></subtitle>
+  <link href="https://cecil.local/etudes-de-cas/atom.xml" rel="self" type="application/atom+xml" />
+  <link href="https://cecil.local/etudes-de-cas/" rel="alternate" type="text/html" />
+  <updated>2020-08-07T14:47:58+02:00</updated>
+  <author>
+    <name>Elao</name>
+    <uri>https://elao.com</uri>
+  </author>
+  <entry xml:lang="fr">
+    <id>https://cecil.local/etudes-de-cas/tribu/</id>
+    <title>tribu</title>
+    <content type="html">
+      <![CDATA[]]>
+    </content>
+    <link href="https://cecil.local/etudes-de-cas/tribu/" rel="alternate" type="text/html" />
+    <published>2020-08-07T14:47:58+02:00</published>
+    <updated>2020-08-07T14:47:58+02:00</updated>
+  </entry>
+  <entry xml:lang="fr">
+    <id>https://cecil.local/etudes-de-cas/panneau-pocket/</id>
+    <title>panneau-pocket</title>
+    <content type="html">
+      <![CDATA[]]>
+    </content>
+    <link href="https://cecil.local/etudes-de-cas/panneau-pocket/" rel="alternate" type="text/html" />
+    <published>2020-08-07T14:47:58+02:00</published>
+    <updated>2020-08-07T14:47:58+02:00</updated>
+  </entry>
+  <entry xml:lang="fr">
+    <id>https://cecil.local/etudes-de-cas/my-job-company/</id>
+    <title>my-job-company</title>
+    <content type="html">
+      <![CDATA[]]>
+    </content>
+    <link href="https://cecil.local/etudes-de-cas/my-job-company/" rel="alternate" type="text/html" />
+    <published>2020-08-07T14:47:58+02:00</published>
+    <updated>2020-08-07T14:47:58+02:00</updated>
+  </entry>
+  <entry xml:lang="fr">
+    <id>https://cecil.local/etudes-de-cas/musique-music/</id>
+    <title>musique-music</title>
+    <content type="html">
+      <![CDATA[]]>
+    </content>
+    <link href="https://cecil.local/etudes-de-cas/musique-music/" rel="alternate" type="text/html" />
+    <published>2020-08-07T14:47:58+02:00</published>
+    <updated>2020-08-07T14:47:58+02:00</updated>
+  </entry>
+</feed>

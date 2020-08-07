@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Elao_ - La-tribu</title>
+    <description><![CDATA[Elao est un atelier de co-conception d'applications web et mobile sur mesure.]]></description>
+    <lastBuildDate>2020-08-07T14:47:58+02:00</lastBuildDate>
+    <link>https://cecil.local/la-tribu/</link>
+    <item>
+      <guid>https://cecil.local/la-tribu/maxime-colin/</guid>
+      <title>Maxime Colin</title>
+      <description><![CDATA[<p>Bla bla sur Maxime Colin.</p>]]></description>
+      <pubDate>2020-08-07T14:47:58+02:00</pubDate>
+      <link>https://cecil.local/la-tribu/maxime-colin/</link>
+    </item>
+    <item>
+      <guid>https://cecil.local/la-tribu/thomas-jarrand/</guid>
+      <title>Thomas Jarrand</title>
+      <description><![CDATA[<p>Bla bla sur Thomas Jarrand.</p>]]></description>
+      <pubDate>2020-08-07T14:47:58+02:00</pubDate>
+      <link>https://cecil.local/la-tribu/thomas-jarrand/</link>
+    </item>
+    <item>
+      <guid>https://cecil.local/la-tribu/anne-laure/</guid>
+      <title>Anne-Laure</title>
+      <description><![CDATA[<p>Bla bla sur Anne-Laure.</p>]]></description>
+      <pubDate>2020-08-07T14:47:58+02:00</pubDate>
+      <link>https://cecil.local/la-tribu/anne-laure/</link>
+    </item>
+  </channel>
+</rss>

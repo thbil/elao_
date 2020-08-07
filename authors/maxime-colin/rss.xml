@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Elao_ - maxime-colin</title>
+    <description><![CDATA[Elao est un atelier de co-conception d'applications web et mobile sur mesure.]]></description>
+    <lastBuildDate>2020-07-02T02:00:00+02:00</lastBuildDate>
+    <link>https://cecil.local/authors/maxime-colin/</link>
+    <item>
+      <guid>https://cecil.local/blog/2020/07/article-5/</guid>
+      <title>Article 5</title>
+      <description><![CDATA[<p>Lorem ispum bla bla</p>
+<!-- excerpt -->
+<h2>bla bla</h2>
+<p>bla bla</p>]]></description>
+      <pubDate>2020-07-02T02:00:00+02:00</pubDate>
+      <link>https://cecil.local/blog/2020/07/article-5/</link>
+    </item>
+    <item>
+      <guid>https://cecil.local/blog/2019/10/article-1/</guid>
+      <title>Article 1</title>
+      <description><![CDATA[<p>Lorem ispum bla bla</p>
+<!-- excerpt -->
+<h2>bla bla</h2>
+<p>bla bla</p>
+<p>bla bla content</p>]]></description>
+      <pubDate>2019-10-22T02:00:00+02:00</pubDate>
+      <link>https://cecil.local/blog/2019/10/article-1/</link>
+    </item>
+  </channel>
+</rss>

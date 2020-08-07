@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="fr">
+  <id>https://cecil.local/nos-services/</id>
+  <title>Elao_ - Nos-services</title>
+  <subtitle><![CDATA[Elao est un atelier de co-conception d'applications web et mobile sur mesure.]]></subtitle>
+  <link href="https://cecil.local/nos-services/atom.xml" rel="self" type="application/atom+xml" />
+  <link href="https://cecil.local/nos-services/" rel="alternate" type="text/html" />
+  <updated>2020-08-07T14:47:58+02:00</updated>
+  <author>
+    <name>Elao</name>
+    <uri>https://elao.com</uri>
+  </author>
+  <entry xml:lang="fr">
+    <id>https://cecil.local/nos-services/accompagnement-conseil/</id>
+    <title>Accompagnement et conseil</title>
+    <content type="html">
+      <![CDATA[<!-- excerpt -->
+<h2>L’organisation de votre équipe tech</h2>
+<p>bla bla</p>
+<h2>Le recrutement de votre équipe tech</h2>
+<p>bla bla</p>
+<h2>Architecture de projet</h2>
+<p>bla bla</p>
+<h2>Définition du backlog de votre produit</h2>
+<p>bla bla</p>
+<h2>Code review</h2>
+<p>bla bla</p>]]>
+    </content>
+    <link href="https://cecil.local/nos-services/accompagnement-conseil/" rel="alternate" type="text/html" />
+    <published>2020-08-07T14:47:58+02:00</published>
+    <updated>2020-08-07T14:47:58+02:00</updated>
+  </entry>
+  <entry xml:lang="fr">
+    <id>https://cecil.local/nos-services/developpement/</id>
+    <title>Développement</title>
+    <content type="html">
+      <![CDATA[<!-- excerpt -->
+<h2>Foobar</h2>
+<p>bla bla</p>
+<p><a href="../">back</a></p>]]>
+    </content>
+    <link href="https://cecil.local/nos-services/developpement/" rel="alternate" type="text/html" />
+    <published>2020-08-07T14:47:58+02:00</published>
+    <updated>2020-08-07T14:47:58+02:00</updated>
+  </entry>
+</feed>

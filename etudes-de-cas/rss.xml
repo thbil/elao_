@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Elao_ - Etudes-de-cas</title>
+    <description><![CDATA[Elao est un atelier de co-conception d'applications web et mobile sur mesure.]]></description>
+    <lastBuildDate>2020-08-07T14:47:58+02:00</lastBuildDate>
+    <link>https://cecil.local/etudes-de-cas/</link>
+    <item>
+      <guid>https://cecil.local/etudes-de-cas/tribu/</guid>
+      <title>tribu</title>
+      <description><![CDATA[]]></description>
+      <pubDate>2020-08-07T14:47:58+02:00</pubDate>
+      <link>https://cecil.local/etudes-de-cas/tribu/</link>
+    </item>
+    <item>
+      <guid>https://cecil.local/etudes-de-cas/panneau-pocket/</guid>
+      <title>panneau-pocket</title>
+      <description><![CDATA[]]></description>
+      <pubDate>2020-08-07T14:47:58+02:00</pubDate>
+      <link>https://cecil.local/etudes-de-cas/panneau-pocket/</link>
+    </item>
+    <item>
+      <guid>https://cecil.local/etudes-de-cas/my-job-company/</guid>
+      <title>my-job-company</title>
+      <description><![CDATA[]]></description>
+      <pubDate>2020-08-07T14:47:58+02:00</pubDate>
+      <link>https://cecil.local/etudes-de-cas/my-job-company/</link>
+    </item>
+    <item>
+      <guid>https://cecil.local/etudes-de-cas/musique-music/</guid>
+      <title>musique-music</title>
+      <description><![CDATA[]]></description>
+      <pubDate>2020-08-07T14:47:58+02:00</pubDate>
+      <link>https://cecil.local/etudes-de-cas/musique-music/</link>
+    </item>
+  </channel>
+</rss>
