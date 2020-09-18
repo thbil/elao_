@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/42/build/style.303f0a03.css">
+                    <link rel="stylesheet" href="/elao_/pr/42/build/style.a22a3018.css">
             </head>
     <body>
         <header class="header">
@@ -160,26 +160,57 @@
         </header>
         <div class="container">
         <main>
-              <img src="/elao_/pr/42/images/posts/thumbnails/rocket.jpg" />
+              <ul class="breadcrumb">
+    <li class="breadcrumb__item">
+      <a href="/elao_/pr/42/blog/">Blog</a>
+    </li>
+    <li class="breadcrumb__item">
+      <a href="#">Monitor your Symfony2 application via Stats.d and Graphite (2/2)</a>
+    </li>
+  </ul>
 
-  <div>
-    <img src="/elao_/pr/42/images/authors/tbessoussa.jpg" />
-    <p>Écrit par Tristan BESSOUSSA<p>
-    <p>Publication 23 novembre 2012<p>
-    <p>Modification 18 septembre 2020<p>
-  </div>
+  <div class="article-banner">
+    <div class="article-banner__cover" style="background: url(/elao_/pr/42/images/posts/thumbnails/rocket.jpg)"></div>
 
-  <div>
-          <a href="/elao_/pr/42/blog/tag/Monitoring">#Monitoring</a>
-          <a href="/elao_/pr/42/blog/tag/symfony">#symfony</a>
-          <a href="/elao_/pr/42/blog/tag/Statd">#Statd</a>
-          <a href="/elao_/pr/42/blog/tag/infra">#infra</a>
-          <a href="/elao_/pr/42/blog/tag/ops">#ops</a>
+    <div class="article-info">
+                    <div class="article-info__author ">
+          <div class="image">
+                          <img src="/elao_/pr/42/images/authors/tbessoussa.jpg" />
+                      </div>
+          <span class="name">
+            Écrit par
+                          <strong>Tristan BESSOUSSA</strong>
+                      </span>
+        </div>
+            <div class="article-info__date">
+        <span>Publication <strong>23 novembre 2012</strong></span>
+        <span>Modification <strong>18 septembre 2020</strong></span>
       </div>
+    </div>
 
-  <div>
-    <h1>Monitor your Symfony2 application via Stats.d and Graphite (2/2)</h1>
-    <p>Monitor your Symfony2 application via Stats.d and Graphite Part. 2</p>
+    <ul class="article-tag-list">
+              <li class="article-tag-list__item">
+          <a href="/elao_/pr/42/blog/tag/Monitoring">#Monitoring</a>
+        </li>
+              <li class="article-tag-list__item">
+          <a href="/elao_/pr/42/blog/tag/symfony">#symfony</a>
+        </li>
+              <li class="article-tag-list__item">
+          <a href="/elao_/pr/42/blog/tag/Statd">#Statd</a>
+        </li>
+              <li class="article-tag-list__item">
+          <a href="/elao_/pr/42/blog/tag/infra">#infra</a>
+        </li>
+              <li class="article-tag-list__item">
+          <a href="/elao_/pr/42/blog/tag/ops">#ops</a>
+        </li>
+          </ul>
+
+    <div class="article-header">
+      <h1>Monitor your Symfony2 application via Stats.d and Graphite (2/2)</h1>
+      <p>Monitor your Symfony2 application via Stats.d and Graphite Part. 2</p>
+
+          </div>
   </div>
 
   <div>
@@ -335,18 +366,7 @@
 <p>And it's done, if you go on your graphite dashboard, you can now see the new category called "premium".</p></body>
   </div>
 
-  <div>
-    <img src="/elao_/pr/42/images/authors/tbessoussa.jpg" />
-
-    <p>Écrit par Tristan BESSOUSSA<p>
-
-          <a href=sf_tristanb>Twitter</a>
-              <a href=tristanbes>Github</a>
-              <a href=http://www.elao.com>Website</a>
-      </div>
-
-  <h4>Ces articles pourraient vous intéresser:</h4>
-
+  
         </main>
                     <footer class="footer">
                 <section class="footer__links">

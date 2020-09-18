@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/42/build/style.303f0a03.css">
+                    <link rel="stylesheet" href="/elao_/pr/42/build/style.a22a3018.css">
             </head>
     <body>
         <header class="header">
@@ -160,24 +160,53 @@
         </header>
         <div class="container">
         <main>
-              <img src="/elao_/pr/42/images/posts/thumbnails/judging-sardine-small.jpg" />
+              <ul class="breadcrumb">
+    <li class="breadcrumb__item">
+      <a href="/elao_/pr/42/blog/">Blog</a>
+    </li>
+    <li class="breadcrumb__item">
+      <a href="#">Comment empêcher les moteurs de recherche d&#039;indexer votre app Symfony en staging ?</a>
+    </li>
+  </ul>
 
-  <div>
-    <img src="/elao_/pr/42/images/authors/default.png" />
-    <p>Écrit par La team Elao<p>
-    <p>Publication 10 juillet 2019<p>
-    <p>Modification 18 septembre 2020<p>
-  </div>
+  <div class="article-banner">
+    <div class="article-banner__cover" style="background: url(/elao_/pr/42/images/posts/thumbnails/judging-sardine-small.jpg)"></div>
 
-  <div>
-          <a href="/elao_/pr/42/blog/tag/Symfony">#Symfony</a>
-          <a href="/elao_/pr/42/blog/tag/seo">#seo</a>
-          <a href="/elao_/pr/42/blog/tag/no-index">#no-index</a>
+    <div class="article-info">
+                    <div class="article-info__author article-info__author--multi">
+          <div class="image">
+                          <img src="/elao_/pr/42/images/authors/mcolin.jpg" />
+                          <img src="/elao_/pr/42/images/authors/aldeboissieu.jpg" />
+                      </div>
+          <span class="name">
+            Écrit par
+                          <strong>Maxime COLIN</strong>
+                          <strong>Anne-Laure de Boissieu</strong>
+                      </span>
+        </div>
+            <div class="article-info__date">
+        <span>Publication <strong>10 juillet 2019</strong></span>
+        <span>Modification <strong>18 septembre 2020</strong></span>
       </div>
+    </div>
 
-  <div>
-    <h1>Comment empêcher les moteurs de recherche d&#039;indexer votre app Symfony en staging ?</h1>
-    <p>Les pages de votre application n&#039;ont pas vocation à être présentes dans les moteurs de recherche ? Voici une courte explication pour vous aider à empêcher le crawl et l&#039;indexation.</p>
+    <ul class="article-tag-list">
+              <li class="article-tag-list__item">
+          <a href="/elao_/pr/42/blog/tag/Symfony">#Symfony</a>
+        </li>
+              <li class="article-tag-list__item">
+          <a href="/elao_/pr/42/blog/tag/seo">#seo</a>
+        </li>
+              <li class="article-tag-list__item">
+          <a href="/elao_/pr/42/blog/tag/no-index">#no-index</a>
+        </li>
+          </ul>
+
+    <div class="article-header">
+      <h1>Comment empêcher les moteurs de recherche d&#039;indexer votre app Symfony en staging ?</h1>
+      <p>Les pages de votre application n&#039;ont pas vocation à être présentes dans les moteurs de recherche ? Voici une courte explication pour vous aider à empêcher le crawl et l&#039;indexation.</p>
+
+          </div>
   </div>
 
   <div>
@@ -194,20 +223,20 @@ Bien sûr, dans les deux cas, les robots ne peuvent pas accéder aux pages, emp�
 <p>Une des variantes est la balise meta robots noindex, <a href="&lt;https://support.google.com/webmasters/answer/93710?hl=fr&gt;" target="_blank">c'est une des solutions décrites par Google dans sa documentation officielle</a>.</p>
 <h3 id="comment-param-trer-ce-tag-sur-s">Comment paramétrer ce tag sur Symfony ?<a href="#comment-param-trer-ce-tag-sur-s" class="anchor"></a></h3>
 <p>Depuis Symfony 4.3, <a href="https://symfony.com/blog/new-in-symfony-4-3-automatic-search-engine-protection" target="_blank">une configuration</a> permet d'ajouter automatiquement le header <span class="inline-code">X-Robots-Tag: noindex</span> aux réponses de Symfony.</p>
-<code id="c3fe005ec8c78f177157f61dc8716a63"># config/packages/framework.yaml
-framework:
-    disallow_search_engine_index: true</code>
+<code id="c3fe005ec8c78f177157f61dc8716a63" class="language-yaml"><span class="token comment"># config/packages/framework.yaml</span>
+<span class="token key atrule">framework</span><span class="token punctuation">:</span>
+    <span class="token key atrule">disallow_search_engine_index</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></code>
 <p>Néanmoins, <strong>vous ne pouvez modifier cette configuration qu'en fonction de l'environnement Symfony</strong> (<span class="inline-code">dev</span>, <span class="inline-code">prod</span>, <span class="inline-code">test</span>, ...), et non en fonction du serveur. L'idée serait d'ajouter ce header sur les serveurs de staging, demo ou recette par exemple, et de ne pas l'ajouter sur le serveur de production, peu importe l'environnement Symfony qui est utilisé.</p>
 <p>Malheureusement, <strong>cette configuration ne peux pas être pilotée par une variable d'environnement</strong> car elle impacte directement le container (définition d'un listener) et Symfony ne permet pas de faire cela au runtime. Je conseille donc de ne pas utiliser cette configuration.</p>
 <p>La solution est de passer par la configuration <strong>nginx</strong> ou <strong>Apache</strong> de votre serveur pour ajouter le header. Par exemple avec nginx:</p>
-<code id="c5258a060d3fdfcded375136410e638d">server {
-    ...
-    add_header X-Robots-Tag "noindex";
-    ...
-}</code>
+<code id="c5258a060d3fdfcded375136410e638d" class="language-nginx"><span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token keyword">add_header</span> X<span class="token operator">-</span>Robots<span class="token operator">-</span>Tag <span class="token string">"noindex"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span></code>
 <p>Et avec Apache (sous réserve que le mod header soit activé) :</p>
-<code id="3aab7872f2d2bda5de12f1086b44b205">...
-SetEnv X-Robots-Tag noindex
+<code id="3aab7872f2d2bda5de12f1086b44b205" class="language-apacheconf">...
+<span class="token directive-inline property">SetEnv</span> X-Robots-Tag noindex
 ...</code>
 <p>Cette solution a l'avantage de fonctionner <strong>peu importe la version de Symfony, le framework ou le langage utilisé par votre application</strong>. De plus, elle ne pourra pas être désactivée lors d'un mauvais déploiement.</p>
 <h2 id="la-chose-ne-pas-faire">La chose à ne pas faire 🙅‍♀️ : interdire l'indexation via le robots.txt<a href="#la-chose-ne-pas-faire" class="anchor"></a></h2>
@@ -219,18 +248,7 @@ SetEnv X-Robots-Tag noindex
 <p>Faites le nécessaire pour empêcher les futures visites de robots. Vous pouvez ensuite utiliser <a href="https://www.google.com/webmasters/tools/removals" target="_blank">l'outil de suppression d'URL de la Search Console</a>, et demander la suppression des URLs problématiques.</p></body>
   </div>
 
-  <div>
-    <img src="/elao_/pr/42/images/authors/default.png" />
-
-    <p>Écrit par La team Elao<p>
-
-          <a href=Elao>Twitter</a>
-              <a href=Elao>Github</a>
-              <a href=http://www.elao.com>Website</a>
-      </div>
-
-  <h4>Ces articles pourraient vous intéresser:</h4>
-
+  
         </main>
                     <footer class="footer">
                 <section class="footer__links">

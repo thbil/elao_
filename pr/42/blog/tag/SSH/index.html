@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/42/build/style.303f0a03.css">
+                    <link rel="stylesheet" href="/elao_/pr/42/build/style.a22a3018.css">
             </head>
     <body>
         <header class="header">

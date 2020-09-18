@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/42/build/style.303f0a03.css">
+                    <link rel="stylesheet" href="/elao_/pr/42/build/style.a22a3018.css">
             </head>
     <body>
         <header class="header">
@@ -160,24 +160,119 @@
         </header>
         <div class="container">
         <main>
-              <img src="/elao_/pr/42/images/posts/thumbnails/from-react-native-init-to-app-stores-real-quick.jpg" />
+              <ul class="breadcrumb">
+    <li class="breadcrumb__item">
+      <a href="/elao_/pr/42/blog/">Blog</a>
+    </li>
+    <li class="breadcrumb__item">
+      <a href="#">From react-native init to app stores real quick</a>
+    </li>
+  </ul>
 
-  <div>
-    <img src="/elao_/pr/42/images/authors/tjarrand.jpg" />
-    <p>Écrit par Thomas JARRAND<p>
-    <p>Publication 9 novembre 2017<p>
-    <p>Modification 18 septembre 2020<p>
-  </div>
+  <div class="article-banner">
+    <div class="article-banner__cover" style="background: url(/elao_/pr/42/images/posts/thumbnails/from-react-native-init-to-app-stores-real-quick.jpg)"></div>
 
-  <div>
-          <a href="/elao_/pr/42/blog/tag/react">#react</a>
-          <a href="/elao_/pr/42/blog/tag/react%20native">#react native</a>
-          <a href="/elao_/pr/42/blog/tag/mobile">#mobile</a>
+    <div class="article-info">
+                    <div class="article-info__author ">
+          <div class="image">
+                          <img src="/elao_/pr/42/images/authors/tjarrand.jpg" />
+                      </div>
+          <span class="name">
+            Écrit par
+                          <strong>Thomas JARRAND</strong>
+                      </span>
+        </div>
+            <div class="article-info__date">
+        <span>Publication <strong>9 novembre 2017</strong></span>
+        <span>Modification <strong>18 septembre 2020</strong></span>
       </div>
+    </div>
 
-  <div>
-    <h1>From react-native init to app stores real quick</h1>
-    <p>From react-native init to stores real quick</p>
+    <ul class="article-tag-list">
+              <li class="article-tag-list__item">
+          <a href="/elao_/pr/42/blog/tag/react">#react</a>
+        </li>
+              <li class="article-tag-list__item">
+          <a href="/elao_/pr/42/blog/tag/react%20native">#react native</a>
+        </li>
+              <li class="article-tag-list__item">
+          <a href="/elao_/pr/42/blog/tag/mobile">#mobile</a>
+        </li>
+          </ul>
+
+    <div class="article-header">
+      <h1>From react-native init to app stores real quick</h1>
+      <p>From react-native init to stores real quick</p>
+
+              <ul class="article-summary">
+                      <li class="article-summary__item">
+              <a href="#our-goals">Our goals</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#prerequisite">Prerequisite</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#ios">iOS</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#android">Android</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#create-your-app">Create your app</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#environments-and-variables">Environments and variables</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#enable-vendor-name-in-android">Enable vendor name in Android</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#react-native-config">React Native Config</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#configure-the-release">Configure the release</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#generate-an-android-signing-key">Generate an Android Signing Key</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#configure-the-gradle-build">Configure the gradle build</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#configure-the-ios-build">Configure the iOS build</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#change-the-public-app-name">Change the public app name</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#test-our-setup">Test our setup</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#quick-launch-commands">Quick launch commands</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#store-configuration">Store configuration</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#generate-store-icons">Generate store icons</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#setting-up-a-launch-screen">Setting up a launch screen</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#build-store-release">Build store release</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#ios-release">iOS release</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#android-release">Android release</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#troubles">Troubles?</a>
+            </li>
+                  </ul>
+          </div>
   </div>
 
   <div>
@@ -468,18 +563,7 @@ Run the app on any simulated or real android device found, as a release.</li>
 <p>Also don't hesitate to reach out for help in the comment or on social medias.</p></body>
   </div>
 
-  <div>
-    <img src="/elao_/pr/42/images/authors/tjarrand.jpg" />
-
-    <p>Écrit par Thomas JARRAND<p>
-
-          <a href=tom32i>Twitter</a>
-              <a href=Tom32i>Github</a>
-              <a href=https://thomas.jarrand.fr>Website</a>
-      </div>
-
-  <h4>Ces articles pourraient vous intéresser:</h4>
-
+  
         </main>
                     <footer class="footer">
                 <section class="footer__links">

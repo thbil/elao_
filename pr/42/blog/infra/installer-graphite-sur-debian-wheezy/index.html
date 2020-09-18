@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/42/build/style.303f0a03.css">
+                    <link rel="stylesheet" href="/elao_/pr/42/build/style.a22a3018.css">
             </head>
     <body>
         <header class="header">
@@ -160,26 +160,57 @@
         </header>
         <div class="container">
         <main>
-              <img src="/elao_/pr/42/images/posts/thumbnails/dashboard.png" />
+              <ul class="breadcrumb">
+    <li class="breadcrumb__item">
+      <a href="/elao_/pr/42/blog/">Blog</a>
+    </li>
+    <li class="breadcrumb__item">
+      <a href="#">Installer graphite sur Debian Wheezy</a>
+    </li>
+  </ul>
 
-  <div>
-    <img src="/elao_/pr/42/images/authors/gfaivre.jpg" />
-    <p>Écrit par Guewen FAIVRE<p>
-    <p>Publication 20 décembre 2014<p>
-    <p>Modification 18 septembre 2020<p>
-  </div>
+  <div class="article-banner">
+    <div class="article-banner__cover" style="background: url(/elao_/pr/42/images/posts/thumbnails/dashboard.png)"></div>
 
-  <div>
-          <a href="/elao_/pr/42/blog/tag/Monitoring">#Monitoring</a>
-          <a href="/elao_/pr/42/blog/tag/Infra">#Infra</a>
-          <a href="/elao_/pr/42/blog/tag/Linux">#Linux</a>
-          <a href="/elao_/pr/42/blog/tag/Debian">#Debian</a>
-          <a href="/elao_/pr/42/blog/tag/Nginx">#Nginx</a>
+    <div class="article-info">
+                    <div class="article-info__author ">
+          <div class="image">
+                          <img src="/elao_/pr/42/images/authors/gfaivre.jpg" />
+                      </div>
+          <span class="name">
+            Écrit par
+                          <strong>Guewen FAIVRE</strong>
+                      </span>
+        </div>
+            <div class="article-info__date">
+        <span>Publication <strong>20 décembre 2014</strong></span>
+        <span>Modification <strong>18 septembre 2020</strong></span>
       </div>
+    </div>
 
-  <div>
-    <h1>Installer graphite sur Debian Wheezy</h1>
-    <p>Installation de graphite avec Gunicorn et Nginx sur debian Wheezy.</p>
+    <ul class="article-tag-list">
+              <li class="article-tag-list__item">
+          <a href="/elao_/pr/42/blog/tag/Monitoring">#Monitoring</a>
+        </li>
+              <li class="article-tag-list__item">
+          <a href="/elao_/pr/42/blog/tag/Infra">#Infra</a>
+        </li>
+              <li class="article-tag-list__item">
+          <a href="/elao_/pr/42/blog/tag/Linux">#Linux</a>
+        </li>
+              <li class="article-tag-list__item">
+          <a href="/elao_/pr/42/blog/tag/Debian">#Debian</a>
+        </li>
+              <li class="article-tag-list__item">
+          <a href="/elao_/pr/42/blog/tag/Nginx">#Nginx</a>
+        </li>
+          </ul>
+
+    <div class="article-header">
+      <h1>Installer graphite sur Debian Wheezy</h1>
+      <p>Installation de graphite avec Gunicorn et Nginx sur debian Wheezy.</p>
+
+          </div>
   </div>
 
   <div>
@@ -275,18 +306,7 @@ mv /opt/graphite/webapp/graphite/local_settings.py.example  local_settings.py</c
 <p>Enfin modifiez le fichier <span class="inline-code">/opt/graphite/webapp/graphite/settings.py</span> en remplaçant le champ <span class="inline-code">SECRET_KEY</span> par une clé aléatoire de bonne longueur.</p></body>
   </div>
 
-  <div>
-    <img src="/elao_/pr/42/images/authors/gfaivre.jpg" />
-
-    <p>Écrit par Guewen FAIVRE<p>
-
-          <a href=guewen_faivre>Twitter</a>
-              <a href=gfaivre>Github</a>
-              <a href=http://www.elao.com>Website</a>
-      </div>
-
-  <h4>Ces articles pourraient vous intéresser:</h4>
-
+  
         </main>
                     <footer class="footer">
                 <section class="footer__links">

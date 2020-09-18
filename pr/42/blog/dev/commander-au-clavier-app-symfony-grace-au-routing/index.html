@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/42/build/style.303f0a03.css">
+                    <link rel="stylesheet" href="/elao_/pr/42/build/style.a22a3018.css">
             </head>
     <body>
         <header class="header">
@@ -160,24 +160,104 @@
         </header>
         <div class="container">
         <main>
-              <img src="/elao_/pr/42/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/thumbnail.jpg" />
+              <ul class="breadcrumb">
+    <li class="breadcrumb__item">
+      <a href="/elao_/pr/42/blog/">Blog</a>
+    </li>
+    <li class="breadcrumb__item">
+      <a href="#">Commander au clavier une application Symfony grâce au Routing</a>
+    </li>
+  </ul>
 
-  <div>
-    <img src="/elao_/pr/42/authors/rhanna.jpg" />
-    <p>Écrit par Richard HANNA<p>
-    <p>Publication 25 octobre 2018<p>
-    <p>Modification 18 septembre 2020<p>
-  </div>
+  <div class="article-banner">
+    <div class="article-banner__cover" style="background: url(/elao_/pr/42/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/thumbnail.jpg)"></div>
 
-  <div>
-          <a href="/elao_/pr/42/blog/tag/Symfony">#Symfony</a>
-          <a href="/elao_/pr/42/blog/tag/Routing">#Routing</a>
-          <a href="/elao_/pr/42/blog/tag/UX">#UX</a>
+    <div class="article-info">
+                    <div class="article-info__author ">
+          <div class="image">
+                          <img src="/elao_/pr/42/authors/rhanna.jpg" />
+                      </div>
+          <span class="name">
+            Écrit par
+                          <strong>Richard HANNA</strong>
+                      </span>
+        </div>
+            <div class="article-info__date">
+        <span>Publication <strong>25 octobre 2018</strong></span>
+        <span>Modification <strong>18 septembre 2020</strong></span>
       </div>
+    </div>
 
-  <div>
-    <h1>Commander au clavier une application Symfony grâce au Routing</h1>
-    <p>Comment ajouter à une application Symfony une UI différente, une interface de commande par texte avec autocompletion.</p>
+    <ul class="article-tag-list">
+              <li class="article-tag-list__item">
+          <a href="/elao_/pr/42/blog/tag/Symfony">#Symfony</a>
+        </li>
+              <li class="article-tag-list__item">
+          <a href="/elao_/pr/42/blog/tag/Routing">#Routing</a>
+        </li>
+              <li class="article-tag-list__item">
+          <a href="/elao_/pr/42/blog/tag/UX">#UX</a>
+        </li>
+          </ul>
+
+    <div class="article-header">
+      <h1>Commander au clavier une application Symfony grâce au Routing</h1>
+      <p>Comment ajouter à une application Symfony une UI différente, une interface de commande par texte avec autocompletion.</p>
+
+              <ul class="article-summary">
+                      <li class="article-summary__item">
+              <a href="#le-contexte">Le contexte</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#exploiter-le-routing-de-symfony">Exploiter le routing de Symfony ?</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#r-cup-rer-toutes-les-routes-de">Récupérer toutes les routes de l&#039;application</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#humaniser-les-noms-de-route">Humaniser les noms de route</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#g-n-rer-l-url">Générer l&#039;url</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#d-mo">Démo</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#deviner-des-param-tres-de-route">Deviner des paramètres de route</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#r-cup-rer-les-requirements-d-u">Récupérer les requirements d&#039;une route</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#r-cup-rer-les-metadata-du-cont">Récupérer les metadata du controller d&#039;une route</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#resolver-d-di">Resolver dédié</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#am-liorations">Améliorations</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#resolver-doctrine">Resolver Doctrine ?</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#traduction-des-noms-de-route">Traduction des noms de route</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#bilan">Bilan</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#r-sultat">Résultat</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#inconv-nients">Inconvénients</a>
+            </li>
+                      <li class="article-summary__item">
+              <a href="#commander-par-la-voix">Commander par la voix ?</a>
+            </li>
+                  </ul>
+          </div>
   </div>
 
   <div>
@@ -607,18 +687,7 @@ recognition<span class="token punctuation">.</span><span class="token method fun
 <hr><p>Photo by Anthony Martino on Unsplash</p></body>
   </div>
 
-  <div>
-    <img src="/elao_/pr/42/authors/rhanna.jpg" />
-
-    <p>Écrit par Richard HANNA<p>
-
-          <a href=richardhanna>Twitter</a>
-              <a href=supertanuki>Github</a>
-              <a href=http://www.elao.com>Website</a>
-      </div>
-
-  <h4>Ces articles pourraient vous intéresser:</h4>
-
+  
         </main>
                     <footer class="footer">
                 <section class="footer__links">
