@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/tbessoussa.jpg" />
     <p>Écrit par Tristan BESSOUSSA<p>
     <p>Publication 27 juillet 2012<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -182,7 +182,7 @@
   </div>
 
   <div>
-    <body><p>Many of us asked themselves <strong>how to add dynamically translations to I18n fields  - object using <span class="inline-code">SonataAdminBundle</span> and <span class="inline-code">DoctrineExtensions</span></strong>.
+    <body><p>Many of us asked themselves <strong>how to add dynamically translations to I18n fields  - object using <code class="code-inline" id="1b42e8a99ab2be54836df373ef768a2f">SonataAdminBundle</code> and <code class="code-inline" id="95cf1158b5fd47e5fca3865e9bdd6335">DoctrineExtensions</code></strong>.
 </p>
 <p>Thanks to <a href="http://gediminasm.org/" target="_blank">Gedmo</a> and his wonderful <a href="https://github.com/l3pp4rd/DoctrineExtensions" target="_blank">DoctrineExtensions</a> on which he added a feature called "Personal Translations" that simplifies the whole translation management process.</p>
 <p><strong>Before starting here's what i am using :</strong></p>
@@ -193,7 +193,7 @@
 <li><a href="https://github.com/a2lix/TranslationFormBundle" target="_blank">TranslationFormBundle</a></li>
 </ul><p>We will not configure the <em>DoctrineExtensions</em> &amp; the <em>StofDoctrineExtensionsBundle</em> together, so please, check that it's all configured (read the readme on github repos) and working.</p>
 <p><strong>Before starting, let's configure the Bundle :</strong></p>
-<code id="a6274cdba053f4d89180a90e0b73d48f" class="language-yaml"><span class="token comment"># Add the bundle to your composer</span>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="a6274cdba053f4d89180a90e0b73d48f"><span class="token comment"># Add the bundle to your composer</span>
 
     <span class="token key atrule">"a2lix/translation-form-bundle"</span> <span class="token punctuation">:</span> <span class="token string">"dev-master"</span>
 
@@ -212,9 +212,9 @@
     <span class="token key atrule">twig</span><span class="token punctuation">:</span>
         <span class="token key atrule">form</span><span class="token punctuation">:</span>
             <span class="token key atrule">resources</span><span class="token punctuation">:</span>
-                <span class="token punctuation">-</span> <span class="token string">'A2lixTranslationFormBundle::form.html.twig'</span></code>
-<p><strong>Let's begin with our <span class="inline-code">Category</span> entity :</strong></p>
-<code id="9822cb832ec85bd6108febadc5b45429" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+                <span class="token punctuation">-</span> <span class="token string">'A2lixTranslationFormBundle::form.html.twig'</span></code></pre>
+<p><strong>Let's begin with our <code class="code-inline" id="3adbdb3ac060038aa0e6e6c138ef9873">Category</code> entity :</strong></p>
+<pre class="code-multiline language-php"><code class="language-php" id="9822cb832ec85bd6108febadc5b45429"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">AwesomeNamespace<span class="token punctuation">\</span>AwesomeBundle<span class="token punctuation">\</span>Entity</span><span class="token punctuation">;</span>
 
@@ -333,9 +333,9 @@
         <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-<span class="token punctuation">}</span></span></code>
-<p><strong>And our <span class="inline-code">CategoryTranslation</span> entity (to store translations)</strong></p>
-<code id="5a607477a4be22d1a20280167231683f" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token punctuation">}</span></span></code></pre>
+<p><strong>And our <code class="code-inline" id="40873629760c55d099cd69cc94662305">CategoryTranslation</code> entity (to store translations)</strong></p>
+<pre class="code-multiline language-php"><code class="language-php" id="5a607477a4be22d1a20280167231683f"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">AwesomeNamespace<span class="token punctuation">\</span>AwesomeBundle<span class="token punctuation">\</span>Entity</span><span class="token punctuation">;</span>
 
@@ -371,9 +371,9 @@
      * @ORM\JoinColumn(name="object_id", referencedColumnName="id", onDelete="CASCADE")
      */</span>
     <span class="token keyword">protected</span> <span class="token variable">$object</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></span></code>
-<p><strong>Finally, the <span class="inline-code">CategoryAdmin</span> class</strong></p>
-<code id="d5edd158298ffd560447d86dcc37ca7f" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token punctuation">}</span></span></code></pre>
+<p><strong>Finally, the <code class="code-inline" id="5b4fc646bdf9e0d8481c8fea89ff5c16">CategoryAdmin</code> class</strong></p>
+<pre class="code-multiline language-php"><code class="language-php" id="d5edd158298ffd560447d86dcc37ca7f"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">AwesomeNamespace<span class="token punctuation">\</span>AwesomeBundle<span class="token punctuation">\</span>Admin</span><span class="token punctuation">;</span>
 
@@ -413,8 +413,8 @@
         <span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-<span class="token punctuation">}</span></span></code>
-<p>You wanna see the result ? Well, you are free to propose a gist in the comment section of this article if you want to add code to render more nicely the translations in <span class="inline-code">SonataAdminBundle</span> (display the locale of the field, split the fields in tab....)</p>
+<span class="token punctuation">}</span></span></code></pre>
+<p>You wanna see the result ? Well, you are free to propose a gist in the comment section of this article if you want to add code to render more nicely the translations in <code class="code-inline" id="1b42e8a99ab2be54836df373ef768a2f">SonataAdminBundle</code> (display the locale of the field, split the fields in tab....)</p>
 <p><strong>EDIT </strong>The Bundle has been updated and now has a splitted view and tabbed view per locale.</p>
 <div style="text-align:center;">
 {{}}

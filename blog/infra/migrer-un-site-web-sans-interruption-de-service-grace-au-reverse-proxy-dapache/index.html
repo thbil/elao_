@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/gfaivre.jpg" />
     <p>Écrit par Guewen FAIVRE<p>
     <p>Publication 4 mai 2012<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -200,23 +200,23 @@ Dans le cadre de ce mémo nous utiliseront <a href="http://httpd.apache.org/" ti
 <p><strong>Nous partirons du principe que :</strong></p>
 <ul><li>Votre (vos) application(s) et base(s) de données ont été transférées sur leur nouveau serveur, que tout fonctionne et que tout a été vérifié par qui de droit.</li>
 <li>Un nouveau "Virtual Host" (désolé ça ne veux pas avec "Hôte virtuel" ...), a été configuré et est fonctionnel.</li>
-<li>Les mods <span class="inline-code">proxy</span> et <span class="inline-code">[proxy_http][4]</span> sont "chargés" par Apache sur notre serveur d'origine.</li>
-<li>Le site à déplacer sera <span class="inline-code">www.my-domain.com</span>.</li>
+<li>Les mods <code class="code-inline" id="431387eb7262e1cfc79b125eb8a67c60">proxy</code> et <code class="code-inline" id="21ca3d34bc556c5e2aa77fdbfb78a618">[proxy_http][4]</code> sont "chargés" par Apache sur notre serveur d'origine.</li>
+<li>Le site à déplacer sera <code class="code-inline" id="e7cbcfb06a5b315657e7f06281d1aed3">www.my-domain.com</code>.</li>
 <li>L'IP du "nouveau" serveur sera XXX.XXX.XXX.XXX</li>
-</ul><p><strong>Tout le reste se passe du coté de "l'ancien" serveur, nous commencerons par modifier la résolution de nom local concernant le domaine concerné en éditant le fichier <span class="inline-code">/etc/hosts</span> pour y rajouter l'entrée suivante :</strong></p>
+</ul><p><strong>Tout le reste se passe du coté de "l'ancien" serveur, nous commencerons par modifier la résolution de nom local concernant le domaine concerné en éditant le fichier <code class="code-inline" id="ad942c725cd0cae65ca4c63717ec464c">/etc/hosts</code> pour y rajouter l'entrée suivante :</strong></p>
 <blockquote>
 <p>XXX.XXX.XXX.XXX www.my-domain.com</p>
 </blockquote>
 <p>De cette façon nous forçons le pointage de notre domaine vers la nouvelle machine uniquement pour le serveur d'origine.</p>
 <p><strong>Nous allons ensuite modifier le "virtual host" original en y ajoutant les lignes suivantes :</strong></p>
-<code id="8b40ac982f6b1701cbdba8da413ac273" class="language-apacheconf"><span class="token directive-inline property">ProxyRequests</span> Off
+<pre class="code-multiline language-apacheconf"><code class="language-apacheconf" id="8b40ac982f6b1701cbdba8da413ac273"><span class="token directive-inline property">ProxyRequests</span> Off
 <span class="token directive-block tag"><span class="token directive-block tag"><span class="token punctuation">&lt;</span>Proxy</span><span class="token directive-block-parameter attr-value"> *</span><span class="token punctuation">&gt;</span></span>
   <span class="token directive-inline property">Order</span> <span class="token directive-inline property">deny</span>,allow
   <span class="token directive-inline property">Allow</span> from all
 <span class="token directive-block tag"><span class="token directive-block tag"><span class="token punctuation">&lt;/</span>Proxy</span><span class="token punctuation">&gt;</span></span>
 
 <span class="token directive-inline property">ProxyPass</span> / http://www.my-domain.com/
-<span class="token directive-inline property">ProxyPassReverse</span> / http://www.my-domain.com/</code>
+<span class="token directive-inline property">ProxyPassReverse</span> / http://www.my-domain.com/</code></pre>
 <p>Il suffit, pour finir, de redémarrer Apache, le traffic est à présent redirigé vers le nouveau serveur de manière transparente pour l'internaute.
 Nous pouvons dès lors demander la redirection du nom de domaine vers l'IP du "nouveau" serveur sans se soucier des délais de propagation des serveurs de noms.</p>
 <p>Une fois tout cela terminé jetez de temps en temps un oeil à vos logs sur le serveur d'origine, une fois que vous constatez que plus aucun traffic n'arrive sur votre ancien serveur c'est que le nom de domaine a été propagé.</p></body>

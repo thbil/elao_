@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/mcolin.jpg" />
     <p>Écrit par Maxime COLIN<p>
     <p>Publication 3 novembre 2016<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -197,7 +197,7 @@
 <li>Internet Explorer 8+</li>
 </ul><p>Pour utiliser <strong>CORS</strong> il faut envoyer au serveur des <em>headers</em> de contrôle d'accès qu'il inspectera pour approuver ou non la requête. Ces <em>headers</em> de contrôle d'accès décriront le contexte de la requête, sa méthode HTTP, son origine, ses headers custom, ...</p>
 <p>Selon le type de requête, ces headers sont envoyés automatiquement par le navigateur avec la requête ou dans une requête préliminaire (<em>preflight request</em>). La requête aboutira si le serveur répond avec des headers de contrôle d'accès compatibles.</p>
-<code id="047eb40fecb8065603007bd68677bed7">=&gt; OPTIONS https://api.com/foobar
+<pre class="code-multiline"><code id="047eb40fecb8065603007bd68677bed7">=&gt; OPTIONS https://api.com/foobar
 - HEADERS -
 Origin: http://application.com
 Access-Control-Request-Method: POST
@@ -208,12 +208,12 @@ Access-Control-Request-Headers: Api-Key
 Access-Control-Allow-Origin: http://application.com
 Access-Control-Allow-Methods: GET, POST, OPTIONS
 Access-Control-Max-Age: 86400
-Access-Control-Allow-Headers: Api-Key</code>
+Access-Control-Allow-Headers: Api-Key</code></pre>
 <p>Pour plus d'informations sur le fonctionnement de <strong>CORS</strong>, je vous laisse lire les articles <a href="https://www.eriwen.com/javascript/how-to-cors/" target="_blank">Making Cross-Domain Requests with CORS</a> et <a href="http://blog.inovia-conseil.fr/?p=202" target="_blank">Démystifier CORS (Cross-Origin Resource Sharing)</a> qui sont très complets.</p>
 <h2 id="reverse-proxy">Reverse Proxy<a href="#reverse-proxy" class="anchor"></a></h2>
 <p>Malheureusement l'API que je souhaitais utiliser n'était pas compatible CORS. Si c'est votre cas également, il faudra alors passer par un proxy.</p>
 <p><strong>Nginx</strong> permet simplement de mettre en place ce genre de <em>reverse proxy</em> grace à une configuration de ce type :</p>
-<code id="cd0bafd5ad131e16bd297d14ce957274">server {
+<pre class="code-multiline"><code id="cd0bafd5ad131e16bd297d14ce957274">server {
     listen          80;
     server_name     application.com;
 
@@ -229,10 +229,10 @@ Access-Control-Allow-Headers: Api-Key</code>
         proxy_buffers                   32 16k;
         proxy_busy_buffers_size         64k;
     }
-}</code>
-<p>Ainsi, votre application pourra appeler votre API sur <span class="inline-code">http://application.com/api</span> sans problème de <em>cross-origin</em>.</p>
-<p>Si vous avez besoin d'exposer l'API sur un autre domaine ou sur un autre port que votre application, vous aurez  besoin de permettre le <em>cross-domain</em> grâce à <strong>CORS</strong>. Mon application tournant sur <span class="inline-code">localhost:8080</span>, j'ai décidé de mettre mon proxy sur <span class="inline-code">localhost:8181</span>.</p>
-<code id="1bb25a12c878d233408d89355099949b">server {
+}</code></pre>
+<p>Ainsi, votre application pourra appeler votre API sur <code class="code-inline" id="4977b92abb276296e31bd6813d1c4082">http://application.com/api</code> sans problème de <em>cross-origin</em>.</p>
+<p>Si vous avez besoin d'exposer l'API sur un autre domaine ou sur un autre port que votre application, vous aurez  besoin de permettre le <em>cross-domain</em> grâce à <strong>CORS</strong>. Mon application tournant sur <code class="code-inline" id="9f5ffc7a10e0bad054458b089947ce2f">localhost:8080</code>, j'ai décidé de mettre mon proxy sur <code class="code-inline" id="1e8d5bafeb93fbefeabf333e05a5f261">localhost:8181</code>.</p>
+<pre class="code-multiline"><code id="1bb25a12c878d233408d89355099949b">server {
     listen          8181;
     server_name     localhost;
 
@@ -251,8 +251,8 @@ Access-Control-Allow-Headers: Api-Key</code>
         add_header    'Access-Control-Allow-Methods' 'GET, POST, OPTIONS' always;
         add_header    'Access-Control-Allow-Headers' 'Origin, X-Requested-With, Content-Type, Accept' always;
         add_header    'Access-Control-Allow-Credentials' 'true' always;
-}</code>
-<p>Je peux ainsi appeler l'API sur <span class="inline-code">localhost:8181</span> de façon transparente.</p>
+}</code></pre>
+<p>Je peux ainsi appeler l'API sur <code class="code-inline" id="1e8d5bafeb93fbefeabf333e05a5f261">localhost:8181</code> de façon transparente.</p>
 <div style="border-left: 5px solid #ffa600;padding: 20px;margin: 20px 0;">
     Attention, <code id="8d68c4c0373523ca5273c49e75df63a5">Access-Control-Allow-Origin: '*'</code> autorise les requêtes <em>cross-origin</em> depuis n'importe quel domaine, en dev cela permet de facilement mettre CORS en place mais dans un soucis de sécurité il faudrait être plus restrictif.
 </div>

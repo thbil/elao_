@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/vbouzeran.jpg" />
     <p>Écrit par Vincent BOUZERAN<p>
     <p>Publication 3 juin 2010<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -182,7 +182,8 @@
   <div>
     <body><p><strong>Avertissement :</strong>
 Depuis la rédaction de cet article sur l'injection de dépendances, le coeur de Symfony2 a évolué de façon notable, en particulier certaines classes du répertoire <strong>DependencyInjection</strong> mentionnées dans cet article ont été renommées, révisées, ou refondues. Toutefois, les principes généraux décrits dans cet article restent d'actualité.</p>
-<img src="/images/posts/2010/dependency-injection-symfony.png" alt='dependency injection symfony Symfony 2 Linjection de dépendances" width="278" height="236' title='dependency injection symfony Symfony 2 Linjection de dépendances" width="278" height="236' id="dependency-injection-symfony-sym"><p>Cet article est le premier d'une série à venir sur Symfony 2. Pour commencer, je vous invite à télécharger la <a href="http://symfony-reloaded.org/code" target="_blank">sandbox</a> de Symfony 2. J'ai décidé de commencer par l'injection de dépendances car il s'agit d'un composant clé de Symfony 2, et que la bonne compréhension de cette nouvelle version du Framework doit forcément en passer par là. L'injection de dépendance est réellement au coeur du Framework.</p>
+<p><img src="/images/posts/2010/dependency-injection-symfony.png" alt='dependency injection symfony Symfony 2 Linjection de dépendances" width="278" height="236' id="dependency-injection-symfony-sym"></p>
+<p>Cet article est le premier d'une série à venir sur Symfony 2. Pour commencer, je vous invite à télécharger la <a href="http://symfony-reloaded.org/code" target="_blank">sandbox</a> de Symfony 2. J'ai décidé de commencer par l'injection de dépendances car il s'agit d'un composant clé de Symfony 2, et que la bonne compréhension de cette nouvelle version du Framework doit forcément en passer par là. L'injection de dépendance est réellement au coeur du Framework.</p>
 <p>Nous allons commencer par tenter d'éclaircir cette notion (ou ce design pattern), puis nous verrons plus concrètement l'implémentation qui en est faite au sein de Symfony 2. Commençons par une petite définition.</p>
 <blockquote>
 <p>Définition Wikipedia:</p>
@@ -206,15 +207,15 @@ Depuis la rédaction de cet article sur l'injection de dépendances, le coeur de
 <li>un router (chargé du routing)</li>
 </ul><p>L'injecteur de dépendances pourrait ressembler à quelque chose comme ça :</p>
 <h4 id="fichier-de-configuration">Fichier de configuration<a href="#fichier-de-configuration" class="anchor"></a></h4>
-<code id="f794ccffe4fc5f9fe5f66c00566abb74">* Service 'mailer'
+<pre class="code-multiline"><code id="f794ccffe4fc5f9fe5f66c00566abb74">* Service 'mailer'
 - Utiliser la classe 'MonMailer'
 - Passer le service 'logger' dans son constructeur
 - Appeler la méthode 'initialiser'* Service 'logger'
 - Utiliser la classe 'MonLogger'* Service 'routeur'
 - Utiliser la classe 'MonRouteur'
-- Appeler la méthode 'setLogger' en lui passant le service 'logger' en paramètre</code>
+- Appeler la méthode 'setLogger' en lui passant le service 'logger' en paramètre</code></pre>
 <h4 id="container-g-n-r">Container généré<a href="#container-g-n-r" class="anchor"></a></h4>
-<code id="6ba0a394293d1c77f83955b213eb6dc3" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="6ba0a394293d1c77f83955b213eb6dc3"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">class</span> <span class="token class-name">Container</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
   <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getServiceMailer</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -236,14 +237,14 @@ Depuis la rédaction de cet article sur l'injection de dépendances, le coeur de
     <span class="token variable">$service</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setLogger</span><span class="token punctuation">(</span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getServiceLogger</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token variable">$service</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <p>L'injection de dépendances permet donc une gestion beaucoup plus claire et souple de ces différents "services". En modifiant ce fichier de configuration nous pourrions très simplement :</p>
 <ul><li>Changer la classe utilisée pour représenter un service</li>
 <li>Ajouter un service</li>
 <li>Modifier / Ajouter des dépendances</li>
 </ul><h3 id="symfony-x-et-le-factories-yml">Symfony 1.x et le factories.yml<a href="#symfony-x-et-le-factories-yml" class="anchor"></a></h3>
 <p>A l'origine, sous Symfony 1.x, ce qui remplaçait plus ou moins l'injecteur de dépendances était le fichier <strong>factories.yml</strong> avec comme container l'objet <strong>sfContext</strong>. Ce fichier était chargé en cache (<strong>factories.yml.php</strong>) et les différents 'services' inclus dans l'objet <strong>sfContext</strong> au travers de sa propriété <strong>factories</strong>.</p>
-<code id="1b093262e3737cf80bc6bf23d11346f1" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="1b093262e3737cf80bc6bf23d11346f1"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">class</span> <span class="token class-name">sfContext</span> <span class="token keyword">implements</span> <span class="token class-name">ArrayAccess</span>
 <span class="token punctuation">{</span>
   <span class="token keyword">protected</span>
@@ -262,27 +263,28 @@ Depuis la rédaction de cet article sur l'injection de dépendances, le coeur de
     <span class="token keyword">require</span><span class="token punctuation">(</span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">configuration</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getConfigCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">checkConfig</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'config/factories.yml'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <p>Le fichier <strong>factories.yml</strong> était géré par la classe <strong>sfFactoryConfigHandler</strong> et aboutissait dans le cache au fichier <strong>factories.yml.php</strong> qui se contentait d'enrichir le tableau <strong>$factories</strong> du <strong>sfContext</strong>.</p>
-<code id="1ee1f57367f6f6394f4d7b64a202a26c" class="language-php"><span class="token variable">$class</span> <span class="token operator">=</span> <span class="token scope">sfConfig<span class="token punctuation">::</span></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'sf_factory_controller'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'sfFrontWebController'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="code-multiline language-php"><code class="language-php" id="1ee1f57367f6f6394f4d7b64a202a26c"><span class="token variable">$class</span> <span class="token operator">=</span> <span class="token scope">sfConfig<span class="token punctuation">::</span></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'sf_factory_controller'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'sfFrontWebController'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">factories</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'controller'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token variable">$class</span><span class="token punctuation">(</span><span class="token this">$this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token variable">$class</span> <span class="token operator">=</span> <span class="token scope">sfConfig<span class="token punctuation">::</span></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'sf_factory_request'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'sfWebRequest'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">factories</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'request'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token variable">$class</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span></code>
+<span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">factories</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'request'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token variable">$class</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span></code></pre>
 <p>Les différents services étaient ensuite accessibles au travers du *sfContext :</p>
-<code id="ac713d12390dbbde68633120ea8805a4" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="ac713d12390dbbde68633120ea8805a4"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">class</span> <span class="token class-name">sfContext</span> <span class="token keyword">implements</span> <span class="token class-name">ArrayAccess</span>
 <span class="token punctuation">{</span>
   <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getController</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
   <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <h3 id="symfony-et-l-injection-de-d-p">Symfony 2 et l'injection de dépendances<a href="#symfony-et-l-injection-de-d-p" class="anchor"></a></h3>
 <p>Nous arrivons maintenant à la partie intéressante: L'implémentation de l'injection de dépendances dans Symfony 2.
 En premier lieu, je vous conseille vivement la lecture de la documentation de Fabien Potencier dédiée au composant:
 <a href="http://components.symfony-project.org/dependency-injection/trunk/book/00-Introduction" target="_blank">Symfony Dependency Injection</a> (il s'agit du composant php 5.2, mais la documentation est toujours d'actualité dans le sens où le fonctionnement est identique).</p>
 <p>Jetons un oeil aux sources du composant (<em>/sandbox/src/vendor/symfony/src/Symfony/Components/DependencyInjection</em>) :</p>
-<img src="/images/posts/2010/di-folder.png" alt='di folder Symfony 2   Linjection de dépendances" width="284" height="253' title='di folder Symfony 2   Linjection de dépendances" width="284" height="253' id="di-folder-symfony-linjection"><ul><li>Le répertoire <strong>*Dumper<strong> <em>va contenir les classes permettant de dumper un </em></strong>Builder*</strong> sous un format spécifique (Yaml, Xml, PHP, Graphviz).</li>
+<p><img src="/images/posts/2010/di-folder.png" alt='di folder Symfony 2   Linjection de dépendances" width="284" height="253' id="di-folder-symfony-linjection"></p>
+<ul><li>Le répertoire <strong>*Dumper<strong> <em>va contenir les classes permettant de dumper un </em></strong>Builder*</strong> sous un format spécifique (Yaml, Xml, PHP, Graphviz).</li>
 <li>Le répertoire <strong><em>Loader</em></strong> var contenir les classes permettant de charger des <strong><em>BuilderConfiguration</em></strong> à partir de formats spécifiques (Yaml, Xml, Ini)</li>
 <li><strong><em>Container</em></strong> est notre classe de base, ie le container qui va contenir les différents services et les paramètres associés.</li>
 <li><strong><em>Builder</em></strong> est une classe qui étend <strong><em>Container</em></strong> et qui va permettre d'auto-générer le <strong><em>Container</em></strong> à partir de la configuration, elle va consommer des objets de la classe <strong><em>BuilderConfiguration</em></strong> afin d'enrichir le <strong><em>Container</em></strong>.</li>
@@ -291,7 +293,8 @@ En premier lieu, je vous conseille vivement la lecture de la documentation de Fa
 </ul><p>Le fonctionnement est somme toute assez simple. Les différents loaders vont permettre de générer des objets du type BuilderConfiguration (qui contiendront des objets Definition) qui seront mergés au sein du Builder pour aboutir à notre Container. Les dumpers permettront de faire l'opération inverse, à savoir : générer un fichier de définitions pour les formats Yaml et Xml, un output Graphviz et enfin un objet php Container en ce qui concerne le dumper PHP.
 Un schéma valant mieux qu'un long discours, on peut synthétiser le fonctionnement comme suit :
 Note: Le loader de fichiers .ini n'a pas été représenté puisqu'il ne permet que de définir des paramètres.</p>
-<img src="/images/posts/2010/injection-dependances.png" alt='injection dependances Symfony 2   Linjection de dépendances" width="846" height="468' title='injection dependances Symfony 2   Linjection de dépendances" width="846" height="468' id="injection-dependances-symfony"><p><strong>Le dumper Graphviz</strong>: Ce dumper a pour objectif de générer un dump exploitable par le logiciel <a href="http://graphviz.org/" target="_blank">Graphviz</a> ; il va nous permettre d'obtenir un graphique représentant nos services et leurs dépendances.
+<p><img src="/images/posts/2010/injection-dependances.png" alt='injection dependances Symfony 2   Linjection de dépendances" width="846" height="468' id="injection-dependances-symfony"></p>
+<p><strong>Le dumper Graphviz</strong>: Ce dumper a pour objectif de générer un dump exploitable par le logiciel <a href="http://graphviz.org/" target="_blank">Graphviz</a> ; il va nous permettre d'obtenir un graphique représentant nos services et leurs dépendances.
 <strong><strong>Le cache:</strong></strong> Afin d'accélérer le fonctionnement des applications utilisant l'injection de dépendances, il est évident que les différents fichiers de configuration ne seront pas reparsés à chaque appel. En réalité, le container sera dumpé sous la forme d'une classe PHP et mise en cache.</p>
 <p>Attardons nous un peu sur ces fameuses définitions de services qui sont un peu la pierre angulaire de l'injection de dépendances.</p>
 <table style="width: 100%;" border="0"><tr><th colspan="2">
@@ -348,7 +351,7 @@ Note: Le loader de fichiers .ini n'a pas été représenté puisqu'il ne permet 
     </td>
   </tr></table><p>A partir de ces informations, le builder sera capable de recréer la méthode permettant d'accéder au service.
 De façon très synthétique et grossière, la définition nous permettrait d'aboutir à une méthode comme ceci:</p>
-<code id="3ab82ac5281b69656e9032b652ba4861" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="3ab82ac5281b69656e9032b652ba4861"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getServiceXXX</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
   <span class="token keyword">require</span> <span class="token variable">$file</span><span class="token punctuation">;</span>
@@ -357,11 +360,11 @@ De façon très synthétique et grossière, la définition nous permettrait d'ab
   <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$calls</span> <span class="token keyword">as</span> <span class="token variable">$call</span><span class="token punctuation">)</span>
   <span class="token variable">$service</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token variable">$call</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token variable">$service</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <p><strong>Note: </strong>Dans Symfony 2, les bundles de base utilisent le loader XML pour définir leurs services. Le format XML a l'avantage de pouvoir être validé via <strong>Components/DependencyInjection/Loader/schema/dic/services/services-1.0.xsd</strong></p>
 <h3 id="exemple-de-service-le-logger-du">Exemple de service: le logger du ZendBundle<a href="#exemple-de-service-le-logger-du" class="anchor"></a></h3>
 <p>Dans le répertoire Ressources/config/ du Bundle (<strong> /sandbox/src/vendor/symfony/src/Symfony/Framework/ZendBundle</strong>), on trouve le fichier : logger.xml. Il s'agit de notre fichier de configuration. Notre fichier qui sera chargé par le loader pour enrichir notre container.</p>
-<code id="7b3f845590cde9ce25358a1809956cf1" class="language-xml"><span class="token comment">&lt;!--?xml version="1.0" ?--&gt;</span>
+<pre class="code-multiline language-xml"><code class="language-xml" id="7b3f845590cde9ce25358a1809956cf1"><span class="token comment">&lt;!--?xml version="1.0" ?--&gt;</span>
 
 Symfony\Framework\ZendBundle\Logger\LoggerZend_Log::CRITSymfony\Framework\ZendBundle\Logger\DebugLoggerZend_Log_Writer_StreamZend_Log_Formatter_Simple%%timestamp%% %%priorityName%%: %%message%%
 
@@ -369,11 +372,11 @@ Symfony\Framework\ZendBundle\Logger\LoggerZend_Log::CRITSymfony\Framework\ZendBu
 
 %zend.formatter.filesystem.format%
 
-%zend.logger.priority%</code>
+%zend.logger.priority%</code></pre>
 <p>5 services sont définis: zend.logger, zend.logger.writer.filesystem, zend.formatter.filesystem, zend.logger.writer.debug et zend.logger.filter.
 Les paramètres sont également définis dans le fichier.</p>
 <p>Ces différentes déclaration aboutiront à la création de méthodes de ce type dans le container généré par le Dumper PHP.</p>
-<code id="efad2403edfb1336d9c2f4c175c90378" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="efad2403edfb1336d9c2f4c175c90378"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">getZend_LoggerService</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">shared</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'zend.logger'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -432,10 +435,10 @@ Les paramètres sont également définis dans le fichier.</p>
 <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">getLoggerService</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getZend_LoggerService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <p>Comme vous pouvez le constater, une méthode getLoggerService est générée. Cette méthode est générée car un alias a été défini lors de la configuration du builder (ligne 59 du fichier ZendExtension.php).</p>
-<code id="6ecc4e0bcecbb878ec6790beaee60106" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token variable">$configuration</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setAlias</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'logger'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'zend.logger'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code>
+<pre class="code-multiline language-php"><code class="language-php" id="6ecc4e0bcecbb878ec6790beaee60106"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$configuration</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setAlias</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'logger'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'zend.logger'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
 <h4 id="les-annotations">Les annotations<a href="#les-annotations" class="anchor"></a></h4>
 <p>Les annotations permettent de rajouter des propriétés à un service. Ces annotations ne sont pas exploitées directement par l'injecteur de dépendances mais par des composants tierces. Une annotation possède un nom et des attributs. Par exemple, dans le fichier de définitions: Framework/WebBundle/Resources/config/web.xml, on trouve la définition suivante sur le service <strong>request_parser</strong>:</p>
 <p>Cette définition rajoute donc une annotation "<strong>kernel.listener</strong>" sur le service <strong>request_parser</strong> avec comme attributs <strong>event</strong> et <strong>method</strong>.
@@ -443,7 +446,7 @@ Dans l'exemple précédent, le <strong>Kernel</strong> se servira de cette annot
 <h4 id="les-extensions">Les extensions :<a href="#les-extensions" class="anchor"></a></h4>
 <p>Lorsque les différents Bundles vont définir leurs services, ceux-ci ne seront pas directement chargés dans la configuration du Builder global. Au lieu de ça, les Bundles vont définir des extensions. Les extensions ne sont qu'un wrapper permettant de charger la configuration d'un bundle "à la demande". Les extensions vont permettre de mieux organiser les différents services. Pour expliquer le fonctionnement des extensions, nous allons étudier le Bundle Web (Framework/WebBundle).</p>
 <p>Le fichier Bundle.php du WebBundle ressemble à ceci:</p>
-<code id="bd7695f02b66c9e9789f6f9800f837d2" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="bd7695f02b66c9e9789f6f9800f837d2"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">class</span> <span class="token class-name">Bundle</span> <span class="token keyword">extends</span> <span class="token class-name">BaseBundle</span>
 <span class="token punctuation">{</span>
   <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">buildContainer</span><span class="token punctuation">(</span>ContainerInterface <span class="token variable">$container</span><span class="token punctuation">)</span>
@@ -451,10 +454,10 @@ Dans l'exemple précédent, le <strong>Kernel</strong> se servira de cette annot
     <span class="token scope">Loader<span class="token punctuation">::</span></span><span class="token function">registerExtension</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">WebExtension</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <p>La méthode <strong>buildContainer()</strong> définie sur chaque Bundle permet d'indiquer au <strong>Kernel</strong> comment configurer le Container pour ce Bundle. Ici, le Bundle va se contenter de déclarer une extension sur le loader. Il enregistre donc l'extension <strong>WebExtension</strong> dans le loader.
 Voyons maintenant le fichier WebExtension.php</p>
-<code id="69a45ee5de2f4e2c337fb8623dd32a9b" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="69a45ee5de2f4e2c337fb8623dd32a9b"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">class</span> <span class="token class-name">WebExtension</span> <span class="token keyword">extends</span> <span class="token class-name">LoaderExtension</span>
 <span class="token punctuation">{</span>
   <span class="token keyword">protected</span> <span class="token variable">$resources</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
@@ -487,11 +490,11 @@ Voyons maintenant le fichier WebExtension.php</p>
   <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token single-quoted-string string">'web'</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <p>On voit que les extensions permettent de charger des configurations de Builder un peu différemment. Dans les différents fichiers de configuration manipulés, quel que soit le format du loader utilisé, on se contente de déclarer des services. Cependant, il faut savoir qu'il est également possible de charger et configurer des extensions ainsi définies.
 Ce qu'on trouve en général dans les fichiers config.yml / config_dev.yml / config_prod.yml d'une application utilise principalement la déclaration des extensions prédéfinies par les Bundles et ne déclare pas de nouveaux services.
 Exemple:</p>
-<code id="e9545752e3ca8bcfedf45726d005ea36" class="language-yaml"><span class="token key atrule">kernel.config</span><span class="token punctuation">:</span> <span class="token null important">~</span>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="e9545752e3ca8bcfedf45726d005ea36"><span class="token key atrule">kernel.config</span><span class="token punctuation">:</span> <span class="token null important">~</span>
 <span class="token key atrule">web.web</span><span class="token punctuation">:</span> <span class="token null important">~</span>
 <span class="token key atrule">web.templating</span><span class="token punctuation">:</span> <span class="token null important">~</span>
 <span class="token key atrule">web.debug</span><span class="token punctuation">:</span>
@@ -501,13 +504,13 @@ Exemple:</p>
 <span class="token key atrule">priority</span><span class="token punctuation">:</span> info
 <span class="token key atrule">path</span><span class="token punctuation">:</span> %kernel.root_dir%/logs/%kernel.environment%.log
 <span class="token key atrule">swift.mailer</span><span class="token punctuation">:</span>
-<span class="token key atrule">transport</span><span class="token punctuation">:</span> gmail</code>
+<span class="token key atrule">transport</span><span class="token punctuation">:</span> gmail</code></pre>
 <p>Dans ce fichier de configuration, seules des extensions sont déclarées. A noter que si une extension n'est pas déclarée dans le fichier de configuration d'un Container, ses services ne seront pas inclus dans le Container final.
 Le but des extensions est de fournir une méthode plus "propre" pour déclarer ses services, mais le fonctionnement reste identique, les Bundles vont déclarer des services comme vu précédemment, les extensions ne fournissant qu'un moyen de charger ou configurer ces déclarations.</p>
 <h3 id="mise-en-pratique">Mise en pratique<a href="#mise-en-pratique" class="anchor"></a></h3>
 <p>Afin de bien comprendre le fonctionnement, je vous propose une petite mise en pratique au travers de quelques exemples. Les exemples seront basés sur la sandbox proposée sur le site de <a href="http://www.symfony-reloaded.org" target="_blank">Symfony 2</a> et l'application Hello World !</p>
 <p>Au niveau de la sandbox, les fichiers de configuration du Builder sont : config.yml, config_dev.yml et config_prod.yml. La méthode qui va charger ces fichiers est la méthode registerContainerConfiguration() de la classe HelloKernel. Nous allons travailler dans le cadre de nos exemples sur l'environnement de production. Le Container final généré se trouve dans le cache hello/cache/prod/helloProjectContainer.php</p>
-<code id="42ac61852b48a9e921f8db817058b896" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="42ac61852b48a9e921f8db817058b896"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">class</span> <span class="token class-name">HelloKernel</span> <span class="token keyword">extends</span> <span class="token class-name">Kernel</span>
 <span class="token punctuation">{</span>
   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
@@ -518,38 +521,38 @@ Le but des extensions est de fournir une méthode plus "propre" pour déclarer s
     <span class="token keyword">return</span> <span class="token variable">$configuration</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <p>C'est au niveau de cette méthode que nous allons intervenir dans un premier temps.</p>
 <h4 id="modifier-la-classe-d-un-service">Modifier la classe d'un service<a href="#modifier-la-classe-d-un-service" class="anchor"></a></h4>
 <p>Dans notre premier exemple, nous allons tenter de modifier un service. En l'occurrence, le service représentant la requête, le bien nommé "RequestService". Notre container (HelloProjectContainer.php) définit le service ainsi:</p>
-<code id="402dbff5fba94ce910a2c86a76e6596b" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="402dbff5fba94ce910a2c86a76e6596b"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">getRequestService</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">shared</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'request'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">shared</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'request'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
   <span class="token variable">$instance</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Symfony<span class="token punctuation">\</span>Components<span class="token punctuation">\</span>RequestHandler<span class="token punctuation">\</span>Request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">shared</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'request'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$instance</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <p>Pour modifier la classe utilisée pour ce service, rien de plus simple, il nous suffit de modifier la configuration du container.
 Nous allons simplement modifier la classe associée dans la définition de ce service de cette façon :</p>
-<code id="66e755e6c8ec07cb8b30e5d470241df0" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="66e755e6c8ec07cb8b30e5d470241df0"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">registerContainerConfiguration</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
   <span class="token variable">$loader</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ContainerLoader</span><span class="token punctuation">(</span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getBundleDirs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token variable">$configuration</span> <span class="token operator">=</span> <span class="token variable">$loader</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token constant">__DIR__</span><span class="token punctuation">.</span><span class="token single-quoted-string string">'/config/config_'</span><span class="token punctuation">.</span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token single-quoted-string string">'.yml'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token variable">$configuration</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getDefinition</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'request'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setClass</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'MaClasseRequest'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Nous modifions la définition du service "request"</span>
   <span class="token keyword">return</span> <span class="token variable">$configuration</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <p>C'est fait ! Si on vide le cache et que l'on rappelle une url sur le projet, la définition de notre service dans le container ressemble maintenant à ça:</p>
-<code id="d4de141992e983d93778578b86e57b63" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="d4de141992e983d93778578b86e57b63"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">getRequestService</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">shared</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'request'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">shared</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'request'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token variable">$instance</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MaClasseRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">shared</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'request'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$instance</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <h4 id="cr-er-un-service">Créer un service<a href="#cr-er-un-service" class="anchor"></a></h4>
 <p>Dans cette exemple, nous allons voir comment déclarer un nouveau service. Nous allons tenter de déclarer le service "Monservice", utilisant la classe "Maclasse", dépendante du service "logger" sur laquelle on appellera les méthodes init1() et init2() à qui on passera le paramètre "coucou". Nous avions vu que le fichier config.yml déclarait les extensions à utiliser, mais c'est un fichier de configuration de Container comme un autre, nous pouvons donc y définir des services.</p>
-<code id="3c71d34661ecacab2855d84559152ba1" class="language-yaml"><span class="token key atrule">services</span><span class="token punctuation">:</span>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="3c71d34661ecacab2855d84559152ba1"><span class="token key atrule">services</span><span class="token punctuation">:</span>
   <span class="token key atrule">monservice</span><span class="token punctuation">:</span>
     <span class="token key atrule">id</span><span class="token punctuation">:</span> monservice
     <span class="token key atrule">class</span><span class="token punctuation">:</span> Maclasse
@@ -557,9 +560,9 @@ Nous allons simplement modifier la classe associée dans la définition de ce se
      <span class="token punctuation">-</span> @logger
     <span class="token key atrule">calls</span><span class="token punctuation">:</span>
      <span class="token punctuation">-</span> <span class="token punctuation">[</span>init1<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-      <span class="token punctuation">-</span> <span class="token punctuation">[</span>init2<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'coucou'</span><span class="token punctuation">]</span><span class="token punctuation">]</span></code>
+      <span class="token punctuation">-</span> <span class="token punctuation">[</span>init2<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'coucou'</span><span class="token punctuation">]</span><span class="token punctuation">]</span></code></pre>
 <p>C'est tout. Nous venons de déclarer un nouveau service dans notre application. Si nous jetons un oeil au Container généré:</p>
-<code id="272af7ea5056f520b2ba3c0b119d267d" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="272af7ea5056f520b2ba3c0b119d267d"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">getMonserviceService</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">shared</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'monservice'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">shared</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'monservice'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -569,7 +572,7 @@ Nous allons simplement modifier la classe associée dans la définition de ce se
     <span class="token variable">$instance</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">init2</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'coucou'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">shared</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'monservice'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$instance</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <h3 id="en-conclusion">En conclusion<a href="#en-conclusion" class="anchor"></a></h3>
 <p>Comme vous avez pu le découvrir dans cet article, l'injecteur de dépendances de Symfony 2 est vraiment puissant. Nous pouvons customizer, tweaker, étendre le fonctionnement du coeur même du Framework par ce biais.</p>
 <p>L'injection de dépendances ne devrait plus avoir de secrets pour vous !</p>

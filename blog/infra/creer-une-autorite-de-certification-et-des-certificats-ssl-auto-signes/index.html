@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/gfaivre.jpg" />
     <p>Écrit par Guewen FAIVRE<p>
     <p>Publication 5 octobre 2010<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -186,25 +186,25 @@
 L'ensemble de ces manipulations ont été réalisées sur des serveurs Linux / Debian Lenny.</p>
 <h3 id="cr-er-son-propre-ca-certificat">Créer son propre CA (Certificate Authority)<a href="#cr-er-son-propre-ca-certificat" class="anchor"></a></h3>
 <p>Nous allons commencer par créer une clé privée</p>
-<code id="43687bc072862b8a3751054098c7f046" class="language-bash">root@my_server:~<span class="token comment"># openssl genrsa -des3 -out elao-ca.key 2048</span>
+<pre class="code-multiline language-bash"><code class="language-bash" id="43687bc072862b8a3751054098c7f046">root@my_server:~<span class="token comment"># openssl genrsa -des3 -out elao-ca.key 2048</span>
 Generating RSA private key, <span class="token number">2048</span> bit long modulus
 <span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>.+++
 <span class="token punctuation">..</span>+++
 e is <span class="token number">65537</span> <span class="token punctuation">(</span>0x10001<span class="token punctuation">)</span>
-Enter pass phrase <span class="token keyword">for</span> elao-ca.key:</code>
+Enter pass phrase <span class="token keyword">for</span> elao-ca.key:</code></pre>
 <p>La protection par une "pass phrase" de votre clé est essentielle ici, en effet cette clé nous servira à signer <strong>tous</strong> les certificats de notre organisation, sa confidentialité doit donc être <strong>primordiale</strong>. Il va sans dire que le stockage de cette clé, dans l'idéal, doit être fait sur un support amovible  (type clé USB), et ne doit pas être conservée sur une machine accessible "publiquement" (j'entend ici directement connectée à internet).</p>
 <p><strong>Note :</strong></p>
 <p>Il est possible d'améliorer la qualité de la clé en fournissant comme source de données aléatoires un ou plusieurs fichiers avec l'option -rand, par exemple :</p>
-<code id="f568c082b3dea1587309e9e36ebafbcb">-rand /var/log/messages</code>
+<pre class="code-multiline"><code id="f568c082b3dea1587309e9e36ebafbcb">-rand /var/log/messages</code></pre>
 <p>Par défaut openssl utilisera /dev/urandom s'il existe, dans le cas contraire /dev/random, la source de données aléatoire est très importante pour la qualité du cryptage, si votre système ne dispose d'aucun de ces deux fichiers vous pouvez installer un générateur de nombre aléatoire comme [egd][1].</p>
 <p>Maintenant que nous disposons d'une clé nous allons procéder à la création de notre certificat CA privé</p>
-<code id="b7c78c01245d7861b5feb4627d61d372">openssl req -new -x509 -days 3650 -key elao-ca.key -out elao-ca.crt
-Enter pass phrase for elao-ca.key:</code>
+<pre class="code-multiline"><code id="b7c78c01245d7861b5feb4627d61d372">openssl req -new -x509 -days 3650 -key elao-ca.key -out elao-ca.crt
+Enter pass phrase for elao-ca.key:</code></pre>
 <p>Le contenu de notre certificat est vérifiable grâce à la commande suivante :</p>
-<code id="abbea37b2326b86905f5195ae9763b03">openssl x509 -in elao-ca.crt -text -noout</code>
+<pre class="code-multiline"><code id="abbea37b2326b86905f5195ae9763b03">openssl x509 -in elao-ca.crt -text -noout</code></pre>
 <h3 id="cr-er-une-cl-et-un-certificat">Créer une clé et un certificat pour le serveur<a href="#cr-er-une-cl-et-un-certificat" class="anchor"></a></h3>
 <p>Maintenant que nous disposons de notre autorité de certification nous allons pouvoir créer et signer les certificats à destination de notre serveur.</p>
-<code id="b9043d8b3c399723bb63690eaa28b58f">openssl genrsa -des3 -out elao-server.key 1024</code>
+<pre class="code-multiline"><code id="b9043d8b3c399723bb63690eaa28b58f">openssl genrsa -des3 -out elao-server.key 1024</code></pre>
 <p>Comme vous le constatez nous restons sur un cryptage à 1024 bits, en effet il est risqué d'aller au delà car certains navigateurs ne supportent pas les cryptages supérieurs.</p>
 <p>La prochaine étape consiste à générer une requête de signature de certificat, appelée comme ceci car elle est normalement transmise à une autorité de certification (Certificate Authority ou CA) pour signature.
 Un certificat n’est ni plus, ni moins qu’une clé qui a été signée par une autorité autorisée garantissant ainsi que celle-ci est valide est correspond bien à la bonne entité.</p>
@@ -212,9 +212,9 @@ Un certificat n’est ni plus, ni moins qu’une clé qui a été signée par un
 <p>Une autorité de certification est une entité autorisée à signer les certificats SSL, elles ne sont que quelques unes à faire autorité. Lorsqu’un certificat est signé par l’une d’entre elles, les navigateurs accepterons automatiquement le certificat comme étant valide, si un certificat est signé par une autorité de certification absente de la liste des autorités fiables du navigateur celui-ci renverra un avertissement à l’utilisateur lui précisant que le certificat a été signé par une autorité non reconnue et lui demandera de confirmer qu’il accepte bien le certificat.</p>
 <p>Ce qui se traduit sous Firefox par exemple par ce type d’écran:</p>
 <img title="firefox-ssl" src="/blog/medias/creer-une-autorite-de-certification-et-des-certificats-ssl-auto-signes/firefox-ssl.png" alt="firefox ssl Créer une autorité de certification et des certificats SSL auto signés" width="700" height="386" id="firefox-ssl-cr-er-une-autorit"><p>Au cours de cette étape plusieurs questions vous serons posées et se présenteront ainsi, vos réponses seront utilisées par le certificat et utilisées par les navigateurs afin de vérifier que le certificat provient d’une source sûre. Les utilisateurs seront en mesure d’inspecter ces détails à n’importe quel moment à partir de l’instant où ils se connectent à votre site.</p>
-<code id="9ac4c983c83623aac25ca51c511d91b9">openssl req -new -key elao-server.key -out elao-server.csr</code>
+<pre class="code-multiline"><code id="9ac4c983c83623aac25ca51c511d91b9">openssl req -new -key elao-server.key -out elao-server.csr</code></pre>
 <p>... qui devrait aboutir sur:</p>
-<code id="5e52c6003e08ee78d3690936535ae396" class="language-bash">Enter pass phrase <span class="token keyword">for</span> elao-server.tld.key:
+<pre class="code-multiline language-bash"><code class="language-bash" id="5e52c6003e08ee78d3690936535ae396">Enter pass phrase <span class="token keyword">for</span> elao-server.tld.key:
 You are about to be asked to enter information that will be incorporated into your certificate request.
 What you are about to enter is what is called a Distinguished Name or a DN.
 There are quite a few fields but you can leave some blank
@@ -238,18 +238,18 @@ Locality Name <span class="token punctuation">(</span>eg, city<span class="token
 Organization Name <span class="token punctuation">(</span>eg, company<span class="token punctuation">)</span> <span class="token punctuation">[</span>Internet Widgits Pty Ltd<span class="token punctuation">]</span>:ELAO
 Organizational Unit Name <span class="token punctuation">(</span>eg, section<span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>:IT
 Common Name <span class="token punctuation">(</span>eg, YOUR name<span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>:my-server.my-domain.tld
-Email Address <span class="token punctuation">[</span><span class="token punctuation">]</span>:my-adress.my-domain.tld</code>
+Email Address <span class="token punctuation">[</span><span class="token punctuation">]</span>:my-adress.my-domain.tld</code></pre>
 <p>Attention lorsque vous générez cette requête le common name doit correspondre EXACTEMENT au FQDN de votre serveur !</p>
-<code id="3e0c8656137186190b00c50aefc31dba">openssl x509 -req -in elao-server.csr -out elao-server.crt -sha1 -CA elao-ca.crt -CAkey elao-ca.key -CAcreateserial -days 3650</code>
+<pre class="code-multiline"><code id="3e0c8656137186190b00c50aefc31dba">openssl x509 -req -in elao-server.csr -out elao-server.crt -sha1 -CA elao-ca.crt -CAkey elao-ca.key -CAcreateserial -days 3650</code></pre>
 <p>Un petit coup d’oeil pour vérifier que tout est ok</p>
-<code id="b6c6173d6ffc6724677b272b316675ae">openssl x509 -in elao-server.crt -text -noout</code>
+<pre class="code-multiline"><code id="b6c6173d6ffc6724677b272b316675ae">openssl x509 -in elao-server.crt -text -noout</code></pre>
 <p>Attention cependant lorsque vous allez utiliser votre certificat avec Apache typiquement, à chaque redémarrage vous devrez saisir la “pass phrase” du certificat, ce qui peut être contraignant dans le cas d’un “reboot” malheureux de la machine (Apache planté jusqu’à intervention de l’admin).
 Pour palier ce problème nous allons générer une clé non sécurisée, oui je sais, c’est mal, mais il faut parfois choisir entre la sécurité et la praticité.</p>
-<code id="beda81ac7ce788e07de6ab99786100b3">openssl rsa -in elao-server.key -out elao-server.key.insecure</code>
+<pre class="code-multiline"><code id="beda81ac7ce788e07de6ab99786100b3">openssl rsa -in elao-server.key -out elao-server.key.insecure</code></pre>
 <p>Au niveau de notre configuration apache nous utiliserons ensuite, par exemple, notre certificat et notre clé de cette façon:</p>
-<code id="08417dfc40c00d486ba0576efb0a07a2">SSLEngine On
+<pre class="code-multiline"><code id="08417dfc40c00d486ba0576efb0a07a2">SSLEngine On
 SSLCertificateFile      /path_to_my_certs/my-server.my-domain.tld.crt
-SSLCertificateKeyFile   /path_to_my_keys/my-server.my-domain.tld.key</code></body>
+SSLCertificateKeyFile   /path_to_my_keys/my-server.my-domain.tld.key</code></pre></body>
   </div>
 
   <div>

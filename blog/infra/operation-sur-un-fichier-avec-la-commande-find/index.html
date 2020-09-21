@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/gfaivre.jpg" />
     <p>Écrit par Guewen FAIVRE<p>
     <p>Publication 3 décembre 2009<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -181,13 +181,13 @@
 
   <div>
     <body><p>La commande "find" permet non seulement de faire des recherches sur les fichiers de l'arborescence mais également d'exécuter des commandes sur ces mêmes fichiers. Option au combien pratique pour toutes les tâches de maintenance / nettoyage des systèmes !</p>
-<code id="c1369dc8e746632779d5ce25db006262" class="language-bash"><span class="token function">find</span> <span class="token builtin class-name">.</span> -name ’*.yml’ -exec <span class="token function">rm</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">;</span></code>
+<pre class="code-multiline language-bash"><code class="language-bash" id="c1369dc8e746632779d5ce25db006262"><span class="token function">find</span> <span class="token builtin class-name">.</span> -name ’*.yml’ -exec <span class="token function">rm</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">;</span></code></pre>
 <p><strong>Explications :</strong></p>
 <p>La commande ci-dessus va rechercher dans le répertoire courant tous les fichiers correspondant au masque suivant l'option <em>-name</em> et exécuter la commande <em>rm</em> sur le résultat. Cette simple commande permet donc de supprimer <strong>tous</strong> les fichiers de l'arborescence et de la sous-arborescence du répertoire courant suffixés par <strong><em>.yml</em></strong>.</p>
 <p><strong>Syntaxe :</strong></p>
 <p><strong>.</strong> représente le répertoire courant il aurait pu être par exemple <em>/etc/mon_rep/ </em></p>
 <p><strong><em>-name</em></strong> est une option de find permettant de faire une recherche à partir d'un <strong>masque</strong> ou <strong>pattern</strong> en anglais.</p>
-<p><span class="inline-code">*.yml</span> est le masque représentant tous les fichiers suffixés par .yml</p>
+<p><code class="code-inline" id="dea2fb5b040f8125bd3be0f059f0c0ae">*.yml</code> est le masque représentant tous les fichiers suffixés par .yml</p>
 <p><strong><em>-exec</em></strong> est une option de find qui entraine l'exécution de la commande qui la suit</p>
 <p><strong><em>rm</em></strong> est la commande UNIX permettant la suppression d'un fichier</p>
 <p>{} représente touts les occurences de fichiers correspondantes au masque</p>

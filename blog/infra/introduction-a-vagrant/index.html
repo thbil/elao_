@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/mbernard.jpg" />
     <p>Écrit par Maximilien BERNARD<p>
     <p>Publication 23 avril 2017<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -198,8 +198,8 @@ Si par le passé on avait recours à des plateformes comme LAMP/MAMP/XAMP pour g
 <p>Comme vu plus haut, Vagrant ne virtualise pas directement les environnements mais fait appel à un provider pour accomplir cette tache.
 Vagrant utilise <a href="https://www.virtualbox.org/" target="_blank">Virtualbox</a> par défaut, mais rien n’empêche d’en utiliser un autre comme VMWare, AWS ou Hyper V.</p>
 <h1 id="en-pratique">En pratique<a href="#en-pratique" class="anchor"></a></h1>
-<p>Nous allons maintenant installer une VM contenant une version minimale d'Ubuntu et la provisionner avec nginx à l'aide d'un script bash. Après avoir installé Vagrant sur votre machine, créez un nouveau dossier que nous appellerons <span class="inline-code">demo/</span>. Créez ensuite un nouveau fichier Vagrantfile avec le contenu suivant.</p>
-<code id="8e3f694d53df44b4765c9a380eb28542">Vagrant.configure("2") do |config|
+<p>Nous allons maintenant installer une VM contenant une version minimale d'Ubuntu et la provisionner avec nginx à l'aide d'un script bash. Après avoir installé Vagrant sur votre machine, créez un nouveau dossier que nous appellerons <code class="code-inline" id="b6c2a257bfab6380ca9b3cb94b12cb25">demo/</code>. Créez ensuite un nouveau fichier Vagrantfile avec le contenu suivant.</p>
+<pre class="code-multiline"><code id="8e3f694d53df44b4765c9a380eb28542">Vagrant.configure("2") do |config|
 
   # Vm
   config.vm.box = "hashicorp/precise32"
@@ -211,19 +211,19 @@ Vagrant utilise <a href="https://www.virtualbox.org/" target="_blank">Virtualbox
   # Network
   config.vm.network "forwarded_port", guest: 80, host: 8080, id: "nginx"
 
-end</code>
+end</code></pre>
 <p>On peut voir que la box utilisée est <strong>hashicorp/precise32</strong> et que le dossier partagé (sur la VM) avec la racine du projet (sur votre machine locale) se nomme <strong>vagrant</strong>. La ligne suivante spécifie la méthode de provisionnement (un script shell). La dernière ligne de configuration sert à forwarder le port 80 de la VM vers le port 8080 de votre machine locale, ce qui permettra d'avoir accès au serveur nginx depuis votre navigateur.</p>
 <p>Notre script <strong>bootstrap.sh</strong> contiendra les lignes suivantes:</p>
-<code id="fed1e788d04d7dc96a63c00d6e53a5f5">sudo apt-get -y update
+<pre class="code-multiline"><code id="fed1e788d04d7dc96a63c00d6e53a5f5">sudo apt-get -y update
 sudo apt-get -y install nginx
-sudo service nginx start</code>
+sudo service nginx start</code></pre>
 <p>Il est temps de lancer cette commande dans votre terminal et laisser la magie opérer. Lors de cette phase,
 Vagrant va installer votre VM, la provisionner à l'aide du script et configurer le port forwarding.</p>
-<code id="34e05760adec124bdbf614a6c496e863">vagrant up</code>
+<pre class="code-multiline"><code id="34e05760adec124bdbf614a6c496e863">vagrant up</code></pre>
 <p>Si tout s'est bien passé, nous pouvons maintenant nous connecter en ssh sur notre VM</p>
-<code id="198135fc83653d13345f16358ba83b5d">vagrant ssh</code>
+<pre class="code-multiline"><code id="198135fc83653d13345f16358ba83b5d">vagrant ssh</code></pre>
 <p>et ainsi voir le prompt suivant.</p>
-<code id="0ca64d74ec544357b0936c176bd902c9">Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic-pae i686)
+<pre class="code-multiline"><code id="0ca64d74ec544357b0936c176bd902c9">Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic-pae i686)
 
  * Documentation:  https://help.ubuntu.com/
 New release '14.04.5 LTS' available.
@@ -231,15 +231,15 @@ Run 'do-release-upgrade' to upgrade to it.
 
 Welcome to your Vagrant-built virtual machine.
 Last login: Wed Apr 19 08:52:49 2017 from 10.0.2.2
-vagrant@precise32:~$</code>
-<p>Pour terminer, entrez l'addresse <em><a href="http://localhost:8080/">http://localhost:8080/</a></em> dans votre navigateur, vous devriez voir la page d'accueil de nginx, indiquant que vous avez bien accès au serveur web de votre VM.</p>
+vagrant@precise32:~$</code></pre>
+<p>Pour terminer, entrez l'addresse <em><a href="http://localhost:8080/" target="_blank">http://localhost:8080/</a></em> dans votre navigateur, vous devriez voir la page d'accueil de nginx, indiquant que vous avez bien accès au serveur web de votre VM.</p>
 <h1 id="conclusion">Conclusion<a href="#conclusion" class="anchor"></a></h1>
 <p>En résumé, Vagrant est une solution fiable pour instancier rapidement un environnement de développement et le partager entre développeurs. L'exemple que nous avons vu reste simple, mais il est possible de faire bien des choses avec Vagrant, comme du provisioning à l'aide d'<strong>Ansible</strong> (ce que nous utilisons chez Elao) ou de la configuration réseau plus poussée en passant par un réseau privé et un serveur DNS comme <strong>landrush</strong>.</p>
 <p>Si les sujets de l'automatisastion et de la virtualisation vous intéressent, je vous invite à aller faire un tour sur le projet <a href="http://www.manala.io/" target="_blank">Manala</a>, la boite à outils pour Ansible maintenue par Elao.</p>
 <p>N'hésitez pas à poster vos questions ou remarques dans la section commentaires.</p>
 <p>sources:
-<a href="https://www.vagrantup.com/docs/">https://www.vagrantup.com/docs/</a>
-<a href="http://blog.scottlowe.org/2014/09/12/a-quick-introduction-to-vagrant/">http://blog.scottlowe.org/2014/09/12/a-quick-introduction-to-vagrant/</a></p></body>
+<a href="https://www.vagrantup.com/docs/" target="_blank">https://www.vagrantup.com/docs/</a>
+<a href="http://blog.scottlowe.org/2014/09/12/a-quick-introduction-to-vagrant/" target="_blank">http://blog.scottlowe.org/2014/09/12/a-quick-introduction-to-vagrant/</a></p></body>
   </div>
 
   <div>

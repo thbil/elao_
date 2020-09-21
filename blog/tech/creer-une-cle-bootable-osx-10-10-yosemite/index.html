@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/gfaivre.jpg" />
     <p>Écrit par Guewen FAIVRE<p>
     <p>Publication 17 septembre 2014<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -192,14 +192,14 @@ Avant de lancer la mise à jour, copier le fichier <strong>InstallESD.dmg</stron
     ![Créer une clé bootable osx yosemite](/images/posts/2014/OSX_Yosemite.png)
 </p>
 <p>3.-  Exécuter la liste d'instructions suivantes:</p>
-<code id="e2399530d48237404a8785a1864d2ee6">sudo hdiutil attach /Applications/Install\ OS\ X\ Yosemite.app/Contents/SharedSupport/InstallESD.dmg</code>
-<code id="e37538549d4e4850d3529342092a7a56">sudo asr restore -source /Volumes/OS\ X\ Install\ ESD/BaseSystem.dmg -target /Volumes/Untitled -erase -format HFS+</code>
-<code id="1975175e3655284b766581ffefca8696">sudo rm /Volumes/OS\ X\ Base\ System/System/Installation/Packages</code>
-<code id="87b882ab31320a2e9b6c6a068f2618f3">sudo cp -a /Volumes/OS\ X\ Install\ ESD/Packages /Volumes/OS\ X\ Base\ System/System/Installation/Packages</code>
-<code id="af3d327090e105cbcb37ef9189ba6d39">sudo cp -a /Volumes/OS\ X\ Install\ ESD/BaseSystem.chunklist /Volumes/OS\ X\ Base\ System</code>
-<code id="7a36cf1816cfdf5bda3eafa5fb2e8be7">sudo cp -a /Volumes/OS\ X\ Install\ ESD/BaseSystem.dmg /Volumes/OS\ X\ Base\ System</code>
+<pre class="code-multiline"><code id="e2399530d48237404a8785a1864d2ee6">sudo hdiutil attach /Applications/Install\ OS\ X\ Yosemite.app/Contents/SharedSupport/InstallESD.dmg</code></pre>
+<pre class="code-multiline"><code id="e37538549d4e4850d3529342092a7a56">sudo asr restore -source /Volumes/OS\ X\ Install\ ESD/BaseSystem.dmg -target /Volumes/Untitled -erase -format HFS+</code></pre>
+<pre class="code-multiline"><code id="1975175e3655284b766581ffefca8696">sudo rm /Volumes/OS\ X\ Base\ System/System/Installation/Packages</code></pre>
+<pre class="code-multiline"><code id="87b882ab31320a2e9b6c6a068f2618f3">sudo cp -a /Volumes/OS\ X\ Install\ ESD/Packages /Volumes/OS\ X\ Base\ System/System/Installation/Packages</code></pre>
+<pre class="code-multiline"><code id="af3d327090e105cbcb37ef9189ba6d39">sudo cp -a /Volumes/OS\ X\ Install\ ESD/BaseSystem.chunklist /Volumes/OS\ X\ Base\ System</code></pre>
+<pre class="code-multiline"><code id="7a36cf1816cfdf5bda3eafa5fb2e8be7">sudo cp -a /Volumes/OS\ X\ Install\ ESD/BaseSystem.dmg /Volumes/OS\ X\ Base\ System</code></pre>
 <p>Et enfin:</p>
-<code id="1814494f07fd9df009046ba8c145225d">hdiutil detach /Volumes/OS\ X\ Install\ ESD</code>
+<pre class="code-multiline"><code id="1814494f07fd9df009046ba8c145225d">hdiutil detach /Volumes/OS\ X\ Install\ ESD</code></pre>
 <p>Vous disposez à présent d'une clé "bootable" permettant de faire une installation "propre" de Yosemite. Il suffit de redémarrer votre Mac et de maintenant la touche "Alt" enfoncée et de choisir de démarrer à partir de la clé.</p></body>
   </div>
 

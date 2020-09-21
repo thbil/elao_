@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/gfaivre.jpg" />
     <p>Écrit par Guewen FAIVRE<p>
     <p>Publication 20 décembre 2014<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -200,79 +200,79 @@
 <li>pkg-config (0.26-1)</li>
 <li>libyaml-dev (0.1.4-2+deb7u5)</li>
 </ul><p>_Attention  l'installation de la version 1.6.2 de Nginx nécessite <a href="http://www.elao.com/fr/blog/utiliser-les-depots-officiels-nginx-sur-debian-wheezy" target="_blank"><strong>d'utiliser les dépôts officiels Nginx</strong></a> et non pas ceux de Debian dans lesquels Nginx est fourni en version 1.2.1._</p>
-<code id="1a66362b9bc088062556f4ba758d0169">apt-get install nginx python-dev python-pip memcached  libcairo2-dev pkg-config git libyaml-dev</code>
+<pre class="code-multiline"><code id="1a66362b9bc088062556f4ba758d0169">apt-get install nginx python-dev python-pip memcached  libcairo2-dev pkg-config git libyaml-dev</code></pre>
 <h2 id="installation-de-l-environnement">Installation de l'environnement Python<a href="#installation-de-l-environnement" class="anchor"></a></h2>
 <p>Graphite web exploitant le Framework Django et diverses autres librairies python nous allons les installer:</p>
-<code id="58ca34589445f306dec8629327e0edb0">pip install django==1.5 &amp;&amp;
+<pre class="code-multiline"><code id="58ca34589445f306dec8629327e0edb0">pip install django==1.5 &amp;&amp;
 pip install twisted==11.0.0 &amp;&amp;
 pip install python-memcached==1.47 &amp;&amp;
 pip install txAMQP==0.4 &amp;&amp;
 pip install django-tagging==0.3.2 &amp;&amp;
 pip install gunicorn==19.1.1 &amp;&amp;
 pip install git+git://github.com/graphite-project/whisper.git#egg=whisper==0.9.12 &amp;&amp;
-pip install PyYAML==3.11</code>
+pip install PyYAML==3.11</code></pre>
 <h2 id="installer-cairo">Installer Cairo<a href="#installer-cairo" class="anchor"></a></h2>
 <p><a href="http://cairographics.org/pycairo/" target="_blank"><strong>Cairo</strong></a> est utilisé pour les rendus par Graphite.</p>
-<code id="3f57ee72fcee68ab2d9a4e1f7d52491e">cd /tmp &amp;&amp;
+<pre class="code-multiline"><code id="3f57ee72fcee68ab2d9a4e1f7d52491e">cd /tmp &amp;&amp;
 wget http://cairographics.org/releases/py2cairo-1.8.10.tar.gz &amp;&amp;
 tar xfz py2cairo-1.8.10.tar.gz &amp;&amp;
 cd pycairo-1.8.10 &amp;&amp;
 ./configure &amp;&amp;
 make &amp;&amp;
-make install</code>
+make install</code></pre>
 <h2 id="installer-carbon">Installer Carbon<a href="#installer-carbon" class="anchor"></a></h2>
 <p>Pour commencer nous allons installer Carbon en suivant les étapes suivants:</p>
-<code id="95cc26170805eb57d2a2db055e1a1580">cd /tmp &amp;&amp; git clone https://github.com/graphite-project/carbon.git &amp;&amp;
+<pre class="code-multiline"><code id="95cc26170805eb57d2a2db055e1a1580">cd /tmp &amp;&amp; git clone https://github.com/graphite-project/carbon.git &amp;&amp;
 cd carbon &amp;&amp;
-python setup.py install</code>
-<p>Le chemin d'installation par défaut est <span class="inline-code">/opt/graphite</span> il est bien sur possible de personnaliser cette installation.</p>
+python setup.py install</code></pre>
+<p>Le chemin d'installation par défaut est <code class="code-inline" id="8f2568933fd552e97e39c97ac1e84e06">/opt/graphite</code> il est bien sur possible de personnaliser cette installation.</p>
 <h3 id="personnaliser-l-installation-de">Personnaliser l'installation de Carbon<a href="#personnaliser-l-installation-de" class="anchor"></a></h3>
 <p>Si les paramètre d'installation par défaut de Carbon ne vous conviennent pas vous pouvez les modifier avec les options suivantes:</p>
 <ul><li>
-<p><span class="inline-code">--prefix</span> Qui va correspondre au chemin d'installation des répertoire bin/ et conf/ (pour rappel par défaut ils sont installés  dans <span class="inline-code">/opt/graphite</span>)</p>
+<p><code class="code-inline" id="49d984adc876f8e2cb3158f445cdcae3">--prefix</code> Qui va correspondre au chemin d'installation des répertoire bin/ et conf/ (pour rappel par défaut ils sont installés  dans <code class="code-inline" id="8f2568933fd552e97e39c97ac1e84e06">/opt/graphite</code>)</p>
 </li>
 <li>
-<p><span class="inline-code">--install-lib</span> Qui correspondra à l'installation des modules et librairies python. (Par défaut <span class="inline-code">/opt/graphite/lib</span>)</p>
+<p><code class="code-inline" id="c9f1ec5725726c71de2c3cc8f1437fd5">--install-lib</code> Qui correspondra à l'installation des modules et librairies python. (Par défaut <code class="code-inline" id="4910e6ae452154158b2ecbb60a06cabc">/opt/graphite/lib</code>)</p>
 </li>
 <li>
-<p><span class="inline-code">--install-data</span> Qui correspondra à l'emplacement où seront placés les répertoires <span class="inline-code">storage</span> et <span class="inline-code">conf</span> ( Il est égal par défaut à la valeur de <span class="inline-code">prefix</span>)</p>
+<p><code class="code-inline" id="d08ce536d8dc99525de6eb88baa5d824">--install-data</code> Qui correspondra à l'emplacement où seront placés les répertoires <code class="code-inline" id="ddecebdea58b5f264d27f1f7909bab74">storage</code> et <code class="code-inline" id="3a8e4c06e471595f6eb262bb9b5582d9">conf</code> ( Il est égal par défaut à la valeur de <code class="code-inline" id="851f5ac9941d720844d143ed9cfcf60a">prefix</code>)</p>
 </li>
 <li>
-<p><span class="inline-code">--install-scripts</span> Qui correspondra à l'emplacement ou sont stockés les scripts (Par défaut dans <span class="inline-code">bin</span> relativement à <span class="inline-code">prefix</span>)</p>
+<p><code class="code-inline" id="93d749ff6dd1980e9f116bb479388726">--install-scripts</code> Qui correspondra à l'emplacement ou sont stockés les scripts (Par défaut dans <code class="code-inline" id="c1111bd512b29e821b120b86446026b8">bin</code> relativement à <code class="code-inline" id="851f5ac9941d720844d143ed9cfcf60a">prefix</code>)</p>
 </li>
 </ul><p>Si l'on souhaite tout installer dans /srv/graphite</p>
-<p><span class="inline-code">python setup.py install --prefix=/srv/graphite --install-lib=/srv/graphite/webapp</span></p>
+<p><code class="code-inline" id="a5861e93f9a41db7501595d3a874f321">python setup.py install --prefix=/srv/graphite --install-lib=/srv/graphite/webapp</code></p>
 <p>Si vous souhaitez donc coller un maximum au shema type des système Linux on peut donc imaginer quelque chose comme:</p>
-<p><span class="inline-code">python setup.py install --install-scripts=/usr/bin --install-lib=/usr/lib/python2.7/site-packages --install-data=/var/lib/graphite</span></p>
+<p><code class="code-inline" id="c01554a7070e00951a41b513932b7fd3">python setup.py install --install-scripts=/usr/bin --install-lib=/usr/lib/python2.7/site-packages --install-data=/var/lib/graphite</code></p>
 <p>Attention la version de python dépendra de votre configuration !</p>
 <h3 id="automatiser-le-d-marrage-de-car">Automatiser le démarrage de Carbon<a href="#automatiser-le-d-marrage-de-car" class="anchor"></a></h3>
 <p>Les scripts init.d fournis avec Carbon fonctionnent mais sont prévus pour RedHat et vont renvoyer une erreur (sans gravité mais qui peut toujours laisser planner un doute), vous trouverez donc ci-après les scripts init.d pour Debian pour chacun des services Carbon (<a href="https://gist.github.com/gfaivre/9cbc5d38bc3ce8586fdf/download" target="_blank"><strong>carbon-aggregator</strong></a>, <a href="https://gist.github.com/gfaivre/09a4870ef6fc429c0bb0/download" target="_blank"><strong>carbon-cache</strong></a>, <a href="https://gist.github.com/gfaivre/090098bae3e8238fd7c6/download" target="_blank"><strong>carbon-relay</strong></a>) en attendant que notre PR soit acceptée.</p>
-<p>Ces scripts sont, bien entendu, à placer dans <span class="inline-code">/etc/init/d</span> il suffit ensuite de jouer ce <a href="https://gist.github.com/gfaivre/9c9f3bb6eafd6514d57b/download" target="_blank"><strong>script</strong></a> afin de les configurer.</p>
+<p>Ces scripts sont, bien entendu, à placer dans <code class="code-inline" id="4e285fd03830581d75d447185ef1f39c">/etc/init/d</code> il suffit ensuite de jouer ce <a href="https://gist.github.com/gfaivre/9c9f3bb6eafd6514d57b/download" target="_blank"><strong>script</strong></a> afin de les configurer.</p>
 <h2 id="installer-graphite-web">Installer Graphite Web<a href="#installer-graphite-web" class="anchor"></a></h2>
 <p>Graphite web est la partie permettant de créer des graphiques à partir des métriques stockés par Carbon.</p>
-<code id="69fece0e9230c06caa9f18b388c36e8d">cd /tmp &amp;&amp; git clone https://github.com/graphite-project/graphite-web.git &amp;&amp;
+<pre class="code-multiline"><code id="69fece0e9230c06caa9f18b388c36e8d">cd /tmp &amp;&amp; git clone https://github.com/graphite-project/graphite-web.git &amp;&amp;
 cd graphite-web &amp;&amp;
-python setup.py install</code>
-<p>Comme pour Carbon le chemin d'installation est par défaut <span class="inline-code">/opt/graphite</span> il est également possible de personnaliser cette installation.</p>
+python setup.py install</code></pre>
+<p>Comme pour Carbon le chemin d'installation est par défaut <code class="code-inline" id="8f2568933fd552e97e39c97ac1e84e06">/opt/graphite</code> il est également possible de personnaliser cette installation.</p>
 <h3 id="personnaliser-l-installation-de">Personnaliser l'installation de Graphite Web<a href="#personnaliser-l-installation-de" class="anchor"></a></h3>
 <p>Il est tout à fait possible, comme pour Carbon, de personnaliser notre installation de Graphite web:</p>
-<ul><li><span class="inline-code">--prefix</span> Qui va correspondre au chemin d'installation des répertoire bin/ et conf/ (pour rappel par défaut ils sont installés  dans <span class="inline-code">/opt/graphite</span>)</li>
-<li><span class="inline-code">--install-lib</span> Qui correspondra à l'installation des modules et librairies python. (Par défaut <span class="inline-code">/opt/graphite/lib</span>)</li>
-<li><span class="inline-code">--install-data</span> Qui correspondra à l'emplacement où seront placés les répertoires <span class="inline-code">storage</span> et <span class="inline-code">conf</span> ( Il est égal par défaut à la valeur de <span class="inline-code">prefix</span>)</li>
-<li><span class="inline-code">--install-scripts</span> Qui correspondra à l'emplacement ou sont stockés les scripts (Par défaut dans <span class="inline-code">bin</span> relativement à <span class="inline-code">prefix</span>)</li>
+<ul><li><code class="code-inline" id="49d984adc876f8e2cb3158f445cdcae3">--prefix</code> Qui va correspondre au chemin d'installation des répertoire bin/ et conf/ (pour rappel par défaut ils sont installés  dans <code class="code-inline" id="8f2568933fd552e97e39c97ac1e84e06">/opt/graphite</code>)</li>
+<li><code class="code-inline" id="c9f1ec5725726c71de2c3cc8f1437fd5">--install-lib</code> Qui correspondra à l'installation des modules et librairies python. (Par défaut <code class="code-inline" id="4910e6ae452154158b2ecbb60a06cabc">/opt/graphite/lib</code>)</li>
+<li><code class="code-inline" id="d08ce536d8dc99525de6eb88baa5d824">--install-data</code> Qui correspondra à l'emplacement où seront placés les répertoires <code class="code-inline" id="ddecebdea58b5f264d27f1f7909bab74">storage</code> et <code class="code-inline" id="3a8e4c06e471595f6eb262bb9b5582d9">conf</code> ( Il est égal par défaut à la valeur de <code class="code-inline" id="851f5ac9941d720844d143ed9cfcf60a">prefix</code>)</li>
+<li><code class="code-inline" id="93d749ff6dd1980e9f116bb479388726">--install-scripts</code> Qui correspondra à l'emplacement ou sont stockés les scripts (Par défaut dans <code class="code-inline" id="c1111bd512b29e821b120b86446026b8">bin</code> relativement à <code class="code-inline" id="851f5ac9941d720844d143ed9cfcf60a">prefix</code>)</li>
 </ul><p>Si l'on souhaite tout installer dans /srv/graphite</p>
-<p><span class="inline-code">python setup.py install --prefix=/srv/graphite --install-lib=/srv/graphite/webapp</span></p>
+<p><code class="code-inline" id="a5861e93f9a41db7501595d3a874f321">python setup.py install --prefix=/srv/graphite --install-lib=/srv/graphite/webapp</code></p>
 <p>Si vous souhaitez donc coller un maximum au schema type des système Linux on peut donc imaginer quelque chose comme:</p>
-<p><span class="inline-code">python setup.py install --install-scripts=/usr/bin --install-lib=/usr/lib/python2.7/site-packages --install-data=/var/lib/graphite</span></p>
+<p><code class="code-inline" id="c01554a7070e00951a41b513932b7fd3">python setup.py install --install-scripts=/usr/bin --install-lib=/usr/lib/python2.7/site-packages --install-data=/var/lib/graphite</code></p>
 <p>Attention la version de python dépendra de votre configuration !</p>
 <h3 id="configurer-graphite-web">Configurer Graphite-web<a href="#configurer-graphite-web" class="anchor"></a></h3>
-<p>Recopiez et renommer le fichier <span class="inline-code">graphite.wsgi.example</span> que vous trouverez dans <span class="inline-code">/opt/graphite/conf</span> en <span class="inline-code">/opt/graphite/webapp/wsgi.py</span></p>
-<p>Renommez ensuite le fichier <span class="inline-code">/opt/graphite/webapp/graphite/local_settings.py.example</span> en <span class="inline-code">local_settings.py</span>.</p>
-<code id="081e05ac029a402c456269c04bc989ad">cd /opt/graphite/conf &amp;&amp;
+<p>Recopiez et renommer le fichier <code class="code-inline" id="43806d37d1d9d0b5e81b8163cf868ab9">graphite.wsgi.example</code> que vous trouverez dans <code class="code-inline" id="01b6407b97783a76dc68dc07734f66c1">/opt/graphite/conf</code> en <code class="code-inline" id="bdeb2fc2b66e38166d56b24ab758d710">/opt/graphite/webapp/wsgi.py</code></p>
+<p>Renommez ensuite le fichier <code class="code-inline" id="57f5cea5810c8d0496a5e8fbd5347fde">/opt/graphite/webapp/graphite/local_settings.py.example</code> en <code class="code-inline" id="b00f83069043fbfc221f1fd83dd8441c">local_settings.py</code>.</p>
+<pre class="code-multiline"><code id="081e05ac029a402c456269c04bc989ad">cd /opt/graphite/conf &amp;&amp;
 cp graphite.wsgi.example ../webapp/wsgi.py &amp;&amp;
 cd ../webapp &amp;&amp;
-mv /opt/graphite/webapp/graphite/local_settings.py.example  local_settings.py</code>
-<p>Enfin modifiez le fichier <span class="inline-code">/opt/graphite/webapp/graphite/settings.py</span> en remplaçant le champ <span class="inline-code">SECRET_KEY</span> par une clé aléatoire de bonne longueur.</p></body>
+mv /opt/graphite/webapp/graphite/local_settings.py.example  local_settings.py</code></pre>
+<p>Enfin modifiez le fichier <code class="code-inline" id="1bff70c3ae873500f45e980145ae608e">/opt/graphite/webapp/graphite/settings.py</code> en remplaçant le champ <code class="code-inline" id="5a8d2d734a1352f8d113d22eabf2d1cb">SECRET_KEY</code> par une clé aléatoire de bonne longueur.</p></body>
   </div>
 
   <div>

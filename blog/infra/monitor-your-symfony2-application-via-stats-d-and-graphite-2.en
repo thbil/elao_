@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/tbessoussa.jpg" />
     <p>Écrit par Tristan BESSOUSSA<p>
     <p>Publication 23 novembre 2012<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -188,7 +188,7 @@
 <p>In my personnal application (named Seek Team), gamers can purchase a premium account in order to unlock additional features on the website.</p>
 <p>I wanted to display on my graphite dashboard, which looked like the screen on the left, the statistics on how many premium accounts were ordered, cancelled, activated or finished.</p>
 <p>So here's what I did :</p>
-<code id="87934f8ec4f79920729cb2376be302e3" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="87934f8ec4f79920729cb2376be302e3"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">SeekTeam<span class="token punctuation">\</span>PremiumBundle<span class="token punctuation">\</span>Controller</span><span class="token punctuation">;</span>
 
@@ -257,8 +257,8 @@
     <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getDoctrine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getEntityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
-<code id="d85981d0f5dfb5a460d91d6ea90b3428" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token punctuation">}</span></span></code></pre>
+<pre class="code-multiline language-php"><code class="language-php" id="d85981d0f5dfb5a460d91d6ea90b3428"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">SeekTeam<span class="token punctuation">\</span>PremiumBundle<span class="token punctuation">\</span>Event</span><span class="token punctuation">;</span>
 
@@ -268,10 +268,10 @@
     <span class="token keyword">const</span> <span class="token constant">PREMIUM_SUCCESS</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'gamercertified.premium.success'</span><span class="token punctuation">;</span>
     <span class="token keyword">const</span> <span class="token constant">PREMIUM_CANCEL</span>  <span class="token operator">=</span> <span class="token single-quoted-string string">'gamercertified.premium.cancel'</span><span class="token punctuation">;</span>
     <span class="token keyword">const</span> <span class="token constant">PREMIUM_ERROR</span>   <span class="token operator">=</span> <span class="token single-quoted-string string">'gamercertified.premium.error'</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></span></code>
-<p>The following code is pretty simple. In the Controller functions, we dispatch 2 events named <span class="inline-code">Events::PREMIUM_CANCEL</span> and <span class="inline-code">Events::PREMIUM_SUCCESS</span> using the <a href="http://symfony.com/doc/current/components/event_dispatcher/introduction.html" target="_blank">EventDispatcher</a> and a <a href="http://symfony.com/doc/master/components/event_dispatcher/generic_event.html" target="_blank">GenericEvent</a> whether the payment was complete or not.</p>
+<span class="token punctuation">}</span></span></code></pre>
+<p>The following code is pretty simple. In the Controller functions, we dispatch 2 events named <code class="code-inline" id="a31d8765c3cd0a987be1c804546275fd">Events::PREMIUM_CANCEL</code> and <code class="code-inline" id="3c3907483a57b34642a983504b038bc0">Events::PREMIUM_SUCCESS</code> using the <a href="http://symfony.com/doc/current/components/event_dispatcher/introduction.html" target="_blank">EventDispatcher</a> and a <a href="http://symfony.com/doc/master/components/event_dispatcher/generic_event.html" target="_blank">GenericEvent</a> whether the payment was complete or not.</p>
 <p>Next thing to do, is to create &amp; plug our listener and tell him to listen to those events.</p>
-<code id="109790f90bacdee472c78558fabfe6cf" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="109790f90bacdee472c78558fabfe6cf"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">SeekTeam<span class="token punctuation">\</span>PremiumBundle<span class="token punctuation">\</span>Event<span class="token punctuation">\</span>Listener</span><span class="token punctuation">;</span>
 
@@ -324,14 +324,14 @@
         <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">statsdFactory</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">createStatsDataIncrement</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'premium.error'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">statsdClient</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <p>You have noticed in the constructor the presence of 2 services that we need in order to send to Stats.d the data. Each time you'll add a "." to your stats category (in the example I used <em>premium.success</em>, it'll create a subfolder in your graphite dashboard).</p>
 <p>So let's inject them via the <a href="http://symfony.com/doc/2.0/components/dependency_injection/introduction.html" target="_blank">DI</a>.</p>
-<code id="3d7c14af7a6cbb5bed8cbc8e0c48d2db" class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>service</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>seek_team_premium.contact.listener<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>SeekTeam\PremiumBundle\Event\Listener\StatsListener<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<pre class="code-multiline language-xml"><code class="language-xml" id="3d7c14af7a6cbb5bed8cbc8e0c48d2db"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>service</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>seek_team_premium.contact.listener<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>SeekTeam\PremiumBundle\Event\Listener\StatsListener<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tag</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>kernel.event_subscriber<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>argument</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>service<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>liuggio_stats_d_client.factory<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>argument</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>service<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>liuggio_stats_d_client.service<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>service</span><span class="token punctuation">&gt;</span></span></code>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>service</span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>And it's done, if you go on your graphite dashboard, you can now see the new category called "premium".</p></body>
   </div>
 

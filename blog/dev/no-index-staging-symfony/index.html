@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/default.png" />
     <p>Écrit par La team Elao<p>
     <p>Publication 10 juillet 2019<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -191,30 +191,30 @@ Bien sûr, dans les deux cas, les robots ne peuvent pas accéder aux pages, emp�
 <p>Néanmoins, ces deux solutions peuvent parfois entraîner de nombreuses contraintes, par exemple si vous utilisez différents sous-domaines pour vos assets ou pour vos apis. La recette peut alors se compliquer sur les features les plus importantes du site.</p>
 <h3 id="le-plan-b-l-en-t-te-de-r">Le plan B 👍 : l'en-tête de réponse HTTP<a href="#le-plan-b-l-en-t-te-de-r" class="anchor"></a></h3>
 <p>Cette <strong>instruction X-Robots-Tag indiquera aux robots de ne pas indexer la page</strong>. Attention, cette méthode ne doit pas être couplée avec une directive de disallow de l'intégralité du robots.txt, puisque les bots n'auraient jamais accès à ce tag.</p>
-<p>Une des variantes est la balise meta robots noindex, <a href="&lt;https://support.google.com/webmasters/answer/93710?hl=fr&gt;" target="_blank">c'est une des solutions décrites par Google dans sa documentation officielle</a>.</p>
+<p>Une des variantes est la balise meta robots noindex, <a href="&lt;https://support.google.com/webmasters/answer/93710?hl=fr&gt;">c'est une des solutions décrites par Google dans sa documentation officielle</a>.</p>
 <h3 id="comment-param-trer-ce-tag-sur-s">Comment paramétrer ce tag sur Symfony ?<a href="#comment-param-trer-ce-tag-sur-s" class="anchor"></a></h3>
-<p>Depuis Symfony 4.3, <a href="https://symfony.com/blog/new-in-symfony-4-3-automatic-search-engine-protection" target="_blank">une configuration</a> permet d'ajouter automatiquement le header <span class="inline-code">X-Robots-Tag: noindex</span> aux réponses de Symfony.</p>
-<code id="c3fe005ec8c78f177157f61dc8716a63"># config/packages/framework.yaml
+<p>Depuis Symfony 4.3, <a href="https://symfony.com/blog/new-in-symfony-4-3-automatic-search-engine-protection" target="_blank">une configuration</a> permet d'ajouter automatiquement le header <code class="code-inline" id="a413952fa0d6ba133500f98763c6f807">X-Robots-Tag: noindex</code> aux réponses de Symfony.</p>
+<pre class="code-multiline"><code id="c3fe005ec8c78f177157f61dc8716a63"># config/packages/framework.yaml
 framework:
-    disallow_search_engine_index: true</code>
-<p>Néanmoins, <strong>vous ne pouvez modifier cette configuration qu'en fonction de l'environnement Symfony</strong> (<span class="inline-code">dev</span>, <span class="inline-code">prod</span>, <span class="inline-code">test</span>, ...), et non en fonction du serveur. L'idée serait d'ajouter ce header sur les serveurs de staging, demo ou recette par exemple, et de ne pas l'ajouter sur le serveur de production, peu importe l'environnement Symfony qui est utilisé.</p>
+    disallow_search_engine_index: true</code></pre>
+<p>Néanmoins, <strong>vous ne pouvez modifier cette configuration qu'en fonction de l'environnement Symfony</strong> (<code class="code-inline" id="e77989ed21758e78331b20e477fc5582">dev</code>, <code class="code-inline" id="d6e4a9b6646c62fc48baa6dd6150d1f7">prod</code>, <code class="code-inline" id="098f6bcd4621d373cade4e832627b4f6">test</code>, ...), et non en fonction du serveur. L'idée serait d'ajouter ce header sur les serveurs de staging, demo ou recette par exemple, et de ne pas l'ajouter sur le serveur de production, peu importe l'environnement Symfony qui est utilisé.</p>
 <p>Malheureusement, <strong>cette configuration ne peux pas être pilotée par une variable d'environnement</strong> car elle impacte directement le container (définition d'un listener) et Symfony ne permet pas de faire cela au runtime. Je conseille donc de ne pas utiliser cette configuration.</p>
 <p>La solution est de passer par la configuration <strong>nginx</strong> ou <strong>Apache</strong> de votre serveur pour ajouter le header. Par exemple avec nginx:</p>
-<code id="c5258a060d3fdfcded375136410e638d">server {
+<pre class="code-multiline"><code id="c5258a060d3fdfcded375136410e638d">server {
     ...
     add_header X-Robots-Tag "noindex";
     ...
-}</code>
+}</code></pre>
 <p>Et avec Apache (sous réserve que le mod header soit activé) :</p>
-<code id="3aab7872f2d2bda5de12f1086b44b205">...
+<pre class="code-multiline"><code id="3aab7872f2d2bda5de12f1086b44b205">...
 SetEnv X-Robots-Tag noindex
-...</code>
+...</code></pre>
 <p>Cette solution a l'avantage de fonctionner <strong>peu importe la version de Symfony, le framework ou le langage utilisé par votre application</strong>. De plus, elle ne pourra pas être désactivée lors d'un mauvais déploiement.</p>
 <h2 id="la-chose-ne-pas-faire">La chose à ne pas faire 🙅‍♀️ : interdire l'indexation via le robots.txt<a href="#la-chose-ne-pas-faire" class="anchor"></a></h2>
-<p>Grâce à la directive <span class="inline-code">disallow</span>, on pense pouvoir empêcher les robots de visiter et d'indexer les pages de notre site. Mais ce n'est pas tout à fait l'objectif de <span class="inline-code">disallow</span>, <strong>qui n'empêche pas l'indexation mais le crawl</strong>. Résultat : vous pouvez retrouver des pages indexées dans les moteurs de recherche, même si le robot ne remonte ni meta description, ni title. Vous pouvez ainsi lire le fameux message :</p>
-<p><span class="inline-code">A description for this result is not available because of this sites's robots.txt</span></p>
-<p>De plus, il n'est pas rare de trouver en production des fichiers <span class="inline-code">robots.txt</span> paramétrés pour le staging, car ils auraient été oubliés lors de la mise en production 🙀.</p>
-<p>Bon à savoir : la directive Noindex, qui était rarement utilisée, <a href="&lt;https://webmasters.googleblog.com/2019/07/a-note-on-unsupported-rules-in-robotstxt.html&gt;" target="_blank">a été officiellement abandonnée par Google</a>.</p>
+<p>Grâce à la directive <code class="code-inline" id="948f1aaceb85fb33069817d3d356b762">disallow</code>, on pense pouvoir empêcher les robots de visiter et d'indexer les pages de notre site. Mais ce n'est pas tout à fait l'objectif de <code class="code-inline" id="948f1aaceb85fb33069817d3d356b762">disallow</code>, <strong>qui n'empêche pas l'indexation mais le crawl</strong>. Résultat : vous pouvez retrouver des pages indexées dans les moteurs de recherche, même si le robot ne remonte ni meta description, ni title. Vous pouvez ainsi lire le fameux message :</p>
+<p><code class="code-inline" id="cb147c23623a83dc80765e1d812833b6">A description for this result is not available because of this sites's robots.txt</code></p>
+<p>De plus, il n'est pas rare de trouver en production des fichiers <code class="code-inline" id="aa2646a667ee1cd83235786dccef4a26">robots.txt</code> paramétrés pour le staging, car ils auraient été oubliés lors de la mise en production 🙀.</p>
+<p>Bon à savoir : la directive Noindex, qui était rarement utilisée, <a href="&lt;https://webmasters.googleblog.com/2019/07/a-note-on-unsupported-rules-in-robotstxt.html&gt;">a été officiellement abandonnée par Google</a>.</p>
 <h2 id="oups-mon-site-avec-des-urls-de">Oups, mon site avec des urls de staging a été indexé ...<a href="#oups-mon-site-avec-des-urls-de" class="anchor"></a></h2>
 <p>Faites le nécessaire pour empêcher les futures visites de robots. Vous pouvez ensuite utiliser <a href="https://www.google.com/webmasters/tools/removals" target="_blank">l'outil de suppression d'URL de la Search Console</a>, et demander la suppression des URLs problématiques.</p></body>
   </div>

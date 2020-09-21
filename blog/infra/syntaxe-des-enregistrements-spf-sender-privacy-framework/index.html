@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/gfaivre.jpg" />
     <p>Écrit par Guewen FAIVRE<p>
     <p>Publication 5 décembre 2009<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -181,12 +181,12 @@
   </div>
 
   <div>
-    <body><p>Dans cet article je vais tenté d'expliquer comment fonctionne actuellement le SPF pour nos emails, mais également de détailler au maximum les différentes options que fournit le framework afin de créer nos propres enregistrements. L'ensemble de ces options peuvent être retrouvées sur le site officiel (anglais): <a href="http://www.openspf.org/SPF_Record_Syntax" title="OpenSPF">OpenSPF.org</a></p>
-<p>Le SPF est une spécification publiée le 28 Avril 2006, pour la RFC c'est <a href="http://www.openspf.org/RFC_4408" title="RFC_4408">ici</a></p>
+    <body><p>Dans cet article je vais tenté d'expliquer comment fonctionne actuellement le SPF pour nos emails, mais également de détailler au maximum les différentes options que fournit le framework afin de créer nos propres enregistrements. L'ensemble de ces options peuvent être retrouvées sur le site officiel (anglais): <a href="http://www.openspf.org/SPF_Record_Syntax" title="OpenSPF" target="_blank">OpenSPF.org</a></p>
+<p>Le SPF est une spécification publiée le 28 Avril 2006, pour la RFC c'est <a href="http://www.openspf.org/RFC_4408" title="RFC_4408" target="_blank">ici</a></p>
 <p>Ce qui suit est une traduction du manuel officiel que l'on peut trouver sur le site ci-dessus: Les noms de domaines définissent 0 ou plusieurs mécanismes. Ces mécanismes peuvent être utilisés pour décrire le paramétrage des hôtes désignés comme serveurs de mail sortant, c'est à dire autorisés à envoyer des emails pour le domaine concerné.</p>
-<p><a href="http://www.openspf.org/SPF_Record_Syntax#all">all</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#ip4">ip4</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#ip6">ip6</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#a">a</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#mx">mx</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#ptr">ptr</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#exists">exists</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#include">include</a></p>
+<p><a href="http://www.openspf.org/SPF_Record_Syntax#all" target="_blank">all</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#ip4" target="_blank">ip4</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#ip6" target="_blank">ip6</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#a" target="_blank">a</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#mx" target="_blank">mx</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#ptr" target="_blank">ptr</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#exists" target="_blank">exists</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#include" target="_blank">include</a></p>
 <p>Chaque domaine peut également définir des "modificateurs". Chacun d'entre eux ne peut apparaitre <strong>qu'une seule fois</strong> !</p>
-<p><a href="http://www.openspf.org/SPF_Record_Syntax#redirect">redirect</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#exp">exp</a></p>
+<p><a href="http://www.openspf.org/SPF_Record_Syntax#redirect" target="_blank">redirect</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#exp" target="_blank">exp</a></p>
 <h3 id="les-m-canismes">Les mécanismes<a href="#les-m-canismes" class="anchor"></a></h3>
 <p>Les mécanismes peuvent être préfixer par l'un de ces quatres "qualificateurs" :</p>
 <ul><li>
@@ -204,7 +204,7 @@
 <li>
 <p>Si un mécanisme abouti, la valeur de son qualificateur est utilisée. Le qualificateur par défaut est "+" (Pass).</p>
 </li>
-</ul><code id="13feecd6d90274aef4e5827b80fd64f3">Par exemple: "v=spf1 -all" "v=spf1 a -all" "v=spf1 a mx -all" "v=spf1 +a +mx -all"</code>
+</ul><pre class="code-multiline"><code id="13feecd6d90274aef4e5827b80fd64f3">Par exemple: "v=spf1 -all" "v=spf1 a -all" "v=spf1 a mx -all" "v=spf1 +a +mx -all"</code></pre>
 <p>Les mécanismes sont évalués dans l'ordre :</p>
 <ul><li>Si aucun mécanisme ou modificateur ne correspond, la réponse par défaut est "Neutral" (Neutre). <br> Si un domaine n'a pas d'enregistrement SPF, le résultat est "None" (Aucun).</li>
 <li>Si un domaine renvoi une erreur temporaire pendant la lecture DNS, vous aurez la réponse "TempError" (Erreur temporaire), elle est aussi appellée "error" dans les anciennes documentations.</li>
@@ -237,53 +237,53 @@
   </tr></table><h3 id="le-m-canisme-all">Le mécanisme "all"<a href="#le-m-canisme-all" class="anchor"></a></h3>
 <p>Ce mécanisme correspond toujours, on le retrouve habituellement à la fin de l'enregistrement.</p>
 <p><strong>Exemples:</strong></p>
-<code id="a94fda36e5bbd7b984ae385213834a55">"v=spf1 mx -all"</code>
+<pre class="code-multiline"><code id="a94fda36e5bbd7b984ae385213834a55">"v=spf1 mx -all"</code></pre>
 <p><em>Autorise les noms de domaine de type MX à envoyer des mail pour le domaine, interdit tous les autres.</em></p>
-<code id="8a52b27d1880caa59d5e62749fa7d8e9">"v=spf1 -all"</code>
+<pre class="code-multiline"><code id="8a52b27d1880caa59d5e62749fa7d8e9">"v=spf1 -all"</code></pre>
 <p><em>Le domaine n'envoie pas du tout d'email.</em></p>
-<code id="9085529ae1dfb26e98b9600e947d5301">"v=spf1 +all"</code>
+<pre class="code-multiline"><code id="9085529ae1dfb26e98b9600e947d5301">"v=spf1 +all"</code></pre>
 <p><em>Le propriétaire du domaine considère que le SPF est inutile ou alors ne s'en préoccupe pas.</em></p>
 <h3 id="le-m-canisme-ip">Le mécanisme "ip4"<a href="#le-m-canisme-ip" class="anchor"></a></h3>
-<code id="f62ddc8667787f8e73de447fd50730c3">ip4:
-ip4:/</code>
+<pre class="code-multiline"><code id="f62ddc8667787f8e73de447fd50730c3">ip4:
+ip4:/</code></pre>
 <p>L'argument correspondant au mécanisme "ip4" est une d'adresse de réseau IPv4. S'il n'y a pas de "prefix-length" fourni, /32 est considéré par défaut.</p>
 <p><strong>Exemple :</strong></p>
-<code id="d1f9c0397610a71368fef2d2644e4371">"v=spf1 ip4:192.168.0.1/16 -all"</code>
+<pre class="code-multiline"><code id="d1f9c0397610a71368fef2d2644e4371">"v=spf1 ip4:192.168.0.1/16 -all"</code></pre>
 <p><em>Autorise toutes les adresses IP comprisent entre 192.168.0.1 et 192.168.255.255.</em></p>
 <h3 id="le-m-canisme-ip">Le mécanisme "ip6"<a href="#le-m-canisme-ip" class="anchor"></a></h3>
-<code id="58f6d8dd8e9654925d4c5c99b48d9dd5">ip6:
-ip6:/</code>
+<pre class="code-multiline"><code id="58f6d8dd8e9654925d4c5c99b48d9dd5">ip6:
+ip6:/</code></pre>
 <p>L'argument correspondant au mécanisme "ip6" est une d'adresse de réseau IPv6. S'il n'y a pas de "prefix-length" fourni, /128 est considéré par défaut.</p>
 <p><strong>Exemple :</strong></p>
-<code id="88dbb83f878afc14d0a8f7dd38816424">"v=spf1 ip6:1080::8:800:200C:417A/96 -all"</code>
+<pre class="code-multiline"><code id="88dbb83f878afc14d0a8f7dd38816424">"v=spf1 ip6:1080::8:800:200C:417A/96 -all"</code></pre>
 <p><em>Autorise toutes les adresse IPv6 comprise entre 1080::8:800:0000:0000 et 1080::8:800:FFFF:FFFF.</em></p>
-<code id="feb7f5d613f1e01b195613ea137cb9f3">"v=spf1 ip6:1080::8:800:68.0.3.1/96 -all"</code>
+<pre class="code-multiline"><code id="feb7f5d613f1e01b195613ea137cb9f3">"v=spf1 ip6:1080::8:800:68.0.3.1/96 -all"</code></pre>
 <p><em>Autorise toutes les adresse IPv6 comprise entre 1080::8:800:0000:0000 et 1080::8:800:FFFF:FFFF.</em></p>
 <h3 id="le-m-canisme-a">Le mécanisme "a"<a href="#le-m-canisme-a" class="anchor"></a></h3>
-<code id="f09408e3632ad558e29a30dc9119eaff">a
+<pre class="code-multiline"><code id="f09408e3632ad558e29a30dc9119eaff">a
 a/
 a:
-a:/</code>
-<p>Tous les enregistrement de type A pour le domaine sont testés. Si l'IP du client est trouvée parmis elles, le mécanisme correspond. Si le domaine n'est pas spécifié, le domaine courant est utilisé. L'enregistrement A doit correspondre exactement à l'adresse IP du client, sans quoi le <span class="inline-code">prefix-length</span> est fourni, auquel cas chaque IP retournée par la recherche A sera étendue à son préfix <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" title="CIDR">CIDR</a> correspondant, et l'IP du client sera demandée à l'intérieur de ce sous-réseau.</p>
+a:/</code></pre>
+<p>Tous les enregistrement de type A pour le domaine sont testés. Si l'IP du client est trouvée parmis elles, le mécanisme correspond. Si le domaine n'est pas spécifié, le domaine courant est utilisé. L'enregistrement A doit correspondre exactement à l'adresse IP du client, sans quoi le <code class="code-inline" id="3396712faad713afd5c78cde7c27c363">prefix-length</code> est fourni, auquel cas chaque IP retournée par la recherche A sera étendue à son préfix <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" title="CIDR" target="_blank">CIDR</a> correspondant, et l'IP du client sera demandée à l'intérieur de ce sous-réseau.</p>
 <p><strong>Exemple :</strong></p>
-<code id="ddf5def6b4712ebd703027990c98efde">"v=spf1 a -all"</code>
+<pre class="code-multiline"><code id="ddf5def6b4712ebd703027990c98efde">"v=spf1 a -all"</code></pre>
 <p>Le domaine courant est utilisé.</p>
-<code id="faad96eb114b5cb31cb36c0f75d8a302">"v=spf1 a:example.com -all"</code>
+<pre class="code-multiline"><code id="faad96eb114b5cb31cb36c0f75d8a302">"v=spf1 a:example.com -all"</code></pre>
 <p>Equivalent si le domaine courant est example.com.</p>
-<code id="3314e24a859af4cf8741ea4db4a36534">"v=spf1 a:mailers.example.com -all"</code>
+<pre class="code-multiline"><code id="3314e24a859af4cf8741ea4db4a36534">"v=spf1 a:mailers.example.com -all"</code></pre>
 <p>Peut-être que example.com a choisi de lister explicitement tous les serveurs de courrier sortant dans un enregistrement A special sous mailers.example.com.</p>
-<code id="3a662299f46b36422a6c562719a40da9">"v=spf1 a/24 a:offsite.example.com/24 -all"</code>
-<p>Si example.com est résolu vers 192.0.2.1, la classe C entière de 192.0.2.0/24 sera recherchée pour l'IP du client. De même pour offsite.example.com. Si plus d'un enregistrement de type A a été retourné, chacun d'entre eux sera étendu au sous réseau <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" title="CIDR">CIDR</a>.</p>
+<pre class="code-multiline"><code id="3a662299f46b36422a6c562719a40da9">"v=spf1 a/24 a:offsite.example.com/24 -all"</code></pre>
+<p>Si example.com est résolu vers 192.0.2.1, la classe C entière de 192.0.2.0/24 sera recherchée pour l'IP du client. De même pour offsite.example.com. Si plus d'un enregistrement de type A a été retourné, chacun d'entre eux sera étendu au sous réseau <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" title="CIDR" target="_blank">CIDR</a>.</p>
 <h3 id="le-m-canisme-mx">Le mécanisme "mx"<a href="#le-m-canisme-mx" class="anchor"></a></h3>
-<code id="c73413bc3999e0221509134d27e97b34">mx
+<pre class="code-multiline"><code id="c73413bc3999e0221509134d27e97b34">mx
 mx/
 mx:
-mx:/</code>
-<p>L'ensemble des enregistrements A pour tous les enregistrements MX pour le domaine sont testés dans l'ordre de leur priorité. Si l'IP du client est trouvée parmis eux, ce mécanisme correspond. Si le domaine n'est pas spécifié alors le domaine courant est utilisé. L'enregistrement A doit correspondre exactement à l'adresse IP cliente, sans quoi le <span class="inline-code">prefix-length</span> est fourni, auquel cas chaque IP retournée par la recherche A sera étendue à son préfix <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" title="CIDR">CIDR</a> correspondant, et l'IP du client sera demandée à l'intérieur de ce sous-réseau.</p>
+mx:/</code></pre>
+<p>L'ensemble des enregistrements A pour tous les enregistrements MX pour le domaine sont testés dans l'ordre de leur priorité. Si l'IP du client est trouvée parmis eux, ce mécanisme correspond. Si le domaine n'est pas spécifié alors le domaine courant est utilisé. L'enregistrement A doit correspondre exactement à l'adresse IP cliente, sans quoi le <code class="code-inline" id="3396712faad713afd5c78cde7c27c363">prefix-length</code> est fourni, auquel cas chaque IP retournée par la recherche A sera étendue à son préfix <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" title="CIDR" target="_blank">CIDR</a> correspondant, et l'IP du client sera demandée à l'intérieur de ce sous-réseau.</p>
 <p><strong>Exemples :</strong></p>
-<code id="1563a69bf60f6eb2ef8f2eeba066536a">"v=spf1 mx mx:deferrals.domain.com -all"</code>
+<pre class="code-multiline"><code id="1563a69bf60f6eb2ef8f2eeba066536a">"v=spf1 mx mx:deferrals.domain.com -all"</code></pre>
 <p>Peut être qu'un domaine a envoyé un mail via ce serveur MX ainsi qu'avec un autre ensemble de serveur dont le rôle est de retenter l'envoi pour les domaines dont la distribution a été différée.</p>
-<code id="258d5425e74e92a3f27925a9c4bfc73c">"v=spf1 mx/24 mx:offsite.domain.com/24 -all"</code>
+<pre class="code-multiline"><code id="258d5425e74e92a3f27925a9c4bfc73c">"v=spf1 mx/24 mx:offsite.domain.com/24 -all"</code></pre>
 <p>Peut être qu'un serveur MX de domaine à reçu un mail sur une adresse IP, mais a envoyé le mail sur une adresse IP différente mais proche.</p></body>
   </div>
 

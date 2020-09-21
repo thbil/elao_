@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/gfaivre.jpg" />
     <p>Écrit par Guewen FAIVRE<p>
     <p>Publication 6 novembre 2014<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -194,19 +194,19 @@
 <ul><li>Proxmox crée une partition virtuelle à la volée.</li>
 <li>Il déclenche un premier rsync du container (ou de la VM) pour récupérer le "gros" des fichiers.</li>
 <li>Il déclenche un deuxième rsync afin de mettre à jour les fichiers ayant été modifiés entre le début et la fin du premier.</li>
-<li>Il crée une archive compressée qu'il stocke dans <span class="inline-code">/var/lib/vz/dump</span></li>
+<li>Il crée une archive compressée qu'il stocke dans <code class="code-inline" id="c7b09ceecb85753c86cf7755d5939d52">/var/lib/vz/dump</code></li>
 <li>Il détruit la partition virtuelle initialement créée</li>
 </ul><p>Nous préférerons donc définir un partitionnement comme ci-dessous (La machine utilisée disposait d'un espace total de 3 To):</p>
 <p class="text-center">
     ![Partitionnement-d-un-serveur-proxmox - Partitionnement personnalisé](/images/posts/2014/proxmox_partition_elao_1000.png)
 </p>
-<ul><li>500 Mo pour <span class="inline-code">/boot</span> (Devrait amplement suffire à couvrir les MAJ kernel)</li>
-<li>10 Go pour <span class="inline-code">/</span></li>
+<ul><li>500 Mo pour <code class="code-inline" id="a53bfb333437907a8d5bdc636d15c75d">/boot</code> (Devrait amplement suffire à couvrir les MAJ kernel)</li>
+<li>10 Go pour <code class="code-inline" id="6666cd76f96956469e7be39d750cc7d9">/</code></li>
 <li>2 * 1 Go pour le swap</li>
 </ul><p>Le reste est partitionné avec du LVM ce qui nous laisse une grande souplesse pour éventuellement réallouer de l'espace disque.</p>
-<ul><li>10 Go pour <span class="inline-code">/tmp</span> (Que l'on passe en tmpfs et pour laquelle on ajoute les options nodev, nosuid et noexec par sécurité)</li>
-<li>1 To pour <span class="inline-code">/var/lib/vz</span> qui va recevoir les VMs et Containers</li>
-<li>150 Go pour <span class="inline-code">/var/lib/vz/dump</span> (Dans la pratique je ne l'utilise pas et préfère utiliser les 500 Go de backup externe fourni avec OVH pour chaque serveur dédié monté en NFS)</li>
+<ul><li>10 Go pour <code class="code-inline" id="d42b9c57d24cf5db3bd8d332dc35437f">/tmp</code> (Que l'on passe en tmpfs et pour laquelle on ajoute les options nodev, nosuid et noexec par sécurité)</li>
+<li>1 To pour <code class="code-inline" id="6bc86eb322cf4593d00d57000367a45f">/var/lib/vz</code> qui va recevoir les VMs et Containers</li>
+<li>150 Go pour <code class="code-inline" id="c7b09ceecb85753c86cf7755d5939d52">/var/lib/vz/dump</code> (Dans la pratique je ne l'utilise pas et préfère utiliser les 500 Go de backup externe fourni avec OVH pour chaque serveur dédié monté en NFS)</li>
 </ul><p>Attention toutefois à conserver au moins 50 Go d'espace non partitionné pour pouvoir effectuer des snapshots, veuillez à adapter cette espace à la taille de votre plus grosse VM.</p>
 <p>A cet espace nécessaire aux snapshots on gardera le reste de l'espace disque non partitionné pour pouvoir le redistribuer si jamais on se rend compte qu'une partition est trop petite.</p>
 <p>Comme d'habitude, remarques et critiques de ce schéma sont plus que les bienvenues ;)</p></body>

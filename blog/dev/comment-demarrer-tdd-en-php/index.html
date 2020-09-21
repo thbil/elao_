@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/authors/rhanna.jpg" />
     <p>Écrit par Richard HANNA<p>
     <p>Publication 30 octobre 2018<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -194,9 +194,9 @@ L'ambition de cet article est d'essayer de créer ce déclic.</p>
 <li>gain de temps en validant l'implémentation via la console sans passer par les tests dans le navigateur.</li>
 </ul><img src="https://media.giphy.com/media/iKbUlFbs77oI0/giphy.gif" id="giphy-gif"><h2 id="outillage">Outillage<a href="#outillage" class="anchor"></a></h2>
 <p>Installons le framework de test PHPUnit :</p>
-<code id="1fe6cdf9470276222d96a1d7899d5e5a">$ composer require --dev phpunit/phpunit ^7</code>
-<p>En considérant que notre namespace est <span class="inline-code">MyCompany\App</span> on devrait avoir ceci dans notre composer.json :</p>
-<code id="dd2ac14e20e33e5f3c13e253fbeabc8e">{
+<pre><code id="1fe6cdf9470276222d96a1d7899d5e5a">$ composer require --dev phpunit/phpunit ^7</code></pre>
+<p>En considérant que notre namespace est <code class="code-inline" id="98832bd23a1a4e070b40c19a58c363c0">MyCompany\App</code> on devrait avoir ceci dans notre composer.json :</p>
+<pre class="code-multiline"><code id="dd2ac14e20e33e5f3c13e253fbeabc8e">{
   "autoload": {
     "psr-4": {
       "MyCompany\\App\\": "src"
@@ -210,9 +210,9 @@ L'ambition de cet article est d'essayer de créer ce déclic.</p>
   "require-dev": {
     "phpunit/phpunit": "^7.0"
   }
-}</code>
+}</code></pre>
 <p>Vérifions que tout est en place en lançant :</p>
-<code id="4c39fbf536c038bf2853d34090586b15">$ ./vendor/bin/phpunit</code>
+<pre><code id="4c39fbf536c038bf2853d34090586b15">$ ./vendor/bin/phpunit</code></pre>
 <p>Nous devrions avoir quelque chose comme ça :</p>
 <blockquote>
 <p>No tests executed!</p>
@@ -232,8 +232,8 @@ Il me faut donc un service qui récupère les données puis les prépare pour ê
 <p>Imaginer quelle est la plus petite entité logique à tester et faire cet effort de réflexion est finalement la
 premère étape en TDD.</p>
 <h3 id="entit">Entité<a href="#entit" class="anchor"></a></h3>
-<p>Nous allons uniquement utiliser l'entité suivante <span class="inline-code">Post</span> représentant un article du blog :</p>
-<code id="bcc87acaf570f24692dcc35c0e6c8e62" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<p>Nous allons uniquement utiliser l'entité suivante <code class="code-inline" id="03d947a2158373c3b9d74325850cb8b9">Post</code> représentant un article du blog :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="bcc87acaf570f24692dcc35c0e6c8e62"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Post</span><span class="token punctuation">;</span>
 
@@ -250,12 +250,12 @@ premère étape en TDD.</p>
         <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">title</span> <span class="token operator">=</span> <span class="token variable">$title</span><span class="token punctuation">;</span>
         <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">publishedAt</span> <span class="token operator">=</span> <span class="token variable">$publishedAt</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <h3 id="d-pendances">Dépendances<a href="#d-pendances" class="anchor"></a></h3>
 <p>Considérons que nous avons les deux interfaces suivantes permettant d'accéder aux articles
 et au nombre de commentaires par articles.</p>
-<p><span class="inline-code">PostRepository</span>:</p>
-<code id="616f4418d993938c418c34aa8f27d2a9" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<p><code class="code-inline" id="c217921c976603f2f662ed76f16f60ef">PostRepository</code>:</p>
+<pre class="code-multiline language-php"><code class="language-php" id="616f4418d993938c418c34aa8f27d2a9"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Repository</span><span class="token punctuation">;</span>
 
@@ -267,9 +267,9 @@ et au nombre de commentaires par articles.</p>
      * <span class="token keyword">@return</span> <span class="token class-name">Post<span class="token punctuation">[</span><span class="token punctuation">]</span></span>
      */</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">array</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></span></code>
-<p><span class="inline-code">CommentRepository</span>:</p>
-<code id="4640ace2c39a732d059094af225730aa" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token punctuation">}</span></span></code></pre>
+<p><code class="code-inline" id="7f2c2dae0da64c4e29698b0a02084fa0">CommentRepository</code>:</p>
+<pre class="code-multiline language-php"><code class="language-php" id="4640ace2c39a732d059094af225730aa"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Repository</span><span class="token punctuation">;</span>
 
@@ -278,11 +278,11 @@ et au nombre de commentaires par articles.</p>
 <span class="token keyword">interface</span> <span class="token class-name">CommentRepository</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">countByPost</span><span class="token punctuation">(</span>Post <span class="token variable">$post</span><span class="token punctuation">)</span><span class="token punctuation">:</span> int<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <h3 id="la-plomberie">La plomberie<a href="#la-plomberie" class="anchor"></a></h3>
-<p>Créons une classe <span class="inline-code">PostView</span> qu'on appelle communément un DTO (data transfer object), un objet de transfert de données
+<p>Créons une classe <code class="code-inline" id="9bf6839f16a04a883768f5c536b2161d">PostView</code> qu'on appelle communément un DTO (data transfer object), un objet de transfert de données
 qui ne contient aucun comportement, que des valeurs :</p>
-<code id="0a720120fc3eb466fb3ea3fc92fca898" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="0a720120fc3eb466fb3ea3fc92fca898"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Post</span><span class="token punctuation">;</span>
 
@@ -303,10 +303,10 @@ qui ne contient aucun comportement, que des valeurs :</p>
         <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">commentsNumber</span> <span class="token operator">=</span> <span class="token variable">$commentsNumber</span><span class="token punctuation">;</span>
         <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">isNew</span> <span class="token operator">=</span> <span class="token variable">$isNew</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <h2 id="le-service-tester">Le service à tester<a href="#le-service-tester" class="anchor"></a></h2>
-<p>Créons notre service <span class="inline-code">GetPostsList</span> qui ne fait en réalité qu'une seule chose, une seule méthode publique, <span class="inline-code">_invoke</span> :</p>
-<code id="972e3d83ad52eeef3c5d5e8661411cdb" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<p>Créons notre service <code class="code-inline" id="4e74d55162d9b39c9ad96294764293ff">GetPostsList</code> qui ne fait en réalité qu'une seule chose, une seule méthode publique, <code class="code-inline" id="41694f07cc1d4017d0ba996850f58e33">_invoke</code> :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="972e3d83ad52eeef3c5d5e8661411cdb"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Post</span><span class="token punctuation">;</span>
 
@@ -316,12 +316,12 @@ qui ne contient aucun comportement, que des valeurs :</p>
     <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <h3 id="les-enfants-et-les-tests-d-abord">Les enfants et les tests d'abord !<a href="#les-enfants-et-les-tests-d-abord" class="anchor"></a></h3>
-<p>Créons maintenant un test de <span class="inline-code">GetPostsList</span> qui est censé nous envoyer deux articles, l'un marqué nouveau, l'autre non.
+<p>Créons maintenant un test de <code class="code-inline" id="4e74d55162d9b39c9ad96294764293ff">GetPostsList</code> qui est censé nous envoyer deux articles, l'un marqué nouveau, l'autre non.
 Il est important de tester tous les cas. Cela tombe bien, notre besoin est simple, on a que deux cas.</p>
-<p>Dans : <span class="inline-code">tests/Post/GetPostsListTest.php</span> :</p>
-<code id="3bf4ea3c294e644ffcba7b8796ca2594" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<p>Dans : <code class="code-inline" id="7c85117bec6526ed4f958c8c7cd55358">tests/Post/GetPostsListTest.php</code> :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="3bf4ea3c294e644ffcba7b8796ca2594"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Tests<span class="token punctuation">\</span>Post</span><span class="token punctuation">;</span>
 
@@ -343,11 +343,11 @@ Il est important de tester tous les cas. Cela tombe bien, notre besoin est simpl
             <span class="token variable">$getPostsList</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         <span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <p>Lançons les tests :</p>
-<code id="4c39fbf536c038bf2853d34090586b15">$ ./vendor/bin/phpunit</code>
+<pre><code id="4c39fbf536c038bf2853d34090586b15">$ ./vendor/bin/phpunit</code></pre>
 <p>Bien sûr, cela échoue :</p>
-<code id="48e36fd97a7f89b801c7a3850f824031">There was 1 failure:
+<pre><code id="48e36fd97a7f89b801c7a3850f824031">There was 1 failure:
 
 1) MyCompany\App\Tests\Post\GetPostsListTest::test_get_new_and_old_posts
 Failed asserting that two arrays are equal.
@@ -357,12 +357,12 @@ Failed asserting that two arrays are equal.
  Array (
 -    0 =&gt; MyCompany\App\Post\PostView Object (...)
 -    1 =&gt; MyCompany\App\Post\PostView Object (...)
- )</code>
+ )</code></pre>
 <p>Mais pas de panique. Au contraire, faire échouer les tests est la 1ère étape en TDD !</p>
 <p>Complétons le test en faisant un <em>mock</em> de chaque dépendance.
 Le <em>mock</em> nous permet de s'affranchir de l'implémentation de la dépendance et de décider ce que celle-ci renvoie comme
 données.</p>
-<code id="b9621748175f85f2f8027d363230e36d" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="b9621748175f85f2f8027d363230e36d"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Tests<span class="token punctuation">\</span>Post</span><span class="token punctuation">;</span>
 
@@ -399,10 +399,10 @@ données.</p>
             <span class="token variable">$getPostsList</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         <span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <h3 id="enfin-l-impl-mentation">Enfin, l'implémentation<a href="#enfin-l-impl-mentation" class="anchor"></a></h3>
 <p>Nous avons tout ce qu'il faut pour implémenter notre code :</p>
-<code id="c95953cd07a13f4581ddfee73b231f30" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="c95953cd07a13f4581ddfee73b231f30"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Post</span><span class="token punctuation">;</span>
 
@@ -439,20 +439,20 @@ données.</p>
 
         <span class="token keyword">return</span> <span class="token variable">$postViews</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <p>Enfin, lançons les tests :</p>
-<code id="4c39fbf536c038bf2853d34090586b15">$ ./vendor/bin/phpunit</code>
+<pre><code id="4c39fbf536c038bf2853d34090586b15">$ ./vendor/bin/phpunit</code></pre>
 <blockquote>
 <p>OK (1 test, 4 assertions)</p>
 </blockquote>
 <h3 id="le-temps-n-attend-pas">Le temps n'attend pas<a href="#le-temps-n-attend-pas" class="anchor"></a></h3>
 <p>Attention, il y a un piège. Désolé mais ce test ne fonctionnera plus dans quelques jours.
 Pourquoi ?
-Nous avons une comparaison avec la date "système" dans l'implémentation (<span class="inline-code">new \DateTime</span>)
+Nous avons une comparaison avec la date "système" dans l'implémentation (<code class="code-inline" id="1ef9214848bdfb5133edf6959967edc5">new \DateTime</code>)
 alors que les dates sont fixes dans les tests.</p>
 <p>La date courante est une... dépendance. Modifions notre test pour fixer la date courante pour qu'elle ne bouge plus et
 ne fasse plus échouer les tests dans quelques jours !</p>
-<code id="87a58a21342be75c54c359a034f38869" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="87a58a21342be75c54c359a034f38869"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token comment">// ...</span>
 <span class="token keyword">class</span> <span class="token class-name">GetPostsListTest</span> <span class="token keyword">extends</span> <span class="token class-name">TestCase</span>
 <span class="token punctuation">{</span>
@@ -461,9 +461,9 @@ ne fasse plus échouer les tests dans quelques jours !</p>
         <span class="token variable">$now</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token punctuation">\</span>DateTime</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'2018-10-30'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment">// ...</span>
 
-        <span class="token variable">$getPostsList</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GetPostsList</span><span class="token punctuation">(</span><span class="token variable">$postRepository</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">reveal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token variable">$commentRepository</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">reveal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token variable">$now</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code>
-<p>Supprimons maintenant le <span class="inline-code">new \DateTime</span> dans la class GetPostsList et utilisons la date en dépendance :</p>
-<code id="9a14db50129055475b638fa1c71aac51" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+        <span class="token variable">$getPostsList</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GetPostsList</span><span class="token punctuation">(</span><span class="token variable">$postRepository</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">reveal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token variable">$commentRepository</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">reveal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token variable">$now</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>Supprimons maintenant le <code class="code-inline" id="1ef9214848bdfb5133edf6959967edc5">new \DateTime</code> dans la class GetPostsList et utilisons la date en dépendance :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="9a14db50129055475b638fa1c71aac51"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token comment">// ...</span>
 <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">GetPostsList</span>
 <span class="token punctuation">{</span>
@@ -485,14 +485,14 @@ ne fasse plus échouer les tests dans quelques jours !</p>
 
         <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">postRepository</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token variable">$post</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token variable">$isLessThanAWeekOld</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">clone</span> <span class="token variable">$post</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">publishedAt</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name"><span class="token punctuation">\</span>DateInterval</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'P1W'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">now</span><span class="token punctuation">;</span>
-            <span class="token comment">// ...</span></span></code>
+            <span class="token comment">// ...</span></span></code></pre>
 <p>Vérifions :</p>
-<code id="4c39fbf536c038bf2853d34090586b15">$ ./vendor/bin/phpunit</code>
+<pre><code id="4c39fbf536c038bf2853d34090586b15">$ ./vendor/bin/phpunit</code></pre>
 <blockquote>
 <p>OK (1 test, 4 assertions)</p>
 </blockquote>
 <p>Super !</p>
-<p>Vous trouverez le code de cet exemple ici : <a href="https://github.com/supertanuki/TDD-en-PHP">https://github.com/supertanuki/TDD-en-PHP</a></p>
+<p>Vous trouverez le code de cet exemple ici : <a href="https://github.com/supertanuki/TDD-en-PHP" target="_blank">https://github.com/supertanuki/TDD-en-PHP</a></p>
 <h2 id="conclusion">Conclusion<a href="#conclusion" class="anchor"></a></h2>
 <img src="https://media.giphy.com/media/ds9RZ7gATF0wo/giphy.gif" id="giphy-gif"><p>J'espère que cet exemple vous aura convaincu des avantages du <em>Test Driven Development</em>.
 Pour finir, un dernier conseil pour mettre le pied à l'étrier : sur votre projet en cours,

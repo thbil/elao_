@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/mcolin.jpg" />
     <p>Écrit par Maxime COLIN<p>
     <p>Publication 6 novembre 2019<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -182,7 +182,7 @@
   </div>
 
   <div>
-    <body><p>L'une des pratiques les plus courantes du web pour accéder à un contenu de base de données est d'inclure l'identifiant (<span class="inline-code">ID</span>) de celui-ci dans l'url. Cet identifiant est dans la grande majorité des cas un entier positif auto-incrémenté par la base de données. Cet identifiant se retrouve ainsi exposé dans les urls. Bien qu'elle pose un certain nombre de problèmes, cette pratique est très simple et très répandue.</p>
+    <body><p>L'une des pratiques les plus courantes du web pour accéder à un contenu de base de données est d'inclure l'identifiant (<code class="code-inline" id="b718adec73e04ce3ec720dd11a06a308">ID</code>) de celui-ci dans l'url. Cet identifiant est dans la grande majorité des cas un entier positif auto-incrémenté par la base de données. Cet identifiant se retrouve ainsi exposé dans les urls. Bien qu'elle pose un certain nombre de problèmes, cette pratique est très simple et très répandue.</p>
 <h2 id="probl-mes-de-s-curit-et-de-c">Problèmes de sécurité et de confidentialité<a href="#probl-mes-de-s-curit-et-de-c" class="anchor"></a></h2>
 <p>Exposer ces identifiants dans les urls pose principalement des problèmes de <strong>sécurité</strong> et de <strong>confidentialité</strong>.</p>
 <p>Ces problèmes sont dus à la prédictabilité de l'identifiant. En effet, celui-ci étant auto-incrémenté, si vous avez une url avec un identifiant, il est très facile de déduire les urls d'autres contenus en incrémentant ou décrémentant l'identifiant dans l'url.</p>
@@ -203,10 +203,10 @@
 <li><a href="https://github.com/marekweb/opaque-id" target="_blank">marekweb/opaque-id</a></li>
 <li><a href="https://github.com/jenssegers/optimus" target="_blank">jenssegers/optimus</a></li>
 </ul><p>J'ai utilisé <a href="https://github.com/jenssegers/optimus" target="_blank"><strong>optimus</strong></a> qui transforme votre ID en un autre entier. Néanmoins n'importe quelle autre bibliothèque fonctionnera pour la suite de cette article.</p>
-<code id="20328f69ecbe43bfd9ffba3cb1b6d80b" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="20328f69ecbe43bfd9ffba3cb1b6d80b"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token variable">$optimus</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Optimus</span><span class="token punctuation">(</span><span class="token number">1580030173</span><span class="token punctuation">,</span> <span class="token number">59260789</span><span class="token punctuation">,</span> <span class="token number">1163945558</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token variable">$encoded</span> <span class="token operator">=</span> <span class="token variable">$optimus</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">encode</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1535832388</span>
-<span class="token variable">$original</span> <span class="token operator">=</span> <span class="token variable">$optimus</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">decode</span><span class="token punctuation">(</span><span class="token number">1535832388</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 20</span></span></code>
+<span class="token variable">$original</span> <span class="token operator">=</span> <span class="token variable">$optimus</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">decode</span><span class="token punctuation">(</span><span class="token number">1535832388</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 20</span></span></code></pre>
 <style type="text/css">
 figure figcaption {
   text-align: center;
@@ -223,7 +223,7 @@ figure {
 }
 </style><h2 id="int-gration-dans-symfony">Intégration dans Symfony<a href="#int-gration-dans-symfony" class="anchor"></a></h2>
 <p>Tout d'abord créons un service pour offusquer nos IDs.</p>
-<code id="8993fa175afbc254aba58d400993c99c" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="8993fa175afbc254aba58d400993c99c"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">interface</span> <span class="token class-name">ObfuscatorInterface</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">obfuscate</span><span class="token punctuation">(</span>int <span class="token variable">$id</span><span class="token punctuation">)</span><span class="token punctuation">:</span> int<span class="token punctuation">;</span>
@@ -248,9 +248,9 @@ figure {
     <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">optimus</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">decode</span><span class="token punctuation">(</span><span class="token variable">$id</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <p>Configurons le service avec les générateurs.</p>
-<code id="81fb9888f28562106e0d23fe1312fe72" class="language-yaml"><span class="token key atrule">parameters</span><span class="token punctuation">:</span>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="81fb9888f28562106e0d23fe1312fe72"><span class="token key atrule">parameters</span><span class="token punctuation">:</span>
     <span class="token key atrule">env(APP_OPTIMUS_PRIME)</span><span class="token punctuation">:</span> <span class="token string">"1580030173"</span>
     <span class="token key atrule">env(APP_OPTIMUS_INVERSE)</span><span class="token punctuation">:</span> <span class="token string">"59260789"</span>
     <span class="token key atrule">env(APP_OPTIMUS_XOR)</span><span class="token punctuation">:</span> <span class="token string">"1163945558"</span>
@@ -265,14 +265,14 @@ figure {
         <span class="token key atrule">$prime</span><span class="token punctuation">:</span> <span class="token string">'%env(APP_OPTIMUS_PRIME)%'</span>
         <span class="token key atrule">$inverse</span><span class="token punctuation">:</span> <span class="token string">'%env(APP_OPTIMUS_INVERSE)%'</span>
         <span class="token key atrule">$xor</span><span class="token punctuation">:</span> <span class="token string">'%env(APP_OPTIMUS_XOR)%'</span>
-        <span class="token key atrule">$size</span><span class="token punctuation">:</span> <span class="token string">'%env(APP_OPTIMUS_SIZE)%'</span></code>
+        <span class="token key atrule">$size</span><span class="token punctuation">:</span> <span class="token string">'%env(APP_OPTIMUS_SIZE)%'</span></code></pre>
 <blockquote>
-<p>La bibiothèque met à disposition une commande pour générer les paramètres à injecter à <em>Optimus</em> : <span class="inline-code">php vendor/bin/optimus spark</span>.
+<p>La bibiothèque met à disposition une commande pour générer les paramètres à injecter à <em>Optimus</em> : <code class="code-inline" id="fcc4bcf1bebc979abbbac9ee039b0345">php vendor/bin/optimus spark</code>.
 Plus d'informations sur ces paramètres dans la <a href="https://github.com/jenssegers/optimus/blob/master/README.md" target="_blank">documentation</a>.</p>
 </blockquote>
 <p>Ensuite, afin de ne pas avoir à encoder nous-mêmes les IDs, créons un decorator pour le router Symfony.</p>
-<p>Voici un exemple simple qui <strong>offusque</strong> tous les paramètres <span class="inline-code">id</span> des routes.</p>
-<code id="fc63f1869e129a1138c1eb15c1430a89" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<p>Voici un exemple simple qui <strong>offusque</strong> tous les paramètres <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code> des routes.</p>
+<pre class="code-multiline language-php"><code class="language-php" id="fc63f1869e129a1138c1eb15c1430a89"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">class</span> <span class="token class-name">ObfuscatorUrlGenerator</span> <span class="token keyword">implements</span> <span class="token class-name">RouterInterface</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token variable">$inner</span><span class="token punctuation">;</span>
@@ -322,17 +322,17 @@ Plus d'informations sur ces paramètres dans la <a href="https://github.com/jens
     <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">inner</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getRouteCollection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
-<code id="a7795e16e0cb024b0c4a9497f00f2861" class="language-yaml"><span class="token key atrule">services</span><span class="token punctuation">:</span>
+<span class="token punctuation">}</span></span></code></pre>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="a7795e16e0cb024b0c4a9497f00f2861"><span class="token key atrule">services</span><span class="token punctuation">:</span>
     <span class="token key atrule">App\Routing\ObfuscatorUrlGenerator</span><span class="token punctuation">:</span>
         <span class="token key atrule">decorates</span><span class="token punctuation">:</span> router
         <span class="token key atrule">decoration_priority</span><span class="token punctuation">:</span> <span class="token number">1</span>
         <span class="token key atrule">arguments</span><span class="token punctuation">:</span>
-            <span class="token key atrule">$inner</span><span class="token punctuation">:</span> <span class="token string">"@App\Routing\ObfuscatorUrlGenerator.inner"</span></code>
-<p>Ainsi, notre router offusque automatiquement nos <span class="inline-code">id</span> lors de la génération d'url :</p>
-<code id="d6997235508b6b0f3651776fdac1de49" class="language-twig"><span class="token tag"><span class="token ld"><span class="token punctuation">{{</span></span> <span class="token property">path</span><span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>ma_route<span class="token punctuation">'</span></span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token property">id</span><span class="token punctuation">:</span> <span class="token number">20</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token rd"><span class="token punctuation">}}</span></span></span> <span class="token comment">{# /ma/route/1535832388 #}</span></code>
-<p>Et désoffusque nos <span class="inline-code">id</span> lors de la correspondance d'url nous permettant d'accéder à notre <span class="inline-code">id</span> en clair dans nos controller :</p>
-<code id="a6d6176b13d0c57a1e8ee8048ab13236" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+            <span class="token key atrule">$inner</span><span class="token punctuation">:</span> <span class="token string">"@App\Routing\ObfuscatorUrlGenerator.inner"</span></code></pre>
+<p>Ainsi, notre router offusque automatiquement nos <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code> lors de la génération d'url :</p>
+<pre class="code-multiline language-twig"><code class="language-twig" id="d6997235508b6b0f3651776fdac1de49"><span class="token tag"><span class="token ld"><span class="token punctuation">{{</span></span> <span class="token property">path</span><span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>ma_route<span class="token punctuation">'</span></span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token property">id</span><span class="token punctuation">:</span> <span class="token number">20</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token rd"><span class="token punctuation">}}</span></span></span> <span class="token comment">{# /ma/route/1535832388 #}</span></code></pre>
+<p>Et désoffusque nos <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code> lors de la correspondance d'url nous permettant d'accéder à notre <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code> en clair dans nos controller :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="a6d6176b13d0c57a1e8ee8048ab13236"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">class</span> <span class="token class-name">MaRouteController</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__invoke</span><span class="token punctuation">(</span>int <span class="token variable">$id</span><span class="token punctuation">)</span>
@@ -341,11 +341,11 @@ Plus d'informations sur ces paramètres dans la <a href="https://github.com/jens
 
         <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Response</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <h2 id="rendre-notre-syst-me-configurab">Rendre notre système configurable<a href="#rendre-notre-syst-me-configurab" class="anchor"></a></h2>
-<p>Notre offuscation fonctionne mais uniquement sur les paramètres <span class="inline-code">id</span>. Nous aurons peut être besoin d'offusquer d'autres paramètres ou d'exclure certaines routes.</p>
-<p>Pour cela ajoutons une méthode <span class="inline-code">mustBeObfuscated</span> à notre <span class="inline-code">Obfuscator</span> et déportons y la logique utilisée dans le router et dans le resolver :</p>
-<code id="622fa2f3e414c83da7b9c74d038aac09" class="language-diff"><span class="token deleted-arrow deleted"><span class="token prefix deleted">&lt;</span><span class="token line">?php
+<p>Notre offuscation fonctionne mais uniquement sur les paramètres <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code>. Nous aurons peut être besoin d'offusquer d'autres paramètres ou d'exclure certaines routes.</p>
+<p>Pour cela ajoutons une méthode <code class="code-inline" id="cd3c6265a726bca865fe9b74b4fd5ec4">mustBeObfuscated</code> à notre <code class="code-inline" id="9f484bcd1b56f5125466c648f60d7671">Obfuscator</code> et déportons y la logique utilisée dans le router et dans le resolver :</p>
+<pre class="code-multiline language-diff"><code class="language-diff" id="622fa2f3e414c83da7b9c74d038aac09"><span class="token deleted-arrow deleted"><span class="token prefix deleted">&lt;</span><span class="token line">?php
 </span></span>class Obfuscator
 {
 <span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   // ...
@@ -385,10 +385,10 @@ class ObfuscatorUrlGenerator implements RouterInterface
 </span></span>
 <span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">       return $parameters;
 </span><span class="token prefix unchanged"> </span><span class="token line">   }
-</span></span>}</code>
+</span></span>}</code></pre>
 <p>Cette méthode peut alors être personnalisée pour savoir si un paramètre doit être offusqué selon son nom et sa route.</p>
 <p>Par exemple, en se basant sur un tableau contenant pour chaque route les paramètres à offusquer :</p>
-<code id="dc7c3a8e20fd8bc91a3a21d5e2b0fb06" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="dc7c3a8e20fd8bc91a3a21d5e2b0fb06"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">class</span> <span class="token class-name">Obfuscator</span>
 <span class="token punctuation">{</span>
     <span class="token comment">// ...</span>
@@ -403,8 +403,8 @@ class ObfuscatorUrlGenerator implements RouterInterface
         <span class="token keyword">return</span> <span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">routes</span><span class="token punctuation">[</span><span class="token variable">$routeName</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
             <span class="token operator">&amp;&amp;</span> <span class="token function">in_array</span><span class="token punctuation">(</span><span class="token variable">$argumentName</span><span class="token punctuation">,</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">routes</span><span class="token punctuation">[</span><span class="token variable">$routeName</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
-<p>Pour aller plus loin, nous pouvons baser ce tableau de routes sur un fichier de configuration, sur des attributs ou des options dans le fichier de routing, sur une convention de nommage ou implémenter toute autre logique dans la méthode <span class="inline-code">mustBeObfuscated</span>.</p></body>
+<span class="token punctuation">}</span></span></code></pre>
+<p>Pour aller plus loin, nous pouvons baser ce tableau de routes sur un fichier de configuration, sur des attributs ou des options dans le fichier de routing, sur une convention de nommage ou implémenter toute autre logique dans la méthode <code class="code-inline" id="cd3c6265a726bca865fe9b74b4fd5ec4">mustBeObfuscated</code>.</p></body>
   </div>
 
   <div>

@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/authors/rhanna.jpg" />
     <p>Écrit par Richard HANNA<p>
     <p>Publication 22 novembre 2017<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -263,7 +263,7 @@ Il est indiqué le nombre de Ko à télécharger pour chaque mise à jour.</p>
 <p><a href="https://github.com/rt2zz/redux-persist" target="_blank">Redux Persist</a> permet de persister le <em>store Redux</em> en
 <a href="https://developer.mozilla.org/fr/docs/Web/API/Storage/LocalStorage" target="_blank">LocalStorage</a> et de réhydrater le <em>store</em> dès lors
 que la page web est rechargée :</p>
-<code id="a63d6cd1dcd0a99c459af49e527f4303" class="language-js"><span class="token comment">// store.js</span>
+<pre class="code-multiline language-js"><code class="language-js" id="a63d6cd1dcd0a99c459af49e527f4303"><span class="token comment">// store.js</span>
 <span class="token keyword module">import</span> <span class="token maybe-class-name">ApolloClient</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> createNetworkInterface <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'apollo-client'</span><span class="token punctuation">;</span>
 <span class="token keyword module">import</span> <span class="token punctuation">{</span> applyMiddleware<span class="token punctuation">,</span> compose<span class="token punctuation">,</span> createStore <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'redux'</span><span class="token punctuation">;</span>
 <span class="token keyword module">import</span> <span class="token punctuation">{</span> autoRehydrate <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'redux-persist'</span><span class="token punctuation">;</span>
@@ -282,7 +282,7 @@ que la page web est rechargée :</p>
 
 <span class="token keyword">const</span> networkInterface <span class="token operator">=</span> <span class="token function">createNetworkInterface</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   uri<span class="token operator">:</span> <span class="token string">'https://api.chalkboard.education'</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p><em>#protips</em> : pour gérer l'accès à des contenus avec du routing et à la fois que ces contenus soient disponibles
 hors-ligne sans que l'url ait été visitée au préalable, il est quasi indispensable d'utiliser des urls avec un
 <a href="https://developer.mozilla.org/fr/docs/Web/API/window/location#Propri.C3.A9t.C3.A9s" target="_blank">hash</a>
@@ -296,7 +296,7 @@ hors-ligne sans que l'url ait été visitée au préalable, il est quasi indispe
 <ul><li>un <em>currentDate</em> (une date serveur),</li>
 <li>la liste des <em>courses</em> (ses <em>folders</em>, les <em>sessions</em> des <em>folders</em>, les <em>files</em> des <em>sessions</em>),</li>
 <li>et le <em>user</em> courant.</li>
-</ul><code id="900b4311a8128eaabeda244c2d88ee37" class="language-js"><span class="token comment">// src/graphql/query/CoursesQuery.js</span>
+</ul><pre class="code-multiline language-js"><code class="language-js" id="900b4311a8128eaabeda244c2d88ee37"><span class="token comment">// src/graphql/query/CoursesQuery.js</span>
 <span class="token keyword module">import</span> gql <span class="token keyword module">from</span> <span class="token string">'graphql-tag'</span><span class="token punctuation">;</span>
 
 <span class="token keyword module">export</span> <span class="token keyword module">default</span> gql<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token graphql language-graphql">
@@ -330,14 +330,14 @@ hors-ligne sans que l'url ait été visitée au préalable, il est quasi indispe
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span></code>
+</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span></code></pre>
 <p>Nous avons utilisé le très bon client GraphQL <a href="https://github.com/apollographql/apollo-client" target="_blank">Apollo client</a>.
 Il existe aussi une implémentation <a href="https://github.com/apollographql/react-apollo" target="_blank">Apollo pour React</a> mais nous
 ne l'avons pas utilisée étant donné que notre application n'est pas <em>API-centric</em> : toutes les <em>data</em> sont récupérées
 à la première connexion puis à la mise à jour.</p>
 <p>Et pour l'identification de l'étudiant•e, on passe le <em>token user</em> dans l'entête HTTP
 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization" target="_blank">Authorization</a> de cette façon :</p>
-<code id="f27d52372a8dc02f6b1fe9d8f5aaf77d" class="language-js"><span class="token comment">// store.js</span>
+<pre class="code-multiline language-js"><code class="language-js" id="f27d52372a8dc02f6b1fe9d8f5aaf77d"><span class="token comment">// store.js</span>
 <span class="token keyword module">import</span> <span class="token maybe-class-name">ApolloClient</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> createNetworkInterface <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'apollo-client'</span><span class="token punctuation">;</span>
 
 <span class="token comment">// ...</span>
@@ -361,14 +361,14 @@ networkInterface<span class="token punctuation">.</span><span class="token metho
       <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h3 id="service-worker">Service worker<a href="#service-worker" class="anchor"></a></h3>
 <p><a href="https://github.com/facebookincubator/create-react-app" target="_blank">Create React App</a> permet facilement de <em>bootstraper</em> un front
 avec React et un service worker qui pré charge en cache les assets de l'application (index.html, javascript et css).</p>
 <p>Pour mettre en cache les urls chargées au <em>runtime</em> il faut surcharger la configuration du <em>builder</em> du Service Worker
 avec <a href="https://github.com/GoogleChromeLabs/sw-precache" target="_blank">sw-precache</a>. On a ajouté une commande "generate-sw" dans notre
 fichier package.json :</p>
-<code id="87ebcac75973f33b89124340e1955da3" class="language-json"><span class="token punctuation">{</span>
+<pre class="code-multiline language-json"><code class="language-json" id="87ebcac75973f33b89124340e1955da3"><span class="token punctuation">{</span>
   <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"ChalkboardEducationV2ReactFront"</span><span class="token punctuation">,</span>
   <span class="token property">"private"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
   <span class="token property">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -384,9 +384,9 @@ fichier package.json :</p>
     <span class="token property">"generate-sw"</span><span class="token operator">:</span> <span class="token string">"sw-precache --root='build/' --config config/sw-precache-config.js"</span><span class="token punctuation">,</span>
     <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"react-scripts test --env=jsdom"</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code>
+<span class="token punctuation">}</span></code></pre>
 <p>Configuration pour <em>sw-precache</em> pour gérer le <em>runtime caching</em> des images :</p>
-<code id="1fd42301bc94199e4107edbc675cd441" class="language-js"><span class="token comment">// config/sw-precache-config.js</span>
+<pre class="code-multiline language-js"><code class="language-js" id="1fd42301bc94199e4107edbc675cd441"><span class="token comment">// config/sw-precache-config.js</span>
 module<span class="token punctuation">.</span><span class="token property-access">exports</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
   staticFileGlobs<span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token string">'build/**/*.js'</span><span class="token punctuation">,</span>
@@ -397,7 +397,7 @@ module<span class="token punctuation">.</span><span class="token property-access
     urlPattern<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token language-regex"><span class="token special-escape escape">\.</span><span class="token quantifier number">*</span><span class="token special-escape escape">\.</span><span class="token group punctuation">(?:</span>svg<span class="token alternation keyword">|</span>jpg<span class="token alternation keyword">|</span>gif<span class="token alternation keyword">|</span>png<span class="token group punctuation">)</span></span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span>
     handler<span class="token operator">:</span> <span class="token string">'cacheFirst'</span>
   <span class="token punctuation">}</span><span class="token punctuation">]</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span></code>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <h3 id="le-sms-pour-transporter-de-la-do">Le SMS pour transporter de la donnée à la place d'Internet<a href="#le-sms-pour-transporter-de-la-do" class="anchor"></a></h3>
 <p>Sur Chalkboard Education, l'étudiant•e doit valider sa progression. Pour cela il lui est laissé le choix d'utiliser
 internet ou... le SMS.</p>
@@ -405,17 +405,17 @@ internet ou... le SMS.</p>
     <img src="/images/posts/2017/chalkboard-education/submit-validation.png" alt="Submit validation by SMS" style="height:500px; border:1px solid #333" id="submit-validation-by-sms"></p>
 <p>Un code est généré par l'application web. Ce code est envoyé par SMS par l'étudiant•e à un numéro donné.</p>
 <p>A noter que pour déclencher la rédaction d'un SMS sous Android, il est possible d'utiliser un lien HTML avec
-le <em>scheme</em> <span class="inline-code">sms:</span></p>
-<p><span class="inline-code">&lt;a href="sms:+63344556677?body=Message"&gt;Send SMS&lt;/a&gt;</span></p>
+le <em>scheme</em> <code class="code-inline" id="011b9c49959114e5a18897e14b63bf66">sms:</code></p>
+<p><code class="code-inline" id="abe91dd5f98251ccf84acf175722b7bb">&lt;a href="sms:+63344556677?body=Message"&gt;Send SMS&lt;/a&gt;</code></p>
 <p>Le back-office reçoit le code, identifie l'étudiant•e et la session concernée. Un SMS contenant un lien + code lui est
 envoyé en retour. L'étudiant•e clique sur le lien reçu, même hors-ligne, l'application web décode le code reçu et valide
 la session. L'étudiant•e peut ainsi valider la session courante et passer à la session suivante.</p>
 <h3 id="poids-de-la-pwa">Poids de la PWA<a href="#poids-de-la-pwa" class="anchor"></a></h3>
 <p>Lorsqu'on a pour projet de réaliser une progressice web app, il est important de surveiller le poids des fichiers css et
 javascript <em>buildés</em>. Sur ce projet, nous avons essayé d'avoir le minimum de dépendances.</p>
-<p><span class="inline-code">$ yarn build</span></p>
-<code id="f4a4127f476fe2e448378d9b42befa0d" class="language-bash"><span class="token number">276.43</span> KB <span class="token punctuation">(</span>+142 B<span class="token punctuation">)</span>  build/static/js/main.8502d0fb.js
-  <span class="token number">587</span> B <span class="token punctuation">(</span>+11 B<span class="token punctuation">)</span>       build/static/css/main.7edcdc8b.css</code>
+<p><code class="code-inline" id="dfa75700390e42c3490a137447d7f688">$ yarn build</code></p>
+<pre class="code-multiline language-bash"><code class="language-bash" id="f4a4127f476fe2e448378d9b42befa0d"><span class="token number">276.43</span> KB <span class="token punctuation">(</span>+142 B<span class="token punctuation">)</span>  build/static/js/main.8502d0fb.js
+  <span class="token number">587</span> B <span class="token punctuation">(</span>+11 B<span class="token punctuation">)</span>       build/static/css/main.7edcdc8b.css</code></pre>
 <p>L'application <em>front</em> pèse ainsi moins de 300 Ko !</p>
 <h3 id="audit">Audit<a href="#audit" class="anchor"></a></h3>
 <p>Le panel Audit de Chrome indique qu'on est plutôt pas mal :</p>
@@ -444,7 +444,7 @@ fonctionnalités du Back-Office.</p>
 <li>Cela pousse à découpler le code, et toute logique hors <em>controller</em> est déportée dans des services du domaine.</li>
 <li>Une classe de <em>controller</em> est ainsi facilement testable unitairement.</li>
 </ul><p>Exemple de "nouveau" <em>controller</em> :</p>
-<code id="c967f7d6551f73b5c8a437bd99bc300c" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="c967f7d6551f73b5c8a437bd99bc300c"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Ui<span class="token punctuation">\</span>Admin<span class="token punctuation">\</span>Action<span class="token punctuation">\</span>Course</span><span class="token punctuation">;</span>
 
@@ -508,10 +508,10 @@ fonctionnalités du Back-Office.</p>
             <span class="token single-quoted-string string">'course'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$course</span><span class="token punctuation">,</span>
         <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <p>Nous avons utilisé <a href="https://symfony.com/doc/current/service_container/autowiring.html" target="_blank">l'autowiring des services</a>
 qui rend beaucoup plus simple la gestion des dépendances:</p>
-<code id="38866e4a5b7acd436a02900c357b5b26" class="language-yaml"><span class="token key atrule">services</span><span class="token punctuation">:</span>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="38866e4a5b7acd436a02900c357b5b26"><span class="token key atrule">services</span><span class="token punctuation">:</span>
     <span class="token key atrule">_defaults</span><span class="token punctuation">:</span>
         <span class="token comment"># automatically injects dependencies in services</span>
         <span class="token key atrule">autowire</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
@@ -520,13 +520,13 @@ qui rend beaucoup plus simple la gestion des dépendances:</p>
 
     <span class="token comment"># example:</span>
     <span class="token key atrule">App\Ui\Admin\Action\Course\AssignUserAction</span><span class="token punctuation">:</span>
-        <span class="token key atrule">autowire</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></code>
+        <span class="token key atrule">autowire</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></code></pre>
 <h3 id="graphql-et-symfony">GraphQL et Symfony<a href="#graphql-et-symfony" class="anchor"></a></h3>
 <p>Pour concevoir un serveur d'API GraphQL, nous avons utilisé le bundle Symfony
 <a href="https://github.com/overblog/GraphQLBundle" target="_blank">overblog/GraphQLBundle</a>
 lui-même utilisant l'implémentation en PHP de <a href="https://github.com/webonyx/graphql-php" target="_blank">webonyx/graphql-php</a>.</p>
 <p>Déclaration d'un schéma d'un cours :</p>
-<code id="70811d0a2c9ba6c892a7f19f4ef185b2" class="language-yaml"><span class="token key atrule">Course</span><span class="token punctuation">:</span>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="70811d0a2c9ba6c892a7f19f4ef185b2"><span class="token key atrule">Course</span><span class="token punctuation">:</span>
     <span class="token key atrule">type</span><span class="token punctuation">:</span> object
     <span class="token key atrule">config</span><span class="token punctuation">:</span>
         <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">"A course"</span>
@@ -541,13 +541,13 @@ lui-même utilisant l'implémentation en PHP de <a href="https://github.com/webo
                 <span class="token key atrule">type</span><span class="token punctuation">:</span> <span class="token string">"DateTime!"</span>
                 <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">"The last update date of the course in format 2017-01-15 10:00"</span>
             <span class="token key atrule">folders</span><span class="token punctuation">:</span>
-                <span class="token key atrule">type</span><span class="token punctuation">:</span> <span class="token string">"[Folder]"</span></code>
+                <span class="token key atrule">type</span><span class="token punctuation">:</span> <span class="token string">"[Folder]"</span></code></pre>
 <p>Déclaration d'un <em>resolver</em> d'un cours :</p>
-<code id="0428f08af45bc28bbba62710eddcd7e2" class="language-yaml"><span class="token key atrule">services</span><span class="token punctuation">:</span>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="0428f08af45bc28bbba62710eddcd7e2"><span class="token key atrule">services</span><span class="token punctuation">:</span>
     <span class="token key atrule">App\Infrastructure\GraphQL\Resolver\CourseResolver</span><span class="token punctuation">:</span>
         <span class="token key atrule">autowire</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
         <span class="token key atrule">tags</span><span class="token punctuation">:</span>
-            <span class="token punctuation">-</span> <span class="token punctuation">{</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> overblog_graphql.resolver<span class="token punctuation">,</span> <span class="token key atrule">alias</span><span class="token punctuation">:</span> <span class="token string">"courses"</span><span class="token punctuation">,</span> <span class="token key atrule">method</span><span class="token punctuation">:</span> <span class="token string">"resolveCourses"</span> <span class="token punctuation">}</span></code>
+            <span class="token punctuation">-</span> <span class="token punctuation">{</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> overblog_graphql.resolver<span class="token punctuation">,</span> <span class="token key atrule">alias</span><span class="token punctuation">:</span> <span class="token string">"courses"</span><span class="token punctuation">,</span> <span class="token key atrule">method</span><span class="token punctuation">:</span> <span class="token string">"resolveCourses"</span> <span class="token punctuation">}</span></code></pre>
 <p>Nous avions des besoins assez simples. La mise en place d'un serveur GraphQL n'est vraiment pas plus compliqué que REST.</p>
 <h2 id="conclusion">Conclusion<a href="#conclusion" class="anchor"></a></h2>
 <p>Nous avons adoré travailler sur React / Redux / GraphQL, à réfléchir l'utilisation d'une application web en hors-ligne

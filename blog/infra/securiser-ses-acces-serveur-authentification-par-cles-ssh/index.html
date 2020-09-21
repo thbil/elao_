@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/gfaivre.jpg" />
     <p>Écrit par Guewen FAIVRE<p>
     <p>Publication 5 mars 2010<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -186,7 +186,7 @@ Cela facilitera l'administration des serveurs mais permettra également de mettr
 <h3 id="pr-requis">Pré-requis<a href="#pr-requis" class="anchor"></a></h3>
 <p>Un serveur ssh fonctionnel et bien sur un client ssh, si vous travaillez sous linux ou sous Mac OS pas de problème vous devriez avoir le nécessaire d'installé.</p>
 <p>Si vous ne disposez pas de ssh sur votre machine il suffit de l'installer :</p>
-<code id="16f0f9e1aec9420a49afed52eaca77cf">apt-get install openssh-server openssh-client</code>
+<pre class="code-multiline"><code id="16f0f9e1aec9420a49afed52eaca77cf">apt-get install openssh-server openssh-client</code></pre>
 <p>Si vous êtes sous Windows, vous pouvez utiliser l'excellent <a title="puTTY" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">puTTY</a> qui est un client SSH ainsi que PuttyGen pour la génération de clés.
 Nous allons partir du principe que notre utilisateur <strong>amartin</strong> souhaite se connecter à notre serveur en utilisant une authentification basée sur un couple clé publique / clé privée.</p>
 <p>Pour mettre en place notre authentification nous allons devoir agir à la fois coté serveur mais également coté client.</p>
@@ -195,12 +195,12 @@ Nous allons partir du principe que notre utilisateur <strong>amartin</strong> so
 <p>Le mécanisme consiste à justifier de l'identité auprès du serveur en se basant sur une paire clés publique / privée. Il faut par contre bien garder en tête que cette clé privée est le seul moyen pour le serveur d'être sûr que la connexion est bien initié par un tiers de confiance, de ce fait il est indispensable de conserver cette clé confidentielle car quiconque est en sa possession est capable de se faire passer pour notre client.
 Il est toutefois possible d'ajouter une protection sur cette clé en la protégeant par une passphrase qu'il sera nécessaire de saisir lorsque l'on souhaitera utiliser notre clé.</p>
 <p>La clé publique, comme son nom l'indique est celle qui est connue par le serveur, et qui permet de d'assurer que notre client est bien celui attendu pour l'utilisateur demandé.</p>
-<p>Pour commencer il va nous falloir générer une paire de clés pour notre utilisateur, il existe deux principaux algorithmes asymétriques de cryptage <a href="http://fr.wikipedia.org/wiki/Digital_Signature_Algorithm">DSA</a> et <a href="http://fr.wikipedia.org/wiki/Rivest_Shamir_Adleman">RSA</a>, vous pouvez utiliser l'un ou l'autre.</p>
+<p>Pour commencer il va nous falloir générer une paire de clés pour notre utilisateur, il existe deux principaux algorithmes asymétriques de cryptage <a href="http://fr.wikipedia.org/wiki/Digital_Signature_Algorithm" target="_blank">DSA</a> et <a href="http://fr.wikipedia.org/wiki/Rivest_Shamir_Adleman" target="_blank">RSA</a>, vous pouvez utiliser l'un ou l'autre.</p>
 <p>Pour la petite histoire sachez juste que le <strong>Digital Signature Algorithm</strong>, plus connu sous le sigle <strong>DSA</strong>, est un algorithme de signature numérique standardisée par le NSIT aux Etats-Unis, du temps où le RSA était encore breveté.</p>
 <p><strong>Générons notre paire de clé :</strong></p>
-<code id="7fff07d0bddb513d174f2029f94a4e60">ssh-keygen -t rsa -C 'Alexandre Martin' -f amartin</code>
+<pre class="code-multiline"><code id="7fff07d0bddb513d174f2029f94a4e60">ssh-keygen -t rsa -C 'Alexandre Martin' -f amartin</code></pre>
 <p>Cette commande crééra une clé publique ET une clé privée, (si l'option "-f" n'est pas spécifiée, par défaut dans le répertoire .ssh de votre compte utilisateur).</p>
-<code id="3babbc21be1f5d98042a656a1cf357c3">&gt;Generating public/private rsa key pair.
+<pre class="code-multiline"><code id="3babbc21be1f5d98042a656a1cf357c3">&gt;Generating public/private rsa key pair.
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
 Your identification has been saved in amartin.
@@ -218,31 +218,31 @@ The key's randomart image is:
 |        .     E .|
 |             . o |
 |               .o|
-+-----------------+</code>
++-----------------+</code></pre>
 <p>Vous l’aurez compris le fichier “amartin” est notre clé privée, il faut donc faire très attention à elle et ne pas la perdre.
 Il existe la possibilité de renseigner une passphrase, celle-ci devra être saisie chaque fois que vous voudrez utiliser votre clé, ceci afin d’éviter que n’importe qui ne puisse utiliser votre clé si vous vous la faites voler.</p>
 <p>Modifier la passphrase d’une clé privée SSH</p>
 <p>important Sécuriser ses accès serveur: Authentification par clés SSH  Il est tout à fait possible de modifier la passphrase d’une clé privée, pour se faire il suffit de saisir la commande</p>
-<code id="6742289c92aa1d65fb1574419e64c73a">ssh-keygen -p -f amartin
+<pre class="code-multiline"><code id="6742289c92aa1d65fb1574419e64c73a">ssh-keygen -p -f amartin
 Enter old passphrase:
 Key has comment 'amartin'
 Enter new passphrase (empty for no passphrase):
 Enter same passphrase again:
-Your identification has been saved with the new passphrase.</code>
+Your identification has been saved with the new passphrase.</code></pre>
 <h3 id="cot-serveur">Coté serveur<a href="#cot-serveur" class="anchor"></a></h3>
 <p>Une fois cette paire de clés générée, il faut déposer notre clé publique sur le serveur sur lequel nous souhaitons pouvoir nous authentifier.
 Pour se faire nous récupérons notre clé publique amartin.pub (par défaut id_dsa.pub) et nous l’a déposons sur le serveur.</p>
 <p>Une fois cela fait il faut ajouter son contenu au fichier contenant les clés autorisées à se connecter à notre serveur pour l’utilisateur voulu.</p>
 <p>Nous allons maintenant autoriser les connexions au serveur pour notre machine cliente. Dans notre cas nous souhaitions pouvoir nous connecter en tant que root avec notre clé amartin, nous allons donc ajouter le contenu de notre clé publique dans le fichier authorized_keys2 (pour un Debian ou une Ubuntu, authorized_keys pour les autres).</p>
 <p>Nous ajoutons donc la clé au fichier /root/.ssh/authorized_keys2:</p>
-<code id="eadfdf431d1bb65dcde37c242f2898b9">cat /path/to/amartin.pub &gt;&gt; authorized_keys2</code>
+<pre class="code-multiline"><code id="eadfdf431d1bb65dcde37c242f2898b9">cat /path/to/amartin.pub &gt;&gt; authorized_keys2</code></pre>
 <p>important Sécuriser ses accès serveur: Authentification par clés SSH  Il n’est pas rare, et c’est une bonne chose que la configuration des serveurs SSH implique d’avoir certains droits correctement appliqués sur le répertoire .ssh et sur le fichier authorized_keys (StrictModes activé).
 Pour éviter tout problème nous allons donc restreindre l’accès à ces différents fichiers:</p>
-<code id="a71f84def6e9302fdb739af391a3a007">chmod 700 ~/.ssh
-chmod 600 ~/.ssh/authorized_keys</code>
+<pre class="code-multiline"><code id="a71f84def6e9302fdb739af391a3a007">chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys</code></pre>
 <h3 id="connexion">Connexion<a href="#connexion" class="anchor"></a></h3>
 <p>Nous pouvons à présent directement nous connecter au serveur avec notre clé en utilisant la commande suivante:</p>
-<code id="65f2b13026ea30c941685bfaf47a8010">ssh -i ~/.ssh/amartin root@serveur.tld</code>
+<pre class="code-multiline"><code id="65f2b13026ea30c941685bfaf47a8010">ssh -i ~/.ssh/amartin root@serveur.tld</code></pre>
 <p>L’option “-i” indiquant vous l’aurez compris la clé privée à utiliser pour initier la transaction avec le serveur.</p></body>
   </div>
 

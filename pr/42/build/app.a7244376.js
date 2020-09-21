@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([["app"],{ng4s:function(n,o){window.addEventListener("load",(function(){}))}},[["ng4s","runtime"]]]);

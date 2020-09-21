@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/gfaivre.jpg" />
     <p>Écrit par Guewen FAIVRE<p>
     <p>Publication 13 mai 2010<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -185,7 +185,7 @@
     <body><p>Il est parfois très utile de pouvoir récupérer directement des champs calculés depuis la base de données, soit parce que passer par un criteria s'avère très compliqué, voir impossible, soit pour confier les calculs à la base de données.</p>
 <p>Je vous propose donc aujourd'hui deux solutions pour le faire avec Propel :<!--more--></p>
 <h3 id="re-solution-les-r-sultats-s">1ère solution, les résultats sont accédés via des index numériques<a href="#re-solution-les-r-sultats-s" class="anchor"></a></h3>
-<code id="8a7785275a13d5b475a4c186b07d0e48" class="language-php"><span class="token comment">//QUERY</span>
+<pre class="code-multiline language-php"><code class="language-php" id="8a7785275a13d5b475a4c186b07d0e48"><span class="token comment">//QUERY</span>
 <span class="token variable">$query</span> <span class="token operator">=</span> <span class="token constant">SELECT</span> <span class="token function">DISTINCT</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'.UserPeer::ID.'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'.UserPeer::FIRSTNAME.'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'.UserPeer::LASTNAME.'</span><span class="token punctuation">,</span>
                          <span class="token single-quoted-string string">'.UserPeer::NICKNAME.'</span><span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'.QuestionPeer::ID.'</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> <span class="token constant">NB_QUESTIONS</span><span class="token punctuation">,</span>
                          <span class="token single-quoted-string string">'.QuestionPeer::LEVEL.'</span>
@@ -209,11 +209,11 @@
   <span class="token variable">$level</span> <span class="token operator">=</span> <span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token variable">$questions</span><span class="token punctuation">[</span><span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token variable">$level</span> <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token variable">$level</span> <span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token variable">$users</span><span class="token punctuation">[</span><span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'questions'</span><span class="token punctuation">]</span>                     <span class="token operator">=</span> <span class="token variable">$questions</span><span class="token punctuation">[</span><span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code>
+<span class="token punctuation">}</span></code></pre>
 <h3 id="me-solution-les-r-sultats-s">2ème solution, les résultats sont accédés via les noms de champs renvoyés par la requête<a href="#me-solution-les-r-sultats-s" class="anchor"></a></h3>
 <p>Il suffit pour cela de remplacer la méthode de récupération de executeQuery en utilisant cette fois:</p>
-<code id="7996141236245e4babf93b780a90018b" class="language-php"><span class="token scope">ResultSet<span class="token punctuation">::</span></span><span class="token constant">FETCHMODE_ASSOC</span></code>
-<code id="2e51ed954b18dd9b6cd37f86ccc62dc7">$rs = $stmt-&gt;executeQuery(ResultSet::FETCHMODE_ASSOC);
+<pre class="code-multiline language-php"><code class="language-php" id="7996141236245e4babf93b780a90018b"><span class="token scope">ResultSet<span class="token punctuation">::</span></span><span class="token constant">FETCHMODE_ASSOC</span></code></pre>
+<pre class="code-multiline"><code id="2e51ed954b18dd9b6cd37f86ccc62dc7">$rs = $stmt-&gt;executeQuery(ResultSet::FETCHMODE_ASSOC);
 // PARSING RESULTS
 while ($rs-&gt;next())
 {
@@ -226,14 +226,14 @@ while ($rs-&gt;next())
   $level = $records['LEVEL'];
   $questions[$record['ID']][(($level &lt; 5) ? $level : 5)] = $record['NB_QUESTIONS'];
   $users[record['ID']]['questions']                      = $questions[$record['ID']];
-}</code>
+}</code></pre>
 <p>Pour ceux qui souhaitent mixer les deux méthodes, il est tout à fait possible de demander à un Criteria, de renvoyer un tableau indexé à partir
 des noms de champs, ou des index numériques d'ailleurs.
 Nous allons de la même façon que ci-dessus spécifier à Propel, la façon dont nous souhaitons récupérer nos résultats, pour le coup nous passerons
 par la méthode</p>
-<code id="1122141f02687555b6c67fad295bb860">doSelectRS()</code>
+<pre class="code-multiline"><code id="1122141f02687555b6c67fad295bb860">doSelectRS()</code></pre>
 <p>afin de récupérer des resultSet et non des objets.</p>
-<code id="d3129f1ee07a57942b09b0b020a73f22" class="language-php"><span class="token variable">$c</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Criteria</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="code-multiline language-php"><code class="language-php" id="d3129f1ee07a57942b09b0b020a73f22"><span class="token variable">$c</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Criteria</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">clearSelectColumns</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addSelectColumn</span><span class="token punctuation">(</span><span class="token scope">UserPeer<span class="token punctuation">::</span></span><span class="token constant">NICKNAME</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -268,7 +268,7 @@ par la méthode</p>
           <span class="token single-quoted-string string">'interested_users'</span>    <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$records</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'INTERESTED_USERS'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
           <span class="token single-quoted-string string">'nb_answers'</span>          <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$records</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'NB_ANSWERS'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
           <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></body>
+<span class="token punctuation">}</span></code></pre></body>
   </div>
 
   <div>

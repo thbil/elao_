@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/default.png" />
     <p>Écrit par Johan LOPES<p>
     <p>Publication 11 octobre 2013<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -198,7 +198,7 @@ Au mieux vous atteindrez une limite de quota et les mails suivants seront bloqu�
 <li>Les e-mails techniques destinés aux administrateurs de votre application seront envoyés via la fonction mail de votre PHP.</li>
 </ul><h1 id="mise-en-uvre-de-la-solution">Mise en œuvre de la solution<a href="#mise-en-uvre-de-la-solution" class="anchor"></a></h1>
 <p>Pour cela rien de plus simple, créez plusieurs mailers dans votre app/config/config.yml :</p>
-<code id="8ed9ff05059474544dd70b097e430e4f" class="language-yaml"><span class="token comment"># Swiftmailer Configuration</span>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="8ed9ff05059474544dd70b097e430e4f"><span class="token comment"># Swiftmailer Configuration</span>
 <span class="token key atrule">swiftmailer</span><span class="token punctuation">:</span>
     <span class="token key atrule">default_mailer</span><span class="token punctuation">:</span> default
     <span class="token key atrule">mailers</span><span class="token punctuation">:</span>
@@ -208,9 +208,9 @@ Au mieux vous atteindrez une limite de quota et les mails suivants seront bloqu�
             <span class="token key atrule">username</span><span class="token punctuation">:</span>  mylogin
             <span class="token key atrule">password</span><span class="token punctuation">:</span>  mypassword
         <span class="token key atrule">notifier</span><span class="token punctuation">:</span>
-            <span class="token key atrule">transport</span><span class="token punctuation">:</span> mail</code>
+            <span class="token key atrule">transport</span><span class="token punctuation">:</span> mail</code></pre>
 <p>Vous remarquerez que cela aura pour effet de créer 2 services d'envoi d'e-mails que vous pourrez ensuite utiliser dans votre application :</p>
-<code id="ff206c37f7781019d1aded89fd684fbe" class="language-bash">jlopes:/Volumes/Elao/workspace/myProject ./app/console container:debug <span class="token operator">|</span> <span class="token function">grep</span> mailer
+<pre class="code-multiline language-bash"><code class="language-bash" id="ff206c37f7781019d1aded89fd684fbe">jlopes:/Volumes/Elao/workspace/myProject ./app/console container:debug <span class="token operator">|</span> <span class="token function">grep</span> mailer
 mailer                                            n/a       <span class="token builtin class-name">alias</span> <span class="token keyword">for</span> swiftmailer.mailer.default
 swiftmailer.mailer                                n/a       <span class="token builtin class-name">alias</span> <span class="token keyword">for</span> swiftmailer.mailer.default
 swiftmailer.mailer.default                        container Swift_Mailer
@@ -219,7 +219,7 @@ swiftmailer.mailer.default.transport              container Swift_Transport_Esmt
 swiftmailer.mailer.notifier                       container Swift_Mailer
 swiftmailer.mailer.notifier.plugin.messagelogger  container Swift_Plugins_MessageLogger
 swiftmailer.mailer.notifier.transport             container Swift_Transport_MailTransport
-<span class="token punctuation">..</span>.</code>
+<span class="token punctuation">..</span>.</code></pre>
 <p>Cette astuce reste très simple mais je n'ai rien trouvé dans la documentation officielle de Symfony qui l'expliquait clairement. Elle peut se révéler très utile lorsque vous utilisez le bundle <strong><a href="https://github.com/Elao/ErrorNotifierBundle" target="_blank">ErrorNotifierBundle</a></strong></p>
 <p>Merci et à bientôt !</p></body>
   </div>

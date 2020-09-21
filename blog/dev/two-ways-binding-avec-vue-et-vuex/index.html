@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/mcolin.jpg" />
     <p>Écrit par Maxime COLIN<p>
     <p>Publication 25 septembre 2019<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -183,8 +183,8 @@
   </div>
 
   <div>
-    <body><p>Vue permet déjà de faire du Two-Way Binding grâce à la directive <span class="inline-code">v-model</span>. C'est à dire mettre à jour l'interface lorsque le modèle change et vice et versa.</p>
-<code id="d0d1334c3aed16d3f8d0b995a3609c28">&lt;script&gt;
+    <body><p>Vue permet déjà de faire du Two-Way Binding grâce à la directive <code class="code-inline" id="088dc68c3dcfc8e6946dcc4faab5b96c">v-model</code>. C'est à dire mettre à jour l'interface lorsque le modèle change et vice et versa.</p>
+<pre class="code-multiline"><code id="d0d1334c3aed16d3f8d0b995a3609c28">&lt;script&gt;
 export default {
   data() {
     return {
@@ -198,17 +198,17 @@ export default {
   &lt;form&gt;
     &lt;input type="text" v-model="foobar" /&gt;
   &lt;/form&gt;
-&lt;/template&gt;</code>
-<p>Dans ce composant par exemple, lorsque la variable <span class="inline-code">foobar</span> est modifié, le contenu du champ est mis à jour et lorsque le contenu du champ est modifié, la variable <span class="inline-code">foobar</span> est modifiée.</p>
+&lt;/template&gt;</code></pre>
+<p>Dans ce composant par exemple, lorsque la variable <code class="code-inline" id="3858f62230ac3c915f300c664312c63f">foobar</code> est modifié, le contenu du champ est mis à jour et lorsque le contenu du champ est modifié, la variable <code class="code-inline" id="3858f62230ac3c915f300c664312c63f">foobar</code> est modifiée.</p>
 <p>Si nous introduisons Vuex (ou un autre state manager), les variables du store n'étant pas modifiable par les composants, nous ne pouvons faire que du One-Way Binding (lorsque le modèle change, l'interface est mise à jour, l'inverse n'est pas possible).</p>
-<code id="39a1a60cb6d14683ddcbfab2f6226254">&lt;template&gt;
+<pre class="code-multiline"><code id="39a1a60cb6d14683ddcbfab2f6226254">&lt;template&gt;
   &lt;form&gt;
     &lt;input type="text" v-model="$store.state.foobar" /&gt;
   &lt;/form&gt;
-&lt;/template&gt;</code>
+&lt;/template&gt;</code></pre>
 <p>Un composant comme celui-ci par exemple violerait le principe selon lequel les variables du store ne peuvent être modifiées que par une mutation et jamais directement. Vous obtiendrez d'ailleurs un warning de la part de Vue.</p>
 <p>La solution pour faire du Two-Way Binding est donc d'utiliser un computed avec un getter et un setter. Le getter renvoie la valeur stockée dans le store et le setter met à jour le store grâce à une mutation.</p>
-<code id="98ed0fb82a15daf43632e56ca22e1b32">&lt;script&gt;
+<pre class="code-multiline"><code id="98ed0fb82a15daf43632e56ca22e1b32">&lt;script&gt;
 export default {
   computed: {
     foobar: {
@@ -223,20 +223,20 @@ export default {
   &lt;form&gt;
     &lt;input type="text" v-model="foobar" /&gt;
   &lt;/form&gt;
-&lt;/template&gt;</code>
+&lt;/template&gt;</code></pre>
 <p>On retrouve alors un Two-Way Binding tout en respectant le principe de non modification directe du state.</p>
 <p>L'ennui avec cette méthode est qu'elle nécessite autant de getter/setter que de champs, ce qui peut vite vous amener à écrire beaucoup de code lorsque vous avez de gros formulaires. Je vous propose une astuce pour simplifier tout ça.</p>
-<p>On va s'inspirer des helpers <span class="inline-code">mapState</span>, <span class="inline-code">mapGetters</span> et <span class="inline-code">mapActions</span> de Vuex.</p>
+<p>On va s'inspirer des helpers <code class="code-inline" id="efde5407efde52376a9d88b23cf1bd7b">mapState</code>, <code class="code-inline" id="5983f2437b4348c81ebc76032eaa6c8b">mapGetters</code> et <code class="code-inline" id="bb015b733b7fcdbbf57dee47b7a5a4ab">mapActions</code> de Vuex.</p>
 <p>Par exemple :</p>
-<code id="36428d8c65b77e03c231a648957169f8">&lt;script&gt;
+<pre class="code-multiline"><code id="36428d8c65b77e03c231a648957169f8">&lt;script&gt;
 export default {
   computed: {
     ...mapState(['foobar', 'barfoo'])
   }
 }
-&lt;/script&gt;</code>
+&lt;/script&gt;</code></pre>
 <p>Permet d'obtenir le même résultat que :</p>
-<code id="e7f1b87671584c45777912fd3e7ff328">&lt;script&gt;
+<pre class="code-multiline"><code id="e7f1b87671584c45777912fd3e7ff328">&lt;script&gt;
 export default {
   computed: {
     foobar() {
@@ -247,9 +247,9 @@ export default {
     }
   }
 }
-&lt;/script&gt;</code>
-<p>Cela permet de réduire considérablement la quantité de code lorsque l'on a un grand nombre de variables à mapper. On va donc créer une fonction similaire à <span class="inline-code">mapState</span> qui ne va pas seulement créer de simples <span class="inline-code">computed</span> mais également les getters et setters nécessaires au Two-Way Binding.</p>
-<code id="f8e2b8fc8eb660903d7cc8996bf99a47">function mapFields(fields) {
+&lt;/script&gt;</code></pre>
+<p>Cela permet de réduire considérablement la quantité de code lorsque l'on a un grand nombre de variables à mapper. On va donc créer une fonction similaire à <code class="code-inline" id="efde5407efde52376a9d88b23cf1bd7b">mapState</code> qui ne va pas seulement créer de simples <code class="code-inline" id="5a317d3dd3f7a2f675975a6d0c11c629">computed</code> mais également les getters et setters nécessaires au Two-Way Binding.</p>
+<pre class="code-multiline"><code id="f8e2b8fc8eb660903d7cc8996bf99a47">function mapFields(fields) {
   let computeds = {}
 
   for (field of fields) {
@@ -264,9 +264,9 @@ export default {
   }
 
   return computeds
-}</code>
+}</code></pre>
 <p>Vous pouvez désormais utiliser cette fonction avec le <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/Syntaxe_d%C3%A9composition" target="_blank">spread operator</a> pour générer vos computed properties.</p>
-<code id="10da1960e3dd5f74d021b36aeb610ab3">&lt;script&gt;
+<pre class="code-multiline"><code id="10da1960e3dd5f74d021b36aeb610ab3">&lt;script&gt;
 export default {
   computed: {
     ...mapFields(['foobar', 'barfoo'])
@@ -279,9 +279,9 @@ export default {
     &lt;input type="text" v-model="foobar" /&gt;
     &lt;input type="text" v-model="barfoo" /&gt;
   &lt;/form&gt;
-&lt;/template&gt;</code>
-<p>Ici, cela nécessite évidemment que vous disposiez des mutations pour chacune de vos variables nommées de la même façon (<span class="inline-code">UPDATE_FOOBAR</span> et <span class="inline-code">UPDATE_BARFOO</span>).</p>
-<code id="2f0916608f1913a2e6b45d15a3d82947">new Vuex.Store({
+&lt;/template&gt;</code></pre>
+<p>Ici, cela nécessite évidemment que vous disposiez des mutations pour chacune de vos variables nommées de la même façon (<code class="code-inline" id="277b85a1bf0deb91fba91f3f5a9fc664">UPDATE_FOOBAR</code> et <code class="code-inline" id="db06a11579f865e3288db6eeb8a3dd9f">UPDATE_BARFOO</code>).</p>
+<pre class="code-multiline"><code id="2f0916608f1913a2e6b45d15a3d82947">new Vuex.Store({
   state: {
     foobar: null,
     barfoo: null,
@@ -290,9 +290,9 @@ export default {
     UPDATE_FOOBAR (state, value) { state.foobar = value },
     UPDATE_BARFOO (state, value) { state.barfoo = value },
   }
-})</code>
+})</code></pre>
 <p>Vous pouvez bien entendu complexifier cette fonction selon vos besoins et vos habitudes ou en créer plusieurs correspondant à vos différents use-cases. L'idée peut être même appliquée à d'autres cas que les computed et le <strong>two-way binding</strong>. On peut par exemple imaginer des fonctions pour générer des méthodes ou watchers.</p>
-<code id="f95e082d30e2e0b47c78bbaf268578ae">function mapWatcher(fields) {
+<pre class="code-multiline"><code id="f95e082d30e2e0b47c78bbaf268578ae">function mapWatcher(fields) {
   let watchers = {}
 
   for (field of fields) {
@@ -302,13 +302,13 @@ export default {
   }
 
   return watchers
-}</code>
+}</code></pre>
 <p>Cette fonction permet de créer un watcher qui émettra un événement à la modification pour chaque propriété passée en argument.</p>
-<code id="02da82502182bd5165d1a8cf84478118">export default {
+<pre class="code-multiline"><code id="02da82502182bd5165d1a8cf84478118">export default {
   watch: {
     ...mapWatcher(['foobar', 'barfoo'])
   }
-}</code></body>
+}</code></pre></body>
   </div>
 
   <div>

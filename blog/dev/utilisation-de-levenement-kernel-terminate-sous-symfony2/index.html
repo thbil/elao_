@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/tbessoussa.jpg" />
     <p>Écrit par Tristan BESSOUSSA<p>
     <p>Publication 18 juillet 2013<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -191,14 +191,14 @@
 ![Utilisation de lévènement kernel.terminate sous Symfony2" width="488" height="522](/images/posts/2013/1331.png)
 </div>
 <p>Concrètement, vous pouvez quasiment tout faire si vous utilisez cet évènement. A une chose près : votre traitement ne doit pas altérer la réponse. Pourquoi ? Parce qu'il est déclenché après que la réponse soit envoyé au client. Il n'y à donc plus moyen d'y rajouter des informations ou d'en altérer son contenu dans le but de l'envoyer au client. (Attention kernel.terminate a été rajouté en Symfony2.1, donc si vous êtes encore en 2.0, vous pouvez oublier).</p>
-<code id="38c7dd195387b31fd56c1084d99ce24d" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="38c7dd195387b31fd56c1084d99ce24d"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token comment">// ...</span>
 
 <span class="token variable">$response</span> <span class="token operator">=</span> <span class="token variable">$kernel</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">handle</span><span class="token punctuation">(</span><span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token variable">$response</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token variable">$kernel</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">terminate</span><span class="token punctuation">(</span><span class="token variable">$request</span><span class="token punctuation">,</span> <span class="token variable">$response</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code>
+<span class="token variable">$kernel</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">terminate</span><span class="token punctuation">(</span><span class="token variable">$request</span><span class="token punctuation">,</span> <span class="token variable">$response</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
 <p>Alors finalement comment le mettre en place ? Voilà un exemple de la classe <em>GuzzleExceptionListener</em> qui écoute 2 évènements.</p>
-<code id="ce7cf8bc2bfee9c2147bf5ded3bfbf88" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="ce7cf8bc2bfee9c2147bf5ded3bfbf88"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">Tristanbes<span class="token punctuation">\</span>ElophantBundle<span class="token punctuation">\</span>EventListener</span><span class="token punctuation">;</span>
 
@@ -245,12 +245,12 @@
 
         <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">statsManager</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addFail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
-<code id="54341154ae203de4bb1c9c775b40e6d6" class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>service</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tristanbes_elophant.guzzle_exception_eventlistener<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>%tristanbes_elophant.guzzle.exception.class%<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token punctuation">}</span></span></code></pre>
+<pre class="code-multiline language-xml"><code class="language-xml" id="54341154ae203de4bb1c9c775b40e6d6"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>service</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tristanbes_elophant.guzzle_exception_eventlistener<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>%tristanbes_elophant.guzzle.exception.class%<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tag</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>kernel.event_listener<span class="token punctuation">"</span></span> <span class="token attr-name">event</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>kernel.exception<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>onKernelException<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>;
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tag</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>kernel.event_listener<span class="token punctuation">"</span></span> <span class="token attr-name">event</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>kernel.terminate<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>onKernelTerminate<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>;
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>argument</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>service<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tristanbes_elophant.stats.manager<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>;
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>service</span><span class="token punctuation">&gt;</span></span>;</code>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>service</span><span class="token punctuation">&gt;</span></span>;</code></pre>
 <p><strong> Explications : </strong></p>
 <p>Le premier évènement écouté est, <em>kernel.exception. </em>Ce dernier, lorsqu'il sera déclenché, appellera la méthode <em>onKernelException</em> de la classe <em>GuzzleExceptionListener</em> introspectera la classe de l'exception et regardera si celle ci provient d'une erreur renvoyée par Guzzle à la suite d'un appel à un WebService.</p>
 <p>Si c'est le cas, elle modifiera un attribut nommé $fail et renverra une réponse en <em>json au client.</em></p>
@@ -258,7 +258,7 @@
 <p>Ici, on est loin de gagner des secondes sur la réponse, en effet, incrémenter une valeur en base de données est loin d'être une opération "lourde", alors pourquoi passer par kernel.terminate ? Parce qu'on peut, alors pourquoi se priver même pour de la "micro" optim ?</p>
 <p>Attention cependant à bien débugger votre code, car vous ne verrez aucun output étant donné que la réponse est déjà envoyée.</p>
 <p>A savoir que vous pouvez aussi ajoutez un listener directement depuis le dispatcher de Symfony2. Voilà un example avec l'utilisation d'une closure :</p>
-<code id="47200e9aa53d3fdf552b14b312c557bd" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="47200e9aa53d3fdf552b14b312c557bd"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">Tristanbes<span class="token punctuation">\</span>ElophantBundle<span class="token punctuation">\</span>EventListener</span><span class="token punctuation">;</span>
 
@@ -302,12 +302,12 @@
             <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
-<code id="7059238c4184510630bc4c34552a38c7" class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>service</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tristanbes_elophant.guzzle_exception_eventlistener<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>%tristanbes_elophant.guzzle.exception.class%<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>;
+<span class="token punctuation">}</span></span></code></pre>
+<pre class="code-multiline language-xml"><code class="language-xml" id="7059238c4184510630bc4c34552a38c7"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>service</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tristanbes_elophant.guzzle_exception_eventlistener<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>%tristanbes_elophant.guzzle.exception.class%<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>;
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tag</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>kernel.event_listener<span class="token punctuation">"</span></span> <span class="token attr-name">event</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>kernel.exception<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>onKernelException<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>;
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>argument</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>service<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tristanbes_elophant.stats.manager<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>;
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>argument</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>service<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>event_dispatcher<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>;
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>service</span><span class="token punctuation">&gt;</span></span></code></body>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>service</span><span class="token punctuation">&gt;</span></span></code></pre></body>
   </div>
 
   <div>

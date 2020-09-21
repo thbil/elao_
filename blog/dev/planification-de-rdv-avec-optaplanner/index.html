@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/authors/rhanna.jpg" />
     <p>Écrit par Richard HANNA<p>
     <p>Publication 10 octobre 2017<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -266,7 +266,7 @@ et l’adapter petit à petit.</p>
 <p class="text-center">
     <img src="/images/posts/2017/planification-de-rdv-avec-optaplanner/model-annotations.png" alt="Modèle" id="mod-le"></p>
 <p>Voici un extrait du code de MeetingSchedule :</p>
-<code id="80cec02456f721d7f5b92aa9adcb90ed" class="language-java"><span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>optaplanner<span class="token punctuation">.</span>core<span class="token punctuation">.</span>api<span class="token punctuation">.</span>domain<span class="token punctuation">.</span>solution<span class="token punctuation">.</span></span><span class="token class-name">PlanningEntityCollectionProperty</span><span class="token punctuation">;</span>
+<pre class="code-multiline language-java"><code class="language-java" id="80cec02456f721d7f5b92aa9adcb90ed"><span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>optaplanner<span class="token punctuation">.</span>core<span class="token punctuation">.</span>api<span class="token punctuation">.</span>domain<span class="token punctuation">.</span>solution<span class="token punctuation">.</span></span><span class="token class-name">PlanningEntityCollectionProperty</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>optaplanner<span class="token punctuation">.</span>core<span class="token punctuation">.</span>api<span class="token punctuation">.</span>domain<span class="token punctuation">.</span>solution<span class="token punctuation">.</span></span><span class="token class-name">PlanningScore</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>optaplanner<span class="token punctuation">.</span>core<span class="token punctuation">.</span>api<span class="token punctuation">.</span>domain<span class="token punctuation">.</span>solution<span class="token punctuation">.</span></span><span class="token class-name">PlanningSolution</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>optaplanner<span class="token punctuation">.</span>core<span class="token punctuation">.</span>api<span class="token punctuation">.</span>domain<span class="token punctuation">.</span>solution<span class="token punctuation">.</span>drools<span class="token punctuation">.</span></span><span class="token class-name">ProblemFactCollectionProperty</span><span class="token punctuation">;</span>
@@ -306,9 +306,9 @@ et l’adapter petit à petit.</p>
     <span class="token annotation punctuation">@ProblemFactCollectionProperty</span>
     <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Sheet</span><span class="token punctuation">&gt;</span></span> <span class="token function">getSheetList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> sheetList<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span></code>
+    <span class="token punctuation">}</span></code></pre>
 <p>Et un extrait du code de Meeting :</p>
-<code id="1adf729b3e5b2ea4d951178e5d918783" class="language-java"><span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>optaplanner<span class="token punctuation">.</span>core<span class="token punctuation">.</span>api<span class="token punctuation">.</span>domain<span class="token punctuation">.</span>entity<span class="token punctuation">.</span></span><span class="token class-name">PlanningEntity</span><span class="token punctuation">;</span>
+<pre class="code-multiline language-java"><code class="language-java" id="1adf729b3e5b2ea4d951178e5d918783"><span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>optaplanner<span class="token punctuation">.</span>core<span class="token punctuation">.</span>api<span class="token punctuation">.</span>domain<span class="token punctuation">.</span>entity<span class="token punctuation">.</span></span><span class="token class-name">PlanningEntity</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>optaplanner<span class="token punctuation">.</span>core<span class="token punctuation">.</span>api<span class="token punctuation">.</span>domain<span class="token punctuation">.</span>variable<span class="token punctuation">.</span></span><span class="token class-name">PlanningVariable</span><span class="token punctuation">;</span>
 
 <span class="token annotation punctuation">@PlanningEntity</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -328,7 +328,7 @@ et l’adapter petit à petit.</p>
     <span class="token annotation punctuation">@PlanningVariable</span><span class="token punctuation">(</span>valueRangeProviderRefs <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"spotRange"</span><span class="token punctuation">}</span><span class="token punctuation">,</span> nullable <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
     <span class="token keyword">public</span> <span class="token class-name">Spot</span> <span class="token function">getSpot</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> spot<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span></code>
+    <span class="token punctuation">}</span></code></pre>
 <p>On peut voir que ce code comporte des annotations fournies par OptaPlanner :</p>
 <ul><li><strong>@PlanningSolution</strong> : définit l'entité d'une solution optimale contenant tous les rendez-vous.</li>
 <li><strong>@PlanningEntityCollectionProperty</strong> : définit une collection de <em>PlanningEntity</em>.</li>
@@ -345,25 +345,25 @@ L'idée est que chaque règle va permettre d'agir sur ce score, en pénalisant l
 <h4 id="contrainte-medium">Contrainte "Medium"<a href="#contrainte-medium" class="anchor"></a></h4>
 <p>Il s'agit de l'<strong>objectif</strong> : on souhaite maximiser le nombre de rendez-vous positionnés lors d'un événement.
 Le score de la solution est <strong>pénalisée de -1</strong> pour chaque rendez-vous non positionné :</p>
-<code id="73002452a149c82c70a820d82a010c89" class="language-java">rule <span class="token string">"Assign every meeting"</span>
+<pre class="code-multiline language-java"><code class="language-java" id="73002452a149c82c70a820d82a010c89">rule <span class="token string">"Assign every meeting"</span>
     when
         <span class="token class-name">Meeting</span><span class="token punctuation">(</span><span class="token function">isNotAssigned</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     then
         scoreHolder<span class="token punctuation">.</span><span class="token function">addMediumConstraintMatch</span><span class="token punctuation">(</span>kcontext<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-end</code>
+end</code></pre>
 <h4 id="contrainte-hard">Contrainte "Hard"<a href="#contrainte-hard" class="anchor"></a></h4>
 <p>Ce sont des contraintes ne permettant pas de positionner un rendez-vous.</p>
 <p>Prenons un exemple : le rendez-vous ne peut pas être positionné sur un créneau de rendez-vous si les participants sont
 indisponibles durant ce créneau.</p>
 <p>En langage Drools, on peut appeler une méthode du modèle :</p>
-<code id="5abf7a05ef153d12b0cc88e8b30625e9" class="language-java">rule <span class="token string">"Unavailability conflict"</span>
+<pre class="code-multiline language-java"><code class="language-java" id="5abf7a05ef153d12b0cc88e8b30625e9">rule <span class="token string">"Unavailability conflict"</span>
     when
         <span class="token class-name">Meeting</span><span class="token punctuation">(</span><span class="token function">hasUnavailabilityConflict</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     then
         scoreHolder<span class="token punctuation">.</span><span class="token function">addHardConstraintMatch</span><span class="token punctuation">(</span>kcontext<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-end</code>
+end</code></pre>
 <p>et dans le modèle Meeting :</p>
-<code id="e82e08479d66cdfa5ae33bab5547dcc8" class="language-java"><span class="token annotation punctuation">@PlanningEntity</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class="code-multiline language-java"><code class="language-java" id="e82e08479d66cdfa5ae33bab5547dcc8"><span class="token annotation punctuation">@PlanningEntity</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Meeting</span> <span class="token punctuation">{</span>
     <span class="token comment">// ...</span>
 
@@ -385,11 +385,11 @@ end</code>
         <span class="token punctuation">}</span>
 
         <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span></code>
+    <span class="token punctuation">}</span></code></pre>
 <p>Prenons un exemple un peu plus complexe :
 lorsque la fiche de participant a consommé tous ses crédits de rendez-vous, il n'est pas possible de lui positionner un
 nouveau rendez-vous :</p>
-<code id="4b806ff616fb86bf078001ca91bf6c9e" class="language-java">rule <span class="token string">"Sheet do not have enought meetings quantity conflict"</span>
+<pre class="code-multiline language-java"><code class="language-java" id="4b806ff616fb86bf078001ca91bf6c9e">rule <span class="token string">"Sheet do not have enought meetings quantity conflict"</span>
     when
         $sheet <span class="token operator">:</span> <span class="token class-name">Sheet</span><span class="token punctuation">(</span>$possibleMeetingsQuantity <span class="token operator">:</span> possibleMeetingsQuantity<span class="token punctuation">)</span>
         <span class="token function">accumulate</span><span class="token punctuation">(</span>
@@ -399,14 +399,14 @@ nouveau rendez-vous :</p>
         <span class="token punctuation">)</span>
     then
         scoreHolder<span class="token punctuation">.</span><span class="token function">addHardConstraintMatch</span><span class="token punctuation">(</span>kcontext<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-end</code>
+end</code></pre>
 <h4 id="contrainte-soft">Contrainte "Soft"<a href="#contrainte-soft" class="anchor"></a></h4>
 <p>Ce sont les contraintes qui permettent d'optimiser la satisfaction des participants ou d'optimiser l'utilisation des
 ressources.</p>
 <p>Par exemple, nous allons satisfaire équitablement chaque participant en fonction du nombre de rendez-vous possibles.
 Pour cela, il faut calculer un ratio de nombre de rendez-vous positionnés sur le nombre de rendez-vous à positionner et
 pénaliser de -1 par palier de 10% :</p>
-<code id="b1aaeeac7da96907ab1de43a7aa9014d" class="language-java">rule <span class="token string">"Satisfaction : add -1 point penalty per 10% satisfaction = meetings assigned / possibleMeetingsQuantity"</span>
+<pre class="code-multiline language-java"><code class="language-java" id="b1aaeeac7da96907ab1de43a7aa9014d">rule <span class="token string">"Satisfaction : add -1 point penalty per 10% satisfaction = meetings assigned / possibleMeetingsQuantity"</span>
     when
         $sheet <span class="token operator">:</span> <span class="token class-name">Sheet</span><span class="token punctuation">(</span>possibleMeetingsQuantity <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">,</span> $possibleMeetingsQuantity <span class="token operator">:</span> possibleMeetingsQuantity<span class="token punctuation">)</span>
         <span class="token function">accumulate</span><span class="token punctuation">(</span>
@@ -415,10 +415,10 @@ pénaliser de -1 par palier de 10% :</p>
         <span class="token punctuation">)</span>
     then
         scoreHolder<span class="token punctuation">.</span><span class="token function">addSoftConstraintMatch</span><span class="token punctuation">(</span>kcontext<span class="token punctuation">,</span> <span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">ceil</span><span class="token punctuation">(</span><span class="token number">10</span> <span class="token operator">-</span> <span class="token number">10</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span> $meetingCount <span class="token operator">/</span> $possibleMeetingsQuantity<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-end</code>
+end</code></pre>
 <h2 id="le-solveur">Le solveur<a href="#le-solveur" class="anchor"></a></h2>
 <p>Notre configuration du solveur solver-config.xml :</p>
-<code id="2de67e17e965a714526a8589d39b5c84" class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<pre class="code-multiline language-xml"><code class="language-xml" id="2de67e17e965a714526a8589d39b5c84"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>solver</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>solutionClass</span><span class="token punctuation">&gt;</span></span>org.vimeet.meetings.domain.MeetingSchedule<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>solutionClass</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>entityClass</span><span class="token punctuation">&gt;</span></span>org.vimeet.meetings.domain.Meeting<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>entityClass</span><span class="token punctuation">&gt;</span></span>
@@ -442,13 +442,13 @@ end</code>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>termination</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>minutesSpentLimit</span><span class="token punctuation">&gt;</span></span>30<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>minutesSpentLimit</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>termination</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>solver</span><span class="token punctuation">&gt;</span></span></code>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>solver</span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>Le solveur peut être configuré finement. Ici on alterne les phases de construction heuristique et la recherche
 locale.
 Enfin avec le paramètre <em>termination / minutesSpentLimit</em> on fixe le temps total de calcul à 30 minutes.</p>
 <p>On injecte au solveur nos données <em>meetings-not-solved.xml</em> contenant notre modèle de données avec des rendez-vous
 sans créneau ni lieu (<em>spot</em> et <em>slot</em> à null) et les ressources disponibles (créneaux, lieux, utilisateurs...) :</p>
-<code id="fad00446a83eef13597db44b282a979b" class="language-java"><span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>optaplanner<span class="token punctuation">.</span>core<span class="token punctuation">.</span>api<span class="token punctuation">.</span>solver<span class="token punctuation">.</span></span><span class="token class-name">Solver</span><span class="token punctuation">;</span>
+<pre class="code-multiline language-java"><code class="language-java" id="fad00446a83eef13597db44b282a979b"><span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>optaplanner<span class="token punctuation">.</span>core<span class="token punctuation">.</span>api<span class="token punctuation">.</span>solver<span class="token punctuation">.</span></span><span class="token class-name">Solver</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>optaplanner<span class="token punctuation">.</span>core<span class="token punctuation">.</span>api<span class="token punctuation">.</span>solver<span class="token punctuation">.</span></span><span class="token class-name">SolverFactory</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>optaplanner<span class="token punctuation">.</span>meetings<span class="token punctuation">.</span>common<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span></span><span class="token class-name">SolutionDao</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>optaplanner<span class="token punctuation">.</span>meetings<span class="token punctuation">.</span>meetings<span class="token punctuation">.</span>domain<span class="token punctuation">.</span></span><span class="token class-name">Meeting</span><span class="token punctuation">;</span>
@@ -475,7 +475,7 @@ sans créneau ni lieu (<em>spot</em> et <em>slot</em> à null) et les ressources
 
         <span class="token comment">// Write the solution</span>
         meetingsDao<span class="token punctuation">.</span><span class="token function">writeSolution</span><span class="token punctuation">(</span>solvedMeetingSchedule<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token string">"path/to/meetings-solved.xml"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span></code>
+    <span class="token punctuation">}</span></code></pre>
 <h2 id="demo">Demo<a href="#demo" class="anchor"></a></h2>
 <p>Visualisation d'une solution optimale des plannings de rendez-vous des participants d'un événement :</p>
 <p class="text-center">

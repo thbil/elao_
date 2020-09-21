@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/tbessoussa.jpg" />
     <p>Écrit par Tristan BESSOUSSA<p>
     <p>Publication 28 février 2013<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -185,14 +185,14 @@
 <p>With the support of subdomains in the Symfony 2.2 routing component, you're all excited and decide to take advantage of that feature.</p>
 <h3 id="problem">Problem 1<a href="#problem" class="anchor"></a></h3>
 <p>Once you've opened one or more dedicated routes involving a subdomain, your users keep complaining about your application asking them to re-auth although they did it 5 minutes ago. Yeah, that's right, the session isn't shared across main domain and the subdomain.</p>
-<p><strong>Cause :</strong> You forgot to set the path of the session cookie to a value that allows session sharing for all your subdomains too. By default, the value of <em>cookie_domain</em> takes the current domain from <span class="inline-code">$_SERVER</span> superglobal (which will in most case will output www.my-domain.com).</p>
-<p><strong>Solution :</strong> Add to your config.yml under the <em>session</em> key <span class="inline-code">cookie_domain : .my-domain.com</span>. Just see the gist below for the example. If you use the <span class="inline-code">remember_me</span> feature, don't forget to change the domain value of <span class="inline-code">security.yml</span> (see the 2nd gist).</p>
+<p><strong>Cause :</strong> You forgot to set the path of the session cookie to a value that allows session sharing for all your subdomains too. By default, the value of <em>cookie_domain</em> takes the current domain from <code class="code-inline" id="74cf5004d8aceafd2531cc620a36c278">$_SERVER</code> superglobal (which will in most case will output www.my-domain.com).</p>
+<p><strong>Solution :</strong> Add to your config.yml under the <em>session</em> key <code class="code-inline" id="2e290ec383073b4dbe58c4c051c94660">cookie_domain : .my-domain.com</code>. Just see the gist below for the example. If you use the <code class="code-inline" id="ea2bff02d99c26cb38c1b87b2a434604">remember_me</code> feature, don't forget to change the domain value of <code class="code-inline" id="9818925d214309e5b3cbbee315600a8a">security.yml</code> (see the 2nd gist).</p>
 <h3 id="problem">Problem 2<a href="#problem" class="anchor"></a></h3>
 <p>Once you've deployed the fix on your dev-preprod-prod server (choose the right stage according whether you like risks or not), you keep trying to login with your credentials without being actually logged in (and of course, no errors are logged).</p>
-<p><strong>Cause :</strong> If you open any tool which let us visualize the cookies stored by a website, you'll figure out soon that you have 2 cookies <span class="inline-code">PHPSESSID</span> with differents values in the domain (one with www.my-domain.com and the other with .my-domain.com).</p>
+<p><strong>Cause :</strong> If you open any tool which let us visualize the cookies stored by a website, you'll figure out soon that you have 2 cookies <code class="code-inline" id="754d3b148df7a597947f5556cbe06628">PHPSESSID</code> with differents values in the domain (one with www.my-domain.com and the other with .my-domain.com).</p>
 <p><strong>Solution :</strong> Change the name of the session cookie. It will prevent conflicts which will lead to a silent login failure.</p>
 <p>There you are, with your subdomain ready application. Enjoy.</p>
-<code id="35f6016f8ec9203fae2f4577c9586438" class="language-yaml"><span class="token key atrule">framework</span><span class="token punctuation">:</span>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="35f6016f8ec9203fae2f4577c9586438"><span class="token key atrule">framework</span><span class="token punctuation">:</span>
     <span class="token key atrule">esi</span><span class="token punctuation">:</span>             <span class="token punctuation">{</span> <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token punctuation">}</span>
     <span class="token key atrule">translator</span><span class="token punctuation">:</span>      <span class="token punctuation">{</span> <span class="token key atrule">fallback</span><span class="token punctuation">:</span> %locale% <span class="token punctuation">}</span>
     <span class="token key atrule">secret</span><span class="token punctuation">:</span>          %secret%
@@ -212,13 +212,13 @@
         <span class="token key atrule">save_path</span><span class="token punctuation">:</span> %kernel.root_dir%/var/sessions
         <span class="token key atrule">cookie_domain</span><span class="token punctuation">:</span> .my<span class="token punctuation">-</span>domain.com
         <span class="token key atrule">name</span><span class="token punctuation">:</span> SFSESSID
-    <span class="token key atrule">fragments</span><span class="token punctuation">:</span>       <span class="token null important">~</span></code>
-<code id="c60f5534308853b7fadbe471bf3eddca" class="language-yaml"><span class="token key atrule">main</span><span class="token punctuation">:</span>
+    <span class="token key atrule">fragments</span><span class="token punctuation">:</span>       <span class="token null important">~</span></code></pre>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="c60f5534308853b7fadbe471bf3eddca"><span class="token key atrule">main</span><span class="token punctuation">:</span>
     <span class="token key atrule">remember_me</span><span class="token punctuation">:</span>
         <span class="token key atrule">key</span><span class="token punctuation">:</span>      <span class="token string">"%secret%"</span>
         <span class="token key atrule">lifetime</span><span class="token punctuation">:</span> <span class="token number">31536000</span>
         <span class="token key atrule">path</span><span class="token punctuation">:</span>     /
-        <span class="token key atrule">domain</span><span class="token punctuation">:</span>   .my<span class="token punctuation">-</span>domain.com <span class="token comment"># Defaults to the current domain from $_SERVER</span></code></body>
+        <span class="token key atrule">domain</span><span class="token punctuation">:</span>   .my<span class="token punctuation">-</span>domain.com <span class="token comment"># Defaults to the current domain from $_SERVER</span></code></pre></body>
   </div>
 
   <div>

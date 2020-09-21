@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/authors/rhanna.jpg" />
     <p>Écrit par Richard HANNA<p>
     <p>Publication 5 décembre 2016<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -217,25 +217,25 @@ Dans les transports souterrains, dans un lieu confiné ou dans de lointaines cam
 mais celle-ci est dépréciée au profit du <a href="https://developer.mozilla.org/fr/docs/Web/API/Service_Worker_API/Using_Service_Workers" target="_blank">Service Worker</a>.</p>
 <h3 id="comment-a-marche">Comment ça marche ?<a href="#comment-a-marche" class="anchor"></a></h3>
 <p>Un service worker est déclaré ainsi dans le code JavaScript de vos pages :</p>
-<code id="e9c4570ade762079d0c0d3d9563b5061" class="language-js"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">'serviceWorker'</span> <span class="token keyword">in</span> <span class="token dom variable">navigator</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="code-multiline language-js"><code class="language-js" id="e9c4570ade762079d0c0d3d9563b5061"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">'serviceWorker'</span> <span class="token keyword">in</span> <span class="token dom variable">navigator</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'load'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token dom variable">navigator</span><span class="token punctuation">.</span><span class="token property-access">serviceWorker</span><span class="token punctuation">.</span><span class="token method function property-access">register</span><span class="token punctuation">(</span><span class="token string">'/service-worker.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code>
+<span class="token punctuation">}</span></code></pre>
 <p>On dit alors que le Service Worker est "<em>registered</em>" dans le navigateur.
 De plus, le scope est très important : /service-worker.js à la racine du domaine signifie que le service worker est disponible pour l'ensemble du domaine.
 S'il était dans un répertoire /blog/service-worker.js, il ne fonctionnerait que sur les pages dont les urls commencent par /blog/.</p>
 <p>Et notre service-worker.js dans tout ça ? Et bien, il contient des écouteurs d'évènements :</p>
-<code id="724e40f36427e3aa447a557a0bf85741" class="language-js">self<span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'install'</span><span class="token punctuation">,</span> <span class="token parameter">event</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
+<pre class="code-multiline language-js"><code class="language-js" id="724e40f36427e3aa447a557a0bf85741">self<span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'install'</span><span class="token punctuation">,</span> <span class="token parameter">event</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'Service worker install'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 self<span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'activate'</span><span class="token punctuation">,</span> <span class="token parameter">event</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'Service worker ready'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h3 id="gestion-du-cache">Gestion du cache<a href="#gestion-du-cache" class="anchor"></a></h3>
 <p>La mise en cache de ressources se fait ainsi dans notre Service Worker :</p>
-<code id="ef07ec97ab1835c55f0e1b6f2474765c" class="language-js"><span class="token keyword">var</span> <span class="token constant">CACHE_NAME</span> <span class="token operator">=</span> <span class="token string">'my-cache-v1'</span><span class="token punctuation">;</span>
+<pre class="code-multiline language-js"><code class="language-js" id="ef07ec97ab1835c55f0e1b6f2474765c"><span class="token keyword">var</span> <span class="token constant">CACHE_NAME</span> <span class="token operator">=</span> <span class="token string">'my-cache-v1'</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> urlsToCache <span class="token operator">=</span> <span class="token punctuation">[</span>
   <span class="token string">'/'</span><span class="token punctuation">,</span>
   <span class="token string">'/styles/main.css'</span><span class="token punctuation">,</span>
@@ -249,10 +249,10 @@ self<span class="token punctuation">.</span><span class="token method function p
         <span class="token keyword">return</span> cache<span class="token punctuation">.</span><span class="token method function property-access">addAll</span><span class="token punctuation">(</span>urlsToCache<span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>La récupération de ressources en cache se fait en écoutant l'évènement "fetch".
 Si la ressource n'est pas trouvée en cache, on tente notre chance via le réseau :</p>
-<code id="ff2cd0be2c88ec70c5679040c581c06e" class="language-js">self<span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'fetch'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="code-multiline language-js"><code class="language-js" id="ff2cd0be2c88ec70c5679040c581c06e">self<span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'fetch'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   event<span class="token punctuation">.</span><span class="token method function property-access">respondWith</span><span class="token punctuation">(</span>
     caches<span class="token punctuation">.</span><span class="token method function property-access">match</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token property-access">request</span><span class="token punctuation">)</span>
       <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -265,9 +265,9 @@ Si la ressource n'est pas trouvée en cache, on tente notre chance via le résea
       <span class="token punctuation">}</span>
     <span class="token punctuation">)</span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Modifions notre code précédent pour mettre en cache la ressource récupérée du réseau :</p>
-<code id="9422435414994d6f4d4a4bab0832f4b7" class="language-js"><span class="token comment">// we need to clone the response.</span>
+<pre class="code-multiline language-js"><code class="language-js" id="9422435414994d6f4d4a4bab0832f4b7"><span class="token comment">// we need to clone the response.</span>
 <span class="token keyword">var</span> fetchRequest <span class="token operator">=</span> event<span class="token punctuation">.</span><span class="token property-access">request</span><span class="token punctuation">.</span><span class="token method function property-access">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">return</span> <span class="token function">fetch</span><span class="token punctuation">(</span>fetchRequest<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span>
@@ -287,14 +287,14 @@ Si la ressource n'est pas trouvée en cache, on tente notre chance via le résea
 
     <span class="token keyword">return</span> response<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span></code>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Il s'agit ici d'un exemple simple. La gestion du cache n'est pas forcément triviale.
 De nombreuses stratégies de gestion du cache existent.
 Jake Archibald, un des ingénieurs de Google a écrit un article complet à ce sujet : <a href="https://jakearchibald.com/2014/offline-cookbook/" target="_blank">The offline cookbook</a>.
 Il n'y a pas de "meilleure solution"; tout dépendra de votre besoin.</p>
 <h3 id="mise-jour-d-un-service-worker">Mise à jour d'un Service Worker<a href="#mise-jour-d-un-service-worker" class="anchor"></a></h3>
 <p>Pour mettre à jour un Service Worker ou les ressources mises en cache par le Service Worker, il faut supprimer les ressources en cache.</p>
-<code id="39d805549ac78676dc38503644ceeb57" class="language-js">self<span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'activate'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="code-multiline language-js"><code class="language-js" id="39d805549ac78676dc38503644ceeb57">self<span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'activate'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">var</span> cacheWhitelist <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'pages-cache-v1'</span><span class="token punctuation">,</span> <span class="token string">'blog-posts-cache-v1'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
   event<span class="token punctuation">.</span><span class="token method function property-access">waitUntil</span><span class="token punctuation">(</span>
@@ -308,7 +308,7 @@ Il n'y a pas de "meilleure solution"; tout dépendra de votre besoin.</p>
       <span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Les nouvelles versions des fichiers seront alors récupérées au prochain chargement de la page, via l'évènement "install" vu plus haut dans cet article.</p>
 <h3 id="architecture">Architecture<a href="#architecture" class="anchor"></a></h3>
 <p>Pour booster vos web apps, il est recommandé d'opter pour une architecture de type "App Shell".
@@ -329,7 +329,7 @@ offrant aux utilisateurs un accès plus rapide.</p>
 <p class="text-center">
     <img src="/images/posts/2016/pwa/splashscreen.gif" alt="splashscreen" style="max-width:80%" id="splashscreen"></p>
 <p>Ce Web App Manifest se présente sous forme d'un fichier json :</p>
-<code id="0896c690edd9ccd39b2c1244905a3083" class="language-json"><span class="token punctuation">{</span>
+<pre class="code-multiline language-json"><code class="language-json" id="0896c690edd9ccd39b2c1244905a3083"><span class="token punctuation">{</span>
   <span class="token property">"short_name"</span><span class="token operator">:</span> <span class="token string">"Elao App"</span><span class="token punctuation">,</span>
   <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Elao, agence web agile"</span><span class="token punctuation">,</span>
   <span class="token property">"icons"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
@@ -352,13 +352,13 @@ offrant aux utilisateurs un accès plus rapide.</p>
   <span class="token property">"start_url"</span><span class="token operator">:</span> <span class="token string">"/?utm_source=homescreen"</span><span class="token punctuation">,</span>
   <span class="token property">"background_color"</span><span class="token operator">:</span> <span class="token string">"#2196F3"</span><span class="token punctuation">,</span>
   <span class="token property">"display"</span><span class="token operator">:</span> <span class="token string">"standalone"</span>
-<span class="token punctuation">}</span></code>
+<span class="token punctuation">}</span></code></pre>
 <p>À noter :</p>
 <ul><li>Dans notre <em>start_url</em> on a inséré un paramètre <em>utm_source</em> pour collecter par exemple via Analytics les stats utilisateurs ayant installé l'app sur leur écran d'accueil.</li>
 <li>Pour simuler un affichage de style App native dans notre navigateur, c'est à dire sans l'interface du navigateur, on a spécifié pour "display" la valeur "standalone". Sinon on peut utiliser la valeur par défaut "browser".</li>
-<li>De plus, on peut forcer l'orientation de l'affichage, par exemple en mode paysage cela donne <span class="inline-code">"orientation": "landscape"</span>.</li>
-</ul><p>Dans votre <span class="inline-code">&lt;head&gt;</span> html, il suffit de déclarer votre manifest de la façon suivante :</p>
-<code id="1b3f1ba70d5abf0f24b7813af4ddbc77" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>manifest<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/manifest.json<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code>
+<li>De plus, on peut forcer l'orientation de l'affichage, par exemple en mode paysage cela donne <code class="code-inline" id="7ef0cdb219dc34d0ba1306e0707cd1c8">"orientation": "landscape"</code>.</li>
+</ul><p>Dans votre <code class="code-inline" id="babd0daf38a8ba8a6c33c4d1d354eb56">&lt;head&gt;</code> html, il suffit de déclarer votre manifest de la façon suivante :</p>
+<pre class="code-multiline language-html"><code class="language-html" id="1b3f1ba70d5abf0f24b7813af4ddbc77"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>manifest<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/manifest.json<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 <h3 id="banni-re-d-installation-sur-l">Bannière d'installation sur l'écran d'accueil<a href="#banni-re-d-installation-sur-l" class="anchor"></a></h3>
 <p>À quel moment le "prompt" ou bannière d'installation sur l'écran d'accueil s'affiche ?</p>
 <p>En tant que développeur, il n'est pas possible de déclencher cet évènement.
@@ -372,7 +372,7 @@ Par exemple, les conditions de Chrome sont (liste non exhaustive) :</p>
 Afin qu'il soit sollicité dans le bon timing.
 Par exemple, dans le code ci-dessous, nous allons sauvegarder le prompt en écoutant l'évènement "beforeinstallprompt"
 et différer l'affichage lorsque l'utilisateur aura cliqué sur un bouton :</p>
-<code id="90636ac774159374204a358981d07ab0" class="language-js"><span class="token keyword">var</span> deferredPrompt<span class="token punctuation">;</span>
+<pre class="code-multiline language-js"><code class="language-js" id="90636ac774159374204a358981d07ab0"><span class="token keyword">var</span> deferredPrompt<span class="token punctuation">;</span>
 
 <span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'beforeinstallprompt'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   e<span class="token punctuation">.</span><span class="token method function property-access">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -397,14 +397,14 @@ btnSave<span class="token punctuation">.</span><span class="token method functio
       deferredPrompt <span class="token operator">=</span> <span class="token keyword null nil">null</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h2 id="push-notifications">Push Notifications<a href="#push-notifications" class="anchor"></a></h2>
 <p>Les Push et les Notifications sont deux technologies différentes mais complémentaires :</p>
 <ul><li>l'<a href="https://developer.mozilla.org/en-US/docs/Web/API/Push_API" target="_blank">API Push</a> est utilisée lorsqu'un serveur sur Internet envoi une notification attrapée et traitée par le service worker sur notre navigateur</li>
 <li>l'<a href="https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API" target="_blank">API Notifications</a> permet au Service Worker d'afficher la notification à l'utilisateur.</li>
 </ul><h3 id="l-api-push-ou-demander-l-util">L'API Push ou demander à l'utilisateur de souscrire aux notifications<a href="#l-api-push-ou-demander-l-util" class="anchor"></a></h3>
 <p>Cela se passe ainsi, non pas dans le Service Worker mais dans le code JavaScript de vos pages :</p>
-<code id="0f48e32ea4a3b6a0a9618ccd26c23126" class="language-js"><span class="token keyword">var</span> swRegistration<span class="token punctuation">;</span>
+<pre class="code-multiline language-js"><code class="language-js" id="0f48e32ea4a3b6a0a9618ccd26c23126"><span class="token keyword">var</span> swRegistration<span class="token punctuation">;</span>
 <span class="token keyword">var</span> isSubscribed <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
 
 <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">'serviceWorker'</span> <span class="token keyword">in</span> <span class="token dom variable">navigator</span> <span class="token operator">&amp;&amp;</span> <span class="token string">'PushManager'</span> <span class="token keyword">in</span> <span class="token dom variable">window</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -453,33 +453,33 @@ btnSave<span class="token punctuation">.</span><span class="token method functio
       <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'Failed to subscribe the user: '</span><span class="token punctuation">,</span> error<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code>
+<span class="token punctuation">}</span></code></pre>
 <p>Le paramètre "userVisibleOnly: true" est une option mais il est en réalité requis.
 Cela permet de s'engager qu'une notification sera affichée à chaque fois qu'il y aura un Push.</p>
 <p>Et pour en savoir plus sur comment obtenir le paramètre <em>applicationServerKey</em>,
 consultez cet article : <a href="https://developers.google.com/web/fundamentals/engage-and-retain/push-notifications/sending-messages#generating-the-key" target="_blank">Generating the applicationServerKey</a>.</p>
 <p>Exemple d'objet Subscription généré par le navigateur :</p>
-<code id="8095f7edfa82b3d8551a1850feb4aa06" class="language-json"><span class="token punctuation">{</span>
+<pre class="code-multiline language-json"><code class="language-json" id="8095f7edfa82b3d8551a1850feb4aa06"><span class="token punctuation">{</span>
   <span class="token property">"endpoint"</span><span class="token operator">:</span> <span class="token string">"https://example.com/push-service/send/dbDqU8xX10w:APA91b..."</span><span class="token punctuation">,</span>
   <span class="token property">"keys"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"auth"</span><span class="token operator">:</span> <span class="token string">"qLAYRzG9TnUwbprns6H2Ew=="</span><span class="token punctuation">,</span>
     <span class="token property">"p256dh"</span><span class="token operator">:</span> <span class="token string">"BILXd-c1-zuEQYXH\\_tc3qmLq52cggfqqTr\\_ZclwqYl6A7-RX2J0NG3icsw..."</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code>
+<span class="token punctuation">}</span></code></pre>
 <p>Le <em>endpoint</em> dépend du navigateur utilisé et c'est lui même qui vous le fourni.
-Par exemple pour Chrome, c'est un endpoint qui ressemble à ça : <em><a href="https://android.googleapis.com/gcm/send/APA91bHPffi">https://android.googleapis.com/gcm/send/APA91bHPffi</a>...</em></p>
+Par exemple pour Chrome, c'est un endpoint qui ressemble à ça : <em><a href="https://android.googleapis.com/gcm/send/APA91bHPffi" target="_blank">https://android.googleapis.com/gcm/send/APA91bHPffi</a>...</em></p>
 <h3 id="l-api-notifications">L'API Notifications<a href="#l-api-notifications" class="anchor"></a></h3>
 <p>Pour générer une notification Push, votre serveur devra utiliser l'objet Subscription et donc le endpoint fourni.
 Pour voir en détail comment gérer cela, consultez cet article : <a href="https://developers.google.com/web/fundamentals/engage-and-retain/push-notifications/sending-messages" target="_blank">Sending Messages</a>.</p>
 <p>La prise en compte d'une notification est réalisée par le Service Worker, en écoutant un évènement "push" :</p>
-<code id="6cf5968a59a60c22929ba9566a1e7275" class="language-js">self<span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'push'</span><span class="token punctuation">,</span> <span class="token parameter">event</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
+<pre class="code-multiline language-js"><code class="language-js" id="6cf5968a59a60c22929ba9566a1e7275">self<span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'push'</span><span class="token punctuation">,</span> <span class="token parameter">event</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
   event<span class="token punctuation">.</span><span class="token method function property-access">waitUntil</span><span class="token punctuation">(</span>
     <span class="token comment">// Display a notification</span>
     self<span class="token punctuation">.</span><span class="token property-access">registration</span><span class="token punctuation">.</span><span class="token method function property-access">showNotification</span><span class="token punctuation">(</span><span class="token string">'You got a notification!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Une notification ne requis qu'un titre, mais d'autres options sont possibles :</p>
-<code id="3a6413ecbdb228da5e970af53c365852" class="language-js">self<span class="token punctuation">.</span><span class="token property-access">registration</span><span class="token punctuation">.</span><span class="token method function property-access">showNotification</span><span class="token punctuation">(</span><span class="token string">'You got a notification!'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+<pre class="code-multiline language-js"><code class="language-js" id="3a6413ecbdb228da5e970af53c365852">self<span class="token punctuation">.</span><span class="token property-access">registration</span><span class="token punctuation">.</span><span class="token method function property-access">showNotification</span><span class="token punctuation">(</span><span class="token string">'You got a notification!'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
   <span class="token string">"body"</span><span class="token operator">:</span> <span class="token string">"Souhaitez-vous confirmer le rendez-vous du 20/11/2016 avec M. Martin ?"</span><span class="token punctuation">,</span>
   <span class="token string">"icon"</span><span class="token operator">:</span> <span class="token string">"/images/meeting.png"</span><span class="token punctuation">,</span>
   <span class="token string">"tag"</span><span class="token operator">:</span> <span class="token string">"meeting"</span><span class="token punctuation">,</span>
@@ -487,19 +487,19 @@ Pour voir en détail comment gérer cela, consultez cet article : <a href="https
     <span class="token punctuation">{</span> <span class="token string">"action"</span><span class="token operator">:</span> <span class="token string">"yes"</span><span class="token punctuation">,</span> <span class="token string">"title"</span><span class="token operator">:</span> <span class="token string">"Yes"</span><span class="token punctuation">,</span> <span class="token string">"icon"</span><span class="token operator">:</span> <span class="token string">"images/yes.png"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">{</span> <span class="token string">"action"</span><span class="token operator">:</span> <span class="token string">"no"</span><span class="token punctuation">,</span> <span class="token string">"title"</span><span class="token operator">:</span> <span class="token string">"No"</span><span class="token punctuation">,</span> <span class="token string">"icon"</span><span class="token operator">:</span> <span class="token string">"images/no.png"</span> <span class="token punctuation">}</span>
   <span class="token punctuation">]</span>
- <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code>
+ <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Comme vous pouvez le voir, outre le contenu et l'icone de la notification, il est possible :</p>
 <ul><li>de taguer la notification (ici "meeting") afin de permettre de grouper les notifications de même tag,</li>
 <li>de proposer différentes actions pour permettre à l'utilisateur d'interagir avec notre web app directement depuis la notification.</li>
 </ul><p>Deux autres écouteurs sont disponibles pour réaliser des actions lorsque l'utilisateur ouvre ou ferme la notification :</p>
-<code id="cbf5f8af7b4d6b772b49674f8dc33450" class="language-js">self<span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'notificationclick'</span><span class="token punctuation">,</span> <span class="token parameter">event</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
+<pre class="code-multiline language-js"><code class="language-js" id="cbf5f8af7b4d6b772b49674f8dc33450">self<span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'notificationclick'</span><span class="token punctuation">,</span> <span class="token parameter">event</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token comment">// Do something with the event</span>
   event<span class="token punctuation">.</span><span class="token property-access">notification</span><span class="token punctuation">.</span><span class="token method function property-access">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 self<span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'notificationclose'</span><span class="token punctuation">,</span> <span class="token parameter">event</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token comment">// Do something with the event</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Pour en savoir plus sur la gestion des notifications :</p>
 <ul><li><a href="https://developers.google.com/web/fundamentals/engage-and-retain/push-notifications/sending-messages" target="_blank">Sending Messages</a></li>
 <li><a href="https://developers.google.com/web/fundamentals/engage-and-retain/push-notifications/handling-messages" target="_blank">Handling Messages</a>.</li>

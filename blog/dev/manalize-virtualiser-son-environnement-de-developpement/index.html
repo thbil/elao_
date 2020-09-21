@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/tjarrand.jpg" />
     <p>Écrit par Thomas JARRAND<p>
     <p>Publication 29 janvier 2019<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -191,14 +191,14 @@
 <ul><li>(Re)monter et supprimer un projet sans effort sur ma machine à l'aide d'une seule commande.</li>
 <li>Partager le même environnement au sein d'une équipe projet.</li>
 <li>Développer dans des conditions et dans un contexte proches de la prod (même moteur de base de données, même version de PHP, etc.).</li>
-<li>Accéder au projet localement derrière une url intelligible. Ex : <a href="http://monprojet.vm">http://monprojet.vm</a></li>
+<li>Accéder au projet localement derrière une url intelligible. Ex : <a href="http://monprojet.vm" target="_blank">http://monprojet.vm</a></li>
 <li>Pouvoir faire tourner plusieurs projets dépendant de différentes versions de PHP sur sa machine.</li>
 <li>Versionner tout ce contexte projet au même titre que son code source.</li>
 </ul><h2 id="manalizer-son-projet">Manalizer son projet<a href="#manalizer-son-projet" class="anchor"></a></h2>
 <p>Et pour faire ça nous utilisons <strong><a href="http://www.manala.io/" target="_blank">Manala</a></strong>, un outil petit et puissant qui permet de décrire l'environnement de notre projet sous la forme d'une configuration texte, puis de monter et lancer une VM selon cette recette.</p>
 <h3 id="pr-requis">Pré-requis<a href="#pr-requis" class="anchor"></a></h3>
 <p>Tout d'abord, installons l'outil de configuration en ligne de commande dédié : <strong>manalize</strong></p>
-<code id="1c12d82a21d2bf7d92077b9329bdf273">curl -LSs https://raw.githubusercontent.com/manala/manalize/master/installer.php | php</code>
+<pre class="code-multiline"><code id="1c12d82a21d2bf7d92077b9329bdf273">curl -LSs https://raw.githubusercontent.com/manala/manalize/master/installer.php | php</code></pre>
 <p><em>💡 Note :</em> il est aussi possible de <a href="https://github.com/manala/manalize#installation" target="_blank">l'installer via git ou composer</a>.</p>
 <p>Ensuite, Manala s'appuie sur <em>Vagrant</em> et <em>VirtualBox</em> pour créer des machines virtuelles et sur <em>Ansible</em> pour les configurer. Il nous faudra donc <a href="https://github.com/manala/manalize#prerequisites" target="_blank">installer sur notre ordinateur tous ces pré-requis</a> :</p>
 <ul><li><a href="http://php.net" target="_blank">PHP</a></li>
@@ -206,47 +206,51 @@
 <li><a href="https://github.com/vagrant-landrush/landrush" target="_blank">Vagrant Landrush</a></li>
 <li><a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a></li>
 </ul><p><em>💡 Note :</em> manalize est capable de nous confirmer que tous les pré-requis sont correctement installés avec la commande :</p>
-<code id="7a6a99925dca7b39ff83b0e6d327d94a">manalize check:requirements</code>
+<pre class="code-multiline"><code id="7a6a99925dca7b39ff83b0e6d327d94a">manalize check:requirements</code></pre>
 <p>Et voila, nous sommes prêts à manalizer notre projet web !</p>
 <h3 id="au-lancement">Au lancement<a href="#au-lancement" class="anchor"></a></h3>
 <p>Pour l'exemple, je vais créer un nouveau projet <a href="https://symfony.com/download" target="_blank">Symfony</a> vide avec :</p>
-<code id="4e9124da01ad69ef06a89ac4384ee23f">symfony new --full acme
-cd acme</code>
-<img src="/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project.png" alt="" title="" id="empty-symfony-project-png"><img src="/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project_browser.png" alt="" title="" id="empty-symfony-project-browser-pn"><p>Puis créer un environnement virtuel Manala pour cette application :</p>
-<code id="be798b2aba437dca70435f4c6d61d29c">manalize setup .</code>
+<pre class="code-multiline"><code id="4e9124da01ad69ef06a89ac4384ee23f">symfony new --full acme
+cd acme</code></pre>
+<p><img src="/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project.png" alt="" id="empty-symfony-project-png"><img src="/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project_browser.png" alt="" id="empty-symfony-project-browser-pn"></p>
+<p>Puis créer un environnement virtuel Manala pour cette application :</p>
+<pre class="code-multiline"><code id="be798b2aba437dca70435f4c6d61d29c">manalize setup .</code></pre>
 <p>À travers son outil de setup interactif, Manala me demande de faire un certain nombre de choix concernant les technologies nécessaires au fonctionnement de mon projet à intégrer dans la VM.</p>
 <p>Puisque nous travaillons beaucoup avec Symfony chez élao, Manala propose une pré-configuration adaptée aux projets Symfony, embarquant entre autres PHP et Mysql. C'est ce que j'utiliserai ici :</p>
-<img src="/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/setup.png" alt="" title="" id="setup-png"><p><em>💡 Qu'est-ce qui est créé ?</em></p>
-<ul><li><span class="inline-code">Vangrantfile</span> : Décrit les propriétés de la machine virtuelle pour Vagrant.</li>
-<li><span class="inline-code">ansible/.manalize.yml</span> : Fichier de configuration Manala persistant les choix faits lors du setup interactif, à partir duquel sont générés les fichiers de configuration Ansible.</li>
-<li><span class="inline-code">ansible/*.yml</span> : Fichiers de configuration Ansible configurant le système de fichiers de la VM, Nginx, PHP et toute technologie nécessaire au fonctionnement du projet.</li>
-<li><span class="inline-code">Makefile</span> : Liste de commandes Make servant à piloter la VM et le projet depuis la console.</li>
+<p><img src="/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/setup.png" alt="" id="setup-png"></p>
+<p><em>💡 Qu'est-ce qui est créé ?</em></p>
+<ul><li><code class="code-inline" id="12387cce3d2ee154f0b73f9197c96398">Vangrantfile</code> : Décrit les propriétés de la machine virtuelle pour Vagrant.</li>
+<li><code class="code-inline" id="a7596acad1e750b7962fff8ddf129e90">ansible/.manalize.yml</code> : Fichier de configuration Manala persistant les choix faits lors du setup interactif, à partir duquel sont générés les fichiers de configuration Ansible.</li>
+<li><code class="code-inline" id="eccb67d5d171ecdd20bf5c7fbcb9afd1">ansible/*.yml</code> : Fichiers de configuration Ansible configurant le système de fichiers de la VM, Nginx, PHP et toute technologie nécessaire au fonctionnement du projet.</li>
+<li><code class="code-inline" id="b67911656ef5d18c4ae36cb6741b7965">Makefile</code> : Liste de commandes Make servant à piloter la VM et le projet depuis la console.</li>
 </ul><p><em>💡 Note :</em> Ces fichiers font maintenant partie du code source du projet et seront versionnés et publiés dans Git. Ils pourront également évoluer et s'étoffer au fur et à mesure de la vie du projet.</p>
 <h3 id="au-quotidien">Au quotidien<a href="#au-quotidien" class="anchor"></a></h3>
 <h4 id="cr-er-la-vm">Créer la VM<a href="#cr-er-la-vm" class="anchor"></a></h4>
 <p>Lorsque je viens de mettre en place Manala sur mon projet, ou bien lorsque je clone un projet existant, utilisant déjà Manala, sur ma machine hôte; je dois d'abord créer la machine virtuelle :</p>
-<code id="4fd2c64dcfff0125ebf36e5089c49f7c">make setup</code>
+<pre class="code-multiline"><code id="4fd2c64dcfff0125ebf36e5089c49f7c">make setup</code></pre>
 <h4 id="lancer-la-vm">Lancer la VM<a href="#lancer-la-vm" class="anchor"></a></h4>
 <p>Ensuite, je n'aurai plus qu'a lancer cette VM à chaque fois que je démarre mon ordinateur et que je veux développer sur ce projet :</p>
-<code id="34e05760adec124bdbf614a6c496e863">vagrant up</code>
-<p>Mon app est maintenant disponible à l'adresse suivante : <a href="http://acme.vm">http://acme.vm</a></p>
-<img src="/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_in_vm.png" alt="" title="" id="symfony-in-vm-png"><p>Mission accomplie ! 🎉</p>
+<pre class="code-multiline"><code id="34e05760adec124bdbf614a6c496e863">vagrant up</code></pre>
+<p>Mon app est maintenant disponible à l'adresse suivante : <a href="http://acme.vm" target="_blank">http://acme.vm</a></p>
+<p><img src="/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_in_vm.png" alt="" id="symfony-in-vm-png"></p>
+<p>Mission accomplie ! 🎉</p>
 <h4 id="entrer-dans-la-vm">Entrer dans la VM<a href="#entrer-dans-la-vm" class="anchor"></a></h4>
 <p>Mon projet ne tourne pas localement sur mon poste, mais dans une machine virtuelle (c'était le but).</p>
-<p>C'est pourquoi, pour accéder à des fonctions internes comme la console Symfony, je vais devoir lancer <span class="inline-code">bin/console</span> <em>dans</em> la VM; afin que le script s'execute dans le contexte de la VM, avec sa version de PHP et son système de fichiers.</p>
+<p>C'est pourquoi, pour accéder à des fonctions internes comme la console Symfony, je vais devoir lancer <code class="code-inline" id="834e3741acba32abc672bec6be613b2f">bin/console</code> <em>dans</em> la VM; afin que le script s'execute dans le contexte de la VM, avec sa version de PHP et son système de fichiers.</p>
 <p>Pour cela, je me connecte en SSH à la VM (comme je le ferais à un serveur web distant hébergeant mon application), grâce à la commande suivante fournie par vagrant :</p>
-<code id="198135fc83653d13345f16358ba83b5d">vagrant ssh</code>
+<pre class="code-multiline"><code id="198135fc83653d13345f16358ba83b5d">vagrant ssh</code></pre>
 <p>Une fois connecté, je suis dans le répertoire de mon application et peux accéder à la console Symfony :</p>
-<img src="/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_cli_in_vm.png" alt="" title="" id="symfony-cli-in-vm-png"><p><em>💡 Notez le chemin du répertoire courant :</em> je suis dans le système de fichiers de la VM, plus sur ma machine !</p>
+<p><img src="/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_cli_in_vm.png" alt="" id="symfony-cli-in-vm-png"></p>
+<p><em>💡 Notez le chemin du répertoire courant :</em> je suis dans le système de fichiers de la VM, plus sur ma machine !</p>
 <h2 id="le-tester-c-est-l-adopter">Le tester, c'est l'adopter !<a href="#le-tester-c-est-l-adopter" class="anchor"></a></h2>
 <p>Nous utilisons <a href="http://manala.io" target="_blank">Manala</a> depuis plusieurs années pour nos environnements de développement, l'outil est maintenant mature et stable.</p>
 <p>Il est également totalement open-source, disponible et utilisable par tous.</p>
 <p>Vous avez un projet qui tourne localement sur votre machine ?
-Pourquoi ne pas tester un petit <span class="inline-code">manalize setup .</span> dès maintenant et voir votre projet tourner dans un environnement virtuel ?</p>
+Pourquoi ne pas tester un petit <code class="code-inline" id="be798b2aba437dca70435f4c6d61d29c">manalize setup .</code> dès maintenant et voir votre projet tourner dans un environnement virtuel ?</p>
 <h2 id="une-derni-re-chose">Une dernière chose ...<a href="#une-derni-re-chose" class="anchor"></a></h2>
-<p>En 2019, une nouvelle mouture de <span class="inline-code">manalize</span> devrait pointer le bout de son nez, encore plus cool !
+<p>En 2019, une nouvelle mouture de <code class="code-inline" id="f4e13a6099d36e3d648f91bcd0d2fd58">manalize</code> devrait pointer le bout de son nez, encore plus cool !
 Mais ça fera l'objet d'un prochain article. 😉</p>
-<hr><p><span>Photo par <a href="https://unsplash.com/photos/zen35Y3B834">Mark Mühlberger</a> sur <a href="https://unsplash.com">Unsplash</a></span></p></body>
+<hr><p><span>Photo par <a href="https://unsplash.com/photos/zen35Y3B834" target="_blank">Mark Mühlberger</a> sur <a href="https://unsplash.com" target="_blank">Unsplash</a></span></p></body>
   </div>
 
   <div>

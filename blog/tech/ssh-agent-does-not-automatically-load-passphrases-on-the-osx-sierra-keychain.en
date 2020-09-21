@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/gfaivre.jpg" />
     <p>Écrit par Guewen FAIVRE<p>
     <p>Publication 14 octobre 2016<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -183,8 +183,8 @@
     <body><p>Some of us encountered an issue after upgrading to Mac OS Sierra.
 Indeed right after it our ssh keys (<strong>with passphrases</strong>) were not forwarded to the remote hosts anymore.</p>
 <!--more-->
-<p>In previous versions of mac OSX, <span class="inline-code">ssh-agent</span> used to remember the passphrases for the keys added to the keychain (with <span class="inline-code">ssh-add -K</span>) and after a reboot (or logout/login), it automatically picked up the passphrases from the keychain with no extra step and it was perfect !</p>
-<p>Unfortunately after upgrading to Sierra this way no longer works and command <span class="inline-code">ssh-add -K</span> in Sierra no longer saves SSH keys in OS's keychain.</p>
+<p>In previous versions of mac OSX, <code class="code-inline" id="266afd044aec2d88e6aa5ed5f12e0a07">ssh-agent</code> used to remember the passphrases for the keys added to the keychain (with <code class="code-inline" id="c6fb130c7020f2a953c452ee1c4812f9">ssh-add -K</code>) and after a reboot (or logout/login), it automatically picked up the passphrases from the keychain with no extra step and it was perfect !</p>
+<p>Unfortunately after upgrading to Sierra this way no longer works and command <code class="code-inline" id="c6fb130c7020f2a953c452ee1c4812f9">ssh-add -K</code> in Sierra no longer saves SSH keys in OS's keychain.</p>
 <p><strong>Apple Developer stated:</strong></p>
 <blockquote>
 <p>Engineering has determined that this issue behaves as intended based on the following information:
@@ -194,25 +194,25 @@ You can fix this pretty easily by running ssh-add -A in your rc script if you wa
 <p>We still can login to remote hosts via ssh <strong>BUT</strong> ssh keys with passphrase are not forwarded to the host which makes the agent somewhat useless.</p>
 <h1 id="doing-it-manually">Doing it manually<a href="#doing-it-manually" class="anchor"></a></h1>
 <p>If you are fine with the behavior and don't want to store your passphrases into keychain you can do it the old way by manually adding keys to the agent:</p>
-<code id="0a437720001587a76380021490cca3dc">ssh-add -K /path/to/private/key</code>
+<pre class="code-multiline"><code id="0a437720001587a76380021490cca3dc">ssh-add -K /path/to/private/key</code></pre>
 <p>and to add identities to the agent using any passphrases stored in your keychain.</p>
-<code id="2da3bcca27a36bfd821f0b01992ff42c">ssh-add -A</code>
+<pre class="code-multiline"><code id="2da3bcca27a36bfd821f0b01992ff42c">ssh-add -A</code></pre>
 <h1 id="using-ssh-config-file">Using ssh config file<a href="#using-ssh-config-file" class="anchor"></a></h1>
-<p>A permanent (and probably the "cleanest") workaround to this behavior consists in using the new SSH option <span class="inline-code">AddKeysToAgent</span> option in your <span class="inline-code">.ssh/config</span> file as shown below</p>
-<code id="bb4651c63985578ea19d83dd761ac8b5" class="language-shell">Host *
-  AddKeysToAgent <span class="token function">yes</span></code>
+<p>A permanent (and probably the "cleanest") workaround to this behavior consists in using the new SSH option <code class="code-inline" id="28538255e1cdd92033e3b82445477c9c">AddKeysToAgent</code> option in your <code class="code-inline" id="c8c740debe99f7a030e8a35b528b5ddc">.ssh/config</code> file as shown below</p>
+<pre class="code-multiline language-shell"><code class="language-shell" id="bb4651c63985578ea19d83dd761ac8b5">Host *
+  AddKeysToAgent <span class="token function">yes</span></code></pre>
 <p>N.B: This option does not add keys previously saved into the keychain <strong>to the agent on boot;</strong> it adds keys to the agent <strong>on use</strong>.
 In other words, the keys are not added to the agent until you actually use them.</p>
 <p>Furthermore, this option is FreeBSD specific and will result an error on other Unix-like systems.</p>
 <p><strong>You will have to re-enter your passphrase the first time you are using it after a logout or a reboot.</strong></p>
 <h1 id="using-a-profile-dot-file">Using a «profile dot file»<a href="#using-a-profile-dot-file" class="anchor"></a></h1>
-<p>For CLI users a partial solution is to add this to your dot files (<span class="inline-code">.zshrc</span>, <span class="inline-code">.bashrc</span>, <span class="inline-code">.bash_profile</span> ...).</p>
-<code id="2e6f5dcc8860d87b59cbce5c40794725" class="language-shell">ssh-add -K ~/.ssh/my_private_key <span class="token operator">&amp;&gt;</span> /dev/null
-ssh-add -A <span class="token operator">&amp;&gt;</span> /dev/null</code>
+<p>For CLI users a partial solution is to add this to your dot files (<code class="code-inline" id="ec20fb240e117fea7b0049c21edf1ef3">.zshrc</code>, <code class="code-inline" id="85cf9b51417c7cfb8766aa6b56f7edb9">.bashrc</code>, <code class="code-inline" id="9e0037ad71166970bde5f910189cc94a">.bash_profile</code> ...).</p>
+<pre class="code-multiline language-shell"><code class="language-shell" id="2e6f5dcc8860d87b59cbce5c40794725">ssh-add -K ~/.ssh/my_private_key <span class="token operator">&amp;&gt;</span> /dev/null
+ssh-add -A <span class="token operator">&amp;&gt;</span> /dev/null</code></pre>
 <p><strong>This will only be effective when using terminal.</strong></p>
 <h1 id="using-a-launch-agent-non-tested">Using a launch agent (non-tested solution)<a href="#using-a-launch-agent-non-tested" class="anchor"></a></h1>
-<p>The last solution is to call command <span class="inline-code">ssh-add -A</span> on every startup of macOS.</p>
-<code id="58671d4294090bbccf32082b13399686" class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<p>The last solution is to call command <code class="code-inline" id="2da3bcca27a36bfd821f0b01992ff42c">ssh-add -A</code> on every startup of macOS.</p>
+<pre class="code-multiline language-xml"><code class="language-xml" id="58671d4294090bbccf32082b13399686"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">plist</span> <span class="token name">PUBLIC</span> <span class="token string">"-//Apple//DTD PLIST 1.0//EN"</span> <span class="token string">"http://www.apple.com/DTDs/PropertyList-1.0.dtd"</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plist</span> <span class="token attr-name">version</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1.0<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dict</span><span class="token punctuation">&gt;</span></span>
@@ -226,7 +226,7 @@ ssh-add -A <span class="token operator">&amp;&gt;</span> /dev/null</code>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>key</span><span class="token punctuation">&gt;</span></span>RunAtLoad<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>key</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>true</span><span class="token punctuation">/&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dict</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plist</span><span class="token punctuation">&gt;</span></span></code></body>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plist</span><span class="token punctuation">&gt;</span></span></code></pre></body>
   </div>
 
   <div>

@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/tbessoussa.jpg" />
     <p>Écrit par Tristan BESSOUSSA<p>
     <p>Publication 23 novembre 2012<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -189,7 +189,7 @@
 </ul><p><strong>Here's the result we'll have at the end (screenshot from a personal web application) :</strong></p>
 <img src="/en/images/posts/2012/memory_usage.png" alt="graphite" class="outside-left" id="graphite"><img src="/en/images/posts/2012/users.png" alt="graphite" class="" id="graphite"><img src="/en/images/posts/2012/memory_usage.png" alt="graphite" class="outside-right" id="graphite"><h1 id="install-graphite">Install Graphite<a href="#install-graphite" class="anchor"></a></h1>
 <h2 id="installing-graphite-dependencies">Installing graphite dependencies<a href="#installing-graphite-dependencies" class="anchor"></a></h2>
-<code id="98da77ef6d314d18f2a06231320991da" class="language-bash"><span class="token function">apt-get</span> <span class="token function">install</span> -y python2.6 python-pip python-cairo python-django python-django-tagging
+<pre class="code-multiline language-bash"><code class="language-bash" id="98da77ef6d314d18f2a06231320991da"><span class="token function">apt-get</span> <span class="token function">install</span> -y python2.6 python-pip python-cairo python-django python-django-tagging
 <span class="token function">apt-get</span> <span class="token function">install</span> -y libapache2-mod-wsgi python-twisted python-memcache python-pysqlite2 python-simplejson
 pip <span class="token function">install</span> whisper
 pip <span class="token function">install</span> carbon
@@ -197,15 +197,15 @@ pip <span class="token function">install</span> graphite-web
 
 <span class="token comment"># Setup a vhost by grabbing the example the graphite team released on their repo.</span>
 <span class="token comment"># In this file, you'll provide the url used to access to your Graphite dashboard</span>
-<span class="token function">wget</span> https://raw.github.com/tmm1/graphite/master/examples/example-graphite-vhost.conf -O /etc/apache2/sites-available/graphite</code>
-<code id="e417cfd05864ba10eb197dff62ae67d0" class="language-bash"><span class="token comment"># If you are running on a Debian, don't forget to replace in the vhost, the WSGISocketPrefix value by the following:</span>
-WSGISocketPrefix /var/run/apache2/wsgi</code>
+<span class="token function">wget</span> https://raw.github.com/tmm1/graphite/master/examples/example-graphite-vhost.conf -O /etc/apache2/sites-available/graphite</code></pre>
+<pre class="code-multiline language-bash"><code class="language-bash" id="e417cfd05864ba10eb197dff62ae67d0"><span class="token comment"># If you are running on a Debian, don't forget to replace in the vhost, the WSGISocketPrefix value by the following:</span>
+WSGISocketPrefix /var/run/apache2/wsgi</code></pre>
 <h2 id="configuring-graphite">Configuring graphite<a href="#configuring-graphite" class="anchor"></a></h2>
-<code id="4dec963a66a3ef6e1c60b7f78107a8aa" class="language-bash"><span class="token builtin class-name">cd</span> /opt/graphite/conf/
+<pre class="code-multiline language-bash"><code class="language-bash" id="4dec963a66a3ef6e1c60b7f78107a8aa"><span class="token builtin class-name">cd</span> /opt/graphite/conf/
 <span class="token function">cp</span> graphite.wsgi.example graphite.wsgi
 <span class="token function">cp</span> carbon.conf.example carbon.conf
-<span class="token function">cp</span> storage-schemas.conf.example storage-schemas.conf</code>
-<code id="382ad2f3bc7a89867b2447df4477a8a5" class="language-ini"><span class="token comment"># Edit storage-schemas.conf in order to include a custom tweak provided by stats.d</span>
+<span class="token function">cp</span> storage-schemas.conf.example storage-schemas.conf</code></pre>
+<pre class="code-multiline language-ini"><code class="language-ini" id="382ad2f3bc7a89867b2447df4477a8a5"><span class="token comment"># Edit storage-schemas.conf in order to include a custom tweak provided by stats.d</span>
 <span class="token selector">[stats]</span>
 <span class="token constant">pattern</span> <span class="token attr-value"><span class="token punctuation">=</span> ^stats.*</span>
 <span class="token constant">retentions</span> <span class="token attr-value"><span class="token punctuation">=</span> 10:2160,60:10080,600:262974</span>
@@ -216,10 +216,10 @@ WSGISocketPrefix /var/run/apache2/wsgi</code>
 
 <span class="token selector">[default_1min_for_1day]</span>
 <span class="token constant">pattern</span> <span class="token attr-value"><span class="token punctuation">=</span> .*</span>
-<span class="token constant">retentions</span> <span class="token attr-value"><span class="token punctuation">=</span> 60s:1d</span></code>
-<code id="cb0f037e6ee67f65e203394f1c09c211" class="language-bash"><span class="token comment"># Create a vi storage-aggregation.conf</span>
-<span class="token function">vi</span> storage-aggregation.conf</code>
-<code id="fe63e757d5eae401274ffc8fa4b4e89f" class="language-ini"><span class="token comment"># Then copy paste in it the following parameters</span>
+<span class="token constant">retentions</span> <span class="token attr-value"><span class="token punctuation">=</span> 60s:1d</span></code></pre>
+<pre class="code-multiline language-bash"><code class="language-bash" id="cb0f037e6ee67f65e203394f1c09c211"><span class="token comment"># Create a vi storage-aggregation.conf</span>
+<span class="token function">vi</span> storage-aggregation.conf</code></pre>
+<pre class="code-multiline language-ini"><code class="language-ini" id="fe63e757d5eae401274ffc8fa4b4e89f"><span class="token comment"># Then copy paste in it the following parameters</span>
 <span class="token selector">[min]</span>
 <span class="token constant">pattern</span> <span class="token attr-value"><span class="token punctuation">=</span> \.min$</span>
 <span class="token constant">xFilesFactor</span> <span class="token attr-value"><span class="token punctuation">=</span> 0.1</span>
@@ -238,18 +238,18 @@ WSGISocketPrefix /var/run/apache2/wsgi</code>
 <span class="token selector">[default_average]</span>
 <span class="token constant">pattern</span> <span class="token attr-value"><span class="token punctuation">=</span> .*</span>
 <span class="token constant">xFilesFactor</span> <span class="token attr-value"><span class="token punctuation">=</span> 0.3</span>
-<span class="token constant">aggregationMethod</span> <span class="token attr-value"><span class="token punctuation">=</span> average</span></code>
+<span class="token constant">aggregationMethod</span> <span class="token attr-value"><span class="token punctuation">=</span> average</span></code></pre>
 <h1 id="let-s-go-back-to-the-installatio">Let's go back to the installation process<a href="#let-s-go-back-to-the-installatio" class="anchor"></a></h1>
-<code id="cfe5036c5416682c827647795ba43a0d" class="language-bash"><span class="token builtin class-name">cd</span> /opt/graphite/webapp/graphite
+<pre class="code-multiline language-bash"><code class="language-bash" id="cfe5036c5416682c827647795ba43a0d"><span class="token builtin class-name">cd</span> /opt/graphite/webapp/graphite
 python manage.py syncdb
-<span class="token function">chown</span> -R www-data:www-data /opt/graphite/storage/</code>
+<span class="token function">chown</span> -R www-data:www-data /opt/graphite/storage/</code></pre>
 <h2 id="enabling-graphite-host">Enabling graphite host<a href="#enabling-graphite-host" class="anchor"></a></h2>
-<code id="2626d327c365ddfad10f755161da3313" class="language-bash">a2ensite graphite
+<pre class="code-multiline language-bash"><code class="language-bash" id="2626d327c365ddfad10f755161da3313">a2ensite graphite
 /opt/graphite/bin/carbon-cache.py start
-/etc/init.d/apache2 resta</code>
+/etc/init.d/apache2 resta</code></pre>
 <p>If you want the full detail on the graphite, take a look at <a href="http://linuxracker.com/2012/03/31/setting-up-graphite-server-on-debian-squeeze/" target="_blank">the source</a> I used for the installations steps.</p>
 <h1 id="install-stat-d">Install <a href="https://github.com/etsy/statsd" target="_blank">Stat.d</a><a href="#install-stat-d" class="anchor"></a></h1>
-<code id="689f2bb1093d18d4dff704002318406e" class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> update <span class="token operator">&amp;&amp;</span> <span class="token function">apt-get</span> <span class="token function">install</span> git-core <span class="token function">curl</span> build-essential openssl libssl-dev
+<pre class="code-multiline language-bash"><code class="language-bash" id="689f2bb1093d18d4dff704002318406e"><span class="token function">sudo</span> <span class="token function">apt-get</span> update <span class="token operator">&amp;&amp;</span> <span class="token function">apt-get</span> <span class="token function">install</span> git-core <span class="token function">curl</span> build-essential openssl libssl-dev
 
 <span class="token comment"># Don't forget to go to the location you want to install node in (like cd /home/) before running these commands</span>
 <span class="token function">git</span> clone https://github.com/joyent/node.git
@@ -266,29 +266,29 @@ node -v
 <span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>
 <span class="token function">git</span> clone https://github.com/etsy/statsd
 <span class="token builtin class-name">cd</span> statsd
-<span class="token function">cp</span> exampleConfig.js local.js</code>
+<span class="token function">cp</span> exampleConfig.js local.js</code></pre>
 <h2 id="edit-local-js-and-make-it-looks">Edit local.js and make it looks like:<a href="#edit-local-js-and-make-it-looks" class="anchor"></a></h2>
-<code id="5b53ab50a103135ec0928dab1ed72acd" class="language-js"><span class="token punctuation">{</span>
+<pre class="code-multiline language-js"><code class="language-js" id="5b53ab50a103135ec0928dab1ed72acd"><span class="token punctuation">{</span>
 graphitePort<span class="token operator">:</span> <span class="token number">2003</span>
 <span class="token punctuation">,</span> graphiteHost<span class="token operator">:</span> <span class="token string">"localhost"</span>
 <span class="token punctuation">,</span> port<span class="token operator">:</span> <span class="token number">8125</span>
-<span class="token punctuation">}</span></code>
+<span class="token punctuation">}</span></code></pre>
 <h1 id="then-you-need-to-run-stats-d">Then you need to run stats.d<a href="#then-you-need-to-run-stats-d" class="anchor"></a></h1>
-<code id="6bd9c0dfaed0ccd1221f4f4d55e6d9fa" class="language-bash"><span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">screen</span>
+<pre class="code-multiline language-bash"><code class="language-bash" id="6bd9c0dfaed0ccd1221f4f4d55e6d9fa"><span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">screen</span>
 <span class="token function">screen</span> node stats.js local.js
 
-<span class="token comment"># Then press Ctrl + a + d in order to let run stats.js in background mode thanks to screen.</span></code>
+<span class="token comment"># Then press Ctrl + a + d in order to let run stats.js in background mode thanks to screen.</span></code></pre>
 <p>If you want the full detail, check out the <a href="http://sekati.com/etc/install-nodejs-on-debian-squeeze" target="_blank">source</a>.</p>
 <h3 id="from-now-on-we-have-a-running-c">From now on, we have a running copy of both <strong>Graphite</strong> and <strong>Stat.d</strong> client.<a href="#from-now-on-we-have-a-running-c" class="anchor"></a></h3>
 <p>You can access it with the URL you provided in your vhost</p>
 <p>Now, let's install the <a href="https://github.com/liuggio/StatsDClientBundle/blob/master/Resources/doc/installation.md" target="_blank">StatsDClientBundle</a> in order to monitor our Symfony2 application</p>
-<code id="587cd562256957a785eb77f07efc2ee4" class="language-json"><span class="token comment">// composer.json</span>
+<pre class="code-multiline language-json"><code class="language-json" id="587cd562256957a785eb77f07efc2ee4"><span class="token comment">// composer.json</span>
 <span class="token property">"require"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     # ..
     <span class="token property">"liuggio/statsd-client-bundle"</span><span class="token operator">:</span> <span class="token string">"&gt;=1.2"</span><span class="token punctuation">,</span>
     # ..
-<span class="token punctuation">}</span></code>
-<code id="deb330f165a9c71a838d13b56dc31bdd" class="language-php">// After running php composer.phar update liuggio/statsd-client-bundle
+<span class="token punctuation">}</span></code></pre>
+<pre class="code-multiline language-php"><code class="language-php" id="deb330f165a9c71a838d13b56dc31bdd">// After running php composer.phar update liuggio/statsd-client-bundle
 // Enable the Bundle in AppKernel.php
 <span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">class</span> <span class="token class-name">AppKernel</span> <span class="token keyword">extends</span> <span class="token class-name">Kernel</span>
@@ -300,8 +300,8 @@ graphitePort<span class="token operator">:</span> <span class="token number">200
             <span class="token keyword">new</span> <span class="token class-name">Liuggio<span class="token punctuation">\</span>StatsDClientBundle<span class="token punctuation">\</span>LiuggioStatsDClientBundle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
          <span class="token comment">// ...</span>
 
-<span class="token comment">// Then add the full configuration for the Bundle in app/config/config.yml</span></span></code>
-<code id="8c0b3b6747c6666e778b2b0c15990867" class="language-yaml"><span class="token key atrule">liuggio_stats_d_client</span><span class="token punctuation">:</span>
+<span class="token comment">// Then add the full configuration for the Bundle in app/config/config.yml</span></span></code></pre>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="8c0b3b6747c6666e778b2b0c15990867"><span class="token key atrule">liuggio_stats_d_client</span><span class="token punctuation">:</span>
   <span class="token key atrule">connection</span><span class="token punctuation">:</span>
     <span class="token key atrule">host</span><span class="token punctuation">:</span> localhost
     <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8125</span>
@@ -312,7 +312,7 @@ graphitePort<span class="token operator">:</span> <span class="token number">200
     <span class="token key atrule">liuggio_stats_d_client.collector.visitor</span><span class="token punctuation">:</span> <span class="token string">'collect.visitor'</span>
     <span class="token key atrule">liuggio_stats_d_client.collector.memory</span><span class="token punctuation">:</span> <span class="token string">'collect.memory'</span>
     <span class="token key atrule">liuggio_stats_d_client.collector.user</span><span class="token punctuation">:</span> <span class="token string">'collect.user'</span>
-    <span class="token key atrule">liuggio_stats_d_client.collector.exception</span><span class="token punctuation">:</span> <span class="token string">'collect.exception'</span></code>
+    <span class="token key atrule">liuggio_stats_d_client.collector.exception</span><span class="token punctuation">:</span> <span class="token string">'collect.exception'</span></code></pre>
 <p>Note that we added the full configuration for the bundle which allow us to collect these usefull information such as logged users vs anonymous, memory usage.</p>
 <p>In the <a href="/en/infra/monitor-your-symfony2-application-via-stats-d-and-graphite-2/">2nd part</a>, we'll see how to monitor custom events in your Symfony2 app.</p></body>
   </div>

@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/vbouzeran.jpg" />
     <p>Écrit par Vincent BOUZERAN<p>
     <p>Publication 21 mai 2010<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -187,30 +187,30 @@ Les développeurs web sont souvent confrontés à des problématiques DNS (wildc
 <h3 id="etape-configuration-de-rndc">Etape 1: Configuration de rndc<a href="#etape-configuration-de-rndc" class="anchor"></a></h3>
 <p><strong>rndc</strong> est l'utilitaire qui permet la configuration du serveur DNS. Vous devez tout d'abord créer un fichier de configuration ainsi qu'une clé secrète.</p>
 <p>Saisissez les commandes suivantes dans votre terminal pour générer le fichier de configuration et la clé secrète :</p>
-<code id="677095399f3e5004ba3e9f04fb446da1" class="language-bash"><span class="token operator">&gt;</span> <span class="token function">sudo</span> -s
+<pre class="code-multiline language-bash"><code class="language-bash" id="677095399f3e5004ba3e9f04fb446da1"><span class="token operator">&gt;</span> <span class="token function">sudo</span> -s
 rndc-confgen -b <span class="token number">256</span> <span class="token operator">&gt;</span> /etc/rndc.conf
-<span class="token function">head</span> -n5 /etc/rndc.conf <span class="token operator">|</span> <span class="token function">tail</span> -n4 <span class="token operator">&gt;</span> /etc/rndc.key</code>
+<span class="token function">head</span> -n5 /etc/rndc.conf <span class="token operator">|</span> <span class="token function">tail</span> -n4 <span class="token operator">&gt;</span> /etc/rndc.key</code></pre>
 <p>Attention : La commande r<strong>ndc-confgen</strong> est extrêmement pratique pour générer les fichiers de configurations <strong>rndc</strong>, mais il se peut qu'il initialise un port par défaut différent de celui de <strong>named</strong>.
 Lancez les commandes suivantes, et assurez-vous que les ports sont identiques dans les deux fichiers de configurations /<strong>etc/named.conf</strong> et <strong>/etc/rndc.conf</strong>, si ce n'est pas le cas, éditez les fichiers et uniformisez les.</p>
-<code id="1182500b7cda165a8ae996012626f04f" class="language-bash"><span class="token function">cat</span> /etc/named.conf <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'inet'</span>
-<span class="token function">cat</span> /etc/rndc.conf <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'default-port'</span></code>
+<pre class="code-multiline language-bash"><code class="language-bash" id="1182500b7cda165a8ae996012626f04f"><span class="token function">cat</span> /etc/named.conf <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'inet'</span>
+<span class="token function">cat</span> /etc/rndc.conf <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'default-port'</span></code></pre>
 <h3 id="etape-activer-bind">Etape 2 : Activer BIND<a href="#etape-activer-bind" class="anchor"></a></h3>
 <p>Nous devons maintenant configurer <strong>Bind</strong> pour qu'il se lance au démarrage. Pour se faire, on utilisera les commandes suivantes:</p>
-<code id="adb544bb02d1df7b37e13ed817c8af62" class="language-bash">launchctl load -w /System/Library/LaunchDaemons/org.isc.named.plist
-<span class="token builtin class-name">echo</span> <span class="token string">"launchctl start org.isc.named"</span> <span class="token operator">&gt;&gt;</span> /etc/launchd.conf</code>
+<pre class="code-multiline language-bash"><code class="language-bash" id="adb544bb02d1df7b37e13ed817c8af62">launchctl load -w /System/Library/LaunchDaemons/org.isc.named.plist
+<span class="token builtin class-name">echo</span> <span class="token string">"launchctl start org.isc.named"</span> <span class="token operator">&gt;&gt;</span> /etc/launchd.conf</code></pre>
 <p>Puis nous n'avons plus qu'à démarrer le démon.</p>
-<code id="2de3cb95d13ef660e22f1dd6c1f56927">/usr/bin/named</code>
+<pre class="code-multiline"><code id="2de3cb95d13ef660e22f1dd6c1f56927">/usr/bin/named</code></pre>
 <p>ou encore</p>
-<code id="9dcf301b0891e82068cea12d40c395d6">launchctl start org.isc.named</code>
+<pre class="code-multiline"><code id="9dcf301b0891e82068cea12d40c395d6">launchctl start org.isc.named</code></pre>
 <h3 id="etape-configuration-de-named">Etape 3 : Configuration de named<br><a href="#etape-configuration-de-named" class="anchor"></a></h3>
 <p>Cette étape peut nécessiter quelques recherches supplémentaires si vous avez des besoins très spécifiques.
-Dans cet article, nous allons voir un cas simple de configuration où nous souhaitons que notre interface locale (localhost) réponde pour tous les dns de la forme <span class="inline-code">*.local</span>
+Dans cet article, nous allons voir un cas simple de configuration où nous souhaitons que notre interface locale (localhost) réponde pour tous les dns de la forme <code class="code-inline" id="664c9e09e57fb5b5e9ea430f5ab3c49e">*.local</code>
 Ce type de configuration peut être très utile pour les développeurs web qui souhaitent gagner du temps et éviter d'éditer systématiquement leur fichiers /etc/host lorsqu'ils rajoutent un virtualhost dans Apache.</p>
 <p>La création de nouveaux dns passe par deux étapes. La première consiste à créer le fichier de zone correspondant à notre dns ".local", la seconde va permettre d'indiquer à named la nouvelle zone ainsi que l'emplacement du fichier de configuration associé.</p>
 <p>1) Nous devons tout d'abord créer notre fichier de zone.</p>
-<code id="b87253831ce3455a72e63c4d88c4b7e3">vi /var/named/local.zone</code>
+<pre class="code-multiline"><code id="b87253831ce3455a72e63c4d88c4b7e3">vi /var/named/local.zone</code></pre>
 <p>Passez en mode insertion (touche i) et copiez/collez la configuration suivante en remplaçant user.domain.com par votre adresse email (prenez garde à remplacer le "@" par un "." et suffixer également d'un ".").</p>
-<code id="cc195fc327c4a4514a1dcd3702407361" class="language-bash"><span class="token variable">$TTL</span>    <span class="token number">86400</span>
+<pre class="code-multiline language-bash"><code class="language-bash" id="cc195fc327c4a4514a1dcd3702407361"><span class="token variable">$TTL</span>    <span class="token number">86400</span>
 <span class="token variable">$ORIGIN</span> local.
 @       IN      SOA     localhost.      user.domain.com. <span class="token punctuation">(</span>
                                         <span class="token number">42</span>              <span class="token punctuation">;</span> serial
@@ -222,22 +222,22 @@ Ce type de configuration peut être très utile pour les développeurs web qui s
                         1D IN NS        @
                         1D IN A         <span class="token number">127.0</span>.0.1
 
-* IN A <span class="token number">127.0</span>.0.1</code>
+* IN A <span class="token number">127.0</span>.0.1</code></pre>
 <p>Assurez vous que la dernière ligne est vide, sauvegardez et quittez (ESC puis ":wq" et ENTER to sauvegarder et quitter sous <strong>VI</strong>).</p>
 <p>2) Reconfiguration de named.conf pour indiquer notre nouvelle zone</p>
-<code id="b10793dd0b6a4dc5b36c577caf3f8401">vi /etc/named.conf</code>
+<pre class="code-multiline"><code id="b10793dd0b6a4dc5b36c577caf3f8401">vi /etc/named.conf</code></pre>
 <p>Puis nous ajoutons les lignes suivantes à la suite des configurations de zones présentes:</p>
-<code id="f4639e5bfef0a898648abb17c99dbb35" class="language-bash">zone <span class="token string">"local"</span> IN <span class="token punctuation">{</span>
+<pre class="code-multiline language-bash"><code class="language-bash" id="f4639e5bfef0a898648abb17c99dbb35">zone <span class="token string">"local"</span> IN <span class="token punctuation">{</span>
         <span class="token builtin class-name">type</span> master<span class="token punctuation">;</span>
         <span class="token function">file</span> <span class="token string">"local.zone"</span><span class="token punctuation">;</span>
         allow-update <span class="token punctuation">{</span> none<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span></code>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <p>Sauvegardez et le tour est joué !</p>
 <h3 id="etape-rechargement-de-la-con">Etape 4 : Rechargement de la configuration<a href="#etape-rechargement-de-la-con" class="anchor"></a></h3>
 <p>A chaque fois que vous modifier les fichiers de configuration ou de zones, vous aurez besoin de recharger la configuration par la commande:</p>
-<code id="5d35425ce8eca82e2ecf4ceb6971cd17">rndc reload</code>
+<pre class="code-multiline"><code id="5d35425ce8eca82e2ecf4ceb6971cd17">rndc reload</code></pre>
 <p>Vous pouvez également réinitialiser le cache DNS par la commande suivante:</p>
-<code id="d80e1127b18b60148cdbe883e2374337">rndc flush</code></body>
+<pre class="code-multiline"><code id="d80e1127b18b60148cdbe883e2374337">rndc flush</code></pre></body>
   </div>
 
   <div>

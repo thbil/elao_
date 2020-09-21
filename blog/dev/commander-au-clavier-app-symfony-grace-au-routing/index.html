@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.628c8aae.css">
+                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
             </head>
     <body>
         <header class="header">
@@ -166,7 +166,7 @@
     <img src="/elao_/authors/rhanna.jpg" />
     <p>Écrit par Richard HANNA<p>
     <p>Publication 25 octobre 2018<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -207,7 +207,7 @@ L'idée est d'avoir un moteur de recherche dans le navigateur qui suggère des r
 application sans forcément écrire complètement une API côté Backend. Et pourquoi pas exploiter le <em>Routing</em> de Symfony ?
 Nous allons voir pas à pas comment nous avons exploité le <em>routing</em> pour répondre à notre besoin.</p>
 <h3 id="r-cup-rer-toutes-les-routes-de">Récupérer toutes les <em>routes</em> de l'application<a href="#r-cup-rer-toutes-les-routes-de" class="anchor"></a></h3>
-<code id="336b82c393fc5e1187ca218c08887030" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="336b82c393fc5e1187ca218c08887030"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Routing<span class="token punctuation">\</span>Route</span><span class="token punctuation">;</span>
 <span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Routing<span class="token punctuation">\</span>RouterInterface</span><span class="token punctuation">;</span>
@@ -229,19 +229,19 @@ Nous allons voir pas à pas comment nous avons exploité le <em>routing</em> pou
     <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">router</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getRouteCollection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <p>Cela donne comme résultat :</p>
 <p class="text-center">
     <img src="/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/all-routes-dump.png" alt="Dump de *routes* les *routes* de l'application" style="width: 50%" id="dump-de-routes-les-routes-de"></p>
 <p>Filtrons maintenant les <em>routes</em> en ne gardant que les <em>routes</em> avec méthode GET :</p>
-<code id="e942fcea16b842aa3c26305edd48de61" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="e942fcea16b842aa3c26305edd48de61"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
     <span class="token comment">// ...</span>
     <span class="token keyword">return</span> <span class="token function">array_filter</span><span class="token punctuation">(</span>
         <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">router</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getRouteCollection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
         <span class="token keyword">function</span> <span class="token punctuation">(</span>Route <span class="token variable">$route</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">return</span> \<span class="token package">in_array</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'GET'</span><span class="token punctuation">,</span> <span class="token variable">$route</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getMethods</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean constant">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-    <span class="token punctuation">)</span><span class="token punctuation">;</span></span></code>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
 <h3 id="humaniser-les-noms-de-route">Humaniser les noms de route<a href="#humaniser-les-noms-de-route" class="anchor"></a></h3>
 <p>Maintenant qu'on a toutes les <em>routes</em> de l'application, il faut pouvoir les proposer de manière lisible à un
 utilisateur non-développeur.
@@ -249,19 +249,19 @@ L'idée est de transformer le nom de chaque <em>route</em> en libellé "humanis�
 <ul><li>admin_user_list ➡ User list</li>
 <li>admin_user_create ➡ User create</li>
 <li>admin_generate_invoice_for_order ➡ Generate invoice for Order</li>
-</ul><p>Pour obtenir ce résultat, on a simplement supprimé le préfixe <span class="inline-code">admin_</span> et les <span class="inline-code">_</span>, puis mis la première lettre en
+</ul><p>Pour obtenir ce résultat, on a simplement supprimé le préfixe <code class="code-inline" id="a1debe4d85ce0ffd022b9f4066c8d8ec">admin_</code> et les <code class="code-inline" id="b14a7b8059d9c055954c92674ce60032">_</code>, puis mis la première lettre en
 majuscule.</p>
 <h3 id="g-n-rer-l-url">Générer l'url<a href="#g-n-rer-l-url" class="anchor"></a></h3>
 <p>Pour générer l'url à partir d'une route, rien de plus trivial :</p>
-<code id="19276732e5d267432ac3e20e52a9031c" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="19276732e5d267432ac3e20e52a9031c"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
     <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name">RouterInterface</span> <span class="token parameter">$router</span> */</span>
-    <span class="token keyword">return</span> <span class="token variable">$router</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">generate</span><span class="token punctuation">(</span><span class="token variable">$routeName</span><span class="token punctuation">,</span> <span class="token variable">$parameters</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code>
+    <span class="token keyword">return</span> <span class="token variable">$router</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">generate</span><span class="token punctuation">(</span><span class="token variable">$routeName</span><span class="token punctuation">,</span> <span class="token variable">$parameters</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
 <p>On créé des vues contenant le libellé et l'url et cela donne quelque chose comme ça :</p>
-<code id="f8ae481558682e4459262bf86ae41fb5">array:140 [▼
+<pre class="code-multiline"><code id="f8ae481558682e4459262bf86ae41fb5">array:140 [▼
   0 =&gt; ResultView {#1388 ▼
     +label: "User list"
     +routeName: "admin_user_list"
-    +url: "/user/list"</code>
+    +url: "/user/list"</code></pre>
 <h3 id="d-mo">Démo<a href="#d-mo" class="anchor"></a></h3>
 <p>Pour le widget côté navigateur permettant à l'utilisateur de faire sa recherche et d'avoir des suggestions de résultats,
 nous avons choisi une librairie assez légère et facilement configurable, notamment au niveau de la source de données :
@@ -273,45 +273,45 @@ nous avons choisi une librairie assez légère et facilement configurable, notam
 <p>Que faire maintenant si nos <em>routes</em> attendent des paramètres ? En terme d'expérience utilisateur, on souhaite que
 l'application nous suggère des résultats. Par exemple, si on tape "User update", l'application nous propose l'ensemble
 des utilisateurs pouvant être modifiés :</p>
-<code id="e1c68eca15840fcf3518fa6cd5a11b9d">➡ User update Korben
+<pre class="code-multiline"><code id="e1c68eca15840fcf3518fa6cd5a11b9d">➡ User update Korben
 ➡ User update Leeloo
-➡ User update Cornelius</code>
+➡ User update Cornelius</code></pre>
 <p>Cela signifie que côté frontend, lorsqu'on aura tapé "User update" + un espace (très important l'espace),
 une requête XMLHttpRequest (Ajax pour les intimes) sera déclenchée afin de récupérer les <em>routes</em> contenant
 les noms des utilisateurs.</p>
 <h3 id="r-cup-rer-les-requirements-d-u">Récupérer les <em>requirements</em> d'une <em>route</em><a href="#r-cup-rer-les-requirements-d-u" class="anchor"></a></h3>
 <p>Considérons que l'on a cette <em>route</em> :</p>
-<code id="d3e33de1ec4c5ac3d34004a49134b355" class="language-yaml"><span class="token comment"># Routing</span>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="d3e33de1ec4c5ac3d34004a49134b355"><span class="token comment"># Routing</span>
 <span class="token key atrule">admin_user_update</span><span class="token punctuation">:</span>
     <span class="token key atrule">path</span><span class="token punctuation">:</span> /user/update/<span class="token punctuation">{</span>user<span class="token punctuation">}</span>
     <span class="token key atrule">methods</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>GET<span class="token punctuation">,</span> POST<span class="token punctuation">]</span>
     <span class="token key atrule">requirements</span><span class="token punctuation">:</span>
         <span class="token key atrule">user</span><span class="token punctuation">:</span> \d+
-    <span class="token key atrule">defaults</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token key atrule">_controller</span><span class="token punctuation">:</span> AdminBundle<span class="token punctuation">:</span>User<span class="token punctuation">:</span>update <span class="token punctuation">}</span></code>
-<p>Notre <em>requirement</em> apparaît être un paramètre <span class="inline-code">user</span> qui est de type numérique.</p>
-<p>Dans notre <em>controller</em>, le paramètre <span class="inline-code">user</span> va être transformé grâce au <span class="inline-code">ParamConverter</span> de Symfony en objet
-de la classe <span class="inline-code">User</span> :</p>
-<code id="b5903692b2898b9ee22a5d9f212a3f50" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token key atrule">defaults</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token key atrule">_controller</span><span class="token punctuation">:</span> AdminBundle<span class="token punctuation">:</span>User<span class="token punctuation">:</span>update <span class="token punctuation">}</span></code></pre>
+<p>Notre <em>requirement</em> apparaît être un paramètre <code class="code-inline" id="ee11cbb19052e40b07aac0ca060c23ee">user</code> qui est de type numérique.</p>
+<p>Dans notre <em>controller</em>, le paramètre <code class="code-inline" id="ee11cbb19052e40b07aac0ca060c23ee">user</code> va être transformé grâce au <code class="code-inline" id="fa5eab9c41d747d87b1d82bca4a1c893">ParamConverter</code> de Symfony en objet
+de la classe <code class="code-inline" id="8f9bfe9d1345237cb3b2b205864da075">User</code> :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="b5903692b2898b9ee22a5d9f212a3f50"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token keyword">extends</span> <span class="token class-name">Controller</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">updateAction</span><span class="token punctuation">(</span>Request <span class="token variable">$request</span><span class="token punctuation">,</span> User <span class="token variable">$user</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Response
-    <span class="token punctuation">{</span></span></code>
+    <span class="token punctuation">{</span></span></code></pre>
 <p>Ou ici avec un <em>invokable controller</em> (<em>Action Domain Response pattern</em>) :</p>
-<code id="9e6c319fa939b64bc2aec05a7b1f6e81" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="9e6c319fa939b64bc2aec05a7b1f6e81"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">class</span> <span class="token class-name">UpdateUserAction</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__invoke</span><span class="token punctuation">(</span>Request <span class="token variable">$request</span><span class="token punctuation">,</span> User <span class="token variable">$user</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Response
-    <span class="token punctuation">{</span></span></code>
+    <span class="token punctuation">{</span></span></code></pre>
 <p>Par le code, récupérer les <em>requirements</em> d'une <em>route</em> :</p>
-<code id="250fba4f827bbf6074280f2f9484f287" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="250fba4f827bbf6074280f2f9484f287"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getRequirements</span><span class="token punctuation">(</span>Route <span class="token variable">$route</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">array</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token function">array_keys</span><span class="token punctuation">(</span><span class="token variable">$route</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getRequirements</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></span></code>
-<p>On sait ainsi par le code que la <em>route</em> <span class="inline-code">admin_user_update</span> a pour <em>requirement</em>, un paramètre <span class="inline-code">user</span>.</p>
+<span class="token punctuation">}</span></span></code></pre>
+<p>On sait ainsi par le code que la <em>route</em> <code class="code-inline" id="d849458fd3aff9876d7908c37546a4f5">admin_user_update</code> a pour <em>requirement</em>, un paramètre <code class="code-inline" id="ee11cbb19052e40b07aac0ca060c23ee">user</code>.</p>
 <h3 id="r-cup-rer-les-metadata-du-cont">Récupérer les metadata du controller d'une route<a href="#r-cup-rer-les-metadata-du-cont" class="anchor"></a></h3>
 <p>Le principe est de récupérer les arguments d'un <em>controller</em> d'une <em>route</em> et de voir de quelle classe
 il s'agit.</p>
@@ -319,17 +319,17 @@ il s'agit.</p>
 <ul><li>
 <ol><li>Récupérer le <em>controller</em> d'une <em>route</em> :</li>
 </ol></li>
-</ul><code id="f4ca91954cf26dc7949ceb2b1c5610e5" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+</ul><pre class="code-multiline language-php"><code class="language-php" id="f4ca91954cf26dc7949ceb2b1c5610e5"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpKernel<span class="token punctuation">\</span>Controller<span class="token punctuation">\</span>ControllerResolverInterface</span> <span class="token parameter">$controllerResolver</span> */</span>
-<span class="token variable">$controllerResolver</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getController</span><span class="token punctuation">(</span><span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code>
+<span class="token variable">$controllerResolver</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getController</span><span class="token punctuation">(</span><span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
 <ul><li>
 <ol start="2"><li>Récupérer les metadata des arguments d'un <em>controller</em> :</li>
 </ol></li>
-</ul><code id="f18b75d345f11ad4e40f1d6c7e258987" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+</ul><pre class="code-multiline language-php"><code class="language-php" id="f18b75d345f11ad4e40f1d6c7e258987"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpKernel<span class="token punctuation">\</span>ControllerMetadata<span class="token punctuation">\</span>ArgumentMetadataFactoryInterface</span> <span class="token parameter">$argumentMetadataFactory</span> */</span>
-<span class="token variable">$argumentMetadataFactory</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">createArgumentMetadata</span><span class="token punctuation">(</span><span class="token variable">$controller</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code>
+<span class="token variable">$argumentMetadataFactory</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">createArgumentMetadata</span><span class="token punctuation">(</span><span class="token variable">$controller</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
 <p>Et le code complet donne cela :</p>
-<code id="b08cc893d51ed2430e2b70e61933d561" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="b08cc893d51ed2430e2b70e61933d561"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpFoundation<span class="token punctuation">\</span>Request</span><span class="token punctuation">;</span>
 <span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpKernel<span class="token punctuation">\</span>Controller<span class="token punctuation">\</span>ControllerResolverInterface</span><span class="token punctuation">;</span>
@@ -361,9 +361,9 @@ il s'agit.</p>
 
         <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">argumentMetadataFactory</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">createArgumentMetadata</span><span class="token punctuation">(</span><span class="token variable">$controller</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <p>Résultat :</p>
-<code id="6a5e6dc7da17fc446ac285ca11de3910">array:2 [▼
+<pre class="code-multiline"><code id="6a5e6dc7da17fc446ac285ca11de3910">array:2 [▼
   0 =&gt; ArgumentMetadata {#2146 ▼
     -name: "request"
     -type: "Symfony\Component\HttpFoundation\Request"
@@ -380,16 +380,16 @@ il s'agit.</p>
     -defaultValue: null
     -isNullable: false
   }
-]</code>
-<p>On a donc une variable <span class="inline-code">user</span> dont le type est <span class="inline-code">App\Domain\Model\User</span>.</p>
+]</code></pre>
+<p>On a donc une variable <code class="code-inline" id="ee11cbb19052e40b07aac0ca060c23ee">user</code> dont le type est <code class="code-inline" id="eb0c10d335fd66810062ce2b4fadcd78">App\Domain\Model\User</code>.</p>
 <p>Cela devient intéressant !</p>
 <p>Voyons voir ce que l'on peut en faire...</p>
 <h3 id="resolver-d-di"><em>Resolver</em> dédié<a href="#resolver-d-di" class="anchor"></a></h3>
-<p>Nous allons coder un <em>Resolver</em> dédié pour un paramètre dès lors qu'il est de type <span class="inline-code">App\Domain\Model\User</span>.</p>
-<p>Ici on sait que notre classe <span class="inline-code">User</span> est une classe d'entité <em>Doctrine</em>. Nous allons faire appel à un <em>repository
+<p>Nous allons coder un <em>Resolver</em> dédié pour un paramètre dès lors qu'il est de type <code class="code-inline" id="eb0c10d335fd66810062ce2b4fadcd78">App\Domain\Model\User</code>.</p>
+<p>Ici on sait que notre classe <code class="code-inline" id="8f9bfe9d1345237cb3b2b205864da075">User</code> est une classe d'entité <em>Doctrine</em>. Nous allons faire appel à un <em>repository
 Doctrine</em> pour récupèrer une liste des utilisateurs depuis la base de données. On prend soin de retourner le résultat
-en précisant que la valeur du paramètre <span class="inline-code">user</span> prend pour valeur l'id de l'utilisateur :</p>
-<code id="f76a1bc1c35e5b9bd8c262780adb15b0" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+en précisant que la valeur du paramètre <code class="code-inline" id="ee11cbb19052e40b07aac0ca060c23ee">user</code> prend pour valeur l'id de l'utilisateur :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="f76a1bc1c35e5b9bd8c262780adb15b0"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">class</span> <span class="token class-name">UserResolver</span> <span class="token keyword">implements</span> <span class="token class-name">ResolverInterface</span>
 <span class="token punctuation">{</span>
@@ -412,9 +412,9 @@ en précisant que la valeur du paramètre <span class="inline-code">user</span> 
 
         <span class="token keyword">return</span> <span class="token variable">$resultViews</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
+<span class="token punctuation">}</span></span></code></pre>
 <p>On obtient ce résultat :</p>
-<code id="c2a9aa11a407e9729e239f0376c38241">array:2 [▼
+<pre class="code-multiline"><code id="c2a9aa11a407e9729e239f0376c38241">array:2 [▼
   0 =&gt; ResultView { ▼
     +label: "User update Korben"
     +routeName: "admin_user_update"
@@ -438,15 +438,15 @@ en précisant que la valeur du paramètre <span class="inline-code">user</span> 
     +parameters: array:1 [▼
       "user" =&gt; 1337
     ]
-  }</code>
+  }</code></pre>
 <p>On peut donc maintenant proposer à l'utilisateur d'accéder à des <em>routes</em> ayant un paramètre.</p>
 <h2 id="am-liorations">Améliorations<a href="#am-liorations" class="anchor"></a></h2>
 <h3 id="resolver-doctrine"><em>Resolver Doctrine</em> ?<a href="#resolver-doctrine" class="anchor"></a></h3>
 <p>Pourrait-on avoir un <em>resolver</em> générique dédié à nos classes d'entité <em>Doctrine</em> ?</p>
-<p>L'idée est de tester si une classe donnée est une entité <em>Doctrine</em>, c'est à dire via le <span class="inline-code">ManagerRegistry</span> chercher
-un éventuel <span class="inline-code">EntityManager</span>. Puis avec cet <span class="inline-code">EntityManager</span>, utiliser le bon <span class="inline-code">Repository</span>
-et la méthode générique de tout <span class="inline-code">Repository</span> <em>Doctrine</em>, <span class="inline-code">findAll()</span> :</p>
-<code id="5b1276ee78059c9347462b49c4da2698" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<p>L'idée est de tester si une classe donnée est une entité <em>Doctrine</em>, c'est à dire via le <code class="code-inline" id="f19eae7a9282542454f845b2c940fa9b">ManagerRegistry</code> chercher
+un éventuel <code class="code-inline" id="08f9949041c5b2858bc754a5985db3f3">EntityManager</code>. Puis avec cet <code class="code-inline" id="08f9949041c5b2858bc754a5985db3f3">EntityManager</code>, utiliser le bon <code class="code-inline" id="33fcf2b3ec4686d9cd06051c726d0ba2">Repository</code>
+et la méthode générique de tout <code class="code-inline" id="33fcf2b3ec4686d9cd06051c726d0ba2">Repository</code> <em>Doctrine</em>, <code class="code-inline" id="2bb788c45bd218371b07ca163ca14574">findAll()</code> :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="5b1276ee78059c9347462b49c4da2698"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">use</span> <span class="token package">Doctrine<span class="token punctuation">\</span>Common<span class="token punctuation">\</span>Persistence<span class="token punctuation">\</span>ManagerRegistry</span><span class="token punctuation">;</span>
 
@@ -483,18 +483,18 @@ et la méthode générique de tout <span class="inline-code">Repository</span> <
 
         <span class="token keyword">return</span> <span class="token variable">$resultViews</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
-<p>Il faut aussi déclarer une méthode <span class="inline-code">__toString</span> dans nos classes d'entité <em>Doctrine</em> :</p>
-<code id="9378bea946a157b55eb2189e0d09f5ac" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token punctuation">}</span></span></code></pre>
+<p>Il faut aussi déclarer une méthode <code class="code-inline" id="a80f2647eb0e2ee6bca9c774ae942959">__toString</code> dans nos classes d'entité <em>Doctrine</em> :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="9378bea946a157b55eb2189e0d09f5ac"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">class</span> <span class="token class-name">User</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> string
     <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getDisplayName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span></span></code>
+    <span class="token punctuation">}</span></span></code></pre>
 <p>Ceci afin que l'objet soit <em>transformé</em> en <em>string</em> lorsque le libellé de la <em>route</em> est créé ici :</p>
-<code id="2b156550079b24f01bf4e39b30500a8e">sprintf('%s %s', $resultView-&gt;label, $object),</code>
+<pre class="code-multiline"><code id="2b156550079b24f01bf4e39b30500a8e">sprintf('%s %s', $resultView-&gt;label, $object),</code></pre>
 <h3 id="traduction-des-noms-de-route">Traduction des noms de route<a href="#traduction-des-noms-de-route" class="anchor"></a></h3>
 <p>On a vu plus haut, comment à partir du nom de la route, la transformer un peu pour l'humaniser.</p>
 <p>Cependant les noms de <em>routes</em> dans une application sont généralement en anglais.
@@ -505,7 +505,7 @@ Si on avait dans notre application "Créer document", "Créer facture", "Créer 
 on aurait droit à tous les "Créer..." de l'application. Nous avons donc choisi ici de préfixer les libellés par le sujet
 de l'action. Quand on tappe "Produ..." on a par exemple "Produit Créer", "Produit Modifier", "Produit Déstocker"...</p>
 <p>Prenons les noms des <em>routes</em> :</p>
-<code id="db9fc4dea82fbe008ddf781adddf8be5" class="language-yaml"><span class="token comment"># Routing</span>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="db9fc4dea82fbe008ddf781adddf8be5"><span class="token comment"># Routing</span>
 <span class="token key atrule">admin_user_list</span><span class="token punctuation">:</span>
     <span class="token key atrule">path</span><span class="token punctuation">:</span> /user/list/<span class="token punctuation">{</span>user<span class="token punctuation">}</span>
 
@@ -513,20 +513,20 @@ de l'action. Quand on tappe "Produ..." on a par exemple "Produit Créer", "Produ
     <span class="token key atrule">path</span><span class="token punctuation">:</span> /user/create/<span class="token punctuation">{</span>user<span class="token punctuation">}</span>
 
 <span class="token key atrule">admin_user_update</span><span class="token punctuation">:</span>
-    <span class="token key atrule">path</span><span class="token punctuation">:</span> /user/update/<span class="token punctuation">{</span>user<span class="token punctuation">}</span></code>
+    <span class="token key atrule">path</span><span class="token punctuation">:</span> /user/update/<span class="token punctuation">{</span>user<span class="token punctuation">}</span></code></pre>
 <p>et déposons les dans des fichiers de traductions de Symfony (<em>translations</em>) :</p>
-<code id="ac85c0958cdc25e33bacbd2fad3666b0" class="language-yaml"><span class="token comment"># humanized_routes.en.yml</span>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="ac85c0958cdc25e33bacbd2fad3666b0"><span class="token comment"># humanized_routes.en.yml</span>
 <span class="token key atrule">admin_user_list</span><span class="token punctuation">:</span> User List
 <span class="token key atrule">admin_user_create</span><span class="token punctuation">:</span> User Create
-<span class="token key atrule">admin_user_update</span><span class="token punctuation">:</span> User Update</code>
-<code id="c93c67543c213de84a47f4a2fa6de568" class="language-yaml"><span class="token comment"># humanized_routes.fr.yml</span>
+<span class="token key atrule">admin_user_update</span><span class="token punctuation">:</span> User Update</code></pre>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="c93c67543c213de84a47f4a2fa6de568"><span class="token comment"># humanized_routes.fr.yml</span>
 <span class="token key atrule">admin_user_list</span><span class="token punctuation">:</span> Utilisateur Lister
 <span class="token key atrule">admin_user_create</span><span class="token punctuation">:</span> Utilisateur Créer
-<span class="token key atrule">admin_user_update</span><span class="token punctuation">:</span> Utilisateur Modifier</code>
+<span class="token key atrule">admin_user_update</span><span class="token punctuation">:</span> Utilisateur Modifier</code></pre>
 <p>Comment utiliser ces fichiers de traduction ?</p>
 <p>Simplement, on regarde si on a la traduction pour un nom de <em>route</em> donné dans la <em>locale</em> de l'utilisateur de
 l'application :</p>
-<code id="e4becfe8faabde7dc0dda175ba8e02ba" class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<pre class="code-multiline language-php"><code class="language-php" id="e4becfe8faabde7dc0dda175ba8e02ba"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Translation<span class="token punctuation">\</span>TranslatorBagInterface</span><span class="token punctuation">;</span>
 <span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Translation<span class="token punctuation">\</span>TranslatorInterface</span><span class="token punctuation">;</span>
@@ -554,13 +554,13 @@ l'application :</p>
     <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token function">ucfirst</span><span class="token punctuation">(</span><span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'admin_'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'_'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token single-quoted-string string">''</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">' '</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable">$routeName</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></span></code>
-<p><span class="inline-code">TranslatorInterface</span> et <span class="inline-code">TranslatorBagInterface</span> sont implémentés par le même service, donc dans notre déclaration de
+<span class="token punctuation">}</span></span></code></pre>
+<p><code class="code-inline" id="934b4269ed711c942628f71148c2bf0d">TranslatorInterface</code> et <code class="code-inline" id="daa5e5dc31192d01c6078114eaf3647c">TranslatorBagInterface</code> sont implémentés par le même service, donc dans notre déclaration de
 service, on a :</p>
-<code id="6399c7494f9731d64ca2b27bcbb9e227" class="language-yaml"><span class="token key atrule">App\ActionsBot\Resolver\TranslateRouteName</span><span class="token punctuation">:</span>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="6399c7494f9731d64ca2b27bcbb9e227"><span class="token key atrule">App\ActionsBot\Resolver\TranslateRouteName</span><span class="token punctuation">:</span>
     <span class="token key atrule">arguments</span><span class="token punctuation">:</span>
         <span class="token punctuation">-</span> <span class="token string">'@translator'</span>
-        <span class="token punctuation">-</span> <span class="token string">'@translator'</span></code>
+        <span class="token punctuation">-</span> <span class="token string">'@translator'</span></code></pre>
 <h3 id="d-mo">Démo<a href="#d-mo" class="anchor"></a></h3>
 <p class="text-center">
     <img src="/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/demo2.gif" alt="Démo avec paramètre" id="d-mo-avec-param-tre"></p>
@@ -587,7 +587,7 @@ performants : Microsoft Cortana, Siri chez Apple, Amazon Alexa (Echo) ou Google 
 la synthèse vocale à partir d'un texte écrit</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition" target="_blank">Speech Recognition</a> :
 la reconnaissance automatique de la parole</li>
-</ul><code id="e406c5d9966bd66dea3f869601d8be63" class="language-js"><span class="token keyword">var</span> recognition <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SpeechRecognition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</ul><pre class="code-multiline language-js"><code class="language-js" id="e406c5d9966bd66dea3f869601d8be63"><span class="token keyword">var</span> recognition <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SpeechRecognition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 recognition<span class="token punctuation">.</span><span class="token property-access">continuous</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
 recognition<span class="token punctuation">.</span><span class="token property-access">lang</span> <span class="token operator">=</span> <span class="token string">'fr-FR'</span><span class="token punctuation">;</span>
 
@@ -598,7 +598,7 @@ recognition<span class="token punctuation">.</span><span class="token method-var
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-recognition<span class="token punctuation">.</span><span class="token method function property-access">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code>
+recognition<span class="token punctuation">.</span><span class="token method function property-access">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Le support de l'API SpeechRecognition est très limité pour l'instant :</p>
 <p class="text-center">
     <img src="/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/caniuse-speech-recognition.png" alt="Can I Use SpeechRecognition" id="can-i-use-speechrecognition"></p>
