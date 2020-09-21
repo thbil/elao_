@@ -166,7 +166,7 @@
     <img src="/elao_/pr/42/images/authors/tjarrand.jpg" />
     <p>Écrit par Thomas JARRAND<p>
     <p>Publication 29 janvier 2019<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -212,11 +212,11 @@
 <p>Pour l'exemple, je vais créer un nouveau projet <a href="https://symfony.com/download" target="_blank">Symfony</a> vide avec :</p>
 <code id="4e9124da01ad69ef06a89ac4384ee23f">symfony new --full acme
 cd acme</code>
-<img src="/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project.png" alt="" title="" id="empty-symfony-project-png"><img src="/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project_browser.png" alt="" title="" id="empty-symfony-project-browser-pn"><p>Puis créer un environnement virtuel Manala pour cette application :</p>
+<img src="images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project.png" alt="" title="" id="empty-symfony-project-png"><img src="images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project_browser.png" alt="" title="" id="empty-symfony-project-browser-pn"><p>Puis créer un environnement virtuel Manala pour cette application :</p>
 <code id="be798b2aba437dca70435f4c6d61d29c">manalize setup .</code>
 <p>À travers son outil de setup interactif, Manala me demande de faire un certain nombre de choix concernant les technologies nécessaires au fonctionnement de mon projet à intégrer dans la VM.</p>
 <p>Puisque nous travaillons beaucoup avec Symfony chez élao, Manala propose une pré-configuration adaptée aux projets Symfony, embarquant entre autres PHP et Mysql. C'est ce que j'utiliserai ici :</p>
-<img src="/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/setup.png" alt="" title="" id="setup-png"><p><em>💡 Qu'est-ce qui est créé ?</em></p>
+<img src="images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/setup.png" alt="" title="" id="setup-png"><p><em>💡 Qu'est-ce qui est créé ?</em></p>
 <ul><li><span class="inline-code">Vangrantfile</span> : Décrit les propriétés de la machine virtuelle pour Vagrant.</li>
 <li><span class="inline-code">ansible/.manalize.yml</span> : Fichier de configuration Manala persistant les choix faits lors du setup interactif, à partir duquel sont générés les fichiers de configuration Ansible.</li>
 <li><span class="inline-code">ansible/*.yml</span> : Fichiers de configuration Ansible configurant le système de fichiers de la VM, Nginx, PHP et toute technologie nécessaire au fonctionnement du projet.</li>
@@ -230,14 +230,14 @@ cd acme</code>
 <p>Ensuite, je n'aurai plus qu'a lancer cette VM à chaque fois que je démarre mon ordinateur et que je veux développer sur ce projet :</p>
 <code id="34e05760adec124bdbf614a6c496e863">vagrant up</code>
 <p>Mon app est maintenant disponible à l'adresse suivante : <a href="http://acme.vm">http://acme.vm</a></p>
-<img src="/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_in_vm.png" alt="" title="" id="symfony-in-vm-png"><p>Mission accomplie ! 🎉</p>
+<img src="images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_in_vm.png" alt="" title="" id="symfony-in-vm-png"><p>Mission accomplie ! 🎉</p>
 <h4 id="entrer-dans-la-vm">Entrer dans la VM<a href="#entrer-dans-la-vm" class="anchor"></a></h4>
 <p>Mon projet ne tourne pas localement sur mon poste, mais dans une machine virtuelle (c'était le but).</p>
 <p>C'est pourquoi, pour accéder à des fonctions internes comme la console Symfony, je vais devoir lancer <span class="inline-code">bin/console</span> <em>dans</em> la VM; afin que le script s'execute dans le contexte de la VM, avec sa version de PHP et son système de fichiers.</p>
 <p>Pour cela, je me connecte en SSH à la VM (comme je le ferais à un serveur web distant hébergeant mon application), grâce à la commande suivante fournie par vagrant :</p>
 <code id="198135fc83653d13345f16358ba83b5d">vagrant ssh</code>
 <p>Une fois connecté, je suis dans le répertoire de mon application et peux accéder à la console Symfony :</p>
-<img src="/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_cli_in_vm.png" alt="" title="" id="symfony-cli-in-vm-png"><p><em>💡 Notez le chemin du répertoire courant :</em> je suis dans le système de fichiers de la VM, plus sur ma machine !</p>
+<img src="images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_cli_in_vm.png" alt="" title="" id="symfony-cli-in-vm-png"><p><em>💡 Notez le chemin du répertoire courant :</em> je suis dans le système de fichiers de la VM, plus sur ma machine !</p>
 <h2 id="le-tester-c-est-l-adopter">Le tester, c'est l'adopter !<a href="#le-tester-c-est-l-adopter" class="anchor"></a></h2>
 <p>Nous utilisons <a href="http://manala.io" target="_blank">Manala</a> depuis plusieurs années pour nos environnements de développement, l'outil est maintenant mature et stable.</p>
 <p>Il est également totalement open-source, disponible et utilisable par tous.</p>

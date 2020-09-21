@@ -166,7 +166,7 @@
     <img src="/elao_/pr/42/images/authors/mcolin.jpg" />
     <p>Écrit par Maxime COLIN<p>
     <p>Publication 14 mars 2018<p>
-    <p>Modification 18 septembre 2020<p>
+    <p>Modification 21 septembre 2020<p>
   </div>
 
   <div>
@@ -185,11 +185,11 @@
     <body><h1 id="lien-magique">Lien magique<a href="#lien-magique" class="anchor"></a></h1>
 <p>Nous avons récemment pris le parti pour l'un de nos dernier projet de proposer une authentification par "lien magique". Voici ce qui nous a poussé à faire cette expérience ainsi que nos retours.</p>
 <p>L'authentification par "lien magique" est notamment utilisée par Slack qui propose cette fonctionnalité dans son client et qui nous a grandement inspiré.</p>
-<p><a href="/images/posts/2018/magic-link-slack.png"><img src="/images/posts/2018/magic-link-slack.png" alt="" id="magic-link-slack-png"></a></p>
+<p><a href="/images/posts/2018/magic-link-slack.png"><img src="images/posts/2018/magic-link-slack.png" alt="" id="magic-link-slack-png"></a></p>
 <p>Pour ce projet, avons utilisé cette méthode d'authentification sur deux app mobile ainsi que sur une app backend.</p>
 <h2 id="fonctionnement">Fonctionnement<a href="#fonctionnement" class="anchor"></a></h2>
 <p>L'authentification par lien magique déporte toute la gestion des mots de passe sur la boîte mail de l'utilisateur. Celui-ci fournit son adresse email à l'application lorsqu'il souhaite s'y connecter, un lien d'authentification contenant un token lui est envoyé. L'utilisateur se connecte ensuite à sa boite mail puis clique sur le lien et est ensuite connecté sur l'application.</p>
-<p><a href="/images/posts/2018/magic-link.png"><img src="/images/posts/2018/magic-link.png" alt="" id="magic-link-png"></a></p>
+<p><a href="/images/posts/2018/magic-link.png"><img src="images/posts/2018/magic-link.png" alt="" id="magic-link-png"></a></p>
 <h2 id="un-constat">Un constat<a href="#un-constat" class="anchor"></a></h2>
 <p>Qu'est ce qui nous a poussé à mettre en place ce système ? C'est d'abord une idée qui a germé face à un constat.</p>
 <p>En tant que développeurs et utilisateurs d'internet, nous sommes plusieurs à avoir fait le constat que beaucoup d'utilisateurs oublient très fréquemment leur mot de passe. En effet, une fois connecté à une application, grâce à des mécanismes comme le "Remember Me" ou les sessions longues, il peut se passer plusieurs semaines voir mois avant de devoir resaisir son mot de passe. Un grand nombre de connexions passent alors par une procédure d'oubli de mot de passe et donc par la boite email de l'utilisateur.</p>
