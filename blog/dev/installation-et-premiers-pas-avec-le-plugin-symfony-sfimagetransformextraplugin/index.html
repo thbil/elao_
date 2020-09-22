@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/xroldo.jpeg" />
     <p>Écrit par Xavier ROLDO<p>
     <p>Publication 12 juillet 2010<p>
-    <p>Modification 21 septembre 2020<p>
+    <p>Modification 22 septembre 2020<p>
   </div>
 
   <div>
@@ -218,8 +218,7 @@
 <p>... puis le module :</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="f183522c0665e16e06613c18ebe45a3b">./symfony generate:module frontend image</code></pre>
 <p>Pour notre démonstration, j'ai choisi cette image, partant du principe qu'un prosélytisme de bon aloi ne saurait nuire à la carrière d'un développeur :</p>
-<p><img src="/images/posts/2010/zf.jpg" alt="Installation et premier pas avec le plugin sfImageTransformExtraPlugin" id="installation-et-premier-pas-avec"></p>
-<p>J'ai nommé cette image zf.jpg et je l'ai placée dans le répertoire web/images de notre projet.</p>
+<img src="/images/posts/2010/zf.jpg" alt="Installation et premier pas avec le plugin sfImageTransformExtraPlugin" title="Installation et premier pas avec le plugin sfImageTransformExtraPlugin" id="installation-et-premier-pas-avec"><p>J'ai nommé cette image zf.jpg et je l'ai placée dans le répertoire web/images de notre projet.</p>
 <p>Nous allons dans un premier temps écrire le code de notre template pour y insérer le formulaire par lequel nous allons appeler la transformation de notre image :</p>
 <pre class="code-multiline language-html"><code class="language-html" id="a20762fa0c5737e0962516fb25fa4559"># apps/frontend/modules/image/templates/indexSuccess.php
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Image Transform &amp; Extra plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
@@ -231,8 +230,7 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>Comme nous venons juste de créer le module, pensez à supprimer le code par défaut de la méthode executeIndex du fichier <code class="code-inline" id="af2f8d23a83286b4b84675fedb15eb0d">apps/frontend/modules/actions/actions.class.php</code>. Affichons à présent la page dans notre navigateur : <a href="http://mon_hote_virtuel/frontend_dev.php/image" target="_blank">http://mon_hote_virtuel/frontend_dev.php/image</a>. Le résultat est admirable ... je ne m'en lasse pas ...</p>
-<p><img src="/images/posts/2010/sfImageTransformExtrePlugin.png" alt="indexSuccess.php Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin" id="indexsuccess-php-installation-et"></p>
-<p>Cela étant, notre but étant d'utiliser dans un premier temps le plugin sfImageTransformPlugin, nous allons écrire une méthode sans prétention qui va appliquer un traitement à cette image lorsque nous soumettons le formulaire. Pour cela, nous allons modifier le fichier actions.class.php afin de mettre à jour la méthode executeIndex :</p>
+<img src="/images/posts/2010/sfImageTransformExtrePlugin.png" alt="indexSuccess.php Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin" title="indexSuccess.php Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin" id="indexsuccess-php-installation-et"><p>Cela étant, notre but étant d'utiliser dans un premier temps le plugin sfImageTransformPlugin, nous allons écrire une méthode sans prétention qui va appliquer un traitement à cette image lorsque nous soumettons le formulaire. Pour cela, nous allons modifier le fichier actions.class.php afin de mettre à jour la méthode executeIndex :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="77260ecbc1738808bd892e8a548b26ac"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token shell-comment comment"># apps/frontend/modules/image/actions/actions.class.php</span>
 <span class="token keyword">class</span> <span class="token class-name">imageActions</span> <span class="token keyword">extends</span> <span class="token class-name">sfActions</span>

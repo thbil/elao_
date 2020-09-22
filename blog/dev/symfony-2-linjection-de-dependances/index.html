@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/vbouzeran.jpg" />
     <p>Écrit par Vincent BOUZERAN<p>
     <p>Publication 3 juin 2010<p>
-    <p>Modification 21 septembre 2020<p>
+    <p>Modification 22 septembre 2020<p>
   </div>
 
   <div>
@@ -182,8 +182,7 @@
   <div>
     <body><p><strong>Avertissement :</strong>
 Depuis la rédaction de cet article sur l'injection de dépendances, le coeur de Symfony2 a évolué de façon notable, en particulier certaines classes du répertoire <strong>DependencyInjection</strong> mentionnées dans cet article ont été renommées, révisées, ou refondues. Toutefois, les principes généraux décrits dans cet article restent d'actualité.</p>
-<p><img src="/images/posts/2010/dependency-injection-symfony.png" alt='dependency injection symfony Symfony 2 Linjection de dépendances" width="278" height="236' id="dependency-injection-symfony-sym"></p>
-<p>Cet article est le premier d'une série à venir sur Symfony 2. Pour commencer, je vous invite à télécharger la <a href="http://symfony-reloaded.org/code" target="_blank">sandbox</a> de Symfony 2. J'ai décidé de commencer par l'injection de dépendances car il s'agit d'un composant clé de Symfony 2, et que la bonne compréhension de cette nouvelle version du Framework doit forcément en passer par là. L'injection de dépendance est réellement au coeur du Framework.</p>
+<img src="/images/posts/2010/dependency-injection-symfony.png" alt='dependency injection symfony Symfony 2 Linjection de dépendances" width="278" height="236' title='dependency injection symfony Symfony 2 Linjection de dépendances" width="278" height="236' id="dependency-injection-symfony-sym"><p>Cet article est le premier d'une série à venir sur Symfony 2. Pour commencer, je vous invite à télécharger la <a href="http://symfony-reloaded.org/code" target="_blank">sandbox</a> de Symfony 2. J'ai décidé de commencer par l'injection de dépendances car il s'agit d'un composant clé de Symfony 2, et que la bonne compréhension de cette nouvelle version du Framework doit forcément en passer par là. L'injection de dépendance est réellement au coeur du Framework.</p>
 <p>Nous allons commencer par tenter d'éclaircir cette notion (ou ce design pattern), puis nous verrons plus concrètement l'implémentation qui en est faite au sein de Symfony 2. Commençons par une petite définition.</p>
 <blockquote>
 <p>Définition Wikipedia:</p>
@@ -283,8 +282,7 @@ Depuis la rédaction de cet article sur l'injection de dépendances, le coeur de
 En premier lieu, je vous conseille vivement la lecture de la documentation de Fabien Potencier dédiée au composant:
 <a href="http://components.symfony-project.org/dependency-injection/trunk/book/00-Introduction" target="_blank">Symfony Dependency Injection</a> (il s'agit du composant php 5.2, mais la documentation est toujours d'actualité dans le sens où le fonctionnement est identique).</p>
 <p>Jetons un oeil aux sources du composant (<em>/sandbox/src/vendor/symfony/src/Symfony/Components/DependencyInjection</em>) :</p>
-<p><img src="/images/posts/2010/di-folder.png" alt='di folder Symfony 2   Linjection de dépendances" width="284" height="253' id="di-folder-symfony-linjection"></p>
-<ul><li>Le répertoire <strong>*Dumper<strong> <em>va contenir les classes permettant de dumper un </em></strong>Builder*</strong> sous un format spécifique (Yaml, Xml, PHP, Graphviz).</li>
+<img src="/images/posts/2010/di-folder.png" alt='di folder Symfony 2   Linjection de dépendances" width="284" height="253' title='di folder Symfony 2   Linjection de dépendances" width="284" height="253' id="di-folder-symfony-linjection"><ul><li>Le répertoire <strong>*Dumper<strong> <em>va contenir les classes permettant de dumper un </em></strong>Builder*</strong> sous un format spécifique (Yaml, Xml, PHP, Graphviz).</li>
 <li>Le répertoire <strong><em>Loader</em></strong> var contenir les classes permettant de charger des <strong><em>BuilderConfiguration</em></strong> à partir de formats spécifiques (Yaml, Xml, Ini)</li>
 <li><strong><em>Container</em></strong> est notre classe de base, ie le container qui va contenir les différents services et les paramètres associés.</li>
 <li><strong><em>Builder</em></strong> est une classe qui étend <strong><em>Container</em></strong> et qui va permettre d'auto-générer le <strong><em>Container</em></strong> à partir de la configuration, elle va consommer des objets de la classe <strong><em>BuilderConfiguration</em></strong> afin d'enrichir le <strong><em>Container</em></strong>.</li>
@@ -293,8 +291,7 @@ En premier lieu, je vous conseille vivement la lecture de la documentation de Fa
 </ul><p>Le fonctionnement est somme toute assez simple. Les différents loaders vont permettre de générer des objets du type BuilderConfiguration (qui contiendront des objets Definition) qui seront mergés au sein du Builder pour aboutir à notre Container. Les dumpers permettront de faire l'opération inverse, à savoir : générer un fichier de définitions pour les formats Yaml et Xml, un output Graphviz et enfin un objet php Container en ce qui concerne le dumper PHP.
 Un schéma valant mieux qu'un long discours, on peut synthétiser le fonctionnement comme suit :
 Note: Le loader de fichiers .ini n'a pas été représenté puisqu'il ne permet que de définir des paramètres.</p>
-<p><img src="/images/posts/2010/injection-dependances.png" alt='injection dependances Symfony 2   Linjection de dépendances" width="846" height="468' id="injection-dependances-symfony"></p>
-<p><strong>Le dumper Graphviz</strong>: Ce dumper a pour objectif de générer un dump exploitable par le logiciel <a href="http://graphviz.org/" target="_blank">Graphviz</a> ; il va nous permettre d'obtenir un graphique représentant nos services et leurs dépendances.
+<img src="/images/posts/2010/injection-dependances.png" alt='injection dependances Symfony 2   Linjection de dépendances" width="846" height="468' title='injection dependances Symfony 2   Linjection de dépendances" width="846" height="468' id="injection-dependances-symfony"><p><strong>Le dumper Graphviz</strong>: Ce dumper a pour objectif de générer un dump exploitable par le logiciel <a href="http://graphviz.org/" target="_blank">Graphviz</a> ; il va nous permettre d'obtenir un graphique représentant nos services et leurs dépendances.
 <strong><strong>Le cache:</strong></strong> Afin d'accélérer le fonctionnement des applications utilisant l'injection de dépendances, il est évident que les différents fichiers de configuration ne seront pas reparsés à chaque appel. En réalité, le container sera dumpé sous la forme d'une classe PHP et mise en cache.</p>
 <p>Attardons nous un peu sur ces fameuses définitions de services qui sont un peu la pierre angulaire de l'injection de dépendances.</p>
 <table style="width: 100%;" border="0"><tr><th colspan="2">

@@ -165,8 +165,8 @@
   <div>
     <img src="/elao_/images/authors/aldeboissieu.jpg" />
     <p>Écrit par Anne-Laure de Boissieu<p>
-    <p>Publication 21 septembre 2020<p>
-    <p>Modification 21 septembre 2020<p>
+    <p>Publication 22 septembre 2020<p>
+    <p>Modification 22 septembre 2020<p>
   </div>
 
   <div>
@@ -184,18 +184,15 @@
     <body><p>Certaines informations extraites d'une page web sont <strong>directement affichées dans la page de résultats du moteur de recherche Google</strong>, permettant ainsi au géant du web d'<em>enrichir</em> ses résultats de recherche. Ces contenus supplémentaires sont appellés des extraits enrichis (ou rich snippets). Ils peuvent concerner de nombreuses thématiques : produits, recettes de cuisine, spectacles ou encore … des offres d'emploi !</p>
 <p>C'est justement pour répondre à ce besoin que nous avons mis en place ce fameux protocole sur les pages d'un de nos clients. Nous vous proposons de partager avec vous ce que nous avons appris 🌟🤓.</p>
 <h2 id="rich-snippets-mais-qu-est-ce-q">Rich snippets : mais qu'est-ce que c'est ?<a href="#rich-snippets-mais-qu-est-ce-q" class="anchor"></a></h2>
-<p>Les internautes sont habitués à voir selon la thématique, pour un résultat proposé en plus de la meta description, un prix, une note sous forme d'étoile, une date de publication de l'article, ou encore un temps de cuisson s'il s'agit d'une recette de cuisine.
-<img src="/images/posts/2019/microdata-offers/produit-prix.png" alt="Vélo avec prix" id="v-lo-avec-prix"><img src="/images/posts/2019/microdata-offers/rich-snippet-recipe.png" alt="Recette de cuisine" id="recette-de-cuisine"></p>
-<p>C'est en encodant votre HTML que les crawlers de Google (ou d'autres moteurs de recherche) peuvent interpréter votre contenu, et ainsi peut-être l'utiliser pour alimenter ses pages de résultats. Et si vous avez la chance de figurer parmi les premières positions, <strong>vous bénéficierez probablement de plus de clics sur votre page web, et ainsi plus de trafic</strong>.</p>
-<p>En plus des contenus enrichis, Google propose de véritables features, comme par exemple ce planning des concerts à venir :
-<img src="/images/posts/2019/microdata-offers/position-zero-concert.png" alt="Evènements à venir" id="ev-nements-venir"></p>
-<h3 id="les-protocoles-de-donn-es-struc">Les protocoles de données structurées<a href="#les-protocoles-de-donn-es-struc" class="anchor"></a></h3>
+<p>Les internautes sont habitués à voir selon la thématique, pour un résultat proposé en plus de la meta description, un prix, une note sous forme d'étoile, une date de publication de l'article, ou encore un temps de cuisson s'il s'agit d'une recette de cuisine.</p>
+<img src="/images/posts/2019/microdata-offers/produit-prix.png" alt="Vélo avec prix" title="Vélo avec prix" id="v-lo-avec-prix"><img src="/images/posts/2019/microdata-offers/rich-snippet-recipe.png" alt="Recette de cuisine" title="Recette de cuisine" id="recette-de-cuisine"><p>C'est en encodant votre HTML que les crawlers de Google (ou d'autres moteurs de recherche) peuvent interpréter votre contenu, et ainsi peut-être l'utiliser pour alimenter ses pages de résultats. Et si vous avez la chance de figurer parmi les premières positions, <strong>vous bénéficierez probablement de plus de clics sur votre page web, et ainsi plus de trafic</strong>.</p>
+<p>En plus des contenus enrichis, Google propose de véritables features, comme par exemple ce planning des concerts à venir :</p>
+<img src="/images/posts/2019/microdata-offers/position-zero-concert.png" alt="Evènements à venir" title="Evènements à venir" id="ev-nements-venir"><h3 id="les-protocoles-de-donn-es-struc">Les protocoles de données structurées<a href="#les-protocoles-de-donn-es-struc" class="anchor"></a></h3>
 <p>Certaines données structurées sont déjà des standards du web, comme <strong>le fil d'ariane</strong>, ou encore <strong>la structure des articles</strong> (l'auteur, la date de publication, l'image, etc.). Le protocole utilisé par les moteurs de recherche, dont Google est celui décrit par <a href="https://schema.org/" target="_blank">schema.org</a>. Par ailleurs, il n'y a pas que les pages web qui peuvent être balisées, car schema.org propose également des données structurées pour les emails (par exemple pour des récapitulatifs de réservation de vol).</p>
 <p>Il existe d'autres protocoles, comme par exemple l'<a href="https://developers.facebook.com/docs/sharing/webmasters?locale=fr_FR" target="_blank"><strong>Open Graph de Facebook</strong></a>, qui facilite le partage de vos contenus sur ce réseau social en ciblant correctement le titre, la description de l'article, etc.</p>
 <h2 id="offres-d-emploi-est-ce-utile-d">Offres d'emploi : est-ce utile d'intégrer des données structurées ?<a href="#offres-d-emploi-est-ce-utile-d" class="anchor"></a></h2>
 <p>Si l'internaute saisit des mots-clés relatifs à une recherche d'emploi (ici <code class="code-inline" id="216f7a26b3c83191b5a1eb7472434ed6">pizzaiolo lyon</code>), <strong>il voit apparaître une feature spéciale lui proposant une liste d'offres localisée</strong>. Au clic sur "17 offres d'emploi" (voir ci-dessous), on est redirigé vers un outil de recherche d'emplois permettant de filtrer selon plusieurs types (date de publication, type d'emploi, lieu, employeur). Voir son ou ses offres d'emploi y paraître semble donc être un bon moyen de bénéficier de plus de visibilité.</p>
-<p><img src="/images/posts/2019/microdata-offers/offer-rich-snippets.png" alt="job board Google" id="job-board-google"></p>
-<h2 id="comment-s-y-prendre">Comment s'y prendre ?<a href="#comment-s-y-prendre" class="anchor"></a></h2>
+<img src="/images/posts/2019/microdata-offers/offer-rich-snippets.png" alt="job board Google" title="job board Google" id="job-board-google"><h2 id="comment-s-y-prendre">Comment s'y prendre ?<a href="#comment-s-y-prendre" class="anchor"></a></h2>
 <p>Le guide suprême auquel se référer est <strong>schema.org</strong>. Il documente pour chaque type recherché l'implémentation des balises pour l'encodage voulu (microdata, RDFa, JSON-LD). Ainsi, la page dédiée à l'offre décrit <a href="https://schema.org/Offer" target="_blank">toutes les propriétés</a>. Cela dit, <a href="https://developers.google.com/search/docs/data-types/job-posting" target="_blank">Google propose une documentation - en français - très détaillée</a>, afin de faciliter l'implémentation des microdonnées par les webmasters.</p>
 <p>Voici un exemple de contenu balisé pour une offre d'emploi :</p>
 <pre class="code-multiline"><code id="5c5287b2a57a1d21a839ee5c89170438">&lt;div itemscope itemtype="http://schema.org/JobPosting"&gt;
@@ -250,13 +247,11 @@
 <p><a href="https://search.google.com/structured-data/testing-tool/u/0/" target="_blank">L'outil de test des données structurées de Google</a> vous donnera des informations sur l'implémentation.
 Deux intérêts :</p>
 <ul><li>
-<p><strong>Repérer les erreurs</strong> (Google classe les erreurs distinctement des avertissements, qui sont les propriétés "bien à avoir" mais qui ne génèreront pas d'erreur), comme ci-dessous :
-<img src="/images/posts/2019/microdata-offers/test-microdata.png" alt="Liste des avertissements et erreurs" id="liste-des-avertissements-et-erre"></p>
-</li>
+<p><strong>Repérer les erreurs</strong> (Google classe les erreurs distinctement des avertissements, qui sont les propriétés "bien à avoir" mais qui ne génèreront pas d'erreur), comme ci-dessous :</p>
+<img src="/images/posts/2019/microdata-offers/test-microdata.png" alt="Liste des avertissements et erreurs" title="Liste des avertissements et erreurs" id="liste-des-avertissements-et-erre"></li>
 <li>
-<p><strong>Prévisualiser son offre dans l'outil</strong>, comme ci-dessous :
-<img src="/images/posts/2019/microdata-offers/preview.png" alt="Prévisualisation" id="pr-visualisation"></p>
-</li>
+<p><strong>Prévisualiser son offre dans l'outil</strong>, comme ci-dessous :</p>
+<img src="/images/posts/2019/microdata-offers/preview.png" alt="Prévisualisation" title="Prévisualisation" id="pr-visualisation"></li>
 </ul><h3 id="se-servir-de-la-search-console">Se servir de la Search Console<a href="#se-servir-de-la-search-console" class="anchor"></a></h3>
 <p>Pour ceux qui le souhaitent, il est possible d'utiliser un outil dédié aux webmasters, la <a href="https://search.google.com/search-console/about?hl=fr" target="_blank">Search Console</a> proposée par Google. <strong>Celle-ci permet de remonter diverses informations dont les erreurs rencontrées par les robots d'exploration au moment du crawl.</strong> Il peut s'agir d'un code réponse spécial (404, 500 ...), ou bien d'erreurs rencontrées lors de l'analyse des microdonnées.</p>
 <p>En ce qui concerne les offres d'emploi, celles-ci disposent d'un onglet spécifique dans le menu de la Search Console afin d'accéder à un tableau de bord qui remonte les erreurs rencontrées sur les pages, comme par exemple des propriétés manquantes.</p>
@@ -269,8 +264,8 @@ Deux intérêts :</p>
 <h2 id="bon-savoir">Bon à savoir<a href="#bon-savoir" class="anchor"></a></h2>
 <p>Vous avez peut-être aperçu, au cours de vos recherches, du contenu affiché dans un encart spécial, en haut de la page, généralement en réponse à une question saisie par l'internaute. Ce sont des <strong>"positions zero"</strong>.
 Dans ce cas particulier, il n'est pas forcément nécessaire d'implémenter des données structurées dans votre HTML même si de nombreux types existent, seul l'adéquation entre une balise de titre (H1, H2...) et un contenu disposé dans une liste à puce semble suffire.</p>
-<p>Voici un exemple pour une question saisie par l'internaute dans un encart spécial, dont le html ne comporte qu'une liste, et non une structure de type <a href="https://developers.google.com/search/docs/data-types/how-to?hl=fr" target="_blank">"How To"</a>) :
-<img src="/images/posts/2019/microdata-offers/tuer-son-sim.png" alt="Exemple de position zéro" id="exemple-de-position-z-ro"></p></body>
+<p>Voici un exemple pour une question saisie par l'internaute dans un encart spécial, dont le html ne comporte qu'une liste, et non une structure de type <a href="https://developers.google.com/search/docs/data-types/how-to?hl=fr" target="_blank">"How To"</a>) :</p>
+<img src="/images/posts/2019/microdata-offers/tuer-son-sim.png" alt="Exemple de position zéro" title="Exemple de position zéro" id="exemple-de-position-z-ro"></body>
   </div>
 
   <div>

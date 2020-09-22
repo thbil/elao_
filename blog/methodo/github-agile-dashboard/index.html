@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/tjarrand.jpg" />
     <p>Écrit par Thomas JARRAND<p>
     <p>Publication 4 juillet 2017<p>
-    <p>Modification 21 septembre 2020<p>
+    <p>Modification 22 septembre 2020<p>
   </div>
 
   <div>
@@ -194,8 +194,7 @@
 <li>On inscrit l'estimation en point d'une story dans son titre :  <code class="code-inline" id="ebc333ad53b873b3656fb9bd1cf03a6f">Ma story [3]</code></li>
 <li>Une milestone "Backlog" contient toutes les autres stories.</li>
 </ul><p>Ça nous convient bien et GitHub nous fournit un aperçu de l'avancée de la milestone (et donc du sprint) en cours :</p>
-<p><img src="/images/posts/2017/github-agile-dashboard/github-milestone.png" alt="github-milestone" id="github-milestone"></p>
-<p>Le problème, c'est que GitHub ne connait pas notre convention décrivant la valeur en point des stories et ne peut donc pas l'exploiter.</p>
+<img src="/images/posts/2017/github-agile-dashboard/github-milestone.png" alt="github-milestone" title="github-milestone" id="github-milestone"><p>Le problème, c'est que GitHub ne connait pas notre convention décrivant la valeur en point des stories et ne peut donc pas l'exploiter.</p>
 <p>L'avancement proposé en nombre de ticket clos n'est pas représentatif de l'avancement en terme de points, qu'on doit obtenir en additionnant les points de toutes les issues.</p>
 <p><em>Et puis un jour, on en a eu marre de faire ces totaux à la main</em> 😇</p>
 <h2 id="gad-notre-ligne-de-command-agil">GAD, notre ligne de command agile<a href="#gad-notre-ligne-de-command-agil" class="anchor"></a></h2>
@@ -206,17 +205,14 @@
 </ul><p>À partir de ces données, il est très simple de classer les stories du sprint en cours par état (<em>todo</em>, <em>doing</em>, <em>ready-to-review</em> et <em>done</em>) et de calculer les sommes de points respectives.</p>
 <p>Comme toutes ces données sont horodatées, on a même de quoi générer un petit <strong>burndown chart</strong> !</p>
 <p>Dans le répertoire de notre projet, si on tape <code class="code-inline" id="5873cade84adddbdd85ce9248ea2a629">gad sprint</code>, on obtient :</p>
-<p><img src="/images/posts/2017/github-agile-dashboard/sprint.png" alt="gad sprint" id="gad-sprint"></p>
-<p>Dès que nous avons identifié un besoin qui revenait souvent, on a rajouté une commande à GAD :</p>
+<img src="/images/posts/2017/github-agile-dashboard/sprint.png" alt="gad sprint" title="gad sprint" id="gad-sprint"><p>Dès que nous avons identifié un besoin qui revenait souvent, on a rajouté une commande à GAD :</p>
 <blockquote>
 <p>Combien de points reste-t-il dans le backlog ?</p>
 </blockquote>
-<p><img src="/images/posts/2017/github-agile-dashboard/backlog.png" alt="gad backlog" id="gad-backlog"></p>
-<blockquote>
+<img src="/images/posts/2017/github-agile-dashboard/backlog.png" alt="gad backlog" title="gad backlog" id="gad-backlog"><blockquote>
 <p>Est-ce qu'il y a des PR que je n'ai pas encore review ?</p>
 </blockquote>
-<p><img src="/images/posts/2017/github-agile-dashboard/review.png" alt="gad review" id="gad-review"></p>
-<h2 id="faire-son-propre-cli-avec-node">Faire son propre CLI avec Node<a href="#faire-son-propre-cli-avec-node" class="anchor"></a></h2>
+<img src="/images/posts/2017/github-agile-dashboard/review.png" alt="gad review" title="gad review" id="gad-review"><h2 id="faire-son-propre-cli-avec-node">Faire son propre CLI avec Node<a href="#faire-son-propre-cli-avec-node" class="anchor"></a></h2>
 <p>GAD est codé en <em>Node</em>, mais de nombreux languages seront capables de répondre à une telle problématique.</p>
 <p>Node fournit quelques outils pratiques pour réaliser rapidement un petit outil en ligne de commande :</p>
 <ul><li>L'API __<a href="https://nodejs.org/api/readline.html#readline_example_tiny_cli" target="_blank">ReadLine</a>__ qui propose quelques fonctionnalités dédiées au CLI, <em>out of the box</em>.</li>

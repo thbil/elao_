@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/mcolin.jpg" />
     <p>Écrit par Maxime COLIN<p>
     <p>Publication 21 juin 2017<p>
-    <p>Modification 21 septembre 2020<p>
+    <p>Modification 22 septembre 2020<p>
   </div>
 
   <div>
@@ -185,8 +185,7 @@
     <body><h1 id="introduction">Introduction<a href="#introduction" class="anchor"></a></h1>
 <p>L'architecture hexagonale, également appelée <em>Ports &amp; Adapters</em>, présente deux caratéristiques lorsqu'on la schématise : une forme <strong>hexagonale</strong> (d'où son nom) et une séparation entre l'<strong>application</strong>, l'<strong>extérieur</strong> et une partie contenant des <strong>adapteurs</strong> permettant aux deux de communiquer.</p>
 <p>Elle a été pensé par <a href="http://alistair.cockburn.us/Hexagonal+architecture" target="_blank">Alistair Cockburn</a> dans les années 2000. Son but est de permettre à une application d'être pilotée sans distinction par des utilisateurs, des programmes, des tests automatisés ou des scripts ainsi que d'être développée et testée de façon isolée de son contexte d'exécution et de ses bases de données.</p>
-<p><img src="/images/posts/2017/hexagonal-architecture.png" alt="Architecture hexagonale" id="architecture-hexagonale"></p>
-<h2 id="une-architecture-hexagonale">Une architecture hexagonale<a href="#une-architecture-hexagonale" class="anchor"></a></h2>
+<img src="/images/posts/2017/hexagonal-architecture.png" alt="Architecture hexagonale" title="Architecture hexagonale" id="architecture-hexagonale"><h2 id="une-architecture-hexagonale">Une architecture hexagonale<a href="#une-architecture-hexagonale" class="anchor"></a></h2>
 <p>Les deux grands principes de base de l'architecture hexagonale sont :</p>
 <ul><li>La <strong>séparation entre le code métier et le code technique</strong>. Le but est de rendre votre code métier <strong>agnostique</strong> de l'architecture technique dans laquelle votre application sera exécutée.</li>
 <li>L'<strong>inversion de dépendance</strong> : votre code technique dépend de votre code métier et non l'inverse comme dans une architecture plus classique. Pour cela vous allez massivement utiliser le <strong>design pattern adapter</strong>.</li>

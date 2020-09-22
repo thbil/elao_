@@ -166,7 +166,7 @@
     <img src="/elao_/images/authors/tjarrand.jpg" />
     <p>Écrit par Thomas JARRAND<p>
     <p>Publication 9 novembre 2017<p>
-    <p>Modification 21 septembre 2020<p>
+    <p>Modification 22 septembre 2020<p>
   </div>
 
   <div>
@@ -325,15 +325,13 @@ Ressaisissez le nouveau mot de passe <span class="token builtin class-name">:</s
 <li><strong>Version</strong>: <code class="code-inline" id="21d7539ee40328108220cec9a0bdbca1">__RN_CONFIG_APP_VERSION</code></li>
 <li><strong>Build</strong>: <code class="code-inline" id="51ada30ba2350a62ddff5cedd1e5ce62">__RN_CONFIG_APP_BUILD</code></li>
 </ul><p><span class="side-note">🔧</span> In the <em>Signing</em> section, select a <strong>Team</strong></p>
-<p><img src="/images/posts/2017/from-react-native-init-to-app-stores-real-quick/xcode_config.png" alt="" id="xcode-config-png"></p>
-<h4 id="in-the-build-settings-tab">In the <em>Build Settings</em> tab<a href="#in-the-build-settings-tab" class="anchor"></a></h4>
+<img src="/elao_/images/posts/2017/from-react-native-init-to-app-stores-real-quick/xcode_config.png" alt="" title="" id="xcode-config-png"><h4 id="in-the-build-settings-tab">In the <em>Build Settings</em> tab<a href="#in-the-build-settings-tab" class="anchor"></a></h4>
 <p><span class="side-note">🔧</span> In the <em>All</em> section:</p>
 <ul><li>Search for "preprocess"</li>
 <li>Set <strong>Preprocess Info.plist File</strong> to <code class="code-inline" id="93cba07454f06a4a960172bbd6e2a435">Yes</code></li>
 <li>Set <strong>Info.plist Preprocessor Prefix File</strong> to <code class="code-inline" id="8910f5c647674a19c564dad245d198e8">${BUILD_DIR}/GeneratedInfoPlistDotEnv.h</code></li>
 <li>Set <strong>Info.plist Other Preprocessor Flags</strong> to <code class="code-inline" id="fb1db2bdbd81182a5c390f4a0c049e09">-traditional</code></li>
-</ul><p><img src="/images/posts/2017/from-react-native-init-to-app-stores-real-quick/xcode_build_settings.png" alt="" id="xcode-build-settings-png"></p>
-<p><span class="side-note light">💡</span> <em>If you don't see those settings, verify that "All" is selected at the top (instead of "Basic").</em></p>
+</ul><img src="/elao_/images/posts/2017/from-react-native-init-to-app-stores-real-quick/xcode_build_settings.png" alt="" title="" id="xcode-build-settings-png"><p><span class="side-note light">💡</span> <em>If you don't see those settings, verify that "All" is selected at the top (instead of "Basic").</em></p>
 <h3 id="change-the-public-app-name">Change the public app name<a href="#change-the-public-app-name" class="anchor"></a></h3>
 <p>To change the name that will be displayed to the public on the stores:</p>
 <h4 id="on-ios">On iOS<a href="#on-ios" class="anchor"></a></h4>
@@ -398,9 +396,9 @@ Run the app on any simulated or real android device found, as a release.</li>
 </tr></thead><tbody><tr><td><code class="code-inline" id="0ab7be2423d055960c12d05c748b101b">ENVFILE=.env.development react-native run-ios</code></td>
 <td><code class="code-inline" id="8e178de69d843a63addafb0a46740539">ENVFILE=.env.staging react-native run-ios</code></td>
 <td><code class="code-inline" id="517c2e73a697fd677e844034fb41c2e4">ENVFILE=.env.production react-native run-ios</code></td>
-</tr><tr><td><img src="/images/posts/2017/from-react-native-init-to-app-stores-real-quick/AcmeApp_dev.png" alt="" id="acmeapp-dev-png"></td>
-<td><img src="/images/posts/2017/from-react-native-init-to-app-stores-real-quick/AcmeApp_staging.png" alt="" id="acmeapp-staging-png"></td>
-<td><img src="/images/posts/2017/from-react-native-init-to-app-stores-real-quick/AcmeApp_production.png" alt="" id="acmeapp-production-png"></td>
+</tr><tr><td><img src="/elao_/images/posts/2017/from-react-native-init-to-app-stores-real-quick/AcmeApp_dev.png" alt="" id="acmeapp-dev-png"></td>
+<td><img src="/elao_/images/posts/2017/from-react-native-init-to-app-stores-real-quick/AcmeApp_staging.png" alt="" id="acmeapp-staging-png"></td>
+<td><img src="/elao_/images/posts/2017/from-react-native-init-to-app-stores-real-quick/AcmeApp_production.png" alt="" id="acmeapp-production-png"></td>
 </tr></tbody></table><h2 id="store-configuration">Store configuration<a href="#store-configuration" class="anchor"></a></h2>
 <h3 id="generate-store-icons">Generate store icons<a href="#generate-store-icons" class="anchor"></a></h3>
 <p>Apple's App Store and the Google Play Store both require that you provide icons for your app in various formats.</p>
@@ -428,12 +426,10 @@ Run the app on any simulated or real android device found, as a release.</li>
 <li>Once done, click the little grey arrow at the end of the <em>App Icons Source</em> line.</li>
 </ul><p><span class="side-note">🔧</span> Click on the newly created <em>LaunchImage</em> catalog, and fill every required launch screen with the corresponding format from the generated image folder.</p>
 <p><span class="side-note light">💡</span> <em>If you're having trouble figuring out which format corresponds to which case, the alert tab on the left will tell you exactly what size is expected for each image.</em></p>
-<p><img src="/images/posts/2017/from-react-native-init-to-app-stores-real-quick/notice.png" alt="" id="notice-png"></p>
-<p><span class="side-note">🔧</span> Finally, go back in the <em>General</em> tab, in the <em>App Icons and Launch Images</em> section, do the following:</p>
+<img src="/elao_/images/posts/2017/from-react-native-init-to-app-stores-real-quick/notice.png" alt="" title="" id="notice-png"><p><span class="side-note">🔧</span> Finally, go back in the <em>General</em> tab, in the <em>App Icons and Launch Images</em> section, do the following:</p>
 <ul><li>As <em>Launch Images Source</em> select <strong>LaunchImage</strong>.</li>
 <li>Empty the <strong>Launch Screen File</strong>.</li>
-</ul><p><img src="/images/posts/2017/from-react-native-init-to-app-stores-real-quick/launch_screen_setup.png" alt="" id="launch-screen-setup-png"></p>
-<p><span class="side-note light">💡</span> <em>You can now delete the <code class="code-inline" id="11fa5fb30c227fb09e3ecd6ab2549700">LaunchScreen.xib</code> in the <code class="code-inline" id="3baf44460f7d3b7cac6871bf1eee16b1">AcmeApp</code> folder.</em></p>
+</ul><img src="/elao_/images/posts/2017/from-react-native-init-to-app-stores-real-quick/launch_screen_setup.png" alt="" title="" id="launch-screen-setup-png"><p><span class="side-note light">💡</span> <em>You can now delete the <code class="code-inline" id="11fa5fb30c227fb09e3ecd6ab2549700">LaunchScreen.xib</code> in the <code class="code-inline" id="3baf44460f7d3b7cac6871bf1eee16b1">AcmeApp</code> folder.</em></p>
 <h5 id="android">Android<a href="#android" class="anchor"></a></h5>
 <p><span class="side-note">🔧</span> Create a <code class="code-inline" id="ffa5b57ed2f9696d7f234d062718c4d6">android/app/src/main/res/drawable/splash_screen.xml</code> file:</p>
 <pre class="code-multiline language-xml"><code class="language-xml" id="021da6ec49b1eb54bdd00d82684f9366"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
