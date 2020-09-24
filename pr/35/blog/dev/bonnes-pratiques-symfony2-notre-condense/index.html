@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/kafeine.png)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/kafeine.png)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>19 avril 2013</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -225,58 +225,74 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><h2 id="apr-s-le-symfony-live-pou">Après le Symfony Live 2013, pour tous ceux qui n'ont pas pu venir, voici notre condensé des bonnes pratiques à respecter avec Symfony2 :<a href="#apr-s-le-symfony-live-pou" class="anchor"></a></h2>
+<ol><li>
+<p>Lire et relire la <strong>documentation officielle</strong> pour rester à jour.</p>
+</li>
+<li>
+<p>Respecter les <strong>codings standards</strong> (voir <a title="Coding Standards" href="http://symfony.com/doc/master/contributing/code/standards.html" target="_blank">Coding standars</a> et <a title="PHP Coding Standards Fixer" href="http://cs.sensiolabs.org/" target="_blank">CSFixer</a>).</p>
+</li>
+<li>
+<p>Découpage en Bundle : Créer <strong>un bundle</strong> pour gérer <strong>une fonctionnalité</strong> globale (ex: partie forum) ou s'il a vocation à être <strong>réutilisé</strong>. <em>Attention : ne pas forcement découper ses fonctionnalités en plusieurs bundle si elle sont interdépendantes</em>.</p>
+</li>
+<li>
+<p>Définir une <strong>configuration</strong> pour ses bundles via le DI : permet de ne charger que le nécessaire, de valider la configuration, afficher des messages d'erreurs clairs, etc.</p>
+</li>
+<li>
+<p>Si possible, <strong>ne pas mélanger Symfony2 et logique métier</strong>. Découper les objets métier en deux : le mapping SF2 dans une entité, la logique métier dans un model distinct.</p>
+</li>
+<li>
+<p><strong>Pas de logique métier dans les contrôleurs</strong>. Faire appel à des services et des repository puis passer le resultat à la vue.<br><em>Penser aux annotations pour alleger les controlleurs.</em></p>
+</li>
+<li>
+<p>Toujours écrire des <strong>FormType</strong> pour faire des formulaires. Les déclarer en service et leur passer des arguments (plutôt que de leur passer des options).</p>
+</li>
+<li>
+<p>Faire <strong>un service pour gérer la session</strong> (qui prend la session en argument) plutôt que de la gérer à plusieurs endroits dans les contrôleurs.</p>
+</li>
+<li>
+<p><strong>Utiliser le DIC !</strong> (<a title="The Dependency Injection Component" href="http://symfony.com/doc/current/components/dependency_injection/index.html" target="_blank">Dependency Injection Component</a>).</p>
+</li>
+<li>
+<p><strong>Travailler avec des Test</strong> unitaires et fonctionnels. Avec les outils intégrés et ceux disponibles en parallèle.</p>
+</li>
+<li>
+<p>Utiliser <strong>Twig</strong> et <strong>Assetic</strong>.</p>
+</li>
+<li>
+<p>Écrire des <strong>commandes</strong> pour les tâches répétitives.</p>
+</li>
+<li>
+<p><strong>Internationaliser</strong> dès le début du projet.</p>
+</li>
+<li>
+<p>En environnement de développement : Utiliser le <strong>Profiler</strong>, intercepter les redirections.</p>
+</li>
+<li>
+<p>En production : supprimer <code class="code-inline" id="1e8f748700f378a8e16804e7f2d9e4eb">app_dev.php</code> et autres, fournir une clé secrète, activer les CSRF, activer les caches Doctrine, personnaliser les pages d'erreurs.</p>
+</li>
+</ol><h3 id="et-aussi">Et aussi :<a href="#et-aussi" class="anchor"></a></h3>
+<p>De manière général, veiller à la qualité et respecter les bonnes pratiques dans tous les aspects du projet : configuration serveur, HTML, CSS, Javascript, Git, etc.</p>
+<p>Un grand merci à <a href="https://connect.sensiolabs.com/profile/tucksaun" target="_blank">Tugdual Saunier</a></p>
+<h3 id="sources">Sources:<a href="#sources" class="anchor"></a></h3>
+<p>Conférence au Symfony Live 2013 : <a href="https://speakerdeck.com/tucksaun/42-bonnes-pratique-pour-symfony2" target="_blank">"42 bonnes pratiques pour Symfony2"</a> par Tugdual Saunier - Sensio</p></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

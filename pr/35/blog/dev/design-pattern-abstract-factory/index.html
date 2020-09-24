@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/schema.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/schema.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>11 avril 2017</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -225,58 +225,125 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Deuxième article d'une série consacrée aux Design Patterns. Aujourd'hui, le pattern <code class="code-inline" id="65e83a834deb2a41513d933cb5fa5570">AbstractFactory</code> où il sera question de produits, de familles et de fabriques (<em>factories</em>, au pluriel s'il vous plaît).</p>
+<table width="100%"><tr><td width="50%" align="center">
+            {{}}
+    <figcaption style="text-align: center;font-style: italic;">Une gentille famille américaine</figcaption></td>
+        <td width="50%" align="center">
+            {{}}
+<figcaption style="text-align: center;font-style: italic;">Une <strike>gentille</strike> famille américaine</figcaption></td>
+    </tr></table><div style="border-left: 5px solid #ffa600;padding: 20px;margin: 20px 0;">
+    Le livre <strong><i>Head First Design Patterns</i></strong> (<a href="/fr/dev/design-pattern-factory-method">dont j'ai déjà vanté les mérites</a>) regroupe les deux patterns <code id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> et <code id="65e83a834deb2a41513d933cb5fa5570">AbstractFactory</code> dans un même chapitre consultable en ligne et intitulé <a href="https://www.safaribooksonline.com/library/view/head-first-design/0596007124/ch04.html" target="_blank">The Factory Pattern: Baking with OO Goodness</a>. Je ne saurais trop vous encourager à le consulter !
+</div>
+<h2 id="classification">Classification<a href="#classification" class="anchor"></a></h2>
+<p>Le pattern <code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code> est classé dans la catégorie des <strong>Design Patterns de création</strong>.</p>
+<h2 id="d-finition">Définition<a href="#d-finition" class="anchor"></a></h2>
+<blockquote>
+<p>Provide an interface for creating families of related or dependent objects without specifying their concrete classes.</p>
+</blockquote>
+<p>C'est une très jolie définition dont je ne me lasse pas ... (Comme toute définition, elle paraît assez barbare tant que l'on n'a pas approfondi le concept, ce que je vous propose de faire dans les paragraphes qui suivent).</p>
+<p>En résumé, le pattern <code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code> va nous permettre d'instancier des familles de produits dépendant les uns des autres sans qu'il soit nécessaire de préciser leur type concret (je ne suis pas sûr qu'on soit plus avancé ...)</p>
+<h2 id="sch-ma-du-design-pattern-abstra">Schéma du design pattern <code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code><a href="#sch-ma-du-design-pattern-abstra" class="anchor"></a></h2>
+<p class="text-center">
+    {{}}
+</p>
+<p>Ne vous laissez pas impressionner par la densité du schéma et le nombre de participants. Le pattern n'a rien d'insurmontable et peut s'avérer utile dans de nombreuses situations.</p>
+<p>Pour l'heure, et pour y voir un peu plus clair, je vous suggère de diviser mentalement le schéma en deux :</p>
+<ul><li>à gauche figurent les fabriques</li>
+<li>à droite les produits à instancier</li>
+</ul><p>Les produits appartiennent à une famille. Sur ce schéma le produit A1 et le produit B1 appartiennent à la même famille et sont donc destinés à collaborer ensemble. Le produit A2 et le produit B2 appartiennent à une autre famille et sont également conçus pour collaborer ensemble. En revanche, A1 et B2 ne peuvent pas fonctionner ensemble. Il est donc important d'instancier des produits qui sont compatibles (autrement dit, qui appartiennent à la même famille) et c'est là qu'interviennent les fabriques abstraites.</p>
+<p>Je suis sûr qu'au cours de votre carrière de développeur vous avez été amenés à modéliser des contraintes métiers énoncées peu ou prou ainsi : "<em>si mon produit est une instance de A, alors c'est mon service A qui le gère ; si mon produit est une instance de B, alors c'est mon service B qui le gère</em>". Ne cherchez pas plus loin, c'est justement à ce genre de problématique que répond le pattern <code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code>.</p>
+<h2 id="exemple-de-probl-mes-familiaux">Exemple de problèmes familiaux ...<a href="#exemple-de-probl-mes-familiaux" class="anchor"></a></h2>
+<p>J'ai développé une extension Chrome qui permet de présenter des statistiques structurées à partir du détail d'un commit sur Github : nom du projet, nom de l'auteur, liste des fichiers concernés par les modifications, nombre de lignes supprimées, nombre de lignes ajoutées, etc.</p>
+<p>Pour ce faire, j'ai développé une librairie qui contient deux classes qui analysent le contenu HTML d'une page Github et en extraient les données pertinentes :</p>
+<ul><li>la première classe <code class="code-inline" id="6b5e652c03489366972d52d5aa3ce2a6">GithubCrawler</code> parse le DOM (cette classe connaît les chemins XPATH qui permettent d'extraire les données brutes au format HTML)</li>
+<li>la seconde classe <code class="code-inline" id="8f962f457dd44b50ac847fd857dcc106">GithubParser</code> sait parser les données brutes retournées par mon crawler pour en extraire les données épurées (débarrassées des tags HTML notamment) et les structurer</li>
+</ul><p>Mon client est aux anges et souhaite donc étendre ce fonctionnel aux projets hébergés sur Gitlab (vous la voyez arriver la nouvelle <code class="code-inline" id="ed81c0311eb5364a8d6d1d1b63f3c51d">famille</code> ?). Bien évidemment, la structure HTML des pages Gitlab est complètement différente des pages Github, et mon parser Github est tout à fait incapable de comprendre les données retournées par mon crawler Gitlab ... La contrainte est donc la suivante : si mon crawler est un crawler Github, alors je dois utiliser le parser Github ; si mon crawler est un crawler Gitlab, alors je dois utiliser le parser Gitlab. Et mon client ne compte pas s'arrêter là, il souhaite bien évidemment aussi gérer les pages Bitbucket ...</p>
+<h2 id="r-solution-de-la-probl-matique">Résolution de la problématique à l'aide du DP <code class="code-inline" id="65e83a834deb2a41513d933cb5fa5570">AbstractFactory</code><a href="#r-solution-de-la-probl-matique" class="anchor"></a></h2>
+<p>Vous l'aurez sans doute deviné, nous nous trouvons en présence de trois familles de produits différentes : la famille des produits Github, la famille des produits Gitlab et la famille des produits Bickbucket. Dans chacune de ces familles, on retrouve un produit <code class="code-inline" id="820d17d3f859f4391cce177be0c93fde">Crawler</code> et un produit <code class="code-inline" id="9a83ab0d60fed7c37d928ccb30d1b6ae">Parser</code> conçus pour collaborer ensemble.</p>
+<p>Comment garantir que j'utilise des produits d'une même famille ? Réponse : le pattern <strong>Abstract Factory</strong>. Ce qui nous donne le récapitulatif suivant :</p>
+<table><tr><th> </th>
+        <th>Github</th>
+        <th>Gitlab</th>
+        <th>BitBucket</th>
+    </tr><tr><td>SCMCrawlerInterface:</td>
+        <td colspan="3">
+            <pre class="code">
+public function getProjectNameHtml();
+public function getSummaryHtml();
+public function getCommittedFilesHtml();
+            </pre>
+        </td>
+    </tr><tr><td> </td>
+        <td>GithubCrawler</td>
+        <td>GitlabCrawler</td>
+        <td>BitBucketCrawler</td>
+    </tr><tr><td>SCMParserInterface:</td>
+        <td colspan="3">
+            <pre class="code">
+public function parseProjectName($projectNameHtml);
+public function parseSummary($summaryHtml);
+public function parseCommittedFiles($committedFilesHtml);
+            </pre>
+        </td>
+    </tr><tr><td> </td>
+        <td>GithubParser</td>
+        <td>GitlabParser</td>
+        <td>BitBucketParser</td>
+    </tr><tr><td>SCMFactoryInterface</td>
+        <td colspan="3">
+            <pre class="code">
+public function getCrawler();
+public function getParser();
+            </pre>
+        </td>
+    </tr><tr><td> </td>
+        <td>GithubFactory</td>
+        <td>GitlabFactory</td>
+        <td>BitBucketFactory</td>
+    </tr></table><h2 id="explication-de-la-solution">Explication de la solution<a href="#explication-de-la-solution" class="anchor"></a></h2>
+<ul><li>j'ai introduit une interface <code class="code-inline" id="4e989432907405ee26f3acdc4c264fec">SCMCrawlerInterface</code> qu'implémentent les crawlers de chaque famille</li>
+<li>j'ai également introduit une interface <code class="code-inline" id="34efd9deaba24759cc10f3cde8fee46d">SCMParserInterface</code> pour les parsers</li>
+<li>j'ai créé une fabrique (<em>Factory</em>) pour chaque famille :
+<ul><li>chaque fabrique implémente l'interface <code class="code-inline" id="78ac5e0ad827ce4a09d8d60a5515bfb8">SCMFactoryInterface</code></li>
+<li>nous implémentons autant de fabriques concrètes que de familles</li>
+<li>l'interface d'une fabrique expose autant de méthodes de création qu'il y a de produits dans une famille</li>
+</ul></li>
+</ul><p>Voici à titre d'exemple le code de la fabrique <code class="code-inline" id="5e7d2048a6b87680ad0b18e6e85f9789">GithubFactory</code> (je vous épargne le code des deux autres fabriques):</p>
+<pre class="code-multiline language-php"><code class="language-php" id="2bb2da4fee2ae696a907c60b2a75a1bb"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token keyword">class</span> <span class="token class-name">GithubFactory</span> <span class="token keyword">implements</span> <span class="token class-name">SCMFactoryInterface</span> <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getCrawler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> SCMCrawlerInterface <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">GithubCrawler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getParser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> SCMParserInterface <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">GithubParser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span></span></code></pre>
+<p>A présent, en fonction du contexte dans lequel nous nous trouvons (Github, Gitlab ou Bitbucket), il suffit d'instancier la bonne fabrique et d'appeler respectivement ses méthodes <code class="code-inline" id="21032d9bb7147d3eb07317f164890745">getCrawler</code> et <code class="code-inline" id="a08d072aa7ede5db0cf15d484998c5d7">getParser</code> pour obtenir les bons services adaptés au contexte courant. C'est au final la fabrique qui est garante de la compatibilité des produits qui collaborent.</p>
+<p>Autre avantage de cette solution : la résolution des services à instancier selon le contexte se fait une seule fois, il suffit d'instancier la bonne fabrique (nous n'avons pas à résoudre l'instanciation du bon crawler dans un premier temps, puis du bon parser dans un second temps).</p>
+<p>Grâce à ce pattern, l'ajout d'une nouvelle famille de produits peut également se faire assez aisément (un nouveau SCM à gérer), tout comme l'ajout d'un nouveau produit dans chaque famille (on pourrait envisager d'implémenter un Renderer spécialisé dans chaque famille, chargé de l'affichage des données obtenues, par exemple).</p>
+<h2 id="conclusion">Conclusion<a href="#conclusion" class="anchor"></a></h2>
+<p>Parce que ce sont tous deux des patterns de fabrique, on confond souvent la <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> et le pattern <code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code>. Voici donc un résumé de ces deux patterns en mettant l'accent sur ce qui les différencie :</p>
+<ul><li><code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> : <code class="code-inline" id="22af645d1859cb5ca6da0c484f1f37ea">new</code> déporté dans une méthode dédiée, un seul type d'objet retourné à la fois (une seule méthode d'instanciation par Factory)</li>
+<li><code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code> : famille de produits liés fonctionnellement, plusieurs fabriques, plusieurs types d'objets retournés par chaque fabrique (plusieurs méthodes d'instanciation par Factory)</li>
+</ul></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

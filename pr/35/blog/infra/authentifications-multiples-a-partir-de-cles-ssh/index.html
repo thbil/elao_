@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/keep-calm-and-connect-to-ssh.png)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/keep-calm-and-connect-to-ssh.png)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>11 avril 2010</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -234,58 +234,47 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>La petite astuce du jour</p>
+<p>Lorsque l'on commence à avoir pas mal de serveurs à administrer, les clés SSH se multiplient. En effet même si en règle générale l'on utilise une seule et même clé pour s'authentifier sur différentes machines, il est parfois nécessaire d'utiliser des clés différentes ...
+Soit pour  se connecter avec un compte utilisateur différent sur une même machine physique, soit parce que l'on utilise plusieurs type de clé, ou encore parce que l'on veut éviter qu'une seule clé permette  d'accéder à plusieurs machine.</p>
+<p>Vous me direz que l'on peut choisir quelle clé utilisée à l'aide de l'option -i de ssh, c'est vrai, mais comme tout bon développeur, je suis un peu fainéant, et si la machine peut le faire à ma place ... pourquoi m'ennuyer ?</p>
+<p>Il est donc possible à l'aide du fichier <code class="code-inline" id="4cc0ecc8128c171b864a0cdda4b4cdea">~/.ssh/config</code> d'indiquer au client SSH quelle clé il doit utiliser pour se connecter et à quelle machine.</p>
+<p><strong>Sa syntaxe est la suivante :</strong></p>
+<pre class="code-multiline"><code id="39d7641c5c6208023034ac4819b0f480">Host mon-serveur.domain.tld
+HostName mon-serveur
+User guewen
+IdentityFile ~/.ssh/ma-cle-ssh
+
+Host mon-autre-serveur.domain.tld
+Hostname mon-autre-serveur
+User root
+IdentityFile ~/.ssh/mon-autre-cle-ssh</code></pre>
+<p>De cette façon notre client SSH utilisera systématiquement la clé attachée à un hôte particulier.
+La directive permet de spécifier un nom alternatif, elle accepte également une IP.</p>
+<p>Il est tout à fait possible de spécifier plusieurs noms d'hôtes pour la directive "Host", ceux-ci, devant dans ce cas là, être séparés par des espaces. De même un wildcard peut être renseigné dans le cas ou plusieurs machines partagent le même domaine. Très pratique lorsque l'on a un parc complet à administrer.
+Il existe un nombre de directives assez impressionnantes, aussi je vous conseille pour plus d'informations de faire un petit <strong>man ssh_config.</strong></p>
+<p><strong>Exemple d'un host configuré avec un wildcard :</strong></p>
+<pre class="code-multiline"><code id="c97ee69fdd8771e14b97c1d0548df3e1">Host *.domain.tld
+HostName mon-alias
+User guewen
+IdentityFile ~/.ssh/ma-cle-ssh</code></pre></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

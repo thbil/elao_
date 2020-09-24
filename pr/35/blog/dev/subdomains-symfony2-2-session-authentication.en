@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/turtle.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/turtle.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>28 février 2013</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -225,58 +225,62 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>This is a small feedback regarding the new Symfony 2.2 feature which makes the subdomains handling easier. By the way you can see the official documentation about <a style="text-align: justify;" href="http://symfony.com/doc/master/components/routing/hostname_pattern.html" target="_blank">routing &amp; subdomains here</a>.</p>
+<h3 id="scenario">Scenario<a href="#scenario" class="anchor"></a></h3>
+<p>With the support of subdomains in the Symfony 2.2 routing component, you're all excited and decide to take advantage of that feature.</p>
+<h3 id="problem">Problem 1<a href="#problem" class="anchor"></a></h3>
+<p>Once you've opened one or more dedicated routes involving a subdomain, your users keep complaining about your application asking them to re-auth although they did it 5 minutes ago. Yeah, that's right, the session isn't shared across main domain and the subdomain.</p>
+<p><strong>Cause :</strong> You forgot to set the path of the session cookie to a value that allows session sharing for all your subdomains too. By default, the value of <em>cookie_domain</em> takes the current domain from <code class="code-inline" id="74cf5004d8aceafd2531cc620a36c278">$_SERVER</code> superglobal (which will in most case will output www.my-domain.com).</p>
+<p><strong>Solution :</strong> Add to your config.yml under the <em>session</em> key <code class="code-inline" id="2e290ec383073b4dbe58c4c051c94660">cookie_domain : .my-domain.com</code>. Just see the gist below for the example. If you use the <code class="code-inline" id="ea2bff02d99c26cb38c1b87b2a434604">remember_me</code> feature, don't forget to change the domain value of <code class="code-inline" id="9818925d214309e5b3cbbee315600a8a">security.yml</code> (see the 2nd gist).</p>
+<h3 id="problem">Problem 2<a href="#problem" class="anchor"></a></h3>
+<p>Once you've deployed the fix on your dev-preprod-prod server (choose the right stage according whether you like risks or not), you keep trying to login with your credentials without being actually logged in (and of course, no errors are logged).</p>
+<p><strong>Cause :</strong> If you open any tool which let us visualize the cookies stored by a website, you'll figure out soon that you have 2 cookies <code class="code-inline" id="754d3b148df7a597947f5556cbe06628">PHPSESSID</code> with differents values in the domain (one with www.my-domain.com and the other with .my-domain.com).</p>
+<p><strong>Solution :</strong> Change the name of the session cookie. It will prevent conflicts which will lead to a silent login failure.</p>
+<p>There you are, with your subdomain ready application. Enjoy.</p>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="35f6016f8ec9203fae2f4577c9586438"><span class="token key atrule">framework</span><span class="token punctuation">:</span>
+    <span class="token key atrule">esi</span><span class="token punctuation">:</span>             <span class="token punctuation">{</span> <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token punctuation">}</span>
+    <span class="token key atrule">translator</span><span class="token punctuation">:</span>      <span class="token punctuation">{</span> <span class="token key atrule">fallback</span><span class="token punctuation">:</span> %locale% <span class="token punctuation">}</span>
+    <span class="token key atrule">secret</span><span class="token punctuation">:</span>          %secret%
+    <span class="token key atrule">router</span><span class="token punctuation">:</span>
+        <span class="token key atrule">resource</span><span class="token punctuation">:</span> <span class="token string">"%kernel.root_dir%/config/routing.yml"</span>
+        <span class="token key atrule">strict_requirements</span><span class="token punctuation">:</span> %kernel.debug%
+    <span class="token key atrule">form</span><span class="token punctuation">:</span>            <span class="token null important">~</span>
+    <span class="token key atrule">csrf_protection</span><span class="token punctuation">:</span> <span class="token null important">~</span>
+    <span class="token key atrule">validation</span><span class="token punctuation">:</span>      <span class="token punctuation">{</span> <span class="token key atrule">enable_annotations</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token punctuation">}</span>
+    <span class="token key atrule">templating</span><span class="token punctuation">:</span>
+        <span class="token key atrule">engines</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'twig'</span><span class="token punctuation">]</span>
+        <span class="token comment">#assets_version: SomeVersionScheme</span>
+    <span class="token key atrule">default_locale</span><span class="token punctuation">:</span>  <span class="token string">"%locale%"</span>
+    <span class="token key atrule">trusted_proxies</span><span class="token punctuation">:</span> <span class="token null important">~</span>
+    <span class="token key atrule">session</span><span class="token punctuation">:</span>
+        <span class="token key atrule">cookie_lifetime</span><span class="token punctuation">:</span> <span class="token number">0</span>
+        <span class="token key atrule">save_path</span><span class="token punctuation">:</span> %kernel.root_dir%/var/sessions
+        <span class="token key atrule">cookie_domain</span><span class="token punctuation">:</span> .my<span class="token punctuation">-</span>domain.com
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> SFSESSID
+    <span class="token key atrule">fragments</span><span class="token punctuation">:</span>       <span class="token null important">~</span></code></pre>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="c60f5534308853b7fadbe471bf3eddca"><span class="token key atrule">main</span><span class="token punctuation">:</span>
+    <span class="token key atrule">remember_me</span><span class="token punctuation">:</span>
+        <span class="token key atrule">key</span><span class="token punctuation">:</span>      <span class="token string">"%secret%"</span>
+        <span class="token key atrule">lifetime</span><span class="token punctuation">:</span> <span class="token number">31536000</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span>     /
+        <span class="token key atrule">domain</span><span class="token punctuation">:</span>   .my<span class="token punctuation">-</span>domain.com <span class="token comment"># Defaults to the current domain from $_SERVER</span></code></pre></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

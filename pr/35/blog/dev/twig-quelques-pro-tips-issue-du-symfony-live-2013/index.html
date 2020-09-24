@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/badass_vader.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/badass_vader.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>19 avril 2013</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -228,58 +228,82 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><h3 id="isoler-les-include">Isoler les "include"<a href="#isoler-les-include" class="anchor"></a></h3>
+<p>Lors d'un <code class="code-inline" id="d436eb0fd9de10b54a828ce6435f7e81">include</code>, le template appelé accède par défaut au context du template appellant. Or c'est inutile la plus part du temps (le template appelé n'a souvent besoin que de quelques variables). De plus, cela peut provoquer des conflits si des variables portent le même nom dans les différents scopes.</p>
+<p>Pour éviter ça, vous pouvez isoler le template enfant en passant le paramètre <code class="code-inline" id="6299ba2cbd9661a5e3872b715521cd6a">only</code> lors de son appel. Le template appelé n'aura alors accès qu'aux variables que vous lui passez. C'est une bonne pratique en terme de performance et de stabilité :</p>
+<pre class="code-multiline language-twig"><code class="language-twig" id="7bf89c183d8127a3850453dcd85aeec0"><span class="token comment">{# template.html.twig #}</span>
+
+<span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">set</span></span> <span class="token property">title</span> <span class="token operator">=</span> <span class="token string"><span class="token punctuation">'</span>Mon titre<span class="token punctuation">'</span></span> <span class="token rd"><span class="token punctuation">%}</span></span></span>
+<span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">set</span></span> <span class="token property">username</span> <span class="token operator">=</span> <span class="token string"><span class="token punctuation">'</span>Jane Doe<span class="token punctuation">'</span></span> <span class="token rd"><span class="token punctuation">%}</span></span></span>
+
+<span class="token other"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span></span><span class="token tag"><span class="token ld"><span class="token punctuation">{{</span></span> <span class="token property">title</span> <span class="token rd"><span class="token punctuation">}}</span></span></span><span class="token other"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span></span><span class="token tag"><span class="token ld"><span class="token punctuation">{{</span></span> <span class="token property">username</span> <span class="token rd"><span class="token punctuation">}}</span></span></span><span class="token other"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span></span>
+
+<span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">include</span></span> <span class="token string"><span class="token punctuation">'</span>user.html.twig<span class="token punctuation">'</span></span> <span class="token property">with</span> <span class="token punctuation">{</span><span class="token property">title</span><span class="token punctuation">:</span> <span class="token property">username</span><span class="token punctuation">}</span> <span class="token property">only</span> <span class="token rd"><span class="token punctuation">%}</span></span></span><span class="token other"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>language-twig twig<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></span><span class="token comment">{# user.html.twig #}</span>
+
+<span class="token other"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span></span><span class="token tag"><span class="token ld"><span class="token punctuation">{{</span></span> <span class="token property">title</span> <span class="token rd"><span class="token punctuation">}}</span></span></span><span class="token other"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span></span>
+
+<span class="token comment">{# La variable title contient 'Jane Doe'.  #}</span>
+<span class="token comment">{# La variable username n'existe pas.  #}</span></code></pre>
+<h3 id="embed-un-include-plus-mall-ab">Embed : un include plus malléable<a href="#embed-un-include-plus-mall-ab" class="anchor"></a></h3>
+<p>Le cas se présente souvent : vous avez un template qui est inclus dans plusieurs autres, mais vous avez besoin de changer légèrement une partie du code HTML pour certains cas.</p>
+<p>Plutôt que de passer une variable dans l'include puis modifier le comportement du template en fonction de cette valeur, vous pouvez utiliser le tag <code class="code-inline" id="f210e321d18ec88515188cb044834bc5">Embed</code> (et c'est beaucoup mieux !).</p>
+<pre class="code-multiline language-twig"><code class="language-twig" id="326698c6488e916c839bb613688f882a"><span class="token comment">{# template.html.twig #}</span>
+
+<span class="token other"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Mon grand titre <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span></span>
+
+<span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">embed</span></span> <span class="token string"><span class="token punctuation">"</span>user.html.twig<span class="token punctuation">"</span></span> <span class="token rd"><span class="token punctuation">%}</span></span></span>
+    <span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">block</span></span> <span class="token property">titre</span> <span class="token rd"><span class="token punctuation">%}</span></span></span>
+        <span class="token other"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>Mon titre<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span></span>
+    <span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">endblock</span></span> <span class="token rd"><span class="token punctuation">%}</span></span></span>
+
+    <span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">block</span></span> <span class="token property">bottom</span> <span class="token rd"><span class="token punctuation">%}</span></span></span>
+        <span class="token tag"><span class="token ld"><span class="token punctuation">{{</span></span> <span class="token property">parent</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token rd"><span class="token punctuation">}}</span></span></span>
+        <span class="token other"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Mon autre lien<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Mon autre lien<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span></span>
+    <span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">endblock</span></span> <span class="token rd"><span class="token punctuation">%}</span></span></span>
+<span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">endembed</span></span> <span class="token rd"><span class="token punctuation">%}</span></span></span></code></pre>
+<pre class="code-multiline language-twig"><code class="language-twig" id="bb1de4b780177e7eb3f6b56be3cedb38"><span class="token comment">{# user.html.twig #}</span>
+
+<span class="token other"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></span>
+    <span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">block</span></span> <span class="token property">titre</span> <span class="token rd"><span class="token punctuation">%}</span></span></span>
+        <span class="token other"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Mon titre<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span></span>
+    <span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">endblock</span></span> <span class="token rd"><span class="token punctuation">%}</span></span></span>
+
+    <span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">block</span></span> <span class="token property">content</span> <span class="token rd"><span class="token punctuation">%}</span></span></span>
+        <span class="token other"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Mon contenu<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span></span>
+    <span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">endblock</span></span> <span class="token rd"><span class="token punctuation">%}</span></span></span>
+
+    <span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">block</span></span> <span class="token property">bottom</span> <span class="token rd"><span class="token punctuation">%}</span></span></span>
+        <span class="token other"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Mon lien<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Mon lien<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span></span>
+    <span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">endblock</span></span> <span class="token rd"><span class="token punctuation">%}</span></span></span>
+<span class="token other"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></span></code></pre>
+<p>Dans le template parent, à l'interieur du tag embed, vous pouvez redéfinir certain block du template appelé, exactement comme vous le feriez pour un extends. Notez qu'a l'interieur de ces blocks, vous pouvez donc utiliser des fonction comme <code class="code-inline" id="a655461eccb9740e4a07928a1e593cdf">parent()</code> !</p>
+<p>Twig rendra <strong>la totalité du template embed</strong> en lui apportant les modification définie entre les balises embed dans le template parent.</p>
+<p>Plus de details dans <a href="http://twig.sensiolabs.org/doc/tags/embed.html" target="_blank">la documentation officielle</a>.</p>
+<h3 id="one-line-block">One line block<a href="#one-line-block" class="anchor"></a></h3>
+<p>Vous pouvez déclarer un block en une ligne ! Utile notamment pour un bloc vide amené à être redéfini par un autre template lors d'un extend :</p>
+<pre class="code-multiline language-twig"><code class="language-twig" id="49ed900d8e4e6b42380380cc31bc5518"><span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">block</span></span> <span class="token property">content</span> <span class="token string"><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token rd"><span class="token punctuation">%}</span></span></span></code></pre>
+<h3 id="sources">Sources<a href="#sources" class="anchor"></a></h3>
+<p>Conférence au Symfony Live 2013 : "<a href="http://lyrixx.github.io/SFLive-Paris2013-Twig/#/comment-organiser-ses-templates-twig" target="_blank">COMMENT ORGANISER SES TEMPLATES TWIG ?</a>" par Grégoire Pineau – SensioLabs</p></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

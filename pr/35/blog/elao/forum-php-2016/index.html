@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/forumphp2016-thumb.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/forumphp2016-thumb.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>7 novembre 2016</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -234,58 +234,98 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Le Forum PHP 2016 de l’<a href="http://afup.org" target="_blank">AFUP</a> s'est une nouvelle fois déroulé au Beffroi de Montrouge. <a href="http://event.afup.org/forum-php-2016/programme/" target="_blank">Le programme</a> s'annonçait très alléchant et <a href="https://joind.in/event/forum-php-2016/schedule/list" target="_blank">nous n'avons pas été déçus</a>.</p>
+<h2 id="nous-avons-aim-les-retours-d-e">Nous avons aimé les retours d'expérience<a href="#nous-avons-aim-les-retours-d-e" class="anchor"></a></h2>
+<ul><li>
+<p>La migration de Prestashop d'une architecture "custom" à Symfony.
+A noter que Prestashop fait un gros effort de communication concernant la migration vers Symfony.
+L'une des conséquences de cette migration est que la communauté Prestashop va un peu plus se professionnaliser.
+La <em>core team</em> espère pouvoir terminer la migration d'ici deux à trois ans. Bon courage !</p>
+</li>
+<li>
+<p><a href="http://b-viguier.github.io/downloads/talks/ForumPhp-Une-Donne%CC%81e-Presque-Parfaite.pdf" target="_blank">Une donnée presque parfaite</a> par Benoit Viguier.
+Disclaimer : Bien que travaillant pour M6Web, Benoit fait partie de l'équipe Elao, nous sommes donc forcément moins objectifs.
+Retour d'expérience sur une application à fort trafic avec en prime une sorte de GraphQL fait maison à base d'API REST et du CQRS avec Cassandra en écriture et ElasticSearch en lecture.</p>
+</li>
+</ul><blockquote class="twitter-tweet" data-lang="fr"><p lang="und" dir="ltr"><a href="https://twitter.com/hashtag/simplify?src=hash" target="_blank">#simplify</a> <a href="https://twitter.com/hashtag/forumphp?src=hash" target="_blank">#forumphp</a> <a href="https://twitter.com/mattfrad" target="_blank">@mattfrad</a> <a href="https://t.co/e8j0A9N9KN" target="_blank">pic.twitter.com/e8j0A9N9KN</a></p>— Nicolas De Boose (@NicoDeBoose) <a href="https://twitter.com/NicoDeBoose/status/791945041459634176" target="_blank">28 octobre 2016</a></blockquote>
+<h2 id="nous-avons-aim-des-sujets-tr">Nous avons aimé des sujets très techniques<a href="#nous-avons-aim-des-sujets-tr" class="anchor"></a></h2>
+<ul><li><a href="https://jolicode.github.io/unicode-conf" target="_blank">Pourquoi strlen("🌮") != 1 ?</a> par Damien ALEXANDRE ou comment faire un XSS avec une 🍕.
+Très bonne conférence sur l'unicode qui démontre que les émojis c'est mignon mais mal gérés cela peut être dangereux.</li>
+</ul><blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr">"Utilisez utf8mb4 comme encoding MySQL si vous ne voulez pas vous faire hacker par une part de pizza" via <a href="https://twitter.com/damienalexandre" target="_blank">@damienalexandre</a>  <a href="https://twitter.com/hashtag/forumphp?src=hash" target="_blank">#forumphp</a> 😅 <a href="https://t.co/GBlkfxeySP" target="_blank">pic.twitter.com/GBlkfxeySP</a></p>— Matthieu Moquet (@MattKetmo) <a href="https://twitter.com/MattKetmo/status/791657024031432706" target="_blank">27 octobre 2016</a></blockquote>
+<ul><li>
+<p><a href="https://speakerdeck.com/jubianchi/make-is-an-actual-task-runner" target="_blank">MAKE is an actual task runner</a> par Julien BIANCHI.
+On utilise déjà <em>Make</em> chez Elao. Cette présentation nous en a montré davantage notamment concernant les tâches parallèles et l'exécution de tâches que si un fichier est modifié.</p>
+</li>
+<li>
+<p><a href="https://slides.pixelart.at/2016-10-28/forumphp/specifications/" target="_blank">Boost up your code with Specifications</a> par Patrik Karisch. Découplons notre code métier avec notamment le composant <a href="https://github.com/K-Phoen/rulerz" target="_blank">Rulerz</a>.</p>
+</li>
+<li>
+<p><a href="https://speakerdeck.com/romain/headers-http-un-bouclier-sur-votre-application" target="_blank">Headers HTTP: Un bouclier sur votre application</a> de Romain Neutron
+ou comment protéger son site web avec les en-têtes HTTP assez méconnus mais absolument indispensables comme le <em>Content Security Policy (CSP)</em>.</p>
+</li>
+<li>
+<p><a href="https://dunglas.fr/2016/10/slides-forum-php-create-symfony-apps-as-quickly-as-with-laravel-and-keep-your-code-framework-agnostic/" target="_blank">Pattern ADR, PSR-7, actions framework-agnostic et autowiring avec Symfony</a> par Kévin Dunglas.
+Une présentation inspirante pour mieux gérer nos contrôleurs Symfony.</p>
+</li>
+<li>
+<p><a href="http://mnapoli.fr/presentations/forumphp-middlewares/#1" target="_blank">Middlewares : Un vieux concept au coeur des nouvelles architectures</a> par Mathieu NAPOLI. Un middleware c'est quelque chose qui prend une <code class="code-inline" id="10573b873d2fa5a365d558a45e328e47">request</code> et qui retourne une <code class="code-inline" id="d1fc8eaf36937be0c3ba8cfe0a2c1bfe">response</code>. On a retenu la leçon ! Conférence très pédagogique avec un speaker stimulant.</p>
+</li>
+<li>
+<p><a href="https://thecodingmachine.github.io/forumphp2016talk/" target="_blank">Ecrire du code PHP "framework-agnostic": aujourd'hui et demain</a> par David Négrier. L'un des sujets les plus pointus de ce Forum PHP, non moins intéressant.</p>
+</li>
+<li>
+<p><a href="http://sylius.org/" target="_blank">Sylius eCommerce Framework</a> par Paweł Jędrzejewski ou comment Sylius peut être utilisé tout ou en partie grâce aux composants.
+Les tests fonctionnels de Sylius sont orientés métiers : cela nous donne de bonnes idées pour gérer nos propres tests Behat.</p>
+</li>
+<li>
+<p>Independence day par Frederic Bouchery. Composer et la Gestion sémantique de version sont indispensables aujourd'hui mais attention à trop de dépendances qui peuvent générer une catastrophe comme celle avec "leftpad" bien connu dans la communauté Javascript.</p>
+</li>
+<li>
+<p>Et puis mention spéciale pour - malheureusement - la seule conférence présentée par une femme : "Peut-on s’affranchir de SonataAdminBundle ?" par Suzanne Favot.</p>
+</li>
+</ul><h2 id="nous-avons-galement-aim-des">Nous avons également aimé des sujets un peu plus "méthodo"<a href="#nous-avons-galement-aim-des" class="anchor"></a></h2>
+<ul><li>
+<p><a href="http://slides.com/maximethoonsen/agile-technical-debt-forum-php" target="_blank">Affrontez la dette technique de votre projet en toute agilité</a> par Maxime Thoonsen, une intéressante façon de mesurer et réduire la dette technique.</p>
+</li>
+<li>
+<p>Comment accueillir les nouveaux développeurs dans une entreprise et qu'ils soient "up" rapidement avec <a href="https://blog.pascal-martin.fr/public/slides-notre-environnement-de-developpement-nest-plus-un-bizutage-forum-php-2016/" target="_blank">Notre environnement de développement n’est plus un bizutage !</a> par Pascal MARTIN.</p>
+</li>
+<li>
+<p>Il y avait aussi une conférence intéressante sur le travail en "remote", ses avantages, ses inconvénients et comment contourner ces derniers avec <a href="http://raynaud.io/slides/remote" target="_blank">Télétravail ? C'est bon, mangez-en !</a> par Manuel RAYNAUD.</p>
+</li>
+</ul><h2 id="et-puis">Et puis...<a href="#et-puis" class="anchor"></a></h2>
+<p>"Allumez le feu" par Frédéric Hardy, une conférence sur... la conférence et comment un conférencier gère son trac (ou l'inverse) !
+Très bonne présentation qui a pour ambition de nous donner envie de se jeter à l'eau et de transmettre le savoir en étant conférencier.</p>
+<p>Les Lightning talks sérieux ou un peu plus débridés comme les "WTF" en PHP.</p>
+<blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr">Si vous voulez vous faire peur pour Halloween, retrouvez mes slides sur PHP WTF ici <a href="https://t.co/OUkCpJgOAK" target="_blank">https://t.co/OUkCpJgOAK</a> 😨 <a href="https://twitter.com/hashtag/ForumPHP?src=hash" target="_blank">#ForumPHP</a></p>— Loïck P. (@pyrech) <a href="https://twitter.com/pyrech/status/791667201107460096" target="_blank">27 octobre 2016</a></blockquote>
+<p>Les "cliniques", ici par exemple PHP Metrics par Jean-françois Lépine :</p>
+<blockquote class="twitter-tweet" data-lang="fr"><p lang="fr" dir="ltr">Énormément de monde à la clinique phpmetrics par <a href="https://twitter.com/Halleck45" target="_blank">@Halleck45</a>  au <a href="https://twitter.com/hashtag/ForumPHP?src=hash" target="_blank">#ForumPHP</a> <a href="https://t.co/h3bDFqbbOy" target="_blank">pic.twitter.com/h3bDFqbbOy</a></p>— Richard HANNA (@richardhanna) <a href="https://twitter.com/richardhanna/status/791972248324337668" target="_blank">28 octobre 2016</a></blockquote>
+<p>Enfin, nous avons eu une table ronde concernant l'emploi des développeurs et la révélation du baromètre des salaires des développeurs PHP. Ce que l'on retient:</p>
+<ul><li>Les salaires augmentent notamment grâce aux frameworks et à l'esprit devops qui ont un peu plus "industrialisé" notre profession</li>
+<li>L'écart du salaire moyen des développeurs PHP par rapport à celui des développeurs Java se réduit.</li>
+<li>L'écart du salaire entre hommes et femmes se réduit mais est toujours en moyenne plus bas pour les femmes.</li>
+</ul><p>Pour en savoir plus, rendez vous sur le <a href="http://barometre.afup.org" target="_blank">baromètre des salaires de l'AFUP</a></p>
+<p>Le Forum PHP s'est terminé sur un "slideshow karaoké", un exercice d'improvisation vraiment pas facile. On a bien ri !</p>
+<blockquote class="twitter-tweet" data-lang="fr"><p lang="ht" dir="ltr">Slideshow karaoké au <a href="https://twitter.com/hashtag/forumphp?src=hash" target="_blank">#forumphp</a> <a href="https://t.co/U16PIFJLsG" target="_blank">pic.twitter.com/U16PIFJLsG</a></p>— Olivier Mansour (@omansour) <a href="https://twitter.com/omansour/status/792024824260468736" target="_blank">28 octobre 2016</a></blockquote>
+<p>Merci aux bénévoles de l'AFUP qui ont super bien géré cet évènement 👍  Vivement l'année prochaine !</p>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

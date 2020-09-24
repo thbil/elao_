@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/homer-do-not-care.png)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/homer-do-not-care.png)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>23 avril 2010</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -228,58 +228,42 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>La commande find, outils ô combien indispensable des administrateurs systèmes, permet d'effectuer et d'automatiser tout un tas de tâches de maintenance courantes.<!--more--></p>
+<p>Ce petit memo se veut être un post de centralisation des lignes de commande pratiques, pouvant dépanner l'admin en détresse !</p>
+<h3 id="rechercher-un-fichier">Rechercher un fichier<a href="#rechercher-un-fichier" class="anchor"></a></h3>
+<pre class="code-multiline"><code id="99a0e0ad70bd243a0c468f4e18639fba">find . -name "databases*"</code></pre>
+<p>Cette commande renverra tous les fichier du répertoire courant <strong>ET</strong> de ses sous répertoires dont le nom correspond au masque suivant l'option <strong>-name</strong>.</p>
+<h3 id="rechercher-tous-les-fichiers-de">Rechercher tous les fichiers de type répertoire<a href="#rechercher-tous-les-fichiers-de" class="anchor"></a></h3>
+<pre class="code-multiline"><code id="3d65b1dd9b380214e6d2964c91f42a27">find . -name "config" -type d</code></pre>
+<h3 id="lister-le-contenu-de-r-pertoire">Lister le contenu de répertoires correspondant à un masque<a href="#lister-le-contenu-de-r-pertoire" class="anchor"></a></h3>
+<pre class="code-multiline"><code id="26802a6a7d1fb0fc549e805f8eadc80d">find . -type d -name "config" -exec ls -l {} \;</code></pre>
+<h3 id="modifier-les-droits-des-fichiers">Modifier les droits des fichiers de type répertoire<a href="#modifier-les-droits-des-fichiers" class="anchor"></a></h3>
+<pre class="code-multiline"><code id="f963badae0e926fbd24413caa3a37861">find . -type d -exec chmod g+x {} \;</code></pre>
+<p>Commande très utile pour donner les droits d'exécution aux seuls répertoires par exemple.</p>
+<h3 id="recherche-l-aide-d-op-rateur">Recherche à l'aide d'opérateurs logiques<a href="#recherche-l-aide-d-op-rateur" class="anchor"></a></h3>
+<pre class="code-multiline"><code id="42f5f18b85766af5947ba171380a0f22">find /tmp \( ! -user webmaster \)</code></pre>
+<p>Cette commande renverra tous les fichier de /tmp n'appartenant pas à l'utilisateur webmaster</p>
+<pre class="code-multiline"><code id="ec71c799eba806131c639f8a3fcf3a49">find / \( -type d -a -user webmaster \)</code></pre>
+<p>Cette commande renverra tous les fichiers de type répertoire <strong>ET</strong> (option -a) qui appartiennent à webmaster</p>
+<pre class="code-multiline"><code id="ea1b2d33c090f0e344e375de448ddaa4">find / \( -name a.out -o -name ’*.o’ \) -atime +7 -exec rm {} \;</code></pre>
+<p>Cette commande supprimera tous les fichiers dont le nom correspond est a.out <strong>OU</strong> se terminant par .o <strong>ET</strong> dont la date de dernier accès est antérieure à 7 jours.</p></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

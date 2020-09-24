@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/geek_love.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/geek_love.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>11 janvier 2016</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -228,58 +228,120 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Nginx fonctionne sur la base de blocs de configuration appelés « Contexte de configuration », qui vont selon leur positionnement et/ou leurs instructions traiter, modifier voir altérer les requêtes entrantes.<!--more--></p>
+<h1 id="les-contextes">Les contextes<a href="#les-contextes" class="anchor"></a></h1>
+<p>L'organisation des contextes est primordiale car leur positionnement dans la configuration n'est pas sans importance et s'apparente à un arbre.</p>
+<pre class="code-multiline language-bash"><code class="language-bash" id="d2c3b88f1688f05df253a5dabfd29a51">Global <span class="token punctuation">(</span>ou Main<span class="token punctuation">)</span>
+├── Events
+└── Http
+    ├── Server
+    ├── If
+    ├── Location
+    │   ├── If
+    │   ├── Location <span class="token punctuation">(</span>Imbriquée<span class="token punctuation">)</span>
+    │   └── limit_except
+    ├── map
+    ├── perl / <span class="token punctuation">(</span>perl_set<span class="token punctuation">)</span>
+    ├── split_clients
+    ├── geo
+    ├── types
+    └── charset_map</code></pre>
+<blockquote>
+<p><strong>N.B.:</strong> Le contexte <strong>global</strong> est particulier car non-défini explicitement. Toute directive spécifiée hors d'un contexte est considérée comme appartenant au contexte <strong>global</strong>.</p>
+</blockquote>
+<h3 id="exemple">Exemple<a href="#exemple" class="anchor"></a></h3>
+<pre class="code-multiline language-nginx"><code class="language-nginx" id="2ea402a233cb394bb023721a569531a8"><span class="token keyword">user</span> www<span class="token operator">-</span>data<span class="token punctuation">;</span>
+<span class="token keyword">worker_processes</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token keyword">error_log</span> <span class="token operator">/</span>var<span class="token operator">/</span>log<span class="token operator">/</span>nginx<span class="token operator">/</span>error<span class="token punctuation">.</span>log warn<span class="token punctuation">;</span>
+<span class="token keyword">pid</span> <span class="token operator">/</span>var<span class="token operator">/</span>run<span class="token operator">/</span>nginx<span class="token punctuation">.</span><span class="token keyword">pid</span><span class="token punctuation">;</span>
+
+<span class="token keyword">events</span> <span class="token punctuation">{</span>
+    <span class="token keyword">worker_connections</span> <span class="token number">1024</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h1 id="les-directives-de-type-cha-ne">Les directives de type chaîne<a href="#les-directives-de-type-cha-ne" class="anchor"></a></h1>
+<p>Il est très important de garder à l'esprit que les directives de configuration s'appliquent <strong>toujours</strong> vers le bas, il n'y a aucune chance qu'une directive ait un impact sur une directive de plus haut ou de même niveau.
+Même lorsqu'une directive <code class="code-inline" id="d5189de027922f81005951e6efe0efd5">location</code> renvoie vers une directive identique le contexte de la première n'a <strong>plus aucune valeur</strong>.</p>
+<p>A l'inverse les contextes pouvant être imbriqués les uns dans les autres, Nginx considère également l'héritage des directives de configuration, la règle étant que si une directive est valide dans deux contextes imbriqués, une directive déclarée dans un contexte parent s'appliquera à ses enfants comme valeur par défaut.</p>
+<p><strong>Le contexte enfant pouvant, bien entendu, surcharger ces directives.</strong></p>
+<h2 id="exemple">Exemple:<a href="#exemple" class="anchor"></a></h2>
+<pre class="code-multiline language-nginx"><code class="language-nginx" id="ce3318e6430a1d28afad545e05d58983"><span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">root</span> <span class="token operator">/</span>srv<span class="token operator">/</span>app<span class="token operator">/</span>symfony<span class="token operator">/</span>web<span class="token punctuation">;</span>
+
+    <span class="token keyword">location</span> <span class="token operator">/</span>app <span class="token punctuation">{</span>
+        <span class="token keyword">root</span> <span class="token operator">/</span>usr<span class="token operator">/</span>share<span class="token punctuation">;</span> <span class="token comment"># Nous modifions le répertoire racine vers /usr/share/app</span>
+                         <span class="token comment"># Toutes les URI de type /app/* seront servies</span>
+                         <span class="token comment"># à partir de ce répertoire.</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">location</span> <span class="token operator">/</span>app2 <span class="token punctuation">{</span>
+        <span class="token comment"># La directive root du contexte "Server" s'applique</span>
+        <span class="token comment"># Une URI de type /app2/user/profil sera servie</span>
+        <span class="token comment"># à partir de /srv/app/symfony/web</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h1 id="les-directives-de-type-tableau">Les directives de type tableau<a href="#les-directives-de-type-tableau" class="anchor"></a></h1>
+<p>Les directives <code class="code-inline" id="bb54288caaecd39acee15e7ab82daa04">array-type</code> n'échappent pas à la règle de surcharge, cependant leur comportement est légèrement différent, deux cas de figure peuvent se présenter.</p>
+<blockquote>
+<p>Pour rappel un <code class="code-inline" id="bb54288caaecd39acee15e7ab82daa04">array-type</code> est un type de données utilisé pour décrire une collection d'éléments identifiés unitairement par une clé, <strong>ils sont compilés au lancement du programme</strong>.</p>
+</blockquote>
+<h2 id="a-l-int-rieur-d-un-m-me-contex">A l'intérieur d'un même contexte<a href="#a-l-int-rieur-d-un-m-me-contex" class="anchor"></a></h2>
+<p>La redéfinition d'une directive array-type à l'intérieur d'un même bloc, par exemple un bloc <code class="code-inline" id="d5189de027922f81005951e6efe0efd5">location</code>, entraine l'ajout de la nouvelle clé à la structure.</p>
+<h3 id="exemple">Exemple<a href="#exemple" class="anchor"></a></h3>
+<pre class="code-multiline language-nginx"><code class="language-nginx" id="09af2b6ecfe2636d0501e469a3939f31"><span class="token keyword">fastcgi_param</span> SCRIPT_FILENAME <span class="token variable">$document_root</span><span class="token variable">$fastcgi_script_name</span><span class="token punctuation">;</span>
+<span class="token keyword">fastcgi_param</span> <span class="token keyword">HTTPS</span> off<span class="token punctuation">;</span></code></pre>
+<p>Dans ce cas la directive <code class="code-inline" id="78ba1199d4698c55f33d27103f2ce07d">fastcgi_param</code> contient les données suivantes:</p>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="e246bc7375cca80278484310647a481b"><span class="token key atrule">fastcgi_param</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">SCRIPT_FILENAME</span><span class="token punctuation">:</span> $document_root$fastcgi_script_name
+    <span class="token punctuation">-</span> <span class="token key atrule">HTTPS</span><span class="token punctuation">:</span> off</code></pre>
+<h2 id="a-l-int-rieur-de-contextes-diff">A l'intérieur de contextes différents<a href="#a-l-int-rieur-de-contextes-diff" class="anchor"></a></h2>
+<p>Dans ce cas le comportement sera le même qu'une <strong>surcharge de directive</strong>, la nouvelle définition écrasant la précédente, il ne faut donc pas considérer que l'on ajoute une nouvelle clé à un tableau existant car n'oubliez pas, les directives n'ont d'existence que dans <strong>le contexte auquel elles appartiennent</strong>.
+Ce comportement justifie souvent d'avoir une même configuration qui se répête dans deux blocs différents alors qu'une seule clé est modifiée.</p>
+<h3 id="exemple">Exemple<a href="#exemple" class="anchor"></a></h3>
+<pre class="code-multiline language-nginx"><code class="language-nginx" id="3db0a95767729ed846d8fe590a33e8ea"><span class="token keyword">location</span> <span class="token operator">~</span> <span class="token operator">^</span><span class="token operator">/</span><span class="token punctuation">(</span>frontend<span class="token punctuation">)</span>\<span class="token punctuation">.</span><span class="token function">php</span><span class="token punctuation">(</span><span class="token operator">/</span><span class="token operator">|</span>$<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">include</span> conf<span class="token punctuation">.</span>d<span class="token operator">/</span>php_fpm_params<span class="token punctuation">;</span>
+        <span class="token keyword">fastcgi_param</span> SCRIPT_FILENAME <span class="token variable">$document_root</span><span class="token variable">$fastcgi_script_name</span><span class="token punctuation">;</span>
+        <span class="token keyword">fastcgi_param</span> <span class="token keyword">HTTPS</span> on<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">location</span> <span class="token operator">~</span> <span class="token operator">^</span><span class="token operator">/</span><span class="token punctuation">(</span>backend<span class="token punctuation">)</span>\<span class="token punctuation">.</span><span class="token function">php</span><span class="token punctuation">(</span><span class="token operator">/</span><span class="token operator">|</span>$<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">include</span> conf<span class="token punctuation">.</span>d<span class="token operator">/</span>php_fpm_params<span class="token punctuation">;</span>
+        <span class="token keyword">fastcgi_param</span> SCRIPT_FILENAME <span class="token variable">$document_root</span><span class="token variable">$fastcgi_script_name</span><span class="token punctuation">;</span>
+        <span class="token keyword">fastcgi_param</span> <span class="token keyword">HTTPS</span> off<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></code></pre>
+<blockquote>
+<p>ATTENTION: certaines directives sont propres à un contexte et ne peuvent donc pas être utilisées hors de celui-ci.</p>
+</blockquote>
+<h1 id="les-directives-de-type-action">Les directives de type action<a href="#les-directives-de-type-action" class="anchor"></a></h1>
+<p>Les directives de type action ont la particularité de ne pas impacter leur comportement les unes entre les autres, elles sont en effet limités à un seul contexte et ne sont pas concernées par l'héritage descendant.
+Elles peuvent toutefois, être utilisées dans plusieurs contextes et être exécutées pour chacun d'entre eux.</p>
+<p>La directive <code class="code-inline" id="7b4639e8d528d7a3eedafe23e9cdfee1">rewrite</code> est un bon exemple car elle peut être utilisée à la fois dans le contexte <code class="code-inline" id="cf1e8c14e54505f60aa10ceb8d5d8ab3">server</code> et dans le contexte <code class="code-inline" id="d5189de027922f81005951e6efe0efd5">location</code> et être exécutée dans les deux.</p>
+<h3 id="exemple">Exemple<a href="#exemple" class="anchor"></a></h3>
+<pre class="code-multiline language-nginx"><code class="language-nginx" id="c94c129a971b431f971cbca05a8089e8"><span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">rewrite</span> <span class="token operator">^</span><span class="token operator">/</span>elao<span class="token operator">-</span><span class="token function">lyon</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token operator">/</span>lyon$<span class="token number">1</span> permanent<span class="token punctuation">;</span> <span class="token comment"># Cette règle est toujours évaluée.</span>
+
+    <span class="token keyword">location</span> <span class="token operator">/</span>lyon <span class="token punctuation">{</span>
+        <span class="token keyword">rewrite</span> <span class="token operator">^</span> <span class="token operator">/</span><span class="token keyword">index</span><span class="token punctuation">.</span>php<span class="token punctuation">;</span> <span class="token comment"># Ne surcharge pas la précédente et</span>
+                              <span class="token comment"># PEUT être évaluée en complément de la précédente.</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

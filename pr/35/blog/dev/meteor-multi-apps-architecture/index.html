@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/beer.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/beer.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>23 juin 2015</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -231,58 +231,70 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Etant donnée que Meteor envoie tous les fichiers du projet aux clients web (hormis les dossiers spéciaux tels que <code class="code-inline" id="90ba4f4e30c3bc345088ef67ce3864dd">/server</code>, <code class="code-inline" id="770b76f7b7b90b1c020ff5111c7b62af">/private</code>, <code class="code-inline" id="15276d0be2c414e04b17f65f7b1d8323">/public</code>), toute l'application est packagée et envoyée.<!--more--> Cela pose plusieurs problèmes dont :</p>
+<ul><li>la difficulté d'alléger la masse de code envoyé au client (templates html + helpers &amp; libs js + styles css) ;</li>
+<li>la difficulté de "protéger" son application par omission de code (typiquement le code de la partie <code class="code-inline" id="11f6b3285bf71a87811c3dadccb7b166">/admin</code> ne devrait être envoyé qu'aux utilisateurs de type admin).</li>
+</ul><p>Pour palier à ces problèmes, nous architecturons notre application en 2 sous-applications :</p>
+<ul><li>le <em>front</em> pour les users standards (sur le domaine <code class="code-inline" id="afaf2cbcfe2083746d53675d37fcb0cb">http://project.dev</code> par exemple)</li>
+<li>le <em>back</em> pour les administrateurs (sur le sous-domaine <code class="code-inline" id="a0136bd45a1f1f482aefc5fb5c4cd49b">http://admin.project.dev</code> par exemple)</li>
+</ul><p>Ces deux applications utilisent les mêmes données et doivent donc accéder à la même base de données.</p>
+<h2 id="architecture-des-dossiers-fichie">Architecture des dossiers/fichiers<a href="#architecture-des-dossiers-fichie" class="anchor"></a></h2>
+<pre class="code-multiline"><code id="ab553bae03a0aa2f549c39d10810999b">➜  my-project  tree -a
+.
+├── .gitignore
+├── README.md
+├── back
+│   ├── .meteor
+│   │   ├── ...
+│   ├── back.css
+│   ├── back.html
+│   ├── back.js
+│   └── packages
+│       └── collections -&gt; ../../packages/collections
+├── front
+│   ├── .meteor
+│   │   ├── ...
+│   ├── front.css
+│   ├── front.html
+│   ├── front.js
+│   └── packages
+│       └── collections -&gt; ../../packages/collections
+└── packages
+    └── collections
+        ├── package.js
+        ├── players.js
+        └── playgrounds.js</code></pre>
+<p>Nous avons deux applications Meteor (<em>front</em> et <em>back</em>). Ces deux applications portent des liens symboliques vers des packages du dossier <code class="code-inline" id="bdf1e8ce92aa8ff6883c617f10480430">/packages</code> afin de faire de la réutilisation de code.</p>
+<h2 id="run-des-applications">Run des applications<a href="#run-des-applications" class="anchor"></a></h2>
+<p>En local (DEV), nous prenons le parti de lancer Mongo sur l'application <em>front</em> et de connecter le <em>back</em> sur le Mongo du <em>front</em>.</p>
+<p>Par défaut, Meteor lance l'<strong>application</strong> sur le port <strong>3000</strong> et <strong>Mongo</strong> est ouvert sur le port <strong>3001</strong>.</p>
+<pre class="code-multiline language-shell"><code class="language-shell" id="8ddf977c4e415644f9c52cebbc6f5f9f">➜  front  meteor
+<span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+<span class="token operator">=</span><span class="token operator">&gt;</span> App running at: http://localhost:3000/</code></pre>
+<p>Il reste à lancer l'application <em>back</em> en spécifiant l'host Mongo sur lequel se connecter et le port sur lequel l'application sera accessible (3000 étant déjà occupé par le <em>front</em>).</p>
+<pre class="code-multiline language-shell"><code class="language-shell" id="4f36edc204db94241adfd6916595e05c">➜  back  <span class="token assign-left variable">MONGO_URL</span><span class="token operator">=</span>mongodb://localhost:3001/meteor <span class="token assign-left variable">MONGO_OPLOG_URL</span><span class="token operator">=</span>mongodb://localhost:3001/local meteor -p<span class="token operator">=</span><span class="token number">3080</span>
+<span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+<span class="token operator">=</span><span class="token operator">&gt;</span> App running at: http://localhost:3080/</code></pre>
+<h2 id="conclusion">Conclusion<a href="#conclusion" class="anchor"></a></h2>
+<p>En conclusion, décomposer une application en plusieurs sous-applications permet de mieux gérer son code et d'intervenir sur les sources envoyées aux clients.</p>
+<p>Cela légitimise la création de packages "applicatifs" (telles que les collections, règles métiers partagées, etc.), ce qui est une bonne pratique !</p></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/kenny.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/kenny.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>2 décembre 2009</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -225,58 +225,79 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p><strong>[EDIT]</strong> Il est bien évidemment conseillé aujourd'hui d'utiliser GIT comme SCM ! Cet article est à considérer comme une archive et/ou comme support à ceux qui ont la malchance d' être coincé avec SVN.</p>
+<p><strong>Subversion</strong> (en abrégé <strong>svn</strong>) est un <a title="Système de gestion de versions" target="_blank" href="http://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_versions">système de gestion de versions</a>, il agit sur une arborescence de fichiers afin de conserver toutes les versions des fichiers, ainsi que les différences entre les fichiers. De ce fait, et pour résumer, il permet non seulement de pouvoir revenir à un état T d'une application dans le temps mais également de travailler à plusieurs sur un seul et même projet, les conflits pouvant être engendrés entre deux utilisateurs manipulant un même fichier étant gérés par le serveur subversion.</p>
+<h3 id="les-paquets-installer">Les paquets à installer:<a href="#les-paquets-installer" class="anchor"></a></h3>
+<pre class="code-multiline"><code id="0cf1c8470f8e8887cddeb5c55ccd5163">apt-get install subversion libapache2-svn</code></pre>
+<h3 id="d-ploiement-du-d-p-t-subversi">Déploiement du dépôt subversion:<a href="#d-ploiement-du-d-p-t-subversi" class="anchor"></a></h3>
+<p>Nous partirons du principe que vous avez décidé de déployer le repository (dépôt) de votre projet dans le répertoire /repositories/. Si ce n’est pas fait nous créons le répertoire:</p>
+<pre class="code-multiline"><code id="f863fe6738bd8911e1ffbf5ea89cee00">mkdir /repositories</code></pre>
+<p>Nous allons ensuite créer notre dépot à l’aide de la commande svn:</p>
+<pre class="code-multiline"><code id="58be83328ea48b580635ac1f8a4cfc4c">svnadmin create /repositories/mon_projet/</code></pre>
+<p>En règle générale la structure d’un dépôt svn est subdivisée en trois répertoires:</p>
+<ul><li>trunk:</li>
+<li>branches:</li>
+<li>tags:</li>
+</ul><p>Si vous disposez déjà d’un existant vous pouvez parfaitement l’importer dans votre nouveau dépôt, dans le trunk:</p>
+<pre class="code-multiline"><code id="36ce0e123eafbeb0be7197a0d2bc5f95">svn import -m "Initialisation du dépot" /elao/projects/mon_projet/ file:///repositories/mon_projet/trunk</code></pre>
+<h3 id="param-trage-du-subversion-et-ap">Paramétrage du subversion et Apache<a href="#param-trage-du-subversion-et-ap" class="anchor"></a></h3>
+<p>Afin “d’ouvrir” notre dépôt vers l’extérieur nous allons utiliser Apache, pour des raisons de sécurité, (libre à vous de l’utiliser ou non ) nous utiliserons SSL pour les transactions http. On active le module dav_svn avec la commande :</p>
+<pre class="code-multiline"><code id="8113fcbef4d9c257ba9a9a9551b20cbf">a2enmod dav_svn</code></pre>
+<h3 id="param-trer-votre-vhost-adap">Paramétrer votre VHost (à adapter selon votre configuration Apache):<a href="#param-trer-votre-vhost-adap" class="anchor"></a></h3>
+<p>Nous allons commencer par définir quels seront les utilisateurs qui auront accès à notre (nos) dépôt(s) Créons pour celà un répertoire pwd, qui, d’une manière générale contiendra nos fichiers d’accès.</p>
+<pre class="code-multiline"><code id="42e51fefb1fff8c68a0ebe226ca8f986">mkdir /etc/apache2/pwd
+cd pwd</code></pre>
+<p>La création d’un fichier utilisateur se fait à l’aide la commande htpasswd</p>
+<pre class="code-multiline"><code id="2ba5c73d5669a8bb84b3f5b6223fdf2a">htpasswd -c users.pwd guewen</code></pre>
+<p>A noter que l’option -c indique que le fichier doit être créé, celle-ci n’est plus nécessaire une fois que celui-ci existe, ainsi pour ajouter ou mettre à jour un utilisateur on utilisera simplement la commande:</p>
+<pre class="code-multiline"><code id="68cd4d4215a1851c5f2fe7f762131f2d">htpasswd  users.pwd guewen</code></pre>
+<p>La configuration Apache se fait comme suit:</p>
+<pre class="code-multiline language-apacheconf"><code class="language-apacheconf" id="4f1bfcc126d423561a25722b5455f806"><span class="token directive-inline property">ServerName</span>              svn.domain.tld
+<span class="token directive-inline property">DocumentRoot</span>            /mon_domaine/repositories/
+
+<span class="token directive-inline property">SSLEngine</span> on
+<span class="token directive-inline property">SSLCertificateFile</span>      /etc/apache2/ssl/host.crt
+<span class="token directive-inline property">SSLCertificateKeyFile</span>   /etc/apache2/ssl/host.key
+
+<span class="token directive-inline property">DAV</span> svn
+SVNParentPath           /mon_domaine/repositories/
+<span class="token directive-inline property">AuthType</span> Basic
+<span class="token directive-inline property">AuthName</span>                <span class="token string">"ELAO Private Area"</span>
+<span class="token directive-inline property">AuthUserFile</span>            /etc/apache2/pwd/users.pwd
+AuthzSVNAccessFile      /etc/apache2/pwd/perms.acl
+<span class="token directive-inline property">Require</span>                 valid-user</code></pre>
+<h3 id="la-gestion-des-droits">La gestion des droits:<a href="#la-gestion-des-droits" class="anchor"></a></h3>
+<p>Les droits sur les différents dépôts svn seront gérés via le fichier perms.acl, l’utilisation d’ACL va nous autoriser à mettre en place des accès complexes basés sur le couple utilisateur/groupe. Il est cependant à noter que l’utilité d’une stratégie d’authentification complexe ne présente d’interet que si votre dépôt est publique ou nécéssite un contrôle strict des accès. Qui dit ACL dit utilisateurs, groupes et bien sur permissions ! Nous allons stocker cette configuration dans le fichier perms.acl. On va commencer par définir les groupes:</p>
+<pre class="code-multiline"><code id="d2aa274eb8968a3a65a69a1114304596">[groups]
+admins = user1, user2
+developpers = user1, user2, user3, user6
+public = guest
+all = admins, developpers, public</code></pre>
+<p>N’oubliez pas de définir les utilisateurs dans le fichier users.pwd ! Une fois vos groupes définis on passe à la configuration des droits sur les dépôts. Il faut savoir que l’on peut non seulement définir des droits sur un dépôt mais également une partie précise du dépôt. Ainsi nous pouvons fixer des droits de lecture (r) pour tout le monde au niveau de la racine du dépôt, par contre les droits d’écriture ne sont ici accordés qu’aux développeurs.</p>
+<pre class="code-multiline"><code id="83a2729edb17e15df822f509b19a92ef">[depex:/]
+@all = r
+
+[depex:/trunk]
+user2 = r
+@developpers = rw</code></pre>
+<p>Attention à toujours préfixer le nom des groupes par un ‘@’</p></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/vuejs.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/vuejs.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>25 septembre 2019</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -234,58 +234,149 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Vue permet déjà de faire du Two-Way Binding grâce à la directive <code class="code-inline" id="088dc68c3dcfc8e6946dcc4faab5b96c">v-model</code>. C'est à dire mettre à jour l'interface lorsque le modèle change et vice et versa.</p>
+<pre class="code-multiline"><code id="d0d1334c3aed16d3f8d0b995a3609c28">&lt;script&gt;
+export default {
+  data() {
+    return {
+      foobar: 'Lorem ipsum'
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;form&gt;
+    &lt;input type="text" v-model="foobar" /&gt;
+  &lt;/form&gt;
+&lt;/template&gt;</code></pre>
+<p>Dans ce composant par exemple, lorsque la variable <code class="code-inline" id="3858f62230ac3c915f300c664312c63f">foobar</code> est modifié, le contenu du champ est mis à jour et lorsque le contenu du champ est modifié, la variable <code class="code-inline" id="3858f62230ac3c915f300c664312c63f">foobar</code> est modifiée.</p>
+<p>Si nous introduisons Vuex (ou un autre state manager), les variables du store n'étant pas modifiable par les composants, nous ne pouvons faire que du One-Way Binding (lorsque le modèle change, l'interface est mise à jour, l'inverse n'est pas possible).</p>
+<pre class="code-multiline"><code id="39a1a60cb6d14683ddcbfab2f6226254">&lt;template&gt;
+  &lt;form&gt;
+    &lt;input type="text" v-model="$store.state.foobar" /&gt;
+  &lt;/form&gt;
+&lt;/template&gt;</code></pre>
+<p>Un composant comme celui-ci par exemple violerait le principe selon lequel les variables du store ne peuvent être modifiées que par une mutation et jamais directement. Vous obtiendrez d'ailleurs un warning de la part de Vue.</p>
+<p>La solution pour faire du Two-Way Binding est donc d'utiliser un computed avec un getter et un setter. Le getter renvoie la valeur stockée dans le store et le setter met à jour le store grâce à une mutation.</p>
+<pre class="code-multiline"><code id="98ed0fb82a15daf43632e56ca22e1b32">&lt;script&gt;
+export default {
+  computed: {
+    foobar: {
+      get() { return this.$store.state.foobar },
+      set(value) { this.$store.commit('UPDATE_FOOBAR', value) }
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;form&gt;
+    &lt;input type="text" v-model="foobar" /&gt;
+  &lt;/form&gt;
+&lt;/template&gt;</code></pre>
+<p>On retrouve alors un Two-Way Binding tout en respectant le principe de non modification directe du state.</p>
+<p>L'ennui avec cette méthode est qu'elle nécessite autant de getter/setter que de champs, ce qui peut vite vous amener à écrire beaucoup de code lorsque vous avez de gros formulaires. Je vous propose une astuce pour simplifier tout ça.</p>
+<p>On va s'inspirer des helpers <code class="code-inline" id="efde5407efde52376a9d88b23cf1bd7b">mapState</code>, <code class="code-inline" id="5983f2437b4348c81ebc76032eaa6c8b">mapGetters</code> et <code class="code-inline" id="bb015b733b7fcdbbf57dee47b7a5a4ab">mapActions</code> de Vuex.</p>
+<p>Par exemple :</p>
+<pre class="code-multiline"><code id="36428d8c65b77e03c231a648957169f8">&lt;script&gt;
+export default {
+  computed: {
+    ...mapState(['foobar', 'barfoo'])
+  }
+}
+&lt;/script&gt;</code></pre>
+<p>Permet d'obtenir le même résultat que :</p>
+<pre class="code-multiline"><code id="e7f1b87671584c45777912fd3e7ff328">&lt;script&gt;
+export default {
+  computed: {
+    foobar() {
+      return this.$store.state.foobar
+    },
+    barfoo() {
+      return this.$store.state.barfoo
+    }
+  }
+}
+&lt;/script&gt;</code></pre>
+<p>Cela permet de réduire considérablement la quantité de code lorsque l'on a un grand nombre de variables à mapper. On va donc créer une fonction similaire à <code class="code-inline" id="efde5407efde52376a9d88b23cf1bd7b">mapState</code> qui ne va pas seulement créer de simples <code class="code-inline" id="5a317d3dd3f7a2f675975a6d0c11c629">computed</code> mais également les getters et setters nécessaires au Two-Way Binding.</p>
+<pre class="code-multiline"><code id="f8e2b8fc8eb660903d7cc8996bf99a47">function mapFields(fields) {
+  let computeds = {}
+
+  for (field of fields) {
+    computeds[field] = {
+      get() {
+        return this.$store.state[field]
+      },
+      set(value) {
+        this.$store.commit('UPDATE_' + field.toUpperCase(), value)
+      }
+    }
+  }
+
+  return computeds
+}</code></pre>
+<p>Vous pouvez désormais utiliser cette fonction avec le <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/Syntaxe_d%C3%A9composition" target="_blank">spread operator</a> pour générer vos computed properties.</p>
+<pre class="code-multiline"><code id="10da1960e3dd5f74d021b36aeb610ab3">&lt;script&gt;
+export default {
+  computed: {
+    ...mapFields(['foobar', 'barfoo'])
+  }
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;form&gt;
+    &lt;input type="text" v-model="foobar" /&gt;
+    &lt;input type="text" v-model="barfoo" /&gt;
+  &lt;/form&gt;
+&lt;/template&gt;</code></pre>
+<p>Ici, cela nécessite évidemment que vous disposiez des mutations pour chacune de vos variables nommées de la même façon (<code class="code-inline" id="277b85a1bf0deb91fba91f3f5a9fc664">UPDATE_FOOBAR</code> et <code class="code-inline" id="db06a11579f865e3288db6eeb8a3dd9f">UPDATE_BARFOO</code>).</p>
+<pre class="code-multiline"><code id="2f0916608f1913a2e6b45d15a3d82947">new Vuex.Store({
+  state: {
+    foobar: null,
+    barfoo: null,
+  },
+  mutation: {
+    UPDATE_FOOBAR (state, value) { state.foobar = value },
+    UPDATE_BARFOO (state, value) { state.barfoo = value },
+  }
+})</code></pre>
+<p>Vous pouvez bien entendu complexifier cette fonction selon vos besoins et vos habitudes ou en créer plusieurs correspondant à vos différents use-cases. L'idée peut être même appliquée à d'autres cas que les computed et le <strong>two-way binding</strong>. On peut par exemple imaginer des fonctions pour générer des méthodes ou watchers.</p>
+<pre class="code-multiline"><code id="f95e082d30e2e0b47c78bbaf268578ae">function mapWatcher(fields) {
+  let watchers = {}
+
+  for (field of fields) {
+    watchers[field] = function (newValue) {
+      this.$emit(`${field}_updated`, newValue)
+    }
+  }
+
+  return watchers
+}</code></pre>
+<p>Cette fonction permet de créer un watcher qui émettra un événement à la modification pour chaque propriété passée en argument.</p>
+<pre class="code-multiline"><code id="02da82502182bd5165d1a8cf84478118">export default {
+  watch: {
+    ...mapWatcher(['foobar', 'barfoo'])
+  }
+}</code></pre></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

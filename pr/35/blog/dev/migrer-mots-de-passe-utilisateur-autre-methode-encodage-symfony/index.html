@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/password.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/password.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>12 septembre 2017</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -237,58 +237,132 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><h1 id="contexte">Contexte<a href="#contexte" class="anchor"></a></h1>
+<p>Si vous avez un jour travaillé sur la refonte d'une application, vous avez sûrement dû importer des données dites "legacy" provenant de l'application existante. Ces données contiennent bien souvent des comptes utilisateurs et donc des hashs de mots de passe qu'il faudra réintégrer à la nouvelle application.</p>
+<p>Les standards de sécurité évoluent, là où hier on se contentait d'un hash md5 ou sha1, on utilise plutôt bcrypt aujoud'hui. Afin de maintenir votre application aux standards actuels, vous allez devoir migrer ces hashs de mots de passe.</p>
+<h1 id="solution">Solution<a href="#solution" class="anchor"></a></h1>
+<p>Par définition, il n'est pas possible de retrouver simplement le mot de passe à partir du hash. Vous ne pouvez donc pas simplement migrer l'ensemble de mots de passe au moment d'importer les données dans le nouveau système. La seule personne à connaitre le mot de passe en clair est l'utilisateur lui-même.</p>
+<p>L'idée est donc de réaliser une migration continue lorsque l'utilisateur rentre son mot de passe.</p>
+<p>Par exemple, pour une migration de mots de passe de <code class="code-inline" id="1bc29b36f623ba82aaf6724fd3b16718">md5</code> vers <code class="code-inline" id="51f01b313d48b72f46376150e6e12a98">bcrypt</code>, lors d'une tentative de connexion :</p>
+<ul><li>Si l'utilisateur n'a pas été migré, on vérifie que le mot de passe fourni correspond au hash <code class="code-inline" id="1bc29b36f623ba82aaf6724fd3b16718">md5</code>. Si c'est le cas, on calcule le hash <code class="code-inline" id="51f01b313d48b72f46376150e6e12a98">bcrypt</code> à partir du mot de passe, puis on le stocke.</li>
+<li>Si l'utilisateur a déjà été migré, on vérifie le mot de passe avec le hash <code class="code-inline" id="51f01b313d48b72f46376150e6e12a98">bcrypt</code></li>
+</ul><p>Ainsi, chaque utilisateur migrera son mot de passe lors de sa première connexion à la nouvelle plateforme. Une fois que tous les utilisateurs auront été migrés, nous pourront effacer complètement les hashs <code class="code-inline" id="1bc29b36f623ba82aaf6724fd3b16718">md5</code> de la base de données et n'utiliser que <code class="code-inline" id="51f01b313d48b72f46376150e6e12a98">bcrypt</code>.</p>
+<figure style="text-align: center;"><a href="/images/posts/2017/password-encoding-switch.png">
+        <img src="/images/posts/2017/password-encoding-switch.png" style="max-width: 600px;" alt="Logique de migration" id="logique-de-migration"></a>
+    <figcaption>Processus d'authentification</figcaption></figure><h1 id="symfony">Symfony<a href="#symfony" class="anchor"></a></h1>
+<p>Il est possible de réaliser une méthode d'authentification intégrant ce processus de migration dans Symfony. Pour cela vous devez implémenter une authentification personnalisée. Plusieurs solutions s'offrent à vous, de la plus complexe à la plus simple:</p>
+<ul><li><a href="http://symfony.com/doc/current/security/custom_authentication_provider.html" target="_blank">Créer un Authentication Provider</a></li>
+<li><a href="http://symfony.com/doc/current/security/guard_authentication.html" target="_blank">Créer un système d'authentification avec Guard</a></li>
+<li><a href="http://symfony.com/doc/current/security/custom_password_authenticator.html" target="_blank">Créer un Form Password Authenticator</a></li>
+</ul><p>Si vous utilisez un formulaire de connexion simple, de type login/password avec l'option <code class="code-inline" id="d1ade55e74c014e97429b1988fe9c588">form_login</code>, la dernière solution est la plus simple. A la place d'utiliser <code class="code-inline" id="d1ade55e74c014e97429b1988fe9c588">form_login</code>, nous allons utiliser <code class="code-inline" id="fa938cd32723583e40742a3866827dda">simple_form</code> qui fonctionne de la même façon hormis qu'il faudra lui fournir un service dédié à l'authentification grâce à la clé <code class="code-inline" id="725d91977f189d4930c6344b016d55de">authenticator</code>.</p>
+<p>Ce service doit implémenter la classe <a href="http://api.symfony.com/3.0/Symfony/Component/Security/Http/Authentication/SimpleFormAuthenticatorInterface.html" target="_blank"><code class="code-inline" id="2c937bd6d72e38e576d0f3b8575847d5">SimpleFormAuthenticatorInterface</code></a> qui requiert l'implémentation des trois méthodes suivantes :</p>
+<ul><li><code class="code-inline" id="edf827e5ac5466e8c7d089f4bb5cecbd">createToken</code> : le formulaire est de type login/password, nous allons donc créer un <code class="code-inline" id="88837a3a69e4d25b836efde4aa299edb">UsernamePasswordToken</code>.</li>
+<li><code class="code-inline" id="a2da5aafcb240a5b452c50d8963bb1c8">supportsToken</code> : l'authenticator supportera les <code class="code-inline" id="88837a3a69e4d25b836efde4aa299edb">UsernamePasswordToken</code>.</li>
+<li><code class="code-inline" id="1977adc8e5b3a2698814d9e0f3bdf1ef">authenticateToken</code> : et enfin, c'est ici que nous allons mettre notre logique d'authentification.</li>
+</ul><p>Dans l'exemple suivant, la méthode d'encodage "legacy" est la suivante : <code class="code-inline" id="04c309e39673cc293610030f3837ce76">HASH = MD5(PASSWORD + SALT)</code>. Si l'application à refondre est déjà une application Symfony utilisant un encodeur de Symfony, vous pouvez le reproduire dans votre refonte et l'injecter dans votre service.</p>
+<pre class="code-multiline language-php"><code class="language-php" id="4b8c551b3ef4414362029e06777dfb58"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Infrastructure</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">MigrationAuthenticator</span> <span class="token keyword">implements</span> <span class="token class-name">SimpleFormAuthenticatorInterface</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token variable">$encoder</span><span class="token punctuation">,</span> <span class="token variable">$em</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span>UserPasswordEncoderInterface <span class="token variable">$encoder</span><span class="token punctuation">,</span> EntityManager <span class="token variable">$em</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">encoder</span> <span class="token operator">=</span> <span class="token variable">$encoder</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">em</span>      <span class="token operator">=</span> <span class="token variable">$em</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">authenticateToken</span><span class="token punctuation">(</span>TokenInterface <span class="token variable">$token</span><span class="token punctuation">,</span> UserProviderInterface <span class="token variable">$userProvider</span><span class="token punctuation">,</span> <span class="token variable">$providerKey</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$user</span> <span class="token operator">=</span> <span class="token variable">$userProvider</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">loadUserByUsername</span><span class="token punctuation">(</span><span class="token variable">$token</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$password</span> <span class="token operator">=</span> <span class="token variable">$token</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getCredentials</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// The user hasn't password, it's not migrated</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">null</span> <span class="token operator">===</span> <span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// Check legacy password with legacy encoding method</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$password</span> <span class="token punctuation">.</span> <span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getLegacySalt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getLegacyPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+                <span class="token comment">// Encode the password and migrate the user</span>
+                <span class="token variable">$encodedPassword</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">encoder</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">encodePassword</span><span class="token punctuation">(</span><span class="token variable">$user</span><span class="token punctuation">,</span> <span class="token variable">$password</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">updatePassword</span><span class="token punctuation">(</span><span class="token variable">$encodedPassword</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">em</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token variable">$user</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">UsernamePasswordToken</span><span class="token punctuation">(</span>
+                    <span class="token variable">$user</span><span class="token punctuation">,</span>
+                    <span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    <span class="token variable">$providerKey</span><span class="token punctuation">,</span>
+                    <span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getRoles</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token comment">// Check password with the current encoder</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">encoder</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">isPasswordValid</span><span class="token punctuation">(</span><span class="token variable">$user</span><span class="token punctuation">,</span> <span class="token variable">$password</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">UsernamePasswordToken</span><span class="token punctuation">(</span>
+                    <span class="token variable">$user</span><span class="token punctuation">,</span>
+                    <span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    <span class="token variable">$providerKey</span><span class="token punctuation">,</span>
+                    <span class="token variable">$user</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getRoles</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">BadCredentialsException</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'Invalid username or password'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">supportsToken</span><span class="token punctuation">(</span>TokenInterface <span class="token variable">$token</span><span class="token punctuation">,</span> <span class="token variable">$providerKey</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token variable">$token</span> <span class="token keyword">instanceof</span> <span class="token class-name">UsernamePasswordToken</span>
+            <span class="token operator">&amp;&amp;</span> <span class="token variable">$token</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getProviderKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token variable">$providerKey</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">createToken</span><span class="token punctuation">(</span>Request <span class="token variable">$request</span><span class="token punctuation">,</span> <span class="token variable">$username</span><span class="token punctuation">,</span> <span class="token variable">$password</span><span class="token punctuation">,</span> <span class="token variable">$providerKey</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">UsernamePasswordToken</span><span class="token punctuation">(</span><span class="token variable">$username</span><span class="token punctuation">,</span> <span class="token variable">$password</span><span class="token punctuation">,</span> <span class="token variable">$providerKey</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></span></code></pre>
+<p>Déclarez votre service :</p>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="2ada8155fd219d6ebc8db9ca97ea47d1"><span class="token key atrule">services</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app.migration_authenticator</span><span class="token punctuation">:</span>
+        <span class="token key atrule">class</span><span class="token punctuation">:</span> App\Infrastructure\MigrationAuthenticator
+        <span class="token key atrule">arguments</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token string">'@security.user_password_encoder.generic'</span>
+            <span class="token punctuation">-</span> <span class="token string">'@doctrine.orm.entity_manager'</span></code></pre>
+<p>Puis renseignez le dans la configuration de votre firewall :</p>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="c006485b5606891034e8f03904310a05"><span class="token key atrule">security</span><span class="token punctuation">:</span>
+    <span class="token key atrule">encoders</span><span class="token punctuation">:</span>
+        <span class="token key atrule">App\Domain\Model\User</span><span class="token punctuation">:</span>
+            <span class="token key atrule">algorithm</span><span class="token punctuation">:</span> bcrypt
+            <span class="token key atrule">cost</span><span class="token punctuation">:</span>      <span class="token number">12</span>
+    <span class="token key atrule">firewalls</span><span class="token punctuation">:</span>
+        <span class="token key atrule">main</span><span class="token punctuation">:</span>
+            <span class="token key atrule">pattern</span><span class="token punctuation">:</span> ^/
+            <span class="token key atrule">anonymous</span><span class="token punctuation">:</span> <span class="token null important">~</span>
+            <span class="token key atrule">simple_form</span><span class="token punctuation">:</span>
+                <span class="token key atrule">authenticator</span><span class="token punctuation">:</span> app.migration_authenticator
+                <span class="token key atrule">login_path</span><span class="token punctuation">:</span> login
+                <span class="token key atrule">check_path</span><span class="token punctuation">:</span> login_check</code></pre>
+<p>Si vous avez besoin de créer un <code class="code-inline" id="08ce529718c22bc07eb6e053ca3d0704">Authentication Provider</code> ou d'utiliser le composant <code class="code-inline" id="57cc9b210b0e3ff7b28013cec3d36acf">Guard</code>, reportez vous à la documentation de Symfony pour savoir où integrer le processus d'authentification, mais le principe reste le même.</p>
+<h1 id="bonus">Bonus<a href="#bonus" class="anchor"></a></h1>
+<p>En bonus, après un certain temps, vous pourrez identifier les utilisateurs qui ne sont plus actifs, ils correspondront aux utilisateurs qui n'auront pas migré leur mot de passe.</p></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

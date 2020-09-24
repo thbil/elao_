@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/matomo.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/matomo.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>21 mars 2019</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -228,58 +228,91 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Anciennement nommé Piwik, Matomo est une solution de mesure d'audience de sites web, alternative libre à Google Analytics. Chez Elao, nous avons souhaité l'utiliser définitivement pour analyser le trafic de notre site et de notre blog. Nous partageons avec vous quelques informations qui vous seront peut-être utiles si, vous aussi, <strong>vous souhaitez rendre anonymes les informations relatives à vos visiteurs</strong> 🔒.</p>
+<h2 id="a-quoi-sert-matomo">A quoi sert Matomo ?<a href="#a-quoi-sert-matomo" class="anchor"></a></h2>
+<p>Tout comme Google Analytics, Matomo permet de mieux comprendre la façon dont les utilisateurs arrivent sur nos sites. On peut ainsi envisager de répondre aux questions suivantes : d'où vient mon visiteur (réseaux sociaux ? Moteur de recherche ?) ? Quelles pages a-t-il visité ? Quelle a été la durée moyenne de sa visite ? Quelle est ma place dans l'univers ? Et autant d'autres questions qui permettent de <strong>connaître le parcours de ses visiteurs</strong>, afin d'améliorer l'ergonomie ou encore de remonter un éventuel trafic parasite.</p>
+<ul><li><strong>Matomo est un logiciel libre</strong> sous licence GPLv3, conçu pour être auto-hébergé;</li>
+<li>Toutes les données collectées sont stockées sur votre serveur et sont soumises à votre contrôle. Ainsi, <strong>les informations de suivi de chaque visiteur ne sont pas partagées avec des tiers</strong> contrairement à Google Analytics;</li>
+<li>Matomo peut être utilisé pour tous vos sites web, extranet et intranet.</li>
+</ul><img src="/images/posts/2019/matomo/logo-matomo.jpg" alt="Matomo" title="Matomo" id="matomo"><h2 id="de-quoi-aurez-vous-besoin-pour-i">De quoi aurez-vous besoin pour installer Matomo ?<a href="#de-quoi-aurez-vous-besoin-pour-i" class="anchor"></a></h2>
+<p>Il est possible d'installer un serveur spécialement pour Matomo et d'y configurer plusieurs sites, de la même façon que fonctionne le multi-compte de Google Analytics.</p>
+<p>Les minima requis pour installer Matomo sont :</p>
+<ul><li>Un serveur web (Apache, Nginx, etc.);</li>
+<li>PHP en version 5.5.9 ou plus;</li>
+<li>Une base de données : MySQL ou MariaDB;</li>
+<li>Les extensions PHP pdo.</li>
+</ul><p>Faites vos choix :</p>
+<ul><li>installation <a href="https://matomo.org/docs/installation/" target="_blank">par archive</a>;</li>
+<li>installation <a href="https://debian.matomo.org/" target="_blank">par package</a> : <code class="code-inline" id="d548d1f6c3b95c34a2051f7dc04a7bfd">apt-get install matomo</code>;</li>
+<li>installation par <a href="&lt;https://docs.docker.com/samples/library/matomo/&gt;">docker</a>;</li>
+<li>solution <a href="&lt;https://matomo.org/pricing/&gt;">hébergée par matomo</a>.</li>
+</ul><p>Matomo indique quelques conseils pour <a href="https://matomo.org/docs/optimize/" target="_blank">optimiser son infrastructure</a> pour les sites à très fort trafic / volumétrie. Bref, cette solution semble s'appliquer à toutes sortes de besoins.</p>
+<img src="/images/posts/2019/matomo/install-matomo.png" alt="Installation de Matomo" title="Installation de Matomo" id="installation-de-matomo"><h2 id="comment-l-utiliser-sur-vos-sites">Comment l'utiliser sur vos sites web ?<a href="#comment-l-utiliser-sur-vos-sites" class="anchor"></a></h2>
+<p><strong>Matomo fonctionne grâce à un marqueur JavaScript à insérer dans le header de votre site web</strong>. Celui-ci vous est communiqué au moment de la création d'un compte pour un nouveau site. Tout comme le marqueur de Google Analytics, celui-ci est à insérer avant la fermeture de la balise <code class="code-inline" id="0efa13d18e21e1c280569064dccd2d9f">&lt;/head&gt;</code>.</p>
+<h2 id="conformit-avec-la-rgpd">Conformité avec la RGPD<a href="#conformit-avec-la-rgpd" class="anchor"></a></h2>
+<p>Les récents renforcements de la protection des données ne vous ont probablement pas échappé. Ainsi, dans sa documentation <a href="https://www.cnil.fr/fr/solutions-pour-les-cookies-de-mesure-daudience" target="_blank">"Solutions pour les cookies de mesure d'audience"</a>, <strong>la CNIL détaille les obligations légales à mettre en place en matière de cookies</strong>, dès lors qu'il y a données collectées liées à une visite. Miracle 🙌 ! <strong>Utiliser un outil d'analyse d'audience tel que Matomo ou AT Internet (Xiti) permet de bénéficier de l'exemption de la demande de consentement avant de déposer un cookie</strong>, permettant ainsi à nos visiteurs d'économiser un clic, ce qui est bon à prendre en ces temps de frénésie de bandeaux / pop-ups.</p>
+<p>Les principaux points relatifs cités par la CNIL auxquels il faut être attentif et qui peuvent être paramétrés sont les suivants :</p>
+<ul><li><strong>Les deux derniers octets de l’adresse IP recueillie doivent être supprimés,</strong> au minimum, afin de s'arrêter à la seule localisation de la ville de l'internaute;</li>
+<li>Les cookies permettant la traçabilité des internautes et les adresses IP <strong>ne doivent pas être conservées au-delà de 13 mois à compter de la première visite</strong> ;</li>
+<li><strong>Les données de fréquentation brutes associant un identifiant</strong> ne doivent pas non plus être conservées plus de 13 mois.</li>
+<li><strong>Mettre en place une solution d'Opt-out</strong> pour permettre aux utilisateurs de s’opposer au dépôt de cookies. Pour cela il suffit d’insérer par exemple dans une page "Politique de confidentialité", l'iframe qui est fournie dans les paramètres Vie privée / Désinscription des utilisateurs.</li>
+</ul><img src="https://media.giphy.com/media/wO9EzKpgf3pao/giphy.gif" id="giphy-gif"><p>L'interface de Matomo permet de facilement configurer ces choix, puisqu'un menu est dédié à la vie privée, mêlant à la fois documentation et réglages. A noter que ces réglages se font au niveau de l'instance, donc <strong>ces choix s'appliqueront sur tous les sites configurés</strong>. Il n'est pour l'instant pas possible de les régler site par site.</p>
+<p>Les réglages possibles concernent :</p>
+<ul><li><strong>L'anonymisation des données</strong> de suivi :
+<ul><li>Nombre d'octets de l'adresse IP masqués, de 1 à 3;</li>
+<li>Masquage des adresses IP;</li>
+<li>Remplacement de l'identifiant utilisateur par un pseudonyme.</li>
+</ul></li>
+<li><strong>Suppression régulière des données stockées en base</strong> (cf le troisième point cité ci-dessus, exigé par la CNIL), en indiquant le nombre de jours. Attention, ces infos sont utilisées par Matomo pour nourrir les rapports à propos des top keywords ou top pages. Ainsi, il faut bien penser à activer <a href="https://matomo.org/docs/setup-auto-archiving/" target="_blank">l'auto-archivage des rapports</a>;</li>
+<li>Purges régulières de la base des données;</li>
+<li><strong>Anonymisation des données trackées qui ne l'étaient pas</strong> encore, dès lors qu'elles n'ont plus d'intérêt à être conservées.</li>
+</ul><p>⚠️ : le <a href="https://www.cnil.fr/sites/default/files/typo/document/Configuration_piwik.pdf" target="_blank">guide de conformité de Piwik (ancien nom de Matomo) proposé par la CNIL</a> ne semble plus à jour, puisqu'il pointe une modification du tag de tracking permettant d'indiquer une durée de timeout du cookie à 13 mois, alors que cette durée est désormais paramétrée par défaut, comme nous l'indique la <a href="https://developer.matomo.org/api-reference/tracking-javascript" target="_blank">documentation de Matomo</a> (voir au paragraphe "Configuration of Tracking Cookies", pour la méthode <code class="code-inline" id="cd0c628d9b501b5fa5fb43434dde3320">setVisitorCookieTimeout</code>.</p>
+<h2 id="les-fonctionnalit-s-propos-es">Les fonctionnalités proposées par Matomo vs Google Analytics<a href="#les-fonctionnalit-s-propos-es" class="anchor"></a></h2>
+<p>Pour les habitués de Google Analytics, le passage à une nouvelle ergonomie n'est pas évidente. En comparant deux périodes sur l'année, nous avons déjà pu nous assurer qu'aucun visiteur n'est laissé au bord de la route : les données semblent cohérentes.</p>
+<img src="/images/posts/2019/matomo/Evolution-trafic-matomo.png" alt="Evolution de traffic" title="Evolution de traffic" id="evolution-de-traffic"><p>On retrouve les fondamentaux :</p>
+<ul><li><strong>Données relatives à l'audience,</strong> c'est à dire toutes les infos qui concernent les visiteurs (provenances géographiques, logiciels utilisés);</li>
+<li><strong>La carte en temps réel des visites</strong>;</li>
+<li><strong>Les types d'acquisition</strong> : il s'agit de l'ensemble de provenance des visites (réseaux sociaux, campagnes, moteurs de recherche, etc.);</li>
+<li><strong>Les informations concernant le comportement des visiteurs</strong> : les pages d'entrées, de sorties, etc.</li>
+<li><strong>La mise en place d'objectifs</strong> et les informations qui en résultent.</li>
+</ul><img src="/images/posts/2019/matomo/canaux-matomo.png" alt="Canaux d'acquisition" title="Canaux d'acquisition" id="canaux-d-acquisition"><p>On peut noter quelques fonctionnalités remarquables de Matomo  :</p>
+<ul><li><strong>Matomo permet un accès facilité aux différents logs</strong> : par exemple, on peut accéder via l'interface à la liste des visites avec toutes les informations collectées (localisation, OS, action...);</li>
+<li>Le fameux <strong>flux de comportements des visiteurs</strong>, bien connu des utilisateurs de Google Analytics, est également disponible;</li>
+<li>Pour obtenir les entonnoirs de conversion des visiteurs vers les objectifs et étudier les fuites, il faudra souscrire à la feature <em>Funnels</em> (ou bien établir son propre entonnoir de conversion personnalisé);</li>
+<li>Il est possible de <strong>paramétrer ses écrans d'accueil en créant ses tableaux de bord personnalisés</strong> et des gadgets;</li>
+<li>Les nouveaux segments se paramètrent en composant ses propres règles par expression;</li>
+<li>Un accès rapide permet d'accéder à la liste de <strong>tous les liens sortants cliqués sur la période</strong> (clic uniques et au total).</li>
+</ul><p>Pour les personnes qui ont l'habitude de faire des campagnes Google Ads, il est possible de créer ses propres campagnes pour les suivre.</p>
+<p>A noter :</p>
+<ul><li>Matomo propose depuis peu un <a href="https://matomo.org/docs/tag-manager/" target="_blank">Tag Manager</a>, qui permet de mettre en place un plan de marquage, d'ajouter des scripts de tracking ou encore des liens d'affiliation, par exemple, depuis la même interface.</li>
+</ul><img src="/images/posts/2019/matomo/features-analytics.png" alt="Fonctionnalités de Matomo" title="Fonctionnalités de Matomo" id="fonctionnalit-s-de-matomo"><h2 id="fonctionnalit-s-payantes">Fonctionnalités payantes<a href="#fonctionnalit-s-payantes" class="anchor"></a></h2>
+<p>Utiliser les outils Google habitue à la "gratuité", mais n'oublions pas que Google tire profit des données qu'il stocke pour nous, relatives à la fréquentation de nos sites. Matomo se rémunère grâce aux dons et aux fonctionnalités vendues à ses utilisateurs.</p>
+<p><a href="&lt;https://matomo.org/docs/ecommerce-analytics/&gt;">Des fonctionnalités supplémentaires pour les sites e-commerce</a>, que nous n'avons pas eu l'occasion de tester pour l'instant, existent et proposent des features telles que l'analyse du panier, des produits cliqués, etc.);</p>
+<p>Un panel de fonctionnalités payantes couvre un scope intéressant, comme par exemple la possibilité de faire de l'A/B testing, les Heat Maps ou encore les conversions multi-channels (pour une attribution plus fine des ventes selon les visites).</p>
+<h2 id="pour-conclure">Pour conclure<a href="#pour-conclure" class="anchor"></a></h2>
+<p>Certes, difficile de ne pas être décontenancé par l'ergonomie de l'outil quand on est habitué à plusieurs années d'utilisations de la suite Google. Pour autant, Matomo n'est pas à la traîne, car on retrouve les principales metrics et la plupart des possibilités permettant d'information ses metrics sont bien présentes. Couplé à un outil d'analyse de logs (d'ailleurs, Matomo propose une solution), rien ne pourra vous échapper. Mais surtout, garantir à nos visiteurs le respect de leur vie privée est totalement séducteur 🥰.</p>
+<h2 id="en-savoir-plus-sources">En savoir plus / Sources<a href="#en-savoir-plus-sources" class="anchor"></a></h2>
+<ul><li><a href="https://matomo.org/" target="_blank">Matomo</a></li>
+<li><a href="https://demo.matomo.org/" target="_blank">Démo publique</a></li>
+<li><a href="https://zestedesavoir.com/tutoriels/2508/matomo-analytics/partie-4-comprendre-et-analyser-les-donnees/" target="_blank">Comprendre et analyser les données avec Matomo</a></li>
+</ul><p>Merci à <a href="https://woptimo.com/" target="_blank">Sébastien Monnier</a> pour son feedback sur l'article :)</p></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

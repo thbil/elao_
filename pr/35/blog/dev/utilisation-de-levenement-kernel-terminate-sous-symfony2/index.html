@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/geekon.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/geekon.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>18 juillet 2013</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -231,58 +231,149 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>A quoi sert l'évènement kernel.terminate ? Regardons du côté de la documentation :</p>
+<blockquote>
+<p>"To perform some "heavy" action after the response has been streamed to the user".</p>
+</blockquote>
+<p>Une question que vous vous posez surement si vous n'avez pas eu l'occasion de travailler avec cet évènement : "Quand est-ce que je peux utiliser l'évènement "kernel.terminate" pour effectuer mes traitements ?" La réponse en image :</p>
+<div style="text-align:center;">
+![Utilisation de lévènement kernel.terminate sous Symfony2" width="488" height="522](/images/posts/2013/1331.png)
+</div>
+<p>Concrètement, vous pouvez quasiment tout faire si vous utilisez cet évènement. A une chose près : votre traitement ne doit pas altérer la réponse. Pourquoi ? Parce qu'il est déclenché après que la réponse soit envoyé au client. Il n'y à donc plus moyen d'y rajouter des informations ou d'en altérer son contenu dans le but de l'envoyer au client. (Attention kernel.terminate a été rajouté en Symfony2.1, donc si vous êtes encore en 2.0, vous pouvez oublier).</p>
+<pre class="code-multiline language-php"><code class="language-php" id="38c7dd195387b31fd56c1084d99ce24d"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">// ...</span>
+
+<span class="token variable">$response</span> <span class="token operator">=</span> <span class="token variable">$kernel</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">handle</span><span class="token punctuation">(</span><span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$response</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$kernel</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">terminate</span><span class="token punctuation">(</span><span class="token variable">$request</span><span class="token punctuation">,</span> <span class="token variable">$response</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>Alors finalement comment le mettre en place ? Voilà un exemple de la classe <em>GuzzleExceptionListener</em> qui écoute 2 évènements.</p>
+<pre class="code-multiline language-php"><code class="language-php" id="ce7cf8bc2bfee9c2147bf5ded3bfbf88"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">Tristanbes<span class="token punctuation">\</span>ElophantBundle<span class="token punctuation">\</span>EventListener</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Guzzle<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>Exception<span class="token punctuation">\</span>BadResponseException</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpFoundation<span class="token punctuation">\</span>JsonResponse</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpKernel<span class="token punctuation">\</span>Event<span class="token punctuation">\</span>GetResponseForExceptionEvent</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Tristanbes<span class="token punctuation">\</span>ElophantBundle<span class="token punctuation">\</span>Manager<span class="token punctuation">\</span>StatsManager</span><span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * Class GuzzleExceptionListener
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">GuzzleExceptionListener</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token variable">$statsManager</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$fail</span> <span class="token operator">=</span> <span class="token boolean constant">false</span><span class="token punctuation">;</span>
+
+    <span class="token doc-comment comment">/**
+     * Constructor
+     *
+     * <span class="token keyword">@param</span> <span class="token class-name">StatsManager</span> <span class="token parameter">$manager</span> The stats Manager
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span>StatsManager <span class="token variable">$manager</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">statsManager</span> <span class="token operator">=</span> <span class="token variable">$manager</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">onKernelException</span><span class="token punctuation">(</span>GetResponseForExceptionEvent <span class="token variable">$event</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$exception</span> <span class="token operator">=</span> <span class="token variable">$event</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$exception</span> <span class="token keyword">instanceof</span> <span class="token class-name">BadResponseException</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">fail</span> <span class="token operator">=</span> <span class="token boolean constant">true</span><span class="token punctuation">;</span>
+            <span class="token variable">$response</span>   <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JsonResponse</span><span class="token punctuation">(</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'success'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token boolean constant">false</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$event</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setResponse</span><span class="token punctuation">(</span><span class="token variable">$response</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">onKernelTerminate</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean constant">false</span> <span class="token operator">===</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">fail</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">statsManager</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addFail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></span></code></pre>
+<pre class="code-multiline language-xml"><code class="language-xml" id="54341154ae203de4bb1c9c775b40e6d6"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>service</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tristanbes_elophant.guzzle_exception_eventlistener<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>%tristanbes_elophant.guzzle.exception.class%<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tag</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>kernel.event_listener<span class="token punctuation">"</span></span> <span class="token attr-name">event</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>kernel.exception<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>onKernelException<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>;
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tag</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>kernel.event_listener<span class="token punctuation">"</span></span> <span class="token attr-name">event</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>kernel.terminate<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>onKernelTerminate<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>;
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>argument</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>service<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tristanbes_elophant.stats.manager<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>service</span><span class="token punctuation">&gt;</span></span>;</code></pre>
+<p><strong> Explications : </strong></p>
+<p>Le premier évènement écouté est, <em>kernel.exception. </em>Ce dernier, lorsqu'il sera déclenché, appellera la méthode <em>onKernelException</em> de la classe <em>GuzzleExceptionListener</em> introspectera la classe de l'exception et regardera si celle ci provient d'une erreur renvoyée par Guzzle à la suite d'un appel à un WebService.</p>
+<p>Si c'est le cas, elle modifiera un attribut nommé $fail et renverra une réponse en <em>json au client.</em></p>
+<p>Une fois cette réponse envoyée, Symfony va [via la méthode $kernel-&gt;terminate()]; déclencher l'évènement kernel.terminate. Ce qui tombe plutôt bien car notre classe écoute cet évènement aussi. Si jamais $fail renvoie true, le service StatsManager s'occupera d'incrémenter une valeur en base de données (afin de savoir combien de requêtes ont échouées par jour).</p>
+<p>Ici, on est loin de gagner des secondes sur la réponse, en effet, incrémenter une valeur en base de données est loin d'être une opération "lourde", alors pourquoi passer par kernel.terminate ? Parce qu'on peut, alors pourquoi se priver même pour de la "micro" optim ?</p>
+<p>Attention cependant à bien débugger votre code, car vous ne verrez aucun output étant donné que la réponse est déjà envoyée.</p>
+<p>A savoir que vous pouvez aussi ajoutez un listener directement depuis le dispatcher de Symfony2. Voilà un example avec l'utilisation d'une closure :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="47200e9aa53d3fdf552b14b312c557bd"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">Tristanbes<span class="token punctuation">\</span>ElophantBundle<span class="token punctuation">\</span>EventListener</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Guzzle<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>Exception<span class="token punctuation">\</span>BadResponseException</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpFoundation<span class="token punctuation">\</span>JsonResponse</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>EventDispatcher<span class="token punctuation">\</span>EventDispatcher</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpKernel<span class="token punctuation">\</span>Event<span class="token punctuation">\</span>GetResponseForExceptionEvent</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Tristanbes<span class="token punctuation">\</span>ElophantBundle<span class="token punctuation">\</span>Manager<span class="token punctuation">\</span>StatsManager</span><span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * Class GuzzleExceptionListener
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">GuzzleExceptionListener</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token variable">$statsManager</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$dispatcher</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$fail</span> <span class="token operator">=</span> <span class="token boolean constant">false</span><span class="token punctuation">;</span>
+
+    <span class="token doc-comment comment">/**
+     * Constructor
+     *
+     * <span class="token keyword">@param</span> <span class="token class-name">StatsManager</span> <span class="token parameter">$manager</span> The stats Manager
+     * <span class="token keyword">@param</span>
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span>StatsManager <span class="token variable">$manager</span><span class="token punctuation">,</span> EventDispatcher <span class="token variable">$dispatcher</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">statsManager</span> <span class="token operator">=</span> <span class="token variable">$manager</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">dispatcher</span>   <span class="token operator">=</span> <span class="token variable">$dispatcher</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">onKernelException</span><span class="token punctuation">(</span>GetResponseForExceptionEvent <span class="token variable">$event</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$exception</span> <span class="token operator">=</span> <span class="token variable">$event</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$statsManager</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">statsManager</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$exception</span> <span class="token keyword">instanceof</span> <span class="token class-name">BadResponseException</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">dispatcher</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'kernel.terminate'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>Event <span class="token variable">$event</span><span class="token punctuation">)</span> <span class="token keyword">use</span> <span class="token punctuation">(</span><span class="token variable">$statsManager</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token variable">$statsManager</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addFail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></span></code></pre>
+<pre class="code-multiline language-xml"><code class="language-xml" id="7059238c4184510630bc4c34552a38c7"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>service</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tristanbes_elophant.guzzle_exception_eventlistener<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>%tristanbes_elophant.guzzle.exception.class%<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>;
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tag</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>kernel.event_listener<span class="token punctuation">"</span></span> <span class="token attr-name">event</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>kernel.exception<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>onKernelException<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>;
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>argument</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>service<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tristanbes_elophant.stats.manager<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>;
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>argument</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>service<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>event_dispatcher<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>service</span><span class="token punctuation">&gt;</span></span></code></pre></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

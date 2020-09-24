@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/bridge.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/bridge.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>3 novembre 2016</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -240,58 +240,98 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><h2 id="introduction">Introduction<a href="#introduction" class="anchor"></a></h2>
+<p>Dans la continuité de l'émergence des applications full frontend, nous sommes de plus en plus amenés a appeler des API directement en Javascript depuis le client. J'ai récemment été confronté à un cas où l'API à interroger n'était pas sur le même domaine que l'application. Sur un développement backend ce genre de cas ne pose aucun problème mais avec Javascript, pour des raisons de sécurité, les communications <strong>cross-domain</strong> sont bloquées par la <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Same_origin_policy_for_JavaScript" target="_blank">Same Origin Policy</a>.</p>
+<h2 id="cors">CORS<a href="#cors" class="anchor"></a></h2>
+<p><a href="http://www.w3.org/TR/cors/" target="_blank">Cross-Origin Resource Sharing</a> (CORS) est une spécification du W3C permettant les requêtes <strong>cross-domain</strong> depuis les navigateurs compatibles. Si l'API que vous interrogez est compatible avec <strong>CORS</strong>, vous pourrez accéder à l'API même si elle n'est pas sur le même domaine que votre application.</p>
+<p>CORS est compatible avec :</p>
+<ul><li>Chrome 3+</li>
+<li>Firefox 3.5+</li>
+<li>Opera 12+</li>
+<li>Safari 4+</li>
+<li>Internet Explorer 8+</li>
+</ul><p>Pour utiliser <strong>CORS</strong> il faut envoyer au serveur des <em>headers</em> de contrôle d'accès qu'il inspectera pour approuver ou non la requête. Ces <em>headers</em> de contrôle d'accès décriront le contexte de la requête, sa méthode HTTP, son origine, ses headers custom, ...</p>
+<p>Selon le type de requête, ces headers sont envoyés automatiquement par le navigateur avec la requête ou dans une requête préliminaire (<em>preflight request</em>). La requête aboutira si le serveur répond avec des headers de contrôle d'accès compatibles.</p>
+<pre class="code-multiline"><code id="047eb40fecb8065603007bd68677bed7">=&gt; OPTIONS https://api.com/foobar
+- HEADERS -
+Origin: http://application.com
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: Api-Key
+
+&lt;= HTTP/1.1 204 No Content
+- RESPONSE HEADERS -
+Access-Control-Allow-Origin: http://application.com
+Access-Control-Allow-Methods: GET, POST, OPTIONS
+Access-Control-Max-Age: 86400
+Access-Control-Allow-Headers: Api-Key</code></pre>
+<p>Pour plus d'informations sur le fonctionnement de <strong>CORS</strong>, je vous laisse lire les articles <a href="https://www.eriwen.com/javascript/how-to-cors/" target="_blank">Making Cross-Domain Requests with CORS</a> et <a href="http://blog.inovia-conseil.fr/?p=202" target="_blank">Démystifier CORS (Cross-Origin Resource Sharing)</a> qui sont très complets.</p>
+<h2 id="reverse-proxy">Reverse Proxy<a href="#reverse-proxy" class="anchor"></a></h2>
+<p>Malheureusement l'API que je souhaitais utiliser n'était pas compatible CORS. Si c'est votre cas également, il faudra alors passer par un proxy.</p>
+<p><strong>Nginx</strong> permet simplement de mettre en place ce genre de <em>reverse proxy</em> grace à une configuration de ce type :</p>
+<pre class="code-multiline"><code id="cd0bafd5ad131e16bd297d14ce957274">server {
+    listen          80;
+    server_name     application.com;
+
+    location /api {
+        # Rewrite /api/resource/action?key=value to /resource/action?key=value
+        RewriteRule                     ^/api/(.*)$ /$i [L,PT,QSA]
+
+        # Activer le proxy
+        proxy_set_header                X-Real-IP $remote_addr;
+        proxy_set_header                X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass                      http://api.com;
+        proxy_redirect                  off;
+        proxy_buffers                   32 16k;
+        proxy_busy_buffers_size         64k;
+    }
+}</code></pre>
+<p>Ainsi, votre application pourra appeler votre API sur <code class="code-inline" id="4977b92abb276296e31bd6813d1c4082">http://application.com/api</code> sans problème de <em>cross-origin</em>.</p>
+<p>Si vous avez besoin d'exposer l'API sur un autre domaine ou sur un autre port que votre application, vous aurez  besoin de permettre le <em>cross-domain</em> grâce à <strong>CORS</strong>. Mon application tournant sur <code class="code-inline" id="9f5ffc7a10e0bad054458b089947ce2f">localhost:8080</code>, j'ai décidé de mettre mon proxy sur <code class="code-inline" id="1e8d5bafeb93fbefeabf333e05a5f261">localhost:8181</code>.</p>
+<pre class="code-multiline"><code id="1bb25a12c878d233408d89355099949b">server {
+    listen          8181;
+    server_name     localhost;
+
+    location / {
+
+        # Activer le proxy
+        proxy_set_header                X-Real-IP $remote_addr;
+        proxy_set_header                X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass                      http://api.com;
+        proxy_redirect                  off;
+        proxy_buffers                   32 16k;
+        proxy_busy_buffers_size         64k;
+
+        # Ajouter les headers de contrôle d'accès CORS
+        add_header    'Access-Control-Allow-Origin' '*' always;
+        add_header    'Access-Control-Allow-Methods' 'GET, POST, OPTIONS' always;
+        add_header    'Access-Control-Allow-Headers' 'Origin, X-Requested-With, Content-Type, Accept' always;
+        add_header    'Access-Control-Allow-Credentials' 'true' always;
+}</code></pre>
+<p>Je peux ainsi appeler l'API sur <code class="code-inline" id="1e8d5bafeb93fbefeabf333e05a5f261">localhost:8181</code> de façon transparente.</p>
+<div style="border-left: 5px solid #ffa600;padding: 20px;margin: 20px 0;">
+    Attention, <code id="8d68c4c0373523ca5273c49e75df63a5">Access-Control-Allow-Origin: '*'</code> autorise les requêtes <em>cross-origin</em> depuis n'importe quel domaine, en dev cela permet de facilement mettre CORS en place mais dans un soucis de sécurité il faudrait être plus restrictif.
+</div>
+<h2 id="bonus">Bonus<a href="#bonus" class="anchor"></a></h2>
+<p>Vous pouvez encore améliorer votre proxy par exemple en ajoutant automatiquement des headers d'authentification si l'API en nécessite ou encore des headers de cache afin de reduire le temps de réponse ou d'économiser un éventuel quota imposé par l'API.</p>
+<h2 id="conclusion">Conclusion<a href="#conclusion" class="anchor"></a></h2>
+<p>Grâce a <strong>nginx</strong> vous pouvez donc créer un <em>reverse proxy</em> qui vous permettra d'accéder à une API directement depuis votre application front sur un domaine différent en contournant de façon sécurisée la <strong>Same Origin Policy</strong>.</p></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

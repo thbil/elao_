@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/mailers.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/mailers.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>11 octobre 2013</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -237,58 +237,61 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Voici une petite astuce que j'ai découvert hier et que j'ai pensé utile de partager !<!--more--></p>
+<h1 id="probl-matique">Problématique<a href="#probl-matique" class="anchor"></a></h1>
+<p><strong>Contexte :</strong></p>
+<ul><li>Votre application Symfony2 utilise un service tiers pour envoyer vos e-mails (comme <a href="https://fr.mailjet.com/" target="_blank">Mailjet</a> par exemple)</li>
+<li>Votre application a besoin d'envoyer des e-mails de notifications aux administrateurs lorsque des erreurs se produisent (Erreurs 500 par exemple)<!--more--></li>
+</ul><p>Imaginez qu’une erreur se produise sur l’une de vos pages et que vous ayez des centaines d’utilisateurs en train de visualiser cette même page.Pour chaque affichage de cette dernière, vous allez recevoir un e-mail de notification.
+Si ces e-mails passent par Mailjet par exemple, votre quota fondra à vue d’œil...
+Au mieux vous atteindrez une limite de quota et les mails suivants seront bloqués, au pire vous ferez un énorme hors forfait qui pourra vous couter très cher...</p>
+<h1 id="solution-propos-e">Solution proposée<a href="#solution-propos-e" class="anchor"></a></h1>
+<p>La solution que je vous propose pour palier à cela est de créer 2 mailer utilisant 2 transports différents :</p>
+<ul><li>Les e-mails classiques destinés aux utilisateurs de votre application passeront par votre serveur SMTP</li>
+<li>Les e-mails techniques destinés aux administrateurs de votre application seront envoyés via la fonction mail de votre PHP.</li>
+</ul><h1 id="mise-en-uvre-de-la-solution">Mise en œuvre de la solution<a href="#mise-en-uvre-de-la-solution" class="anchor"></a></h1>
+<p>Pour cela rien de plus simple, créez plusieurs mailers dans votre app/config/config.yml :</p>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="8ed9ff05059474544dd70b097e430e4f"><span class="token comment"># Swiftmailer Configuration</span>
+<span class="token key atrule">swiftmailer</span><span class="token punctuation">:</span>
+    <span class="token key atrule">default_mailer</span><span class="token punctuation">:</span> default
+    <span class="token key atrule">mailers</span><span class="token punctuation">:</span>
+        <span class="token key atrule">default</span><span class="token punctuation">:</span>
+            <span class="token key atrule">transport</span><span class="token punctuation">:</span> smtp
+            <span class="token key atrule">host</span><span class="token punctuation">:</span>      in.mailjet.com
+            <span class="token key atrule">username</span><span class="token punctuation">:</span>  mylogin
+            <span class="token key atrule">password</span><span class="token punctuation">:</span>  mypassword
+        <span class="token key atrule">notifier</span><span class="token punctuation">:</span>
+            <span class="token key atrule">transport</span><span class="token punctuation">:</span> mail</code></pre>
+<p>Vous remarquerez que cela aura pour effet de créer 2 services d'envoi d'e-mails que vous pourrez ensuite utiliser dans votre application :</p>
+<pre class="code-multiline language-bash"><code class="language-bash" id="ff206c37f7781019d1aded89fd684fbe">jlopes:/Volumes/Elao/workspace/myProject ./app/console container:debug <span class="token operator">|</span> <span class="token function">grep</span> mailer
+mailer                                            n/a       <span class="token builtin class-name">alias</span> <span class="token keyword">for</span> swiftmailer.mailer.default
+swiftmailer.mailer                                n/a       <span class="token builtin class-name">alias</span> <span class="token keyword">for</span> swiftmailer.mailer.default
+swiftmailer.mailer.default                        container Swift_Mailer
+swiftmailer.mailer.default.plugin.messagelogger   container Swift_Plugins_MessageLogger
+swiftmailer.mailer.default.transport              container Swift_Transport_EsmtpTransport
+swiftmailer.mailer.notifier                       container Swift_Mailer
+swiftmailer.mailer.notifier.plugin.messagelogger  container Swift_Plugins_MessageLogger
+swiftmailer.mailer.notifier.transport             container Swift_Transport_MailTransport
+<span class="token punctuation">..</span>.</code></pre>
+<p>Cette astuce reste très simple mais je n'ai rien trouvé dans la documentation officielle de Symfony qui l'expliquait clairement. Elle peut se révéler très utile lorsque vous utilisez le bundle <strong><a href="https://github.com/Elao/ErrorNotifierBundle" target="_blank">ErrorNotifierBundle</a></strong></p>
+<p>Merci et à bientôt !</p></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

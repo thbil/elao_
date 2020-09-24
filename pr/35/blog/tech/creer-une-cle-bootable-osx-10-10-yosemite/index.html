@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/yosemite.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/yosemite.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>17 septembre 2014</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -222,58 +222,45 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Suite à la sortie récente de <strong>OSX Yosemite</strong> vous trouverez ci-dessous la marche à suivre pour créer une clé "bootable" à partir de l'image (DMG) récupérée de l'installation de l'AppStore.</p>
+<p>Celle-ci permettra entre autre:</p>
+<ul><li>D'éviter que toute l'équipe télécharge 5Go de données pour l'installer</li>
+<li>De conserver une copie locale "au cas ou"</li>
+<li>Ou encore de faire une installation "from scratch" sur un poste, parce que des fois c'est quand même bien de faire du propre ;)</li>
+</ul><p>1.-  En premier lieu procurez-vous Yosemite via le mac app store. (pour rappel il est installé dans /Applications)
+Avant de lancer la mise à jour, copier le fichier <strong>InstallESD.dmg</strong> vers un emplacement de sauvegarde, en effet une fois la mise à jour faites le package sera automatiquement supprimé.</p>
+<p>2.-  Connectez une clé USB formatée à votre machine, si vous le faites avec l'utilitaire de disque la partition par défaut devrait s'appeler "Untitled" modifiez les instruction en conséquence si ce n'est pas le cas chez vous.</p>
+<p>Attention pour cette partie il faut bien faire attention de sélectionner "GUID Partition Table" dans les options lors de la création de la partition comme ci-dessous:</p>
+<p class="text-center">
+    ![Créer une clé bootable osx yosemite](/images/posts/2014/OSX_Yosemite.png)
+</p>
+<p>3.-  Exécuter la liste d'instructions suivantes:</p>
+<pre class="code-multiline"><code id="e2399530d48237404a8785a1864d2ee6">sudo hdiutil attach /Applications/Install\ OS\ X\ Yosemite.app/Contents/SharedSupport/InstallESD.dmg</code></pre>
+<pre class="code-multiline"><code id="e37538549d4e4850d3529342092a7a56">sudo asr restore -source /Volumes/OS\ X\ Install\ ESD/BaseSystem.dmg -target /Volumes/Untitled -erase -format HFS+</code></pre>
+<pre class="code-multiline"><code id="1975175e3655284b766581ffefca8696">sudo rm /Volumes/OS\ X\ Base\ System/System/Installation/Packages</code></pre>
+<pre class="code-multiline"><code id="87b882ab31320a2e9b6c6a068f2618f3">sudo cp -a /Volumes/OS\ X\ Install\ ESD/Packages /Volumes/OS\ X\ Base\ System/System/Installation/Packages</code></pre>
+<pre class="code-multiline"><code id="af3d327090e105cbcb37ef9189ba6d39">sudo cp -a /Volumes/OS\ X\ Install\ ESD/BaseSystem.chunklist /Volumes/OS\ X\ Base\ System</code></pre>
+<pre class="code-multiline"><code id="7a36cf1816cfdf5bda3eafa5fb2e8be7">sudo cp -a /Volumes/OS\ X\ Install\ ESD/BaseSystem.dmg /Volumes/OS\ X\ Base\ System</code></pre>
+<p>Et enfin:</p>
+<pre class="code-multiline"><code id="1814494f07fd9df009046ba8c145225d">hdiutil detach /Volumes/OS\ X\ Install\ ESD</code></pre>
+<p>Vous disposez à présent d'une clé "bootable" permettant de faire une installation "propre" de Yosemite. Il suffit de redémarrer votre Mac et de maintenant la touche "Alt" enfoncée et de choisir de démarrer à partir de la clé.</p></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

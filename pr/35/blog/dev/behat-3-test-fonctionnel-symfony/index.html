@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/behat.png)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/behat.png)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>6 janvier 2016</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -234,58 +234,146 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Depuis peu, nous avons fait basculer notre <a href="https://github.com/Elao/symfony-standard" target="_blank">stack Symfony standard</a> avec comme dépendance par défaut Behat 3.
+La documentation sur Behat 2.5 est prédominante par rapport à la version 3, ce qui nous a obligé à faire le tri pour configurer correctement notre stack.
+Nous avons donc décidé de vous partager notre set up et la façon dont nous utilisons Behat 3.</p>
+<!--more-->
+<h2 id="behat">Behat<a href="#behat" class="anchor"></a></h2>
+<p>Behat nous permet de réaliser les tests fonctionnels des applications que nous développons. Il a l'atout d'être extensible et nous permet d'écrire des scénarios compréhensibles à la fois par des humains et par Behat via le language <a href="http://docs.behat.org/en/latest/guides/1.gherkin.html" target="_blank">Gherkin</a>.</p>
+<h3 id="installation">Installation:<a href="#installation" class="anchor"></a></h3>
+<p>Avant toute chose, nous devons ajouter Behat à notre projet.</p>
+<pre class="code-multiline language-json"><code class="language-json" id="e15abf291f01fbec67c9931fbbb0a266"><span class="token punctuation">{</span>
+    <span class="token property">"require-dev"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"behat/behat"</span><span class="token operator">:</span> <span class="token string">"3.0.*"</span><span class="token punctuation">,</span>
+        <span class="token property">"behat/mink-selenium2-driver"</span><span class="token operator">:</span> <span class="token string">"1.2.*"</span><span class="token punctuation">,</span>
+        <span class="token property">"behat/symfony2-extension"</span><span class="token operator">:</span> <span class="token string">"2.0.*"</span><span class="token punctuation">,</span>
+        <span class="token property">"behat/mink-browserkit-driver"</span><span class="token operator">:</span> <span class="token string">"1.2.*"</span><span class="token punctuation">,</span>
+        <span class="token property">"behat/mink-extension"</span><span class="token operator">:</span> <span class="token string">"~2.0"</span><span class="token punctuation">,</span>
+        <span class="token property">"behat/mink-goutte-driver"</span><span class="token operator">:</span> <span class="token string">"~1.1"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Cela fait déjà un sacré paquet de dépendances. On ne va pas toutes les détailler mais pour faire simple, elles permettent d'ajouter des <em>steps</em> par défaut qui nous serons bien utiles.</p>
+<p>Après avoir lancer un <code class="code-inline" id="3dc99c89a8e5bc19d5f5f9aed42f06cf">$ composer install</code> on peut maintenant lancer un:
+<code class="code-inline" id="abe40c85eebd6294e1b2efd4c8b251b0">$ vendor/bin/behat --init</code>
+Ce qui va intialiser le répertoire <code class="code-inline" id="b10716f0f6bfde868629eb037eee49bd">/features</code> et créer le répertoire <code class="code-inline" id="a9917b0ef0fdd6d678e996772d6b51cf">/bootstrap</code> comportant le FeatureContext.php</p>
+<h3 id="configuration">Configuration:<a href="#configuration" class="anchor"></a></h3>
+<p>Ensuite, il faut créer un fichier <code class="code-inline" id="7bde54db60a6e933518d8b61b929edce">behat.yml.dist</code> à la racine de notre projet dans lequel on va placer la configuration de Behat.</p>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="0c0a3f877d7897e6f50424274ccce89c"><span class="token key atrule">default</span><span class="token punctuation">:</span>
+    <span class="token key atrule">extensions</span><span class="token punctuation">:</span>
+        <span class="token key atrule">Behat\Symfony2Extension</span><span class="token punctuation">:</span> <span class="token null important">~</span>
+        <span class="token key atrule">Behat\MinkExtension</span><span class="token punctuation">:</span>
+            <span class="token key atrule">base_url</span><span class="token punctuation">:</span> YOUR_URL
+            <span class="token key atrule">sessions</span><span class="token punctuation">:</span>
+                <span class="token key atrule">default</span><span class="token punctuation">:</span>
+                    <span class="token key atrule">symfony2</span><span class="token punctuation">:</span> <span class="token null important">~</span>
+                <span class="token key atrule">javascript</span><span class="token punctuation">:</span>
+                    <span class="token key atrule">selenium2</span><span class="token punctuation">:</span> <span class="token null important">~</span></code></pre>
+<p>Afin de faire fonctionner Behat avec Symfony2, nous utilisons Behat\Symfony2Extension.</p>
+<p>Concernant la configuration de MinkExtension, nous utilisons les élements par défaut, il nous suffit juste de spécifier l'url de <code class="code-inline" id="63769eef4c54174226119249021db3dc">base_url</code>, remplacer donc <code class="code-inline" id="7ef2b2e7b0fe745399470471a564ef90">YOUR_URL</code> par la route d'index de votre projet.</p>
+<p><strong><em>We're all set</em></strong></p>
+<p>On peut maintenant commencer à écrire nos features et à tester notre application. Créer donc un fichier <code class="code-inline" id="9838c8185c8960205f7679f5fbe90d61">hello.feature</code> dans le répertoire <code class="code-inline" id="07e93a5f6fb44673dabba783cda176ef">/feature</code></p>
+<pre class="code-multiline language-gherkin"><code class="language-gherkin" id="b0bb37806c5522394ee60579c7d024f6"><span class="token feature"><span class="token keyword">Feature:</span><span class="token important"> Hello world</span>
+  I need to be able to see hello world
+
+</span>  <span class="token scenario"><span class="token keyword">Scenario:</span><span class="token important"> I can see hello world</span></span>
+    <span class="token atrule">When</span> <span class="token atrule">I</span> go to <span class="token string">"/"</span>
+    <span class="token atrule">Then</span> <span class="token atrule">I</span> should see <span class="token string">"Hello World!"</span>
+
+  <span class="token scenario"><span class="token keyword">Scenario:</span><span class="token important"> I can't see hello world</span></span>
+    <span class="token atrule">When</span> <span class="token atrule">I</span> go to <span class="token string">"/random"</span>
+    <span class="token atrule">Then</span> <span class="token atrule">I</span> should not see <span class="token string">"Hello World!"</span></code></pre>
+<p>Il nous est possible d'écrire <em>de base</em> toutes ces étapes grâce à l'ajout de Mink. Si ces étapes ne marchent pas, vérifier bien que votre FeatureContext étend bien MinkContext.</p>
+<p><code class="code-inline" id="3e5778646e0ca07ac8b594a16d164651">class FeatureContext extends MinkContext</code></p>
+<h3 id="extra">Extra:<a href="#extra" class="anchor"></a></h3>
+<p>Nous utilisons également d'autres extensions pour nous faciliter la vie, notamment Alice pour écrire nos fixtures en yaml et une extension Behat pour appeler nos fixtures au moment où elles sont nécessaires.</p>
+<pre class="code-multiline language-json"><code class="language-json" id="2d2f0ffb5db82cd945663a81b90e72cd"><span class="token punctuation">{</span>
+    require<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"nelmio/alice"</span><span class="token operator">:</span> <span class="token string">"2.1.*"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    require-dev<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"hautelook/alice-bundle"</span><span class="token operator">:</span> <span class="token string">"~1.0"</span><span class="token punctuation">,</span>
+        <span class="token property">"theofidry/alice-bundle-extension"</span><span class="token operator">:</span> <span class="token string">"v1.0.0"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Pour la configuration dans <code class="code-inline" id="7bde54db60a6e933518d8b61b929edce">behat.yml.dist</code>, on ajoute la configuration suivante pour utiliser l'extension Alice</p>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="f4988b10391b1f59357e5e77941bbfe7"><span class="token key atrule">suites</span><span class="token punctuation">:</span>
+        <span class="token key atrule">default</span><span class="token punctuation">:</span>
+            <span class="token key atrule">contexts</span><span class="token punctuation">:</span>
+                <span class="token punctuation">-</span> <span class="token key atrule">Fidry\AliceBundleExtension\Context\Doctrine\AliceORMContext</span><span class="token punctuation">:</span>
+                    <span class="token key atrule">basePath</span><span class="token punctuation">:</span> %paths.base%/features/fixtures
+                <span class="token punctuation">-</span> <span class="token key atrule">FeatureContext</span><span class="token punctuation">:</span> <span class="token null important">~</span></code></pre>
+<p>Il est intéressant de noter également que l'on peut utiliser <code class="code-inline" id="1d2f9e5a016b157f0cc30ff4c0890c2c">fzaninotto/faker</code> avec l'extension Alice, ce qui permet de faire facilement et rapidement des fixtures de tests pour nos projets.</p>
+<p>Nous avons pris l'habitude, lors de nos tests, de réinitialiser la base de données afin que nos données de tests n'interfèrent pas les unes entre elles. Pour ce faire, nous utilisons une <em>step</em> du AliceORMContext que nous venons de définir dans les context de notre fichier <code class="code-inline" id="7bde54db60a6e933518d8b61b929edce">behat.yml.dist</code> que nous jouons dans le background de chacun de nos scénarios.</p>
+<p>Ce qui nous permet de faire des features comme cela:</p>
+<pre class="code-multiline language-gherkin"><code class="language-gherkin" id="29f633c66baf64538168f23b3b6ce510"><span class="token feature"><span class="token keyword">Feature:</span><span class="token important"> Go to the second page</span>
+  I need to be able to go to the second page
+
+</span>  <span class="token scenario"><span class="token keyword">Background:</span><span class="token important"> Re-init the database and load the fixtures</span></span>
+    <span class="token atrule">Given</span> the database is empty
+    <span class="token atrule">And</span> the fixtures <span class="token string">"data.yml"</span> are loaded
+
+  <span class="token scenario"><span class="token keyword">Scenario:</span><span class="token important"> I can go to the second page and see my data</span></span>
+    <span class="token atrule">When</span> the fixtures <span class="token string">"data2.yml"</span> are loaded
+    <span class="token atrule">Then</span> <span class="token atrule">I</span> go to <span class="token string">"/"</span>
+    <span class="token atrule">And</span> <span class="token atrule">I</span> should see <span class="token string">"Go to next page"</span>
+    <span class="token atrule">Then</span> <span class="token atrule">I</span> follow <span class="token string">"Go to next page"</span>
+    <span class="token atrule">And</span> <span class="token atrule">I</span> should be on <span class="token string">"/page2"</span>
+    <span class="token atrule">And</span> <span class="token atrule">I</span> should see <span class="token string">"data"</span></code></pre>
+<p>Il faut donc modifier le FeatureContext pour qu'il comporte une implémentation du KernelAwareContext pour pouvoir jouer nos <em>steps</em> :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="8a623fe72d52beddfe17c5a05457d6f4"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">use</span> <span class="token package">Behat<span class="token punctuation">\</span>Behat<span class="token punctuation">\</span>Context<span class="token punctuation">\</span>SnippetAcceptingContext</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Behat<span class="token punctuation">\</span>MinkExtension<span class="token punctuation">\</span>Context<span class="token punctuation">\</span>MinkContext</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Behat<span class="token punctuation">\</span>Symfony2Extension<span class="token punctuation">\</span>Context<span class="token punctuation">\</span>KernelAwareContext</span><span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * Defines application features from the specific context.
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">FeatureContext</span> <span class="token keyword">extends</span> <span class="token class-name">MinkContext</span> <span class="token keyword">implements</span> <span class="token class-name">KernelAwareContext</span><span class="token punctuation">,</span> SnippetAcceptingContext
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token variable">$kernel</span><span class="token punctuation">;</span>
+
+    <span class="token doc-comment comment">/**
+     * Initializes context.
+     *
+     * Every scenario gets its own context instance.
+     * You can also pass arbitrary arguments to the
+     * context constructor through behat.yml.
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token doc-comment comment">/**
+     * <span class="token keyword">@param</span> <span class="token class-name"><span class="token punctuation">\</span>Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpKernel<span class="token punctuation">\</span>KernelInterface</span> <span class="token parameter">$kernel</span>
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setKernel</span><span class="token punctuation">(</span>\<span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpKernel<span class="token punctuation">\</span>KernelInterface</span> <span class="token variable">$kernel</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">kernel</span> <span class="token operator">=</span> <span class="token variable">$kernel</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></span></code></pre>
+<h3 id="en-conclusion">En conclusion<a href="#en-conclusion" class="anchor"></a></h3>
+<p>Une configuration un peu différence de Behat 2.5 mais pas si compliquée comme on a pu le voir.</p>
+<p>Des extensions bien utiles pour faire des fixtures en yaml et obtenir des <code class="code-inline" id="fca3ffea6534176432f58b5a22ed22e1">steps</code> déjà fonctionnels.</p>
+<p>Nous privilégions la regénération de nos fixtures à chacun de nos tests, ce qui permet de ne pas polluer les tests entre eux. Si un test change une valeur, le second n'a pas à la prendre en compte, la valeur est remise à l'initiale.</p>
+<p>Et enfin, Behat c'est bien, mangez en!</p></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

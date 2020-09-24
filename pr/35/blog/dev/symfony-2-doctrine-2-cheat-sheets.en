@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/cool_cat.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/cool_cat.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>24 mars 2011</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -228,58 +228,75 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Here are two Doctrine2 cheatsheets for use by Symfony2 developpers.
+As nobody is perfect, keep them in sight and enjoy your development time with Symfony2 &amp; Doctrine2 !</p>
+<table width="100%" border="0" align="center"><tr><td align="center" width="50%">RECTO</td>
+    <td align="center">VERSO</td>
+  </tr><tr><td align="center">
+      <a href="/images/posts/2011/doctrine2-sheet-recto.pdf">
+        ![Doctrine 2 Cheat Sheet" width="300" height="424](/images/posts/2011/doctrine2-sheet-recto-preview.jpg)
+    </a>
+    </td>
+    <td align="center">
+      <a href="/images/posts/2011/doctrine2-sheet-verso.pdf">![Doctrine 2 Cheat Sheet" width="300" height="424](/images/posts/2011/doctrine2-sheet-verso-preview.jpg)</a>
+    </td>
+  </tr></table><table width="100%" border="0" align="center"><tr><td width="40%">
+      <p style="text-align: center;">
+        <a title="Symfony 2 Doctrine 2 Cheat Sheet" href="/images/posts/2011/doctrine2-sheet-recto.pdf" target="_blank">Format PDF (3.1 Mo)</a>
+      </p>
+
+      <p style="text-align: center;">
+        <a title="Symfony 2 Doctrine 2 Cheat Sheet" href="/images/posts/2011/doctrine2-sheet-recto.jpg" target="_blank">Format JPG (2.5 Mo)</a>
+      </p>
+
+      <p style="text-align: center;">
+        <a title="Symfony 2 Doctrine 2 Cheat Sheet" href="/images/posts/2011/doctrine2-sheet-recto-light.jpg" target="_blank">Format JPG light (492 Ko)</a>
+      </p>
+
+      <p style="text-align: center;">
+        <a title="Symfony 2 Doctrine 2 Cheat Sheet" href="/images/posts/2011/doctrine2-sheet-recto.png" target="_blank">Format PNG (1.9 Mo)</a>
+      </p>
+    </td>
+    <td width="40%">
+      <p style="text-align: center;">
+        <a title="Symfony 2 Doctrine 2 Cheat Sheet" href="/images/posts/2011/doctrine2-sheet-verso.pdf" target="_blank">Format PDF (3.5 Mo)</a>
+      </p>
+
+      <p style="text-align: center;">
+        <a title="Symfony 2 Doctrine 2 Cheat Sheet" href="/images/posts/2011/doctrine2-sheet-verso.jpg" target="_blank">Format JPG (2.8 Mo)</a>
+      </p>
+
+      <p style="text-align: center;">
+        <a title="Symfony 2 Doctrine 2 Cheat Sheet" href="/images/posts/2011/doctrine2-sheet-verso-light.jpg" target="_blank">Format JPG light (565 Ko)</a>
+      </p>
+
+      <p style="text-align: center;">
+        <a title="Symfony 2 Doctrine 2 Cheat Sheet" href="/images/posts/2011/doctrine2-sheet-verso.png" target="_blank">Format PNG (2.0 Mo)</a>
+      </p>
+    </td>
+  </tr><tr><td colspan="4" align="center">
+      <p style="text-align: center;">
+        <a title="Symfony 2 Doctrine 2 Cheat Sheet" href="/images/posts/2011/doctrine2-sheet-all.pdf" target="_blank">Format PDF RECTO - VERSO (6.1 Mo))</a>
+      </p>
+    </td>
+  </tr></table></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

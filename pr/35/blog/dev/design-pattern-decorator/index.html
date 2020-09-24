@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/decorator_pattern.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/decorator_pattern.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>4 mai 2017</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -225,58 +225,139 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Le <em>Gang of Four</em> a classé les design patterns dans trois catégories : les DP de création, les DP structurels et les DP comportementaux (<em>behavior</em>).</p>
+<p>Au début de cette série, nous avons abordé deux design patterns de création : la <a href="/fr/dev/design-pattern-factory-method"><code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code></a> et le pattern <a href="/fr/dev/design-pattern-abstract-factory"><code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code></a>. Je vous propose aujourd'hui de nous pencher sur notre premier design pattern structurel : le <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code>.</p>
+<p>Il y sera notamment question de modération, de sexe et de grossièretés. Autant de bonnes raisons de poursuivre votre lecture.</p>
+<h2 id="classification">Classification<a href="#classification" class="anchor"></a></h2>
+<p>Le <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code> appartient à la famille des <strong>design patterns structurels</strong>.</p>
+<h2 id="d-finition">Définition<a href="#d-finition" class="anchor"></a></h2>
+<blockquote>
+<p>Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.</p>
+</blockquote>
+<p>Que nous apprend cette définition (GoF) ? Elle nous apprend que le Design Pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code> permet d'ajouter <strong>dynamiquement</strong> des responsabilités à un objet existant et que cette solution apporte plus de <strong>souplesse</strong> que l'héritage.</p>
+<p>Nous allons donc nous efforcer de démontrer ses avantages par rapport à l'héritage.</p>
+<p>Noter que le terme <code class="code-inline" id="e229a672e0df4c202a248ad2e24adab8">Wrapper</code> est un synonyme de <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code> (GoF).</p>
+<h2 id="diagramme-du-design-pattern-deco">Diagramme du Design pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code><a href="#diagramme-du-design-pattern-deco" class="anchor"></a></h2>
+<p class="text-center">
+    {{}}
+    <figcaption style="text-align: center;font-style: italic;">Diagramme du Design Pattern 'Decorator'</figcaption></p>
+<h2 id="participants">Participants<a href="#participants" class="anchor"></a></h2>
+<ul><li><strong>Component</strong> est une interface qu'implémentent à la fois l'objet décoré et les objets qui le décorent</li>
+<li><strong>ConcreteComponent</strong> représente l'objet décoré (qui implémente <code class="code-inline" id="2cb05e4bb7830be982f0922fed86b4cd">Component</code>)</li>
+<li><strong>Decorator</strong> représente l'interface des décorateurs</li>
+<li>On trouve ensuite les décorateurs concrets (<strong>ConcreteDecoratorA</strong>, etc.)</li>
+</ul><h2 id="expos-du-cas-concret-sexe-et">Exposé du cas concret (sexe et violence à tous les étages)<a href="#expos-du-cas-concret-sexe-et" class="anchor"></a></h2>
+<p>Nous allons à présent nous attacher à montrer l'implémentation de ce Design Pattern à travers un cas concret.</p>
+<p>Vous avez développé une application Web qui met en relation des vendeurs et des acheteurs. Vous mettez à disposition des utilisateurs une messagerie privée qui permet aux acheteurs et aux vendeurs de communiquer.</p>
+<p>Votre application rencontre un franc succès mais des dérives ont été constatées dans l'utilisation de la messagerie (spam, injures, etc.). Il apparaît donc nécessaire de développer un système de modération, automatisé compte tenu des volumes d'échanges à traiter.</p>
+<p>Voici le code de la classe responsable de la modération :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="2dda0e552cc92b28342b3f2b1ef6535e"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">ModeratorInterface</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">moderate</span><span class="token punctuation">(</span>string <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Moderator</span> <span class="token keyword">implements</span> <span class="token class-name">ModeratorInterface</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token variable">$replacements</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token keyword">array</span> <span class="token variable">$replacements</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">replacements</span> <span class="token operator">=</span> <span class="token variable">$replacements</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">moderate</span><span class="token punctuation">(</span>string <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> string
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">strtr</span><span class="token punctuation">(</span><span class="token variable">$text</span><span class="token punctuation">,</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">replacements</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></span></code></pre>
+<p>Exemple d'utilisation :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="e2a4adfd1ad2abdba50abf221864444f"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token variable">$replacements</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token single-quoted-string string">'abruti'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'individu aux capacités intellectuelles limitées'</span><span class="token punctuation">,</span>
+    <span class="token single-quoted-string string">'nique ta mère'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'poutou à ta maman'</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token variable">$moderator</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Moderator</span><span class="token punctuation">(</span><span class="token variable">$replacements</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$moderator</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">moderate</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"nique ta mère\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Affiche 'poutou à ta maman'</span></span></code></pre>
+<p>Cependant, les administrateurs de l'application se sont aperçus que certains vendeurs profitaient de la messagerie privée pour communiquer leurs coordonnées aux acheteurs afin de traiter en direct et ainsi passer outre les commissions versées au site.</p>
+<p>Il nous faut donc renforcer le système de modération pour empêcher les vendeurs de communiquer leurs coordonnées via la messagerie. L'occasion de voir comment le Design Pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code> va nous permettre d'enrichir la modération tout en conservant une certaine souplesse.</p>
+<h2 id="le-pattern-decorator-en-action">Le pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code> en action<a href="#le-pattern-decorator-en-action" class="anchor"></a></h2>
+<p>Nous allons rédiger une classe qui va ajouter des fonctionnalités de modération en décorant notre classe initiale <code class="code-inline" id="ca65a68e10b3c65ac897ff8b89f9f728">Moderator</code> :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="1878f22fcb86c4054ed3942db2903506"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">class</span> <span class="token class-name">PhoneNumberModerator</span> <span class="token keyword">implements</span> <span class="token class-name">ModeratorInterface</span>
+<span class="token punctuation">{</span>
+    <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name">ModeratorInterface</span> */</span>
+    <span class="token keyword">private</span> <span class="token variable">$decorated</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">private</span> <span class="token variable">$phonePattern</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'/[0-9]{10}/'</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span>ModeratorInterface <span class="token variable">$baseModerator</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">decorated</span> <span class="token operator">=</span> <span class="token variable">$baseModerator</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">moderate</span><span class="token punctuation">(</span>string <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> string
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span>
+            <span class="token scope"><span class="token keyword">self</span><span class="token punctuation">::</span></span><span class="token variable">$phonePattern</span><span class="token punctuation">,</span>
+            <span class="token single-quoted-string string">'**********'</span><span class="token punctuation">,</span>
+            <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">decorated</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">moderate</span><span class="token punctuation">(</span><span class="token variable">$text</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></span></code></pre>
+<p>Cette classe <code class="code-inline" id="adfd9f2d77d22c1fb7de0f2f67ad6df4">PhoneNumberModerator</code> permet d'obfusquer les numéros de téléphone. Elle accepte en argument de son constructeur une instance de ModeratorInterface qu'elle décore.</p>
+<p>Exemple d'utilisation :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="ea8e871356ac3deb4271f792fdcbc700"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+    <span class="token variable">$moderator</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PhoneNumberModerator</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Moderator</span><span class="token punctuation">(</span><span class="token variable">$replacements</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token variable">$moderator</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">moderate</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"nique ta mère ; appelez-nous au 0600000000.\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Affiche : "poutou à ta maman ; appelez-nous au **********."</span></span></code></pre>
+<p>Il nous faudra également obfusquer les adresses email et il convient donc de rédiger une classe <code class="code-inline" id="464aabe56253d3454fe6e72f0e09b705">EmailAddressModerator</code> (assez similaire à <code class="code-inline" id="adfd9f2d77d22c1fb7de0f2f67ad6df4">PhoneNumberModerator</code>).</p>
+<p>Le code pour instancier les services modérateurs devient donc :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="f1e4fa323ca04ed244a1771b504f7f0b"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token variable">$moderator</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">EmailAddressModerator</span><span class="token punctuation">(</span>
+        <span class="token keyword">new</span> <span class="token class-name">PhoneNumberModerator</span><span class="token punctuation">(</span>
+            <span class="token keyword">new</span> <span class="token class-name">Moderator</span><span class="token punctuation">(</span><span class="token variable">$replacements</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<h2 id="avantages-du-pattern-decorator-p">Avantages du pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code> par rapport à l'héritage<a href="#avantages-du-pattern-decorator-p" class="anchor"></a></h2>
+<p>Supposons que nous soyons passés par l'héritage pour enrichir notre service de modération, ce qui nous donnerait :</p>
+<p><strong>PhoneNumberModerator</strong> hérite de <strong>EmailAddressModerator</strong> qui hérite de <strong>Moderator</strong>.</p>
+<p>Outre le fait que la chaîne d'héritage semble un peu forcée (pourquoi <strong>PhoneNumberModerator</strong> hériterait de <strong>EmailAddressModerator</strong> ?), la solution de l'héritage manque de souplesse. En effet, ici, utiliser <strong>PhoneNumberModerator</strong> implique nécessairement d'utiliser <strong>EmailAddressModerator</strong>. Il n'est pas possible d'utiliser nos services <em>à la carte</em>, ce que permet le pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code>.</p>
+<p>En effet, grâce au pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code>, toutes les combinaisons de services modérateurs sont possibles, ce que ne permet pas l'héritage (conception <em>dynamique</em> vs <em>statique</em>).</p>
+<p>Autre avantage du pattern, le chaînage des décorateurs est potentiellement extensible à l'infini. Il est ainsi très facile d'ajouter une nouvelle classe de modération sans qu'il soit nécessaire de modifier la hiérarchie d'héritage.</p>
+<p>Enfin, comme la chaîne des décorateurs est construite de manière dynamique lors de leur instanciation, il est possible d'introduire des services de manière conditionnelle. Par exemple, on pourrait ajouter un service de modération qui bannirait les expressions à caractère sexuel, uniquement si l'utilisateur courant est mineur.</p>
+<p>Au final, cet exemple est une parfaite illustration de l'avantage de la composition sur l'héritage.</p>
+<h2 id="autres-usages-du-pattern-decorat">Autres usages du pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code><a href="#autres-usages-du-pattern-decorat" class="anchor"></a></h2>
+<p>Le design pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code> est également très utilisé pour ajouter des fonctionnalités de cache à des services existants.</p>
+<p>C'est notamment le cas de la classe <a href="https://github.com/symfony/symfony/blob/master/src/Symfony/Component/HttpKernel/HttpCache/HttpCache.php" target="_blank"><code class="code-inline" id="cbd8f4eaaa6db9d6087aaea4351b469a">HttpCache</code></a> de Symfony :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="79d176c4b6772dc4fc152470c2e0d61c"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+        <span class="token variable">$kernel</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AppKernel</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'prod'</span><span class="token punctuation">,</span> <span class="token boolean constant">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// AppCache hérite de HttpCache:</span>
+        <span class="token variable">$kernel</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AppCache</span><span class="token punctuation">(</span><span class="token variable">$kernel</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
+<p>Source : <a href="http://symfony.com/doc/current/http_cache.html#symfony-reverse-proxy" target="_blank">http://symfony.com/doc/current/http_cache.html#symfony-reverse-proxy</a></p>
+<p>La classe <code class="code-inline" id="22554c2f3f431fa4243965df392b9ea9">AppCache</code> de Symfony implémente l'interface <code class="code-inline" id="0c1e20bd8106272498d98bc2dab30ac5">HttpKernelInterface</code> (via son parent <code class="code-inline" id="cbd8f4eaaa6db9d6087aaea4351b469a">HttpCache</code>), tout comme la classe <code class="code-inline" id="3caeb9565027419ea673f2f760ededf0">AppKernel</code> qu'elle décore.</p></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

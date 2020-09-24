@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/scientist.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/scientist.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>10 avril 2017</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -225,58 +225,146 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Plan de l'article :</p>
+<ul><li><a href="#biblio">Repères bibliographiques</a></li>
+<li><a href="#not-a-pipe">Ceci n'est pas une pipe</a></li>
+<li><a href="#factory-method">Le Design Pattern 'Factory Method'</a></li>
+</ul><h2 id="quelques-rep-res-bibliographiq"><a name="biblio"></a> Quelques repères bibliographiques en guise de préambule<a href="#quelques-rep-res-bibliographiq" class="anchor"></a></h2>
+<p>Avant d'entrer dans le vif du sujet en abordant notre premier Design Pattern, permettez-moi de citer deux ouvrages incontournables lorsque l'on évoque ce sujet.</p>
+<p class="text-center">
+    {{}}
+    <figcaption style="text-align: center;font-style: italic;">Design Patterns: Elements of Reusable Object-Oriented Software</figcaption></p>
+<p>En effet, difficile d'entamer une série d'articles consacrés aux Design Patterns sans faire référence à la bible en la matière : <em>Design Patterns: Elements of Reusable Object-Oriented Software</em>. Ce livre publié en 1994 par quatre développeurs, Gamma, Helm, Johnson et Vlissides, plus connus sous le nom du <em>Gang of Four</em>, recense 23 Design Patterns classés en trois catégories :</p>
+<ul><li>les Design Patterns de création</li>
+<li>les Design Patterns comportementaux (<em>Behavior</em>)</li>
+<li>les Design Patterns structurels</li>
+</ul><p>Le Design Pattern que nous allons étudier aujourd'hui (<em>Factory Method</em>) appartient à la première catégorie.</p>
+<p>Bien qu'écrit il y a plus de vingt ans, ce livre fait toujours autorité et c'est à lui qu'il faut se référer lorsque l'on souhaite connaître l'anatomie d'un Pattern ou éviter les quiproquos au sein d'une équipe de développeurs. Il n'est pas forcément d'une lecture agréable et s'apparente plus à un annuaire ou un dictionnaire : le lire peut s'avérer rébarbatif, mais il est indispensable de le garder à portée de main pour y trouver les informations dont on a besoin.</p>
+<p>Je ne m'étendrai pas sur la définition exacte d'un Design Pattern, ni sur le formalisme à adopter pour présenter un pattern (le livre le fait très bien), ni sur les principes qui sous-tendent une bonne conception objet (comme l'acronyme SOLID par exemple) car nous aurons l'occasion d'y revenir au moment d'aborder certains patterns.</p>
+<div class="aside-note">
+On peut déplorer que la plupart des exemples du livre s'appuient sur le langage <strong>Smalltalk</strong> qui est tombé en désuétude (mais notez tout de même que ce langage fut pionnier dans bien des domaines !) ... <strong>Java</strong> pourrait sembler aujourd'hui plus adapté et/ou fédérateur pour un ouvrage consacré à la conception objet, mais lors de la première édition du livre (1994), la première version de Java n'existait pas encore ...
+</div>
+<p class="text-center">
+    {{}}
+    <figcaption style="text-align: center;font-style: italic;">Head First Design Patterns</figcaption></p>
+<p>Complément idéal à la bible des Design Patterns, <em>Head First Design Patterns</em> (O'Reilly 2004) constitue une excellente introduction aux principaux design patterns. Par rapport au premier ouvrage, il adopte une démarche résolument pratique et recourt à un éventail remarquable de techniques pédagogiques pour aborder les design patterns (traits d'humour, schémas explicatifs, dialogues fictifs en situation autour des différents patterns, démarches didactiques, etc.). Apprendre les design patterns peut s'avérer fastidieux, mais rien de tout ça ici ! Je recommande particulièrement cet ouvrage si vous souhaitez vous initier aux design patterns sans drame ... Par ailleurs, la plupart des exemples s'appuient sur le langage Java, beaucoup plus abordable et actuel que Smalltalk.</p>
+<p>Enfin, je ne peux passer sous silence deux autres ouvrages qui me paraissent fondamentaux s'agissant de conception objet, à savoir <em>Domain-Driven Design: Tackling Complexity in the Heart of Software</em> d'Eric Evans (livre pas forcément très digeste mais dont on ne peut pas ignorer l'influence) et <em>Catalog of Patterns of Enterprise Application Architecture</em> de Martin Fowler : qu'est-ce qui définit exactement une entité ? un value object ? un repository ? etc. Nous avons tous une vague idée de ces concepts mais c'est dans cet ouvrage que se trouvent les réponses à ces questions.</p>
+<h2 id="ceci-n-est-pas-une-pipe"><a name="not-a-pipe"></a> Ceci n'est pas une pipe<a href="#ceci-n-est-pas-une-pipe" class="anchor"></a></h2>
+<p>Après un préambule assez verbeux j'en conviens, laissez-moi à présent vous gratifier d'une remarque liminaire : cet article est avant tout destiné à présenter le Design Pattern <em>Factory Method</em>, alors précisons d'emblée que ce qui suit n'est pas un pattern (et encore moins une pipe, mais ça, c'est un autre débat ...) :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="315d8d3b287d59fb542aa5c41628a45a"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token keyword">class</span> <span class="token class-name">MyFactory</span> <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token variable">$type</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">switch</span><span class="token punctuation">(</span><span class="token variable">$type</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">case</span> <span class="token double-quoted-string string">"a"</span><span class="token punctuation">:</span>
+                    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">case</span> <span class="token double-quoted-string string">"b"</span><span class="token punctuation">:</span>
+                    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token comment">/* etc. */</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span></span></code></pre>
+<p>Ne me faites pas dire ce que je n'ai pas dit ... Je ne prétends pas du tout que le code ci-dessus relève d'une mauvaise conception. Ni que cette classe n'est pas une <em>factory</em>. Simplement, si l'on se réfère à la définition exacte du pattern <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code>, on s'apercevra que l'on n'est pas en présence d'un pattern.</p>
+<p>Pour autant, cela ne signifie pas que ce code mérite l'anathème, loin de là. J'évoquais tout à l'heure les principes d'une bonne conception objet, et parmi les bonnes pratiques, il est préconisé d'isoler ce qui varie (<em>encapsulate what varies</em>). Or c'est exactement ce que fait cette classe : elle isole en son sein un pan de code qui repose sur un embranchement (<em>switch</em>). De ce point de vue, ce code est parfaitement valide.</p>
+<p>Noter que cette bonne pratique objet qui consiste à isoler ce qui varie est mentionnée parmi d'autres dans le livre <em>Head First Design Pattern</em>. Citons-en quelques-unes :</p>
+<ul><li>favoriser la composition plutôt que l'héritage (citée également par le <em>Gang of Four</em>)</li>
+<li>programmer pour des interfaces plutôt que pour des implémentations (<em>idem</em>)</li>
+<li>s'efforcer de limiter le couplage entre les objets qui collaborent (<em>strive for loosely couple designs between objects that interact</em>)</li>
+<li>les classes devraient être ouvertes à l'extension mais fermées à la modification</li>
+<li>etc.</li>
+</ul><p>Mais nous aurons l'occasion d'y revenir ...</p>
+<h2 id="notre-premier-dp-la-factory-m"><a name="factory-method"></a> Notre premier DP : la <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code><a href="#notre-premier-dp-la-factory-m" class="anchor"></a></h2>
+<h3 id="introduction">Introduction<a href="#introduction" class="anchor"></a></h3>
+<p>Les principes d'une bonne conception objet recommandent de programmer pour des interfaces plutôt que des implémentations (c'est au demeurant un principe qui s'accommode très bien avec celui de l'injection de dépendance). Concrètement, cela consiste par exemple à privilégier des méthodes de classes qui acceptent en arguments des interfaces (ou classes abstraites) plutôt que des classes concrètes. Cela étant, même si l'on programme pour des interfaces, nous devons nécessairement nous résoudre à instancier des objets concrets pour que notre application s'exécute. Et c'est là qu'entrent en scène les design patterns de création, et notamment les deux Design patterns de <em>Factory</em> identifiés par le <em>Gang of Four</em>, à savoir la <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> et l'<code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code>.</p>
+<p>Pour l'heure, intéressons-nous au premier de ces deux patterns de <em>Factory</em>.</p>
+<h3 id="classification">Classification<a href="#classification" class="anchor"></a></h3>
+<p>La <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> est classée dans la catégorie des <strong>Design Patterns de création</strong>.</p>
+<h3 id="d-finition">Définition<a href="#d-finition" class="anchor"></a></h3>
+<blockquote>
+<p>Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses</p>
+</blockquote>
+<p>Cette définition peut paraître assez obscure à première vue, mais croyez-moi, le pattern est d'une affligeante simplicité.</p>
+<h3 id="sch-ma">Schéma<a href="#sch-ma" class="anchor"></a></h3>
+<p class="text-center">
+    {{}}
+    <figcaption style="text-align: center;font-style: italic;">Schéma du Design Pattern 'Factory Method'</figcaption></p>
+<h3 id="participants">Participants<a href="#participants" class="anchor"></a></h3>
+<p>On distingue sur le schéma ci-dessus les participants suivants :</p>
+<ul><li>Le créateur : classe concrète ou abstraite notamment chargée de <em>fabriquer</em> l'objet attendu</li>
+<li>Le créateur concret : il étend <em>Creator</em> et instancie l'objet attendu</li>
+<li>Le produit : c'est l'interface de l'objet à instancier</li>
+<li>Le produit concret : c'est l'objet à instancier</li>
+</ul><h3 id="expos-de-la-probl-matique">Exposé de la problématique<a href="#expos-de-la-probl-matique" class="anchor"></a></h3>
+<pre class="code-multiline language-php"><code class="language-php" id="438c1fddeeed1ec109f41d0f90008f5e"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token keyword">class</span> <span class="token class-name">OrderHandler</span> <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">orderProduct</span><span class="token punctuation">(</span>Order <span class="token variable">$order</span><span class="token punctuation">,</span> int <span class="token variable">$qty</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Product <span class="token punctuation">{</span>
+            <span class="token variable">$orderedProduct</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Product</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$orderedProduct</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setOrder</span><span class="token punctuation">(</span><span class="token variable">$order</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$orderedProduct</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setQty</span><span class="token punctuation">(</span><span class="token variable">$qty</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// etc.</span>
+
+            <span class="token keyword">return</span> <span class="token variable">$orderedProduct</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span></span></code></pre>
+<p>La classe <code class="code-inline" id="f454b76d1cda09695d0fe30bb3447acd">OrderHandler</code> contient notamment une méthode <code class="code-inline" id="4452382afcfa03da536e0f17ebe42d6d">orderProduct</code> qui retourne un produit commandé après l'avoir instancié. Par rapport à notre schéma ci-dessus, <code class="code-inline" id="f454b76d1cda09695d0fe30bb3447acd">OrderHandler</code> correspondrait au <code class="code-inline" id="ef1d00d8a237a1bbe431e1091f5715fb">Creator</code> tandis que <code class="code-inline" id="deb10517653c255364175796ace3553f">Product</code> correspondrait à <code class="code-inline" id="87570424120ece0aa466a2ac89cd6d69">ConcreteProduct</code>.</p>
+<p>Nous pouvons craindre que cette classe <code class="code-inline" id="f454b76d1cda09695d0fe30bb3447acd">OrderHandler</code> et la classe concrète <code class="code-inline" id="deb10517653c255364175796ace3553f">Product</code> soient trop étroitement liées. En effet, que se passe-t-il si nous devons gérer d'autres types de produits (des produits matériels, mais aussi des prestations de services par exemple) ? Dans son état actuel, la classe <code class="code-inline" id="f454b76d1cda09695d0fe30bb3447acd">OrderHandler</code> nous lie trop fortement à la classe <code class="code-inline" id="deb10517653c255364175796ace3553f">Product</code>. Nous avons notamment enfreint plusieurs recommandations :</p>
+<ul><li>notre classe n'est pas ouverte à l'extension,</li>
+<li>nous n'avons pas développé pour des interfaces,</li>
+<li>nous avons créé un couplage très fort (trop fort ?) entre nos deux classes.</li>
+</ul><p>Il est possible qu'en l'état actuel de l'application, ce code fasse parfaitement l'affaire. Mais il est préférable de rendre son code ouvert aux évolutions, et c'est particulièrement vrai lorsque l'on développe des services destinés à être consommés par des tiers (librairie <em>open source</em> par exemple) ou bien des classes métiers dont les spécifications sont susceptibles d'évoluer fréquemment.</p>
+<h3 id="le-design-pattern-factory-method">Le design pattern <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> à la rescousse<a href="#le-design-pattern-factory-method" class="anchor"></a></h3>
+<p>Nous allons à présent modifier notre classe <code class="code-inline" id="f454b76d1cda09695d0fe30bb3447acd">OrderHandler</code> pour nous rapprocher du pattern :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="21e2b1250e9a91bef21ab903fc656839"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token keyword">class</span> <span class="token class-name">OrderHandler</span> <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">orderProduct</span><span class="token punctuation">(</span>
+            Order <span class="token variable">$order</span><span class="token punctuation">,</span>
+            int <span class="token variable">$qty</span> <span class="token operator">=</span> <span class="token number">1</span>
+        <span class="token punctuation">)</span><span class="token punctuation">:</span> OrderableInterface <span class="token punctuation">{</span>
+            <span class="token variable">$orderedProduct</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">createProduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$orderedProduct</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setOrder</span><span class="token punctuation">(</span><span class="token variable">$order</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$orderedProduct</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setQty</span><span class="token punctuation">(</span><span class="token variable">$qty</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// etc.</span>
+
+            <span class="token keyword">return</span> <span class="token variable">$orderedProduct</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">createProduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Product <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Product</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span></span></code></pre>
+<p>Les modifications apportées consistent à :</p>
+<ul><li>introduire une interface <code class="code-inline" id="b1e2398023779dfea602f3526b414d59">OrderableInterface</code> qu'implémente désormais <code class="code-inline" id="deb10517653c255364175796ace3553f">Product</code></li>
+<li>déporter dans une méthode dédiée (<code class="code-inline" id="1c43c67bab8db278ba27b2e3d4df467e">createProduct</code>) l'instanciation d'un produit concret (<code class="code-inline" id="deb10517653c255364175796ace3553f">Product</code>)</li>
+</ul><h3 id="commentaires">Commentaires<a href="#commentaires" class="anchor"></a></h3>
+<p>On note tout d'abord, comme le laisse deviner la classe <code class="code-inline" id="f454b76d1cda09695d0fe30bb3447acd">OrderHandler</code>, que le pattern <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> est souvent implémenté par des classes dont la création de produit n'est pas la principale responsabilité ; ici <code class="code-inline" id="f454b76d1cda09695d0fe30bb3447acd">OrderHandler</code> est une classe métier qui ne se contente pas d'instancier un produit ; elle est par exemple plus riche fonctionnellement que la classe <code class="code-inline" id="df38f3fff38715f5a828cb4513ec1063">MyFactory</code> que j'avais présentée tout à l'heure.</p>
+<p>En résumé, et comme son nom l'indique, le pattern <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> consiste tout simplement à déporter dans une méthode dédiée l'instanciation de l'objet attendu. Cette méthode se résume finalement à un simple <code class="code-inline" id="376c2c521c8fa91f7f529db30e32047a">return new Product();</code>. Concept d'une extrême simplicité mais qui nous permet d'obtenir une classe ouverte à l'extension, en permettant le cas échéant à ses enfants d'instancier un autre type.</p>
+<h3 id="design-patterns-voisins">Design patterns voisins<a href="#design-patterns-voisins" class="anchor"></a></h3>
+<p>Il existe un autre Design pattern <em>Factory</em>, plus riche que le design pattern <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> car il implique plus de participants (mais il n'est pas nécessairement plus compliqué pour autant) : l'<code class="code-inline" id="1c61beffe031447a2393c8e7e10a2574">Abstact Factory</code>. Il y a fort à parier qu'il fasse l'objet du prochain article de cette série consacrée aux Design Patterns.</p>
+<style>
+    .aside-note {
+        border-left: 5px solid #ffa600;
+        padding: 20px;
+        margin: 20px 0;
+    }
+</style></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

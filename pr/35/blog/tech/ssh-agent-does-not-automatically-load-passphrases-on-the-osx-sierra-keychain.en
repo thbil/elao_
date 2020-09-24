@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/badass_vader.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/badass_vader.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>14 octobre 2016</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -225,58 +225,70 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Some of us encountered an issue after upgrading to Mac OS Sierra.
+Indeed right after it our ssh keys (<strong>with passphrases</strong>) were not forwarded to the remote hosts anymore.</p>
+<!--more-->
+<p>In previous versions of mac OSX, <code class="code-inline" id="266afd044aec2d88e6aa5ed5f12e0a07">ssh-agent</code> used to remember the passphrases for the keys added to the keychain (with <code class="code-inline" id="c6fb130c7020f2a953c452ee1c4812f9">ssh-add -K</code>) and after a reboot (or logout/login), it automatically picked up the passphrases from the keychain with no extra step and it was perfect !</p>
+<p>Unfortunately after upgrading to Sierra this way no longer works and command <code class="code-inline" id="c6fb130c7020f2a953c452ee1c4812f9">ssh-add -K</code> in Sierra no longer saves SSH keys in OS's keychain.</p>
+<p><strong>Apple Developer stated:</strong></p>
+<blockquote>
+<p>Engineering has determined that this issue behaves as intended based on the following information:
+That’s expected. We re-aligned our behavior with the mainstream OpenSSH in this area.
+You can fix this pretty easily by running ssh-add -A in your rc script if you want your keys to always be loaded.</p>
+</blockquote>
+<p>We still can login to remote hosts via ssh <strong>BUT</strong> ssh keys with passphrase are not forwarded to the host which makes the agent somewhat useless.</p>
+<h1 id="doing-it-manually">Doing it manually<a href="#doing-it-manually" class="anchor"></a></h1>
+<p>If you are fine with the behavior and don't want to store your passphrases into keychain you can do it the old way by manually adding keys to the agent:</p>
+<pre class="code-multiline"><code id="0a437720001587a76380021490cca3dc">ssh-add -K /path/to/private/key</code></pre>
+<p>and to add identities to the agent using any passphrases stored in your keychain.</p>
+<pre class="code-multiline"><code id="2da3bcca27a36bfd821f0b01992ff42c">ssh-add -A</code></pre>
+<h1 id="using-ssh-config-file">Using ssh config file<a href="#using-ssh-config-file" class="anchor"></a></h1>
+<p>A permanent (and probably the "cleanest") workaround to this behavior consists in using the new SSH option <code class="code-inline" id="28538255e1cdd92033e3b82445477c9c">AddKeysToAgent</code> option in your <code class="code-inline" id="c8c740debe99f7a030e8a35b528b5ddc">.ssh/config</code> file as shown below</p>
+<pre class="code-multiline language-shell"><code class="language-shell" id="bb4651c63985578ea19d83dd761ac8b5">Host *
+  AddKeysToAgent <span class="token function">yes</span></code></pre>
+<p>N.B: This option does not add keys previously saved into the keychain <strong>to the agent on boot;</strong> it adds keys to the agent <strong>on use</strong>.
+In other words, the keys are not added to the agent until you actually use them.</p>
+<p>Furthermore, this option is FreeBSD specific and will result an error on other Unix-like systems.</p>
+<p><strong>You will have to re-enter your passphrase the first time you are using it after a logout or a reboot.</strong></p>
+<h1 id="using-a-profile-dot-file">Using a «profile dot file»<a href="#using-a-profile-dot-file" class="anchor"></a></h1>
+<p>For CLI users a partial solution is to add this to your dot files (<code class="code-inline" id="ec20fb240e117fea7b0049c21edf1ef3">.zshrc</code>, <code class="code-inline" id="85cf9b51417c7cfb8766aa6b56f7edb9">.bashrc</code>, <code class="code-inline" id="9e0037ad71166970bde5f910189cc94a">.bash_profile</code> ...).</p>
+<pre class="code-multiline language-shell"><code class="language-shell" id="2e6f5dcc8860d87b59cbce5c40794725">ssh-add -K ~/.ssh/my_private_key <span class="token operator">&amp;&gt;</span> /dev/null
+ssh-add -A <span class="token operator">&amp;&gt;</span> /dev/null</code></pre>
+<p><strong>This will only be effective when using terminal.</strong></p>
+<h1 id="using-a-launch-agent-non-tested">Using a launch agent (non-tested solution)<a href="#using-a-launch-agent-non-tested" class="anchor"></a></h1>
+<p>The last solution is to call command <code class="code-inline" id="2da3bcca27a36bfd821f0b01992ff42c">ssh-add -A</code> on every startup of macOS.</p>
+<pre class="code-multiline language-xml"><code class="language-xml" id="58671d4294090bbccf32082b13399686"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">plist</span> <span class="token name">PUBLIC</span> <span class="token string">"-//Apple//DTD PLIST 1.0//EN"</span> <span class="token string">"http://www.apple.com/DTDs/PropertyList-1.0.dtd"</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plist</span> <span class="token attr-name">version</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1.0<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dict</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>key</span><span class="token punctuation">&gt;</span></span>Label<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>key</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">&gt;</span></span>ssh-add-a<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>key</span><span class="token punctuation">&gt;</span></span>ProgramArguments<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>key</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>array</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">&gt;</span></span>ssh-add<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">&gt;</span></span>-A<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>array</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>key</span><span class="token punctuation">&gt;</span></span>RunAtLoad<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>key</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>true</span><span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dict</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plist</span><span class="token punctuation">&gt;</span></span></code></pre></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

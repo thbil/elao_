@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/server.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/server.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>19 décembre 2014</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -231,58 +231,46 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Bonjour à tous !</p>
+<p>Petit mémo aujourd'hui pour pouvoir utiliser une version à jour de <a href="http://nginx.org/" target="_blank"><strong>Nginx</strong></a> sur une Debian Wheezy, celle-ci ne fournissant des paquets qu'en version 1.2.1 au moment de l'écriture de ce billet.</p>
+<p>Attention toutes les étapes à suivre nécessitent un accès «root»</p>
+<h2 id="ajouter-les-sources-officielles">Ajouter les sources officielles<a href="#ajouter-les-sources-officielles" class="anchor"></a></h2>
+<p>La première étape et d'ajouter une entrée pour les dépôts officiels dans les sources d'APT.
+Nous allons donc créer un fichier appelé <strong>«nginx.list»</strong> dans <code class="code-inline" id="c381aaac19b8bacad63872d54b6ee3b2">/etc/apt/sources.list.d</code></p>
+<p>Celui-ci doit contenir les lignes suivantes:</p>
+<pre class="code-multiline"><code id="b34dd16263a3a1e034c87453bebf513e">deb http://nginx.org/packages/debian/ wheezy nginx
+deb-src http://nginx.org/packages/debian/ wheezy nginx</code></pre>
+<h2 id="r-cup-rer-la-cl-pgp">Récupérer la clé PGP<a href="#r-cup-rer-la-cl-pgp" class="anchor"></a></h2>
+<p>Nous allons à présent ajouter la signature numérique des dépôts officiels (étape nécessaire pour que le système sache qu'il peut avoir «confiance» en ces nouveaux dépôts.)</p>
+<pre class="code-multiline"><code id="f27e885b250cacbbdee081f1791a75e3">curl http://nginx.org/packages/keys/nginx_signing.key | apt-key add -</code></pre>
+<h2 id="prioriser-l-installation-des-paq">Prioriser l'installation des paquets (facultatif)<a href="#prioriser-l-installation-des-paq" class="anchor"></a></h2>
+<p>Il nous reste à présent à donner les instructions de priorité au gestionnaire de paquets, à savoir doit-il privilégié les paquets dits stables fournis par Debian ou doit-il utiliser les paquets officiels fournis par les dépôts Nginx.</p>
+<p>Cette étape est facultative mais permet d'être rigoureux et d'éviter un éventuel conflit.</p>
+<p>Pour cette étape créez un fichier supplémentaire appelé ... nginx dans <code class="code-inline" id="8983d8943be25eb015b4dd1863f63810">/etc/apt/preferences.d/nginx</code>. Il nous servira à exprimer de manière explicite notre souhait de privilégier les paquets officiels et devra contenir les lignes suivantes:</p>
+<pre class="code-multiline"><code id="675079f0d5a098de2ba7dc2fb37344dc">Package: nginx
+Pin: origin nginx.org
+Pin-Priority: 900</code></pre>
+<h2 id="installer-nginx">Installer Nginx<a href="#installer-nginx" class="anchor"></a></h2>
+<p>Voila nous sommes parés il ne reste plus qu'a mettre à jour notre index de paquets et installer nginx à l'aide des commandes suivantes:</p>
+<pre class="code-multiline"><code id="1b281061c07f9c15a1278d5eff4fd9e7">apt-get update
+apt-get install nginx</code></pre></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

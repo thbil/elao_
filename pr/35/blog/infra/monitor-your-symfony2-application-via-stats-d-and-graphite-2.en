@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/rocket.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/rocket.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>23 novembre 2012</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -234,58 +234,173 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p><em>This article is the last part of<a href="/en/infra/feedback-monitor-your-symfony2-application-via-stats-d-and-graphite/"> Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application ( 1/2 )</a>.</em></p>
+<img src="/en/images/posts/2012/users.png" alt="graphite" class="outside-left" id="graphite"><p>Last week, we saw that <a href="https://github.com/liuggio/StatsDClientBundle" target="_blank">StatsDClientBundle</a> provides great metrics for your application,. But what if I want to monitor my own things in my application ? During the last part of this tutorial, we will see <strong>how to monitor our own application events</strong>. I'll assume you did the first part of the tutorial.</p>
+<p>In my personnal application (named Seek Team), gamers can purchase a premium account in order to unlock additional features on the website.</p>
+<p>I wanted to display on my graphite dashboard, which looked like the screen on the left, the statistics on how many premium accounts were ordered, cancelled, activated or finished.</p>
+<p>So here's what I did :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="87934f8ec4f79920729cb2376be302e3"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">SeekTeam<span class="token punctuation">\</span>PremiumBundle<span class="token punctuation">\</span>Controller</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">SeekTeam<span class="token punctuation">\</span>HomeBundle<span class="token punctuation">\</span>Controller<span class="token punctuation">\</span>Controller</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Sensio<span class="token punctuation">\</span>Bundle<span class="token punctuation">\</span>FrameworkExtraBundle<span class="token punctuation">\</span>Configuration<span class="token punctuation">\</span>Route</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Sensio<span class="token punctuation">\</span>Bundle<span class="token punctuation">\</span>FrameworkExtraBundle<span class="token punctuation">\</span>Configuration<span class="token punctuation">\</span>Template</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">JMS<span class="token punctuation">\</span>SecurityExtraBundle<span class="token punctuation">\</span>Annotation<span class="token punctuation">\</span>Secure</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>EventDispatcher<span class="token punctuation">\</span>EventDispatcher</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>EventDispatcher<span class="token punctuation">\</span>GenericEvent</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">SeekTeam<span class="token punctuation">\</span>PremiumBundle<span class="token punctuation">\</span>Entity<span class="token punctuation">\</span>Premium<span class="token punctuation">\</span>Order</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">SeekTeam<span class="token punctuation">\</span>PremiumBundle<span class="token punctuation">\</span>Event<span class="token punctuation">\</span>Events</span><span class="token punctuation">;</span>
+
+<span class="token doc-comment comment">/**
+ * Default Controller of the PremiumBundle
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">DefaultController</span> <span class="token keyword">extends</span> <span class="token class-name">Controller</span>
+<span class="token punctuation">{</span>
+    <span class="token doc-comment comment">/**
+     * @Route("/<span class="token punctuation">{</span>_locale<span class="token punctuation">}</span>/payment/<span class="token punctuation">{</span>id<span class="token punctuation">}</span>/cancel", name="payment_cancel", requirements=<span class="token punctuation">{</span>"_locale" = "en|fr"<span class="token punctuation">}</span>)
+     * @Template()
+     * @Secure(roles="ROLE_USER")
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">cancelAction</span><span class="token punctuation">(</span>Order <span class="token variable">$order</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$order</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setStatus</span><span class="token punctuation">(</span><span class="token scope">Order<span class="token punctuation">::</span></span><span class="token constant">STATUS_CANCEL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getEntityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">persist</span><span class="token punctuation">(</span><span class="token variable">$order</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getEntityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token variable">$order</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'event_dispatcher'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token scope">Events<span class="token punctuation">::</span></span><span class="token constant">PREMIUM_CANCEL</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">GenericEvent</span><span class="token punctuation">(</span><span class="token variable">$order</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setFlash</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'error'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'premium.order.cancel'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">redirect</span><span class="token punctuation">(</span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">generateUrl</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'user_profile'</span><span class="token punctuation">)</span> <span class="token punctuation">.</span> <span class="token single-quoted-string string">'#premium'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token doc-comment comment">/**
+     * @Route("/<span class="token punctuation">{</span>_locale<span class="token punctuation">}</span>/payment/<span class="token punctuation">{</span>id<span class="token punctuation">}</span>/complete", name="payment_complete", requirements=<span class="token punctuation">{</span>"_locale" = "en|fr"<span class="token punctuation">}</span>)
+     * @Template()
+     * @Secure(roles="ROLE_USER")
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">completeAction</span><span class="token punctuation">(</span>Order <span class="token variable">$order</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// Lot of business logic I removed for the tutorial purpose</span>
+        <span class="token variable">$order</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setStatus</span><span class="token punctuation">(</span><span class="token scope">Order<span class="token punctuation">::</span></span><span class="token constant">STATUS_VALID</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getEntityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">persist</span><span class="token punctuation">(</span><span class="token variable">$order</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getEntityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token variable">$order</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getRepository</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'SeekTeamPremiumBundle:Premium'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">updatePremium</span><span class="token punctuation">(</span><span class="token variable">$order</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'event_dispatcher'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token scope">Events<span class="token punctuation">::</span></span><span class="token constant">PREMIUM_SUCCESS</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">GenericEvent</span><span class="token punctuation">(</span><span class="token variable">$order</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setFlash</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'success'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'premium.order.success'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">redirect</span><span class="token punctuation">(</span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">generateUrl</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'homepage'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token doc-comment comment">/**
+     * Returns the EntityManger
+     *
+     * <span class="token keyword">@return</span> <span class="token class-name">EntityManager</span>
+     */</span>
+    <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">getEntityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getDoctrine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getEntityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></span></code></pre>
+<pre class="code-multiline language-php"><code class="language-php" id="d85981d0f5dfb5a460d91d6ea90b3428"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">SeekTeam<span class="token punctuation">\</span>PremiumBundle<span class="token punctuation">\</span>Event</span><span class="token punctuation">;</span>
+
+<span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">Events</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token constant">PREMIUM_START</span>   <span class="token operator">=</span> <span class="token single-quoted-string string">'gamercertified.premium.start'</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token constant">PREMIUM_SUCCESS</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'gamercertified.premium.success'</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token constant">PREMIUM_CANCEL</span>  <span class="token operator">=</span> <span class="token single-quoted-string string">'gamercertified.premium.cancel'</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token constant">PREMIUM_ERROR</span>   <span class="token operator">=</span> <span class="token single-quoted-string string">'gamercertified.premium.error'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></span></code></pre>
+<p>The following code is pretty simple. In the Controller functions, we dispatch 2 events named <code class="code-inline" id="a31d8765c3cd0a987be1c804546275fd">Events::PREMIUM_CANCEL</code> and <code class="code-inline" id="3c3907483a57b34642a983504b038bc0">Events::PREMIUM_SUCCESS</code> using the <a href="http://symfony.com/doc/current/components/event_dispatcher/introduction.html" target="_blank">EventDispatcher</a> and a <a href="http://symfony.com/doc/master/components/event_dispatcher/generic_event.html" target="_blank">GenericEvent</a> whether the payment was complete or not.</p>
+<p>Next thing to do, is to create &amp; plug our listener and tell him to listen to those events.</p>
+<pre class="code-multiline language-php"><code class="language-php" id="109790f90bacdee472c78558fabfe6cf"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">SeekTeam<span class="token punctuation">\</span>PremiumBundle<span class="token punctuation">\</span>Event<span class="token punctuation">\</span>Listener</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>EventDispatcher<span class="token punctuation">\</span>EventSubscriberInterface</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>EventDispatcher<span class="token punctuation">\</span>GenericEvent</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">SeekTeam<span class="token punctuation">\</span>PremiumBundle<span class="token punctuation">\</span>Event<span class="token punctuation">\</span>Events</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">StatsListener</span> <span class="token keyword">implements</span> <span class="token class-name">EventSubscriberInterface</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">protected</span> <span class="token variable">$statsdFactory</span><span class="token punctuation">;</span>
+    <span class="token keyword">protected</span> <span class="token variable">$statsdClient</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$statsdFactory</span><span class="token punctuation">,</span> <span class="token variable">$statsdClient</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">statsdFactory</span> <span class="token operator">=</span> <span class="token variable">$statsdFactory</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">statsdClient</span>  <span class="token operator">=</span> <span class="token variable">$statsdClient</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">getSubscribedEvents</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
+            <span class="token scope">Events<span class="token punctuation">::</span></span><span class="token constant">PREMIUM_SUCCESS</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'onPremiumSuccess'</span><span class="token punctuation">,</span>
+            <span class="token scope">Events<span class="token punctuation">::</span></span><span class="token constant">PREMIUM_START</span>   <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'onPremiumStart'</span><span class="token punctuation">,</span>
+            <span class="token scope">Events<span class="token punctuation">::</span></span><span class="token constant">PREMIUM_CANCEL</span>  <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'onPremiumCancel'</span><span class="token punctuation">,</span>
+            <span class="token scope">Events<span class="token punctuation">::</span></span><span class="token constant">PREMIUM_ERROR</span>   <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'onPremiumError'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">onPremiumSuccess</span><span class="token punctuation">(</span>GenericEvent <span class="token variable">$event</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">statsdFactory</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">createStatsDataIncrement</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'premium.success'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">statsdClient</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">onPremiumCancel</span><span class="token punctuation">(</span>GenericEvent <span class="token variable">$event</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">statsdFactory</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">createStatsDataIncrement</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'premium.cancel'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">statsdClient</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">onPremiumStart</span><span class="token punctuation">(</span>GenericEvent <span class="token variable">$event</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">statsdFactory</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">createStatsDataIncrement</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'premium.start'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">statsdClient</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">onPremiumError</span><span class="token punctuation">(</span>GenericEvent <span class="token variable">$event</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">statsdFactory</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">createStatsDataIncrement</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'premium.error'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">statsdClient</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></span></code></pre>
+<p>You have noticed in the constructor the presence of 2 services that we need in order to send to Stats.d the data. Each time you'll add a "." to your stats category (in the example I used <em>premium.success</em>, it'll create a subfolder in your graphite dashboard).</p>
+<p>So let's inject them via the <a href="http://symfony.com/doc/2.0/components/dependency_injection/introduction.html" target="_blank">DI</a>.</p>
+<pre class="code-multiline language-xml"><code class="language-xml" id="3d7c14af7a6cbb5bed8cbc8e0c48d2db"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>service</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>seek_team_premium.contact.listener<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>SeekTeam\PremiumBundle\Event\Listener\StatsListener<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tag</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>kernel.event_subscriber<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>argument</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>service<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>liuggio_stats_d_client.factory<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>argument</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>service<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>liuggio_stats_d_client.service<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>service</span><span class="token punctuation">&gt;</span></span></code></pre>
+<p>And it's done, if you go on your graphite dashboard, you can now see the new category called "premium".</p></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

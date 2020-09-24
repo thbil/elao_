@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/obfuscation.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/obfuscation.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>6 novembre 2019</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -231,58 +231,246 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>L'une des pratiques les plus courantes du web pour accéder à un contenu de base de données est d'inclure l'identifiant (<code class="code-inline" id="b718adec73e04ce3ec720dd11a06a308">ID</code>) de celui-ci dans l'url. Cet identifiant est dans la grande majorité des cas un entier positif auto-incrémenté par la base de données. Cet identifiant se retrouve ainsi exposé dans les urls. Bien qu'elle pose un certain nombre de problèmes, cette pratique est très simple et très répandue.</p>
+<h2 id="probl-mes-de-s-curit-et-de-c">Problèmes de sécurité et de confidentialité<a href="#probl-mes-de-s-curit-et-de-c" class="anchor"></a></h2>
+<p>Exposer ces identifiants dans les urls pose principalement des problèmes de <strong>sécurité</strong> et de <strong>confidentialité</strong>.</p>
+<p>Ces problèmes sont dus à la prédictabilité de l'identifiant. En effet, celui-ci étant auto-incrémenté, si vous avez une url avec un identifiant, il est très facile de déduire les urls d'autres contenus en incrémentant ou décrémentant l'identifiant dans l'url.</p>
+<p>Il est alors simple pour un attaquant ou simplement un utilisateur curieux de tenter d'accéder à des contenus qui ne lui sont pas destinés. Couplé à d'autres failles ou défauts de sécurité, cela lui facilitera grandement la tâche. Il est également simple de crawler votre contenu sans connaitre à l'avance toutes les urls, mais simplement en bouclant sur un identifiant incrémenté.</p>
+<p>Et enfin, il est également simple de connaitre vos volumes de données. Par exemple, si je m'inscris sur un site et que je vois dans une url que mon compte utilisateur à l'ID 100, je sais qu'il n'y a que 100 utilisateurs inscrits sur ce site, si je passe une commande et qu'elle a l'identifiant 30, je sais qu'il n'y a eu que 30 commandes et je peux ensuite déduire le nombre de commandes moyen par utilisateur. Autant d'informations sensibles, surtout si vous êtes en concurrence.</p>
+<h2 id="les-alternatives-aux-ids-auto-in">Les alternatives aux IDs auto-incrémentés<a href="#les-alternatives-aux-ids-auto-in" class="anchor"></a></h2>
+<p>Plusieurs alternatives aux identifiants auto-incrémentés existent.</p>
+<p>L'une des plus connues est l'<strong><a href="https://fr.wikipedia.org/wiki/Universal_Unique_Identifier" target="_blank">UUID</a></strong>. Cet identifiant de 32 caractères hexadécimaux est généré de façon unique par un algorithme. A partir de l'UUID d'un contenu il n'est pas possible de prédire celui des autres. Il est très utilisé lors d'échanges API; néanmoins il souffre d'un inconvéniant majeur pour des urls, sa longueur.</p>
+<p>L'url suivante est quand même beaucoup moins lisible et pratique que la même utilisant des IDs entiers :</p>
+<figure><pre>https://www.example.com/shop/category/b441a884-5d46-423b-8317-ddb6f7e3f2fb/product/f0283088-5bd3-4acc-bc42-e6d173d33dd8?filter=165779fc-171d-4f3c-8c60-a2351d6468d3</pre>
+  <figcaption>Une url avec des UUIDs</figcaption></figure><figure><pre>https://www.example.com/shop/category/3/product/56?filter=33</pre>
+  <figcaption>Une url avec des IDs</figcaption></figure><p>Une autre solution pourrait être d'utiliser des <strong>identifiants entiers non auto-incrémentés</strong>. Cela nécessite néanmoins la mise en place d'un algorithme permettant de générer de manière unique ces identifiants. C'est une solution qui peut être viable, mais pas forcement simple à mettre en place et la perte d'auto-increment côté base de données peut être handicapant.</p>
+<h2 id="l-offuscation">L'offuscation<a href="#l-offuscation" class="anchor"></a></h2>
+<p>Afin de conserver mes identifiants auto-incrementés en interne mais de ne pas les exposer j'ai opté pour l'<a href="https://fr.wikipedia.org/wiki/Offuscation" target="_blank">offuscation</a>. Le principe est simple, mes IDs sont encodés avant d'être inséré dans les urls puis décodés à chaque requête de façon à ce que l'utilisateur ne voie jamais les vrais IDs.</p>
+<p>En PHP il existe plusieurs bibliothèques permettant d'offusquer un ID numérique, encodant un entier en une chaîne héxadécidémale, une chaîne base64 ou un autre entier par exemple.</p>
+<ul><li><a href="https://hashids.org/" target="_blank">hashids</a></li>
+<li><a href="https://github.com/zackkitzmiller/tiny-php" target="_blank">zackkitzmiller/tiny</a></li>
+<li><a href="https://github.com/marekweb/opaque-id" target="_blank">marekweb/opaque-id</a></li>
+<li><a href="https://github.com/jenssegers/optimus" target="_blank">jenssegers/optimus</a></li>
+</ul><p>J'ai utilisé <a href="https://github.com/jenssegers/optimus" target="_blank"><strong>optimus</strong></a> qui transforme votre ID en un autre entier. Néanmoins n'importe quelle autre bibliothèque fonctionnera pour la suite de cette article.</p>
+<pre class="code-multiline language-php"><code class="language-php" id="20328f69ecbe43bfd9ffba3cb1b6d80b"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$optimus</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Optimus</span><span class="token punctuation">(</span><span class="token number">1580030173</span><span class="token punctuation">,</span> <span class="token number">59260789</span><span class="token punctuation">,</span> <span class="token number">1163945558</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$encoded</span> <span class="token operator">=</span> <span class="token variable">$optimus</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">encode</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1535832388</span>
+<span class="token variable">$original</span> <span class="token operator">=</span> <span class="token variable">$optimus</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">decode</span><span class="token punctuation">(</span><span class="token number">1535832388</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 20</span></span></code></pre>
+<style type="text/css">
+figure figcaption {
+  text-align: center;
+  font-style: italic;
+  font-size: 80%;
+}
+
+figure pre {
+  margin: 0;
+}
+
+figure {
+  margin: 20px 0;
+}
+</style><h2 id="int-gration-dans-symfony">Intégration dans Symfony<a href="#int-gration-dans-symfony" class="anchor"></a></h2>
+<p>Tout d'abord créons un service pour offusquer nos IDs.</p>
+<pre class="code-multiline language-php"><code class="language-php" id="8993fa175afbc254aba58d400993c99c"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">interface</span> <span class="token class-name">ObfuscatorInterface</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">obfuscate</span><span class="token punctuation">(</span>int <span class="token variable">$id</span><span class="token punctuation">)</span><span class="token punctuation">:</span> int<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">deobfuscate</span><span class="token punctuation">(</span>int <span class="token variable">$id</span><span class="token punctuation">)</span><span class="token punctuation">:</span> int<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">OptimusObfuscator</span> <span class="token keyword">implements</span> <span class="token class-name">ObfuscatorInterface</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token variable">$optimus</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span>Optimus <span class="token variable">$optimus</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">optimus</span> <span class="token operator">=</span> <span class="token variable">$optimus</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">obfuscate</span><span class="token punctuation">(</span>int <span class="token variable">$id</span><span class="token punctuation">)</span><span class="token punctuation">:</span> int
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">optimus</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">encode</span><span class="token punctuation">(</span><span class="token variable">$id</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">deobfuscate</span><span class="token punctuation">(</span>int <span class="token variable">$id</span><span class="token punctuation">)</span><span class="token punctuation">:</span> int
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">optimus</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">decode</span><span class="token punctuation">(</span><span class="token variable">$id</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></span></code></pre>
+<p>Configurons le service avec les générateurs.</p>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="81fb9888f28562106e0d23fe1312fe72"><span class="token key atrule">parameters</span><span class="token punctuation">:</span>
+    <span class="token key atrule">env(APP_OPTIMUS_PRIME)</span><span class="token punctuation">:</span> <span class="token string">"1580030173"</span>
+    <span class="token key atrule">env(APP_OPTIMUS_INVERSE)</span><span class="token punctuation">:</span> <span class="token string">"59260789"</span>
+    <span class="token key atrule">env(APP_OPTIMUS_XOR)</span><span class="token punctuation">:</span> <span class="token string">"1163945558"</span>
+    <span class="token key atrule">env(APP_OPTIMUS_SIZE)</span><span class="token punctuation">:</span> <span class="token string">"31"</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+    <span class="token key atrule">_defaults</span><span class="token punctuation">:</span>
+        <span class="token key atrule">autowire</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+        <span class="token key atrule">autoconfigure</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+
+    <span class="token key atrule">Jenssegers\Optimus\Optimus</span><span class="token punctuation">:</span>
+        <span class="token key atrule">$prime</span><span class="token punctuation">:</span> <span class="token string">'%env(APP_OPTIMUS_PRIME)%'</span>
+        <span class="token key atrule">$inverse</span><span class="token punctuation">:</span> <span class="token string">'%env(APP_OPTIMUS_INVERSE)%'</span>
+        <span class="token key atrule">$xor</span><span class="token punctuation">:</span> <span class="token string">'%env(APP_OPTIMUS_XOR)%'</span>
+        <span class="token key atrule">$size</span><span class="token punctuation">:</span> <span class="token string">'%env(APP_OPTIMUS_SIZE)%'</span></code></pre>
+<blockquote>
+<p>La bibiothèque met à disposition une commande pour générer les paramètres à injecter à <em>Optimus</em> : <code class="code-inline" id="fcc4bcf1bebc979abbbac9ee039b0345">php vendor/bin/optimus spark</code>.
+Plus d'informations sur ces paramètres dans la <a href="https://github.com/jenssegers/optimus/blob/master/README.md" target="_blank">documentation</a>.</p>
+</blockquote>
+<p>Ensuite, afin de ne pas avoir à encoder nous-mêmes les IDs, créons un decorator pour le router Symfony.</p>
+<p>Voici un exemple simple qui <strong>offusque</strong> tous les paramètres <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code> des routes.</p>
+<pre class="code-multiline language-php"><code class="language-php" id="fc63f1869e129a1138c1eb15c1430a89"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name">ObfuscatorUrlGenerator</span> <span class="token keyword">implements</span> <span class="token class-name">RouterInterface</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token variable">$inner</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$obfuscator</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span>RouterInterface <span class="token variable">$inner</span><span class="token punctuation">,</span> ObfuscatorInterface <span class="token variable">$obfuscator</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">inner</span> <span class="token operator">=</span> <span class="token variable">$inner</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">obfuscator</span> <span class="token operator">=</span> <span class="token variable">$obfuscator</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">generate</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token variable">$parameters</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable">$referenceType</span> <span class="token operator">=</span> <span class="token scope"><span class="token keyword">self</span><span class="token punctuation">::</span></span><span class="token constant">ABSOLUTE_PATH</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$parameters</span> <span class="token keyword">as</span> <span class="token variable">$key</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$key</span> <span class="token operator">===</span> <span class="token single-quoted-string string">'id'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token variable">$parameters</span><span class="token punctuation">[</span><span class="token variable">$key</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">obfuscator</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">obfuscate</span><span class="token punctuation">(</span><span class="token variable">$value</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">inner</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">generate</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token variable">$parameters</span><span class="token punctuation">,</span> <span class="token variable">$referenceType</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">match</span><span class="token punctuation">(</span><span class="token variable">$pathinfo</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$parameters</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">inner</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token variable">$pathinfo</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$parameters</span> <span class="token keyword">as</span> <span class="token variable">$key</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$key</span> <span class="token operator">===</span> <span class="token single-quoted-string string">'id'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token variable">$parameters</span><span class="token punctuation">[</span><span class="token variable">$key</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">obfuscator</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">deobfuscate</span><span class="token punctuation">(</span><span class="token variable">$value</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> <span class="token variable">$parameters</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setContext</span><span class="token punctuation">(</span>RequestContext <span class="token variable">$context</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">inner</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setContext</span><span class="token punctuation">(</span><span class="token variable">$context</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">inner</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getRouteCollection</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">inner</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getRouteCollection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></span></code></pre>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="a7795e16e0cb024b0c4a9497f00f2861"><span class="token key atrule">services</span><span class="token punctuation">:</span>
+    <span class="token key atrule">App\Routing\ObfuscatorUrlGenerator</span><span class="token punctuation">:</span>
+        <span class="token key atrule">decorates</span><span class="token punctuation">:</span> router
+        <span class="token key atrule">decoration_priority</span><span class="token punctuation">:</span> <span class="token number">1</span>
+        <span class="token key atrule">arguments</span><span class="token punctuation">:</span>
+            <span class="token key atrule">$inner</span><span class="token punctuation">:</span> <span class="token string">"@App\Routing\ObfuscatorUrlGenerator.inner"</span></code></pre>
+<p>Ainsi, notre router offusque automatiquement nos <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code> lors de la génération d'url :</p>
+<pre class="code-multiline language-twig"><code class="language-twig" id="d6997235508b6b0f3651776fdac1de49"><span class="token tag"><span class="token ld"><span class="token punctuation">{{</span></span> <span class="token property">path</span><span class="token punctuation">(</span><span class="token string"><span class="token punctuation">'</span>ma_route<span class="token punctuation">'</span></span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token property">id</span><span class="token punctuation">:</span> <span class="token number">20</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token rd"><span class="token punctuation">}}</span></span></span> <span class="token comment">{# /ma/route/1535832388 #}</span></code></pre>
+<p>Et désoffusque nos <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code> lors de la correspondance d'url nous permettant d'accéder à notre <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code> en clair dans nos controller :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="a6d6176b13d0c57a1e8ee8048ab13236"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name">MaRouteController</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__invoke</span><span class="token punctuation">(</span>int <span class="token variable">$id</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// $id = 20</span>
+
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Response</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></span></code></pre>
+<h2 id="rendre-notre-syst-me-configurab">Rendre notre système configurable<a href="#rendre-notre-syst-me-configurab" class="anchor"></a></h2>
+<p>Notre offuscation fonctionne mais uniquement sur les paramètres <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code>. Nous aurons peut être besoin d'offusquer d'autres paramètres ou d'exclure certaines routes.</p>
+<p>Pour cela ajoutons une méthode <code class="code-inline" id="cd3c6265a726bca865fe9b74b4fd5ec4">mustBeObfuscated</code> à notre <code class="code-inline" id="9f484bcd1b56f5125466c648f60d7671">Obfuscator</code> et déportons y la logique utilisée dans le router et dans le resolver :</p>
+<pre class="code-multiline language-diff"><code class="language-diff" id="622fa2f3e414c83da7b9c74d038aac09"><span class="token deleted-arrow deleted"><span class="token prefix deleted">&lt;</span><span class="token line">?php
+</span></span>class Obfuscator
+{
+<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   // ...
+</span></span>
+<span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">    public function mustBeObfuscated(string $routeName, string $argumentName): bool
+</span><span class="token prefix inserted">+</span><span class="token line">    {
+</span><span class="token prefix inserted">+</span><span class="token line">        return $argumentName === 'id';
+</span><span class="token prefix inserted">+</span><span class="token line">    }
+</span></span>}
+
+class ObfuscatorUrlGenerator implements RouterInterface
+{
+<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   // ...
+</span></span>
+<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   public function generate($name, $parameters = [], $referenceType = self::ABSOLUTE_PATH)
+</span><span class="token prefix unchanged"> </span><span class="token line">   {
+</span><span class="token prefix unchanged"> </span><span class="token line">       foreach ($parameters as $key =&gt; $value) {
+</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">            if ($key === 'id') {
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">            if ($this-&gt;obfuscator-&gt;mustBeObfuscated($name, $key))
+</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">               $parameters[$key] = $this-&gt;obfuscator-&gt;obfuscate($value);
+</span><span class="token prefix unchanged"> </span><span class="token line">           }
+</span><span class="token prefix unchanged"> </span><span class="token line">       }
+</span></span>
+<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">       return $this-&gt;inner-&gt;setContext($name, $parameters, $referenceType);
+</span><span class="token prefix unchanged"> </span><span class="token line">   }
+</span></span>
+<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   public function match($pathinfo)
+</span><span class="token prefix unchanged"> </span><span class="token line">   {
+</span><span class="token prefix unchanged"> </span><span class="token line">       $parameters = $this-&gt;inner-&gt;match($pathinfo);
+</span></span>
+<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">       foreach ($parameters as $key =&gt; $value) {
+</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">            if ($key === 'id') {
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">            if ($this-&gt;obfuscator-&gt;mustBeObfuscated($parameters['_route'], $key)) {
+</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">               $parameters[$key] = $this-&gt;obfuscator-&gt;deobfuscate($value);
+</span><span class="token prefix unchanged"> </span><span class="token line">           }
+</span><span class="token prefix unchanged"> </span><span class="token line">       }
+</span></span>
+<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">       return $parameters;
+</span><span class="token prefix unchanged"> </span><span class="token line">   }
+</span></span>}</code></pre>
+<p>Cette méthode peut alors être personnalisée pour savoir si un paramètre doit être offusqué selon son nom et sa route.</p>
+<p>Par exemple, en se basant sur un tableau contenant pour chaque route les paramètres à offusquer :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="dc7c3a8e20fd8bc91a3a21d5e2b0fb06"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name">Obfuscator</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+
+    <span class="token keyword">private</span> <span class="token variable">$routes</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+       <span class="token single-quoted-string string">'une_route'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token single-quoted-string string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+       <span class="token single-quoted-string string">'une_autre_route'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token single-quoted-string string">'categoryId'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'productId'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">mustBeObfuscated</span><span class="token punctuation">(</span>string <span class="token variable">$routeName</span><span class="token punctuation">,</span> string <span class="token variable">$argumentName</span><span class="token punctuation">)</span><span class="token punctuation">:</span> bool
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">routes</span><span class="token punctuation">[</span><span class="token variable">$routeName</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token operator">&amp;&amp;</span> <span class="token function">in_array</span><span class="token punctuation">(</span><span class="token variable">$argumentName</span><span class="token punctuation">,</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">routes</span><span class="token punctuation">[</span><span class="token variable">$routeName</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></span></code></pre>
+<p>Pour aller plus loin, nous pouvons baser ce tableau de routes sur un fichier de configuration, sur des attributs ou des options dans le fichier de routing, sur une convention de nommage ou implémenter toute autre logique dans la méthode <code class="code-inline" id="cd3c6265a726bca865fe9b74b4fd5ec4">mustBeObfuscated</code>.</p></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

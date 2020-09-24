@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/chaplin-assembly-line.jpeg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/chaplin-assembly-line.jpeg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>13 mai 2017</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -225,58 +225,249 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><blockquote>
+<p>"<em>Quelqu'un pourrait me passer le sel, s'il vous plaît ?</em>" (Martin Fowler, sept. 2015)</p>
+</blockquote>
+<p>Aujourd'hui, nous allons nous amuser à enfiler des objets comme des perles grâce au Design Pattern <code class="code-inline" id="0e4c6982c4346789e10bcb3eb7ee3946">Chain of Responsibility</code>.</p>
+<!--more-->
+<h2 id="classification">Classification<a href="#classification" class="anchor"></a></h2>
+<p>Selon la classification établie par le <em>GoF</em> (<em>Gang of Four</em>), la <code class="code-inline" id="5b82f7bdfadf92899c4a62fbbad69050">chaîne de responsabilité</code> appartient aux Design patterns comportementaux (<em>behavior</em>).</p>
+<h2 id="d-finition">Définition<a href="#d-finition" class="anchor"></a></h2>
+<blockquote>
+<p>Avoid coupling the sender of a request to its receiver by giving more than one object a chance to handle the request. Chain the receiving objects and pass the request along the chain until an object handles it.</p>
+</blockquote>
+<p>En résumé, le DP <em>CoR</em> va permettre à son consommateur de transmettre une requête à une chaîne d'objets susceptibles de la traiter, sans avoir conscience de l'objet effectivement responsable du traitement (<em>handler</em>).</p>
+<p>Concrètement, le pattern consiste principalement à construire une chaîne de <em>handlers</em> chargée de traiter une requête (aka <em>command</em>).</p>
+<h2 id="quand-l-utiliser">Quand l'utiliser ?<a href="#quand-l-utiliser" class="anchor"></a></h2>
+<p>Voici les différentes situations que référence le <em>GoF</em> :</p>
+<ul><li>il existe plusieurs objets susceptibles de traiter une requête, mais l'objet qui traitera la requête (<em>handler</em>) n'est pas connu <em>a priori</em> (mais doit être déterminé automatiquement par la chaîne)</li>
+<li>vous souhaitez transmettre une requête à un objet parmi plusieurs, sans le désigner explicitement</li>
+<li>la liste des objets susceptibles de traiter la requête devrait être construite dynamiquement</li>
+</ul><h2 id="diagramme-du-design-pattern-chai">Diagramme du Design pattern <code class="code-inline" id="0e4c6982c4346789e10bcb3eb7ee3946">Chain of Responsibility</code><a href="#diagramme-du-design-pattern-chai" class="anchor"></a></h2>
+<p class="text-center">
+    {{}}
+    <figcaption style="text-align: center;font-style: italic;">Diagramme du Design Pattern 'Chain of Responsility'</figcaption></p>
+<h2 id="participants">Participants<a href="#participants" class="anchor"></a></h2>
+<ul><li>Le <strong>Handler</strong> :
+<ul><li>définit une interface que les handlers devront implémenter</li>
+<li>peut implémenter la logique de chaînage des successeurs</li>
+</ul></li>
+<li>Les <strong>Concrete Handlers</strong> :
+<ul><li>traitent les requêtes dont ils sont responsables</li>
+<li>peuvent accéder à leur successeur dans la chaîne</li>
+<li>si un <em>handler</em> sait traiter une requête, il le fait ; dans le cas contraire, il la transmet à son successeur</li>
+</ul></li>
+<li>Le <strong>client</strong> est l'émetteur de la requête, qu'il passe à la chaîne</li>
+</ul><h2 id="si-tous-les-fous-du-monde-voulai"><em>Si tous les fous du monde voulaient bien se donner la main ...</em><a href="#si-tous-les-fous-du-monde-voulai" class="anchor"></a></h2>
+<blockquote>
+<p>Illustrer un Design Pattern à l'aide d'un exemple pertinent ou un tant soit peu réaliste n'est pas toujours chose aisée. Aussi, notez que l'exemple qui suit est <strike>honteusement</strike> largement inspiré d'un article publié sur le blog <a href="http://spaghetti.io/cont/article/a-chain-of-responsibility-implementation-inside-the-symfony-container/15/1.html#.WRcQErzyi-w" target="_blank">spaghetti.io</a>. Je vous invite à consulter cet article puisque l'auteur ne se contente pas de présenter le Design Pattern, mais propose un exemple d'implémentation dans un contexte Symfony, ainsi que des pistes très intéressantes pour construire la chaîne et la configurer dans le DIC (<em>Dependency Injection Container</em>).</p>
+</blockquote>
+<p>Vous maintenez une application de <em>e-commerce</em> dont le catalogue de produits est mis à jour à l'aide d'imports. Les fichiers d'import des produits à intégrer au catalogue proviennent de plusieurs sources et ne sont donc pas standardisés : il existe des sources de données au format XML, d'autres au format JSON et enfin certaines au format CSV.</p>
+<p>Votre importeur doit donc supporter ces trois formats et pour cela, il va s'appuyer sur trois extracteurs spécialisés :</p>
+<ul><li>ProductJsonExtractor</li>
+<li>ProductXmlExtractor</li>
+<li>ProductCsvExtractor</li>
+</ul><blockquote>
+<p>Vous l'aurez sans doute deviné, si l'on se réfère au diagramme des participants, notre importeur correspond au <strong>Client</strong> tandis que les trois extracteurs correspondent aux <strong>Concrete Handlers</strong>.</p>
+</blockquote>
+<p>Voici à quoi ressemble un <em>extractor</em> avant que nous n'appliquions le pattern <em>CoR</em> :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="6829fd82bdc38da5d949835b4725fc9f"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token keyword">class</span> <span class="token class-name">ProductXmlExtractor</span> <span class="token keyword">implements</span> <span class="token class-name">ProductExtractorInterface</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">extractProducts</span><span class="token punctuation">(</span>\<span class="token package">SplFileObject</span> <span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">array</span> <span class="token punctuation">{</span>
+            <span class="token variable">$content</span> <span class="token operator">=</span> <span class="token variable">$file</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">fread</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$xml</span> <span class="token operator">=</span> <span class="token function">simplexml_load_string</span><span class="token punctuation">(</span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$products</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$xml</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">productList</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">product</span> <span class="token keyword">as</span> <span class="token variable">$productNode</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token variable">$product</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ProductDto</span><span class="token punctuation">(</span>
+                    <span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token variable">$productNode</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">id</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">(</span>string<span class="token punctuation">)</span> <span class="token variable">$productNode</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">name</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">(</span>string<span class="token punctuation">)</span> <span class="token variable">$productNode</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">description</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">(</span>float<span class="token punctuation">)</span> <span class="token variable">$productNode</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">price</span>
+                <span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token variable">$products</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$product</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">return</span> <span class="token variable">$products</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span></span></code></pre>
+<p>Rien de compliqué, cette classe reçoit un fichier en entrée et en extrait une liste de produits.</p>
+<p>Noter que pour l'heure, <code class="code-inline" id="8e2c370970792feb8dbf80c2d05cf8d6">ProductXmlExtractor</code> (tout comme les deux autres <em>extractors</em>) implémente une interface <code class="code-inline" id="8a5dbb05e8dd7ae606674bfe535f9eb1">ProductExtractorInterface</code> qui expose simplement une méthode <code class="code-inline" id="79ee7205c96c30ec2f60b3eab7ee8af4">extractProducts</code>. J'utilise également pour les valeurs de retour une classe <code class="code-inline" id="797dcf4ee098d79bad677ebcc403cfca">ProductDto</code> (c'est un bête conteneur de données, pardonnez-moi le pléonasme).</p>
+<p>Voici à présent ce que nous allons faire :</p>
+<ul><li><a href="#chain-construct">construire la chaîne dans une classe abstraite dédiée</a></li>
+<li><a href="#concrete-handlers">mettre à jour les <em>handlers</em> concrets</a></li>
+<li><a href="#chain-usage">instancier la chaîne et la consommer</a></li>
+</ul><h2 id="logique-de-construction-de-la-c"><a name="chain-construct"></a> Logique de construction de la chaîne<a href="#logique-de-construction-de-la-c" class="anchor"></a></h2>
+<blockquote>
+<p>"Tu aimeras ton prochain comme toi-même"</p>
+</blockquote>
+<p>Nous allons faire évoluer notre classe concrète <code class="code-inline" id="8e2c370970792feb8dbf80c2d05cf8d6">ProductXmlExtractor</code> : au lieu d'implémenter l'interface <code class="code-inline" id="8a5dbb05e8dd7ae606674bfe535f9eb1">ProductExtractorInterface</code>, elle va en effet étendre une classe abstraite chargée notamment de construire la chaîne des <em>handlers</em> et d'exposer les méthodes métiers attendues par ses héritiers. Voici le code de cette classe abstraite <code class="code-inline" id="4af8481a07a24cb0483d87ccdcebe0e9">AbstractProductExtractor</code>, abondamment commentée pour expliquer le principe :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="91446c2eb19bd443dbac8684febda15f"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token doc-comment comment">/**
+ * This is the base class for any concrete handler.
+ * It includes the methods common to all handlers, amongst which
+ * the ones responsible for building and managing the chain (Here, the
+ * constructor expects an AbstractProductExtractor
+ * instance injected in its $nextHandler property).
+ *
+ * All the "magic" is done in the extractProducts method : if the current
+ * instance can handle the request, then it handles it,
+ * otherwise it delegates the request to the next handler in the chain.
+ */</span>
+<span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">AbstractProductExtractor</span>
+<span class="token punctuation">{</span>
+    <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name">AbstractProductExtractor<span class="token punctuation">|</span><span class="token keyword">null</span></span> */</span>
+    <span class="token keyword">private</span> <span class="token variable">$nextHandler</span><span class="token punctuation">;</span>
+
+    <span class="token doc-comment comment">/**
+     * We use the constructor to build the handler chain. Each handler points to one follower.
+     * The last handler of the chain is the one that has a null $nextHandler.
+     *
+     * <span class="token keyword">@param</span> <span class="token class-name">AbstractProductExtractor<span class="token punctuation">|</span><span class="token keyword">null</span></span> <span class="token parameter">$nextHandler</span>
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span>AbstractProductExtractor <span class="token variable">$nextHandler</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">nextHandler</span> <span class="token operator">=</span> <span class="token variable">$nextHandler</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token doc-comment comment">/**
+     * Helper method that enables to inject a new handler in the chain through
+     * any element of the chain.
+     * If the current handler already has a follower, the new handler is
+     * propagated till the last handler of the chain.
+     *
+     * <span class="token keyword">@param</span> <span class="token class-name">AbstractProductExtractor</span> <span class="token parameter">$nextHandler</span>
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setNextHandler</span><span class="token punctuation">(</span>AbstractProductExtractor <span class="token variable">$nextHandler</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">null</span> <span class="token operator">===</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">nextHandler</span> <span class="token punctuation">{</span>
+            <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">nextHandler</span> <span class="token operator">=</span> <span class="token variable">$nextHandler</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">nextHandler</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setNextHandler</span><span class="token punctuation">(</span><span class="token variable">$nextHandler</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token doc-comment comment">/**
+     * The main exposed method that does the job. It handles the import file
+     * if it supports its format.
+     * Else it transmits the request to the next handler.
+     *
+     * <span class="token keyword">@param</span> <span class="token class-name"><span class="token punctuation">\</span>SplFileObject</span> <span class="token parameter">$file</span>
+     *
+     * <span class="token keyword">@return</span> <span class="token class-name"><span class="token keyword">mixed</span></span>
+     *
+     * <span class="token keyword">@throws</span> <span class="token class-name"><span class="token punctuation">\</span>InvalidArgumentException</span> If no handler can handle the request
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">extractProducts</span><span class="token punctuation">(</span>\<span class="token package">SplFileObject</span> <span class="token variable">$file</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">support</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">handle</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">null</span> <span class="token operator">!==</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">nextHandler</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// !!! Do not do the following:</span>
+            <span class="token comment">// return $this-&gt;handle($file)</span>
+            <span class="token comment">// Indeed, you must re-enter the current method in order to make sure that the</span>
+            <span class="token comment">// handler supports the $file passed as an argument.</span>
+            <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">nextHandler</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">extractProducts</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// Here, you must throw an exception if you want to make sure that the request is handled</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token punctuation">\</span>InvalidArgumentException</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"No handler found for file '<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$file</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getFilename</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>'"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// Otherwise, you could return false</span>
+        <span class="token comment">// return false;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token doc-comment comment">/**
+     * The main business logic of the class: opens the import file passed as
+     * an argument and parses its content.
+     *
+     * <span class="token keyword">@param</span>  <span class="token class-name">SplFileObject</span> <span class="token parameter">$file</span>
+     *
+     * <span class="token keyword">@return</span> <span class="token class-name">ProductDto<span class="token punctuation">[</span><span class="token punctuation">]</span></span>
+     */</span>
+    <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">handle</span><span class="token punctuation">(</span>\<span class="token package">SplFileObject</span> <span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">array</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// The following line of code is only for debug &amp; demo purposes:</span>
+        <span class="token keyword">echo</span> <span class="token scope"><span class="token keyword">static</span><span class="token punctuation">::</span></span><span class="token keyword">CLASS</span><span class="token punctuation">.</span><span class="token double-quoted-string string">" is the handler for <span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$file</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getExtension</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span> files\n"</span><span class="token punctuation">;</span>
+        <span class="token variable">$content</span> <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getRealPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">parseContent</span><span class="token punctuation">(</span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">abstract</span> <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">support</span><span class="token punctuation">(</span>SplFileObject <span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">:</span> bool<span class="token punctuation">;</span>
+    <span class="token keyword">abstract</span> <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">parseContent</span><span class="token punctuation">(</span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">array</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></span></code></pre>
+<p>En résumé, la construction de la chaîne consiste à introduire dans chaque <em>extractor</em> concret une propriété <strong><code class="code-inline" id="6158aab25cad464faed56f676d36648b">$nextHandler</code></strong> de type <code class="code-inline" id="4af8481a07a24cb0483d87ccdcebe0e9">AbstractProductExtractor</code>.</p>
+<p>Le dernier maillon de la chaîne est celui dont sa propriété <code class="code-inline" id="6158aab25cad464faed56f676d36648b">$nextHandler</code> est à <em>null</em>. Les méthodes de construction et de gestion de la chaîne étant communes à tous les <em>extractors</em> concrets, elles sont factorisées dans notre classe abstraite.</p>
+<p>Enfin, c'est la méthode <code class="code-inline" id="434990c8a25d2be94863561ae98bd682">support</code>, qui retourne un booléen, qui permet de déterminer si un <em>handler</em> concret sait traiter une requête ou s'il doit la passer à son successeur.</p>
+<h2 id="mise-jour-des-handlers-concr"><a name="concrete-handlers"></a> Mise à jour des <em>handlers</em> concrets<a href="#mise-jour-des-handlers-concr" class="anchor"></a></h2>
+<p>La classe abstraite <code class="code-inline" id="4af8481a07a24cb0483d87ccdcebe0e9">AbstractProductExtractor</code> se chargeant de gérer la chaîne, les <em>handlers</em> concrets vont continuer à faire ce qu'ils savent faire le mieux, à savoir extraire des données à partir d'un fichier source.</p>
+<p>Voici les modifications à apporter à notre extracteur <code class="code-inline" id="8e2c370970792feb8dbf80c2d05cf8d6">ProductXmlExtractor</code> :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="a04e5fc17600752c6cc5f0c822d4cbc5"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token keyword">class</span> <span class="token class-name">ProductXmlExtractor</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractProductExtractor</span> <span class="token punctuation">{</span>
+        <span class="token doc-comment comment">/**
+         * <span class="token punctuation">{</span><span class="token keyword">@inheritdoc</span><span class="token punctuation">}</span>
+         */</span>
+        <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">support</span><span class="token punctuation">(</span>SplFileObject <span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">:</span> bool <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token variable">$file</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getExtension</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token single-quoted-string string">'xml'</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token doc-comment comment">/**
+         * <span class="token punctuation">{</span><span class="token keyword">@inheritdoc</span><span class="token punctuation">}</span>
+         */</span>
+        <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">parseContent</span><span class="token punctuation">(</span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">array</span> <span class="token punctuation">{</span>
+            <span class="token variable">$xml</span> <span class="token operator">=</span> <span class="token function">simplexml_load_string</span><span class="token punctuation">(</span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// ... Le reste sans changement ...</span>
+            <span class="token keyword">return</span> <span class="token variable">$products</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span></span></code></pre>
+<p>Désormais, la classe <code class="code-inline" id="8e2c370970792feb8dbf80c2d05cf8d6">ProductXmlExtractor</code> étend la classe abstraite <code class="code-inline" id="4af8481a07a24cb0483d87ccdcebe0e9">AbstractProductExtractor</code> et implémente donc les deux méthodes attendues (<code class="code-inline" id="434990c8a25d2be94863561ae98bd682">support</code> et <code class="code-inline" id="6beb07d951865e6624d655b75ee8659a">parseContent</code>).</p>
+<h2 id="instancions-et-utilisons-notre"><a name="chain-usage"></a> Instancions et utilisons notre chaîne<a href="#instancions-et-utilisons-notre" class="anchor"></a></h2>
+<p>Enfin (et ce n'est pas trop tôt, me direz-vous), voici le code qui permet d'instancier et consommer notre chaîne de <em>handlers</em> :</p>
+<pre class="code-multiline language-php"><code class="language-php" id="16da020d8e887bc6863c76b232c72287"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token comment">// Firstly, build the chain of handlers:</span>
+    <span class="token variable">$handlerChain</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ProductCsvExtractor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$handlerChain</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setNextHandler</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ProductXmlExtractor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$handlerChain</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setNextHandler</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ProductJsonExtractor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Alternative method:</span>
+    <span class="token comment">// new ProductCsvExtractor(new ProductXmlExtractor(new ProductJsonExtractor()));</span>
+
+    <span class="token comment">// Secondly, use it:</span>
+    <span class="token variable">$xmlFile</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token punctuation">\</span>SplFileObject</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'/path/to/products.xml'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$products</span> <span class="token operator">=</span> <span class="token variable">$handlerChain</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">extractProducts</span><span class="token punctuation">(</span><span class="token variable">$xmlFile</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token variable">$csvFile</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token punctuation">\</span>SplFileObject</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'/path/to/products.csv'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$products</span> <span class="token operator">=</span> <span class="token variable">$handlerChain</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">extractProducts</span><span class="token punctuation">(</span><span class="token variable">$csvFile</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token variable">$jsonFile</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token punctuation">\</span>SplFileObject</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'/path/to/products.json'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$products</span> <span class="token operator">=</span> <span class="token variable">$handlerChain</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">extractProducts</span><span class="token punctuation">(</span><span class="token variable">$jsonFile</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Thirdly, try to parse an unsupported format:</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token variable">$unsupportedFile</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token punctuation">\</span>SplFileObject</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'/path/to/unsupported/format/file'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$handlerChain</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">extractProducts</span><span class="token punctuation">(</span><span class="token variable">$unsupportedFile</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>\<span class="token package">InvalidArgumentException</span> <span class="token variable">$e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">echo</span> <span class="token double-quoted-string string">"Exception (as expected !) : <span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$e</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>\n"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></span></code></pre></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

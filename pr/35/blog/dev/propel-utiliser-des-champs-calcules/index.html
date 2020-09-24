@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/mailers.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/mailers.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>13 mai 2010</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -231,58 +231,110 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Il est parfois très utile de pouvoir récupérer directement des champs calculés depuis la base de données, soit parce que passer par un criteria s'avère très compliqué, voir impossible, soit pour confier les calculs à la base de données.</p>
+<p>Je vous propose donc aujourd'hui deux solutions pour le faire avec Propel :<!--more--></p>
+<h3 id="re-solution-les-r-sultats-s">1ère solution, les résultats sont accédés via des index numériques<a href="#re-solution-les-r-sultats-s" class="anchor"></a></h3>
+<pre class="code-multiline language-php"><code class="language-php" id="8a7785275a13d5b475a4c186b07d0e48"><span class="token comment">//QUERY</span>
+<span class="token variable">$query</span> <span class="token operator">=</span> <span class="token constant">SELECT</span> <span class="token function">DISTINCT</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'.UserPeer::ID.'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'.UserPeer::FIRSTNAME.'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'.UserPeer::LASTNAME.'</span><span class="token punctuation">,</span>
+                         <span class="token single-quoted-string string">'.UserPeer::NICKNAME.'</span><span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'.QuestionPeer::ID.'</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> <span class="token constant">NB_QUESTIONS</span><span class="token punctuation">,</span>
+                         <span class="token single-quoted-string string">'.QuestionPeer::LEVEL.'</span>
+         <span class="token constant">FROM</span> <span class="token single-quoted-string string">'.UserPeer::TABLE_NAME.'</span>
+         <span class="token constant">INNER</span> <span class="token constant">JOIN</span> <span class="token single-quoted-string string">'.QuestionPeer::TABLE_NAME.'</span>
+         <span class="token constant">ON</span> <span class="token single-quoted-string string">'.QuestionPeer::USER_ID.'</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'.UserPeer::ID.'</span>
+         <span class="token constant">WHERE</span> <span class="token single-quoted-string string">'.QuestionPeer::IS_VALID.'</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token single-quoted-string string">'
+         GROUP BY '</span><span class="token punctuation">.</span><span class="token scope">UserPeer<span class="token punctuation">::</span></span><span class="token constant">ID</span><span class="token punctuation">.</span><span class="token single-quoted-string string">', '</span><span class="token punctuation">.</span><span class="token scope">QuestionPeer<span class="token punctuation">::</span></span><span class="token constant">LEVEL</span><span class="token punctuation">.</span><span class="token single-quoted-string string">'
+         ORDER BY '</span><span class="token punctuation">.</span><span class="token scope">QuestionPeer<span class="token punctuation">::</span></span><span class="token constant">LEVEL</span><span class="token punctuation">;</span>
+<span class="token variable">$stmt</span> <span class="token operator">=</span> <span class="token variable">$con</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">prepareStatement</span><span class="token punctuation">(</span><span class="token variable">$query</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$rs</span> <span class="token operator">=</span> <span class="token variable">$stmt</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">executeQuery</span><span class="token punctuation">(</span><span class="token scope">ResultSet<span class="token punctuation">::</span></span><span class="token constant">FETCHMODE_NUM</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// PARSING RESULTS</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token variable">$users</span><span class="token punctuation">[</span><span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'nickname'</span>  <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                                 <span class="token single-quoted-string string">'firstname'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                                 <span class="token single-quoted-string string">'lastname'</span>  <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                           <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token variable">$level</span> <span class="token operator">=</span> <span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token variable">$questions</span><span class="token punctuation">[</span><span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token variable">$level</span> <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token variable">$level</span> <span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token variable">$users</span><span class="token punctuation">[</span><span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'questions'</span><span class="token punctuation">]</span>                     <span class="token operator">=</span> <span class="token variable">$questions</span><span class="token punctuation">[</span><span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="me-solution-les-r-sultats-s">2ème solution, les résultats sont accédés via les noms de champs renvoyés par la requête<a href="#me-solution-les-r-sultats-s" class="anchor"></a></h3>
+<p>Il suffit pour cela de remplacer la méthode de récupération de executeQuery en utilisant cette fois:</p>
+<pre class="code-multiline language-php"><code class="language-php" id="7996141236245e4babf93b780a90018b"><span class="token scope">ResultSet<span class="token punctuation">::</span></span><span class="token constant">FETCHMODE_ASSOC</span></code></pre>
+<pre class="code-multiline"><code id="2e51ed954b18dd9b6cd37f86ccc62dc7">$rs = $stmt-&gt;executeQuery(ResultSet::FETCHMODE_ASSOC);
+// PARSING RESULTS
+while ($rs-&gt;next())
+{
+  $record = $rs-&gt;getRow();
+  $users[$record['ID'] = array('nickname'  =&gt; $record['NICKNAME'],
+                               'firstname' =&gt; $record['FIRSTNAME'],
+                               'lastname'  =&gt; $record['LASTNAME'],
+                           );
+
+  $level = $records['LEVEL'];
+  $questions[$record['ID']][(($level &lt; 5) ? $level : 5)] = $record['NB_QUESTIONS'];
+  $users[record['ID']]['questions']                      = $questions[$record['ID']];
+}</code></pre>
+<p>Pour ceux qui souhaitent mixer les deux méthodes, il est tout à fait possible de demander à un Criteria, de renvoyer un tableau indexé à partir
+des noms de champs, ou des index numériques d'ailleurs.
+Nous allons de la même façon que ci-dessus spécifier à Propel, la façon dont nous souhaitons récupérer nos résultats, pour le coup nous passerons
+par la méthode</p>
+<pre class="code-multiline"><code id="1122141f02687555b6c67fad295bb860">doSelectRS()</code></pre>
+<p>afin de récupérer des resultSet et non des objets.</p>
+<pre class="code-multiline language-php"><code class="language-php" id="d3129f1ee07a57942b09b0b020a73f22"><span class="token variable">$c</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Criteria</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">clearSelectColumns</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addSelectColumn</span><span class="token punctuation">(</span><span class="token scope">UserPeer<span class="token punctuation">::</span></span><span class="token constant">NICKNAME</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addSelectColumn</span><span class="token punctuation">(</span><span class="token scope">QuestionPeer<span class="token punctuation">::</span></span><span class="token constant">ID</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addSelectColumn</span><span class="token punctuation">(</span><span class="token scope">QuestionPeer<span class="token punctuation">::</span></span><span class="token constant">BODY</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addSelectColumn</span><span class="token punctuation">(</span><span class="token scope">QuestionPeer<span class="token punctuation">::</span></span><span class="token constant">TITLE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addSelectColumn</span><span class="token punctuation">(</span><span class="token scope">QuestionPeer<span class="token punctuation">::</span></span><span class="token constant">CREATED_AT</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addSelectColumn</span><span class="token punctuation">(</span><span class="token scope">QuestionPeer<span class="token punctuation">::</span></span><span class="token constant">LEVEL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addSelectColumn</span><span class="token punctuation">(</span><span class="token scope">QuestionPeer<span class="token punctuation">::</span></span><span class="token constant">INTERESTED_USERS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addSelectColumn</span><span class="token punctuation">(</span><span class="token scope">QuestionPeer<span class="token punctuation">::</span></span><span class="token constant">NB_ANSWERS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token scope">QuestionPeer<span class="token punctuation">::</span></span><span class="token constant">IS_VALID</span><span class="token punctuation">,</span> <span class="token boolean constant">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">empty</span><span class="token punctuation">(</span><span class="token variable">$filterDateFrom</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>amp<span class="token punctuation">;</span><span class="token operator">&amp;</span>amp<span class="token punctuation">;</span> <span class="token operator">!</span><span class="token keyword">empty</span><span class="token punctuation">(</span><span class="token variable">$filterDateTo</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token scope">QuestionPeer<span class="token punctuation">::</span></span><span class="token constant">CREATED_AT</span><span class="token punctuation">,</span> <span class="token scope">QuestionPeer<span class="token punctuation">::</span></span><span class="token constant">CREATED_AT</span><span class="token punctuation">.</span><span class="token double-quoted-string string">" BETWEEN '"</span><span class="token punctuation">.</span><span class="token variable">$filterDateFrom</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"'AND '"</span><span class="token punctuation">.</span><span class="token variable">$filterDateTo</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"'"</span><span class="token punctuation">,</span> <span class="token scope">Criteria<span class="token punctuation">::</span></span><span class="token constant">CUSTOM</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token variable">$rs</span> <span class="token operator">=</span> <span class="token scope">UserPeer<span class="token punctuation">::</span></span><span class="token function">doSelectRs</span><span class="token punctuation">(</span><span class="token variable">$c</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setFetchMode</span><span class="token punctuation">(</span><span class="token scope">ResultSet<span class="token punctuation">::</span></span><span class="token constant">FETCHMODE_ASSOC</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// PARSING</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token variable">$records</span> <span class="token operator">=</span> <span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getRow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token variable">$results</span><span class="token punctuation">[</span><span class="token variable">$records</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'ID'</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span>
+    <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'nickname'</span>            <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$records</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'NICKNAME'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token single-quoted-string string">'body'</span>                <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$records</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'BODY'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token single-quoted-string string">'title'</span>               <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$records</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'TITLE'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token single-quoted-string string">'created_at'</span>          <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$records</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'CREATED_AT'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token single-quoted-string string">'level'</span>               <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$records</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'LEVEL'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token single-quoted-string string">'interested_users'</span>    <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$records</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'INTERESTED_USERS'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token single-quoted-string string">'nb_answers'</span>          <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$records</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'NB_ANSWERS'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

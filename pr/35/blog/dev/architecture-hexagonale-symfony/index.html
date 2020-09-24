@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/hexagons.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/hexagons.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>21 juin 2017</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -231,58 +231,134 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><h1 id="introduction">Introduction<a href="#introduction" class="anchor"></a></h1>
+<p>L'architecture hexagonale, également appelée <em>Ports &amp; Adapters</em>, présente deux caratéristiques lorsqu'on la schématise : une forme <strong>hexagonale</strong> (d'où son nom) et une séparation entre l'<strong>application</strong>, l'<strong>extérieur</strong> et une partie contenant des <strong>adapteurs</strong> permettant aux deux de communiquer.</p>
+<p>Elle a été pensé par <a href="http://alistair.cockburn.us/Hexagonal+architecture" target="_blank">Alistair Cockburn</a> dans les années 2000. Son but est de permettre à une application d'être pilotée sans distinction par des utilisateurs, des programmes, des tests automatisés ou des scripts ainsi que d'être développée et testée de façon isolée de son contexte d'exécution et de ses bases de données.</p>
+<img src="/images/posts/2017/hexagonal-architecture.png" alt="Architecture hexagonale" title="Architecture hexagonale" id="architecture-hexagonale"><h2 id="une-architecture-hexagonale">Une architecture hexagonale<a href="#une-architecture-hexagonale" class="anchor"></a></h2>
+<p>Les deux grands principes de base de l'architecture hexagonale sont :</p>
+<ul><li>La <strong>séparation entre le code métier et le code technique</strong>. Le but est de rendre votre code métier <strong>agnostique</strong> de l'architecture technique dans laquelle votre application sera exécutée.</li>
+<li>L'<strong>inversion de dépendance</strong> : votre code technique dépend de votre code métier et non l'inverse comme dans une architecture plus classique. Pour cela vous allez massivement utiliser le <strong>design pattern adapter</strong>.</li>
+</ul><p>La forme hexagonale — qui aurait tout aussi bien pu être octogonale ou pentagonale — est là pour mettre en évidence les différentes facettes par lesquelles votre application communique avec l'extérieur via des adapteurs.</p>
+<p>Le <strong>code technique</strong> c'est tout l'environnement nécessaire à votre application sans faire partie de son coeur métier. Tout ou partie de ce code peut être remplacé sans impacter votre métier. Cela comprend — entre autres — la persistance (base de données), le système de fichier, le cache, l'applicatif externe (API, binaires, ...), les bibliothèques et frameworks, etc.</p>
+<p>Le <strong>code métier</strong> c'est tout le code qui traduit le métier de votre client. Il s'agit des règles métier, de la logique métier, du code purement applicatif, ... Ce code est irremplaçable et constitue le coeur de votre application.</p>
+<h2 id="une-architecture-en-couches-ou">Une architecture en couches (ou en oignon)<a href="#une-architecture-en-couches-ou" class="anchor"></a></h2>
+<p class="text-center">
+    <img src="/images/posts/2017/onionman.jpg" alt="Onion man" id="onion-man"></p>
+<p>Afin d'aller encore un peu plus loin dans le découplage de mon code et de me donner un cadre facilitant la séparation du code technique et du code métier, je me suis également inspiré de deux autres architectures proches dans l'idée :</p>
+<ul><li><a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank">The Clean Architecture</a> de Uncle Bob</li>
+<li><a href="http://jeffreypalermo.com/blog/the-onion-architecture-part-1/" target="_blank">The Onion Architecture</a> de Jeffrey Palermo</li>
+</ul><p>Ces deux architectures séparent le code en différentes couches imbriquées. Le nombre de couches dépendra de la complexité de votre application et jusqu'où vous souhaitez pousser le découplage.</p>
+<p>Pour ma part je suis partie sur les quatres couches suivantes qui représentes assez bien les différentes parties d'une application <strong>Symfony</strong> (de la plus profonde à la moins profonde) :</p>
+<ul><li>Domain</li>
+<li>Application</li>
+<li>Infrastructure</li>
+<li>Ui</li>
+</ul><p>L'idée est que chaque couche peut utiliser une couche inférieure mais jamais une couche supérieure, ou en tout cas pas directement.</p>
+<p class="text-center">
+    <img src="/images/posts/2017/clean-architecture.png" alt="Clean architecture" id="clean-architecture"></p>
+<p>Les seules moyens de traverser une couche supérieure sont les <strong>événements</strong>, les <strong>exceptions</strong> et les <strong>adapteurs</strong>.</p>
+<p>Les <strong>événements</strong> et les <strong>exceptions</strong> peuvent être lancés dans une couche inférieure et traités dans une couche supérieure. Quand au design pattern <strong>adapter</strong>, il permet de définir une interface du service dont vous avez besoin mais située dans une couche supérieure. L'adapteur correspondant sera implémenté dans ladite couche et l'injection de dépendances permettra d'assembler le tout en conservant le principe de séparation des couches.</p>
+<p>Cette séparation en couches n'est pas indispensable à l'architecture hexagonale mais offre un cadre strict permettant de bien séparer votre code applicatif de votre infrastructure ainsi que les différentes parties de votre code. Vous pouvez vous contenter de séparer Domain/Application (code métier) de Infrastructure/UI (code technique).</p>
+<h2 id="qu-est-ce-qu-on-met-dedans">Qu'est ce qu'on met dedans ?<a href="#qu-est-ce-qu-on-met-dedans" class="anchor"></a></h2>
+<p>Dans la couche <strong>Domain</strong> je mets le coeur métier de mon code. Sans être exhaustif, cela comprend mes modèles, tout ce qui concerne les règles métiers (pour lesquelles vous pouvez utiliser le <a href="https://github.com/maximecolin/satisfaction" target="_blank">pattern specification</a>), les événéments et exceptions métier.</p>
+<p>Dans la couche <strong>Application</strong> je place tout mon code applicatif. Généralement cela se traduit par des <em>commands</em> et des <em>queries</em> (cf CQRS et CommandBus). Cette couche se situant au-dessus de la couche Domain, je pourrais utiliser tout ce qui s'y trouve. Si j'ai besoin de faire appel à des composants de l'infrastructure tels que la persistance, une API ou une bibliothèque, je créerai des interfaces pour chacun de ces composants.</p>
+<p>La couche <strong>Infrastructure</strong> contient majoritairement toutes les implémentations des adapteurs décrites dans les interfaces des couches inférieures ainsi que tous les services nécessaires pour faire communiquer mon application avec mon infrastructure.</p>
+<p>Enfin la couche <strong>Ui</strong> est une couche un peu particulière. Comme on peut le voir sur le schéma au début de l'article, elle occupe une facette de l'hexagone et n'entoure pas les autres couches. Il s'agit d'une sorte d'adapteur géant qui permet à l'utilisateur de communiquer avec votre application. Elle contient donc tout ce qui touche à l'interface utilisateur comme les contrôleurs, les vues, les formulaires, ...</p>
+<pre class="code-multiline"><code id="2a95f43b9c8c68c1a0099bfda9ef0e9e">src
+|- Application
+|  |- Command
+|  |- Query
+|- Domain
+|  |- Model
+|  |- Specs
+|- Infrastructure
+|  |- Adapter
+|  |- Repository
+|- Ui
+|  |- Action
+|  |- Form</code></pre>
+<h2 id="pourquoi">Pourquoi ?<a href="#pourquoi" class="anchor"></a></h2>
+<p>Généralement lorsque je présente cette architecture on me fait souvent les remarques suivantes : "C'est compliqué !", "Faut écrire beaucoup plus de code !" (cf. les adapteurs), "Ça prend trop de temps !", ...</p>
+<p>Certes cette architecture est plus complexe, implique un peu plus de code et demande un peu plus de réflexion qu'une architecture "classique" mais offre tout de même plusieurs avantages de taille.</p>
+<ol><li>
+<p>Le code (en particulier le code métier) est beaucoup plus facile à tester unitairement. Il s'agit de pur PHP, débarrassé de toute relation à votre framework ou votre architecture. Toutes les dépendances extérieures à votre métier sont des interfaces que vous pouvez facilement mocker ou implémenter pour vos tests. Votre code métier peut être couvert à 100% par les test unitaires.</p>
+</li>
+<li>
+<p>Votre code métier et votre infrastructure étant complétement découplés, vous pouvez aisémenent faire évoluer votre infrastructure (changement de techno, montée de version, ...) sans jamais impacter votre code métier.</p>
+</li>
+<li>
+<p>Vous pouvez décliner simplement l'application — par exemple en version CLI ou API — en conservant votre code metier et en changeant seulement les couches supérieures.</p>
+</li>
+<li>
+<p>Les différentes parties de votre application étant bien découplées, vous pouvez simplement répartir leur développement sur plusieurs équipes.</p>
+</li>
+<li>
+<p>Un code metier plus stable et pérenne.</p>
+</li>
+<li>
+<p>En début de projet, vous pouvez mettre en place une infrastructure simple (persistance en mémoire/fichier, API mockée, ...) afin de vous concentrer sur la valeur ajoutée : les fonctionnalités métier.</p>
+</li>
+</ol><p>Au final, l'investissement de départ est un peu plus grand, quoiqu'avec l'habitude pas tant, mais est largement amorti sur la durée de vie du projet tant les évolutions et la testabilité sont simplifiées.</p>
+<p class="text-center">
+    <img src="/images/posts/2017/good-work-chuck-norris.jpg" alt="Good work" id="good-work"></p>
+<h1 id="et-symfony-dans-tout-a">Et Symfony dans tout ça ?<a href="#et-symfony-dans-tout-a" class="anchor"></a></h1>
+<p>Tout d'abord j'essaie de créer le moins possible de bundles, voire pas du tout. Cette fonctionnalité de Symfony n'est d'aucune utilité pour cette architecture, elle reste néanmoins indispensable sur certaines fonctions selon la version du framework.</p>
+<p>Symfony tend d'ailleurs vers le <em>no bundle</em> dans ses versions les plus récentes (3.3 sortie dernièrement et 4.0 à venir).</p>
+<h2 id="framework-agnostique">Framework agnostique<a href="#framework-agnostique" class="anchor"></a></h2>
+<p>La première règle est de bien <strong>découpler votre code métier de votre framework</strong>, il faut donc bannir les annotations du code que vous placez dans les couches Domain et Application.</p>
+<p>Le mapping Doctrine se retrouvera dans des fichiers <a href="http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/yaml-mapping.html" target="_blank"><code class="code-inline" id="176a3b23c5e392bb5c047d481938bd7b">yml</code></a> ou <a href="http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/xml-mapping.html" target="_blank"><code class="code-inline" id="0f635d0e0f3874fff8b581c132e6c7a7">xml</code></a>. Pour cela, il y a une petite configuration à mettre en place dans votre fichier <code class="code-inline" id="0f1be8eec416e71c28b41efb0544df26">config.yml</code> pour indiquer à Doctrine où se trouvent votre mapping et vos entitées.</p>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="56cd164dccba0b5bbc81ba14e3434614"><span class="token key atrule">doctrine</span><span class="token punctuation">:</span>
+    <span class="token key atrule">orm</span><span class="token punctuation">:</span>
+        <span class="token key atrule">mappings</span><span class="token punctuation">:</span>
+            <span class="token key atrule">entity</span><span class="token punctuation">:</span>
+                <span class="token key atrule">type</span><span class="token punctuation">:</span> yml
+                <span class="token key atrule">prefix</span><span class="token punctuation">:</span> App\Domain\Model
+                <span class="token key atrule">dir</span><span class="token punctuation">:</span> <span class="token string">"%kernel.project_dir%/app/config/doctrine/entity"</span>
+                <span class="token key atrule">alias</span><span class="token punctuation">:</span> App
+                <span class="token key atrule">is_bundle</span><span class="token punctuation">:</span> <span class="token boolean important">false</span></code></pre>
+<p>Vous pouvez indiquer le type <code class="code-inline" id="0f635d0e0f3874fff8b581c132e6c7a7">xml</code> si vous préférez ce format.</p>
+<p>Pour la validation, nous allons également utiliser des fichiers <a href="https://symfony.com/doc/current/validation.html#the-basics-of-validation" target="_blank"><code class="code-inline" id="176a3b23c5e392bb5c047d481938bd7b">yml</code> ou <code class="code-inline" id="0f635d0e0f3874fff8b581c132e6c7a7">xml</code></a>. A partir de la version 3.3, Symfony permet d'indiquer dans sa configuration les répertoires qui contiennent des fichiers de validation :</p>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="2639751f751422917748ebb9bca7a6c7"><span class="token key atrule">framework</span><span class="token punctuation">:</span>
+    <span class="token key atrule">validation</span><span class="token punctuation">:</span>
+        <span class="token key atrule">mapping</span><span class="token punctuation">:</span>
+            <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+                <span class="token punctuation">-</span> <span class="token string">'%kernel.project_dir%/app/config/validation'</span></code></pre>
+<p>mais avant 3.3, il vous faudra les mettre dans un bundle qui prendra place dans <code class="code-inline" id="9677cfa9d711ccdb316fa851e2cf4c70">src/Infrastructure</code></p>
+<pre class="code-multiline"><code id="f5f62e0b4164fdebcd9d706f5c2b4a68">src
+|- Infrastructure
+   |- Bundle
+      |- Resource
+      |  |- config
+      |     |- validation
+      |        |- ObjetA.yml
+      |        |- ObjetB.yml
+      |- InfrastructureBundle.php</code></pre>
+<p>Une fois fait, vous pouvez désactiver le support des annotations de validation dans <code class="code-inline" id="0f1be8eec416e71c28b41efb0544df26">config.yml</code> :</p>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="fa098360a073b3741afc613eedb7c897"><span class="token key atrule">framework</span><span class="token punctuation">:</span>
+    <span class="token key atrule">validation</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token key atrule">enable_annotations</span><span class="token punctuation">:</span> <span class="token boolean important">false</span> <span class="token punctuation">}</span></code></pre>
+<p>Deuxièmement, <strong>vos contrôleurs ne doivent pas contenir de logique metier</strong> qui doit être restreinte à vos seules couches Domain et Application. Vous devez uniquement faire appel à votre code métier. De fait, vos contrôleurs sont censés être relativement concis.</p>
+<p>Troisièmement, faites bien attention à <strong>ne jamais utiliser de code provenant du framework dans votre code métier</strong>. Si vous en avez vraiment besoin, créez une interface dans Domain ou Application puis un adapteur dans l'Infrastructure.</p>
+<p>Enfin, <strong>utilisez l'injection de dépendance</strong> de Symfony pour injecter vos adapteurs dans votre code métier.</p>
+<h1 id="conclusion">Conclusion<a href="#conclusion" class="anchor"></a></h1>
+<p>Pour conclure, je dirai que l'architecture hexagonale n'est pas une fin en soi ni l'architecture ultime. Je la vois davantage comme un cadre permettant de se contraindre à respecter le principe de séparation entre le code métier et code technique.</p>
+<p>Comme tout paradigme, il a ses faiblesses et ses exceptions, mais pour l'utiliser sur tous mes projets depuis quelques années, il m'a beaucoup fait progresser vers une conception propre, solide, testable et maintenable.</p></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

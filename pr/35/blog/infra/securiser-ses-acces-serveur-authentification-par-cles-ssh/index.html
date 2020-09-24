@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/hdd_partition.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/hdd_partition.jpg)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>5 mars 2010</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -225,58 +225,87 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Il n'est pas rare aujourd'hui que les administrateurs système soit amené à manipuler plusieurs dizaine de mots de passe, il existe, bien entendu, diversent façon de les "stocker", comme par exemple le logiciel Keepass, permettant de gérer vos différents mots de passe. Il est cependant encore plus facile d'utiliser une authentification basée sur une clé publique.</p>
+<p>Nous allons donc voir comment utiliser une authentification par clé ssh.
+Cela facilitera l'administration des serveurs mais permettra également de mettre en place certains scripts. Comme par exemple la sauvegarde des données à partir d'un autre serveur</p>
+<h3 id="pr-requis">Pré-requis<a href="#pr-requis" class="anchor"></a></h3>
+<p>Un serveur ssh fonctionnel et bien sur un client ssh, si vous travaillez sous linux ou sous Mac OS pas de problème vous devriez avoir le nécessaire d'installé.</p>
+<p>Si vous ne disposez pas de ssh sur votre machine il suffit de l'installer :</p>
+<pre class="code-multiline"><code id="16f0f9e1aec9420a49afed52eaca77cf">apt-get install openssh-server openssh-client</code></pre>
+<p>Si vous êtes sous Windows, vous pouvez utiliser l'excellent <a title="puTTY" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">puTTY</a> qui est un client SSH ainsi que PuttyGen pour la génération de clés.
+Nous allons partir du principe que notre utilisateur <strong>amartin</strong> souhaite se connecter à notre serveur en utilisant une authentification basée sur un couple clé publique / clé privée.</p>
+<p>Pour mettre en place notre authentification nous allons devoir agir à la fois coté serveur mais également coté client.</p>
+<p>Imaginons que nous souhaitions que notre utilisateur amartin puisse, à partir de sa machine cliente, se connecter sur notre serveur en temps que root.</p>
+<h3 id="cot-client">Coté client<a href="#cot-client" class="anchor"></a></h3>
+<p>Le mécanisme consiste à justifier de l'identité auprès du serveur en se basant sur une paire clés publique / privée. Il faut par contre bien garder en tête que cette clé privée est le seul moyen pour le serveur d'être sûr que la connexion est bien initié par un tiers de confiance, de ce fait il est indispensable de conserver cette clé confidentielle car quiconque est en sa possession est capable de se faire passer pour notre client.
+Il est toutefois possible d'ajouter une protection sur cette clé en la protégeant par une passphrase qu'il sera nécessaire de saisir lorsque l'on souhaitera utiliser notre clé.</p>
+<p>La clé publique, comme son nom l'indique est celle qui est connue par le serveur, et qui permet de d'assurer que notre client est bien celui attendu pour l'utilisateur demandé.</p>
+<p>Pour commencer il va nous falloir générer une paire de clés pour notre utilisateur, il existe deux principaux algorithmes asymétriques de cryptage <a href="http://fr.wikipedia.org/wiki/Digital_Signature_Algorithm" target="_blank">DSA</a> et <a href="http://fr.wikipedia.org/wiki/Rivest_Shamir_Adleman" target="_blank">RSA</a>, vous pouvez utiliser l'un ou l'autre.</p>
+<p>Pour la petite histoire sachez juste que le <strong>Digital Signature Algorithm</strong>, plus connu sous le sigle <strong>DSA</strong>, est un algorithme de signature numérique standardisée par le NSIT aux Etats-Unis, du temps où le RSA était encore breveté.</p>
+<p><strong>Générons notre paire de clé :</strong></p>
+<pre class="code-multiline"><code id="7fff07d0bddb513d174f2029f94a4e60">ssh-keygen -t rsa -C 'Alexandre Martin' -f amartin</code></pre>
+<p>Cette commande crééra une clé publique ET une clé privée, (si l'option "-f" n'est pas spécifiée, par défaut dans le répertoire .ssh de votre compte utilisateur).</p>
+<pre class="code-multiline"><code id="3babbc21be1f5d98042a656a1cf357c3">&gt;Generating public/private rsa key pair.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in amartin.
+Your public key has been saved in amartin.pub.
+The key fingerprint is:
+5c:ae:c4:36:79:fd:f6:4e:64:75:77:92:26:19:3a:ff Alexandre Martin
+The key's randomart image is:
++--[ RSA 2048]----+
+|            .    |
+|           . o . |
+|          + o + =|
+|       o + + o .=|
+|        S o o   o|
+|       o +   o o |
+|        .     E .|
+|             . o |
+|               .o|
++-----------------+</code></pre>
+<p>Vous l’aurez compris le fichier “amartin” est notre clé privée, il faut donc faire très attention à elle et ne pas la perdre.
+Il existe la possibilité de renseigner une passphrase, celle-ci devra être saisie chaque fois que vous voudrez utiliser votre clé, ceci afin d’éviter que n’importe qui ne puisse utiliser votre clé si vous vous la faites voler.</p>
+<p>Modifier la passphrase d’une clé privée SSH</p>
+<p>important Sécuriser ses accès serveur: Authentification par clés SSH  Il est tout à fait possible de modifier la passphrase d’une clé privée, pour se faire il suffit de saisir la commande</p>
+<pre class="code-multiline"><code id="6742289c92aa1d65fb1574419e64c73a">ssh-keygen -p -f amartin
+Enter old passphrase:
+Key has comment 'amartin'
+Enter new passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved with the new passphrase.</code></pre>
+<h3 id="cot-serveur">Coté serveur<a href="#cot-serveur" class="anchor"></a></h3>
+<p>Une fois cette paire de clés générée, il faut déposer notre clé publique sur le serveur sur lequel nous souhaitons pouvoir nous authentifier.
+Pour se faire nous récupérons notre clé publique amartin.pub (par défaut id_dsa.pub) et nous l’a déposons sur le serveur.</p>
+<p>Une fois cela fait il faut ajouter son contenu au fichier contenant les clés autorisées à se connecter à notre serveur pour l’utilisateur voulu.</p>
+<p>Nous allons maintenant autoriser les connexions au serveur pour notre machine cliente. Dans notre cas nous souhaitions pouvoir nous connecter en tant que root avec notre clé amartin, nous allons donc ajouter le contenu de notre clé publique dans le fichier authorized_keys2 (pour un Debian ou une Ubuntu, authorized_keys pour les autres).</p>
+<p>Nous ajoutons donc la clé au fichier /root/.ssh/authorized_keys2:</p>
+<pre class="code-multiline"><code id="eadfdf431d1bb65dcde37c242f2898b9">cat /path/to/amartin.pub &gt;&gt; authorized_keys2</code></pre>
+<p>important Sécuriser ses accès serveur: Authentification par clés SSH  Il n’est pas rare, et c’est une bonne chose que la configuration des serveurs SSH implique d’avoir certains droits correctement appliqués sur le répertoire .ssh et sur le fichier authorized_keys (StrictModes activé).
+Pour éviter tout problème nous allons donc restreindre l’accès à ces différents fichiers:</p>
+<pre class="code-multiline"><code id="a71f84def6e9302fdb739af391a3a007">chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys</code></pre>
+<h3 id="connexion">Connexion<a href="#connexion" class="anchor"></a></h3>
+<p>Nous pouvons à présent directement nous connecter au serveur avec notre clé en utilisant la commande suivante:</p>
+<pre class="code-multiline"><code id="65f2b13026ea30c941685bfaf47a8010">ssh -i ~/.ssh/amartin root@serveur.tld</code></pre>
+<p>L’option “-i” indiquant vous l’aurez compris la clé privée à utiliser pour initier la transaction avec le serveur.</p></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">

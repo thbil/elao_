@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/pr/35/build/style.901626b4.css">
+                    <link rel="stylesheet" href="/elao_/pr/35/build/style.fb054f40.css">
             </head>
     <body>
         <header class="header">
@@ -169,7 +169,7 @@
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: url(/elao_/pr/35/images/posts/thumbnails/vagrant.png)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/35/images/posts/thumbnails/vagrant.png)"></div>
 
     <div class="article-info">
       <!-- todo : this is if the article has a single author -->
@@ -202,7 +202,7 @@
       </div>
       <div class="article-info__date">
         <span>Publication <strong>23 avril 2017</strong></span>
-        <span>Modification <strong>22 septembre 2020</strong></span>
+        <span>Modification <strong>24 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -225,58 +225,83 @@
       <a href="#intro">Introduction</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#context">Contexte</a>
+      <a href="#quas">Quas odio atque</a>
     </li>
     <li class="table-of-content__item">
-      <a href="#">Intégrer la police au build React Native</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#">Temporibus eveniet est ut dolore</a>
+      <a href="voluptatem">Voluptatem et amet atque</a>
     </li>
   </ul>
 
-  
   <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Vagrant est un outil qui simplifie la création et la gestion d’environnements virtualisés.
+Si par le passé on avait recours à des plateformes comme LAMP/MAMP/XAMP pour gérer son environnement de développement, <!-- more --> cela posait souvent problème car les versions des dépendances logicielles pouvaient varier une fois l’application déployée sur un environnement externe, notamment en production. On se retrouvait alors à perdre un temps considérable pour corriger des bugs en production qui n’étaient pas reproductibles en développement, et inversement.</p>
+<p>Vagrant permet de travailler dans un environnement reproductible avec les mêmes versions pour toutes vos dépendances. Parce qu’il utilise le principe de virtualisation, il est donc compatible avec la majorité des OS actuels. Ainsi, un développeur travaillant sous Mac aura accès au même environnement qu'un développeur sous Windows ou Linux tout en conservant son IDE favori.</p>
+<h1 id="comment-a-fonctionne">Comment ça fonctionne ?<a href="#comment-a-fonctionne" class="anchor"></a></h1>
+<p>Vagrant est en réalité une surcouche autour de solutions de virtualisation comme Virtualbox ou VMware. Il exécute une série d'instructions spécifiées dans un fichier de configuration (le Vagrantfile) pour créer et configurer une ou plusieurs machines virtuelles.</p>
+<blockquote>
+<p>A noter que Vagrant n’est pas un outil de provisioning, il ne chargera pas directement vos dépendances logicielles dans la VM. La solution de base consiste à lui fournir un script shell contenant les instructions nécessaires au provisionnement. Par la suite, il sera intéressant de l'associer à une solution comme Ansible, Puppet ou Chef qui se chargera d'automatiser ce processus. Voir l'article <a href="/fr/infra/introduction-au-provisioning/">introduction au provisioning</a></p>
+</blockquote>
+<h1 id="les-concepts-sur-lesquels-repose">Les concepts sur lesquels repose Vagrant<a href="#les-concepts-sur-lesquels-repose" class="anchor"></a></h1>
+<p><strong>Le Vagrantfile</strong></p>
+<p>Le fichier de configuration principal de Vagrant. Ecrit en ruby, il sert à définir le dossier racine du projet qui sera utilisé par les options de configuration de Vagrant. C'est ausssi dans ce fichier que l'on définira le type de machine (la box) souhaité, la configuration réseau, le provider, la méthode de provisionnement ainsi que d'éventuels plugins.</p>
+<p><strong>Les boxes</strong></p>
+<p>Vagrant utilise des boites prêtes à l’emploi pour accélérer la construction de son environnement virtuel. Le principe est similaire aux images sous <a href="https://www.docker.com/" target="_blank">Docker</a>. Une vagrant box peut contenir une simple installation d'Ubuntu, mais elle peut aussi embarquer d'autres applications pré-installées. Si vous utilisez régulièrement les mêmes briques applicatives pour vos projets, il peut être intéressant de les compiler dans une box que vous pourrez réutiliser par la suite.</p>
+<p>Vous trouverez une liste de boxs sur <a href="https://atlas.hashicorp.com/boxes/search" target="_blank">Atlas</a> le catalogue de boxs officiel de Vagrant. A titre d'exemple, voici <a href="https://atlas.hashicorp.com/manala/boxes/app-dev-debian" target="_blank">la box standard</a> que nous utilisons chez Elao pour initier nos projets.</p>
+<p><strong>Le Provider</strong></p>
+<p>Comme vu plus haut, Vagrant ne virtualise pas directement les environnements mais fait appel à un provider pour accomplir cette tache.
+Vagrant utilise <a href="https://www.virtualbox.org/" target="_blank">Virtualbox</a> par défaut, mais rien n’empêche d’en utiliser un autre comme VMWare, AWS ou Hyper V.</p>
+<h1 id="en-pratique">En pratique<a href="#en-pratique" class="anchor"></a></h1>
+<p>Nous allons maintenant installer une VM contenant une version minimale d'Ubuntu et la provisionner avec nginx à l'aide d'un script bash. Après avoir installé Vagrant sur votre machine, créez un nouveau dossier que nous appellerons <code class="code-inline" id="b6c2a257bfab6380ca9b3cb94b12cb25">demo/</code>. Créez ensuite un nouveau fichier Vagrantfile avec le contenu suivant.</p>
+<pre class="code-multiline"><code id="8e3f694d53df44b4765c9a380eb28542">Vagrant.configure("2") do |config|
+
+  # Vm
+  config.vm.box = "hashicorp/precise32"
+  config.vm.synced_folder ".", "/vagrant"
+
+  # Provision
+  config.vm.provision :shell, path: "bootstrap.sh"
+
+  # Network
+  config.vm.network "forwarded_port", guest: 80, host: 8080, id: "nginx"
+
+end</code></pre>
+<p>On peut voir que la box utilisée est <strong>hashicorp/precise32</strong> et que le dossier partagé (sur la VM) avec la racine du projet (sur votre machine locale) se nomme <strong>vagrant</strong>. La ligne suivante spécifie la méthode de provisionnement (un script shell). La dernière ligne de configuration sert à forwarder le port 80 de la VM vers le port 8080 de votre machine locale, ce qui permettra d'avoir accès au serveur nginx depuis votre navigateur.</p>
+<p>Notre script <strong>bootstrap.sh</strong> contiendra les lignes suivantes:</p>
+<pre class="code-multiline"><code id="fed1e788d04d7dc96a63c00d6e53a5f5">sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo service nginx start</code></pre>
+<p>Il est temps de lancer cette commande dans votre terminal et laisser la magie opérer. Lors de cette phase,
+Vagrant va installer votre VM, la provisionner à l'aide du script et configurer le port forwarding.</p>
+<pre class="code-multiline"><code id="34e05760adec124bdbf614a6c496e863">vagrant up</code></pre>
+<p>Si tout s'est bien passé, nous pouvons maintenant nous connecter en ssh sur notre VM</p>
+<pre class="code-multiline"><code id="198135fc83653d13345f16358ba83b5d">vagrant ssh</code></pre>
+<p>et ainsi voir le prompt suivant.</p>
+<pre class="code-multiline"><code id="0ca64d74ec544357b0936c176bd902c9">Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+New release '14.04.5 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Welcome to your Vagrant-built virtual machine.
+Last login: Wed Apr 19 08:52:49 2017 from 10.0.2.2
+vagrant@precise32:~$</code></pre>
+<p>Pour terminer, entrez l'addresse <em><a href="http://localhost:8080/" target="_blank">http://localhost:8080/</a></em> dans votre navigateur, vous devriez voir la page d'accueil de nginx, indiquant que vous avez bien accès au serveur web de votre VM.</p>
+<h1 id="conclusion">Conclusion<a href="#conclusion" class="anchor"></a></h1>
+<p>En résumé, Vagrant est une solution fiable pour instancier rapidement un environnement de développement et le partager entre développeurs. L'exemple que nous avons vu reste simple, mais il est possible de faire bien des choses avec Vagrant, comme du provisioning à l'aide d'<strong>Ansible</strong> (ce que nous utilisons chez Elao) ou de la configuration réseau plus poussée en passant par un réseau privé et un serveur DNS comme <strong>landrush</strong>.</p>
+<p>Si les sujets de l'automatisastion et de la virtualisation vous intéressent, je vous invite à aller faire un tour sur le projet <a href="http://www.manala.io/" target="_blank">Manala</a>, la boite à outils pour Ansible maintenue par Elao.</p>
+<p>N'hésitez pas à poster vos questions ou remarques dans la section commentaires.</p>
+<p>sources:
+<a href="https://www.vagrantup.com/docs/" target="_blank">https://www.vagrantup.com/docs/</a>
+<a href="http://blog.scottlowe.org/2014/09/12/a-quick-introduction-to-vagrant/" target="_blank">http://blog.scottlowe.org/2014/09/12/a-quick-introduction-to-vagrant/</a></p></body>
+    </main>
     <aside class="article-content__aside">
       <button class="kudo">
-        <span class="kudo__button"></span>
+        <span class="kudo__button" aria-hidden="true"></span>
         <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label">Kudos</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
       </button>
     </aside>
-    <main>
-      <h2 id="intro" class="anchor-title">
-        <a href="#intro">Introduction</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-      <blockquote>
-        Il y a seulement 2 problèmes compliqués en informatique : nommer les choses et l'invalidation du cache
-        <cite>- Phil Karlton</cite>
-      </blockquote>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552071379-041b32707fed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="vivamus bibendum">
-        <figcaption>
-          <span class="figure__legend">Légende vivamus bibendum</span>
-          <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@veverkolog?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dušan Smetana</a></span>
-        </figcaption>
-      </figure>
-      <h2 id="context" class="anchor-title">
-        <a href="#context">Contexte</a>
-      </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam beatae, delectus. Possimus, delectus. Est fugiat placeat quas odio atque molestiae perspiciatis delectus, sit cupiditate dignissimos autem alias error quod. Corporis!</p>
-      <ul>
-        <li>Est fugiat placeat quas odio atque molestiae quasi placeat voluptatem et amet atque laudantium ratione ab quas eum voluptates quisquam</li>
-        <li>Doloribus perferendis itaque</li>
-        <li>Totam beatae</li>
-        <li>Omnis quia sit repellendus repellat</li>
-      </ul>
-      <blockquote>
-        Les images sont exploitées par de nombreux chercheurs et médecins dans le cadre de la recherche médicale et de sa progression. L’application orientée « gaming » est attractive, ludique et ergonomique.
-        <cite>Maxime Colin</cite>
-      </blockquote>
-      <p>Quaerat, ipsa <a href="#">exercitationem</a> pariatur quia libero quo non aut ducimus voluptatum! Dolores nesciunt tenetur labore, quasi? Doloribus perferendis itaque, nemo. Tempora, ab! Nam quasi placeat voluptatem, et amet, atque laudantium ratione, ab quas, eum voluptates quisquam. Nisi quibusdam aliquam, omnis quia sit repellendus repellat.</p>
-    </main>
   </div>
 
   <div class="article-footer">
