@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
+                    <link rel="stylesheet" href="/elao_/build/style.b6a8c134.css">
             </head>
     <body>
         <header class="header">
@@ -91,8 +91,7 @@
                     </nav>
                 
                                     <!-- Mobile nav -->
-                    <nav class="nav-mobile">
-                        <div class="nav-mobile__header">
+                    <nav class="nav-mobile">                        <div class="nav-mobile__header">
                             <a href="/elao_/">
                                                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 300 100" class="logo logo--animated">
                                 <path d="M61.6,61.6H19.7C21,69,24.8,72.2,32.6,72.2c5.9,0,8.8-1.9,11.7-7.8l16.1,6.9C56.2,82,46.9,87.8,32.1,87.8
@@ -114,37 +113,37 @@
                             </button>
                         </div>
                         <ul>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-services">
                                                                                 <span>Nos services</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
                                                                                 <span>Notre méthodologie</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
                                                                                 <span>Nos études de cas</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-valeurs">
                                                                                 <span>Nos valeurs</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/la-tribu/">
                                                                                 <span>La tribu</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/blog/">
                                                                                 <span>Blog</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item nav-mobile__item--large">
                                     <a href="/elao_/contact">
                                                                                     <i class="icon icon--contact" aria-hidden="true"></i>
                                                                                 <span>Contact</span>
@@ -160,28 +159,85 @@
         </header>
         <div class="container">
         <main>
-              <img src="/elao_/images/posts/thumbnails/mail_bottle.jpeg" />
+              <ul class="breadcrumb">
+    <li class="breadcrumb__item">
+      <a href="#">Blog</a>
+    </li>
+    <li class="breadcrumb__item">
+      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+    </li>
+  </ul>
 
-  <div>
-    <img src="/elao_/images/authors/gfaivre.jpg" />
-    <p>Écrit par Guewen FAIVRE<p>
-    <p>Publication 5 décembre 2009<p>
-    <p>Modification 22 septembre 2020<p>
-  </div>
+  <div class="article-banner">
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/mail_bottle.jpeg)"></div>
 
-  <div>
-          <a href="/elao_/blog/tag/Linux">#Linux</a>
-          <a href="/elao_/blog/tag/Tips">#Tips</a>
-          <a href="/elao_/blog/tag/SPF">#SPF</a>
+    <div class="article-info">
+      <!-- todo : this is if the article has a single author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/gfaivre.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>Guewen FAIVRE</strong></span>
       </div>
+      <!-- todo : this is if the article has multiple authors -->
+      <div class="article-author article-author--multi">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/gfaivre.jpg" />
+          <img src="/elao_/images/authors/gfaivre.jpg" />
+          <img src="/elao_/images/authors/gfaivre.jpg" />
+        </div>
+        <span class="article-author__info">
+          Écrit par
+          <strong>Anne-Laure DE BOISSIEU</strong>
+          <strong>Guewen FAIVRE</strong>
+          <strong>Guewen FAIVRE</strong>
+        </span>
+      </div>
+      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/gfaivre.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
+      </div>
+      <div class="article-info__date">
+        <span>Publication <strong>5 décembre 2009</strong></span>
+        <span>Modification <strong>25 septembre 2020</strong></span>
+      </div>
+    </div>
 
-  <div>
-    <h1>Syntaxe des enregistrements SPF (Sender Privacy Framework)</h1>
-    <p>Syntaxe des enregistrements SPF, cas d&#039;utilisation et options de configuration.</p>
+    <div class="article-header">
+      <h1>Syntaxe des enregistrements SPF (Sender Privacy Framework)</h1>
+      <p>Syntaxe des enregistrements SPF, cas d&#039;utilisation et options de configuration.</p>
+      <ul class="article-tag-list">
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/Linux">#Linux</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/Tips">#Tips</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/SPF">#SPF</a>
+          </li>
+              </ul>
+    </div>
   </div>
 
-  <div>
-    <body><p>Dans cet article je vais tenté d'expliquer comment fonctionne actuellement le SPF pour nos emails, mais également de détailler au maximum les différentes options que fournit le framework afin de créer nos propres enregistrements. L'ensemble de ces options peuvent être retrouvées sur le site officiel (anglais): <a href="http://www.openspf.org/SPF_Record_Syntax" title="OpenSPF" target="_blank">OpenSPF.org</a></p>
+  <ul class="table-of-content">
+    <li class="table-of-content__item">
+      <a href="#intro">Introduction</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="#quas">Quas odio atque</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="voluptatem">Voluptatem et amet atque</a>
+    </li>
+  </ul>
+
+  <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Dans cet article je vais tenté d'expliquer comment fonctionne actuellement le SPF pour nos emails, mais également de détailler au maximum les différentes options que fournit le framework afin de créer nos propres enregistrements. L'ensemble de ces options peuvent être retrouvées sur le site officiel (anglais): <a href="http://www.openspf.org/SPF_Record_Syntax" title="OpenSPF" target="_blank">OpenSPF.org</a></p>
 <p>Le SPF est une spécification publiée le 28 Avril 2006, pour la RFC c'est <a href="http://www.openspf.org/RFC_4408" title="RFC_4408" target="_blank">ici</a></p>
 <p>Ce qui suit est une traduction du manuel officiel que l'on peut trouver sur le site ci-dessus: Les noms de domaines définissent 0 ou plusieurs mécanismes. Ces mécanismes peuvent être utilisés pour décrire le paramétrage des hôtes désignés comme serveurs de mail sortant, c'est à dire autorisés à envoyer des emails pour le domaine concerné.</p>
 <p><a href="http://www.openspf.org/SPF_Record_Syntax#all" target="_blank">all</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#ip4" target="_blank">ip4</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#ip6" target="_blank">ip6</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#a" target="_blank">a</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#mx" target="_blank">mx</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#ptr" target="_blank">ptr</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#exists" target="_blank">exists</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#include" target="_blank">include</a></p>
@@ -285,20 +341,82 @@ mx:/</code></pre>
 <p>Peut être qu'un domaine a envoyé un mail via ce serveur MX ainsi qu'avec un autre ensemble de serveur dont le rôle est de retenter l'envoi pour les domaines dont la distribution a été différée.</p>
 <pre class="code-multiline"><code id="258d5425e74e92a3f27925a9c4bfc73c">"v=spf1 mx/24 mx:offsite.domain.com/24 -all"</code></pre>
 <p>Peut être qu'un serveur MX de domaine à reçu un mail sur une adresse IP, mais a envoyé le mail sur une adresse IP différente mais proche.</p></body>
+    </main>
+    <aside class="article-content__aside">
+      <button class="kudo">
+        <span class="kudo__button" aria-hidden="true"></span>
+        <span class="screen-reader">Cet article m’a été utile</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
+      </button>
+    </aside>
   </div>
 
-  <div>
-    <img src="/elao_/images/authors/gfaivre.jpg" />
-
-    <p>Écrit par Guewen FAIVRE<p>
-
-          <a href=guewen_faivre>Twitter</a>
-              <a href=gfaivre>Github</a>
-              <a href=http://www.elao.com>Website</a>
+  <div class="article-footer">
+    <!-- If the article has one single author -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/gfaivre.jpg" />
       </div>
+      <span class="article-author__info">Écrit par<strong>Guewen FAIVRE</strong></span>
+      <div class="article-author__social">
+                  <a href=guewen_faivre class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
+          </a>
+                          <a href=gfaivre class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
+          </a>
+                          <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
+          </a>
+              </div>
+    </div>
+    <!-- If the article has mutltiple authors -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/gfaivre.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Guewen FAIVRE</strong></span>
+      <div class="article-author__social">
+                  <a href=guewen_faivre class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
+          </a>
+                          <a href=gfaivre class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
+          </a>
+                          <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
+          </a>
+              </div>
+    </div>
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/gfaivre.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Guewen FAIVRE</strong></span>
+      <div class="article-author__social">
+                  <a href=guewen_faivre class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
+          </a>
+                          <a href=gfaivre class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
+          </a>
+                          <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
+          </a>
+              </div>
+    </div>
+  </div>
 
-  <h4>Ces articles pourraient vous intéresser:</h4>
-
+  
         </main>
                     <footer class="footer">
                 <section class="footer__links">

@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
+                    <link rel="stylesheet" href="/elao_/build/style.b6a8c134.css">
             </head>
     <body>
         <header class="header">
@@ -91,8 +91,7 @@
                     </nav>
                 
                                     <!-- Mobile nav -->
-                    <nav class="nav-mobile">
-                        <div class="nav-mobile__header">
+                    <nav class="nav-mobile">                        <div class="nav-mobile__header">
                             <a href="/elao_/">
                                                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 300 100" class="logo logo--animated">
                                 <path d="M61.6,61.6H19.7C21,69,24.8,72.2,32.6,72.2c5.9,0,8.8-1.9,11.7-7.8l16.1,6.9C56.2,82,46.9,87.8,32.1,87.8
@@ -114,37 +113,37 @@
                             </button>
                         </div>
                         <ul>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-services">
                                                                                 <span>Nos services</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
                                                                                 <span>Notre méthodologie</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
                                                                                 <span>Nos études de cas</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-valeurs">
                                                                                 <span>Nos valeurs</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/la-tribu/">
                                                                                 <span>La tribu</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/blog/">
                                                                                 <span>Blog</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item nav-mobile__item--large">
                                     <a href="/elao_/contact">
                                                                                     <i class="icon icon--contact" aria-hidden="true"></i>
                                                                                 <span>Contact</span>
@@ -160,28 +159,85 @@
         </header>
         <div class="container">
         <main>
-              <img src="/elao_/images/posts/thumbnails/arrows-square.jpg" />
+              <ul class="breadcrumb">
+    <li class="breadcrumb__item">
+      <a href="#">Blog</a>
+    </li>
+    <li class="breadcrumb__item">
+      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+    </li>
+  </ul>
 
-  <div>
-    <img src="/elao_/images/authors/aldeboissieu.jpg" />
-    <p>Écrit par Anne-Laure de Boissieu<p>
-    <p>Publication 22 septembre 2020<p>
-    <p>Modification 22 septembre 2020<p>
-  </div>
+  <div class="article-banner">
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/arrows-square.jpg)"></div>
 
-  <div>
-          <a href="/elao_/blog/tag/Seo">#Seo</a>
-          <a href="/elao_/blog/tag/microdata">#microdata</a>
-          <a href="/elao_/blog/tag/rich%20snippets">#rich snippets</a>
+    <div class="article-info">
+      <!-- todo : this is if the article has a single author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/aldeboissieu.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>Anne-Laure de Boissieu</strong></span>
       </div>
+      <!-- todo : this is if the article has multiple authors -->
+      <div class="article-author article-author--multi">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/aldeboissieu.jpg" />
+          <img src="/elao_/images/authors/aldeboissieu.jpg" />
+          <img src="/elao_/images/authors/aldeboissieu.jpg" />
+        </div>
+        <span class="article-author__info">
+          Écrit par
+          <strong>Anne-Laure DE BOISSIEU</strong>
+          <strong>Anne-Laure de Boissieu</strong>
+          <strong>Anne-Laure de Boissieu</strong>
+        </span>
+      </div>
+      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/aldeboissieu.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
+      </div>
+      <div class="article-info__date">
+        <span>Publication <strong>25 septembre 2020</strong></span>
+        <span>Modification <strong>25 septembre 2020</strong></span>
+      </div>
+    </div>
 
-  <div>
-    <h1>Mettez en valeur vos offres d&#039;emploi grâce aux données structurées</h1>
-    <p>Et si vous rendiez vos offres d&#039;emploi plus visibles dans les pages de résultats des moteurs de recherche grâce aux données structurées ? </p>
+    <div class="article-header">
+      <h1>Mettez en valeur vos offres d&#039;emploi grâce aux données structurées</h1>
+      <p>Et si vous rendiez vos offres d&#039;emploi plus visibles dans les pages de résultats des moteurs de recherche grâce aux données structurées ? </p>
+      <ul class="article-tag-list">
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/Seo">#Seo</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/microdata">#microdata</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/rich%20snippets">#rich snippets</a>
+          </li>
+              </ul>
+    </div>
   </div>
 
-  <div>
-    <body><p>Certaines informations extraites d'une page web sont <strong>directement affichées dans la page de résultats du moteur de recherche Google</strong>, permettant ainsi au géant du web d'<em>enrichir</em> ses résultats de recherche. Ces contenus supplémentaires sont appellés des extraits enrichis (ou rich snippets). Ils peuvent concerner de nombreuses thématiques : produits, recettes de cuisine, spectacles ou encore … des offres d'emploi !</p>
+  <ul class="table-of-content">
+    <li class="table-of-content__item">
+      <a href="#intro">Introduction</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="#quas">Quas odio atque</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="voluptatem">Voluptatem et amet atque</a>
+    </li>
+  </ul>
+
+  <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Certaines informations extraites d'une page web sont <strong>directement affichées dans la page de résultats du moteur de recherche Google</strong>, permettant ainsi au géant du web d'<em>enrichir</em> ses résultats de recherche. Ces contenus supplémentaires sont appellés des extraits enrichis (ou rich snippets). Ils peuvent concerner de nombreuses thématiques : produits, recettes de cuisine, spectacles ou encore … des offres d'emploi !</p>
 <p>C'est justement pour répondre à ce besoin que nous avons mis en place ce fameux protocole sur les pages d'un de nos clients. Nous vous proposons de partager avec vous ce que nous avons appris 🌟🤓.</p>
 <h2 id="rich-snippets-mais-qu-est-ce-q">Rich snippets : mais qu'est-ce que c'est ?<a href="#rich-snippets-mais-qu-est-ce-q" class="anchor"></a></h2>
 <p>Les internautes sont habitués à voir selon la thématique, pour un résultat proposé en plus de la meta description, un prix, une note sous forme d'étoile, une date de publication de l'article, ou encore un temps de cuisson s'il s'agit d'une recette de cuisine.</p>
@@ -266,20 +322,82 @@ Deux intérêts :</p>
 Dans ce cas particulier, il n'est pas forcément nécessaire d'implémenter des données structurées dans votre HTML même si de nombreux types existent, seul l'adéquation entre une balise de titre (H1, H2...) et un contenu disposé dans une liste à puce semble suffire.</p>
 <p>Voici un exemple pour une question saisie par l'internaute dans un encart spécial, dont le html ne comporte qu'une liste, et non une structure de type <a href="https://developers.google.com/search/docs/data-types/how-to?hl=fr" target="_blank">"How To"</a>) :</p>
 <img src="/images/posts/2019/microdata-offers/tuer-son-sim.png" alt="Exemple de position zéro" title="Exemple de position zéro" id="exemple-de-position-z-ro"></body>
+    </main>
+    <aside class="article-content__aside">
+      <button class="kudo">
+        <span class="kudo__button" aria-hidden="true"></span>
+        <span class="screen-reader">Cet article m’a été utile</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
+      </button>
+    </aside>
   </div>
 
-  <div>
-    <img src="/elao_/images/authors/aldeboissieu.jpg" />
-
-    <p>Écrit par Anne-Laure de Boissieu<p>
-
-          <a href=AnneLaure2B>Twitter</a>
-              <a href=al2b>Github</a>
-              <a href=http://www.elao.com>Website</a>
+  <div class="article-footer">
+    <!-- If the article has one single author -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/aldeboissieu.jpg" />
       </div>
+      <span class="article-author__info">Écrit par<strong>Anne-Laure de Boissieu</strong></span>
+      <div class="article-author__social">
+                  <a href=AnneLaure2B class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Anne-Laure de Boissieu</span>
+          </a>
+                          <a href=al2b class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Anne-Laure de Boissieu</span>
+          </a>
+                          <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Anne-Laure de Boissieu</span>
+          </a>
+              </div>
+    </div>
+    <!-- If the article has mutltiple authors -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/aldeboissieu.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Anne-Laure de Boissieu</strong></span>
+      <div class="article-author__social">
+                  <a href=AnneLaure2B class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Anne-Laure de Boissieu</span>
+          </a>
+                          <a href=al2b class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Anne-Laure de Boissieu</span>
+          </a>
+                          <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Anne-Laure de Boissieu</span>
+          </a>
+              </div>
+    </div>
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/aldeboissieu.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Anne-Laure de Boissieu</strong></span>
+      <div class="article-author__social">
+                  <a href=AnneLaure2B class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Anne-Laure de Boissieu</span>
+          </a>
+                          <a href=al2b class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Anne-Laure de Boissieu</span>
+          </a>
+                          <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Anne-Laure de Boissieu</span>
+          </a>
+              </div>
+    </div>
+  </div>
 
-  <h4>Ces articles pourraient vous intéresser:</h4>
-
+  
         </main>
                     <footer class="footer">
                 <section class="footer__links">

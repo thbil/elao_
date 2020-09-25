@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
+                    <link rel="stylesheet" href="/elao_/build/style.b6a8c134.css">
             </head>
     <body>
         <header class="header">
@@ -91,8 +91,7 @@
                     </nav>
                 
                                     <!-- Mobile nav -->
-                    <nav class="nav-mobile">
-                        <div class="nav-mobile__header">
+                    <nav class="nav-mobile">                        <div class="nav-mobile__header">
                             <a href="/elao_/">
                                                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 300 100" class="logo logo--animated">
                                 <path d="M61.6,61.6H19.7C21,69,24.8,72.2,32.6,72.2c5.9,0,8.8-1.9,11.7-7.8l16.1,6.9C56.2,82,46.9,87.8,32.1,87.8
@@ -114,37 +113,37 @@
                             </button>
                         </div>
                         <ul>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-services">
                                                                                 <span>Nos services</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
                                                                                 <span>Notre méthodologie</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
                                                                                 <span>Nos études de cas</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-valeurs">
                                                                                 <span>Nos valeurs</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/la-tribu/">
                                                                                 <span>La tribu</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/blog/">
                                                                                 <span>Blog</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item nav-mobile__item--large">
                                     <a href="/elao_/contact">
                                                                                     <i class="icon icon--contact" aria-hidden="true"></i>
                                                                                 <span>Contact</span>
@@ -160,27 +159,82 @@
         </header>
         <div class="container">
         <main>
-              <img src="/elao_/images/posts/thumbnails/halloween-2019.jpg" />
+              <ul class="breadcrumb">
+    <li class="breadcrumb__item">
+      <a href="#">Blog</a>
+    </li>
+    <li class="breadcrumb__item">
+      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+    </li>
+  </ul>
 
-  <div>
-    <img src="/elao_/images/authors/default.png" />
-    <p>Écrit par La team Elao<p>
-    <p>Publication 31 octobre 2019<p>
-    <p>Modification 22 septembre 2020<p>
-  </div>
+  <div class="article-banner">
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/halloween-2019.jpg)"></div>
 
-  <div>
-          <a href="/elao_/blog/tag/Halloween">#Halloween</a>
-          <a href="/elao_/blog/tag/cinema">#cinema</a>
+    <div class="article-info">
+      <!-- todo : this is if the article has a single author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/default.png" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>La team Elao</strong></span>
       </div>
+      <!-- todo : this is if the article has multiple authors -->
+      <div class="article-author article-author--multi">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/default.png" />
+          <img src="/elao_/images/authors/default.png" />
+          <img src="/elao_/images/authors/default.png" />
+        </div>
+        <span class="article-author__info">
+          Écrit par
+          <strong>Anne-Laure DE BOISSIEU</strong>
+          <strong>La team Elao</strong>
+          <strong>La team Elao</strong>
+        </span>
+      </div>
+      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/default.png" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
+      </div>
+      <div class="article-info__date">
+        <span>Publication <strong>31 octobre 2019</strong></span>
+        <span>Modification <strong>25 septembre 2020</strong></span>
+      </div>
+    </div>
 
-  <div>
-    <h1>🎃 Films d&#039;Halloween : la sélection de l&#039;équipe 🍿</h1>
-    <p>Quelques idées pour rendre votre soirée d&#039;Halloween un peu plus effrayante ou étrange ... 👻</p>
+    <div class="article-header">
+      <h1>🎃 Films d&#039;Halloween : la sélection de l&#039;équipe 🍿</h1>
+      <p>Quelques idées pour rendre votre soirée d&#039;Halloween un peu plus effrayante ou étrange ... 👻</p>
+      <ul class="article-tag-list">
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/Halloween">#Halloween</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/cinema">#cinema</a>
+          </li>
+              </ul>
+    </div>
   </div>
 
-  <div>
-    <body><p>Chez Elao, nous aimons deux choses : le cinéma et Halloween. Bien entendu, nous ne pouvions pas passer à côté de l'occasion de vous faire profiter de nos listes de films préférés à regarder le soir d'Halloween. 🦇</p>
+  <ul class="table-of-content">
+    <li class="table-of-content__item">
+      <a href="#intro">Introduction</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="#quas">Quas odio atque</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="voluptatem">Voluptatem et amet atque</a>
+    </li>
+  </ul>
+
+  <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Chez Elao, nous aimons deux choses : le cinéma et Halloween. Bien entendu, nous ne pouvions pas passer à côté de l'occasion de vous faire profiter de nos listes de films préférés à regarder le soir d'Halloween. 🦇</p>
 <!--more-->
 <h2 id="anne-laure">Anne-Laure<a href="#anne-laure" class="anchor"></a></h2>
 <img src="/elao_/images/posts/2019/halloween/anne-laure.jpg" alt="" title="" id="anne-laure-jpg"><h3 id="films-qui-font-plus-ou-moins-peu">Films qui font plus ou moins peur :<a href="#films-qui-font-plus-ou-moins-peu" class="anchor"></a></h3>
@@ -274,20 +328,82 @@ En voici une petite sélection:</p>
 <li><strong>Rosemary's Baby</strong>, Roman Polanski (1968) ou l'adaptation en "série" (2 épisodes) de Agnieszka Holland (2014): inspiré du roman éponyme d'Ira Levin. Bien que dispensable, la série peut être une bonne occasion de découvrir l'oeuvre et saura mettre en place une ambiance pesante.</li>
 </ul><p>Alors bons films, et happy Halloween ! 🎃🦇👻</p>
 <hr><p>Photo by <a style='background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px' href="https://unsplash.com/@jeremyyappy?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Jeremy Yap"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewbox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Jeremy Yap</span></a></p></body>
+    </main>
+    <aside class="article-content__aside">
+      <button class="kudo">
+        <span class="kudo__button" aria-hidden="true"></span>
+        <span class="screen-reader">Cet article m’a été utile</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
+      </button>
+    </aside>
   </div>
 
-  <div>
-    <img src="/elao_/images/authors/default.png" />
-
-    <p>Écrit par La team Elao<p>
-
-          <a href=Elao>Twitter</a>
-              <a href=Elao>Github</a>
-              <a href=http://www.elao.com>Website</a>
+  <div class="article-footer">
+    <!-- If the article has one single author -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/default.png" />
       </div>
+      <span class="article-author__info">Écrit par<strong>La team Elao</strong></span>
+      <div class="article-author__social">
+                  <a href=Elao class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de La team Elao</span>
+          </a>
+                          <a href=Elao class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de La team Elao</span>
+          </a>
+                          <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de La team Elao</span>
+          </a>
+              </div>
+    </div>
+    <!-- If the article has mutltiple authors -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/default.png" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>La team Elao</strong></span>
+      <div class="article-author__social">
+                  <a href=Elao class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de La team Elao</span>
+          </a>
+                          <a href=Elao class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de La team Elao</span>
+          </a>
+                          <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de La team Elao</span>
+          </a>
+              </div>
+    </div>
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/default.png" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>La team Elao</strong></span>
+      <div class="article-author__social">
+                  <a href=Elao class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de La team Elao</span>
+          </a>
+                          <a href=Elao class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de La team Elao</span>
+          </a>
+                          <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de La team Elao</span>
+          </a>
+              </div>
+    </div>
+  </div>
 
-  <h4>Ces articles pourraient vous intéresser:</h4>
-
+  
         </main>
                     <footer class="footer">
                 <section class="footer__links">

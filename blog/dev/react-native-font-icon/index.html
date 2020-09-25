@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
+                    <link rel="stylesheet" href="/elao_/build/style.b6a8c134.css">
             </head>
     <body>
         <header class="header">
@@ -91,8 +91,7 @@
                     </nav>
                 
                                     <!-- Mobile nav -->
-                    <nav class="nav-mobile">
-                        <div class="nav-mobile__header">
+                    <nav class="nav-mobile">                        <div class="nav-mobile__header">
                             <a href="/elao_/">
                                                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 300 100" class="logo logo--animated">
                                 <path d="M61.6,61.6H19.7C21,69,24.8,72.2,32.6,72.2c5.9,0,8.8-1.9,11.7-7.8l16.1,6.9C56.2,82,46.9,87.8,32.1,87.8
@@ -114,37 +113,37 @@
                             </button>
                         </div>
                         <ul>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-services">
                                                                                 <span>Nos services</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
                                                                                 <span>Notre méthodologie</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
                                                                                 <span>Nos études de cas</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-valeurs">
                                                                                 <span>Nos valeurs</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/la-tribu/">
                                                                                 <span>La tribu</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/blog/">
                                                                                 <span>Blog</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item nav-mobile__item--large">
                                     <a href="/elao_/contact">
                                                                                     <i class="icon icon--contact" aria-hidden="true"></i>
                                                                                 <span>Contact</span>
@@ -160,30 +159,91 @@
         </header>
         <div class="container">
         <main>
-              <img src="/elao_/images/posts/thumbnails/harpal-singh-396280-unsplash.jpg" />
+              <ul class="breadcrumb">
+    <li class="breadcrumb__item">
+      <a href="#">Blog</a>
+    </li>
+    <li class="breadcrumb__item">
+      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+    </li>
+  </ul>
 
-  <div>
-    <img src="/elao_/images/authors/tjarrand.jpg" />
-    <p>Écrit par Thomas JARRAND<p>
-    <p>Publication 6 mars 2018<p>
-    <p>Modification 22 septembre 2020<p>
-  </div>
+  <div class="article-banner">
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/harpal-singh-396280-unsplash.jpg)"></div>
 
-  <div>
-          <a href="/elao_/blog/tag/react%20native">#react native</a>
-          <a href="/elao_/blog/tag/react">#react</a>
-          <a href="/elao_/blog/tag/mobile">#mobile</a>
-          <a href="/elao_/blog/tag/font">#font</a>
-          <a href="/elao_/blog/tag/icon">#icon</a>
+    <div class="article-info">
+      <!-- todo : this is if the article has a single author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/tjarrand.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>Thomas JARRAND</strong></span>
       </div>
+      <!-- todo : this is if the article has multiple authors -->
+      <div class="article-author article-author--multi">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/tjarrand.jpg" />
+          <img src="/elao_/images/authors/tjarrand.jpg" />
+          <img src="/elao_/images/authors/tjarrand.jpg" />
+        </div>
+        <span class="article-author__info">
+          Écrit par
+          <strong>Anne-Laure DE BOISSIEU</strong>
+          <strong>Thomas JARRAND</strong>
+          <strong>Thomas JARRAND</strong>
+        </span>
+      </div>
+      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/tjarrand.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
+      </div>
+      <div class="article-info__date">
+        <span>Publication <strong>6 mars 2018</strong></span>
+        <span>Modification <strong>25 septembre 2020</strong></span>
+      </div>
+    </div>
 
-  <div>
-    <h1>Intégrer des icônes vectorielles dans React Native</h1>
-    <p>Comment intégrer des icônes vectorielles dans une app React Native grâce à une police de caractères personnalisée.</p>
+    <div class="article-header">
+      <h1>Intégrer des icônes vectorielles dans React Native</h1>
+      <p>Comment intégrer des icônes vectorielles dans une app React Native grâce à une police de caractères personnalisée.</p>
+      <ul class="article-tag-list">
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/react%20native">#react native</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/react">#react</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/mobile">#mobile</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/font">#font</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/icon">#icon</a>
+          </li>
+              </ul>
+    </div>
   </div>
 
-  <div>
-    <body><p>Les avantages du vectoriel pour intégrer une suite d'icônes dans une application sont assez nombreux :</p>
+  <ul class="table-of-content">
+    <li class="table-of-content__item">
+      <a href="#intro">Introduction</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="#quas">Quas odio atque</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="voluptatem">Voluptatem et amet atque</a>
+    </li>
+  </ul>
+
+  <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Les avantages du vectoriel pour intégrer une suite d'icônes dans une application sont assez nombreux :</p>
 <ul><li>Varier la <strong>taille</strong> du pictogramme sans perte de qualité.</li>
 <li>Modifier sa <strong>couleur</strong> avec une simple propriété CSS (changement d'état au survol, etc).</li>
 <li>Supporter "automatiquement" les différentes <strong>densités de pixels</strong> des écrans (écrans retina, etc).</li>
@@ -302,20 +362,82 @@ La partie variable pour chaque icône ici est <code class="code-inline" id="6725
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Text</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>Et le résultat !</p>
 <img src="/elao_/images/posts/2018/react-native-font-icon/result.png" alt="" title="" id="result-png"><hr><p><em>Illustration photo par <em><a style='background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px;' href="https://unsplash.com/@aquatium?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Harpal Singh"><span style="display:inline-block;padding:2px 3px;"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white;" viewbox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px;">Harpal Singh</span></a></em></em></p></body>
+    </main>
+    <aside class="article-content__aside">
+      <button class="kudo">
+        <span class="kudo__button" aria-hidden="true"></span>
+        <span class="screen-reader">Cet article m’a été utile</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
+      </button>
+    </aside>
   </div>
 
-  <div>
-    <img src="/elao_/images/authors/tjarrand.jpg" />
-
-    <p>Écrit par Thomas JARRAND<p>
-
-          <a href=tom32i>Twitter</a>
-              <a href=Tom32i>Github</a>
-              <a href=https://thomas.jarrand.fr>Website</a>
+  <div class="article-footer">
+    <!-- If the article has one single author -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/tjarrand.jpg" />
       </div>
+      <span class="article-author__info">Écrit par<strong>Thomas JARRAND</strong></span>
+      <div class="article-author__social">
+                  <a href=tom32i class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Thomas JARRAND</span>
+          </a>
+                          <a href=Tom32i class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Thomas JARRAND</span>
+          </a>
+                          <a href=https://thomas.jarrand.fr class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Thomas JARRAND</span>
+          </a>
+              </div>
+    </div>
+    <!-- If the article has mutltiple authors -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/tjarrand.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Thomas JARRAND</strong></span>
+      <div class="article-author__social">
+                  <a href=tom32i class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Thomas JARRAND</span>
+          </a>
+                          <a href=Tom32i class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Thomas JARRAND</span>
+          </a>
+                          <a href=https://thomas.jarrand.fr class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Thomas JARRAND</span>
+          </a>
+              </div>
+    </div>
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/tjarrand.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Thomas JARRAND</strong></span>
+      <div class="article-author__social">
+                  <a href=tom32i class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Thomas JARRAND</span>
+          </a>
+                          <a href=Tom32i class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Thomas JARRAND</span>
+          </a>
+                          <a href=https://thomas.jarrand.fr class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Thomas JARRAND</span>
+          </a>
+              </div>
+    </div>
+  </div>
 
-  <h4>Ces articles pourraient vous intéresser:</h4>
-
+  
         </main>
                     <footer class="footer">
                 <section class="footer__links">

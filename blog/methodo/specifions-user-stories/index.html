@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
+                    <link rel="stylesheet" href="/elao_/build/style.b6a8c134.css">
             </head>
     <body>
         <header class="header">
@@ -91,8 +91,7 @@
                     </nav>
                 
                                     <!-- Mobile nav -->
-                    <nav class="nav-mobile">
-                        <div class="nav-mobile__header">
+                    <nav class="nav-mobile">                        <div class="nav-mobile__header">
                             <a href="/elao_/">
                                                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 300 100" class="logo logo--animated">
                                 <path d="M61.6,61.6H19.7C21,69,24.8,72.2,32.6,72.2c5.9,0,8.8-1.9,11.7-7.8l16.1,6.9C56.2,82,46.9,87.8,32.1,87.8
@@ -114,37 +113,37 @@
                             </button>
                         </div>
                         <ul>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-services">
                                                                                 <span>Nos services</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
                                                                                 <span>Notre méthodologie</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
                                                                                 <span>Nos études de cas</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-valeurs">
                                                                                 <span>Nos valeurs</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/la-tribu/">
                                                                                 <span>La tribu</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/blog/">
                                                                                 <span>Blog</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item nav-mobile__item--large">
                                     <a href="/elao_/contact">
                                                                                     <i class="icon icon--contact" aria-hidden="true"></i>
                                                                                 <span>Contact</span>
@@ -160,28 +159,85 @@
         </header>
         <div class="container">
         <main>
-              <img src="/elao_/images/posts/thumbnails/50-quick.jpg" />
+              <ul class="breadcrumb">
+    <li class="breadcrumb__item">
+      <a href="#">Blog</a>
+    </li>
+    <li class="breadcrumb__item">
+      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+    </li>
+  </ul>
 
-  <div>
-    <img src="/elao_/authors/ssolere.jpg" />
-    <p>Écrit par Sébastien SOLERE<p>
-    <p>Publication 7 décembre 2015<p>
-    <p>Modification 22 septembre 2020<p>
-  </div>
+  <div class="article-banner">
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/50-quick.jpg)"></div>
 
-  <div>
-          <a href="/elao_/blog/tag/agile">#agile</a>
-          <a href="/elao_/blog/tag/user%20stories">#user stories</a>
-          <a href="/elao_/blog/tag/specifications">#specifications</a>
+    <div class="article-info">
+      <!-- todo : this is if the article has a single author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/authors/ssolere.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>Sébastien SOLERE</strong></span>
       </div>
+      <!-- todo : this is if the article has multiple authors -->
+      <div class="article-author article-author--multi">
+        <div class="article-author__image">
+          <img src="/elao_/authors/ssolere.jpg" />
+          <img src="/elao_/authors/ssolere.jpg" />
+          <img src="/elao_/authors/ssolere.jpg" />
+        </div>
+        <span class="article-author__info">
+          Écrit par
+          <strong>Anne-Laure DE BOISSIEU</strong>
+          <strong>Sébastien SOLERE</strong>
+          <strong>Sébastien SOLERE</strong>
+        </span>
+      </div>
+      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/authors/ssolere.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
+      </div>
+      <div class="article-info__date">
+        <span>Publication <strong>7 décembre 2015</strong></span>
+        <span>Modification <strong>25 septembre 2020</strong></span>
+      </div>
+    </div>
 
-  <div>
-    <h1>Spécifions les user stories</h1>
-    <p>L&#039;écriture d&#039;user stories n&#039;est pas aussi simple qu&#039;elle peut le paraître. Avec un minimum de guide, on peut s&#039;améliorer rapidement.</p>
+    <div class="article-header">
+      <h1>Spécifions les user stories</h1>
+      <p>L&#039;écriture d&#039;user stories n&#039;est pas aussi simple qu&#039;elle peut le paraître. Avec un minimum de guide, on peut s&#039;améliorer rapidement.</p>
+      <ul class="article-tag-list">
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/agile">#agile</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/user%20stories">#user stories</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/specifications">#specifications</a>
+          </li>
+              </ul>
+    </div>
   </div>
 
-  <div>
-    <body><p>Ecrire des user stories est déjà bien compliqué ; si le product owner n’a pas un minimum de guide, ça devient impossible pour celui qui n’a pas l’habitude de le faire.<!--more--></p>
+  <ul class="table-of-content">
+    <li class="table-of-content__item">
+      <a href="#intro">Introduction</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="#quas">Quas odio atque</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="voluptatem">Voluptatem et amet atque</a>
+    </li>
+  </ul>
+
+  <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Ecrire des user stories est déjà bien compliqué ; si le product owner n’a pas un minimum de guide, ça devient impossible pour celui qui n’a pas l’habitude de le faire.<!--more--></p>
 <h1 id="sp-cifions-les-user-stories">Spécifions les user stories<a href="#sp-cifions-les-user-stories" class="anchor"></a></h1>
 <p>Chaque product owner devrait lire les livres de Gojko Adzic (<a href="http://books.gojko.net/" target="_blank">http://books.gojko.net/</a>). Ses livres peuvent être très utiles pour tout développement itératif et l'écriture de user stories.</p>
 <p><strong>5 principes basiques peuvent aider les product owners à rédiger leurs stories</strong></p>
@@ -203,20 +259,82 @@
 <li>Ecrire la spécification de la fonctionnalité reprenant les tests d’acceptation, les IHM et les textes sur ce qui a été réellement validé</li>
 </ol><p>A partir de ces éléments et en fonction de l’équipe, on peut avoir des organisations différentes où certaines tâches sont réalisées en amont du sprint (IHM, critères d’acceptation) ou sont prises dans le sprint et réalisées avant de démarrer le développement de la story.</p>
 <p>Chez Elao, nous accompagnons nos clients pour les aider à améliorer leurs users stories. C’est simple : <strong>avec des bonnes user stories, on fait des meilleurs développements</strong>.</p></body>
+    </main>
+    <aside class="article-content__aside">
+      <button class="kudo">
+        <span class="kudo__button" aria-hidden="true"></span>
+        <span class="screen-reader">Cet article m’a été utile</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
+      </button>
+    </aside>
   </div>
 
-  <div>
-    <img src="/elao_/authors/ssolere.jpg" />
-
-    <p>Écrit par Sébastien SOLERE<p>
-
-          <a href=sebsolere>Twitter</a>
-              <a href=sebsolere>Github</a>
-              <a href=http://www.elao.com>Website</a>
+  <div class="article-footer">
+    <!-- If the article has one single author -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/authors/ssolere.jpg" />
       </div>
+      <span class="article-author__info">Écrit par<strong>Sébastien SOLERE</strong></span>
+      <div class="article-author__social">
+                  <a href=sebsolere class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Sébastien SOLERE</span>
+          </a>
+                          <a href=sebsolere class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Sébastien SOLERE</span>
+          </a>
+                          <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Sébastien SOLERE</span>
+          </a>
+              </div>
+    </div>
+    <!-- If the article has mutltiple authors -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/authors/ssolere.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Sébastien SOLERE</strong></span>
+      <div class="article-author__social">
+                  <a href=sebsolere class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Sébastien SOLERE</span>
+          </a>
+                          <a href=sebsolere class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Sébastien SOLERE</span>
+          </a>
+                          <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Sébastien SOLERE</span>
+          </a>
+              </div>
+    </div>
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/authors/ssolere.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Sébastien SOLERE</strong></span>
+      <div class="article-author__social">
+                  <a href=sebsolere class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Sébastien SOLERE</span>
+          </a>
+                          <a href=sebsolere class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Sébastien SOLERE</span>
+          </a>
+                          <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Sébastien SOLERE</span>
+          </a>
+              </div>
+    </div>
+  </div>
 
-  <h4>Ces articles pourraient vous intéresser:</h4>
-
+  
         </main>
                     <footer class="footer">
                 <section class="footer__links">

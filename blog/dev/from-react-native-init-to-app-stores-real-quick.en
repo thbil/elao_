@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
+                    <link rel="stylesheet" href="/elao_/build/style.b6a8c134.css">
             </head>
     <body>
         <header class="header">
@@ -91,8 +91,7 @@
                     </nav>
                 
                                     <!-- Mobile nav -->
-                    <nav class="nav-mobile">
-                        <div class="nav-mobile__header">
+                    <nav class="nav-mobile">                        <div class="nav-mobile__header">
                             <a href="/elao_/">
                                                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 300 100" class="logo logo--animated">
                                 <path d="M61.6,61.6H19.7C21,69,24.8,72.2,32.6,72.2c5.9,0,8.8-1.9,11.7-7.8l16.1,6.9C56.2,82,46.9,87.8,32.1,87.8
@@ -114,37 +113,37 @@
                             </button>
                         </div>
                         <ul>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-services">
                                                                                 <span>Nos services</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
                                                                                 <span>Notre méthodologie</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
                                                                                 <span>Nos études de cas</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-valeurs">
                                                                                 <span>Nos valeurs</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/la-tribu/">
                                                                                 <span>La tribu</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/blog/">
                                                                                 <span>Blog</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item nav-mobile__item--large">
                                     <a href="/elao_/contact">
                                                                                     <i class="icon icon--contact" aria-hidden="true"></i>
                                                                                 <span>Contact</span>
@@ -160,28 +159,85 @@
         </header>
         <div class="container">
         <main>
-              <img src="/elao_/images/posts/thumbnails/from-react-native-init-to-app-stores-real-quick.jpg" />
+              <ul class="breadcrumb">
+    <li class="breadcrumb__item">
+      <a href="#">Blog</a>
+    </li>
+    <li class="breadcrumb__item">
+      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+    </li>
+  </ul>
 
-  <div>
-    <img src="/elao_/images/authors/tjarrand.jpg" />
-    <p>Écrit par Thomas JARRAND<p>
-    <p>Publication 9 novembre 2017<p>
-    <p>Modification 22 septembre 2020<p>
-  </div>
+  <div class="article-banner">
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/from-react-native-init-to-app-stores-real-quick.jpg)"></div>
 
-  <div>
-          <a href="/elao_/blog/tag/react">#react</a>
-          <a href="/elao_/blog/tag/react%20native">#react native</a>
-          <a href="/elao_/blog/tag/mobile">#mobile</a>
+    <div class="article-info">
+      <!-- todo : this is if the article has a single author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/tjarrand.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>Thomas JARRAND</strong></span>
       </div>
+      <!-- todo : this is if the article has multiple authors -->
+      <div class="article-author article-author--multi">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/tjarrand.jpg" />
+          <img src="/elao_/images/authors/tjarrand.jpg" />
+          <img src="/elao_/images/authors/tjarrand.jpg" />
+        </div>
+        <span class="article-author__info">
+          Écrit par
+          <strong>Anne-Laure DE BOISSIEU</strong>
+          <strong>Thomas JARRAND</strong>
+          <strong>Thomas JARRAND</strong>
+        </span>
+      </div>
+      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/tjarrand.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
+      </div>
+      <div class="article-info__date">
+        <span>Publication <strong>9 novembre 2017</strong></span>
+        <span>Modification <strong>25 septembre 2020</strong></span>
+      </div>
+    </div>
 
-  <div>
-    <h1>From react-native init to app stores real quick</h1>
-    <p>From react-native init to stores real quick</p>
+    <div class="article-header">
+      <h1>From react-native init to app stores real quick</h1>
+      <p>From react-native init to stores real quick</p>
+      <ul class="article-tag-list">
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/react">#react</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/react%20native">#react native</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/mobile">#mobile</a>
+          </li>
+              </ul>
+    </div>
   </div>
 
-  <div>
-    <body><p>Hi, I'm Thomas and I'm gonna show you how to build and release a React Native app to iOS and Android stores on macOS.</p>
+  <ul class="table-of-content">
+    <li class="table-of-content__item">
+      <a href="#intro">Introduction</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="#quas">Quas odio atque</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="voluptatem">Voluptatem et amet atque</a>
+    </li>
+  </ul>
+
+  <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Hi, I'm Thomas and I'm gonna show you how to build and release a React Native app to iOS and Android stores on macOS.</p>
 <h2 id="our-goals">Our goals<a href="#our-goals" class="anchor"></a></h2>
 <p>What we aim to accomplish:</p>
 <ul><li>Automated build process that generates signed and <strong>ready-for-stores</strong> release builds.</li>
@@ -466,20 +522,82 @@ Run the app on any simulated or real android device found, as a release.</li>
 <p>Here's a working example of all we discussed above : <a href="https://github.com/Elao/AcmeApp" target="_blank">https://github.com/Elao/AcmeApp</a></p>
 <p><span class="side-note light">💡</span> <em>Note the handy <a href="https://github.com/Elao/AcmeApp/blob/master/Makefile" target="_blank">Makefile</a> that hides all complex build and release commands behind simple make tasks like:  <code class="code-inline" id="8bc7eb090ecf22d8475382f9253061d5">make run android</code> or <code class="code-inline" id="3a911a966cfb140fa8318a8d7959de55">make release-ios</code></em></p>
 <p>Also don't hesitate to reach out for help in the comment or on social medias.</p></body>
+    </main>
+    <aside class="article-content__aside">
+      <button class="kudo">
+        <span class="kudo__button" aria-hidden="true"></span>
+        <span class="screen-reader">Cet article m’a été utile</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
+      </button>
+    </aside>
   </div>
 
-  <div>
-    <img src="/elao_/images/authors/tjarrand.jpg" />
-
-    <p>Écrit par Thomas JARRAND<p>
-
-          <a href=tom32i>Twitter</a>
-              <a href=Tom32i>Github</a>
-              <a href=https://thomas.jarrand.fr>Website</a>
+  <div class="article-footer">
+    <!-- If the article has one single author -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/tjarrand.jpg" />
       </div>
+      <span class="article-author__info">Écrit par<strong>Thomas JARRAND</strong></span>
+      <div class="article-author__social">
+                  <a href=tom32i class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Thomas JARRAND</span>
+          </a>
+                          <a href=Tom32i class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Thomas JARRAND</span>
+          </a>
+                          <a href=https://thomas.jarrand.fr class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Thomas JARRAND</span>
+          </a>
+              </div>
+    </div>
+    <!-- If the article has mutltiple authors -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/tjarrand.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Thomas JARRAND</strong></span>
+      <div class="article-author__social">
+                  <a href=tom32i class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Thomas JARRAND</span>
+          </a>
+                          <a href=Tom32i class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Thomas JARRAND</span>
+          </a>
+                          <a href=https://thomas.jarrand.fr class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Thomas JARRAND</span>
+          </a>
+              </div>
+    </div>
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/tjarrand.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Thomas JARRAND</strong></span>
+      <div class="article-author__social">
+                  <a href=tom32i class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Thomas JARRAND</span>
+          </a>
+                          <a href=Tom32i class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Thomas JARRAND</span>
+          </a>
+                          <a href=https://thomas.jarrand.fr class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Thomas JARRAND</span>
+          </a>
+              </div>
+    </div>
+  </div>
 
-  <h4>Ces articles pourraient vous intéresser:</h4>
-
+  
         </main>
                     <footer class="footer">
                 <section class="footer__links">

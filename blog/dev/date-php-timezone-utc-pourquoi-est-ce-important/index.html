@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
+                    <link rel="stylesheet" href="/elao_/build/style.b6a8c134.css">
             </head>
     <body>
         <header class="header">
@@ -91,8 +91,7 @@
                     </nav>
                 
                                     <!-- Mobile nav -->
-                    <nav class="nav-mobile">
-                        <div class="nav-mobile__header">
+                    <nav class="nav-mobile">                        <div class="nav-mobile__header">
                             <a href="/elao_/">
                                                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 300 100" class="logo logo--animated">
                                 <path d="M61.6,61.6H19.7C21,69,24.8,72.2,32.6,72.2c5.9,0,8.8-1.9,11.7-7.8l16.1,6.9C56.2,82,46.9,87.8,32.1,87.8
@@ -114,37 +113,37 @@
                             </button>
                         </div>
                         <ul>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-services">
                                                                                 <span>Nos services</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
                                                                                 <span>Notre méthodologie</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
                                                                                 <span>Nos études de cas</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-valeurs">
                                                                                 <span>Nos valeurs</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/la-tribu/">
                                                                                 <span>La tribu</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/blog/">
                                                                                 <span>Blog</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item nav-mobile__item--large">
                                     <a href="/elao_/contact">
                                                                                     <i class="icon icon--contact" aria-hidden="true"></i>
                                                                                 <span>Contact</span>
@@ -160,30 +159,91 @@
         </header>
         <div class="container">
         <main>
-              <img src="/elao_/images/posts/thumbnails/time.jpg" />
+              <ul class="breadcrumb">
+    <li class="breadcrumb__item">
+      <a href="#">Blog</a>
+    </li>
+    <li class="breadcrumb__item">
+      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+    </li>
+  </ul>
 
-  <div>
-    <img src="/elao_/images/authors/mcolin.jpg" />
-    <p>Écrit par Maxime COLIN<p>
-    <p>Publication 21 novembre 2017<p>
-    <p>Modification 22 septembre 2020<p>
-  </div>
+  <div class="article-banner">
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/time.jpg)"></div>
 
-  <div>
-          <a href="/elao_/blog/tag/Symfony">#Symfony</a>
-          <a href="/elao_/blog/tag/PHP">#PHP</a>
-          <a href="/elao_/blog/tag/Date">#Date</a>
-          <a href="/elao_/blog/tag/Datetime">#Datetime</a>
-          <a href="/elao_/blog/tag/Timezone">#Timezone</a>
+    <div class="article-info">
+      <!-- todo : this is if the article has a single author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/mcolin.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>Maxime COLIN</strong></span>
       </div>
+      <!-- todo : this is if the article has multiple authors -->
+      <div class="article-author article-author--multi">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/mcolin.jpg" />
+          <img src="/elao_/images/authors/mcolin.jpg" />
+          <img src="/elao_/images/authors/mcolin.jpg" />
+        </div>
+        <span class="article-author__info">
+          Écrit par
+          <strong>Anne-Laure DE BOISSIEU</strong>
+          <strong>Maxime COLIN</strong>
+          <strong>Maxime COLIN</strong>
+        </span>
+      </div>
+      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/mcolin.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
+      </div>
+      <div class="article-info__date">
+        <span>Publication <strong>21 novembre 2017</strong></span>
+        <span>Modification <strong>25 septembre 2020</strong></span>
+      </div>
+    </div>
 
-  <div>
-    <h1>Dates PHP et Timezone UTC, pourquoi est-ce important ?</h1>
-    <p>Mise au point sur les problématiques de timezone avec les dates PHP.</p>
+    <div class="article-header">
+      <h1>Dates PHP et Timezone UTC, pourquoi est-ce important ?</h1>
+      <p>Mise au point sur les problématiques de timezone avec les dates PHP.</p>
+      <ul class="article-tag-list">
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/Symfony">#Symfony</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/PHP">#PHP</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/Date">#Date</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/Datetime">#Datetime</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/Timezone">#Timezone</a>
+          </li>
+              </ul>
+    </div>
   </div>
 
-  <div>
-    <body><h1 id="timezone-utc-pourquoi-est-ce-im">Timezone UTC, pourquoi est-ce important ?<a href="#timezone-utc-pourquoi-est-ce-im" class="anchor"></a></h1>
+  <ul class="table-of-content">
+    <li class="table-of-content__item">
+      <a href="#intro">Introduction</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="#quas">Quas odio atque</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="voluptatem">Voluptatem et amet atque</a>
+    </li>
+  </ul>
+
+  <div class="article-content">
+    <main class="article-content__main">
+      <body><h1 id="timezone-utc-pourquoi-est-ce-im">Timezone UTC, pourquoi est-ce important ?<a href="#timezone-utc-pourquoi-est-ce-im" class="anchor"></a></h1>
 <h2 id="la-timezone-c-est-quoi">La timezone c'est quoi ?<a href="#la-timezone-c-est-quoi" class="anchor"></a></h2>
 <p>La timezone est une information associée à une date permettant de connaître son fuseau horaire. Cette timezone est décrite par un nom de continent et un nom de ville.</p>
 <pre class="code-multiline"><code id="cd7bcb0bba25653f938f9232717351a3">Europe/Paris
@@ -257,20 +317,82 @@ Australia/Sydney</code></pre>
 <p>Utilisez ce format pour serializer vos dates en sortie afin d'éviter toute ambiguïté pour les consommateurs de votre API et en entrée afin de permettre la saisie dans n'importe quelle timezone.</p>
 <h2 id="conclusion">Conclusion<a href="#conclusion" class="anchor"></a></h2>
 <p>Ne pas gérer ou mal gérer les <strong>timezones</strong> sur une application manipulant des dates peut entraîner des bugs assez sérieux, difficiles à identifier et couteux à corriger après coup (imaginez migrer les dates de 500k lignes en prod). Prendre en compte cette problématique dès le début des développements vous évitera donc de vous arracher les cheveux ;)</p></body>
+    </main>
+    <aside class="article-content__aside">
+      <button class="kudo">
+        <span class="kudo__button" aria-hidden="true"></span>
+        <span class="screen-reader">Cet article m’a été utile</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
+      </button>
+    </aside>
   </div>
 
-  <div>
-    <img src="/elao_/images/authors/mcolin.jpg" />
-
-    <p>Écrit par Maxime COLIN<p>
-
-          <a href=colin_maxime>Twitter</a>
-              <a href=maximecolin>Github</a>
-              <a href=http://www.maximecolin.fr>Website</a>
+  <div class="article-footer">
+    <!-- If the article has one single author -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/mcolin.jpg" />
       </div>
+      <span class="article-author__info">Écrit par<strong>Maxime COLIN</strong></span>
+      <div class="article-author__social">
+                  <a href=colin_maxime class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Maxime COLIN</span>
+          </a>
+                          <a href=maximecolin class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Maxime COLIN</span>
+          </a>
+                          <a href=http://www.maximecolin.fr class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Maxime COLIN</span>
+          </a>
+              </div>
+    </div>
+    <!-- If the article has mutltiple authors -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/mcolin.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Maxime COLIN</strong></span>
+      <div class="article-author__social">
+                  <a href=colin_maxime class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Maxime COLIN</span>
+          </a>
+                          <a href=maximecolin class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Maxime COLIN</span>
+          </a>
+                          <a href=http://www.maximecolin.fr class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Maxime COLIN</span>
+          </a>
+              </div>
+    </div>
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/mcolin.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Maxime COLIN</strong></span>
+      <div class="article-author__social">
+                  <a href=colin_maxime class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Maxime COLIN</span>
+          </a>
+                          <a href=maximecolin class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Maxime COLIN</span>
+          </a>
+                          <a href=http://www.maximecolin.fr class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Maxime COLIN</span>
+          </a>
+              </div>
+    </div>
+  </div>
 
-  <h4>Ces articles pourraient vous intéresser:</h4>
-
+  
         </main>
                     <footer class="footer">
                 <section class="footer__links">

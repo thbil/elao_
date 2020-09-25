@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
+                    <link rel="stylesheet" href="/elao_/build/style.b6a8c134.css">
             </head>
     <body>
         <header class="header">
@@ -91,8 +91,7 @@
                     </nav>
                 
                                     <!-- Mobile nav -->
-                    <nav class="nav-mobile">
-                        <div class="nav-mobile__header">
+                    <nav class="nav-mobile">                        <div class="nav-mobile__header">
                             <a href="/elao_/">
                                                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 300 100" class="logo logo--animated">
                                 <path d="M61.6,61.6H19.7C21,69,24.8,72.2,32.6,72.2c5.9,0,8.8-1.9,11.7-7.8l16.1,6.9C56.2,82,46.9,87.8,32.1,87.8
@@ -114,37 +113,37 @@
                             </button>
                         </div>
                         <ul>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-services">
                                                                                 <span>Nos services</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
                                                                                 <span>Notre méthodologie</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
                                                                                 <span>Nos études de cas</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-valeurs">
                                                                                 <span>Nos valeurs</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/la-tribu/">
                                                                                 <span>La tribu</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/blog/">
                                                                                 <span>Blog</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item nav-mobile__item--large">
                                     <a href="/elao_/contact">
                                                                                     <i class="icon icon--contact" aria-hidden="true"></i>
                                                                                 <span>Contact</span>
@@ -160,28 +159,85 @@
         </header>
         <div class="container">
         <main>
-              <img src="/elao_/images/posts/thumbnails/toad.jpg" />
+              <ul class="breadcrumb">
+    <li class="breadcrumb__item">
+      <a href="#">Blog</a>
+    </li>
+    <li class="breadcrumb__item">
+      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+    </li>
+  </ul>
 
-  <div>
-    <img src="/elao_/images/authors/xroldo.jpeg" />
-    <p>Écrit par Xavier ROLDO<p>
-    <p>Publication 12 juillet 2010<p>
-    <p>Modification 22 septembre 2020<p>
-  </div>
+  <div class="article-banner">
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/toad.jpg)"></div>
 
-  <div>
-          <a href="/elao_/blog/tag/D%C3%A9veloppement">#Développement</a>
-          <a href="/elao_/blog/tag/PHP">#PHP</a>
-          <a href="/elao_/blog/tag/Symfony">#Symfony</a>
+    <div class="article-info">
+      <!-- todo : this is if the article has a single author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/xroldo.jpeg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>Xavier ROLDO</strong></span>
       </div>
+      <!-- todo : this is if the article has multiple authors -->
+      <div class="article-author article-author--multi">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/xroldo.jpeg" />
+          <img src="/elao_/images/authors/xroldo.jpeg" />
+          <img src="/elao_/images/authors/xroldo.jpeg" />
+        </div>
+        <span class="article-author__info">
+          Écrit par
+          <strong>Anne-Laure DE BOISSIEU</strong>
+          <strong>Xavier ROLDO</strong>
+          <strong>Xavier ROLDO</strong>
+        </span>
+      </div>
+      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/xroldo.jpeg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
+      </div>
+      <div class="article-info__date">
+        <span>Publication <strong>12 juillet 2010</strong></span>
+        <span>Modification <strong>25 septembre 2020</strong></span>
+      </div>
+    </div>
 
-  <div>
-    <h1>Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin</h1>
-    <p>Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin.</p>
+    <div class="article-header">
+      <h1>Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin</h1>
+      <p>Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin.</p>
+      <ul class="article-tag-list">
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/D%C3%A9veloppement">#Développement</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/PHP">#PHP</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/Symfony">#Symfony</a>
+          </li>
+              </ul>
+    </div>
   </div>
 
-  <div>
-    <body><p>Bonjour,</p>
+  <ul class="table-of-content">
+    <li class="table-of-content__item">
+      <a href="#intro">Introduction</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="#quas">Quas odio atque</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="voluptatem">Voluptatem et amet atque</a>
+    </li>
+  </ul>
+
+  <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Bonjour,</p>
 <p>Nous allons voir aujourd'hui comment installer et utiliser le plugin <a href="http://www.symfony-project.org/plugins/sfImageTransformExtraPlugin" target="_blank">sfImageTransformExtraPlugin</a>.</p>
 <p>Il s'agit d'un plugin très puissant permettant d'appliquer des traitements à des images au moyen de fichiers de configuration, sans qu'il soit donc nécessaire de polluer le code métier. Par ailleurs, il permet d'appliquer plusieurs traitements successifs de manière très intuitive. Il gère lui-même l'emplacement des fichiers générés et propose un système de cache réduisant les délais de transmission des images déjà générées.</p>
 <p>Le sfImageTransformExtraPlugin est dépendant du plugin <a href="http://www.symfony-project.org/plugins/sfImageTransformPlugin" target="_blank">sfImageTransformPlugin</a> mais ne l'installez pas avant d'avoir lu la suite ! Pour faciliter la lecture et éviter toute confusion (les noms des deux plugins sont très proches), dans la suite de l'article je ferai référence au "plugin de base" pour sfImageTransformPlugin et au "plugin Extra" pour sfImageTransformExtraPlugin.</p>
@@ -367,18 +423,58 @@ chmod 777 web/thumbnails</code></pre>
 <p>Cet article est beaucoup plus long que ce à quoi je m’attendais et pourtant nous n’avons fait qu’effleurer le sujet, tant sont vastes les possibilités offertes par le plugin. sfImageTransformExtraPlugin est indéniablement un outil qui mérite que l’on s’y intéresse mais sa prise en main est assez délicate, en raison notamment d’une documentation que je juge assez approximative (ce qui est tout de même compréhensible, c’est un peu le revers de la médaille : plus un outil est riche, plus la mise à jour de la documentation est problématique). Cet article n’avait donc pas d’autre prétention que de vous initier à ce plugin et vous mettre le pied à l’étrier en évitant les premiers écueils.</p>
 <h3 id="remerciements">Remerciements<a href="#remerciements" class="anchor"></a></h3>
 <p>Je tiens à remercier chaleureusement Yves Heitz sans qui la rédaction de ce billet n’aurait pas été possible. Il a essuyé les plâtres en mettant en oeuvre le plugin sur un projet réel et il a su contourner les nombreux écueils auxquels on se heurte lorsque l’on souhaite utiliser le plugin.</p></body>
+    </main>
+    <aside class="article-content__aside">
+      <button class="kudo">
+        <span class="kudo__button" aria-hidden="true"></span>
+        <span class="screen-reader">Cet article m’a été utile</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
+      </button>
+    </aside>
   </div>
 
-  <div>
-    <img src="/elao_/images/authors/xroldo.jpeg" />
-
-    <p>Écrit par Xavier ROLDO<p>
-
-                  <a href=http://www.elao.com>Website</a>
+  <div class="article-footer">
+    <!-- If the article has one single author -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/xroldo.jpeg" />
       </div>
+      <span class="article-author__info">Écrit par<strong>Xavier ROLDO</strong></span>
+      <div class="article-author__social">
+                                  <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Xavier ROLDO</span>
+          </a>
+              </div>
+    </div>
+    <!-- If the article has mutltiple authors -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/xroldo.jpeg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Xavier ROLDO</strong></span>
+      <div class="article-author__social">
+                                  <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Xavier ROLDO</span>
+          </a>
+              </div>
+    </div>
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/xroldo.jpeg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Xavier ROLDO</strong></span>
+      <div class="article-author__social">
+                                  <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Xavier ROLDO</span>
+          </a>
+              </div>
+    </div>
+  </div>
 
-  <h4>Ces articles pourraient vous intéresser:</h4>
-
+  
         </main>
                     <footer class="footer">
                 <section class="footer__links">

@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
+                    <link rel="stylesheet" href="/elao_/build/style.b6a8c134.css">
             </head>
     <body>
         <header class="header">
@@ -91,8 +91,7 @@
                     </nav>
                 
                                     <!-- Mobile nav -->
-                    <nav class="nav-mobile">
-                        <div class="nav-mobile__header">
+                    <nav class="nav-mobile">                        <div class="nav-mobile__header">
                             <a href="/elao_/">
                                                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 300 100" class="logo logo--animated">
                                 <path d="M61.6,61.6H19.7C21,69,24.8,72.2,32.6,72.2c5.9,0,8.8-1.9,11.7-7.8l16.1,6.9C56.2,82,46.9,87.8,32.1,87.8
@@ -114,37 +113,37 @@
                             </button>
                         </div>
                         <ul>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-services">
                                                                                 <span>Nos services</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
                                                                                 <span>Notre méthodologie</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
                                                                                 <span>Nos études de cas</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-valeurs">
                                                                                 <span>Nos valeurs</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/la-tribu/">
                                                                                 <span>La tribu</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/blog/">
                                                                                 <span>Blog</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item nav-mobile__item--large">
                                     <a href="/elao_/contact">
                                                                                     <i class="icon icon--contact" aria-hidden="true"></i>
                                                                                 <span>Contact</span>
@@ -160,28 +159,85 @@
         </header>
         <div class="container">
         <main>
-              <img src="/elao_/images/posts/thumbnails/badass_vader.jpg" />
+              <ul class="breadcrumb">
+    <li class="breadcrumb__item">
+      <a href="#">Blog</a>
+    </li>
+    <li class="breadcrumb__item">
+      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+    </li>
+  </ul>
 
-  <div>
-    <img src="/elao_/images/authors/tjarrand.jpg" />
-    <p>Écrit par Thomas JARRAND<p>
-    <p>Publication 19 avril 2013<p>
-    <p>Modification 22 septembre 2020<p>
-  </div>
+  <div class="article-banner">
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/badass_vader.jpg)"></div>
 
-  <div>
-          <a href="/elao_/blog/tag/Tips">#Tips</a>
-          <a href="/elao_/blog/tag/Twig">#Twig</a>
-          <a href="/elao_/blog/tag/Symfony%202">#Symfony 2</a>
+    <div class="article-info">
+      <!-- todo : this is if the article has a single author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/tjarrand.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>Thomas JARRAND</strong></span>
       </div>
+      <!-- todo : this is if the article has multiple authors -->
+      <div class="article-author article-author--multi">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/tjarrand.jpg" />
+          <img src="/elao_/images/authors/tjarrand.jpg" />
+          <img src="/elao_/images/authors/tjarrand.jpg" />
+        </div>
+        <span class="article-author__info">
+          Écrit par
+          <strong>Anne-Laure DE BOISSIEU</strong>
+          <strong>Thomas JARRAND</strong>
+          <strong>Thomas JARRAND</strong>
+        </span>
+      </div>
+      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/tjarrand.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
+      </div>
+      <div class="article-info__date">
+        <span>Publication <strong>19 avril 2013</strong></span>
+        <span>Modification <strong>25 septembre 2020</strong></span>
+      </div>
+    </div>
 
-  <div>
-    <h1>Twig : Quelques pro-tips issue du Symfony Live 2013</h1>
-    <p>Twig : Quelques pro-tips issue du Symfony Live 2013</p>
+    <div class="article-header">
+      <h1>Twig : Quelques pro-tips issue du Symfony Live 2013</h1>
+      <p>Twig : Quelques pro-tips issue du Symfony Live 2013</p>
+      <ul class="article-tag-list">
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/Tips">#Tips</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/Twig">#Twig</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/Symfony%202">#Symfony 2</a>
+          </li>
+              </ul>
+    </div>
   </div>
 
-  <div>
-    <body><h3 id="isoler-les-include">Isoler les "include"<a href="#isoler-les-include" class="anchor"></a></h3>
+  <ul class="table-of-content">
+    <li class="table-of-content__item">
+      <a href="#intro">Introduction</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="#quas">Quas odio atque</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="voluptatem">Voluptatem et amet atque</a>
+    </li>
+  </ul>
+
+  <div class="article-content">
+    <main class="article-content__main">
+      <body><h3 id="isoler-les-include">Isoler les "include"<a href="#isoler-les-include" class="anchor"></a></h3>
 <p>Lors d'un <code class="code-inline" id="d436eb0fd9de10b54a828ce6435f7e81">include</code>, le template appelé accède par défaut au context du template appellant. Or c'est inutile la plus part du temps (le template appelé n'a souvent besoin que de quelques variables). De plus, cela peut provoquer des conflits si des variables portent le même nom dans les différents scopes.</p>
 <p>Pour éviter ça, vous pouvez isoler le template enfant en passant le paramètre <code class="code-inline" id="6299ba2cbd9661a5e3872b715521cd6a">only</code> lors de son appel. Le template appelé n'aura alors accès qu'aux variables que vous lui passez. C'est une bonne pratique en terme de performance et de stabilité :</p>
 <pre class="code-multiline language-twig"><code class="language-twig" id="7bf89c183d8127a3850453dcd85aeec0"><span class="token comment">{# template.html.twig #}</span>
@@ -240,20 +296,82 @@
 <pre class="code-multiline language-twig"><code class="language-twig" id="49ed900d8e4e6b42380380cc31bc5518"><span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">block</span></span> <span class="token property">content</span> <span class="token string"><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token rd"><span class="token punctuation">%}</span></span></span></code></pre>
 <h3 id="sources">Sources<a href="#sources" class="anchor"></a></h3>
 <p>Conférence au Symfony Live 2013 : "<a href="http://lyrixx.github.io/SFLive-Paris2013-Twig/#/comment-organiser-ses-templates-twig" target="_blank">COMMENT ORGANISER SES TEMPLATES TWIG ?</a>" par Grégoire Pineau – SensioLabs</p></body>
+    </main>
+    <aside class="article-content__aside">
+      <button class="kudo">
+        <span class="kudo__button" aria-hidden="true"></span>
+        <span class="screen-reader">Cet article m’a été utile</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
+      </button>
+    </aside>
   </div>
 
-  <div>
-    <img src="/elao_/images/authors/tjarrand.jpg" />
-
-    <p>Écrit par Thomas JARRAND<p>
-
-          <a href=tom32i>Twitter</a>
-              <a href=Tom32i>Github</a>
-              <a href=https://thomas.jarrand.fr>Website</a>
+  <div class="article-footer">
+    <!-- If the article has one single author -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/tjarrand.jpg" />
       </div>
+      <span class="article-author__info">Écrit par<strong>Thomas JARRAND</strong></span>
+      <div class="article-author__social">
+                  <a href=tom32i class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Thomas JARRAND</span>
+          </a>
+                          <a href=Tom32i class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Thomas JARRAND</span>
+          </a>
+                          <a href=https://thomas.jarrand.fr class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Thomas JARRAND</span>
+          </a>
+              </div>
+    </div>
+    <!-- If the article has mutltiple authors -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/tjarrand.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Thomas JARRAND</strong></span>
+      <div class="article-author__social">
+                  <a href=tom32i class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Thomas JARRAND</span>
+          </a>
+                          <a href=Tom32i class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Thomas JARRAND</span>
+          </a>
+                          <a href=https://thomas.jarrand.fr class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Thomas JARRAND</span>
+          </a>
+              </div>
+    </div>
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/tjarrand.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Thomas JARRAND</strong></span>
+      <div class="article-author__social">
+                  <a href=tom32i class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Thomas JARRAND</span>
+          </a>
+                          <a href=Tom32i class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Thomas JARRAND</span>
+          </a>
+                          <a href=https://thomas.jarrand.fr class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Thomas JARRAND</span>
+          </a>
+              </div>
+    </div>
+  </div>
 
-  <h4>Ces articles pourraient vous intéresser:</h4>
-
+  
         </main>
                     <footer class="footer">
                 <section class="footer__links">

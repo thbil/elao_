@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
+                    <link rel="stylesheet" href="/elao_/build/style.b6a8c134.css">
             </head>
     <body>
         <header class="header">
@@ -91,8 +91,7 @@
                     </nav>
                 
                                     <!-- Mobile nav -->
-                    <nav class="nav-mobile">
-                        <div class="nav-mobile__header">
+                    <nav class="nav-mobile">                        <div class="nav-mobile__header">
                             <a href="/elao_/">
                                                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 300 100" class="logo logo--animated">
                                 <path d="M61.6,61.6H19.7C21,69,24.8,72.2,32.6,72.2c5.9,0,8.8-1.9,11.7-7.8l16.1,6.9C56.2,82,46.9,87.8,32.1,87.8
@@ -114,37 +113,37 @@
                             </button>
                         </div>
                         <ul>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-services">
                                                                                 <span>Nos services</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
                                                                                 <span>Notre méthodologie</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
                                                                                 <span>Nos études de cas</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-valeurs">
                                                                                 <span>Nos valeurs</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/la-tribu/">
                                                                                 <span>La tribu</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/blog/">
                                                                                 <span>Blog</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item nav-mobile__item--large">
                                     <a href="/elao_/contact">
                                                                                     <i class="icon icon--contact" aria-hidden="true"></i>
                                                                                 <span>Contact</span>
@@ -160,30 +159,91 @@
         </header>
         <div class="container">
         <main>
-              <img src="/elao_/images/posts/thumbnails/github-agile.jpg" />
+              <ul class="breadcrumb">
+    <li class="breadcrumb__item">
+      <a href="#">Blog</a>
+    </li>
+    <li class="breadcrumb__item">
+      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+    </li>
+  </ul>
 
-  <div>
-    <img src="/elao_/images/authors/mcolin.jpg" />
-    <p>Écrit par Maxime COLIN<p>
-    <p>Publication 26 avril 2017<p>
-    <p>Modification 22 septembre 2020<p>
-  </div>
+  <div class="article-banner">
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/github-agile.jpg)"></div>
 
-  <div>
-          <a href="/elao_/blog/tag/agile">#agile</a>
-          <a href="/elao_/blog/tag/scrum">#scrum</a>
-          <a href="/elao_/blog/tag/kanban">#kanban</a>
-          <a href="/elao_/blog/tag/gestion%20de%20projet">#gestion de projet</a>
-          <a href="/elao_/blog/tag/github">#github</a>
+    <div class="article-info">
+      <!-- todo : this is if the article has a single author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/mcolin.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>Maxime COLIN</strong></span>
       </div>
+      <!-- todo : this is if the article has multiple authors -->
+      <div class="article-author article-author--multi">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/mcolin.jpg" />
+          <img src="/elao_/images/authors/mcolin.jpg" />
+          <img src="/elao_/images/authors/mcolin.jpg" />
+        </div>
+        <span class="article-author__info">
+          Écrit par
+          <strong>Anne-Laure DE BOISSIEU</strong>
+          <strong>Maxime COLIN</strong>
+          <strong>Maxime COLIN</strong>
+        </span>
+      </div>
+      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/mcolin.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
+      </div>
+      <div class="article-info__date">
+        <span>Publication <strong>26 avril 2017</strong></span>
+        <span>Modification <strong>25 septembre 2020</strong></span>
+      </div>
+    </div>
 
-  <div>
-    <h1>Gérer un projet AGILE avec GitHub</h1>
-    <p>Retour d&#039;expérience sur la gestion d&#039;un projet avec GitHub.</p>
+    <div class="article-header">
+      <h1>Gérer un projet AGILE avec GitHub</h1>
+      <p>Retour d&#039;expérience sur la gestion d&#039;un projet avec GitHub.</p>
+      <ul class="article-tag-list">
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/agile">#agile</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/scrum">#scrum</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/kanban">#kanban</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/gestion%20de%20projet">#gestion de projet</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/github">#github</a>
+          </li>
+              </ul>
+    </div>
   </div>
 
-  <div>
-    <body><p>Nombreux sont les outils de gestion de projets auxquels un développeur peut se frotter durant sa carrière. J'ai moi même eu affaire à plusieurs d'entre eux : des solutions de ticketing (Mantis, BugZilla, Redmine, ...), des boards Kanban (Trello, Taiga), des solutions tout-en-un complexes (Jira), des forges (GitHub, GitLab) et même des solutions manuelles (carnet de note, post-it, noeud à mon mouchoir).</p>
+  <ul class="table-of-content">
+    <li class="table-of-content__item">
+      <a href="#intro">Introduction</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="#quas">Quas odio atque</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="voluptatem">Voluptatem et amet atque</a>
+    </li>
+  </ul>
+
+  <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Nombreux sont les outils de gestion de projets auxquels un développeur peut se frotter durant sa carrière. J'ai moi même eu affaire à plusieurs d'entre eux : des solutions de ticketing (Mantis, BugZilla, Redmine, ...), des boards Kanban (Trello, Taiga), des solutions tout-en-un complexes (Jira), des forges (GitHub, GitLab) et même des solutions manuelles (carnet de note, post-it, noeud à mon mouchoir).</p>
 <p>Certaines solutions étant trop simples pour adresser tous mes besoins (Trello par exemple) ou trop complexes pour être agréables à utiliser (Jira), je me retrouve souvent à jongler entre plusieurs outils qui ne sont en plus pas toujours les mêmes d'un projet à l'autre.</p>
 <p>Mon envie était donc de trouver un moyen d'adresser tous mes besoins à l'aide d'un seul outil, simple et efficace. Et là, GitHub annonce de <a href="https://github.com/blog/2256-a-whole-new-github-universe-announcing-new-tools-forums-and-features" target="_blank">nouvelles fonctionnalités</a> dont GitHub Project (oui je sais, GitLab a sorti une fonctionnalité similaire auparavant, mais je suis moins fan de l'ergonomie GitLab ; d'ailleurs, tout ce que je décris dans cet article est réalisable avec GitLab).</p>
 <h2 id="besoins">Besoins<a href="#besoins" class="anchor"></a></h2>
@@ -221,20 +281,82 @@
 <p>J'ai utilisé cette méthode sur un projet de 3 mois avec un développeur (moi), une intégratrice et un <abbr title="Product Owner">PO</abbr> client déjà familier avec GitHub. Le PO s'est bien pris au jeu et a lui-même ouvert de nombreuses discussions sur ses fonctionnalités, qualifié et priorisé ses stories et a ainsi complètement géré la direction de son projet. De mon côté je pouvais donner un avis technique sur la faisabilité et la complexité de la fonctionnalité.</p>
 <p>Il n'y a pas une façon unique de faire de l'<strong>AGILE</strong>, de nombreuses solutions et méthodes existent.
 Pour être efficaces choisissez vos outils avec soin et adaptez vos méthodes à votre client et à votre équipe.</p></body>
+    </main>
+    <aside class="article-content__aside">
+      <button class="kudo">
+        <span class="kudo__button" aria-hidden="true"></span>
+        <span class="screen-reader">Cet article m’a été utile</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
+      </button>
+    </aside>
   </div>
 
-  <div>
-    <img src="/elao_/images/authors/mcolin.jpg" />
-
-    <p>Écrit par Maxime COLIN<p>
-
-          <a href=colin_maxime>Twitter</a>
-              <a href=maximecolin>Github</a>
-              <a href=http://www.maximecolin.fr>Website</a>
+  <div class="article-footer">
+    <!-- If the article has one single author -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/mcolin.jpg" />
       </div>
+      <span class="article-author__info">Écrit par<strong>Maxime COLIN</strong></span>
+      <div class="article-author__social">
+                  <a href=colin_maxime class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Maxime COLIN</span>
+          </a>
+                          <a href=maximecolin class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Maxime COLIN</span>
+          </a>
+                          <a href=http://www.maximecolin.fr class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Maxime COLIN</span>
+          </a>
+              </div>
+    </div>
+    <!-- If the article has mutltiple authors -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/mcolin.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Maxime COLIN</strong></span>
+      <div class="article-author__social">
+                  <a href=colin_maxime class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Maxime COLIN</span>
+          </a>
+                          <a href=maximecolin class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Maxime COLIN</span>
+          </a>
+                          <a href=http://www.maximecolin.fr class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Maxime COLIN</span>
+          </a>
+              </div>
+    </div>
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/mcolin.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Maxime COLIN</strong></span>
+      <div class="article-author__social">
+                  <a href=colin_maxime class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Maxime COLIN</span>
+          </a>
+                          <a href=maximecolin class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Maxime COLIN</span>
+          </a>
+                          <a href=http://www.maximecolin.fr class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Maxime COLIN</span>
+          </a>
+              </div>
+    </div>
+  </div>
 
-  <h4>Ces articles pourraient vous intéresser:</h4>
-
+  
         </main>
                     <footer class="footer">
                 <section class="footer__links">

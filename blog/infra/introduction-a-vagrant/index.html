@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
+                    <link rel="stylesheet" href="/elao_/build/style.b6a8c134.css">
             </head>
     <body>
         <header class="header">
@@ -91,8 +91,7 @@
                     </nav>
                 
                                     <!-- Mobile nav -->
-                    <nav class="nav-mobile">
-                        <div class="nav-mobile__header">
+                    <nav class="nav-mobile">                        <div class="nav-mobile__header">
                             <a href="/elao_/">
                                                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 300 100" class="logo logo--animated">
                                 <path d="M61.6,61.6H19.7C21,69,24.8,72.2,32.6,72.2c5.9,0,8.8-1.9,11.7-7.8l16.1,6.9C56.2,82,46.9,87.8,32.1,87.8
@@ -114,37 +113,37 @@
                             </button>
                         </div>
                         <ul>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-services">
                                                                                 <span>Nos services</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
                                                                                 <span>Notre méthodologie</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
                                                                                 <span>Nos études de cas</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-valeurs">
                                                                                 <span>Nos valeurs</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/la-tribu/">
                                                                                 <span>La tribu</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/blog/">
                                                                                 <span>Blog</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item nav-mobile__item--large">
                                     <a href="/elao_/contact">
                                                                                     <i class="icon icon--contact" aria-hidden="true"></i>
                                                                                 <span>Contact</span>
@@ -160,27 +159,82 @@
         </header>
         <div class="container">
         <main>
-              <img src="/elao_/images/posts/thumbnails/vagrant.png" />
+              <ul class="breadcrumb">
+    <li class="breadcrumb__item">
+      <a href="#">Blog</a>
+    </li>
+    <li class="breadcrumb__item">
+      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+    </li>
+  </ul>
 
-  <div>
-    <img src="/elao_/images/authors/mbernard.jpg" />
-    <p>Écrit par Maximilien BERNARD<p>
-    <p>Publication 23 avril 2017<p>
-    <p>Modification 22 septembre 2020<p>
-  </div>
+  <div class="article-banner">
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/vagrant.png)"></div>
 
-  <div>
-          <a href="/elao_/blog/tag/Vagrant">#Vagrant</a>
-          <a href="/elao_/blog/tag/Virtualisation">#Virtualisation</a>
+    <div class="article-info">
+      <!-- todo : this is if the article has a single author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/mbernard.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>Maximilien BERNARD</strong></span>
       </div>
+      <!-- todo : this is if the article has multiple authors -->
+      <div class="article-author article-author--multi">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/mbernard.jpg" />
+          <img src="/elao_/images/authors/mbernard.jpg" />
+          <img src="/elao_/images/authors/mbernard.jpg" />
+        </div>
+        <span class="article-author__info">
+          Écrit par
+          <strong>Anne-Laure DE BOISSIEU</strong>
+          <strong>Maximilien BERNARD</strong>
+          <strong>Maximilien BERNARD</strong>
+        </span>
+      </div>
+      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/mbernard.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
+      </div>
+      <div class="article-info__date">
+        <span>Publication <strong>23 avril 2017</strong></span>
+        <span>Modification <strong>25 septembre 2020</strong></span>
+      </div>
+    </div>
 
-  <div>
-    <h1>Introduction à Vagrant</h1>
-    <p>Le fonctionnement et les principes utilisés par Vagrant. Comment installer une VM contenant une version minimale d&#039;Ubuntu et la provisionner avec nginx.</p>
+    <div class="article-header">
+      <h1>Introduction à Vagrant</h1>
+      <p>Le fonctionnement et les principes utilisés par Vagrant. Comment installer une VM contenant une version minimale d&#039;Ubuntu et la provisionner avec nginx.</p>
+      <ul class="article-tag-list">
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/Vagrant">#Vagrant</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/Virtualisation">#Virtualisation</a>
+          </li>
+              </ul>
+    </div>
   </div>
 
-  <div>
-    <body><p>Vagrant est un outil qui simplifie la création et la gestion d’environnements virtualisés.
+  <ul class="table-of-content">
+    <li class="table-of-content__item">
+      <a href="#intro">Introduction</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="#quas">Quas odio atque</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="voluptatem">Voluptatem et amet atque</a>
+    </li>
+  </ul>
+
+  <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Vagrant est un outil qui simplifie la création et la gestion d’environnements virtualisés.
 Si par le passé on avait recours à des plateformes comme LAMP/MAMP/XAMP pour gérer son environnement de développement, <!-- more --> cela posait souvent problème car les versions des dépendances logicielles pouvaient varier une fois l’application déployée sur un environnement externe, notamment en production. On se retrouvait alors à perdre un temps considérable pour corriger des bugs en production qui n’étaient pas reproductibles en développement, et inversement.</p>
 <p>Vagrant permet de travailler dans un environnement reproductible avec les mêmes versions pour toutes vos dépendances. Parce qu’il utilise le principe de virtualisation, il est donc compatible avec la majorité des OS actuels. Ainsi, un développeur travaillant sous Mac aura accès au même environnement qu'un développeur sous Windows ou Linux tout en conservant son IDE favori.</p>
 <h1 id="comment-a-fonctionne">Comment ça fonctionne ?<a href="#comment-a-fonctionne" class="anchor"></a></h1>
@@ -240,19 +294,70 @@ vagrant@precise32:~$</code></pre>
 <p>sources:
 <a href="https://www.vagrantup.com/docs/" target="_blank">https://www.vagrantup.com/docs/</a>
 <a href="http://blog.scottlowe.org/2014/09/12/a-quick-introduction-to-vagrant/" target="_blank">http://blog.scottlowe.org/2014/09/12/a-quick-introduction-to-vagrant/</a></p></body>
+    </main>
+    <aside class="article-content__aside">
+      <button class="kudo">
+        <span class="kudo__button" aria-hidden="true"></span>
+        <span class="screen-reader">Cet article m’a été utile</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
+      </button>
+    </aside>
   </div>
 
-  <div>
-    <img src="/elao_/images/authors/mbernard.jpg" />
+  <div class="article-footer">
+    <!-- If the article has one single author -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/mbernard.jpg" />
+      </div>
+      <span class="article-author__info">Écrit par<strong>Maximilien BERNARD</strong></span>
+      <div class="article-author__social">
+                  <a href=mb3rnard class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Maximilien BERNARD</span>
+          </a>
+                          <a href=mb3rnard class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Maximilien BERNARD</span>
+          </a>
+                      </div>
+    </div>
+    <!-- If the article has mutltiple authors -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/mbernard.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Maximilien BERNARD</strong></span>
+      <div class="article-author__social">
+                  <a href=mb3rnard class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Maximilien BERNARD</span>
+          </a>
+                          <a href=mb3rnard class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Maximilien BERNARD</span>
+          </a>
+                      </div>
+    </div>
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/mbernard.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Maximilien BERNARD</strong></span>
+      <div class="article-author__social">
+                  <a href=mb3rnard class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Maximilien BERNARD</span>
+          </a>
+                          <a href=mb3rnard class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Maximilien BERNARD</span>
+          </a>
+                      </div>
+    </div>
+  </div>
 
-    <p>Écrit par Maximilien BERNARD<p>
-
-          <a href=mb3rnard>Twitter</a>
-              <a href=mb3rnard>Github</a>
-          </div>
-
-  <h4>Ces articles pourraient vous intéresser:</h4>
-
+  
         </main>
                     <footer class="footer">
                 <section class="footer__links">

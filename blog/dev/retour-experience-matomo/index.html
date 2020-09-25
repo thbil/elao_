@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
+                    <link rel="stylesheet" href="/elao_/build/style.b6a8c134.css">
             </head>
     <body>
         <header class="header">
@@ -91,8 +91,7 @@
                     </nav>
                 
                                     <!-- Mobile nav -->
-                    <nav class="nav-mobile">
-                        <div class="nav-mobile__header">
+                    <nav class="nav-mobile">                        <div class="nav-mobile__header">
                             <a href="/elao_/">
                                                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 300 100" class="logo logo--animated">
                                 <path d="M61.6,61.6H19.7C21,69,24.8,72.2,32.6,72.2c5.9,0,8.8-1.9,11.7-7.8l16.1,6.9C56.2,82,46.9,87.8,32.1,87.8
@@ -114,37 +113,37 @@
                             </button>
                         </div>
                         <ul>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-services">
                                                                                 <span>Nos services</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
                                                                                 <span>Notre méthodologie</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
                                                                                 <span>Nos études de cas</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-valeurs">
                                                                                 <span>Nos valeurs</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/la-tribu/">
                                                                                 <span>La tribu</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/blog/">
                                                                                 <span>Blog</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item nav-mobile__item--large">
                                     <a href="/elao_/contact">
                                                                                     <i class="icon icon--contact" aria-hidden="true"></i>
                                                                                 <span>Contact</span>
@@ -160,28 +159,85 @@
         </header>
         <div class="container">
         <main>
-              <img src="/elao_/images/posts/thumbnails/matomo.jpg" />
+              <ul class="breadcrumb">
+    <li class="breadcrumb__item">
+      <a href="#">Blog</a>
+    </li>
+    <li class="breadcrumb__item">
+      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+    </li>
+  </ul>
 
-  <div>
-    <img src="/elao_/images/authors/aldeboissieu.jpg" />
-    <p>Écrit par Anne-Laure de Boissieu<p>
-    <p>Publication 21 mars 2019<p>
-    <p>Modification 22 septembre 2020<p>
-  </div>
+  <div class="article-banner">
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/matomo.jpg)"></div>
 
-  <div>
-          <a href="/elao_/blog/tag/Seo">#Seo</a>
-          <a href="/elao_/blog/tag/RGPD">#RGPD</a>
-          <a href="/elao_/blog/tag/Matomo">#Matomo</a>
+    <div class="article-info">
+      <!-- todo : this is if the article has a single author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/aldeboissieu.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>Anne-Laure de Boissieu</strong></span>
       </div>
+      <!-- todo : this is if the article has multiple authors -->
+      <div class="article-author article-author--multi">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/aldeboissieu.jpg" />
+          <img src="/elao_/images/authors/aldeboissieu.jpg" />
+          <img src="/elao_/images/authors/aldeboissieu.jpg" />
+        </div>
+        <span class="article-author__info">
+          Écrit par
+          <strong>Anne-Laure DE BOISSIEU</strong>
+          <strong>Anne-Laure de Boissieu</strong>
+          <strong>Anne-Laure de Boissieu</strong>
+        </span>
+      </div>
+      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/aldeboissieu.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
+      </div>
+      <div class="article-info__date">
+        <span>Publication <strong>21 mars 2019</strong></span>
+        <span>Modification <strong>25 septembre 2020</strong></span>
+      </div>
+    </div>
 
-  <div>
-    <h1>Sauvez un cookie 🍪, installez Matomo !</h1>
-    <p>Chez Elao, nous mesurons désormais l&#039;audience de nos propres sites grâce à Matomo. Retour d&#039;expérience. </p>
+    <div class="article-header">
+      <h1>Sauvez un cookie 🍪, installez Matomo !</h1>
+      <p>Chez Elao, nous mesurons désormais l&#039;audience de nos propres sites grâce à Matomo. Retour d&#039;expérience. </p>
+      <ul class="article-tag-list">
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/Seo">#Seo</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/RGPD">#RGPD</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/Matomo">#Matomo</a>
+          </li>
+              </ul>
+    </div>
   </div>
 
-  <div>
-    <body><p>Anciennement nommé Piwik, Matomo est une solution de mesure d'audience de sites web, alternative libre à Google Analytics. Chez Elao, nous avons souhaité l'utiliser définitivement pour analyser le trafic de notre site et de notre blog. Nous partageons avec vous quelques informations qui vous seront peut-être utiles si, vous aussi, <strong>vous souhaitez rendre anonymes les informations relatives à vos visiteurs</strong> 🔒.</p>
+  <ul class="table-of-content">
+    <li class="table-of-content__item">
+      <a href="#intro">Introduction</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="#quas">Quas odio atque</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="voluptatem">Voluptatem et amet atque</a>
+    </li>
+  </ul>
+
+  <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Anciennement nommé Piwik, Matomo est une solution de mesure d'audience de sites web, alternative libre à Google Analytics. Chez Elao, nous avons souhaité l'utiliser définitivement pour analyser le trafic de notre site et de notre blog. Nous partageons avec vous quelques informations qui vous seront peut-être utiles si, vous aussi, <strong>vous souhaitez rendre anonymes les informations relatives à vos visiteurs</strong> 🔒.</p>
 <h2 id="a-quoi-sert-matomo">A quoi sert Matomo ?<a href="#a-quoi-sert-matomo" class="anchor"></a></h2>
 <p>Tout comme Google Analytics, Matomo permet de mieux comprendre la façon dont les utilisateurs arrivent sur nos sites. On peut ainsi envisager de répondre aux questions suivantes : d'où vient mon visiteur (réseaux sociaux ? Moteur de recherche ?) ? Quelles pages a-t-il visité ? Quelle a été la durée moyenne de sa visite ? Quelle est ma place dans l'univers ? Et autant d'autres questions qui permettent de <strong>connaître le parcours de ses visiteurs</strong>, afin d'améliorer l'ergonomie ou encore de remonter un éventuel trafic parasite.</p>
 <ul><li><strong>Matomo est un logiciel libre</strong> sous licence GPLv3, conçu pour être auto-hébergé;</li>
@@ -249,20 +305,82 @@
 <li><a href="https://demo.matomo.org/" target="_blank">Démo publique</a></li>
 <li><a href="https://zestedesavoir.com/tutoriels/2508/matomo-analytics/partie-4-comprendre-et-analyser-les-donnees/" target="_blank">Comprendre et analyser les données avec Matomo</a></li>
 </ul><p>Merci à <a href="https://woptimo.com/" target="_blank">Sébastien Monnier</a> pour son feedback sur l'article :)</p></body>
+    </main>
+    <aside class="article-content__aside">
+      <button class="kudo">
+        <span class="kudo__button" aria-hidden="true"></span>
+        <span class="screen-reader">Cet article m’a été utile</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
+      </button>
+    </aside>
   </div>
 
-  <div>
-    <img src="/elao_/images/authors/aldeboissieu.jpg" />
-
-    <p>Écrit par Anne-Laure de Boissieu<p>
-
-          <a href=AnneLaure2B>Twitter</a>
-              <a href=al2b>Github</a>
-              <a href=http://www.elao.com>Website</a>
+  <div class="article-footer">
+    <!-- If the article has one single author -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/aldeboissieu.jpg" />
       </div>
+      <span class="article-author__info">Écrit par<strong>Anne-Laure de Boissieu</strong></span>
+      <div class="article-author__social">
+                  <a href=AnneLaure2B class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Anne-Laure de Boissieu</span>
+          </a>
+                          <a href=al2b class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Anne-Laure de Boissieu</span>
+          </a>
+                          <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Anne-Laure de Boissieu</span>
+          </a>
+              </div>
+    </div>
+    <!-- If the article has mutltiple authors -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/aldeboissieu.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Anne-Laure de Boissieu</strong></span>
+      <div class="article-author__social">
+                  <a href=AnneLaure2B class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Anne-Laure de Boissieu</span>
+          </a>
+                          <a href=al2b class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Anne-Laure de Boissieu</span>
+          </a>
+                          <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Anne-Laure de Boissieu</span>
+          </a>
+              </div>
+    </div>
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/aldeboissieu.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Anne-Laure de Boissieu</strong></span>
+      <div class="article-author__social">
+                  <a href=AnneLaure2B class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Anne-Laure de Boissieu</span>
+          </a>
+                          <a href=al2b class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Anne-Laure de Boissieu</span>
+          </a>
+                          <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Anne-Laure de Boissieu</span>
+          </a>
+              </div>
+    </div>
+  </div>
 
-  <h4>Ces articles pourraient vous intéresser:</h4>
-
+  
         </main>
                     <footer class="footer">
                 <section class="footer__links">

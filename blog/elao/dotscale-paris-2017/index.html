@@ -22,7 +22,7 @@
             <meta property="twitter:site" content="@tom32i">
             <meta property="twitter:creator" content="@tom32i">
                     
-                    <link rel="stylesheet" href="/elao_/build/style.ee527900.css">
+                    <link rel="stylesheet" href="/elao_/build/style.b6a8c134.css">
             </head>
     <body>
         <header class="header">
@@ -91,8 +91,7 @@
                     </nav>
                 
                                     <!-- Mobile nav -->
-                    <nav class="nav-mobile">
-                        <div class="nav-mobile__header">
+                    <nav class="nav-mobile">                        <div class="nav-mobile__header">
                             <a href="/elao_/">
                                                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 300 100" class="logo logo--animated">
                                 <path d="M61.6,61.6H19.7C21,69,24.8,72.2,32.6,72.2c5.9,0,8.8-1.9,11.7-7.8l16.1,6.9C56.2,82,46.9,87.8,32.1,87.8
@@ -114,37 +113,37 @@
                             </button>
                         </div>
                         <ul>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-services">
                                                                                 <span>Nos services</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
                                                                                 <span>Notre méthodologie</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
                                                                                 <span>Nos études de cas</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/nos-valeurs">
                                                                                 <span>Nos valeurs</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/la-tribu/">
                                                                                 <span>La tribu</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item ">
                                     <a href="/elao_/blog/">
                                                                                 <span>Blog</span>
                                     </a>
                                 </li>
-                                                            <li class="nav-mobile__item">
+                                                            <li class="nav-mobile__item nav-mobile__item--large">
                                     <a href="/elao_/contact">
                                                                                     <i class="icon icon--contact" aria-hidden="true"></i>
                                                                                 <span>Contact</span>
@@ -160,30 +159,91 @@
         </header>
         <div class="container">
         <main>
-              <img src="/elao_/images/posts/thumbnails/dotscale.jpg" />
+              <ul class="breadcrumb">
+    <li class="breadcrumb__item">
+      <a href="#">Blog</a>
+    </li>
+    <li class="breadcrumb__item">
+      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+    </li>
+  </ul>
 
-  <div>
-    <img src="/elao_/images/authors/gfaivre.jpg" />
-    <p>Écrit par Guewen FAIVRE<p>
-    <p>Publication 24 avril 2017<p>
-    <p>Modification 22 septembre 2020<p>
-  </div>
+  <div class="article-banner">
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/dotscale.jpg)"></div>
 
-  <div>
-          <a href="/elao_/blog/tag/DevOps">#DevOps</a>
-          <a href="/elao_/blog/tag/SysAdmin">#SysAdmin</a>
-          <a href="/elao_/blog/tag/Infrastructure">#Infrastructure</a>
-          <a href="/elao_/blog/tag/Conf%C3%A9rence">#Conférence</a>
-          <a href="/elao_/blog/tag/Scalabilit%C3%A9">#Scalabilité</a>
+    <div class="article-info">
+      <!-- todo : this is if the article has a single author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/gfaivre.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>Guewen FAIVRE</strong></span>
       </div>
+      <!-- todo : this is if the article has multiple authors -->
+      <div class="article-author article-author--multi">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/gfaivre.jpg" />
+          <img src="/elao_/images/authors/gfaivre.jpg" />
+          <img src="/elao_/images/authors/gfaivre.jpg" />
+        </div>
+        <span class="article-author__info">
+          Écrit par
+          <strong>Anne-Laure DE BOISSIEU</strong>
+          <strong>Guewen FAIVRE</strong>
+          <strong>Guewen FAIVRE</strong>
+        </span>
+      </div>
+      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
+      <div class="article-author">
+        <div class="article-author__image">
+          <img src="/elao_/images/authors/gfaivre.jpg" />
+        </div>
+        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
+      </div>
+      <div class="article-info__date">
+        <span>Publication <strong>24 avril 2017</strong></span>
+        <span>Modification <strong>25 septembre 2020</strong></span>
+      </div>
+    </div>
 
-  <div>
-    <h1>DotScale Paris 2017</h1>
-    <p>Aperçu du DotScale Paris 2017</p>
+    <div class="article-header">
+      <h1>DotScale Paris 2017</h1>
+      <p>Aperçu du DotScale Paris 2017</p>
+      <ul class="article-tag-list">
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/DevOps">#DevOps</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/SysAdmin">#SysAdmin</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/Infrastructure">#Infrastructure</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/Conf%C3%A9rence">#Conférence</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/blog/tag/Scalabilit%C3%A9">#Scalabilité</a>
+          </li>
+              </ul>
+    </div>
   </div>
 
-  <div>
-    <body><p>Le 24 Avril 2017 avait lieu à Paris le DotScale 2017 avec différentes têtes d'affiches plutôt alléchantes. On citera parmi elles Mitchell Hashimoto (HashiCorp) et James Cammarata (Ansible).
+  <ul class="table-of-content">
+    <li class="table-of-content__item">
+      <a href="#intro">Introduction</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="#quas">Quas odio atque</a>
+    </li>
+    <li class="table-of-content__item">
+      <a href="voluptatem">Voluptatem et amet atque</a>
+    </li>
+  </ul>
+
+  <div class="article-content">
+    <main class="article-content__main">
+      <body><p>Le 24 Avril 2017 avait lieu à Paris le DotScale 2017 avec différentes têtes d'affiches plutôt alléchantes. On citera parmi elles Mitchell Hashimoto (HashiCorp) et James Cammarata (Ansible).
 Rapide retour sur cette édition 2017 et les différentes conférences proposées.<!-- more --></p>
 <h1 id="dotscale-c-est-quoi">Dotscale c'est quoi ?<a href="#dotscale-c-est-quoi" class="anchor"></a></h1>
 <p>Les conférences Dot sont toutes différentes (en termes de sujet) mais partagent le même concept fortement inspiré des conférences <a href="https://www.ted.com/talks" target="_blank">TED</a>, qui prévoit des conférences de 18 minutes menées tambour battant via un «mono track» autour d'un sujet et/ou d'une solution technique.
@@ -209,20 +269,82 @@ Dans le cadre du DotScale, les sujets vont de la supervision de parcs de serveur
 <p>Pour plus d'informations: <a href="https://www.dotconferences.com/" target="_blank">https://www.dotconferences.com/</a>, il y en a pour tous les goûts ;)</p>
 </blockquote>
 <p><em>Crédits photos: <a href="https://www.flickr.com/photos/97226415@N08/albums" target="_blank">DotConferences</a></em></p></body>
+    </main>
+    <aside class="article-content__aside">
+      <button class="kudo">
+        <span class="kudo__button" aria-hidden="true"></span>
+        <span class="screen-reader">Cet article m’a été utile</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
+      </button>
+    </aside>
   </div>
 
-  <div>
-    <img src="/elao_/images/authors/gfaivre.jpg" />
-
-    <p>Écrit par Guewen FAIVRE<p>
-
-          <a href=guewen_faivre>Twitter</a>
-              <a href=gfaivre>Github</a>
-              <a href=http://www.elao.com>Website</a>
+  <div class="article-footer">
+    <!-- If the article has one single author -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/gfaivre.jpg" />
       </div>
+      <span class="article-author__info">Écrit par<strong>Guewen FAIVRE</strong></span>
+      <div class="article-author__social">
+                  <a href=guewen_faivre class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
+          </a>
+                          <a href=gfaivre class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
+          </a>
+                          <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
+          </a>
+              </div>
+    </div>
+    <!-- If the article has mutltiple authors -->
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/gfaivre.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Guewen FAIVRE</strong></span>
+      <div class="article-author__social">
+                  <a href=guewen_faivre class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
+          </a>
+                          <a href=gfaivre class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
+          </a>
+                          <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
+          </a>
+              </div>
+    </div>
+    <div class="article-author">
+      <div class="article-author__image">
+        <img src="/elao_/images/authors/gfaivre.jpg" />
+      </div>
+      <span class="article-author__info">Co-auteur<strong>Guewen FAIVRE</strong></span>
+      <div class="article-author__social">
+                  <a href=guewen_faivre class="social social--small">
+            <i class="icon icon--twitter" aria-hidden="true"></i>
+            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
+          </a>
+                          <a href=gfaivre class="social social--small">
+            <i class="icon icon--github" aria-hidden="true"></i>
+            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
+          </a>
+                          <a href=http://www.elao.com class="social social--small">
+            <i class="icon icon--website" aria-hidden="true"></i>
+            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
+          </a>
+              </div>
+    </div>
+  </div>
 
-  <h4>Ces articles pourraient vous intéresser:</h4>
-
+  
         </main>
                     <footer class="footer">
                 <section class="footer__links">
