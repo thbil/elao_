@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      Symfony 2 – L’injection de dépendances
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/event-dispatcher.jpg)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/vbouzeran.jpg" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/images/authors/vbouzeran.jpg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Vincent BOUZERAN</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Vincent BOUZERAN</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/vbouzeran.jpg" />
-          <img src="/elao_/images/authors/vbouzeran.jpg" />
-          <img src="/elao_/images/authors/vbouzeran.jpg" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Vincent BOUZERAN</strong>
-          <strong>Vincent BOUZERAN</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/vbouzeran.jpg" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>3 juin 2010</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -220,18 +201,7 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+  
   <div class="article-content">
     <main class="article-content__main">
       <body><p><strong>Avertissement :</strong>
@@ -242,7 +212,7 @@ Depuis la rédaction de cet article sur l'injection de dépendances, le coeur de
 <p>Définition Wikipedia:</p>
 <p>"<strong>L'injection de dépendances</strong> (Dependency Injection) est un mécanisme qui permet d'implanter le principe de l'Inversion de contrôle. Il consiste à créer dynamiquement (injecter) les dépendances entre les différentes classes en s'appuyant généralement sur une description (fichier de configuration). Ainsi les dépendances entre composants logiciels ne sont plus exprimées dans le code de manière statique mais déterminées dynamiquement à l'exécution."</p>
 </blockquote>
-<h3 id="qu-est-ce-que-l-injection-de-d">Qu'est ce que l'injection de dépendances ?<a href="#qu-est-ce-que-l-injection-de-d" class="anchor"></a></h3>
+<h3 id="qu-est-ce-que-l-injection-de-d" class="anchor-title"><a href="#qu-est-ce-que-l-injection-de-d">Qu'est ce que l'injection de dépendances ?</a></h3>
 <p>En programmation objet, et particulièrement avec les Frameworks, nous sommes souvent amenés à manipuler un grand nombre de classes d'objet différentes. Ces différents objets sont chargés de fournir une fonctionnalité ou un "service". Dans une application standard, nous serons par exemple amenés à manipuler :</p>
 <ul><li>Un objet <strong>User</strong>, supposé représenter l'utilisateur connecté à l'application</li>
 <li>Un objet <strong>Session</strong>, pour la gestion de la session de l'utilisateur</li>
@@ -259,7 +229,7 @@ Depuis la rédaction de cet article sur l'injection de dépendances, le coeur de
 <li>un logger (chargé d'enregistrer des logs)</li>
 <li>un router (chargé du routing)</li>
 </ul><p>L'injecteur de dépendances pourrait ressembler à quelque chose comme ça :</p>
-<h4 id="fichier-de-configuration">Fichier de configuration<a href="#fichier-de-configuration" class="anchor"></a></h4>
+<h4 id="fichier-de-configuration" class="anchor-title"><a href="#fichier-de-configuration">Fichier de configuration</a></h4>
 <pre class="code-multiline"><code id="f794ccffe4fc5f9fe5f66c00566abb74">* Service 'mailer'
 - Utiliser la classe 'MonMailer'
 - Passer le service 'logger' dans son constructeur
@@ -267,7 +237,7 @@ Depuis la rédaction de cet article sur l'injection de dépendances, le coeur de
 - Utiliser la classe 'MonLogger'* Service 'routeur'
 - Utiliser la classe 'MonRouteur'
 - Appeler la méthode 'setLogger' en lui passant le service 'logger' en paramètre</code></pre>
-<h4 id="container-g-n-r">Container généré<a href="#container-g-n-r" class="anchor"></a></h4>
+<h4 id="container-g-n-r" class="anchor-title"><a href="#container-g-n-r">Container généré</a></h4>
 <pre class="code-multiline language-php"><code class="language-php" id="6ba0a394293d1c77f83955b213eb6dc3"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">class</span> <span class="token class-name">Container</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
@@ -295,7 +265,7 @@ Depuis la rédaction de cet article sur l'injection de dépendances, le coeur de
 <ul><li>Changer la classe utilisée pour représenter un service</li>
 <li>Ajouter un service</li>
 <li>Modifier / Ajouter des dépendances</li>
-</ul><h3 id="symfony-x-et-le-factories-yml">Symfony 1.x et le factories.yml<a href="#symfony-x-et-le-factories-yml" class="anchor"></a></h3>
+</ul><h3 id="symfony-1-x-et-le-factories-yml" class="anchor-title"><a href="#symfony-1-x-et-le-factories-yml">Symfony 1.x et le factories.yml</a></h3>
 <p>A l'origine, sous Symfony 1.x, ce qui remplaçait plus ou moins l'injecteur de dépendances était le fichier <strong>factories.yml</strong> avec comme container l'objet <strong>sfContext</strong>. Ce fichier était chargé en cache (<strong>factories.yml.php</strong>) et les différents 'services' inclus dans l'objet <strong>sfContext</strong> au travers de sa propriété <strong>factories</strong>.</p>
 <pre class="code-multiline language-php"><code class="language-php" id="1b093262e3737cf80bc6bf23d11346f1"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">class</span> <span class="token class-name">sfContext</span> <span class="token keyword">implements</span> <span class="token class-name">ArrayAccess</span>
@@ -331,12 +301,12 @@ Depuis la rédaction de cet article sur l'injection de dépendances, le coeur de
   <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token punctuation">}</span></span></code></pre>
-<h3 id="symfony-et-l-injection-de-d-p">Symfony 2 et l'injection de dépendances<a href="#symfony-et-l-injection-de-d-p" class="anchor"></a></h3>
+<h3 id="symfony-2-et-l-injection-de-d-p" class="anchor-title"><a href="#symfony-2-et-l-injection-de-d-p">Symfony 2 et l'injection de dépendances</a></h3>
 <p>Nous arrivons maintenant à la partie intéressante: L'implémentation de l'injection de dépendances dans Symfony 2.
 En premier lieu, je vous conseille vivement la lecture de la documentation de Fabien Potencier dédiée au composant:
 <a href="http://components.symfony-project.org/dependency-injection/trunk/book/00-Introduction" target="_blank">Symfony Dependency Injection</a> (il s'agit du composant php 5.2, mais la documentation est toujours d'actualité dans le sens où le fonctionnement est identique).</p>
 <p>Jetons un oeil aux sources du composant (<em>/sandbox/src/vendor/symfony/src/Symfony/Components/DependencyInjection</em>) :</p>
-<img src="/images/posts/2010/di-folder.png" alt='di folder Symfony 2   Linjection de dépendances" width="284" height="253' title='di folder Symfony 2   Linjection de dépendances" width="284" height="253' id="di-folder-symfony-linjection"><ul><li>Le répertoire <strong>*Dumper<strong> <em>va contenir les classes permettant de dumper un </em></strong>Builder*</strong> sous un format spécifique (Yaml, Xml, PHP, Graphviz).</li>
+<img src="/images/posts/2010/di-folder.png" alt='di folder Symfony 2   Linjection de dépendances" width="284" height="253' title='di folder Symfony 2   Linjection de dépendances" width="284" height="253' id="di-folder-symfony-2-linjection"><ul><li>Le répertoire <strong>*Dumper<strong> <em>va contenir les classes permettant de dumper un </em></strong>Builder*</strong> sous un format spécifique (Yaml, Xml, PHP, Graphviz).</li>
 <li>Le répertoire <strong><em>Loader</em></strong> var contenir les classes permettant de charger des <strong><em>BuilderConfiguration</em></strong> à partir de formats spécifiques (Yaml, Xml, Ini)</li>
 <li><strong><em>Container</em></strong> est notre classe de base, ie le container qui va contenir les différents services et les paramètres associés.</li>
 <li><strong><em>Builder</em></strong> est une classe qui étend <strong><em>Container</em></strong> et qui va permettre d'auto-générer le <strong><em>Container</em></strong> à partir de la configuration, elle va consommer des objets de la classe <strong><em>BuilderConfiguration</em></strong> afin d'enrichir le <strong><em>Container</em></strong>.</li>
@@ -345,7 +315,7 @@ En premier lieu, je vous conseille vivement la lecture de la documentation de Fa
 </ul><p>Le fonctionnement est somme toute assez simple. Les différents loaders vont permettre de générer des objets du type BuilderConfiguration (qui contiendront des objets Definition) qui seront mergés au sein du Builder pour aboutir à notre Container. Les dumpers permettront de faire l'opération inverse, à savoir : générer un fichier de définitions pour les formats Yaml et Xml, un output Graphviz et enfin un objet php Container en ce qui concerne le dumper PHP.
 Un schéma valant mieux qu'un long discours, on peut synthétiser le fonctionnement comme suit :
 Note: Le loader de fichiers .ini n'a pas été représenté puisqu'il ne permet que de définir des paramètres.</p>
-<img src="/images/posts/2010/injection-dependances.png" alt='injection dependances Symfony 2   Linjection de dépendances" width="846" height="468' title='injection dependances Symfony 2   Linjection de dépendances" width="846" height="468' id="injection-dependances-symfony"><p><strong>Le dumper Graphviz</strong>: Ce dumper a pour objectif de générer un dump exploitable par le logiciel <a href="http://graphviz.org/" target="_blank">Graphviz</a> ; il va nous permettre d'obtenir un graphique représentant nos services et leurs dépendances.
+<img src="/images/posts/2010/injection-dependances.png" alt='injection dependances Symfony 2   Linjection de dépendances" width="846" height="468' title='injection dependances Symfony 2   Linjection de dépendances" width="846" height="468' id="injection-dependances-symfony-2"><p><strong>Le dumper Graphviz</strong>: Ce dumper a pour objectif de générer un dump exploitable par le logiciel <a href="http://graphviz.org/" target="_blank">Graphviz</a> ; il va nous permettre d'obtenir un graphique représentant nos services et leurs dépendances.
 <strong><strong>Le cache:</strong></strong> Afin d'accélérer le fonctionnement des applications utilisant l'injection de dépendances, il est évident que les différents fichiers de configuration ne seront pas reparsés à chaque appel. En réalité, le container sera dumpé sous la forme d'une classe PHP et mise en cache.</p>
 <p>Attardons nous un peu sur ces fameuses définitions de services qui sont un peu la pierre angulaire de l'injection de dépendances.</p>
 <table style="width: 100%;" border="0"><tr><th colspan="2">
@@ -413,7 +383,7 @@ De façon très synthétique et grossière, la définition nous permettrait d'ab
   <span class="token keyword">return</span> <span class="token variable">$service</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p><strong>Note: </strong>Dans Symfony 2, les bundles de base utilisent le loader XML pour définir leurs services. Le format XML a l'avantage de pouvoir être validé via <strong>Components/DependencyInjection/Loader/schema/dic/services/services-1.0.xsd</strong></p>
-<h3 id="exemple-de-service-le-logger-du">Exemple de service: le logger du ZendBundle<a href="#exemple-de-service-le-logger-du" class="anchor"></a></h3>
+<h3 id="exemple-de-service-le-logger-du" class="anchor-title"><a href="#exemple-de-service-le-logger-du">Exemple de service: le logger du ZendBundle</a></h3>
 <p>Dans le répertoire Ressources/config/ du Bundle (<strong> /sandbox/src/vendor/symfony/src/Symfony/Framework/ZendBundle</strong>), on trouve le fichier : logger.xml. Il s'agit de notre fichier de configuration. Notre fichier qui sera chargé par le loader pour enrichir notre container.</p>
 <pre class="code-multiline language-xml"><code class="language-xml" id="7b3f845590cde9ce25358a1809956cf1"><span class="token comment">&lt;!--?xml version="1.0" ?--&gt;</span>
 
@@ -490,11 +460,11 @@ Les paramètres sont également définis dans le fichier.</p>
 <p>Comme vous pouvez le constater, une méthode getLoggerService est générée. Cette méthode est générée car un alias a été défini lors de la configuration du builder (ligne 59 du fichier ZendExtension.php).</p>
 <pre class="code-multiline language-php"><code class="language-php" id="6ecc4e0bcecbb878ec6790beaee60106"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token variable">$configuration</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setAlias</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'logger'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'zend.logger'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
-<h4 id="les-annotations">Les annotations<a href="#les-annotations" class="anchor"></a></h4>
+<h4 id="les-annotations" class="anchor-title"><a href="#les-annotations">Les annotations</a></h4>
 <p>Les annotations permettent de rajouter des propriétés à un service. Ces annotations ne sont pas exploitées directement par l'injecteur de dépendances mais par des composants tierces. Une annotation possède un nom et des attributs. Par exemple, dans le fichier de définitions: Framework/WebBundle/Resources/config/web.xml, on trouve la définition suivante sur le service <strong>request_parser</strong>:</p>
 <p>Cette définition rajoute donc une annotation "<strong>kernel.listener</strong>" sur le service <strong>request_parser</strong> avec comme attributs <strong>event</strong> et <strong>method</strong>.
 Dans l'exemple précédent, le <strong>Kernel</strong> se servira de cette annotation pour définir le service en tant qu'écouteur (listener) sur l'event "core.request" (nous y reviendrons dans le prochain article).</p>
-<h4 id="les-extensions">Les extensions :<a href="#les-extensions" class="anchor"></a></h4>
+<h4 id="les-extensions" class="anchor-title"><a href="#les-extensions">Les extensions :</a></h4>
 <p>Lorsque les différents Bundles vont définir leurs services, ceux-ci ne seront pas directement chargés dans la configuration du Builder global. Au lieu de ça, les Bundles vont définir des extensions. Les extensions ne sont qu'un wrapper permettant de charger la configuration d'un bundle "à la demande". Les extensions vont permettre de mieux organiser les différents services. Pour expliquer le fonctionnement des extensions, nous allons étudier le Bundle Web (Framework/WebBundle).</p>
 <p>Le fichier Bundle.php du WebBundle ressemble à ceci:</p>
 <pre class="code-multiline language-php"><code class="language-php" id="bd7695f02b66c9e9789f6f9800f837d2"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
@@ -558,7 +528,7 @@ Exemple:</p>
 <span class="token key atrule">transport</span><span class="token punctuation">:</span> gmail</code></pre>
 <p>Dans ce fichier de configuration, seules des extensions sont déclarées. A noter que si une extension n'est pas déclarée dans le fichier de configuration d'un Container, ses services ne seront pas inclus dans le Container final.
 Le but des extensions est de fournir une méthode plus "propre" pour déclarer ses services, mais le fonctionnement reste identique, les Bundles vont déclarer des services comme vu précédemment, les extensions ne fournissant qu'un moyen de charger ou configurer ces déclarations.</p>
-<h3 id="mise-en-pratique">Mise en pratique<a href="#mise-en-pratique" class="anchor"></a></h3>
+<h3 id="mise-en-pratique" class="anchor-title"><a href="#mise-en-pratique">Mise en pratique</a></h3>
 <p>Afin de bien comprendre le fonctionnement, je vous propose une petite mise en pratique au travers de quelques exemples. Les exemples seront basés sur la sandbox proposée sur le site de <a href="http://www.symfony-reloaded.org" target="_blank">Symfony 2</a> et l'application Hello World !</p>
 <p>Au niveau de la sandbox, les fichiers de configuration du Builder sont : config.yml, config_dev.yml et config_prod.yml. La méthode qui va charger ces fichiers est la méthode registerContainerConfiguration() de la classe HelloKernel. Nous allons travailler dans le cadre de nos exemples sur l'environnement de production. Le Container final généré se trouve dans le cache hello/cache/prod/helloProjectContainer.php</p>
 <pre class="code-multiline language-php"><code class="language-php" id="42ac61852b48a9e921f8db817058b896"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
@@ -574,7 +544,7 @@ Le but des extensions est de fournir une méthode plus "propre" pour déclarer s
   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>C'est au niveau de cette méthode que nous allons intervenir dans un premier temps.</p>
-<h4 id="modifier-la-classe-d-un-service">Modifier la classe d'un service<a href="#modifier-la-classe-d-un-service" class="anchor"></a></h4>
+<h4 id="modifier-la-classe-d-un-service" class="anchor-title"><a href="#modifier-la-classe-d-un-service">Modifier la classe d'un service</a></h4>
 <p>Dans notre premier exemple, nous allons tenter de modifier un service. En l'occurrence, le service représentant la requête, le bien nommé "RequestService". Notre container (HelloProjectContainer.php) définit le service ainsi:</p>
 <pre class="code-multiline language-php"><code class="language-php" id="402dbff5fba94ce910a2c86a76e6596b"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">getRequestService</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -601,7 +571,7 @@ Nous allons simplement modifier la classe associée dans la définition de ce se
     <span class="token variable">$instance</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MaClasseRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">shared</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'request'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$instance</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></span></code></pre>
-<h4 id="cr-er-un-service">Créer un service<a href="#cr-er-un-service" class="anchor"></a></h4>
+<h4 id="cr-er-un-service" class="anchor-title"><a href="#cr-er-un-service">Créer un service</a></h4>
 <p>Dans cette exemple, nous allons voir comment déclarer un nouveau service. Nous allons tenter de déclarer le service "Monservice", utilisant la classe "Maclasse", dépendante du service "logger" sur laquelle on appellera les méthodes init1() et init2() à qui on passera le paramètre "coucou". Nous avions vu que le fichier config.yml déclarait les extensions à utiliser, mais c'est un fichier de configuration de Container comme un autre, nous pouvons donc y définir des services.</p>
 <pre class="code-multiline language-yaml"><code class="language-yaml" id="3c71d34661ecacab2855d84559152ba1"><span class="token key atrule">services</span><span class="token punctuation">:</span>
   <span class="token key atrule">monservice</span><span class="token punctuation">:</span>
@@ -624,11 +594,11 @@ Nous allons simplement modifier la classe associée dans la définition de ce se
 
     <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">shared</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'monservice'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$instance</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></span></code></pre>
-<h3 id="en-conclusion">En conclusion<a href="#en-conclusion" class="anchor"></a></h3>
+<h3 id="en-conclusion" class="anchor-title"><a href="#en-conclusion">En conclusion</a></h3>
 <p>Comme vous avez pu le découvrir dans cet article, l'injecteur de dépendances de Symfony 2 est vraiment puissant. Nous pouvons customizer, tweaker, étendre le fonctionnement du coeur même du Framework par ce biais.</p>
 <p>L'injection de dépendances ne devrait plus avoir de secrets pour vous !</p>
 <p>PS: Merci à Xavier R pour sa relecture et ses remarques avisées.</p></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -639,59 +609,26 @@ Nous allons simplement modifier la classe associée dans la définition de ce se
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/vbouzeran.jpg" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Vincent BOUZERAN</strong></span>
-      <div class="article-author__social">
-                          <a href=Vincz class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Vincent BOUZERAN</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Vincent BOUZERAN</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/vbouzeran.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Vincent BOUZERAN</strong></span>
-      <div class="article-author__social">
-                          <a href=Vincz class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Vincent BOUZERAN</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Vincent BOUZERAN</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/vbouzeran.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Vincent BOUZERAN</strong></span>
-      <div class="article-author__social">
-                          <a href=Vincz class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Vincent BOUZERAN</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Vincent BOUZERAN</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/images/authors/vbouzeran.jpg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Vincent BOUZERAN</strong>
+          </span>
+          <div class="article-author__social">
+                                      <a href="https://github.com/Vincz "class="social social--small">
+                <i class="icon icon--github" aria-hidden="true"></i>
+                <span class="screen-reader">Compte github de Vincent BOUZERAN</span>
+              </a>
+                                      <a href="http://www.elao.com" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Vincent BOUZERAN</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">

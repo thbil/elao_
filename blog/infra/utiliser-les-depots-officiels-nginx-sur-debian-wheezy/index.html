@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      Utiliser les dépôts officiels Nginx sur Debian Wheezy
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/server.jpg)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/images/authors/gfaivre.jpg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Guewen FAIVRE</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Guewen FAIVRE</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Guewen FAIVRE</strong>
-          <strong>Guewen FAIVRE</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>19 décembre 2014</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -226,44 +207,33 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+  
   <div class="article-content">
     <main class="article-content__main">
       <body><p>Bonjour à tous !</p>
 <p>Petit mémo aujourd'hui pour pouvoir utiliser une version à jour de <a href="http://nginx.org/" target="_blank"><strong>Nginx</strong></a> sur une Debian Wheezy, celle-ci ne fournissant des paquets qu'en version 1.2.1 au moment de l'écriture de ce billet.</p>
 <p>Attention toutes les étapes à suivre nécessitent un accès «root»</p>
-<h2 id="ajouter-les-sources-officielles">Ajouter les sources officielles<a href="#ajouter-les-sources-officielles" class="anchor"></a></h2>
+<h2 id="ajouter-les-sources-officielles" class="anchor-title"><a href="#ajouter-les-sources-officielles">Ajouter les sources officielles</a></h2>
 <p>La première étape et d'ajouter une entrée pour les dépôts officiels dans les sources d'APT.
 Nous allons donc créer un fichier appelé <strong>«nginx.list»</strong> dans <code class="code-inline" id="c381aaac19b8bacad63872d54b6ee3b2">/etc/apt/sources.list.d</code></p>
 <p>Celui-ci doit contenir les lignes suivantes:</p>
 <pre class="code-multiline"><code id="b34dd16263a3a1e034c87453bebf513e">deb http://nginx.org/packages/debian/ wheezy nginx
 deb-src http://nginx.org/packages/debian/ wheezy nginx</code></pre>
-<h2 id="r-cup-rer-la-cl-pgp">Récupérer la clé PGP<a href="#r-cup-rer-la-cl-pgp" class="anchor"></a></h2>
+<h2 id="r-cup-rer-la-cl-pgp" class="anchor-title"><a href="#r-cup-rer-la-cl-pgp">Récupérer la clé PGP</a></h2>
 <p>Nous allons à présent ajouter la signature numérique des dépôts officiels (étape nécessaire pour que le système sache qu'il peut avoir «confiance» en ces nouveaux dépôts.)</p>
 <pre class="code-multiline"><code id="f27e885b250cacbbdee081f1791a75e3">curl http://nginx.org/packages/keys/nginx_signing.key | apt-key add -</code></pre>
-<h2 id="prioriser-l-installation-des-paq">Prioriser l'installation des paquets (facultatif)<a href="#prioriser-l-installation-des-paq" class="anchor"></a></h2>
+<h2 id="prioriser-l-installation-des-paq" class="anchor-title"><a href="#prioriser-l-installation-des-paq">Prioriser l'installation des paquets (facultatif)</a></h2>
 <p>Il nous reste à présent à donner les instructions de priorité au gestionnaire de paquets, à savoir doit-il privilégié les paquets dits stables fournis par Debian ou doit-il utiliser les paquets officiels fournis par les dépôts Nginx.</p>
 <p>Cette étape est facultative mais permet d'être rigoureux et d'éviter un éventuel conflit.</p>
 <p>Pour cette étape créez un fichier supplémentaire appelé ... nginx dans <code class="code-inline" id="8983d8943be25eb015b4dd1863f63810">/etc/apt/preferences.d/nginx</code>. Il nous servira à exprimer de manière explicite notre souhait de privilégier les paquets officiels et devra contenir les lignes suivantes:</p>
 <pre class="code-multiline"><code id="675079f0d5a098de2ba7dc2fb37344dc">Package: nginx
 Pin: origin nginx.org
 Pin-Priority: 900</code></pre>
-<h2 id="installer-nginx">Installer Nginx<a href="#installer-nginx" class="anchor"></a></h2>
+<h2 id="installer-nginx" class="anchor-title"><a href="#installer-nginx">Installer Nginx</a></h2>
 <p>Voila nous sommes parés il ne reste plus qu'a mettre à jour notre index de paquets et installer nginx à l'aide des commandes suivantes:</p>
 <pre class="code-multiline"><code id="1b281061c07f9c15a1278d5eff4fd9e7">apt-get update
 apt-get install nginx</code></pre></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -274,71 +244,30 @@ apt-get install nginx</code></pre></body>
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/images/authors/gfaivre.jpg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Guewen FAIVRE</strong>
+          </span>
+          <div class="article-author__social">
+                          <a href="https://twitter.com/guewen_faivre" class="social social--small">
+                <i class="icon icon--twitter" aria-hidden="true"></i>
+                <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
+              </a>
+                                      <a href="https://github.com/gfaivre "class="social social--small">
+                <i class="icon icon--github" aria-hidden="true"></i>
+                <span class="screen-reader">Compte github de Guewen FAIVRE</span>
+              </a>
+                                      <a href="http://www.elao.com" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">

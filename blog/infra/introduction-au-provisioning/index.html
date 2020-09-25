@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      Introduction au provisioning
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/puppet.jpg)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/images/authors/gfaivre.jpg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Guewen FAIVRE</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Guewen FAIVRE</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Guewen FAIVRE</strong>
-          <strong>Guewen FAIVRE</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>3 février 2016</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -223,40 +204,29 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+  
   <div class="article-content">
     <main class="article-content__main">
       <body><p>De plus en plus répandu au sein des services IT, l'approvisionnement (ou provisioning en anglais) devient une composante incontournable des environnements techniques. <!--more--> Depuis longtemps utilisé par les sysadmin (soit sous la forme de "simples" scripts shell ou via des technologies spécialisées), l'avènement des DevOps permet aujourd'hui de démocratiser son utilisation. On le retrouve ainsi de plus en plus au sein des environnements de développement comme de production.</p>
 <p>La "culture" DevOps et plus largement AGILE repose sur des principes simples que sont l'automatisation, la réutilisabilité ou encore l'amélioration continue, principes auxquels le provisionning répond largement.</p>
-<h1 id="c-est-quoi-le-provisioning">C'est quoi le provisioning ?<a href="#c-est-quoi-le-provisioning" class="anchor"></a></h1>
+<h1 id="c-est-quoi-le-provisioning" class="anchor-title"><a href="#c-est-quoi-le-provisioning">C'est quoi le provisioning ?</a></h1>
 <p>Le provisioning c'est (globalement) l'automatisation de tâches variées et diverses allant de l'installation d'un environnement de développement à la mise en place d'infrastructures extrêmement complexes. Il a été historiquement et très largement utilisé dans l'industrie des télécoms.</p>
 <p>Vous l'aurez compris il s'agit d'automatiser l'installation de certains logiciels, librairies... et d'assurer leur configuration de manière à garantir que notre environnement soit pleinement opérationel.</p>
 <blockquote>
 <p>ATTENTION il ne faut pas confondre <strong>provisioning</strong> et <strong>déploiement applicatif</strong>. En effet bien qu'il soit possible de déployer des applications avec des outils de provisioning, ceux-ci vont beaucoup plus loin puisqu'ils assurent la disponibilité de l'environnement technique d'une application.</p>
 </blockquote>
-<h1 id="pourquoi-le-provisioning">Pourquoi le « provisioning » ?<a href="#pourquoi-le-provisioning" class="anchor"></a></h1>
+<h1 id="pourquoi-le-provisioning" class="anchor-title"><a href="#pourquoi-le-provisioning">Pourquoi le « provisioning » ?</a></h1>
 <p>Le provisioning répond à un besoin à la fois de robustesse, de rapidité de déploiement et/ou de mise à disposition d'environnements plus ou moins complexes. Nous avons ainsi pour habitude chez <a href="https://www.elao.com" target="_blank">ELAO</a> d'y avoir recours pour l'ensemble de nos environnements "du dev à la prod".</p>
-<h2 id="le-provisionning-apporte-plusieu">Le provisionning apporte plusieurs choses parmis lesquelles:<a href="#le-provisionning-apporte-plusieu" class="anchor"></a></h2>
+<h2 id="le-provisionning-apporte-plusieu" class="anchor-title"><a href="#le-provisionning-apporte-plusieu">Le provisionning apporte plusieurs choses parmis lesquelles:</a></h2>
 <ul><li>L'automatisation de tâches parfois rébarbatives.</li>
 <li>La garantie de ne pas "oublier" un composant essentiel lors de l'installation d'un nouvel environnement.</li>
 <li>La facilité et la rapidité d'avoir à disposition un environnement parfaitement fonctionnel.</li>
 <li>La garantie d'avoir des environnements les plus identiques possibles.</li>
-</ul><h1 id="quand-automatiser">Quand automatiser ?<a href="#quand-automatiser" class="anchor"></a></h1>
+</ul><h1 id="quand-automatiser" class="anchor-title"><a href="#quand-automatiser">Quand automatiser ?</a></h1>
 <p>Les aficionados vous diront « <em>Tout le temps !</em> ».
 La nécessité d'automatiser une tâche ou un traitement restant à la discretion du technicien (développeur, SysAdmin ...), chez <a href="https://www.elao.com" target="_blank">ELAO</a> nous avons pour parti pris d'automatiser systématiquement tous les projets «Actifs» (Ceux où il y a une activité de développement, de TMA ou encore d'évolution fonctionnelle).
 L'ensemble de nos infras de production et de demo ne dérogent pas à cette règle, ce fonctionnement nous permet d'avoir des environnements <strong>homogènes</strong>, facilement <strong>scalables</strong> et rapidement <strong>reproduisibles</strong>.</p>
-<h1 id="provisionner-oui-mais-ave">« Provisionner » oui, mais avec quoi ?<a href="#provisionner-oui-mais-ave" class="anchor"></a></h1>
+<h1 id="provisionner-oui-mais-ave" class="anchor-title"><a href="#provisionner-oui-mais-ave">« Provisionner » oui, mais avec quoi ?</a></h1>
 <p>Il existe plusieurs outils plus ou moins connus permettant d'automatiser. Quatre d'entres eux sont en «concurrence» directe, leur choix relevant autant du but poursuivi que de l'affinité de chacun avec ceux-ci.</p>
 <ul><li><strong>Le script shell</strong></li>
 </ul><p>Historiquement il s'agit sans doute de la façon la plus ancienne d'assurer le provisioning de ses environnements. Difficilement maintenable et extrêmement spécifique, il tend à être délaissé au profit d'outils plus haut niveau.</p>
@@ -270,13 +240,13 @@ L'ensemble de nos infras de production et de demo ne dérogent pas à cette règ
 </ul><p>Ansible est le «petit dernier» si l'on peut dire, il est également écrit en Python et a l'avantage non négligeable d'être facilement accessible même pour des profils ayant peu de compétences et d'affinité avec l'administration système.</p>
 <p>Il fonctionne à base de « roles » plus ou moins spécifiques et de « playbooks ». Il a la particularité d'être  « agentless » et ne nécessite donc pas l'installation d'un quelconque client avant de pouvoir fonctionner à la différence de Chef et Puppet.</p>
 <p>C'est la solution que nous avons choisi d'utiliser chez <a href="https://www.elao.com" target="_blank">ELAO</a>.</p>
-<h1 id="et-la-virtualisation">Et la virtualisation ?<a href="#et-la-virtualisation" class="anchor"></a></h1>
+<h1 id="et-la-virtualisation" class="anchor-title"><a href="#et-la-virtualisation">Et la virtualisation ?</a></h1>
 <p>Même si la virtualisation n'est pas un pré-requis, il est très commun d'utiliser des outils de provisioning sur des environnements virtualisés, c'est même là où ils trouvent tout leur intérêt.</p>
 <p>En effet cette notion de virtualisation, couplée au provisioning, introduit dans des infras complexes la notion de « <strong>jetabilité</strong> » des instances, celles-ci étant très souvent redondées on peut envisager de les perdre (ou de les détruires) car elles sont  facilement recréables.
 De même il devient beaucoup plus facile (attention je n'ai pas dit simple) d'assurer la scalabilité des applications, encore une fois car la mise à disposition des environnements techniques est plus rapide.</p>
 <p>Il devient également de plus en plus commun de virtualiser les environnements de développement (nous utilisons par exemple le couple <strong>Vagrant / Ansible</strong>), ces outils permettant à un développeur d'être rapidement opérationel et de se concentrer sur l'essentiel de son métier, la création d'applications.</p>
 <p>Loin d'être exhaustive sur le sujet, cette introduction reste ouverte à toute remarque et/ou complément.</p></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -287,71 +257,30 @@ De même il devient beaucoup plus facile (attention je n'ai pas dit simple) d'as
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/images/authors/gfaivre.jpg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Guewen FAIVRE</strong>
+          </span>
+          <div class="article-author__social">
+                          <a href="https://twitter.com/guewen_faivre" class="social social--small">
+                <i class="icon icon--twitter" aria-hidden="true"></i>
+                <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
+              </a>
+                                      <a href="https://github.com/gfaivre "class="social social--small">
+                <i class="icon icon--github" aria-hidden="true"></i>
+                <span class="screen-reader">Compte github de Guewen FAIVRE</span>
+              </a>
+                                      <a href="http://www.elao.com" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">

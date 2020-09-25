@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      Planification de rendez-vous avec OptaPlanner
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/optaplanner-teacher-agenda.png)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/authors/rhanna.jpg" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/authors/rhanna.jpg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Richard HANNA</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Richard HANNA</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/authors/rhanna.jpg" />
-          <img src="/elao_/authors/rhanna.jpg" />
-          <img src="/elao_/authors/rhanna.jpg" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Richard HANNA</strong>
-          <strong>Richard HANNA</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/authors/rhanna.jpg" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>10 octobre 2017</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -220,21 +201,10 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+  
   <div class="article-content">
     <main class="article-content__main">
-      <body><h2 id="le-contexte">Le contexte<a href="#le-contexte" class="anchor"></a></h2>
+      <body><h2 id="le-contexte" class="anchor-title"><a href="#le-contexte">Le contexte</a></h2>
 <p>Notre client, Proximum Group avec son produit <a href="https://www.elao.com/fr/etudes-de-cas/vimeet/" target="_blank">Vimeet</a> propose à des
 organisateurs d’événements une plateforme de gestion de rendez-vous B2B.</p>
 <p>Avant l’événement les participants s’inscrivent sur la plateforme et consultent le catalogue des participants :</p>
@@ -249,7 +219,7 @@ participants.</p>
 <p>Un événement dure un à plusieurs jours durant le(s)quel(s) des professionnels vont se rencontrer en rendez-vous.
 La plateforme permet également de gérer d’autres types de rendez-vous comme des recruteurs qui rencontrent des candidats
 pendant une journée dédiée.</p>
-<h2 id="la-probl-matique">La problématique<a href="#la-probl-matique" class="anchor"></a></h2>
+<h2 id="la-probl-matique" class="anchor-title"><a href="#la-probl-matique">La problématique</a></h2>
 <p>L'événement dure un ou plusieurs jours et des créneaux de rendez-vous sont définis par l'organisateur.
 Une demande de rendez-vous acceptée est transformée en rendez-vous en lui allouant <strong>un créneau de rendez-vous</strong> et
 <strong>un lieu de rendez-vous</strong>.</p>
@@ -261,7 +231,7 @@ Une demande de rendez-vous acceptée est transformée en rendez-vous en lui allo
 <li>priorisation du positionnement d'un rendez-vous sur le lieu attribué au participant plutôt que sur un lieu
 mutualisé,</li>
 <li>le participant et les lieux peuvent être en indisponibilité pour certains créneaux de rendez-vous.</li>
-</ul><h2 id="probl-me-difficile-r-soudre">Problème difficile à résoudre<a href="#probl-me-difficile-r-soudre" class="anchor"></a></h2>
+</ul><h2 id="probl-me-difficile-r-soudre" class="anchor-title"><a href="#probl-me-difficile-r-soudre">Problème difficile à résoudre</a></h2>
 <p>Il s'agit d'un __<a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet" target="_blank">problème NP-complet</a>__ car le problème est
 difficile à résoudre : pour avoir la solution idéale, il faudrait calculer toutes les combinaisons possibles.
 Ce qui pourrait prendre des années voire une éternité.</p>
@@ -275,7 +245,7 @@ ou l'<a href="https://fr.wikipedia.org/wiki/Algorithme_g%C3%A9n%C3%A9tique" targ
 <p>Un <em>proof of concept</em> en PHP a été codé pour positionner séquentiellement des rendez-vous puis évaluer la solution
 globale. Cela a été intéressant pour comprendre comment modéliser le problème, mais la lenteur des itérations nous a
 poussés à aller vers d'autres langages ou vers des librairies Open Source.</p>
-<h2 id="optaplanner">OptaPlanner<a href="#optaplanner" class="anchor"></a></h2>
+<h2 id="optaplanner" class="anchor-title"><a href="#optaplanner">OptaPlanner</a></h2>
 <p>Solution Open Source, <a href="https://www.optaplanner.org/" target="_blank">OptaPlanner</a>, est décrit comme un
 <strong>solveur de satisfaction de contraintes</strong>.</p>
 <p>Sous licence Apache Software et chapeauté par Red Hat, OptaPlanner est écrit en Java et <a href="https://www.drools.org/" target="_blank">Drools</a>,
@@ -304,11 +274,11 @@ et de
 <p><strong>Un algorithme de recherche locale</strong> permet de découper le problème en plus petits problèmes pour découvrir des optimums
 locaux.</p>
 </blockquote>
-<h3 id="comment-d-marrer-avec-optaplann">Comment démarrer avec OptaPlanner ?<a href="#comment-d-marrer-avec-optaplann" class="anchor"></a></h3>
+<h3 id="comment-d-marrer-avec-optaplann" class="anchor-title"><a href="#comment-d-marrer-avec-optaplann">Comment démarrer avec OptaPlanner ?</a></h3>
 <p>Notre erreur a été de créer notre problème <em>from scratch</em>. La courbe d'apprentissage d'OptaPlanner semble plutôt
 une falaise à gravir par avis de tempête. La bonne idée est de partir d’un exemple proche fourni par OptaPlanner
 et l’adapter petit à petit.</p>
-<h3 id="mod-liser-le-probl-me">Modéliser le problème<a href="#mod-liser-le-probl-me" class="anchor"></a></h3>
+<h3 id="mod-liser-le-probl-me" class="anchor-title"><a href="#mod-liser-le-probl-me">Modéliser le problème</a></h3>
 <p>Il n'est jamais simple de modéliser un problème de planification. Le moyen d'y arriver est de définir :</p>
 <ul><li><strong>l'Objectif</strong> : ici, maximiser le nombre de rendez-vous positionnés c'est à dire avec un créneau et un lieu.</li>
 <li><strong>les ressources</strong> : ici, les <strong>créneaux</strong> de rendez-vous et les <strong>lieux</strong> de rendez-vous.</li>
@@ -316,7 +286,7 @@ et l’adapter petit à petit.</p>
 <ul><li>"<strong>Hard</strong>" : celles qui empêchent la tenue d'un rendez-vous</li>
 <li>"<strong>Soft</strong>" : celles permettant d'optimiser le positionnement des rendez-vous</li>
 </ul></li>
-</ul><h3 id="les-annotations-de-optaplanner">Les annotations de OptaPlanner<a href="#les-annotations-de-optaplanner" class="anchor"></a></h3>
+</ul><h3 id="les-annotations-de-optaplanner" class="anchor-title"><a href="#les-annotations-de-optaplanner">Les annotations de OptaPlanner</a></h3>
 <p class="text-center">
     <img src="/images/posts/2017/planification-de-rdv-avec-optaplanner/model-annotations.png" alt="Modèle" id="mod-le"></p>
 <p>Voici un extrait du code de MeetingSchedule :</p>
@@ -392,11 +362,11 @@ de données qui sert au planificateur mais qui ne changent pas lors de la résol
 <li><strong>@PlanningEntity</strong> : définit l'élément d'une solution, ici un rendez-vous (<em>meeting</em>).</li>
 <li><strong>@PlanningVariable</strong> : définit la variable (la ressource) que OptaPlanner attribue au PlanningEntity grâce à ses
 algorithmes de construction heuristique. Ici le créneau (<em>slot</em>) et le lieu (<em>spot</em>).</li>
-</ul><h3 id="les-r-gles-de-gestion-et-les-co">Les règles de gestion et les contraintes<a href="#les-r-gles-de-gestion-et-les-co" class="anchor"></a></h3>
+</ul><h3 id="les-r-gles-de-gestion-et-les-co" class="anchor-title"><a href="#les-r-gles-de-gestion-et-les-co">Les règles de gestion et les contraintes</a></h3>
 <p><strong>Décrire les contraintes</strong> de notre problème au solveur d'OptaPlanner est fait en <strong>Drools</strong>.
 Grâce à ces règles, OptaPlanner évalue <strong>le score d'une solution</strong>.
 L'idée est que chaque règle va permettre d'agir sur ce score, en pénalisant la solution plus ou moins fortement.</p>
-<h4 id="contrainte-medium">Contrainte "Medium"<a href="#contrainte-medium" class="anchor"></a></h4>
+<h4 id="contrainte-medium" class="anchor-title"><a href="#contrainte-medium">Contrainte "Medium"</a></h4>
 <p>Il s'agit de l'<strong>objectif</strong> : on souhaite maximiser le nombre de rendez-vous positionnés lors d'un événement.
 Le score de la solution est <strong>pénalisée de -1</strong> pour chaque rendez-vous non positionné :</p>
 <pre class="code-multiline language-java"><code class="language-java" id="73002452a149c82c70a820d82a010c89">rule <span class="token string">"Assign every meeting"</span>
@@ -405,7 +375,7 @@ Le score de la solution est <strong>pénalisée de -1</strong> pour chaque rende
     then
         scoreHolder<span class="token punctuation">.</span><span class="token function">addMediumConstraintMatch</span><span class="token punctuation">(</span>kcontext<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 end</code></pre>
-<h4 id="contrainte-hard">Contrainte "Hard"<a href="#contrainte-hard" class="anchor"></a></h4>
+<h4 id="contrainte-hard" class="anchor-title"><a href="#contrainte-hard">Contrainte "Hard"</a></h4>
 <p>Ce sont des contraintes ne permettant pas de positionner un rendez-vous.</p>
 <p>Prenons un exemple : le rendez-vous ne peut pas être positionné sur un créneau de rendez-vous si les participants sont
 indisponibles durant ce créneau.</p>
@@ -454,7 +424,7 @@ nouveau rendez-vous :</p>
     then
         scoreHolder<span class="token punctuation">.</span><span class="token function">addHardConstraintMatch</span><span class="token punctuation">(</span>kcontext<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 end</code></pre>
-<h4 id="contrainte-soft">Contrainte "Soft"<a href="#contrainte-soft" class="anchor"></a></h4>
+<h4 id="contrainte-soft" class="anchor-title"><a href="#contrainte-soft">Contrainte "Soft"</a></h4>
 <p>Ce sont les contraintes qui permettent d'optimiser la satisfaction des participants ou d'optimiser l'utilisation des
 ressources.</p>
 <p>Par exemple, nous allons satisfaire équitablement chaque participant en fonction du nombre de rendez-vous possibles.
@@ -470,7 +440,7 @@ pénaliser de -1 par palier de 10% :</p>
     then
         scoreHolder<span class="token punctuation">.</span><span class="token function">addSoftConstraintMatch</span><span class="token punctuation">(</span>kcontext<span class="token punctuation">,</span> <span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">ceil</span><span class="token punctuation">(</span><span class="token number">10</span> <span class="token operator">-</span> <span class="token number">10</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span> $meetingCount <span class="token operator">/</span> $possibleMeetingsQuantity<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 end</code></pre>
-<h2 id="le-solveur">Le solveur<a href="#le-solveur" class="anchor"></a></h2>
+<h2 id="le-solveur" class="anchor-title"><a href="#le-solveur">Le solveur</a></h2>
 <p>Notre configuration du solveur solver-config.xml :</p>
 <pre class="code-multiline language-xml"><code class="language-xml" id="2de67e17e965a714526a8589d39b5c84"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>solver</span><span class="token punctuation">&gt;</span></span>
@@ -530,7 +500,7 @@ sans créneau ni lieu (<em>spot</em> et <em>slot</em> à null) et les ressources
         <span class="token comment">// Write the solution</span>
         meetingsDao<span class="token punctuation">.</span><span class="token function">writeSolution</span><span class="token punctuation">(</span>solvedMeetingSchedule<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token string">"path/to/meetings-solved.xml"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span></code></pre>
-<h2 id="demo">Demo<a href="#demo" class="anchor"></a></h2>
+<h2 id="demo" class="anchor-title"><a href="#demo">Demo</a></h2>
 <p>Visualisation d'une solution optimale des plannings de rendez-vous des participants d'un événement :</p>
 <p class="text-center">
     <img src="/images/posts/2017/planification-de-rdv-avec-optaplanner/planner-real-event.gif" alt="Demo" id="demo"></p>
@@ -540,7 +510,7 @@ sans créneau ni lieu (<em>spot</em> et <em>slot</em> à null) et les ressources
 </ul><p>Le participant a ensuite son agenda des rendez-vous accessible sur son ordinateur ou sur mobile :</p>
 <p class="text-center">
     <img src="/images/posts/2017/planification-de-rdv-avec-optaplanner/vimeet-agenda-mobile.png" alt="Agenda utilisateur" style="height: 600px" id="agenda-utilisateur"></p>
-<h2 id="bilan">Bilan<a href="#bilan" class="anchor"></a></h2>
+<h2 id="bilan" class="anchor-title"><a href="#bilan">Bilan</a></h2>
 <p>Notre instance d'OptaPlanner pour <a href="https://www.elao.com/fr/etudes-de-cas/vimeet/" target="_blank">Vimeet</a> a maintenant réalisé la planification de dizaines d'événements depuis début</p>
 <ol start="2017"><li>Les organisateurs ont noté en moyenne une <strong>augmentation de 10%</strong> des rendez-vous positionnés par rapport à
 l'ancienne application de planification des rendez-vous.</li>
@@ -570,17 +540,17 @@ plus il va tendre vers une meilleure solution.</strong></p>
         </tr></tbody></table><p class="text-center">
     <img src="/images/posts/2017/planification-de-rdv-avec-optaplanner/stats-planifications.png" alt="Planifications" id="planifications"><i>Les statistiques et les planifications successives réalisées pour un événement</i>
 </p>
-<h2 id="axes-d-am-lioration">Axes d'amélioration<a href="#axes-d-am-lioration" class="anchor"></a></h2>
+<h2 id="axes-d-am-lioration" class="anchor-title"><a href="#axes-d-am-lioration">Axes d'amélioration</a></h2>
 <ul><li><strong>Améliorer la vitesse du solveur</strong> : améliorer le modèle, ré-écrire les règles,
 <a href="https://docs.optaplanner.org/7.3.0.Final/optaplanner-docs/html_single/index.html#benchmarker" target="_blank">benchmarker les algorithmes</a>...</li>
 <li><strong>Ajouter des règles métier pour satisfaire encore plus le participant</strong> : par exemple à la fois diluer les rendez-vous
 d’un participant sur la journée mais aussi réduire les écarts entre rendez-vous
 (par exemple pas de rendez-vous en début puis en fin de journée).</li>
 <li><strong>Faire de la planification en continu</strong> même pendant l’événement pour positionner des rendez-vous en temps réel.</li>
-</ul><h2 id="quand-utiliser-optaplanner">Quand utiliser OptaPlanner ?<a href="#quand-utiliser-optaplanner" class="anchor"></a></h2>
+</ul><h2 id="quand-utiliser-optaplanner" class="anchor-title"><a href="#quand-utiliser-optaplanner">Quand utiliser OptaPlanner ?</a></h2>
 <p>Lorsqu'un problème possède des <strong>objectifs</strong>, des <strong>règles de gestion</strong> et tout cela avec des <strong>ressources limitées</strong>,
 c'est très probablement un problème de planification auquel OptaPlanner peut répondre.</p></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -591,71 +561,30 @@ c'est très probablement un problème de planification auquel OptaPlanner peut r
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/authors/rhanna.jpg" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Richard HANNA</strong></span>
-      <div class="article-author__social">
-                  <a href=richardhanna class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Richard HANNA</span>
-          </a>
-                          <a href=supertanuki class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Richard HANNA</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Richard HANNA</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/authors/rhanna.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Richard HANNA</strong></span>
-      <div class="article-author__social">
-                  <a href=richardhanna class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Richard HANNA</span>
-          </a>
-                          <a href=supertanuki class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Richard HANNA</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Richard HANNA</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/authors/rhanna.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Richard HANNA</strong></span>
-      <div class="article-author__social">
-                  <a href=richardhanna class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Richard HANNA</span>
-          </a>
-                          <a href=supertanuki class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Richard HANNA</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Richard HANNA</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/authors/rhanna.jpg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Richard HANNA</strong>
+          </span>
+          <div class="article-author__social">
+                          <a href="https://twitter.com/richardhanna" class="social social--small">
+                <i class="icon icon--twitter" aria-hidden="true"></i>
+                <span class="screen-reader">Compte twitter de Richard HANNA</span>
+              </a>
+                                      <a href="https://github.com/supertanuki "class="social social--small">
+                <i class="icon icon--github" aria-hidden="true"></i>
+                <span class="screen-reader">Compte github de Richard HANNA</span>
+              </a>
+                                      <a href="http://www.elao.com" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Richard HANNA</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">

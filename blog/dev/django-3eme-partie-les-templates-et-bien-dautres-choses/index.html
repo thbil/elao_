@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      Django (3ème partie) : les templates, et bien d&#039;autres choses ...
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/django.jpg)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/xroldo.jpeg" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/images/authors/xroldo.jpeg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Xavier ROLDO</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Xavier ROLDO</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/xroldo.jpeg" />
-          <img src="/elao_/images/authors/xroldo.jpeg" />
-          <img src="/elao_/images/authors/xroldo.jpeg" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Xavier ROLDO</strong>
-          <strong>Xavier ROLDO</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/xroldo.jpeg" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>15 octobre 2010</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -226,18 +207,7 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+  
   <div class="article-content">
     <main class="article-content__main">
       <body><p>Bonjour à toutes et à tous,</p>
@@ -249,7 +219,7 @@
 </div>
 <p>Tout au long de cet article, nous allons travailler principalement sur trois fichiers : la template globale (<strong>base.html</strong>), la template correspondant à la page d'accueil (<strong>index.html</strong>) et le fichier <strong>shop/views.py</strong>. A mesure que nous avancerons en fonctionnalités, nous compléterons le code de chacun de ces fichiers. Toutefois, si à un moment ou un autre, vous êtiez perdu(e)s, voici une archive contenant le projet obtenu lorsque toutes les étapes décrites dans cet article ont été réalisées (codes, feuilles de style, images, fixtures …) : <a href="http://www.elao.org/wp-content/uploads/2010/10/django_shop_v1.zip" target="_blank">Elao shop - code source - part 3</a>. Quoi qu'il en soit, pour tirer pleinement profit de cet article, je vous encourage plutôt à suivre chacune des étapes décrites ci-après, à ne télécharger cette archive que pour récupérer les fixtures, les styles et les images, et à ne consulter le code qu'en cas de difficulté à "reconstituer le puzzle". Bien entendu, le code fourni ne sert qu'à des fins didactiques et ne devrait en aucun cas être utilisé tel quel en production. Ce code est sans nul doute perfectible à bien des égards, et toute critique constructive pour l'améliorer est évidemment la bienvenue.</p>
 <p>Vous êtes prêts ? C'est parti ! Nous allons donc nous atteler à la création de notre page d'accueil, assez basique dans sa forme et son contenu dans un premier temps.</p>
-<h3 id="premi-re-tape-cr-ation-d-u">Première étape : création d'un jeu de données<a href="#premi-re-tape-cr-ation-d-u" class="anchor"></a></h3>
+<h3 id="premi-re-tape-cr-ation-d-u" class="anchor-title"><a href="#premi-re-tape-cr-ation-d-u">Première étape : création d'un jeu de données</a></h3>
 <p>Vouloir afficher des articles sur un site de vente, c'est bien, encore faut-il pour cela que nous disposions d'un jeu de données. Et c'est là qu'entrent en scène les <strong>fixtures</strong>. Nous allons donc voir une méthode permettant de créer un jeu de fixtures, puis alimenter la base de données avec les données ainsi obtenues (pour ceux qui le souhaitent, un exemple de fixtures est disponible dans le répertoire <strong>shop/fixtures</strong> de <a href="/blog/wp-content/uploads/2010/10/django_shop_v1.zip">l'archive</a> proposée au début de cet article. Copier ce fichier dans le répertoire <strong>elao/shop/fixtures</strong> de votre propre projet. Ces fixtures ont été obtenus en appliquant la méthode décrite ci-après).</p>
 <p>Il faut savoir que Django gère les fixtures dans plusieurs formats : XML, YAML et JSON. Nous allons opter ici, de manière assez arbitraire, pour le format XML, qui n'est pas nécessairement mon format préféré, mais il fallait bien en choisir un … J'aurais tendance à considérer que le format YML est le plus lisible des trois (cela reste une opinion) mais …</p>
 <blockquote>
@@ -266,7 +236,7 @@
 <pre class="code-multiline"><code id="aea13c3a1b2eef56d079326f39df0003">Installing xml fixture 'shop/fixtures/initial_data' from absolute path.
 Installed 12 object(s) from 1 fixture(s)</code></pre>
 <p>Voilà, nous disposons désormais d'un jeu de données qui va nous permettre d'afficher tous les articles sur la page d'accueil de notre site. Nous pouvons donc nous atteler à la rédaction de la page d'accueil. Et pour cela, nous allons définir une template de base (le layout global) dont nos vues hériteront.</p>
-<h3 id="cr-ation-de-la-page-d-accueil-e">Création de la page d'accueil et du layout global<a href="#cr-ation-de-la-page-d-accueil-e" class="anchor"></a></h3>
+<h3 id="cr-ation-de-la-page-d-accueil-e" class="anchor-title"><a href="#cr-ation-de-la-page-d-accueil-e">Création de la page d'accueil et du layout global</a></h3>
 <p>Dans un premier temps, nous allons écrire le squelette du code nécessaire à l'affichage d'une page d'accueil (nous nous soucierons ensuite de l'habillage). Comme souvent avec Django, cela signifie :</p>
 <ol><li>Ecrire une route (dans notre cas, l'URL correspondra à la racine du site)</li>
 <li>Ecrire une méthode <em>index</em> dans le fichier <em>views.py</em></li>
@@ -314,7 +284,7 @@ Ici, nous allons afficher la liste des articles disponibles.
 ![elao shop index vfinale Django (3ème partie) : les templates, et bien dautres choses ...](/images/posts/2010/elao_shop_index_v1.png)
 </div>
 <p>Bon, tout cela commence à prendre forme, à présent, nous allons afficher nos articles dans notre template fraichement créée !</p>
-<h3 id="l-affichage-des-articles">L'affichage des articles<a href="#l-affichage-des-articles" class="anchor"></a></h3>
+<h3 id="l-affichage-des-articles" class="anchor-title"><a href="#l-affichage-des-articles">L'affichage des articles</a></h3>
 <p>La première chose à faire consiste à modifier la méthode <strong>index</strong> du module <strong>views.py</strong> pour récupérer tous les articles afin de les passer à la vue …</p>
 <pre class="code-multiline language-python"><code class="language-python" id="498d311872dd21730b06ac3e80adb48b"><span class="token comment"># elao/shop/views.py</span>
 <span class="token comment"># ...</span>
@@ -360,7 +330,7 @@ item_list <span class="token operator">=</span> Item<span class="token punctuati
 <blockquote>
 <p>Pour en savoir plus sur la personnalisation des <strong>ModelManagers</strong>, voir la page de la documentation Django qui traite de ce sujet : <a href="http://www.djangoproject.com/documentation/models/custom_managers/" target="_blank">Giving models a custom manager</a>.Pour savoir comment exécuter des requêtes avec l'ORM de Django, voir la page dédiée : <a href="http://docs.djangoproject.com/en/1.2/topics/db/queries/" target="_blank">Making queries</a>.</p>
 </blockquote>
-<h3 id="pagination-des-r-sultats">Pagination des résultats<a href="#pagination-des-r-sultats" class="anchor"></a></h3>
+<h3 id="pagination-des-r-sultats" class="anchor-title"><a href="#pagination-des-r-sultats">Pagination des résultats</a></h3>
 <blockquote>
 <p>La pagination fait l'objet d'un chapitre complet dans la documentation officielle : <a href="http://docs.djangoproject.com/en/1.2/topics/pagination/" target="_blank">Pagination</a>.</p>
 </blockquote>
@@ -476,9 +446,9 @@ TEMPLATE_CONTEXT_PROCESSORS <span class="token operator">=</span> <span class="t
 <blockquote>
 <p>Les <strong>context processors</strong> sont abordés dans le chapitre de la documentation Django consacré à la classe <a href="http://docs.djangoproject.com/en/1.2/ref/templates/api/#subclassing-context-requestcontext" target="_blank">RequestContext</a>.</p>
 </blockquote>
-<h3 id="conclusion-absolument-pas-d-fi">Conclusion (absolument pas définitive)<a href="#conclusion-absolument-pas-d-fi" class="anchor"></a></h3>
+<h3 id="conclusion-absolument-pas-d-fi" class="anchor-title"><a href="#conclusion-absolument-pas-d-fi">Conclusion (absolument pas définitive)</a></h3>
 <p>Aujourd'hui, en construisant une page d'accueil somme toute très classique, nous avons été amenés à appliquer de nombreuses fonctionnalités proposées par Django, parmi lesquelles les fixtures, l'héritage des templates, les variables de session, les gestionnaires de modèle personnalisés, la pagination, et j'en passe. Il nous reste malgré tout encore de nombreux concepts à étudier (l'internationalisation, les vues génériques, les tests unitaires et fonctionnels, l'authentification, les formulaires objets, le cache …). Je tâcherai de rédiger des articles dans lesquels j'aborderai ces différents points, mais avant d'en arriver là, je dois moi-même monter en compétences … Quoi qu'il en soit, je ne manquerai pas de vous faire profiter des connaissances que j'aurai acquises, avec toujours la ferme volonté de privilégier la pratique par rapport à la théorie.</p></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -489,47 +459,22 @@ TEMPLATE_CONTEXT_PROCESSORS <span class="token operator">=</span> <span class="t
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/xroldo.jpeg" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Xavier ROLDO</strong></span>
-      <div class="article-author__social">
-                                  <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Xavier ROLDO</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/xroldo.jpeg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Xavier ROLDO</strong></span>
-      <div class="article-author__social">
-                                  <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Xavier ROLDO</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/xroldo.jpeg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Xavier ROLDO</strong></span>
-      <div class="article-author__social">
-                                  <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Xavier ROLDO</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/images/authors/xroldo.jpeg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Xavier ROLDO</strong>
+          </span>
+          <div class="article-author__social">
+                                                  <a href="http://www.elao.com" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Xavier ROLDO</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">

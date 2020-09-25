@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      Django (2nde partie) : le Modèle et l’Admin
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/django.jpg)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/xroldo.jpeg" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/images/authors/xroldo.jpeg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Xavier ROLDO</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Xavier ROLDO</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/xroldo.jpeg" />
-          <img src="/elao_/images/authors/xroldo.jpeg" />
-          <img src="/elao_/images/authors/xroldo.jpeg" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Xavier ROLDO</strong>
-          <strong>Xavier ROLDO</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/xroldo.jpeg" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>6 octobre 2010</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -226,24 +207,13 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+  
   <div class="article-content">
     <main class="article-content__main">
       <body><p>Bonjour à toutes et à tous,</p>
 <p>Aujourd'hui, dans notre série consacrée à Django, nous abordons un second volet autrement plus intéressant que le premier (pour ceux qui ont raté l'épisode précédent, c'est <a href="/dev/premiers-pas-avec-le-framework-python-django" target="_blank">ici</a> que ça se passe). En effet, ce billet sera consacré d'une part au Modèle, que nous avions négligé précédemment, d'autre part à l'interface d'administration fournie par Django (<em>Django Admin Site</em>). J'aurais pu consacrer un article entier à la couche "Modèle" et aborder les nombreuses possibilités offertes par le Framework dans ce domaine. Mais mon précédent billet avait essentiellement pour but de nous familiariser avec Django, aussi d'un point de vue purement fonctionnel, le résultat finalement obtenu pouvait nous laisser sur notre faim. J'ai donc choisi ici de dépeindre le modèle dans ses grandes lignes, plutôt que d'entrer dans le détail, afin que nous puissions rapidement mettre en pratique nos connaissances, par le biais de l'interface d'Administration de Django. Mais sachez que les points importants sur lesquels nous ferons l'impasse aujourd'hui feront l'objet de futurs articles.</p>
 <p>Avant de débuter ce tutoriel, assurez-vous que Python et Django sont installés sur votre ordinateur. Si tel n'est pas le cas, référez-vous à notre <a href="/dev/premiers-pas-avec-le-framework-python-django" target="_blank">introduction au Framework Django</a> pour connaître la marche à suivre.</p>
-<h3 id="pr-sentation-du-projet-et-du-mo">Présentation du projet et du modèle<a href="#pr-sentation-du-projet-et-du-mo" class="anchor"></a></h3>
+<h3 id="pr-sentation-du-projet-et-du-mo" class="anchor-title"><a href="#pr-sentation-du-projet-et-du-mo">Présentation du projet et du modèle</a></h3>
 <p>Le projet qui va nous servir de fil rouge tout au long de cet article (et ceux qui suivront) consiste en un site de vente d'articles de sport. Nous allons donc dans un premier temps créer notre projet (je nommerai ce projet "elao", c'est un nom court, concis, idéal donc pour un nom de projet) et une application que je nommerai "shop". Allez, c'est parti !</p>
 <p>Nous ouvrons donc une ligne de commande, nous nous plaçons dans le répertoire qui contient nos projets Django ("workspace-django" en ce qui me concerne), et nous lançons les commandes nécessaires pour initialiser le projet et créer l'application "shop" :</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="da823825aaba8aa6d507ea1f6edbbaad"><span class="token builtin class-name">cd</span> ~/workspace-django
@@ -366,7 +336,7 @@ python manage.py sqlall shop # où 'shop' correspond à notre application</code>
 <span class="token punctuation">[</span><span class="token operator">&lt;</span>Sport<span class="token punctuation">:</span> Football<span class="token operator">&gt;</span><span class="token punctuation">]</span></code></pre>
 <p>Rien de très compliqué. Nous venons de créer deux objets de la classe "Sport", que nous avons sauvegardés en base de données. Ensuite, nous avons utilisé un gestionnaire de Modèle, <em>ModelManager</em>, en l'occurrence <em>sport.objects</em>, pour exécuter des requêtes sur la table <em>elao_sport</em>. Nous aurons l'occasion de revenir sur cette notion de <em>ModelManager</em> à l'occasion de futurs articles. Pour quitter le shell interactif, il suffit de saisir <strong>CTL + D</strong> au clavier.</p>
 <p>Voilà, nous n'avons fait qu'effleurer le sujet du Modèle de Django, nous aurons l'occasion d'y revenir, mais pour l'heure, il est temps de passer à l'Admin de Django, histoire de constater de visu les ajouts que nous avons faits en base de données au moyen de l'ORM !</p>
-<h3 id="le-site-d-administration-de-djan">Le site d'Administration de Django<a href="#le-site-d-administration-de-djan" class="anchor"></a></h3>
+<h3 id="le-site-d-administration-de-djan" class="anchor-title"><a href="#le-site-d-administration-de-djan">Le site d'Administration de Django</a></h3>
 <p>Pour accéder à l'interface d'administration de Django, il faut dans un premier temps activer l'admin en mettant à jour le tuple INSTALLED_APPS ; cela consiste à décommenter la ligne <em>django.contrib.admin</em> du fichier <em>settings.py</em> (si vous avez suivi les étapes depuis le début, nous l'avons déjà fait). Il faut également décommenter la route permettant d'accéder à l'Admin. Pour cela, il faut éditer le fichier <em>urls.py</em> et décommenter la ligne correspondante :</p>
 <pre class="code-multiline language-python"><code class="language-python" id="b0a90c7553fb57534f701970db9c00a0"><span class="token comment"># urls.py</span>
 <span class="token comment"># ...</span>
@@ -491,9 +461,9 @@ Nous ajoutons donc la méthode <em>toggle_public</em> dans le fichier <em>shop/v
   list_display <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'slug'</span><span class="token punctuation">,</span> <span class="token string">'description'</span><span class="token punctuation">,</span> <span class="token string">'picture'</span><span class="token punctuation">,</span> <span class="token string">'stock'</span><span class="token punctuation">,</span> <span class="token string">'price'</span><span class="token punctuation">,</span> <span class="token string">'public'</span><span class="token punctuation">,</span> <span class="token string">'toggle_public'</span><span class="token punctuation">,</span> <span class="token string">'sport'</span> <span class="token punctuation">]</span>
 <span class="token comment"># ...</span></code></pre>
 <p>Voilà qui clôt le chapitre consacré à la découverte de l'Admin de Django. Sachez qu'il existe d'autres fonctionnalités que nous n'avons pas explorées (notamment la pagination) et sachez également que si vos besoins le justifient, vous avez la possibilité de rédéfinir les méthodes et les templates de l'Admin. Pour ceux qui souhaitent en savoir plus sur cette possibilité, il existe plusieurs ressources disponibles sur Internet. Je citerais notamment la documentation officielle de Django qui consacre un paragraphe à ce sujet : <a href="http://docs.djangoproject.com/en/dev/ref/contrib/admin/#overriding-admin-templates" target="_blank">Overriding Admin Templates</a>. Pour ce qui concerne plus généralement l'Admin, si vous souhaitez connaître l'ensemble des fonctionnalités disponibles, voici les deux chapitres de la documentation qui traitent de ce sujet : <a href="http://docs.djangoproject.com/en/1.2/ref/contrib/admin/" target="_blank">Admin Site</a> et <a href="http://docs.djangoproject.com/en/1.2/ref/contrib/admin/actions/" target="_blank">Admin Actions</a>.</p>
-<h3 id="conclusion-partielle">Conclusion (partielle)<a href="#conclusion-partielle" class="anchor"></a></h3>
+<h3 id="conclusion-partielle" class="anchor-title"><a href="#conclusion-partielle">Conclusion (partielle)</a></h3>
 <p>Aujourd'hui, nous avons étendu nos connaissances du framework Django, en abordant le modèle dans ses grandes lignes, et en exploitant certaines fonctionnalités proposées par l'Admin de Django. Au cours d'un prochain article, nous développerons une page qui nous permettra de lister les différents articles disponibles. Cette page comportera un moteur de recherche (assez basique), les résultats seront paginés et pourront être triés à partir des en-têtes de colonnes. Ce sera donc l'occasion de consolider certaines notions déja étudiées, et d'aborder de nouveaux concepts par la pratique, parmi lesquels l'organisation et la réutilisation des templates, la pagination, l'interrogation des données en base de données à l'aide des <em>ModelManagers</em>, la génération de vignettes, la création de <em>fixtures</em> ... <em>Stay tuned !</em></p></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -504,47 +474,22 @@ Nous ajoutons donc la méthode <em>toggle_public</em> dans le fichier <em>shop/v
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/xroldo.jpeg" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Xavier ROLDO</strong></span>
-      <div class="article-author__social">
-                                  <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Xavier ROLDO</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/xroldo.jpeg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Xavier ROLDO</strong></span>
-      <div class="article-author__social">
-                                  <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Xavier ROLDO</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/xroldo.jpeg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Xavier ROLDO</strong></span>
-      <div class="article-author__social">
-                                  <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Xavier ROLDO</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/images/authors/xroldo.jpeg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Xavier ROLDO</strong>
+          </span>
+          <div class="article-author__social">
+                                                  <a href="http://www.elao.com" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Xavier ROLDO</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">

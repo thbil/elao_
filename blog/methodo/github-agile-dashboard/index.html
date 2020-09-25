@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      GAD : Github Agile Dashboard
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/github-agile-dashboard.jpg)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/tjarrand.jpg" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/images/authors/tjarrand.jpg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Thomas Jarrand</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Thomas JARRAND</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/tjarrand.jpg" />
-          <img src="/elao_/images/authors/tjarrand.jpg" />
-          <img src="/elao_/images/authors/tjarrand.jpg" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Thomas JARRAND</strong>
-          <strong>Thomas JARRAND</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/tjarrand.jpg" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>4 juillet 2017</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -238,18 +219,7 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+  
   <div class="article-content">
     <main class="article-content__main">
       <body><p>Sur notre projet du moment, notre équipe utilise beaucoup <em>GitHub</em> comme support agile.</p>
@@ -263,7 +233,7 @@
 <img src="/images/posts/2017/github-agile-dashboard/github-milestone.png" alt="github-milestone" title="github-milestone" id="github-milestone"><p>Le problème, c'est que GitHub ne connait pas notre convention décrivant la valeur en point des stories et ne peut donc pas l'exploiter.</p>
 <p>L'avancement proposé en nombre de ticket clos n'est pas représentatif de l'avancement en terme de points, qu'on doit obtenir en additionnant les points de toutes les issues.</p>
 <p><em>Et puis un jour, on en a eu marre de faire ces totaux à la main</em> 😇</p>
-<h2 id="gad-notre-ligne-de-command-agil">GAD, notre ligne de command agile<a href="#gad-notre-ligne-de-command-agil" class="anchor"></a></h2>
+<h2 id="gad-notre-ligne-de-command-agil" class="anchor-title"><a href="#gad-notre-ligne-de-command-agil">GAD, notre ligne de command agile</a></h2>
 <p>Alors j'ai pris un moment pour faire un petit outil en ligne de commande qui ferait ce travail pour nous.</p>
 <ul><li>On récupère la liste des issues du projet via <a href="https://developer.github.com/v3/" target="_blank">l'API GitHub</a>.</li>
 <li>On obtient les issues, milestone, labels, users et pull-request du projet en un seul appel HTTP !</li>
@@ -278,7 +248,7 @@
 <img src="/images/posts/2017/github-agile-dashboard/backlog.png" alt="gad backlog" title="gad backlog" id="gad-backlog"><blockquote>
 <p>Est-ce qu'il y a des PR que je n'ai pas encore review ?</p>
 </blockquote>
-<img src="/images/posts/2017/github-agile-dashboard/review.png" alt="gad review" title="gad review" id="gad-review"><h2 id="faire-son-propre-cli-avec-node">Faire son propre CLI avec Node<a href="#faire-son-propre-cli-avec-node" class="anchor"></a></h2>
+<img src="/images/posts/2017/github-agile-dashboard/review.png" alt="gad review" title="gad review" id="gad-review"><h2 id="faire-son-propre-cli-avec-node" class="anchor-title"><a href="#faire-son-propre-cli-avec-node">Faire son propre CLI avec Node</a></h2>
 <p>GAD est codé en <em>Node</em>, mais de nombreux languages seront capables de répondre à une telle problématique.</p>
 <p>Node fournit quelques outils pratiques pour réaliser rapidement un petit outil en ligne de commande :</p>
 <ul><li>L'API __<a href="https://nodejs.org/api/readline.html#readline_example_tiny_cli" target="_blank">ReadLine</a>__ qui propose quelques fonctionnalités dédiées au CLI, <em>out of the box</em>.</li>
@@ -286,10 +256,10 @@
 <li>La clé <strong>bin</strong> du <code class="code-inline" id="b9cfc7f2cdf78a7f4b91a753d10865a2">package.json</code> permet de déclarer un module en tant qu'exécutable : <code class="code-inline" id="5df4c38c69a89c13de2e5e495643c069">"bin": { "gad": "./gad.js" }</code>
 La command <code class="code-inline" id="5cd1a2c6812a26f4af0bfe8eaf6422d7">gad</code> sera automatiquement disponible une fois le module installé en global sur la machine (<code class="code-inline" id="0da002587f1e5f033b1106635932e475">npm i -g @elao/github-agile-dashboard</code>) !</li>
 </ul><p><strong>Note :</strong> lorsqu'il est exécuté, gad récupère de précieuses informations, grâce à  <em>git</em>, comme l'url du repository (<code class="code-inline" id="74a340d9de7b7f4bafaf5c7251091889">git -C . config --get remote.origin.url</code>) ou l'utilisateur GitHub courant (<code class="code-inline" id="d0f21a3873bb8fa2ed961b30a53dbd58">git config --global github.user</code>)</p>
-<h2 id="ce-qu-on-en-retire">Ce qu'on en retire<a href="#ce-qu-on-en-retire" class="anchor"></a></h2>
-<h3 id="retour-sur-investissement">Retour sur investissement<a href="#retour-sur-investissement" class="anchor"></a></h3>
+<h2 id="ce-qu-on-en-retire" class="anchor-title"><a href="#ce-qu-on-en-retire">Ce qu'on en retire</a></h2>
+<h3 id="retour-sur-investissement" class="anchor-title"><a href="#retour-sur-investissement">Retour sur investissement</a></h3>
 <p>La première version fonctionnelle de GAD était prête après une petite après-midi de travail et accélérait déjà quelques tâches rébarbatives de notre quotidien agile. Un investissement vite "remboursé" !</p>
-<h3 id="les-joies-simple-de-la-ligne-de">Les joies simple de la ligne de commande<a href="#les-joies-simple-de-la-ligne-de" class="anchor"></a></h3>
+<h3 id="les-joies-simple-de-la-ligne-de" class="anchor-title"><a href="#les-joies-simple-de-la-ligne-de">Les joies simple de la ligne de commande</a></h3>
 <p><code class="code-inline" id="5873cade84adddbdd85ce9248ea2a629">gad sprint</code> devient petit à petit un réflexe (comme <code class="code-inline" id="6ca42d12c6d2b040d7784c6ebbfd3426">git status</code>) et nous permet d'avoir un rapide aperçu de l'avancement du sprint, directement dans le terminal, sans même avoir besoin de prendre en main la souris 😬</p>
 <p>L'avantage de la ligne de commande, c'est qu'on bénéficie directement de la puissance du terminal :</p>
 <blockquote>
@@ -297,13 +267,13 @@ La command <code class="code-inline" id="5cd1a2c6812a26f4af0bfe8eaf6422d7">gad</
 </blockquote>
 <pre class="code-multiline language-shell"><code class="language-shell" id="34a43cea6dd0c46369c5553d5f6cbe35">gad changelog --sprint<span class="token operator">=</span>-1 <span class="token operator">|</span> <span class="token function">grep</span> <span class="token number">42</span></code></pre>
 <p>😎</p>
-<h3 id="et-moi-dans-tout-a">Et moi dans tout ça ?<a href="#et-moi-dans-tout-a" class="anchor"></a></h3>
+<h3 id="et-moi-dans-tout-a" class="anchor-title"><a href="#et-moi-dans-tout-a">Et moi dans tout ça ?</a></h3>
 <p>GAD n'est probablement pas l'outil qui va révolutionner votre façon de travailler et multiplier la productivité de vos équipes, notamment car il a été conçu <em>sur-mesure</em> pour nos besoins et notre façon de travailler.</p>
 <p>Mais puisqu'il est open-source, je vous propose tout de même de <a href="https://www.npmjs.com/package/@elao/github-agile-dashboard" target="_blank">l'essayer</a> ou de <a href="https://github.com/Elao/github-agile-dashboard" target="_blank">jeter un oeil à son code</a>.</p>
 <p>Je vous invite aussi à être attentif·ve :</p>
 <p>Vous repérez une tâche que vous répétez tous les jours et pour laquelle l'humain n'a pas de valeur ajoutée ?
 Alors pourquoi ne pas développer votre propre utilitaire en ligne de commande pour adresser le problème et observer son adhésion par le reste de votre équipe ! 🙌</p></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -314,71 +284,30 @@ Alors pourquoi ne pas développer votre propre utilitaire en ligne de commande p
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/tjarrand.jpg" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Thomas JARRAND</strong></span>
-      <div class="article-author__social">
-                  <a href=tom32i class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Thomas JARRAND</span>
-          </a>
-                          <a href=Tom32i class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Thomas JARRAND</span>
-          </a>
-                          <a href=https://thomas.jarrand.fr class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Thomas JARRAND</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/tjarrand.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Thomas JARRAND</strong></span>
-      <div class="article-author__social">
-                  <a href=tom32i class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Thomas JARRAND</span>
-          </a>
-                          <a href=Tom32i class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Thomas JARRAND</span>
-          </a>
-                          <a href=https://thomas.jarrand.fr class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Thomas JARRAND</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/tjarrand.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Thomas JARRAND</strong></span>
-      <div class="article-author__social">
-                  <a href=tom32i class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Thomas JARRAND</span>
-          </a>
-                          <a href=Tom32i class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Thomas JARRAND</span>
-          </a>
-                          <a href=https://thomas.jarrand.fr class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Thomas JARRAND</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/images/authors/tjarrand.jpg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Thomas Jarrand</strong>
+          </span>
+          <div class="article-author__social">
+                          <a href="https://twitter.com/tom32i" class="social social--small">
+                <i class="icon icon--twitter" aria-hidden="true"></i>
+                <span class="screen-reader">Compte twitter de Thomas Jarrand</span>
+              </a>
+                                      <a href="https://github.com/Tom32i "class="social social--small">
+                <i class="icon icon--github" aria-hidden="true"></i>
+                <span class="screen-reader">Compte github de Thomas Jarrand</span>
+              </a>
+                                      <a href="https://thomas.jarrand.fr" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Thomas Jarrand</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">

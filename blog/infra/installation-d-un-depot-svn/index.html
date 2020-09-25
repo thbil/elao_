@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      Installation d&#039;un dépôt SVN
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/kenny.jpg)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/images/authors/gfaivre.jpg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Guewen FAIVRE</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Guewen FAIVRE</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Guewen FAIVRE</strong>
-          <strong>Guewen FAIVRE</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>2 décembre 2009</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -220,25 +201,14 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+  
   <div class="article-content">
     <main class="article-content__main">
       <body><p><strong>[EDIT]</strong> Il est bien évidemment conseillé aujourd'hui d'utiliser GIT comme SCM ! Cet article est à considérer comme une archive et/ou comme support à ceux qui ont la malchance d' être coincé avec SVN.</p>
 <p><strong>Subversion</strong> (en abrégé <strong>svn</strong>) est un <a title="Système de gestion de versions" target="_blank" href="http://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_versions">système de gestion de versions</a>, il agit sur une arborescence de fichiers afin de conserver toutes les versions des fichiers, ainsi que les différences entre les fichiers. De ce fait, et pour résumer, il permet non seulement de pouvoir revenir à un état T d'une application dans le temps mais également de travailler à plusieurs sur un seul et même projet, les conflits pouvant être engendrés entre deux utilisateurs manipulant un même fichier étant gérés par le serveur subversion.</p>
-<h3 id="les-paquets-installer">Les paquets à installer:<a href="#les-paquets-installer" class="anchor"></a></h3>
+<h3 id="les-paquets-installer" class="anchor-title"><a href="#les-paquets-installer">Les paquets à installer:</a></h3>
 <pre class="code-multiline"><code id="0cf1c8470f8e8887cddeb5c55ccd5163">apt-get install subversion libapache2-svn</code></pre>
-<h3 id="d-ploiement-du-d-p-t-subversi">Déploiement du dépôt subversion:<a href="#d-ploiement-du-d-p-t-subversi" class="anchor"></a></h3>
+<h3 id="d-ploiement-du-d-p-t-subversi" class="anchor-title"><a href="#d-ploiement-du-d-p-t-subversi">Déploiement du dépôt subversion:</a></h3>
 <p>Nous partirons du principe que vous avez décidé de déployer le repository (dépôt) de votre projet dans le répertoire /repositories/. Si ce n’est pas fait nous créons le répertoire:</p>
 <pre class="code-multiline"><code id="f863fe6738bd8911e1ffbf5ea89cee00">mkdir /repositories</code></pre>
 <p>Nous allons ensuite créer notre dépot à l’aide de la commande svn:</p>
@@ -249,10 +219,10 @@
 <li>tags:</li>
 </ul><p>Si vous disposez déjà d’un existant vous pouvez parfaitement l’importer dans votre nouveau dépôt, dans le trunk:</p>
 <pre class="code-multiline"><code id="36ce0e123eafbeb0be7197a0d2bc5f95">svn import -m "Initialisation du dépot" /elao/projects/mon_projet/ file:///repositories/mon_projet/trunk</code></pre>
-<h3 id="param-trage-du-subversion-et-ap">Paramétrage du subversion et Apache<a href="#param-trage-du-subversion-et-ap" class="anchor"></a></h3>
+<h3 id="param-trage-du-subversion-et-ap" class="anchor-title"><a href="#param-trage-du-subversion-et-ap">Paramétrage du subversion et Apache</a></h3>
 <p>Afin “d’ouvrir” notre dépôt vers l’extérieur nous allons utiliser Apache, pour des raisons de sécurité, (libre à vous de l’utiliser ou non ) nous utiliserons SSL pour les transactions http. On active le module dav_svn avec la commande :</p>
 <pre class="code-multiline"><code id="8113fcbef4d9c257ba9a9a9551b20cbf">a2enmod dav_svn</code></pre>
-<h3 id="param-trer-votre-vhost-adap">Paramétrer votre VHost (à adapter selon votre configuration Apache):<a href="#param-trer-votre-vhost-adap" class="anchor"></a></h3>
+<h3 id="param-trer-votre-vhost-adap" class="anchor-title"><a href="#param-trer-votre-vhost-adap">Paramétrer votre VHost (à adapter selon votre configuration Apache):</a></h3>
 <p>Nous allons commencer par définir quels seront les utilisateurs qui auront accès à notre (nos) dépôt(s) Créons pour celà un répertoire pwd, qui, d’une manière générale contiendra nos fichiers d’accès.</p>
 <pre class="code-multiline"><code id="42e51fefb1fff8c68a0ebe226ca8f986">mkdir /etc/apache2/pwd
 cd pwd</code></pre>
@@ -275,7 +245,7 @@ SVNParentPath           /mon_domaine/repositories/
 <span class="token directive-inline property">AuthUserFile</span>            /etc/apache2/pwd/users.pwd
 AuthzSVNAccessFile      /etc/apache2/pwd/perms.acl
 <span class="token directive-inline property">Require</span>                 valid-user</code></pre>
-<h3 id="la-gestion-des-droits">La gestion des droits:<a href="#la-gestion-des-droits" class="anchor"></a></h3>
+<h3 id="la-gestion-des-droits" class="anchor-title"><a href="#la-gestion-des-droits">La gestion des droits:</a></h3>
 <p>Les droits sur les différents dépôts svn seront gérés via le fichier perms.acl, l’utilisation d’ACL va nous autoriser à mettre en place des accès complexes basés sur le couple utilisateur/groupe. Il est cependant à noter que l’utilité d’une stratégie d’authentification complexe ne présente d’interet que si votre dépôt est publique ou nécéssite un contrôle strict des accès. Qui dit ACL dit utilisateurs, groupes et bien sur permissions ! Nous allons stocker cette configuration dans le fichier perms.acl. On va commencer par définir les groupes:</p>
 <pre class="code-multiline"><code id="d2aa274eb8968a3a65a69a1114304596">[groups]
 admins = user1, user2
@@ -290,7 +260,7 @@ all = admins, developpers, public</code></pre>
 user2 = r
 @developpers = rw</code></pre>
 <p>Attention à toujours préfixer le nom des groupes par un ‘@’</p></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -301,71 +271,30 @@ user2 = r
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/images/authors/gfaivre.jpg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Guewen FAIVRE</strong>
+          </span>
+          <div class="article-author__social">
+                          <a href="https://twitter.com/guewen_faivre" class="social social--small">
+                <i class="icon icon--twitter" aria-hidden="true"></i>
+                <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
+              </a>
+                                      <a href="https://github.com/gfaivre "class="social social--small">
+                <i class="icon icon--github" aria-hidden="true"></i>
+                <span class="screen-reader">Compte github de Guewen FAIVRE</span>
+              </a>
+                                      <a href="http://www.elao.com" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">

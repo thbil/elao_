@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      Feedback on a side-effect with Symfony 2.2, subdomains and sessions
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/turtle.jpg)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/tbessoussa.jpg" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/images/authors/tbessoussa.jpg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Tristan BESSOUSSA</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Tristan BESSOUSSA</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/tbessoussa.jpg" />
-          <img src="/elao_/images/authors/tbessoussa.jpg" />
-          <img src="/elao_/images/authors/tbessoussa.jpg" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Tristan BESSOUSSA</strong>
-          <strong>Tristan BESSOUSSA</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/tbessoussa.jpg" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>28 février 2013</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -220,28 +201,17 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+  
   <div class="article-content">
     <main class="article-content__main">
       <body><p>This is a small feedback regarding the new Symfony 2.2 feature which makes the subdomains handling easier. By the way you can see the official documentation about <a style="text-align: justify;" href="http://symfony.com/doc/master/components/routing/hostname_pattern.html" target="_blank">routing &amp; subdomains here</a>.</p>
-<h3 id="scenario">Scenario<a href="#scenario" class="anchor"></a></h3>
+<h3 id="scenario" class="anchor-title"><a href="#scenario">Scenario</a></h3>
 <p>With the support of subdomains in the Symfony 2.2 routing component, you're all excited and decide to take advantage of that feature.</p>
-<h3 id="problem">Problem 1<a href="#problem" class="anchor"></a></h3>
+<h3 id="problem-1" class="anchor-title"><a href="#problem-1">Problem 1</a></h3>
 <p>Once you've opened one or more dedicated routes involving a subdomain, your users keep complaining about your application asking them to re-auth although they did it 5 minutes ago. Yeah, that's right, the session isn't shared across main domain and the subdomain.</p>
 <p><strong>Cause :</strong> You forgot to set the path of the session cookie to a value that allows session sharing for all your subdomains too. By default, the value of <em>cookie_domain</em> takes the current domain from <code class="code-inline" id="74cf5004d8aceafd2531cc620a36c278">$_SERVER</code> superglobal (which will in most case will output www.my-domain.com).</p>
 <p><strong>Solution :</strong> Add to your config.yml under the <em>session</em> key <code class="code-inline" id="2e290ec383073b4dbe58c4c051c94660">cookie_domain : .my-domain.com</code>. Just see the gist below for the example. If you use the <code class="code-inline" id="ea2bff02d99c26cb38c1b87b2a434604">remember_me</code> feature, don't forget to change the domain value of <code class="code-inline" id="9818925d214309e5b3cbbee315600a8a">security.yml</code> (see the 2nd gist).</p>
-<h3 id="problem">Problem 2<a href="#problem" class="anchor"></a></h3>
+<h3 id="problem-2" class="anchor-title"><a href="#problem-2">Problem 2</a></h3>
 <p>Once you've deployed the fix on your dev-preprod-prod server (choose the right stage according whether you like risks or not), you keep trying to login with your credentials without being actually logged in (and of course, no errors are logged).</p>
 <p><strong>Cause :</strong> If you open any tool which let us visualize the cookies stored by a website, you'll figure out soon that you have 2 cookies <code class="code-inline" id="754d3b148df7a597947f5556cbe06628">PHPSESSID</code> with differents values in the domain (one with www.my-domain.com and the other with .my-domain.com).</p>
 <p><strong>Solution :</strong> Change the name of the session cookie. It will prevent conflicts which will lead to a silent login failure.</p>
@@ -273,7 +243,7 @@
         <span class="token key atrule">lifetime</span><span class="token punctuation">:</span> <span class="token number">31536000</span>
         <span class="token key atrule">path</span><span class="token punctuation">:</span>     /
         <span class="token key atrule">domain</span><span class="token punctuation">:</span>   .my<span class="token punctuation">-</span>domain.com <span class="token comment"># Defaults to the current domain from $_SERVER</span></code></pre></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -284,71 +254,30 @@
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/tbessoussa.jpg" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Tristan BESSOUSSA</strong></span>
-      <div class="article-author__social">
-                  <a href=sf_tristanb class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Tristan BESSOUSSA</span>
-          </a>
-                          <a href=tristanbes class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Tristan BESSOUSSA</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Tristan BESSOUSSA</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/tbessoussa.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Tristan BESSOUSSA</strong></span>
-      <div class="article-author__social">
-                  <a href=sf_tristanb class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Tristan BESSOUSSA</span>
-          </a>
-                          <a href=tristanbes class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Tristan BESSOUSSA</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Tristan BESSOUSSA</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/tbessoussa.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Tristan BESSOUSSA</strong></span>
-      <div class="article-author__social">
-                  <a href=sf_tristanb class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Tristan BESSOUSSA</span>
-          </a>
-                          <a href=tristanbes class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Tristan BESSOUSSA</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Tristan BESSOUSSA</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/images/authors/tbessoussa.jpg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Tristan BESSOUSSA</strong>
+          </span>
+          <div class="article-author__social">
+                          <a href="https://twitter.com/sf_tristanb" class="social social--small">
+                <i class="icon icon--twitter" aria-hidden="true"></i>
+                <span class="screen-reader">Compte twitter de Tristan BESSOUSSA</span>
+              </a>
+                                      <a href="https://github.com/tristanbes "class="social social--small">
+                <i class="icon icon--github" aria-hidden="true"></i>
+                <span class="screen-reader">Compte github de Tristan BESSOUSSA</span>
+              </a>
+                                      <a href="http://www.elao.com" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Tristan BESSOUSSA</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">

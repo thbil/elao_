@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      Two Way-Binding avec Vue et Vuex
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/vuejs.jpg)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/mcolin.jpg" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/images/authors/mcolin.jpg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Maxime COLIN</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Maxime COLIN</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/mcolin.jpg" />
-          <img src="/elao_/images/authors/mcolin.jpg" />
-          <img src="/elao_/images/authors/mcolin.jpg" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Maxime COLIN</strong>
-          <strong>Maxime COLIN</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/mcolin.jpg" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>25 septembre 2019</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -229,18 +210,7 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+  
   <div class="article-content">
     <main class="article-content__main">
       <body><p>Vue permet déjà de faire du Two-Way Binding grâce à la directive <code class="code-inline" id="088dc68c3dcfc8e6946dcc4faab5b96c">v-model</code>. C'est à dire mettre à jour l'interface lorsque le modèle change et vice et versa.</p>
@@ -369,7 +339,7 @@ export default {
     ...mapWatcher(['foobar', 'barfoo'])
   }
 }</code></pre></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -380,71 +350,30 @@ export default {
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/mcolin.jpg" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Maxime COLIN</strong></span>
-      <div class="article-author__social">
-                  <a href=colin_maxime class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Maxime COLIN</span>
-          </a>
-                          <a href=maximecolin class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Maxime COLIN</span>
-          </a>
-                          <a href=http://www.maximecolin.fr class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Maxime COLIN</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/mcolin.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Maxime COLIN</strong></span>
-      <div class="article-author__social">
-                  <a href=colin_maxime class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Maxime COLIN</span>
-          </a>
-                          <a href=maximecolin class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Maxime COLIN</span>
-          </a>
-                          <a href=http://www.maximecolin.fr class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Maxime COLIN</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/mcolin.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Maxime COLIN</strong></span>
-      <div class="article-author__social">
-                  <a href=colin_maxime class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Maxime COLIN</span>
-          </a>
-                          <a href=maximecolin class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Maxime COLIN</span>
-          </a>
-                          <a href=http://www.maximecolin.fr class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Maxime COLIN</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/images/authors/mcolin.jpg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Maxime COLIN</strong>
+          </span>
+          <div class="article-author__social">
+                          <a href="https://twitter.com/colin_maxime" class="social social--small">
+                <i class="icon icon--twitter" aria-hidden="true"></i>
+                <span class="screen-reader">Compte twitter de Maxime COLIN</span>
+              </a>
+                                      <a href="https://github.com/maximecolin "class="social social--small">
+                <i class="icon icon--github" aria-hidden="true"></i>
+                <span class="screen-reader">Compte github de Maxime COLIN</span>
+              </a>
+                                      <a href="http://www.maximecolin.fr" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Maxime COLIN</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">

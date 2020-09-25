@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      Propel - Utiliser des champs calculés
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/mailers.jpg)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/images/authors/gfaivre.jpg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Guewen FAIVRE</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Guewen FAIVRE</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Guewen FAIVRE</strong>
-          <strong>Guewen FAIVRE</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>13 mai 2010</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -226,23 +207,12 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+  
   <div class="article-content">
     <main class="article-content__main">
       <body><p>Il est parfois très utile de pouvoir récupérer directement des champs calculés depuis la base de données, soit parce que passer par un criteria s'avère très compliqué, voir impossible, soit pour confier les calculs à la base de données.</p>
 <p>Je vous propose donc aujourd'hui deux solutions pour le faire avec Propel :<!--more--></p>
-<h3 id="re-solution-les-r-sultats-s">1ère solution, les résultats sont accédés via des index numériques<a href="#re-solution-les-r-sultats-s" class="anchor"></a></h3>
+<h3 id="1-re-solution-les-r-sultats-s" class="anchor-title"><a href="#1-re-solution-les-r-sultats-s">1ère solution, les résultats sont accédés via des index numériques</a></h3>
 <pre class="code-multiline language-php"><code class="language-php" id="8a7785275a13d5b475a4c186b07d0e48"><span class="token comment">//QUERY</span>
 <span class="token variable">$query</span> <span class="token operator">=</span> <span class="token constant">SELECT</span> <span class="token function">DISTINCT</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'.UserPeer::ID.'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'.UserPeer::FIRSTNAME.'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'.UserPeer::LASTNAME.'</span><span class="token punctuation">,</span>
                          <span class="token single-quoted-string string">'.UserPeer::NICKNAME.'</span><span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'.QuestionPeer::ID.'</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> <span class="token constant">NB_QUESTIONS</span><span class="token punctuation">,</span>
@@ -268,7 +238,7 @@
   <span class="token variable">$questions</span><span class="token punctuation">[</span><span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token variable">$level</span> <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token variable">$level</span> <span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token variable">$users</span><span class="token punctuation">[</span><span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'questions'</span><span class="token punctuation">]</span>                     <span class="token operator">=</span> <span class="token variable">$questions</span><span class="token punctuation">[</span><span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id="me-solution-les-r-sultats-s">2ème solution, les résultats sont accédés via les noms de champs renvoyés par la requête<a href="#me-solution-les-r-sultats-s" class="anchor"></a></h3>
+<h3 id="2-me-solution-les-r-sultats-s" class="anchor-title"><a href="#2-me-solution-les-r-sultats-s">2ème solution, les résultats sont accédés via les noms de champs renvoyés par la requête</a></h3>
 <p>Il suffit pour cela de remplacer la méthode de récupération de executeQuery en utilisant cette fois:</p>
 <pre class="code-multiline language-php"><code class="language-php" id="7996141236245e4babf93b780a90018b"><span class="token scope">ResultSet<span class="token punctuation">::</span></span><span class="token constant">FETCHMODE_ASSOC</span></code></pre>
 <pre class="code-multiline"><code id="2e51ed954b18dd9b6cd37f86ccc62dc7">$rs = $stmt-&gt;executeQuery(ResultSet::FETCHMODE_ASSOC);
@@ -327,7 +297,7 @@ par la méthode</p>
           <span class="token single-quoted-string string">'nb_answers'</span>          <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$records</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'NB_ANSWERS'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
           <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -338,71 +308,30 @@ par la méthode</p>
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/images/authors/gfaivre.jpg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Guewen FAIVRE</strong>
+          </span>
+          <div class="article-author__social">
+                          <a href="https://twitter.com/guewen_faivre" class="social social--small">
+                <i class="icon icon--twitter" aria-hidden="true"></i>
+                <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
+              </a>
+                                      <a href="https://github.com/gfaivre "class="social social--small">
+                <i class="icon icon--github" aria-hidden="true"></i>
+                <span class="screen-reader">Compte github de Guewen FAIVRE</span>
+              </a>
+                                      <a href="http://www.elao.com" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">

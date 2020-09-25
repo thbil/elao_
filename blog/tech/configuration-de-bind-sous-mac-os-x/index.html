@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      Configuration de Bind sous Mac OS X
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/yosemite.jpg)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/vbouzeran.jpg" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/images/authors/vbouzeran.jpg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Vincent BOUZERAN</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Vincent BOUZERAN</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/vbouzeran.jpg" />
-          <img src="/elao_/images/authors/vbouzeran.jpg" />
-          <img src="/elao_/images/authors/vbouzeran.jpg" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Vincent BOUZERAN</strong>
-          <strong>Vincent BOUZERAN</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/vbouzeran.jpg" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>21 mai 2010</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -223,24 +204,13 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+  
   <div class="article-content">
     <main class="article-content__main">
       <body><p>Dans cet article, nous allons détailler pas à pas comment configurer le serveur Bind intégré à Mac Os X.
 Les développeurs web sont souvent confrontés à des problématiques DNS (wildcards, etc...) pour lesquelles le fichier <strong>/etc/hosts</strong> s'avère insuffisant.</p>
 <p>Cet article est traduit de <a href="http://www.macshadows.com/kb/index.php?title=How_To:_Enable_BIND_-_Mac_OS_X's_Built-in_DNS_Server" target="_blank">"How To: Enable BIND - Mac OS X's Built-in DNS Server"</a></p>
-<h3 id="etape-configuration-de-rndc">Etape 1: Configuration de rndc<a href="#etape-configuration-de-rndc" class="anchor"></a></h3>
+<h3 id="etape-1-configuration-de-rndc" class="anchor-title"><a href="#etape-1-configuration-de-rndc">Etape 1: Configuration de rndc</a></h3>
 <p><strong>rndc</strong> est l'utilitaire qui permet la configuration du serveur DNS. Vous devez tout d'abord créer un fichier de configuration ainsi qu'une clé secrète.</p>
 <p>Saisissez les commandes suivantes dans votre terminal pour générer le fichier de configuration et la clé secrète :</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="677095399f3e5004ba3e9f04fb446da1"><span class="token operator">&gt;</span> <span class="token function">sudo</span> -s
@@ -250,7 +220,7 @@ rndc-confgen -b <span class="token number">256</span> <span class="token operato
 Lancez les commandes suivantes, et assurez-vous que les ports sont identiques dans les deux fichiers de configurations /<strong>etc/named.conf</strong> et <strong>/etc/rndc.conf</strong>, si ce n'est pas le cas, éditez les fichiers et uniformisez les.</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="1182500b7cda165a8ae996012626f04f"><span class="token function">cat</span> /etc/named.conf <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'inet'</span>
 <span class="token function">cat</span> /etc/rndc.conf <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'default-port'</span></code></pre>
-<h3 id="etape-activer-bind">Etape 2 : Activer BIND<a href="#etape-activer-bind" class="anchor"></a></h3>
+<h3 id="etape-2-activer-bind" class="anchor-title"><a href="#etape-2-activer-bind">Etape 2 : Activer BIND</a></h3>
 <p>Nous devons maintenant configurer <strong>Bind</strong> pour qu'il se lance au démarrage. Pour se faire, on utilisera les commandes suivantes:</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="adb544bb02d1df7b37e13ed817c8af62">launchctl load -w /System/Library/LaunchDaemons/org.isc.named.plist
 <span class="token builtin class-name">echo</span> <span class="token string">"launchctl start org.isc.named"</span> <span class="token operator">&gt;&gt;</span> /etc/launchd.conf</code></pre>
@@ -258,7 +228,7 @@ Lancez les commandes suivantes, et assurez-vous que les ports sont identiques da
 <pre class="code-multiline"><code id="2de3cb95d13ef660e22f1dd6c1f56927">/usr/bin/named</code></pre>
 <p>ou encore</p>
 <pre class="code-multiline"><code id="9dcf301b0891e82068cea12d40c395d6">launchctl start org.isc.named</code></pre>
-<h3 id="etape-configuration-de-named">Etape 3 : Configuration de named<br><a href="#etape-configuration-de-named" class="anchor"></a></h3>
+<h3 id="etape-3-configuration-de-named" class="anchor-title"><br><a href="#etape-3-configuration-de-named">Etape 3 : Configuration de named</a></h3>
 <p>Cette étape peut nécessiter quelques recherches supplémentaires si vous avez des besoins très spécifiques.
 Dans cet article, nous allons voir un cas simple de configuration où nous souhaitons que notre interface locale (localhost) réponde pour tous les dns de la forme <code class="code-inline" id="664c9e09e57fb5b5e9ea430f5ab3c49e">*.local</code>
 Ce type de configuration peut être très utile pour les développeurs web qui souhaitent gagner du temps et éviter d'éditer systématiquement leur fichiers /etc/host lorsqu'ils rajoutent un virtualhost dans Apache.</p>
@@ -289,12 +259,12 @@ Ce type de configuration peut être très utile pour les développeurs web qui s
         allow-update <span class="token punctuation">{</span> none<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <p>Sauvegardez et le tour est joué !</p>
-<h3 id="etape-rechargement-de-la-con">Etape 4 : Rechargement de la configuration<a href="#etape-rechargement-de-la-con" class="anchor"></a></h3>
+<h3 id="etape-4-rechargement-de-la-con" class="anchor-title"><a href="#etape-4-rechargement-de-la-con">Etape 4 : Rechargement de la configuration</a></h3>
 <p>A chaque fois que vous modifier les fichiers de configuration ou de zones, vous aurez besoin de recharger la configuration par la commande:</p>
 <pre class="code-multiline"><code id="5d35425ce8eca82e2ecf4ceb6971cd17">rndc reload</code></pre>
 <p>Vous pouvez également réinitialiser le cache DNS par la commande suivante:</p>
 <pre class="code-multiline"><code id="d80e1127b18b60148cdbe883e2374337">rndc flush</code></pre></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -305,59 +275,26 @@ Ce type de configuration peut être très utile pour les développeurs web qui s
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/vbouzeran.jpg" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Vincent BOUZERAN</strong></span>
-      <div class="article-author__social">
-                          <a href=Vincz class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Vincent BOUZERAN</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Vincent BOUZERAN</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/vbouzeran.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Vincent BOUZERAN</strong></span>
-      <div class="article-author__social">
-                          <a href=Vincz class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Vincent BOUZERAN</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Vincent BOUZERAN</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/vbouzeran.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Vincent BOUZERAN</strong></span>
-      <div class="article-author__social">
-                          <a href=Vincz class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Vincent BOUZERAN</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Vincent BOUZERAN</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/images/authors/vbouzeran.jpg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Vincent BOUZERAN</strong>
+          </span>
+          <div class="article-author__social">
+                                      <a href="https://github.com/Vincz "class="social social--small">
+                <i class="icon icon--github" aria-hidden="true"></i>
+                <span class="screen-reader">Compte github de Vincent BOUZERAN</span>
+              </a>
+                                      <a href="http://www.elao.com" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Vincent BOUZERAN</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">

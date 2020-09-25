@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      Comment démarrer en TDD en PHP ?
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/tdd.jpg)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/authors/rhanna.jpg" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/authors/rhanna.jpg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Richard HANNA</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Richard HANNA</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/authors/rhanna.jpg" />
-          <img src="/elao_/authors/rhanna.jpg" />
-          <img src="/elao_/authors/rhanna.jpg" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Richard HANNA</strong>
-          <strong>Richard HANNA</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/authors/rhanna.jpg" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>30 octobre 2018</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -223,32 +204,59 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+      <ul class="table-of-content">
+              <li class="table-of-content__item">
+          <a href="#pourquoi-faire-du-test-driven-de">Pourquoi faire du Test Driven Development</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#outillage">Outillage</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#notre-exemple">Notre exemple</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#hypoth-ses">Hypothèses</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#entit">Entité</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#d-pendances">Dépendances</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#la-plomberie">La plomberie</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#le-service-tester">Le service à tester</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#les-enfants-et-les-tests-d-abord">Les enfants et les tests d&#039;abord !</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#enfin-l-impl-mentation">Enfin, l&#039;implémentation</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#le-temps-n-attend-pas">Le temps n&#039;attend pas</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#conclusion">Conclusion</a>
+        </li>
+          </ul>
+  
   <div class="article-content">
     <main class="article-content__main">
       <body><p><strong>Test Driven Development</strong> ou le développement guidé par les tests, n'est clairement pas une méthode triviale.
 N'ayez pas honte de ne pas savoir par où commencer.
 Beaucoup de personnes parlent de « déclic » lorsqu'il s'agit d'appréhender le TDD.
 L'ambition de cet article est d'essayer de créer ce déclic.</p>
-<h2 id="pourquoi-faire-du-test-driven-de">Pourquoi faire du <em>Test Driven Development</em><a href="#pourquoi-faire-du-test-driven-de" class="anchor"></a></h2>
+<h2 id="pourquoi-faire-du-test-driven-de" class="anchor-title"><em>Test Driven Development</em><a href="#pourquoi-faire-du-test-driven-de">Pourquoi faire du </a></h2>
 <p>On trouve pléthore de littérature à ce sujet et voici selon nous les avantages à faire du TDD en vrac :</p>
 <ul><li>tester les différents cas de figure,</li>
 <li>le plus souvent les tests s'appuient sur les spécifications et cela permet donc de conserver la documentation dans le code (<em>live documentation</em>),</li>
 <li>permet de mieux découper le code (notion de <em>clean code</em>),</li>
 <li>poser une première implémentation puis optimiser ou/et refactoriser et à chaque fois la valider grâce aux tests,</li>
 <li>gain de temps en validant l'implémentation via la console sans passer par les tests dans le navigateur.</li>
-</ul><img src="https://media.giphy.com/media/iKbUlFbs77oI0/giphy.gif" id="giphy-gif"><h2 id="outillage">Outillage<a href="#outillage" class="anchor"></a></h2>
+</ul><img src="https://media.giphy.com/media/iKbUlFbs77oI0/giphy.gif" id="giphy-gif"><h2 id="outillage" class="anchor-title"><a href="#outillage">Outillage</a></h2>
 <p>Installons le framework de test PHPUnit :</p>
 <pre><code id="1fe6cdf9470276222d96a1d7899d5e5a">$ composer require --dev phpunit/phpunit ^7</code></pre>
 <p>En considérant que notre namespace est <code class="code-inline" id="98832bd23a1a4e070b40c19a58c363c0">MyCompany\App</code> on devrait avoir ceci dans notre composer.json :</p>
@@ -273,12 +281,12 @@ L'ambition de cet article est d'essayer de créer ce déclic.</p>
 <blockquote>
 <p>No tests executed!</p>
 </blockquote>
-<h2 id="notre-exemple">Notre exemple<a href="#notre-exemple" class="anchor"></a></h2>
+<h2 id="notre-exemple" class="anchor-title"><a href="#notre-exemple">Notre exemple</a></h2>
 <p>Imaginons que nous intervenons sur un blog.
 Les utilisateurs de ce blog ont besoin de voir la liste des articles.
 Pour chaque article, on voit un titre et le nombre de commentaires laissés.
 Si un article a été publié il y a moins d'une semaine, le titre de l'article contient "Nouveau !" en préfixe.</p>
-<h3 id="hypoth-ses">Hypothèses<a href="#hypoth-ses" class="anchor"></a></h3>
+<h3 id="hypoth-ses" class="anchor-title"><a href="#hypoth-ses">Hypothèses</a></h3>
 <p>Les articles sont stockés quelque part, en base de données, fichiers, peu importe...
 Il me faut donc un service qui récupère les données puis les prépare pour être affichées.</p>
 <p>On va considérer que :</p>
@@ -287,7 +295,7 @@ Il me faut donc un service qui récupère les données puis les prépare pour ê
 </ul><p>On va uniquement se focaliser pour cet exemple sur un service qui va préparer les données souhaitées.</p>
 <p>Imaginer quelle est la plus petite entité logique à tester et faire cet effort de réflexion est finalement la
 premère étape en TDD.</p>
-<h3 id="entit">Entité<a href="#entit" class="anchor"></a></h3>
+<h3 id="entit" class="anchor-title"><a href="#entit">Entité</a></h3>
 <p>Nous allons uniquement utiliser l'entité suivante <code class="code-inline" id="03d947a2158373c3b9d74325850cb8b9">Post</code> représentant un article du blog :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="bcc87acaf570f24692dcc35c0e6c8e62"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -307,7 +315,7 @@ premère étape en TDD.</p>
         <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">publishedAt</span> <span class="token operator">=</span> <span class="token variable">$publishedAt</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
-<h3 id="d-pendances">Dépendances<a href="#d-pendances" class="anchor"></a></h3>
+<h3 id="d-pendances" class="anchor-title"><a href="#d-pendances">Dépendances</a></h3>
 <p>Considérons que nous avons les deux interfaces suivantes permettant d'accéder aux articles
 et au nombre de commentaires par articles.</p>
 <p><code class="code-inline" id="c217921c976603f2f662ed76f16f60ef">PostRepository</code>:</p>
@@ -335,7 +343,7 @@ et au nombre de commentaires par articles.</p>
 <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">countByPost</span><span class="token punctuation">(</span>Post <span class="token variable">$post</span><span class="token punctuation">)</span><span class="token punctuation">:</span> int<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></span></code></pre>
-<h3 id="la-plomberie">La plomberie<a href="#la-plomberie" class="anchor"></a></h3>
+<h3 id="la-plomberie" class="anchor-title"><a href="#la-plomberie">La plomberie</a></h3>
 <p>Créons une classe <code class="code-inline" id="9bf6839f16a04a883768f5c536b2161d">PostView</code> qu'on appelle communément un DTO (data transfer object), un objet de transfert de données
 qui ne contient aucun comportement, que des valeurs :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="0a720120fc3eb466fb3ea3fc92fca898"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
@@ -360,7 +368,7 @@ qui ne contient aucun comportement, que des valeurs :</p>
         <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">isNew</span> <span class="token operator">=</span> <span class="token variable">$isNew</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
-<h2 id="le-service-tester">Le service à tester<a href="#le-service-tester" class="anchor"></a></h2>
+<h2 id="le-service-tester" class="anchor-title"><a href="#le-service-tester">Le service à tester</a></h2>
 <p>Créons notre service <code class="code-inline" id="4e74d55162d9b39c9ad96294764293ff">GetPostsList</code> qui ne fait en réalité qu'une seule chose, une seule méthode publique, <code class="code-inline" id="41694f07cc1d4017d0ba996850f58e33">_invoke</code> :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="972e3d83ad52eeef3c5d5e8661411cdb"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -373,7 +381,7 @@ qui ne contient aucun comportement, que des valeurs :</p>
         <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
-<h3 id="les-enfants-et-les-tests-d-abord">Les enfants et les tests d'abord !<a href="#les-enfants-et-les-tests-d-abord" class="anchor"></a></h3>
+<h3 id="les-enfants-et-les-tests-d-abord" class="anchor-title"><a href="#les-enfants-et-les-tests-d-abord">Les enfants et les tests d'abord !</a></h3>
 <p>Créons maintenant un test de <code class="code-inline" id="4e74d55162d9b39c9ad96294764293ff">GetPostsList</code> qui est censé nous envoyer deux articles, l'un marqué nouveau, l'autre non.
 Il est important de tester tous les cas. Cela tombe bien, notre besoin est simple, on a que deux cas.</p>
 <p>Dans : <code class="code-inline" id="7c85117bec6526ed4f958c8c7cd55358">tests/Post/GetPostsListTest.php</code> :</p>
@@ -456,7 +464,7 @@ données.</p>
         <span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
-<h3 id="enfin-l-impl-mentation">Enfin, l'implémentation<a href="#enfin-l-impl-mentation" class="anchor"></a></h3>
+<h3 id="enfin-l-impl-mentation" class="anchor-title"><a href="#enfin-l-impl-mentation">Enfin, l'implémentation</a></h3>
 <p>Nous avons tout ce qu'il faut pour implémenter notre code :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="c95953cd07a13f4581ddfee73b231f30"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -501,7 +509,7 @@ données.</p>
 <blockquote>
 <p>OK (1 test, 4 assertions)</p>
 </blockquote>
-<h3 id="le-temps-n-attend-pas">Le temps n'attend pas<a href="#le-temps-n-attend-pas" class="anchor"></a></h3>
+<h3 id="le-temps-n-attend-pas" class="anchor-title"><a href="#le-temps-n-attend-pas">Le temps n'attend pas</a></h3>
 <p>Attention, il y a un piège. Désolé mais ce test ne fonctionnera plus dans quelques jours.
 Pourquoi ?
 Nous avons une comparaison avec la date "système" dans l'implémentation (<code class="code-inline" id="1ef9214848bdfb5133edf6959967edc5">new \DateTime</code>)
@@ -549,7 +557,7 @@ ne fasse plus échouer les tests dans quelques jours !</p>
 </blockquote>
 <p>Super !</p>
 <p>Vous trouverez le code de cet exemple ici : <a href="https://github.com/supertanuki/TDD-en-PHP" target="_blank">https://github.com/supertanuki/TDD-en-PHP</a></p>
-<h2 id="conclusion">Conclusion<a href="#conclusion" class="anchor"></a></h2>
+<h2 id="conclusion" class="anchor-title"><a href="#conclusion">Conclusion</a></h2>
 <img src="https://media.giphy.com/media/ds9RZ7gATF0wo/giphy.gif" id="giphy-gif"><p>J'espère que cet exemple vous aura convaincu des avantages du <em>Test Driven Development</em>.
 Pour finir, un dernier conseil pour mettre le pied à l'étrier : sur votre projet en cours,
 dès que vous devez faire un service qui fait quelque chose
@@ -558,7 +566,7 @@ ledit service.</p>
 <p>À vos marques, prêts, <strong>testez</strong> !</p>
 <p>PS : si vous souhaitez vous éclater en faisant du TDD et du code de qualité,
 <a href="/fr/elao/job-developpeur-backend-agence-paris-2018/">rejoignez-nous !</a></p></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -569,71 +577,30 @@ ledit service.</p>
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/authors/rhanna.jpg" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Richard HANNA</strong></span>
-      <div class="article-author__social">
-                  <a href=richardhanna class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Richard HANNA</span>
-          </a>
-                          <a href=supertanuki class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Richard HANNA</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Richard HANNA</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/authors/rhanna.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Richard HANNA</strong></span>
-      <div class="article-author__social">
-                  <a href=richardhanna class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Richard HANNA</span>
-          </a>
-                          <a href=supertanuki class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Richard HANNA</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Richard HANNA</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/authors/rhanna.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Richard HANNA</strong></span>
-      <div class="article-author__social">
-                  <a href=richardhanna class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Richard HANNA</span>
-          </a>
-                          <a href=supertanuki class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Richard HANNA</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Richard HANNA</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/authors/rhanna.jpg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Richard HANNA</strong>
+          </span>
+          <div class="article-author__social">
+                          <a href="https://twitter.com/richardhanna" class="social social--small">
+                <i class="icon icon--twitter" aria-hidden="true"></i>
+                <span class="screen-reader">Compte twitter de Richard HANNA</span>
+              </a>
+                                      <a href="https://github.com/supertanuki "class="social social--small">
+                <i class="icon icon--github" aria-hidden="true"></i>
+                <span class="screen-reader">Compte github de Richard HANNA</span>
+              </a>
+                                      <a href="http://www.elao.com" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Richard HANNA</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">

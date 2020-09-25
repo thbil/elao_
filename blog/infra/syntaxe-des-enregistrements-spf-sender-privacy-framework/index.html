@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      Syntaxe des enregistrements SPF (Sender Privacy Framework)
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/mail_bottle.jpeg)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/images/authors/gfaivre.jpg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Guewen FAIVRE</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Guewen FAIVRE</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Guewen FAIVRE</strong>
-          <strong>Guewen FAIVRE</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>5 décembre 2009</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -223,18 +204,7 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+  
   <div class="article-content">
     <main class="article-content__main">
       <body><p>Dans cet article je vais tenté d'expliquer comment fonctionne actuellement le SPF pour nos emails, mais également de détailler au maximum les différentes options que fournit le framework afin de créer nos propres enregistrements. L'ensemble de ces options peuvent être retrouvées sur le site officiel (anglais): <a href="http://www.openspf.org/SPF_Record_Syntax" title="OpenSPF" target="_blank">OpenSPF.org</a></p>
@@ -243,7 +213,7 @@
 <p><a href="http://www.openspf.org/SPF_Record_Syntax#all" target="_blank">all</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#ip4" target="_blank">ip4</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#ip6" target="_blank">ip6</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#a" target="_blank">a</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#mx" target="_blank">mx</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#ptr" target="_blank">ptr</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#exists" target="_blank">exists</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#include" target="_blank">include</a></p>
 <p>Chaque domaine peut également définir des "modificateurs". Chacun d'entre eux ne peut apparaitre <strong>qu'une seule fois</strong> !</p>
 <p><a href="http://www.openspf.org/SPF_Record_Syntax#redirect" target="_blank">redirect</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#exp" target="_blank">exp</a></p>
-<h3 id="les-m-canismes">Les mécanismes<a href="#les-m-canismes" class="anchor"></a></h3>
+<h3 id="les-m-canismes" class="anchor-title"><a href="#les-m-canismes">Les mécanismes</a></h3>
 <p>Les mécanismes peuvent être préfixer par l'un de ces quatres "qualificateurs" :</p>
 <ul><li>
 <p>"+" Pass (A passé la vérification)</p>
@@ -290,7 +260,7 @@
  </tr><tr><td>TempError</td>
     <td>Une erreur passagère (temporaire) est arrivée</td>
     <td>Accepté ou rejeté</td>
-  </tr></table><h3 id="le-m-canisme-all">Le mécanisme "all"<a href="#le-m-canisme-all" class="anchor"></a></h3>
+  </tr></table><h3 id="le-m-canisme-all" class="anchor-title"><a href="#le-m-canisme-all">Le mécanisme "all"</a></h3>
 <p>Ce mécanisme correspond toujours, on le retrouve habituellement à la fin de l'enregistrement.</p>
 <p><strong>Exemples:</strong></p>
 <pre class="code-multiline"><code id="a94fda36e5bbd7b984ae385213834a55">"v=spf1 mx -all"</code></pre>
@@ -299,14 +269,14 @@
 <p><em>Le domaine n'envoie pas du tout d'email.</em></p>
 <pre class="code-multiline"><code id="9085529ae1dfb26e98b9600e947d5301">"v=spf1 +all"</code></pre>
 <p><em>Le propriétaire du domaine considère que le SPF est inutile ou alors ne s'en préoccupe pas.</em></p>
-<h3 id="le-m-canisme-ip">Le mécanisme "ip4"<a href="#le-m-canisme-ip" class="anchor"></a></h3>
+<h3 id="le-m-canisme-ip4" class="anchor-title"><a href="#le-m-canisme-ip4">Le mécanisme "ip4"</a></h3>
 <pre class="code-multiline"><code id="f62ddc8667787f8e73de447fd50730c3">ip4:
 ip4:/</code></pre>
 <p>L'argument correspondant au mécanisme "ip4" est une d'adresse de réseau IPv4. S'il n'y a pas de "prefix-length" fourni, /32 est considéré par défaut.</p>
 <p><strong>Exemple :</strong></p>
 <pre class="code-multiline"><code id="d1f9c0397610a71368fef2d2644e4371">"v=spf1 ip4:192.168.0.1/16 -all"</code></pre>
 <p><em>Autorise toutes les adresses IP comprisent entre 192.168.0.1 et 192.168.255.255.</em></p>
-<h3 id="le-m-canisme-ip">Le mécanisme "ip6"<a href="#le-m-canisme-ip" class="anchor"></a></h3>
+<h3 id="le-m-canisme-ip6" class="anchor-title"><a href="#le-m-canisme-ip6">Le mécanisme "ip6"</a></h3>
 <pre class="code-multiline"><code id="58f6d8dd8e9654925d4c5c99b48d9dd5">ip6:
 ip6:/</code></pre>
 <p>L'argument correspondant au mécanisme "ip6" est une d'adresse de réseau IPv6. S'il n'y a pas de "prefix-length" fourni, /128 est considéré par défaut.</p>
@@ -315,7 +285,7 @@ ip6:/</code></pre>
 <p><em>Autorise toutes les adresse IPv6 comprise entre 1080::8:800:0000:0000 et 1080::8:800:FFFF:FFFF.</em></p>
 <pre class="code-multiline"><code id="feb7f5d613f1e01b195613ea137cb9f3">"v=spf1 ip6:1080::8:800:68.0.3.1/96 -all"</code></pre>
 <p><em>Autorise toutes les adresse IPv6 comprise entre 1080::8:800:0000:0000 et 1080::8:800:FFFF:FFFF.</em></p>
-<h3 id="le-m-canisme-a">Le mécanisme "a"<a href="#le-m-canisme-a" class="anchor"></a></h3>
+<h3 id="le-m-canisme-a" class="anchor-title"><a href="#le-m-canisme-a">Le mécanisme "a"</a></h3>
 <pre class="code-multiline"><code id="f09408e3632ad558e29a30dc9119eaff">a
 a/
 a:
@@ -330,7 +300,7 @@ a:/</code></pre>
 <p>Peut-être que example.com a choisi de lister explicitement tous les serveurs de courrier sortant dans un enregistrement A special sous mailers.example.com.</p>
 <pre class="code-multiline"><code id="3a662299f46b36422a6c562719a40da9">"v=spf1 a/24 a:offsite.example.com/24 -all"</code></pre>
 <p>Si example.com est résolu vers 192.0.2.1, la classe C entière de 192.0.2.0/24 sera recherchée pour l'IP du client. De même pour offsite.example.com. Si plus d'un enregistrement de type A a été retourné, chacun d'entre eux sera étendu au sous réseau <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" title="CIDR" target="_blank">CIDR</a>.</p>
-<h3 id="le-m-canisme-mx">Le mécanisme "mx"<a href="#le-m-canisme-mx" class="anchor"></a></h3>
+<h3 id="le-m-canisme-mx" class="anchor-title"><a href="#le-m-canisme-mx">Le mécanisme "mx"</a></h3>
 <pre class="code-multiline"><code id="c73413bc3999e0221509134d27e97b34">mx
 mx/
 mx:
@@ -341,7 +311,7 @@ mx:/</code></pre>
 <p>Peut être qu'un domaine a envoyé un mail via ce serveur MX ainsi qu'avec un autre ensemble de serveur dont le rôle est de retenter l'envoi pour les domaines dont la distribution a été différée.</p>
 <pre class="code-multiline"><code id="258d5425e74e92a3f27925a9c4bfc73c">"v=spf1 mx/24 mx:offsite.domain.com/24 -all"</code></pre>
 <p>Peut être qu'un serveur MX de domaine à reçu un mail sur une adresse IP, mais a envoyé le mail sur une adresse IP différente mais proche.</p></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -352,71 +322,30 @@ mx:/</code></pre>
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/images/authors/gfaivre.jpg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Guewen FAIVRE</strong>
+          </span>
+          <div class="article-author__social">
+                          <a href="https://twitter.com/guewen_faivre" class="social social--small">
+                <i class="icon icon--twitter" aria-hidden="true"></i>
+                <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
+              </a>
+                                      <a href="https://github.com/gfaivre "class="social social--small">
+                <i class="icon icon--github" aria-hidden="true"></i>
+                <span class="screen-reader">Compte github de Guewen FAIVRE</span>
+              </a>
+                                      <a href="http://www.elao.com" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">

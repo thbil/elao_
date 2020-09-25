@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      Retour sur le Symfony Live 2015
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/SymfonyLive.png)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/authors/rhanna.jpg" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/authors/rhanna.jpg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Richard HANNA</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Richard HANNA</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/authors/rhanna.jpg" />
-          <img src="/elao_/authors/rhanna.jpg" />
-          <img src="/elao_/authors/rhanna.jpg" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Richard HANNA</strong>
-          <strong>Richard HANNA</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/authors/rhanna.jpg" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>10 avril 2015</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -223,22 +204,11 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+  
   <div class="article-content">
     <main class="article-content__main">
       <body><p>La septième édition du SymfonyLive Paris s'est tenue le jeudi 9 avril à la Cité Internationale Universitaire de Paris. Retour sur cet évènement.</p>
-<h2 id="ans-d-j-quid-de-symfony">10 ans déjà… quid de Symfony 3.0 ? par Fabien Potencier<a href="#ans-d-j-quid-de-symfony" class="anchor"></a></h2>
+<h2 id="10-ans-d-j-quid-de-symfony" class="anchor-title"><a href="#10-ans-d-j-quid-de-symfony">10 ans déjà… quid de Symfony 3.0 ? par Fabien Potencier</a></h2>
 <p>Tout en décontraction, Fabien Potencier nous avoue qu'il n'est pas très "tech" ni très connecté. Il a découvert Whatsapp il y a 6 mois grâce à sa… mère.</p>
 <p>Petite anecdote, le premier site développé avec Symfony était un site marchand de lingerie. Le client n'a pas payé et c'est pourquoi il a été décidé de livrer Symfony à la communauté Open Source. À la base, le framework s'appelait "Sensio Framework" et le "f" de Symfony vient de "Framework".</p>
 <p>Fabien nous parle de la responsabilité du développement de Symfony vis à vis de ses utilisateurs, les versions LTS, la roadmap… Le passage de la version 1.4 à la version 2 a été douloureuse mais nécessaire. Symfony 3 ne sera pas une révolution mais une évolution. Exemple avec le composant Asset qui a été recodé complètement. L'ancien et le nouveau cohabitent sur la version 2.7 pour laisser le temps aux applications de migrer. C'est la philosophie actuelle du développement de Symfony : préserver la rétro-compatibilité. La version 3 sera une version réduite des composants dépréciés. Symfony 3 est en réalité déjà prête car toutes les fonctionnalités sont dans la 2.7. Il ne reste donc plus qu'à "nettoyer" les composants dépréciés. Il y aura une version 2.8 qui sortira en même temps que la 3.0 et qui contiendra les hotfix et refactoring réalisés sur la version 3. La 2.8 sera également LTS.</p>
@@ -248,11 +218,11 @@
 <p>La certification Symfony proposée par SensioLabs reste en Sf2.3 et passera directement à la 3.0.</p>
 <p>Y aura t-il un ORM Symfony en parallèle de Doctrine ou Propel ? Réponse catégorique : non ! Aucun intérêt de réinventer la roue.</p>
 <p>Un dernier conseil de Fabien : toujours se poser la question sur l'utilisation d'un bundle open source : m'apporte t-il de la valeur ? Répond t-il exactement à mon besoin ? N'est ce pas plus simple d'en créer un spécifique à mon besoin ?</p>
-<h2 id="d-velopper-avec-le-syliusresour">Développer avec le SyliusResourceBundle par Arnaud Langlade<a href="#d-velopper-avec-le-syliusresour" class="anchor"></a></h2>
+<h2 id="d-velopper-avec-le-syliusresour" class="anchor-title"><a href="#d-velopper-avec-le-syliusresour">Développer avec le SyliusResourceBundle par Arnaud Langlade</a></h2>
 <p>Au cours de son développement Sylius, l'équipe s’est rendu compte qu’elle dupliquait énormément de code pour gérer ses CRUDs. Ne voulant pas réinventer Symfony ou utiliser un admin generator, elle décida de créer un bundle simple et flexible: SyliusResourceBundle. Il a été pensé afin de pouvoir supporter plusieurs types de drivers (DoctrineORM, PHPCR). De plus, il permet de construire rapidement une API grâce au FOSRestBundle.</p>
 <p>Ce n'est pas un admin generator. Il faut faire ses templates, ses routes… Mon avis : sympa pour réaliser rapidement un POC ou une application simple. Mais fort couplage au framework et à l'ORM, donc cela semble moins souple.</p>
 <p><a href="http://docs.sylius.org/en/latest/bundles/SyliusResourceBundle/" target="_blank">Voir la doc très complète de SyliusResourceBundle</a></p>
-<h2 id="repousser-les-limites-http-cac">Repousser les limites : HTTP cache et utilisateurs connectés par David Buchmann et Jérôme Vieilledent<a href="#repousser-les-limites-http-cac" class="anchor"></a></h2>
+<h2 id="repousser-les-limites-http-cac" class="anchor-title"><a href="#repousser-les-limites-http-cac">Repousser les limites : HTTP cache et utilisateurs connectés par David Buchmann et Jérôme Vieilledent</a></h2>
 <p>Il s'agit d'une présentation des différentes manières de cacher du contenu personnalisé. Au travers du concept du "user context", comment mutualiser du cache entre des utilisateurs connectés et partageant le même profil de permission ? Nous étudierons également les Edge Side Includes (ESI) et comment cacher des fragments différemment. Ces concepts sont rendus possibles avec Varnish et le composant HttpCache de Symfony, grâce à FOSHttpCacheBundle, que des projets comme le CMS Open Source eZ Publish utilise.</p>
 <p>Le cache dans le contexte user a toujours semblé impossible.
 Introduction de "l'User context Hash" :</p>
@@ -268,10 +238,10 @@ Introduction de "l'User context Hash" :</p>
 <p>Ressources :</p>
 <ul><li><a href="https://github.com/FriendsOfSymfony/FOSHttpCacheBundle" target="_blank">Voir la doc de FOSHttpCacheBundle</a></li>
 <li>et plus spécifiquement <a href="https://github.com/FriendsOfSymfony/FOSHttpCacheBundle/blob/master/Resources/doc/features/user-context.rst" target="_blank">la doc sur le User Context</a></li>
-</ul><h2 id="laisse-pas-tra-ner-ton-log-pa">Laisse pas traîner ton log ! par Olivier Dolbeau<a href="#laisse-pas-tra-ner-ton-log-pa" class="anchor"></a></h2>
+</ul><h2 id="laisse-pas-tra-ner-ton-log-pa" class="anchor-title"><a href="#laisse-pas-tra-ner-ton-log-pa">Laisse pas traîner ton log ! par Olivier Dolbeau</a></h2>
 <p>Introduction à comment tirer parti des logs grâce à Monolog et à la stack ELK (Elasticsearch / Logstash / Kibana) et en faire des dashboards.</p>
 <p>En savoir plus : <a href="https://speakerdeck.com/odolbeau/laisse-pas-trainer-ton-log" target="_blank">Speakerdeck Laisse pas traîner ton log !</a></p>
-<h2 id="retour-d-exp-rience-attenti">Retour d’expérience : attention chérie, ça va trancher par Bastien Jaillot<a href="#retour-d-exp-rience-attenti" class="anchor"></a></h2>
+<h2 id="retour-d-exp-rience-attenti" class="anchor-title"><a href="#retour-d-exp-rience-attenti">Retour d’expérience : attention chérie, ça va trancher par Bastien Jaillot</a></h2>
 <p>Pitch :</p>
 <blockquote>
 <p>Vous vous sentez comme un membre d’équipage dont le navire est sur le point de se briser ? Votre environnement de travail est si triste que vous n’avez plus confiance en l'humanité ? Google vous propose une solution : <a href="http://goo.gl/I4jM4n" target="_blank">http://goo.gl/I4jM4n</a> Notre histoire, se déroule au sein d’une équipe technique au bord de l'apoplexie tant en terme humain que technique. Elle va progressivement remonter la pente et gagner ses lettres de noblesses pour enfin brandir son glaive et s’écrier “For The Victory!”. Comment passer d’un monolithe à une architecture microservices (à base de composants Symfony2) ? En quoi l’arrivée d’un chef de projet et de nouveaux process nous a sauvé la mise ? En quoi l’attention portée sur l'humain a favorisé l’émergence d’un collectif technique ? Comment favoriser l’insertion d’une nouvelle personne dans l’équipe ? En quoi l'utilisation pragmatique de technologies reconnues et émergeantes (elk, docker) nous a aidés au jour le jour.</p>
@@ -289,7 +259,7 @@ Introduction de "l'User context Hash" :</p>
 <li>Prendre du temps, avoir du recul.</li>
 <li>Être à l'écoute des problématiques rencontrées par l'entreprise et réfléchir à comment les résoudre.</li>
 <li>Se baser sur l'humain.</li>
-</ul><h2 id="symfony-et-sonata-project-chez-c">Symfony et Sonata Project chez Canal+ par Thomas Rabaix<a href="#symfony-et-sonata-project-chez-c" class="anchor"></a></h2>
+</ul><h2 id="symfony-et-sonata-project-chez-c" class="anchor-title"><a href="#symfony-et-sonata-project-chez-c">Symfony et Sonata Project chez Canal+ par Thomas Rabaix</a></h2>
 <p>Pitch :</p>
 <blockquote>
 <p>La présentation abordera l’usage de Symfony2, l’organisation du code et l’usage du projet Sonata chez Canal+ pour répondre aux enjeux de la refonte d’une partie de la plateforme web. La plateforme présente de nombreux challenges techniques: SDK, API privée, API publique restful+hal, création de contenus riches, 5 applications différentes avec une base de code commune.</p>
@@ -303,10 +273,10 @@ Introduction de "l'User context Hash" :</p>
 <li>SonataRestAdminBundle : administrer des contenus depuis plusieurs sources via APIs. Devrait être <em>open sourcé</em> sous peu.</li>
 <li>Nginx pour gérer le crop/resize des images afin de ne pas stocker les images temporaires sur le filesystem</li>
 <li>Création d'un <a href="https://github.com/ekino/php-hal-client" target="_blank">client pour consommer une API Hateoas (HAL)</a></li>
-</ul><h2 id="elasticsearch-dans-une-infrastru">ElasticSearch dans une infrastructure Symfony2 par Nicolas Badey<a href="#elasticsearch-dans-une-infrastru" class="anchor"></a></h2>
+</ul><h2 id="elasticsearch-dans-une-infrastru" class="anchor-title"><a href="#elasticsearch-dans-une-infrastru">ElasticSearch dans une infrastructure Symfony2 par Nicolas Badey</a></h2>
 <p>Présentation d'ElasticSearch avec Elastica et son intégration dans Symfony2.</p>
 <p><a href="https://speakerdeck.com/nicolasbadey/elasticsearch-with-elastica-in-symfony2-architecture" target="_blank">Speakerdeck de la présentation ElasticSearch</a></p>
-<h2 id="openclassrooms-le-pattern-view">OpenClassrooms - Le pattern View Model avec Symfony2 par Kuzniak Romain<a href="#openclassrooms-le-pattern-view" class="anchor"></a></h2>
+<h2 id="openclassrooms-le-pattern-view" class="anchor-title"><a href="#openclassrooms-le-pattern-view">OpenClassrooms - Le pattern View Model avec Symfony2 par Kuzniak Romain</a></h2>
 <p>Le pattern View Model est un pattern simple qui permet d’apporter des solutions à beaucoup de problèmes :</p>
 <ul><li>Découpler la logique métier de la présentation</li>
 <li>Permettre le refactoring</li>
@@ -315,7 +285,7 @@ Introduction de "l'User context Hash" :</p>
 <li>Construire des ressources API</li>
 <li>Contrat entre le front et le back sur le contenu d'un ViewModel</li>
 </ul><p>Superbe et simple introduction à ce pattern. En savoir plus : <a href="http://fr.wikipedia.org/wiki/Mod%C3%A8le-Vue-VueMod%C3%A8le" target="_blank">Pattern Modèle-Vue-VueModèle</a></p>
-<h2 id="meetic-backend-mutation-with-sym">Meetic backend mutation with Symfony par Joris Calabrese<a href="#meetic-backend-mutation-with-sym" class="anchor"></a></h2>
+<h2 id="meetic-backend-mutation-with-sym" class="anchor-title"><a href="#meetic-backend-mutation-with-sym">Meetic backend mutation with Symfony par Joris Calabrese</a></h2>
 <p>Comment Meetic opère son changement technologique sur son SI. De la création d’API jusqu’à la mise en place d’une démarche qualité tout en passant par l'adoption du Behavior Driven Development.</p>
 <p>En vrac :</p>
 <ul><li>Migration d'un code monolithique vers des API REST en Sf2</li>
@@ -332,47 +302,47 @@ Introduction de "l'User context Hash" :</p>
 <li>Personne extérieures qui viennent présenter des choses nouvelles et enrichir l'équipe.</li>
 </ul><p>LA phrase du jour : L'intégration continue c'est "Harder better faster stronger" (Daft Punk) :)</p>
 <p><a href="http://fr.slideshare.net/meeticTech/meetic-backend-mutation-with-symfony" target="_blank">Superbe présentation à découvrir sur Slideshare</a></p>
-<h2 id="faites-plaisir-vos-utilisateu">Faites plaisir à vos utilisateurs : surveillez votre prod par Grégoire Pineau<a href="#faites-plaisir-vos-utilisateu" class="anchor"></a></h2>
+<h2 id="faites-plaisir-vos-utilisateu" class="anchor-title"><a href="#faites-plaisir-vos-utilisateu">Faites plaisir à vos utilisateurs : surveillez votre prod par Grégoire Pineau</a></h2>
 <p>Développer une application Symfony est maintenant chose commune, mais en connaissez-vous vraiment le comportement en production ? <a href="https://speakerdeck.com/lyrixx/symfony-live-2015-paris-monitorer-sa-prod" target="_blank">Le SpeakerDeck Monitorer sa prod</a></p>
-<h2 id="symfony-debug-et-vardumper-ou-c">Symfony Debug et VarDumper, ou comment debugger comfortablement par Nicolas Grekas<a href="#symfony-debug-et-vardumper-ou-c" class="anchor"></a></h2>
+<h2 id="symfony-debug-et-vardumper-ou-c" class="anchor-title"><a href="#symfony-debug-et-vardumper-ou-c">Symfony Debug et VarDumper, ou comment debugger comfortablement par Nicolas Grekas</a></h2>
 <p>Il n'y a que des bugs faciles à résoudre… quand on a de quoi les cerner ! <a href="http://fr.slideshare.net/nicolas.grekas/symfony-debug-vardumper" target="_blank">Voir la présentation Symfony Debug et VarDumper</a></p>
-<h2 id="construire-des-applications-api">Construire des applications API-centric avec Symfony par Kévin Dunglas<a href="#construire-des-applications-api" class="anchor"></a></h2>
+<h2 id="construire-des-applications-api" class="anchor-title"><a href="#construire-des-applications-api">Construire des applications API-centric avec Symfony par Kévin Dunglas</a></h2>
 <p>Présentation très intéressante sur une architecture qui permet de construire des applications performantes, évolutives et interopérables :</p>
 <ul><li>Un modèle de données dérivé du vocabulaire Schema.org généré avec <a href="https://github.com/dunglas/php-schema" target="_blank">PHP Schema</a>.</li>
 <li>Une API REST hypermedia et auto-découvrable (JSON-LD + Hydra) réalisée avec <a href="https://github.com/dunglas/DunglasJsonLdApiBundle" target="_blank">DunglasJsonLdApiBundle</a> (pour Symfony 2.7+).</li>
 <li>Sérialisation et validation avancées des données grâce aux nouvelles fonctionnalités du composant Serializer de Symfony 2.7 et du Validator.</li>
 <li>Authentification stateless (cookie-less) avec JSON Web Token et <a href="https://github.com/lexik/LexikJWTAuthenticationBundle" target="_blank">LexikJWTAuthenticationBundle</a>.</li>
 <li>BDD et web acceptance testing avec Behat, Mink et Behatch.</li>
-</ul><h2 id="le-dic-ce-chef-d-orchestre-par">Le DIC, ce chef d'orchestre! par Adrien Brault<a href="#le-dic-ce-chef-d-orchestre-par" class="anchor"></a></h2>
+</ul><h2 id="le-dic-ce-chef-d-orchestre-par" class="anchor-title"><a href="#le-dic-ce-chef-d-orchestre-par">Le DIC, ce chef d'orchestre! par Adrien Brault</a></h2>
 <p><a href="https://speakerdeck.com/adrienbrault/le-dic-ce-chef-dorchestre" target="_blank">Introduction au conteneur d'injection de dépendances (DIC) de Symfony</a> et à une utilisation plus avancée.</p>
-<h2 id="docker-dans-le-d-veloppement-we">Docker dans le développement web et l'intégration continue par Jérémy DERUSSÉ<a href="#docker-dans-le-d-veloppement-we" class="anchor"></a></h2>
+<h2 id="docker-dans-le-d-veloppement-we" class="anchor-title"><a href="#docker-dans-le-d-veloppement-we">Docker dans le développement web et l'intégration continue par Jérémy DERUSSÉ</a></h2>
 <p>Pitch :</p>
 <blockquote>
 <p>Les containers sont venus bousculer le monde de la virtualisation, et Docker est devenu un outil incontournable. Nous verrons comment l'utiliser avec Symfony et surtout comment l'ajuster pour résoudre les problèmes courants, améliorer les performances ainsi que l’expérience du développeur. Nous nous intéresseront également à son utilisation dans le processus d'intégration continue, nous verrons comment Docker peut simplifier et améliorer l’exécution des tests fonctionnels.</p>
 </blockquote>
 <p>Très intéressante présentation de Docker et de ses possibilités (surtout les problèmes qu'il résout. <a href="http://slides.com/jeremyderusse/docker-dev" target="_blank">Les slides sont à voir ici.</a></p>
-<h2 id="une-api-et-une-admin-en-moins-de">Une API et une admin en moins de 10 minutes ? Challenge accepted! par Jonathan Petitcolas<a href="#une-api-et-une-admin-en-moins-de" class="anchor"></a></h2>
+<h2 id="une-api-et-une-admin-en-moins-de" class="anchor-title"><a href="#une-api-et-une-admin-en-moins-de">Une API et une admin en moins de 10 minutes ? Challenge accepted! par Jonathan Petitcolas</a></h2>
 <p>Créer une API REST… Une mission simple en apparence, mais pouvant s'avérer chronophage, et ce même avec certains bundles reconnus tels le FOSRestBundle. Heureusement, d'autres bundles existent, privilégiant les conventions par delà la configuration, ce qui est le cas du <a href="https://github.com/stanlemon/rest-bundle" target="_blank">StanLemon/RestBundle</a>.</p>
 <p>Petit instant "magique" dans cette Symfony Live durant lequel Jonathan de Marmelab live-code en une dizaine de minutes et en quelques lignes de code, une API REST pleinement fonctionnelle. Il implémente aussi une interface d'administration basée sur <a href="https://github.com/marmelab/ng-admin" target="_blank">ng-admin</a>.</p>
-<h2 id="mais-aussi">Mais aussi…<a href="#mais-aussi" class="anchor"></a></h2>
+<h2 id="mais-aussi" class="anchor-title"><a href="#mais-aussi">Mais aussi…</a></h2>
 <p>A partir de là, comme beaucoup de personnes dans la salle, j'avoue avoir déconnecté. Les talks suivants ont consisté à la présentation monotone de solutions Open Source. Voici les pitchs.</p>
-<h3 id="retour-d-exp-rience-sur-l-dit">Retour d'expérience sur l'édition d'un "Enterprise Software" basé sur Symfony par Nicolas Dupont<a href="#retour-d-exp-rience-sur-l-dit" class="anchor"></a></h3>
+<h3 id="retour-d-exp-rience-sur-l-dit" class="anchor-title"><a href="#retour-d-exp-rience-sur-l-dit">Retour d'expérience sur l'édition d'un "Enterprise Software" basé sur Symfony par Nicolas Dupont</a></h3>
 <blockquote>
 <p>Akeneo PIM est un outil de gestion de catalogue produits open source basé sur Symfony et Doctrine. Le développement a démarré il y a deux ans, l'équipe produit a évolué de 2 à 12 personnes, nous proposons une version communautaire et une version entreprise, utilisées par des clients grands comptes au sein de leur SI. En tant qu'éditeur, nous nous concentrons sur le développement des nouvelles fonctionnalités et la maintenance, les développements spécifiques étant réalisés par un réseau de partenaires intégrateurs. Durant cette conférence, sous la forme d'une rétrospective, nous souhaitons présenter notre retour d'expérience technique et méthodologique sur la création de ce produit. Nous présenterons les avantages d'utiliser Symfony comme socle technique, comment rendre une application extensible et maintenable, les écueils techniques que nous avons rencontrés ainsi que les choix techniques que nous ferions aujourd'hui avec l'expérience acquise.</p>
 </blockquote>
 <p>À noter : avant de résoudre un bug un test behat est écrit pour reproduire ce bug, afin d'améliorer la couverture du code.</p>
-<h3 id="symfony-pour-construire-des-site">Symfony pour construire des sites e-commerce de nouvelle génération par Manuel Raynaud<a href="#symfony-pour-construire-des-site" class="anchor"></a></h3>
+<h3 id="symfony-pour-construire-des-site" class="anchor-title"><a href="#symfony-pour-construire-des-site">Symfony pour construire des sites e-commerce de nouvelle génération par Manuel Raynaud</a></h3>
 <blockquote>
 <p>Le modèle très populaire "catalogue de produits en ligne" est largement adressé par des solutions génériques telles que Magento, Prestashop ou Shopify. Depuis quelques années sont arrivés des services tels que AirBnB ou Uber qui représentent la nouvelle génération de sites e-commerce. Ces projets sont des applications connectées de commerce électroniques, elles sont au cœur d'un écosystème e-commerce complexe comprenant les terminaux mobiles, des systèmes de réservation, des objets connectés,.. Or, ces sites innovants sont développés from scratch car les solutions génériques proposent une réponse pour le plus grand nombre mais n'offrent pas la flexibilité et l'interopérabilité attendue. Thelia, en intégrant des composants Symfony, permet à la fois d'avoir les briques nécessaires pour un site ecommerce tel que la gestion du catalogue ou du panier. Mais il permet aussi d'étendre ses capacités grâce à l'ajout du container Symfony ou de l'Event Dispatcher.</p>
 </blockquote>
-<h3 id="backbee-the-nextgen-content-ma">BackBee - The NextGen Content Manager par Mickaël Andrieu, Charles Rouillon<a href="#backbee-the-nextgen-content-ma" class="anchor"></a></h3>
+<h3 id="backbee-the-nextgen-content-ma" class="anchor-title"><a href="#backbee-the-nextgen-content-ma">BackBee - The NextGen Content Manager par Mickaël Andrieu, Charles Rouillon</a></h3>
 <blockquote>
 <p>Backbee est un CMS reposant sur des composants Symfony et Doctrine. Il offre aux contributeurs des sites une expérience ergonomique inédite leur assurant une prise en main rapide et une large autonomie de mise à jour de leurs contenus. La définition souple des droits, des processus de publication et la mise en version systématique des contenus leur assure de plus une grande sécurité éditoriale. BackBee est distribué sous licence open source GPL3.</p>
 </blockquote>
-<h2 id="conclusion">Conclusion<a href="#conclusion" class="anchor"></a></h2>
+<h2 id="conclusion" class="anchor-title"><a href="#conclusion">Conclusion</a></h2>
 <p>Nous étions plus de 700 personnes à ce Symfony Live, un record. On a beaucoup parlé de micro-services et d'API. Le format mono-track des conférences est idéal. Cependant le niveau des présentations était assez inégal. Certaines étaient trop courtes car on aurait aimé en savoir plus, d'autres trop longues.
 Cerise (de Groupama) sur le gâteau, j'aurai le droit de revenir, car j'ai gagné ma place pour la SymfonyCon de décembre prochain ! Merci Sensio !</p></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -383,71 +353,30 @@ Cerise (de Groupama) sur le gâteau, j'aurai le droit de revenir, car j'ai gagn�
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/authors/rhanna.jpg" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Richard HANNA</strong></span>
-      <div class="article-author__social">
-                  <a href=richardhanna class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Richard HANNA</span>
-          </a>
-                          <a href=supertanuki class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Richard HANNA</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Richard HANNA</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/authors/rhanna.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Richard HANNA</strong></span>
-      <div class="article-author__social">
-                  <a href=richardhanna class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Richard HANNA</span>
-          </a>
-                          <a href=supertanuki class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Richard HANNA</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Richard HANNA</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/authors/rhanna.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Richard HANNA</strong></span>
-      <div class="article-author__social">
-                  <a href=richardhanna class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Richard HANNA</span>
-          </a>
-                          <a href=supertanuki class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Richard HANNA</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Richard HANNA</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/authors/rhanna.jpg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Richard HANNA</strong>
+          </span>
+          <div class="article-author__social">
+                          <a href="https://twitter.com/richardhanna" class="social social--small">
+                <i class="icon icon--twitter" aria-hidden="true"></i>
+                <span class="screen-reader">Compte twitter de Richard HANNA</span>
+              </a>
+                                      <a href="https://github.com/supertanuki "class="social social--small">
+                <i class="icon icon--github" aria-hidden="true"></i>
+                <span class="screen-reader">Compte github de Richard HANNA</span>
+              </a>
+                                      <a href="http://www.elao.com" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Richard HANNA</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">

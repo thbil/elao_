@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      Sécuriser ses accès serveur: Authentification par clés SSH
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/hdd_partition.jpg)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/images/authors/gfaivre.jpg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Guewen FAIVRE</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Guewen FAIVRE</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Guewen FAIVRE</strong>
-          <strong>Guewen FAIVRE</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>5 mars 2010</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -220,24 +201,13 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+  
   <div class="article-content">
     <main class="article-content__main">
       <body><p>Il n'est pas rare aujourd'hui que les administrateurs système soit amené à manipuler plusieurs dizaine de mots de passe, il existe, bien entendu, diversent façon de les "stocker", comme par exemple le logiciel Keepass, permettant de gérer vos différents mots de passe. Il est cependant encore plus facile d'utiliser une authentification basée sur une clé publique.</p>
 <p>Nous allons donc voir comment utiliser une authentification par clé ssh.
 Cela facilitera l'administration des serveurs mais permettra également de mettre en place certains scripts. Comme par exemple la sauvegarde des données à partir d'un autre serveur</p>
-<h3 id="pr-requis">Pré-requis<a href="#pr-requis" class="anchor"></a></h3>
+<h3 id="pr-requis" class="anchor-title"><a href="#pr-requis">Pré-requis</a></h3>
 <p>Un serveur ssh fonctionnel et bien sur un client ssh, si vous travaillez sous linux ou sous Mac OS pas de problème vous devriez avoir le nécessaire d'installé.</p>
 <p>Si vous ne disposez pas de ssh sur votre machine il suffit de l'installer :</p>
 <pre class="code-multiline"><code id="16f0f9e1aec9420a49afed52eaca77cf">apt-get install openssh-server openssh-client</code></pre>
@@ -245,7 +215,7 @@ Cela facilitera l'administration des serveurs mais permettra également de mettr
 Nous allons partir du principe que notre utilisateur <strong>amartin</strong> souhaite se connecter à notre serveur en utilisant une authentification basée sur un couple clé publique / clé privée.</p>
 <p>Pour mettre en place notre authentification nous allons devoir agir à la fois coté serveur mais également coté client.</p>
 <p>Imaginons que nous souhaitions que notre utilisateur amartin puisse, à partir de sa machine cliente, se connecter sur notre serveur en temps que root.</p>
-<h3 id="cot-client">Coté client<a href="#cot-client" class="anchor"></a></h3>
+<h3 id="cot-client" class="anchor-title"><a href="#cot-client">Coté client</a></h3>
 <p>Le mécanisme consiste à justifier de l'identité auprès du serveur en se basant sur une paire clés publique / privée. Il faut par contre bien garder en tête que cette clé privée est le seul moyen pour le serveur d'être sûr que la connexion est bien initié par un tiers de confiance, de ce fait il est indispensable de conserver cette clé confidentielle car quiconque est en sa possession est capable de se faire passer pour notre client.
 Il est toutefois possible d'ajouter une protection sur cette clé en la protégeant par une passphrase qu'il sera nécessaire de saisir lorsque l'on souhaitera utiliser notre clé.</p>
 <p>La clé publique, comme son nom l'indique est celle qui est connue par le serveur, et qui permet de d'assurer que notre client est bien celui attendu pour l'utilisateur demandé.</p>
@@ -283,7 +253,7 @@ Key has comment 'amartin'
 Enter new passphrase (empty for no passphrase):
 Enter same passphrase again:
 Your identification has been saved with the new passphrase.</code></pre>
-<h3 id="cot-serveur">Coté serveur<a href="#cot-serveur" class="anchor"></a></h3>
+<h3 id="cot-serveur" class="anchor-title"><a href="#cot-serveur">Coté serveur</a></h3>
 <p>Une fois cette paire de clés générée, il faut déposer notre clé publique sur le serveur sur lequel nous souhaitons pouvoir nous authentifier.
 Pour se faire nous récupérons notre clé publique amartin.pub (par défaut id_dsa.pub) et nous l’a déposons sur le serveur.</p>
 <p>Une fois cela fait il faut ajouter son contenu au fichier contenant les clés autorisées à se connecter à notre serveur pour l’utilisateur voulu.</p>
@@ -294,11 +264,11 @@ Pour se faire nous récupérons notre clé publique amartin.pub (par défaut id_
 Pour éviter tout problème nous allons donc restreindre l’accès à ces différents fichiers:</p>
 <pre class="code-multiline"><code id="a71f84def6e9302fdb739af391a3a007">chmod 700 ~/.ssh
 chmod 600 ~/.ssh/authorized_keys</code></pre>
-<h3 id="connexion">Connexion<a href="#connexion" class="anchor"></a></h3>
+<h3 id="connexion" class="anchor-title"><a href="#connexion">Connexion</a></h3>
 <p>Nous pouvons à présent directement nous connecter au serveur avec notre clé en utilisant la commande suivante:</p>
 <pre class="code-multiline"><code id="65f2b13026ea30c941685bfaf47a8010">ssh -i ~/.ssh/amartin root@serveur.tld</code></pre>
 <p>L’option “-i” indiquant vous l’aurez compris la clé privée à utiliser pour initier la transaction avec le serveur.</p></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -309,71 +279,30 @@ chmod 600 ~/.ssh/authorized_keys</code></pre>
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/images/authors/gfaivre.jpg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Guewen FAIVRE</strong>
+          </span>
+          <div class="article-author__social">
+                          <a href="https://twitter.com/guewen_faivre" class="social social--small">
+                <i class="icon icon--twitter" aria-hidden="true"></i>
+                <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
+              </a>
+                                      <a href="https://github.com/gfaivre "class="social social--small">
+                <i class="icon icon--github" aria-hidden="true"></i>
+                <span class="screen-reader">Compte github de Guewen FAIVRE</span>
+              </a>
+                                      <a href="http://www.elao.com" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">

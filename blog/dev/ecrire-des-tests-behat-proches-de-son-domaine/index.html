@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      Ecrire des tests Behat proches de son domaine
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/ecrire-des-tests-behat-proche-de-son-domaine-thumbnail.png)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/ndievart.jpg" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/images/authors/ndievart.jpg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Nicolas DIEVART</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Nicolas DIEVART</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/ndievart.jpg" />
-          <img src="/elao_/images/authors/ndievart.jpg" />
-          <img src="/elao_/images/authors/ndievart.jpg" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Nicolas DIEVART</strong>
-          <strong>Nicolas DIEVART</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/ndievart.jpg" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>17 juin 2018</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -223,23 +204,12 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+  
   <div class="article-content">
     <main class="article-content__main">
       <body><p>Il y a quelque temps nous publiions un article sur <a href="/fr/dev/behat-3-test-fonctionnel-symfony/">l'utilisation Behat 3 pour l'écriture des tests fonctionnels Symfony</a>. Depuis les choses ont beaucoup changé sur les différents projets où nous posons du Behat pour nos tests fonctionnels.
 Dans cet article nous allons voir comment nous écrivons désormais nos tests en partant d'une approche Domaine.</p>
-<h1 id="cheminement">Cheminement 📖<a href="#cheminement" class="anchor"></a></h1>
+<h1 id="cheminement" class="anchor-title"><a href="#cheminement">Cheminement 📖</a></h1>
 <p>L'ajout et le maintien des tests fonctionnels se sont avérés de plus en plus complexes à réaliser sur plusieurs de nos projets avec une grande complexité métier. Certains parcours utilisateur étaient compliqués à mettre en place. Le maintien à jour des fixtures de tests devenait difficile, les dépendances entre les entités testées les rendant encore plus complexes.</p>
 <p>Dans de nombreux cas, nous en arrivions à faire une fixture particulière pour chaque test plutôt que de réutiliser certaines d'entre elles pour être totalement maître du contexte. A chaque modification du <em>model</em>, la mise à jour de toutes les fixtures étaient une réelle perte de temps.</p>
 <p>La plupart des projets chez <a href="https://www.elao.com" target="_blank">élao</a> ont <a href="/fr/dev/architecture-hexagonale-symfony">une architecture hexagonale</a> et sont orientés DDD, Domain Driven Design. Nous avons donc déjà toutes les méthodes métiers nécessaires pour créer des entités pour les contextes qui nous intéressent.</p>
@@ -289,7 +259,7 @@ Nos <em>commands</em> utilisent donc déjà ces méthodes pour créer des formul
 <blockquote>
 <p>Comment mettre tout cela en place avec Behat ?</p>
 </blockquote>
-<h1 id="mise-en-place">Mise en place 🔧<a href="#mise-en-place" class="anchor"></a></h1>
+<h1 id="mise-en-place" class="anchor-title"><a href="#mise-en-place">Mise en place 🔧</a></h1>
 <p>Tout d'abord, nous avons besoin d'installer Behat en <em>dev-dependencies</em> de notre composer.json</p>
 <pre class="code-multiline language-json"><code class="language-json" id="f6373660aa6874baed3c403ae6ba159c"><span class="token property">"require-dev"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"behat/behat"</span><span class="token operator">:</span> <span class="token string">"^3.1"</span><span class="token punctuation">,</span>
@@ -459,7 +429,7 @@ Nous allons réaliser le <em>step</em> précédent <code class="code-inline" id=
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>Et c'est tout, pas besoin de <em>parser</em> le <em>DOM</em> pour retrouver la valeur du prix de la formule et vérifier si il est égale à A ou B. Cela rend les <em>steps</em> Behat beaucoup plus lisibles.</p>
-<h1 id="passage-d-informations-entre-ste">Passage d'informations entre <em>step</em> 📦<a href="#passage-d-informations-entre-ste" class="anchor"></a></h1>
+<h1 id="passage-d-informations-entre-ste" class="anchor-title"><em>step</em> 📦<a href="#passage-d-informations-entre-ste">Passage d'informations entre </a></h1>
 <p>Au fur et à mesure de l'utilisation de ce système, vous vous rendrez compte qu'il manque quelque chose... En effet, les différents <em>steps</em> sont distincts les uns des autres, ne communiquant pas, ils ne peuvent pas utiliser les valeurs des autres <em>steps</em>.
 Imaginons que vous souhaitez créer une formule "Early bird" et que celle-ci soit disponible uniquement jusqu'à une certaine date. Pour réaliser ce <em>step</em> il vous faudra donc soit créer un nouveau <em>step</em> qui permet de créer une formule avec une référence, un prix et une date de fin de disponibilité. Cela nous fait dupliquer une partie du code précédent et ce n'est pas forcément pertinent.</p>
 <p>Pour éviter cela, il est intéresant de pouvoir récupérer un élément du <em>step</em> précédent dans le <em>step</em> suivant afin de modifier certaines valeurs.</p>
@@ -605,7 +575,7 @@ Ce <em>Storage</em> contient simplement un tableau indexé par type de donnée s
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>À la lecture de notre test fonctionnel, nous comprenons tout de suite dans quel contexte nous nous trouvons, avec une formule non disponible, et nous testons qu'elle n'est plus achetable par un utilisateur.</p>
-<h1 id="axes-d-am-lioration">Axes d'amélioration 🚀<a href="#axes-d-am-lioration" class="anchor"></a></h1>
+<h1 id="axes-d-am-lioration" class="anchor-title"><a href="#axes-d-am-lioration">Axes d'amélioration 🚀</a></h1>
 <p>Afin de rendre nos tests fonctionnels encore plus compréhensibles, nous avons de futurs axes d'amélioration comme pouvoir naviguer sur le site sans faire mention des urls qui n'ont pas toujours de notion métier.
 Ce qui permettrait la rédaction de <em>steps</em> tel que:</p>
 <pre class="code-multiline language-diff"><code class="language-diff" id="cdf5813eb74a194e4fa6ba939ea6d8a6"><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line"> When I go to this page "/fr/buy"
@@ -619,10 +589,10 @@ Ce qui permettrait la rédaction de <em>steps</em> tel que:</p>
 </span><span class="token prefix inserted">+</span><span class="token line">   | price     | 20         |
 </span><span class="token prefix inserted">+</span><span class="token line">   | reference | Early bird |</span></span></code></pre>
 <p>Mais tout ceci demande de coder tous les contextes, les <em>steps</em>, les <em>proxies</em>, ce qui est très verbeux. Cependant la valeur ajoutée d'avoir une bonne couverture de tests fonctionnels est importante et le temps passé à coder les tests est du temps gagné en débogage.</p>
-<h1 id="en-conclusion">En conclusion 🎬<a href="#en-conclusion" class="anchor"></a></h1>
+<h1 id="en-conclusion" class="anchor-title"><a href="#en-conclusion">En conclusion 🎬</a></h1>
 <p>Avant, nous avions beaucoup de tests avec des fixtures lourdes à maintenir qui cachaient une grande partie de ce qui était chargé. Nous avons maintenant des <em>steps</em> qui décrivent le contexte dans lequel le test s'effectue. Le code métier directement utilisé est plus maintenable.</p>
 <p>Nos tests sont lisibles ce qui facilite la code review par nos pairs. Ils sont réutilisables pour différents contextes.</p></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -633,59 +603,26 @@ Ce qui permettrait la rédaction de <em>steps</em> tel que:</p>
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/ndievart.jpg" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Nicolas DIEVART</strong></span>
-      <div class="article-author__social">
-                          <a href=NicolasDievart class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Nicolas DIEVART</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Nicolas DIEVART</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/ndievart.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Nicolas DIEVART</strong></span>
-      <div class="article-author__social">
-                          <a href=NicolasDievart class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Nicolas DIEVART</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Nicolas DIEVART</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/ndievart.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Nicolas DIEVART</strong></span>
-      <div class="article-author__social">
-                          <a href=NicolasDievart class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Nicolas DIEVART</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Nicolas DIEVART</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/images/authors/ndievart.jpg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Nicolas DIEVART</strong>
+          </span>
+          <div class="article-author__social">
+                                      <a href="https://github.com/NicolasDievart "class="social social--small">
+                <i class="icon icon--github" aria-hidden="true"></i>
+                <span class="screen-reader">Compte github de Nicolas DIEVART</span>
+              </a>
+                                      <a href="http://www.elao.com" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Nicolas DIEVART</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">

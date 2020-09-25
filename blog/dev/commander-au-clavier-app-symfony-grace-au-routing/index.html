@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      Commander au clavier une application Symfony grâce au Routing
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/thumbnail.jpg)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/authors/rhanna.jpg" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/authors/rhanna.jpg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Richard HANNA</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Richard HANNA</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/authors/rhanna.jpg" />
-          <img src="/elao_/authors/rhanna.jpg" />
-          <img src="/elao_/authors/rhanna.jpg" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Richard HANNA</strong>
-          <strong>Richard HANNA</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/authors/rhanna.jpg" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>25 octobre 2018</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -223,18 +204,60 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+      <ul class="table-of-content">
+              <li class="table-of-content__item">
+          <a href="#le-contexte">Le contexte</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#exploiter-le-routing-de-symfony">Exploiter le routing de Symfony ?</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#r-cup-rer-toutes-les-routes-de">Récupérer toutes les routes de l&#039;application</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#humaniser-les-noms-de-route">Humaniser les noms de route</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#g-n-rer-l-url">Générer l&#039;url</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#d-mo">Démo</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#deviner-des-param-tres-de-route">Deviner des paramètres de route</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#r-cup-rer-les-requirements-d-u">Récupérer les requirements d&#039;une route</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#r-cup-rer-les-metadata-du-cont">Récupérer les metadata du controller d&#039;une route</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#resolver-d-di">Resolver dédié</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#am-liorations">Améliorations</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#resolver-doctrine">Resolver Doctrine ?</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#traduction-des-noms-de-route">Traduction des noms de route</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#bilan">Bilan</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#r-sultat">Résultat</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#inconv-nients">Inconvénients</a>
+        </li>
+              <li class="table-of-content__item">
+          <a href="#commander-par-la-voix">Commander par la voix ?</a>
+        </li>
+          </ul>
+  
   <div class="article-content">
     <main class="article-content__main">
       <body><p>Lorsqu'une application comporte des centaines de fonctionnalités et des millions de lignes en base de données,
@@ -243,7 +266,7 @@ Il faut choisir le bon élément dans un menu, chercher dans une liste, cliquer 
 pour enfin pouvoir modifier une donnée.</p>
 <p>Nous allons voir comment on peut ajouter à une application Symfony une UI différente,
 une interface de commande par texte avec autocompletion.</p>
-<h2 id="le-contexte">Le contexte<a href="#le-contexte" class="anchor"></a></h2>
+<h2 id="le-contexte" class="anchor-title"><a href="#le-contexte">Le contexte</a></h2>
 <p class="text-center">
     <img src="/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/backoffice.png" alt="Backoffice" id="backoffice"></p>
 <p>Ceci est une capture d'écran d'interface d'administration d'une application classique.
@@ -257,12 +280,12 @@ plus rapidement et plus efficacement aux ressources d'une application.</p>
 <p class="text-center">
     <img src="/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/search.png" alt="Recherche avec suggestion de résultats" id="recherche-avec-suggestion-de-r"></p>
 <p>Cela serait pas mal d'avoir la même chose dans notre application, n'est-ce pas ?</p>
-<h2 id="exploiter-le-routing-de-symfony">Exploiter le <em>routing</em> de Symfony ?<a href="#exploiter-le-routing-de-symfony" class="anchor"></a></h2>
+<h2 id="exploiter-le-routing-de-symfony" class="anchor-title"><em>routing</em> de Symfony ?<a href="#exploiter-le-routing-de-symfony">Exploiter le </a></h2>
 <p>Symfony dispose des commandes <em>Console</em> mais cette interface est dédiée aux développeurs.
 L'idée est d'avoir un moteur de recherche dans le navigateur qui suggère des résultats qui irait piocher dans notre
 application sans forcément écrire complètement une API côté Backend. Et pourquoi pas exploiter le <em>Routing</em> de Symfony ?
 Nous allons voir pas à pas comment nous avons exploité le <em>routing</em> pour répondre à notre besoin.</p>
-<h3 id="r-cup-rer-toutes-les-routes-de">Récupérer toutes les <em>routes</em> de l'application<a href="#r-cup-rer-toutes-les-routes-de" class="anchor"></a></h3>
+<h3 id="r-cup-rer-toutes-les-routes-de" class="anchor-title"><em>routes</em> de l'application<a href="#r-cup-rer-toutes-les-routes-de">Récupérer toutes les </a></h3>
 <pre class="code-multiline language-php"><code class="language-php" id="336b82c393fc5e1187ca218c08887030"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Routing<span class="token punctuation">\</span>Route</span><span class="token punctuation">;</span>
@@ -298,7 +321,7 @@ Nous allons voir pas à pas comment nous avons exploité le <em>routing</em> pou
             <span class="token keyword">return</span> \<span class="token package">in_array</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'GET'</span><span class="token punctuation">,</span> <span class="token variable">$route</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getMethods</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean constant">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
-<h3 id="humaniser-les-noms-de-route">Humaniser les noms de route<a href="#humaniser-les-noms-de-route" class="anchor"></a></h3>
+<h3 id="humaniser-les-noms-de-route" class="anchor-title"><a href="#humaniser-les-noms-de-route">Humaniser les noms de route</a></h3>
 <p>Maintenant qu'on a toutes les <em>routes</em> de l'application, il faut pouvoir les proposer de manière lisible à un
 utilisateur non-développeur.
 L'idée est de transformer le nom de chaque <em>route</em> en libellé "humanisé" :</p>
@@ -307,7 +330,7 @@ L'idée est de transformer le nom de chaque <em>route</em> en libellé "humanis�
 <li>admin_generate_invoice_for_order ➡ Generate invoice for Order</li>
 </ul><p>Pour obtenir ce résultat, on a simplement supprimé le préfixe <code class="code-inline" id="a1debe4d85ce0ffd022b9f4066c8d8ec">admin_</code> et les <code class="code-inline" id="b14a7b8059d9c055954c92674ce60032">_</code>, puis mis la première lettre en
 majuscule.</p>
-<h3 id="g-n-rer-l-url">Générer l'url<a href="#g-n-rer-l-url" class="anchor"></a></h3>
+<h3 id="g-n-rer-l-url" class="anchor-title"><a href="#g-n-rer-l-url">Générer l'url</a></h3>
 <p>Pour générer l'url à partir d'une route, rien de plus trivial :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="19276732e5d267432ac3e20e52a9031c"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
     <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name">RouterInterface</span> <span class="token parameter">$router</span> */</span>
@@ -318,14 +341,14 @@ majuscule.</p>
     +label: "User list"
     +routeName: "admin_user_list"
     +url: "/user/list"</code></pre>
-<h3 id="d-mo">Démo<a href="#d-mo" class="anchor"></a></h3>
+<h3 id="d-mo" class="anchor-title"><a href="#d-mo">Démo</a></h3>
 <p>Pour le widget côté navigateur permettant à l'utilisateur de faire sa recherche et d'avoir des suggestions de résultats,
 nous avons choisi une librairie assez légère et facilement configurable, notamment au niveau de la source de données :
 <a href="https://github.com/Pixabay/JavaScript-autoComplete" target="_blank">Pixabay/JavaScript-autoComplete</a>.</p>
 <p>Et cela donne comme résultat :</p>
 <p class="text-center">
     <img src="/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/demo1.gif" alt="Démo" id="d-mo"></p>
-<h2 id="deviner-des-param-tres-de-route">Deviner des paramètres de route<a href="#deviner-des-param-tres-de-route" class="anchor"></a></h2>
+<h2 id="deviner-des-param-tres-de-route" class="anchor-title"><a href="#deviner-des-param-tres-de-route">Deviner des paramètres de route</a></h2>
 <p>Que faire maintenant si nos <em>routes</em> attendent des paramètres ? En terme d'expérience utilisateur, on souhaite que
 l'application nous suggère des résultats. Par exemple, si on tape "User update", l'application nous propose l'ensemble
 des utilisateurs pouvant être modifiés :</p>
@@ -335,7 +358,7 @@ des utilisateurs pouvant être modifiés :</p>
 <p>Cela signifie que côté frontend, lorsqu'on aura tapé "User update" + un espace (très important l'espace),
 une requête XMLHttpRequest (Ajax pour les intimes) sera déclenchée afin de récupérer les <em>routes</em> contenant
 les noms des utilisateurs.</p>
-<h3 id="r-cup-rer-les-requirements-d-u">Récupérer les <em>requirements</em> d'une <em>route</em><a href="#r-cup-rer-les-requirements-d-u" class="anchor"></a></h3>
+<h3 id="r-cup-rer-les-requirements-d-u" class="anchor-title"><em>requirements</em> d'une <em>route</em><a href="#r-cup-rer-les-requirements-d-u">Récupérer les </a></h3>
 <p>Considérons que l'on a cette <em>route</em> :</p>
 <pre class="code-multiline language-yaml"><code class="language-yaml" id="d3e33de1ec4c5ac3d34004a49134b355"><span class="token comment"># Routing</span>
 <span class="token key atrule">admin_user_update</span><span class="token punctuation">:</span>
@@ -368,7 +391,7 @@ de la classe <code class="code-inline" id="8f9bfe9d1345237cb3b2b205864da075">Use
     <span class="token keyword">return</span> <span class="token function">array_keys</span><span class="token punctuation">(</span><span class="token variable">$route</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getRequirements</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>On sait ainsi par le code que la <em>route</em> <code class="code-inline" id="d849458fd3aff9876d7908c37546a4f5">admin_user_update</code> a pour <em>requirement</em>, un paramètre <code class="code-inline" id="ee11cbb19052e40b07aac0ca060c23ee">user</code>.</p>
-<h3 id="r-cup-rer-les-metadata-du-cont">Récupérer les metadata du controller d'une route<a href="#r-cup-rer-les-metadata-du-cont" class="anchor"></a></h3>
+<h3 id="r-cup-rer-les-metadata-du-cont" class="anchor-title"><a href="#r-cup-rer-les-metadata-du-cont">Récupérer les metadata du controller d'une route</a></h3>
 <p>Le principe est de récupérer les arguments d'un <em>controller</em> d'une <em>route</em> et de voir de quelle classe
 il s'agit.</p>
 <p>On a besoin de deux choses :</p>
@@ -440,7 +463,7 @@ il s'agit.</p>
 <p>On a donc une variable <code class="code-inline" id="ee11cbb19052e40b07aac0ca060c23ee">user</code> dont le type est <code class="code-inline" id="eb0c10d335fd66810062ce2b4fadcd78">App\Domain\Model\User</code>.</p>
 <p>Cela devient intéressant !</p>
 <p>Voyons voir ce que l'on peut en faire...</p>
-<h3 id="resolver-d-di"><em>Resolver</em> dédié<a href="#resolver-d-di" class="anchor"></a></h3>
+<h3 id="resolver-d-di" class="anchor-title"> dédié<a href="#resolver-d-di"><em>Resolver</em></a></h3>
 <p>Nous allons coder un <em>Resolver</em> dédié pour un paramètre dès lors qu'il est de type <code class="code-inline" id="eb0c10d335fd66810062ce2b4fadcd78">App\Domain\Model\User</code>.</p>
 <p>Ici on sait que notre classe <code class="code-inline" id="8f9bfe9d1345237cb3b2b205864da075">User</code> est une classe d'entité <em>Doctrine</em>. Nous allons faire appel à un <em>repository
 Doctrine</em> pour récupèrer une liste des utilisateurs depuis la base de données. On prend soin de retourner le résultat
@@ -496,8 +519,8 @@ en précisant que la valeur du paramètre <code class="code-inline" id="ee11cbb1
     ]
   }</code></pre>
 <p>On peut donc maintenant proposer à l'utilisateur d'accéder à des <em>routes</em> ayant un paramètre.</p>
-<h2 id="am-liorations">Améliorations<a href="#am-liorations" class="anchor"></a></h2>
-<h3 id="resolver-doctrine"><em>Resolver Doctrine</em> ?<a href="#resolver-doctrine" class="anchor"></a></h3>
+<h2 id="am-liorations" class="anchor-title"><a href="#am-liorations">Améliorations</a></h2>
+<h3 id="resolver-doctrine" class="anchor-title"> ?<a href="#resolver-doctrine"><em>Resolver Doctrine</em></a></h3>
 <p>Pourrait-on avoir un <em>resolver</em> générique dédié à nos classes d'entité <em>Doctrine</em> ?</p>
 <p>L'idée est de tester si une classe donnée est une entité <em>Doctrine</em>, c'est à dire via le <code class="code-inline" id="f19eae7a9282542454f845b2c940fa9b">ManagerRegistry</code> chercher
 un éventuel <code class="code-inline" id="08f9949041c5b2858bc754a5985db3f3">EntityManager</code>. Puis avec cet <code class="code-inline" id="08f9949041c5b2858bc754a5985db3f3">EntityManager</code>, utiliser le bon <code class="code-inline" id="33fcf2b3ec4686d9cd06051c726d0ba2">Repository</code>
@@ -551,7 +574,7 @@ et la méthode générique de tout <code class="code-inline" id="33fcf2b3ec4686d
     <span class="token punctuation">}</span></span></code></pre>
 <p>Ceci afin que l'objet soit <em>transformé</em> en <em>string</em> lorsque le libellé de la <em>route</em> est créé ici :</p>
 <pre class="code-multiline"><code id="2b156550079b24f01bf4e39b30500a8e">sprintf('%s %s', $resultView-&gt;label, $object),</code></pre>
-<h3 id="traduction-des-noms-de-route">Traduction des noms de route<a href="#traduction-des-noms-de-route" class="anchor"></a></h3>
+<h3 id="traduction-des-noms-de-route" class="anchor-title"><a href="#traduction-des-noms-de-route">Traduction des noms de route</a></h3>
 <p>On a vu plus haut, comment à partir du nom de la route, la transformer un peu pour l'humaniser.</p>
 <p>Cependant les noms de <em>routes</em> dans une application sont généralement en anglais.
 Comment faire lorsque l'application est disponible en plusieurs langues ? Par exemple pour la <em>route</em>
@@ -617,22 +640,22 @@ service, on a :</p>
     <span class="token key atrule">arguments</span><span class="token punctuation">:</span>
         <span class="token punctuation">-</span> <span class="token string">'@translator'</span>
         <span class="token punctuation">-</span> <span class="token string">'@translator'</span></code></pre>
-<h3 id="d-mo">Démo<a href="#d-mo" class="anchor"></a></h3>
+<h3 id="d-mo" class="anchor-title"><a href="#d-mo">Démo</a></h3>
 <p class="text-center">
     <img src="/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/demo2.gif" alt="Démo avec paramètre" id="d-mo-avec-param-tre"></p>
-<h2 id="bilan">Bilan<a href="#bilan" class="anchor"></a></h2>
-<h3 id="r-sultat">Résultat<a href="#r-sultat" class="anchor"></a></h3>
+<h2 id="bilan" class="anchor-title"><a href="#bilan">Bilan</a></h2>
+<h3 id="r-sultat" class="anchor-title"><a href="#r-sultat">Résultat</a></h3>
 <ul><li>Nouvelle UX / UI basée sur les <em>routes</em> de l'application.</li>
 <li>Rapidité++ efficacité++.</li>
 <li>On pourrait imaginer avoir des commandes personnalisées : afficher le chiffre d'affaire du mois, afficher le nombre
 d'utilisateurs connectés, etc.</li>
-</ul><h3 id="inconv-nients">Inconvénients<a href="#inconv-nients" class="anchor"></a></h3>
+</ul><h3 id="inconv-nients" class="anchor-title"><a href="#inconv-nients">Inconvénients</a></h3>
 <ul><li>Il faut savoir quoi chercher.</li>
 <li>Savoir comment chercher. On pourrait résoudre ce problème en indiquant sur chaque page, comment y accéder par une
 recherche texte.</li>
 <li>Inversion du langage : "Utilisateur Modifier" au lieu de "Modifier utilisateur". Pour améliorer, on pourrait proposer
 une recherche en langage naturel.</li>
-</ul><h2 id="commander-par-la-voix">Commander par la voix ?<a href="#commander-par-la-voix" class="anchor"></a></h2>
+</ul><h2 id="commander-par-la-voix" class="anchor-title"><a href="#commander-par-la-voix">Commander par la voix ?</a></h2>
 <p>Depuis quelques mois, nos ordinateurs et enceintes se sont dotés d'assistants vocaux plus ou moins
 performants : Microsoft Cortana, Siri chez Apple, Amazon Alexa (Echo) ou Google Home.</p>
 <p>Pourquoi ne pas piloter notre application web avec la voix ? Par exemple, en réunion on pourrait demander
@@ -661,7 +684,7 @@ recognition<span class="token punctuation">.</span><span class="token method fun
 <p><a href="https://www.google.com/intl/en/chrome/demos/speech.html" target="_blank">Démo ici</a> (à tester avec Chrome seulement au jour où cet article a été écrit).</p>
 <p>C'est une technologie assez promoteuse. A suivre donc !</p>
 <hr><p>Photo by Anthony Martino on Unsplash</p></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -672,71 +695,30 @@ recognition<span class="token punctuation">.</span><span class="token method fun
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/authors/rhanna.jpg" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Richard HANNA</strong></span>
-      <div class="article-author__social">
-                  <a href=richardhanna class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Richard HANNA</span>
-          </a>
-                          <a href=supertanuki class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Richard HANNA</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Richard HANNA</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/authors/rhanna.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Richard HANNA</strong></span>
-      <div class="article-author__social">
-                  <a href=richardhanna class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Richard HANNA</span>
-          </a>
-                          <a href=supertanuki class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Richard HANNA</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Richard HANNA</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/authors/rhanna.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Richard HANNA</strong></span>
-      <div class="article-author__social">
-                  <a href=richardhanna class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Richard HANNA</span>
-          </a>
-                          <a href=supertanuki class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Richard HANNA</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Richard HANNA</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/authors/rhanna.jpg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Richard HANNA</strong>
+          </span>
+          <div class="article-author__social">
+                          <a href="https://twitter.com/richardhanna" class="social social--small">
+                <i class="icon icon--twitter" aria-hidden="true"></i>
+                <span class="screen-reader">Compte twitter de Richard HANNA</span>
+              </a>
+                                      <a href="https://github.com/supertanuki "class="social social--small">
+                <i class="icon icon--github" aria-hidden="true"></i>
+                <span class="screen-reader">Compte github de Richard HANNA</span>
+              </a>
+                                      <a href="http://www.elao.com" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Richard HANNA</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">

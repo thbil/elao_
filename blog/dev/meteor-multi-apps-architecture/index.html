@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      Meteor - Archi. multi-apps connectées
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/beer.jpg)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/default.png" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/images/authors/default.png" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Johan GAULUPEAU</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Johan GAULUPEAU</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/default.png" />
-          <img src="/elao_/images/authors/default.png" />
-          <img src="/elao_/images/authors/default.png" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Johan GAULUPEAU</strong>
-          <strong>Johan GAULUPEAU</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/default.png" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>23 juin 2015</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -226,18 +207,7 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+  
   <div class="article-content">
     <main class="article-content__main">
       <body><p>Etant donnée que Meteor envoie tous les fichiers du projet aux clients web (hormis les dossiers spéciaux tels que <code class="code-inline" id="90ba4f4e30c3bc345088ef67ce3864dd">/server</code>, <code class="code-inline" id="770b76f7b7b90b1c020ff5111c7b62af">/private</code>, <code class="code-inline" id="15276d0be2c414e04b17f65f7b1d8323">/public</code>), toute l'application est packagée et envoyée.<!--more--> Cela pose plusieurs problèmes dont :</p>
@@ -247,7 +217,7 @@
 <ul><li>le <em>front</em> pour les users standards (sur le domaine <code class="code-inline" id="afaf2cbcfe2083746d53675d37fcb0cb">http://project.dev</code> par exemple)</li>
 <li>le <em>back</em> pour les administrateurs (sur le sous-domaine <code class="code-inline" id="a0136bd45a1f1f482aefc5fb5c4cd49b">http://admin.project.dev</code> par exemple)</li>
 </ul><p>Ces deux applications utilisent les mêmes données et doivent donc accéder à la même base de données.</p>
-<h2 id="architecture-des-dossiers-fichie">Architecture des dossiers/fichiers<a href="#architecture-des-dossiers-fichie" class="anchor"></a></h2>
+<h2 id="architecture-des-dossiers-fichie" class="anchor-title"><a href="#architecture-des-dossiers-fichie">Architecture des dossiers/fichiers</a></h2>
 <pre class="code-multiline"><code id="ab553bae03a0aa2f549c39d10810999b">➜  my-project  tree -a
 .
 ├── .gitignore
@@ -274,7 +244,7 @@
         ├── players.js
         └── playgrounds.js</code></pre>
 <p>Nous avons deux applications Meteor (<em>front</em> et <em>back</em>). Ces deux applications portent des liens symboliques vers des packages du dossier <code class="code-inline" id="bdf1e8ce92aa8ff6883c617f10480430">/packages</code> afin de faire de la réutilisation de code.</p>
-<h2 id="run-des-applications">Run des applications<a href="#run-des-applications" class="anchor"></a></h2>
+<h2 id="run-des-applications" class="anchor-title"><a href="#run-des-applications">Run des applications</a></h2>
 <p>En local (DEV), nous prenons le parti de lancer Mongo sur l'application <em>front</em> et de connecter le <em>back</em> sur le Mongo du <em>front</em>.</p>
 <p>Par défaut, Meteor lance l'<strong>application</strong> sur le port <strong>3000</strong> et <strong>Mongo</strong> est ouvert sur le port <strong>3001</strong>.</p>
 <pre class="code-multiline language-shell"><code class="language-shell" id="8ddf977c4e415644f9c52cebbc6f5f9f">➜  front  meteor
@@ -284,10 +254,10 @@
 <pre class="code-multiline language-shell"><code class="language-shell" id="4f36edc204db94241adfd6916595e05c">➜  back  <span class="token assign-left variable">MONGO_URL</span><span class="token operator">=</span>mongodb://localhost:3001/meteor <span class="token assign-left variable">MONGO_OPLOG_URL</span><span class="token operator">=</span>mongodb://localhost:3001/local meteor -p<span class="token operator">=</span><span class="token number">3080</span>
 <span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span>
 <span class="token operator">=</span><span class="token operator">&gt;</span> App running at: http://localhost:3080/</code></pre>
-<h2 id="conclusion">Conclusion<a href="#conclusion" class="anchor"></a></h2>
+<h2 id="conclusion" class="anchor-title"><a href="#conclusion">Conclusion</a></h2>
 <p>En conclusion, décomposer une application en plusieurs sous-applications permet de mieux gérer son code et d'intervenir sur les sources envoyées aux clients.</p>
 <p>Cela légitimise la création de packages "applicatifs" (telles que les collections, règles métiers partagées, etc.), ce qui est une bonne pratique !</p></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -298,59 +268,26 @@
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/default.png" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Johan GAULUPEAU</strong></span>
-      <div class="article-author__social">
-                          <a href=yoh class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Johan GAULUPEAU</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Johan GAULUPEAU</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/default.png" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Johan GAULUPEAU</strong></span>
-      <div class="article-author__social">
-                          <a href=yoh class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Johan GAULUPEAU</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Johan GAULUPEAU</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/default.png" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Johan GAULUPEAU</strong></span>
-      <div class="article-author__social">
-                          <a href=yoh class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Johan GAULUPEAU</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Johan GAULUPEAU</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/images/authors/default.png" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Johan GAULUPEAU</strong>
+          </span>
+          <div class="article-author__social">
+                                      <a href="https://github.com/yoh "class="social social--small">
+                <i class="icon icon--github" aria-hidden="true"></i>
+                <span class="screen-reader">Compte github de Johan GAULUPEAU</span>
+              </a>
+                                      <a href="http://www.elao.com" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Johan GAULUPEAU</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">

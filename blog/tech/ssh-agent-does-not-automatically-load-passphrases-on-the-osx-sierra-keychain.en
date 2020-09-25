@@ -161,10 +161,10 @@
         <main>
               <ul class="breadcrumb">
     <li class="breadcrumb__item">
-      <a href="#">Blog</a>
+      <a href="/elao_/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      <a href="#">Comprendre le cache du client Graphql Apollo</a>
+      SSH-agent does not automatically load passphrases on the OSX Sierra keychain during startup
     </li>
   </ul>
 
@@ -172,35 +172,16 @@
     <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/badass_vader.jpg)"></div>
 
     <div class="article-info">
-      <!-- todo : this is if the article has a single author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/images/authors/gfaivre.jpg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Guewen FAIVRE</strong>
+                      </span>
         </div>
-        <span class="article-author__info">Écrit par <strong>Guewen FAIVRE</strong></span>
-      </div>
-      <!-- todo : this is if the article has multiple authors -->
-      <div class="article-author article-author--multi">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-        </div>
-        <span class="article-author__info">
-          Écrit par
-          <strong>Anne-Laure DE BOISSIEU</strong>
-          <strong>Guewen FAIVRE</strong>
-          <strong>Guewen FAIVRE</strong>
-        </span>
-      </div>
-      <!-- todo : if the article has more than 5 co-authors (too long, won't fit) , "la team elao" is the author -->
-      <div class="article-author">
-        <div class="article-author__image">
-          <img src="/elao_/images/authors/gfaivre.jpg" />
-        </div>
-        <span class="article-author__info">Écrit par <strong>La team elao</strong></span>
-      </div>
-      <div class="article-info__date">
+            <div class="article-info__date">
         <span>Publication <strong>14 octobre 2016</strong></span>
         <span>Modification <strong>25 septembre 2020</strong></span>
       </div>
@@ -220,18 +201,7 @@
     </div>
   </div>
 
-  <ul class="table-of-content">
-    <li class="table-of-content__item">
-      <a href="#intro">Introduction</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="#quas">Quas odio atque</a>
-    </li>
-    <li class="table-of-content__item">
-      <a href="voluptatem">Voluptatem et amet atque</a>
-    </li>
-  </ul>
-
+  
   <div class="article-content">
     <main class="article-content__main">
       <body><p>Some of us encountered an issue after upgrading to Mac OS Sierra.
@@ -246,12 +216,12 @@ That’s expected. We re-aligned our behavior with the mainstream OpenSSH in thi
 You can fix this pretty easily by running ssh-add -A in your rc script if you want your keys to always be loaded.</p>
 </blockquote>
 <p>We still can login to remote hosts via ssh <strong>BUT</strong> ssh keys with passphrase are not forwarded to the host which makes the agent somewhat useless.</p>
-<h1 id="doing-it-manually">Doing it manually<a href="#doing-it-manually" class="anchor"></a></h1>
+<h1 id="doing-it-manually" class="anchor-title"><a href="#doing-it-manually">Doing it manually</a></h1>
 <p>If you are fine with the behavior and don't want to store your passphrases into keychain you can do it the old way by manually adding keys to the agent:</p>
 <pre class="code-multiline"><code id="0a437720001587a76380021490cca3dc">ssh-add -K /path/to/private/key</code></pre>
 <p>and to add identities to the agent using any passphrases stored in your keychain.</p>
 <pre class="code-multiline"><code id="2da3bcca27a36bfd821f0b01992ff42c">ssh-add -A</code></pre>
-<h1 id="using-ssh-config-file">Using ssh config file<a href="#using-ssh-config-file" class="anchor"></a></h1>
+<h1 id="using-ssh-config-file" class="anchor-title"><a href="#using-ssh-config-file">Using ssh config file</a></h1>
 <p>A permanent (and probably the "cleanest") workaround to this behavior consists in using the new SSH option <code class="code-inline" id="28538255e1cdd92033e3b82445477c9c">AddKeysToAgent</code> option in your <code class="code-inline" id="c8c740debe99f7a030e8a35b528b5ddc">.ssh/config</code> file as shown below</p>
 <pre class="code-multiline language-shell"><code class="language-shell" id="bb4651c63985578ea19d83dd761ac8b5">Host *
   AddKeysToAgent <span class="token function">yes</span></code></pre>
@@ -259,12 +229,12 @@ You can fix this pretty easily by running ssh-add -A in your rc script if you wa
 In other words, the keys are not added to the agent until you actually use them.</p>
 <p>Furthermore, this option is FreeBSD specific and will result an error on other Unix-like systems.</p>
 <p><strong>You will have to re-enter your passphrase the first time you are using it after a logout or a reboot.</strong></p>
-<h1 id="using-a-profile-dot-file">Using a «profile dot file»<a href="#using-a-profile-dot-file" class="anchor"></a></h1>
+<h1 id="using-a-profile-dot-file" class="anchor-title"><a href="#using-a-profile-dot-file">Using a «profile dot file»</a></h1>
 <p>For CLI users a partial solution is to add this to your dot files (<code class="code-inline" id="ec20fb240e117fea7b0049c21edf1ef3">.zshrc</code>, <code class="code-inline" id="85cf9b51417c7cfb8766aa6b56f7edb9">.bashrc</code>, <code class="code-inline" id="9e0037ad71166970bde5f910189cc94a">.bash_profile</code> ...).</p>
 <pre class="code-multiline language-shell"><code class="language-shell" id="2e6f5dcc8860d87b59cbce5c40794725">ssh-add -K ~/.ssh/my_private_key <span class="token operator">&amp;&gt;</span> /dev/null
 ssh-add -A <span class="token operator">&amp;&gt;</span> /dev/null</code></pre>
 <p><strong>This will only be effective when using terminal.</strong></p>
-<h1 id="using-a-launch-agent-non-tested">Using a launch agent (non-tested solution)<a href="#using-a-launch-agent-non-tested" class="anchor"></a></h1>
+<h1 id="using-a-launch-agent-non-tested" class="anchor-title"><a href="#using-a-launch-agent-non-tested">Using a launch agent (non-tested solution)</a></h1>
 <p>The last solution is to call command <code class="code-inline" id="2da3bcca27a36bfd821f0b01992ff42c">ssh-add -A</code> on every startup of macOS.</p>
 <pre class="code-multiline language-xml"><code class="language-xml" id="58671d4294090bbccf32082b13399686"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">plist</span> <span class="token name">PUBLIC</span> <span class="token string">"-//Apple//DTD PLIST 1.0//EN"</span> <span class="token string">"http://www.apple.com/DTDs/PropertyList-1.0.dtd"</span><span class="token punctuation">&gt;</span></span>
@@ -281,7 +251,7 @@ ssh-add -A <span class="token operator">&amp;&gt;</span> /dev/null</code></pre>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>true</span><span class="token punctuation">/&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dict</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plist</span><span class="token punctuation">&gt;</span></span></code></pre></body>
-    </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
@@ -292,71 +262,30 @@ ssh-add -A <span class="token operator">&amp;&gt;</span> /dev/null</code></pre>
   </div>
 
   <div class="article-footer">
-    <!-- If the article has one single author -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Écrit par<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-    <!-- If the article has mutltiple authors -->
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-    <div class="article-author">
-      <div class="article-author__image">
-        <img src="/elao_/images/authors/gfaivre.jpg" />
-      </div>
-      <span class="article-author__info">Co-auteur<strong>Guewen FAIVRE</strong></span>
-      <div class="article-author__social">
-                  <a href=guewen_faivre class="social social--small">
-            <i class="icon icon--twitter" aria-hidden="true"></i>
-            <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-          </a>
-                          <a href=gfaivre class="social social--small">
-            <i class="icon icon--github" aria-hidden="true"></i>
-            <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-          </a>
-                          <a href=http://www.elao.com class="social social--small">
-            <i class="icon icon--website" aria-hidden="true"></i>
-            <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-          </a>
-              </div>
-    </div>
-  </div>
-
-  
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/images/authors/gfaivre.jpg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Guewen FAIVRE</strong>
+          </span>
+          <div class="article-author__social">
+                          <a href="https://twitter.com/guewen_faivre" class="social social--small">
+                <i class="icon icon--twitter" aria-hidden="true"></i>
+                <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
+              </a>
+                                      <a href="https://github.com/gfaivre "class="social social--small">
+                <i class="icon icon--github" aria-hidden="true"></i>
+                <span class="screen-reader">Compte github de Guewen FAIVRE</span>
+              </a>
+                                      <a href="http://www.elao.com" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
+              </a>
+                      </div>
+        </div>
+            </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">
