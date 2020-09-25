@@ -217,18 +217,18 @@
   <div class="article-content">
     <main class="article-content__main">
       <body><p>Voici une petite astuce que j'ai découvert hier et que j'ai pensé utile de partager !<!--more--></p>
-<h1 id="probl-matique">Problématique<a href="#probl-matique" class="anchor"></a></h1>
+<h1 id="probl-matique" class="anchor-title"><a href="#probl-matique">Problématique</a></h1>
 <p><strong>Contexte :</strong></p>
 <ul><li>Votre application Symfony2 utilise un service tiers pour envoyer vos e-mails (comme <a href="https://fr.mailjet.com/" target="_blank">Mailjet</a> par exemple)</li>
 <li>Votre application a besoin d'envoyer des e-mails de notifications aux administrateurs lorsque des erreurs se produisent (Erreurs 500 par exemple)<!--more--></li>
 </ul><p>Imaginez qu’une erreur se produise sur l’une de vos pages et que vous ayez des centaines d’utilisateurs en train de visualiser cette même page.Pour chaque affichage de cette dernière, vous allez recevoir un e-mail de notification.
 Si ces e-mails passent par Mailjet par exemple, votre quota fondra à vue d’œil...
 Au mieux vous atteindrez une limite de quota et les mails suivants seront bloqués, au pire vous ferez un énorme hors forfait qui pourra vous couter très cher...</p>
-<h1 id="solution-propos-e">Solution proposée<a href="#solution-propos-e" class="anchor"></a></h1>
+<h1 id="solution-propos-e" class="anchor-title"><a href="#solution-propos-e">Solution proposée</a></h1>
 <p>La solution que je vous propose pour palier à cela est de créer 2 mailer utilisant 2 transports différents :</p>
 <ul><li>Les e-mails classiques destinés aux utilisateurs de votre application passeront par votre serveur SMTP</li>
 <li>Les e-mails techniques destinés aux administrateurs de votre application seront envoyés via la fonction mail de votre PHP.</li>
-</ul><h1 id="mise-en-uvre-de-la-solution">Mise en œuvre de la solution<a href="#mise-en-uvre-de-la-solution" class="anchor"></a></h1>
+</ul><h1 id="mise-en-uvre-de-la-solution" class="anchor-title"><a href="#mise-en-uvre-de-la-solution">Mise en œuvre de la solution</a></h1>
 <p>Pour cela rien de plus simple, créez plusieurs mailers dans votre app/config/config.yml :</p>
 <pre class="code-multiline language-yaml"><code class="language-yaml" id="8ed9ff05059474544dd70b097e430e4f"><span class="token comment"># Swiftmailer Configuration</span>
 <span class="token key atrule">swiftmailer</span><span class="token punctuation">:</span>
@@ -254,7 +254,11 @@ swiftmailer.mailer.notifier.transport             container Swift_Transport_Mail
 <span class="token punctuation">..</span>.</code></pre>
 <p>Cette astuce reste très simple mais je n'ai rien trouvé dans la documentation officielle de Symfony qui l'expliquait clairement. Elle peut se révéler très utile lorsque vous utilisez le bundle <strong><a href="https://github.com/Elao/ErrorNotifierBundle" target="_blank">ErrorNotifierBundle</a></strong></p>
 <p>Merci et à bientôt !</p></body>
-    </main>
+              <div class="article-credits">
+          Crédits: photo de couverture par
+                        
+                  </div>
+          </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>

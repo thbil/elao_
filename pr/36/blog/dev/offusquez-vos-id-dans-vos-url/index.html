@@ -211,19 +211,19 @@
   <div class="article-content">
     <main class="article-content__main">
       <body><p>L'une des pratiques les plus courantes du web pour accéder à un contenu de base de données est d'inclure l'identifiant (<code class="code-inline" id="b718adec73e04ce3ec720dd11a06a308">ID</code>) de celui-ci dans l'url. Cet identifiant est dans la grande majorité des cas un entier positif auto-incrémenté par la base de données. Cet identifiant se retrouve ainsi exposé dans les urls. Bien qu'elle pose un certain nombre de problèmes, cette pratique est très simple et très répandue.</p>
-<h2 id="probl-mes-de-s-curit-et-de-c">Problèmes de sécurité et de confidentialité<a href="#probl-mes-de-s-curit-et-de-c" class="anchor"></a></h2>
+<h2 id="probl-mes-de-s-curit-et-de-c" class="anchor-title"><a href="#probl-mes-de-s-curit-et-de-c">Problèmes de sécurité et de confidentialité</a></h2>
 <p>Exposer ces identifiants dans les urls pose principalement des problèmes de <strong>sécurité</strong> et de <strong>confidentialité</strong>.</p>
 <p>Ces problèmes sont dus à la prédictabilité de l'identifiant. En effet, celui-ci étant auto-incrémenté, si vous avez une url avec un identifiant, il est très facile de déduire les urls d'autres contenus en incrémentant ou décrémentant l'identifiant dans l'url.</p>
 <p>Il est alors simple pour un attaquant ou simplement un utilisateur curieux de tenter d'accéder à des contenus qui ne lui sont pas destinés. Couplé à d'autres failles ou défauts de sécurité, cela lui facilitera grandement la tâche. Il est également simple de crawler votre contenu sans connaitre à l'avance toutes les urls, mais simplement en bouclant sur un identifiant incrémenté.</p>
 <p>Et enfin, il est également simple de connaitre vos volumes de données. Par exemple, si je m'inscris sur un site et que je vois dans une url que mon compte utilisateur à l'ID 100, je sais qu'il n'y a que 100 utilisateurs inscrits sur ce site, si je passe une commande et qu'elle a l'identifiant 30, je sais qu'il n'y a eu que 30 commandes et je peux ensuite déduire le nombre de commandes moyen par utilisateur. Autant d'informations sensibles, surtout si vous êtes en concurrence.</p>
-<h2 id="les-alternatives-aux-ids-auto-in">Les alternatives aux IDs auto-incrémentés<a href="#les-alternatives-aux-ids-auto-in" class="anchor"></a></h2>
+<h2 id="les-alternatives-aux-ids-auto-in" class="anchor-title"><a href="#les-alternatives-aux-ids-auto-in">Les alternatives aux IDs auto-incrémentés</a></h2>
 <p>Plusieurs alternatives aux identifiants auto-incrémentés existent.</p>
 <p>L'une des plus connues est l'<strong><a href="https://fr.wikipedia.org/wiki/Universal_Unique_Identifier" target="_blank">UUID</a></strong>. Cet identifiant de 32 caractères hexadécimaux est généré de façon unique par un algorithme. A partir de l'UUID d'un contenu il n'est pas possible de prédire celui des autres. Il est très utilisé lors d'échanges API; néanmoins il souffre d'un inconvéniant majeur pour des urls, sa longueur.</p>
 <p>L'url suivante est quand même beaucoup moins lisible et pratique que la même utilisant des IDs entiers :</p>
 <figure><pre>https://www.example.com/shop/category/b441a884-5d46-423b-8317-ddb6f7e3f2fb/product/f0283088-5bd3-4acc-bc42-e6d173d33dd8?filter=165779fc-171d-4f3c-8c60-a2351d6468d3</pre>
   <figcaption>Une url avec des UUIDs</figcaption></figure><figure><pre>https://www.example.com/shop/category/3/product/56?filter=33</pre>
   <figcaption>Une url avec des IDs</figcaption></figure><p>Une autre solution pourrait être d'utiliser des <strong>identifiants entiers non auto-incrémentés</strong>. Cela nécessite néanmoins la mise en place d'un algorithme permettant de générer de manière unique ces identifiants. C'est une solution qui peut être viable, mais pas forcement simple à mettre en place et la perte d'auto-increment côté base de données peut être handicapant.</p>
-<h2 id="l-offuscation">L'offuscation<a href="#l-offuscation" class="anchor"></a></h2>
+<h2 id="l-offuscation" class="anchor-title"><a href="#l-offuscation">L'offuscation</a></h2>
 <p>Afin de conserver mes identifiants auto-incrementés en interne mais de ne pas les exposer j'ai opté pour l'<a href="https://fr.wikipedia.org/wiki/Offuscation" target="_blank">offuscation</a>. Le principe est simple, mes IDs sont encodés avant d'être inséré dans les urls puis décodés à chaque requête de façon à ce que l'utilisateur ne voie jamais les vrais IDs.</p>
 <p>En PHP il existe plusieurs bibliothèques permettant d'offusquer un ID numérique, encodant un entier en une chaîne héxadécidémale, une chaîne base64 ou un autre entier par exemple.</p>
 <ul><li><a href="https://hashids.org/" target="_blank">hashids</a></li>
@@ -249,7 +249,7 @@ figure pre {
 figure {
   margin: 20px 0;
 }
-</style><h2 id="int-gration-dans-symfony">Intégration dans Symfony<a href="#int-gration-dans-symfony" class="anchor"></a></h2>
+</style><h2 id="int-gration-dans-symfony" class="anchor-title"><a href="#int-gration-dans-symfony">Intégration dans Symfony</a></h2>
 <p>Tout d'abord créons un service pour offusquer nos IDs.</p>
 <pre class="code-multiline language-php"><code class="language-php" id="8993fa175afbc254aba58d400993c99c"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">interface</span> <span class="token class-name">ObfuscatorInterface</span>
@@ -370,7 +370,7 @@ Plus d'informations sur ces paramètres dans la <a href="https://github.com/jens
         <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Response</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
-<h2 id="rendre-notre-syst-me-configurab">Rendre notre système configurable<a href="#rendre-notre-syst-me-configurab" class="anchor"></a></h2>
+<h2 id="rendre-notre-syst-me-configurab" class="anchor-title"><a href="#rendre-notre-syst-me-configurab">Rendre notre système configurable</a></h2>
 <p>Notre offuscation fonctionne mais uniquement sur les paramètres <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code>. Nous aurons peut être besoin d'offusquer d'autres paramètres ou d'exclure certaines routes.</p>
 <p>Pour cela ajoutons une méthode <code class="code-inline" id="cd3c6265a726bca865fe9b74b4fd5ec4">mustBeObfuscated</code> à notre <code class="code-inline" id="9f484bcd1b56f5125466c648f60d7671">Obfuscator</code> et déportons y la logique utilisée dans le router et dans le resolver :</p>
 <pre class="code-multiline language-diff"><code class="language-diff" id="622fa2f3e414c83da7b9c74d038aac09"><span class="token deleted-arrow deleted"><span class="token prefix deleted">&lt;</span><span class="token line">?php
@@ -433,7 +433,11 @@ class ObfuscatorUrlGenerator implements RouterInterface
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>Pour aller plus loin, nous pouvons baser ce tableau de routes sur un fichier de configuration, sur des attributs ou des options dans le fichier de routing, sur une convention de nommage ou implémenter toute autre logique dans la méthode <code class="code-inline" id="cd3c6265a726bca865fe9b74b4fd5ec4">mustBeObfuscated</code>.</p></body>
-    </main>
+              <div class="article-credits">
+          Crédits: photo de couverture par
+                        
+                  </div>
+          </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>

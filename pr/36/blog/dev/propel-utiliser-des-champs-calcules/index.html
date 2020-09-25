@@ -212,7 +212,7 @@
     <main class="article-content__main">
       <body><p>Il est parfois très utile de pouvoir récupérer directement des champs calculés depuis la base de données, soit parce que passer par un criteria s'avère très compliqué, voir impossible, soit pour confier les calculs à la base de données.</p>
 <p>Je vous propose donc aujourd'hui deux solutions pour le faire avec Propel :<!--more--></p>
-<h3 id="re-solution-les-r-sultats-s">1ère solution, les résultats sont accédés via des index numériques<a href="#re-solution-les-r-sultats-s" class="anchor"></a></h3>
+<h3 id="1-re-solution-les-r-sultats-s" class="anchor-title"><a href="#1-re-solution-les-r-sultats-s">1ère solution, les résultats sont accédés via des index numériques</a></h3>
 <pre class="code-multiline language-php"><code class="language-php" id="8a7785275a13d5b475a4c186b07d0e48"><span class="token comment">//QUERY</span>
 <span class="token variable">$query</span> <span class="token operator">=</span> <span class="token constant">SELECT</span> <span class="token function">DISTINCT</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'.UserPeer::ID.'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'.UserPeer::FIRSTNAME.'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'.UserPeer::LASTNAME.'</span><span class="token punctuation">,</span>
                          <span class="token single-quoted-string string">'.UserPeer::NICKNAME.'</span><span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'.QuestionPeer::ID.'</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> <span class="token constant">NB_QUESTIONS</span><span class="token punctuation">,</span>
@@ -238,7 +238,7 @@
   <span class="token variable">$questions</span><span class="token punctuation">[</span><span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token variable">$level</span> <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token variable">$level</span> <span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token variable">$users</span><span class="token punctuation">[</span><span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'questions'</span><span class="token punctuation">]</span>                     <span class="token operator">=</span> <span class="token variable">$questions</span><span class="token punctuation">[</span><span class="token variable">$rs</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id="me-solution-les-r-sultats-s">2ème solution, les résultats sont accédés via les noms de champs renvoyés par la requête<a href="#me-solution-les-r-sultats-s" class="anchor"></a></h3>
+<h3 id="2-me-solution-les-r-sultats-s" class="anchor-title"><a href="#2-me-solution-les-r-sultats-s">2ème solution, les résultats sont accédés via les noms de champs renvoyés par la requête</a></h3>
 <p>Il suffit pour cela de remplacer la méthode de récupération de executeQuery en utilisant cette fois:</p>
 <pre class="code-multiline language-php"><code class="language-php" id="7996141236245e4babf93b780a90018b"><span class="token scope">ResultSet<span class="token punctuation">::</span></span><span class="token constant">FETCHMODE_ASSOC</span></code></pre>
 <pre class="code-multiline"><code id="2e51ed954b18dd9b6cd37f86ccc62dc7">$rs = $stmt-&gt;executeQuery(ResultSet::FETCHMODE_ASSOC);
@@ -297,7 +297,11 @@ par la méthode</p>
           <span class="token single-quoted-string string">'nb_answers'</span>          <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$records</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'NB_ANSWERS'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
           <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></body>
-    </main>
+              <div class="article-credits">
+          Crédits: photo de couverture par
+                        
+                  </div>
+          </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>

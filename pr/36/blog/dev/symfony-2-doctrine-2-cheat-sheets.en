@@ -259,7 +259,11 @@ As nobody is perfect, keep them in sight and enjoy your development time with Sy
       </p>
     </td>
   </tr></table></body>
-    </main>
+              <div class="article-credits">
+          Crédits: photo de couverture par
+                        
+                  </div>
+          </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>

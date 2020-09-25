@@ -210,15 +210,15 @@
   
   <div class="article-content">
     <main class="article-content__main">
-      <body><h1 id="lien-magique">Lien magique<a href="#lien-magique" class="anchor"></a></h1>
+      <body><h1 id="lien-magique" class="anchor-title"><a href="#lien-magique">Lien magique</a></h1>
 <p>Nous avons récemment pris le parti pour l'un de nos dernier projet de proposer une authentification par "lien magique". Voici ce qui nous a poussé à faire cette expérience ainsi que nos retours.</p>
 <p>L'authentification par "lien magique" est notamment utilisée par Slack qui propose cette fonctionnalité dans son client et qui nous a grandement inspiré.</p>
 <p><a href="/images/posts/2018/magic-link-slack.png"><img src="/elao_/pr/36/images/posts/2018/magic-link-slack.png" alt="" id="magic-link-slack-png"></a></p>
 <p>Pour ce projet, avons utilisé cette méthode d'authentification sur deux app mobile ainsi que sur une app backend.</p>
-<h2 id="fonctionnement">Fonctionnement<a href="#fonctionnement" class="anchor"></a></h2>
+<h2 id="fonctionnement" class="anchor-title"><a href="#fonctionnement">Fonctionnement</a></h2>
 <p>L'authentification par lien magique déporte toute la gestion des mots de passe sur la boîte mail de l'utilisateur. Celui-ci fournit son adresse email à l'application lorsqu'il souhaite s'y connecter, un lien d'authentification contenant un token lui est envoyé. L'utilisateur se connecte ensuite à sa boite mail puis clique sur le lien et est ensuite connecté sur l'application.</p>
 <p><a href="/images/posts/2018/magic-link.png"><img src="/elao_/pr/36/images/posts/2018/magic-link.png" alt="" id="magic-link-png"></a></p>
-<h2 id="un-constat">Un constat<a href="#un-constat" class="anchor"></a></h2>
+<h2 id="un-constat" class="anchor-title"><a href="#un-constat">Un constat</a></h2>
 <p>Qu'est ce qui nous a poussé à mettre en place ce système ? C'est d'abord une idée qui a germé face à un constat.</p>
 <p>En tant que développeurs et utilisateurs d'internet, nous sommes plusieurs à avoir fait le constat que beaucoup d'utilisateurs oublient très fréquemment leur mot de passe. En effet, une fois connecté à une application, grâce à des mécanismes comme le "Remember Me" ou les sessions longues, il peut se passer plusieurs semaines voir mois avant de devoir resaisir son mot de passe. Un grand nombre de connexions passent alors par une procédure d'oubli de mot de passe et donc par la boite email de l'utilisateur.</p>
 <p><a href="/images/posts/2018/you-cant-leak-passwords-meme.png"><img src="/images/posts/2018/you-cant-leak-passwords-meme.png" alt="You can't leak passwords if you don't store passwords." id="you-can-t-leak-passwords-if-you"></a></p>
@@ -227,23 +227,27 @@
 <li>Les mots de passe utilisateurs sont généralement faibles, parfois identiques à travers plusieurs services. Ça serait pas un mal niveau sécurité de s'en dispenser, surtout que les boîtes mail sont de plus en plus sécurisées (authentification double facteur sur gmail par exemple).</li>
 <li>La création de compte devient plus rapide et plus simple, pas besoin de trouver un mot de passe qui correspond aux règles de l'application ni de s'en souvenir.</li>
 </ul><p>Enfin, nous avouons que techniquement, nous trouvions cela intéressant et motivant à developper. Cela apportait un peu de fraîcheur à une fonctionnalité développée sur chacune de nos applications de la même façon.</p>
-<h2 id="d-veloppement-et-premiers-retou">Développement et premiers retours<a href="#d-veloppement-et-premiers-retou" class="anchor"></a></h2>
+<h2 id="d-veloppement-et-premiers-retou" class="anchor-title"><a href="#d-veloppement-et-premiers-retou">Développement et premiers retours</a></h2>
 <p>Le développement de cette fonctionnalité a été relativement rapide et effectivement sur le coup, cela nous a permis de mettre en place un système d'authentification très rapidement.</p>
 <p>Ce temps gagné a été amplifié par le fait que, dans le cadre de ce projet, cette authentification serait utilisée sur 3 applications via une API. Donc on a gagné du temps en s'affranchissant de la gestion de mot de passe sur les 3 applications.</p>
-<h2 id="a-plus-long-terme">A plus long terme<a href="#a-plus-long-terme" class="anchor"></a></h2>
+<h2 id="a-plus-long-terme" class="anchor-title"><a href="#a-plus-long-terme">A plus long terme</a></h2>
 <p>Au fur et à mesure de notre utilisation, nous avons fait plusieurs ajustements et perfectionnements qui font qu'à plus long terme, la mise en place de cette authentification par "lien magique" a été un peu plus coûteuse que l'authentification classique que nous utilisons d'habitude. Mais ce coût sera rapidement lissé si nous la mettons en place sur d'autres projets.</p>
-<h2 id="validation-apple">Validation Apple<a href="#validation-apple" class="anchor"></a></h2>
+<h2 id="validation-apple" class="anchor-title"><a href="#validation-apple">Validation Apple</a></h2>
 <p>Une grosse interrogation qui est restée en suspens jusqu'à la fin est la question de la validation par Apple des applications.</p>
 <p>Nos applications mobile ne permettent pas la création de compte et nous ne connaissons pas à l'avance les adresses emails qui seront utilisées par les testeurs Apple. Nous avons donc fait une première tentative en leur fournissant directement des liens de connexions sur des comptes utilisateurs que nous avons créés pour eux.</p>
 <p>Après plusieurs soumissions avec une description de plus en plus précise de la démarche à suivre, nous nous sommes rendu compte les testeurs Apple avaient beaucoup de mal à sortir de leur procédure de test classique. En effet, les fiches de soumissions d'applications ne permettent que renseigner un <em>login</em> et un <em>mot de passe</em> en cas d'authentification requise.</p>
 <p>A l'heure où j'écris ces mots, nous avons dû implémenter une authentification par mot de passe spécialement pour Apple. Mais nous ne désespérons pas de trouver un procédure de soumission qui leur convienne.</p>
 <p>Si votre application permet la création de compte, cette méthode ne posera évidemment pas de soucis.</p>
-<h2 id="conclusion">Conclusion<a href="#conclusion" class="anchor"></a></h2>
+<h2 id="conclusion" class="anchor-title"><a href="#conclusion">Conclusion</a></h2>
 <p>Malgré quelques embûches, nous avons trouvé cette méthode d'authentification très intéressante tant niveau technique que côté expérience utilisateur. Il faut néanmoins bien faire attention à présenter cette méthode d'authentification de façon clair à l'utilisateur.</p>
 <p>L'authentification par "lien magique" s'intègre particulièrement bien avec l'expérience utilisateur mobile où il est toujours difficile de taper des mots de passe et où l'authentification est généralement persistante.</p>
 <p>Est-ce que cette méthodes d'authentification peut remplacer définitivement l'authentification classique par mot de passe ou doit elle seulement être proposé comme alternative ? L'avenir nous le dira :)</p>
 <hr><div>Bearded man and mobile phone icons made by <a href="https://www.flaticon.com/authors/monkik" title="monkik" target="_blank">monkik</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></div></body>
-    </main>
+              <div class="article-credits">
+          Crédits: photo de couverture par
+                        
+                  </div>
+          </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>

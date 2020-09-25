@@ -208,13 +208,13 @@
   <div class="article-content">
     <main class="article-content__main">
       <body><p>During this tutorial, we will install Stats.d and Graphite on the same server our application is running on. Don't forget that it's best if you monitor your application with graphite &amp; stats.d using another server because that will not be the case in this tutorial.</p>
-<h3 id="requirements">Requirements :<a href="#requirements" class="anchor"></a></h3>
+<h3 id="requirements" class="anchor-title"><a href="#requirements">Requirements :</a></h3>
 <ul><li>A Linux based server (this tutorial will explain the steps for Debian)</li>
 <li>A running Symfony2 application</li>
 <li><a href="https://github.com/liuggio/StatsDClientBundle" target="_blank">StatsDClientBundle</a></li>
 </ul><p><strong>Here's the result we'll have at the end (screenshot from a personal web application) :</strong></p>
-<img src="/en/images/posts/2012/memory_usage.png" alt="graphite" class="outside-left" id="graphite"><img src="/en/images/posts/2012/users.png" alt="graphite" class="" id="graphite"><img src="/en/images/posts/2012/memory_usage.png" alt="graphite" class="outside-right" id="graphite"><h1 id="install-graphite">Install Graphite<a href="#install-graphite" class="anchor"></a></h1>
-<h2 id="installing-graphite-dependencies">Installing graphite dependencies<a href="#installing-graphite-dependencies" class="anchor"></a></h2>
+<img src="/en/images/posts/2012/memory_usage.png" alt="graphite" class="outside-left" id="graphite"><img src="/en/images/posts/2012/users.png" alt="graphite" class="" id="graphite"><img src="/en/images/posts/2012/memory_usage.png" alt="graphite" class="outside-right" id="graphite"><h1 id="install-graphite" class="anchor-title"><a href="#install-graphite">Install Graphite</a></h1>
+<h2 id="installing-graphite-dependencies" class="anchor-title"><a href="#installing-graphite-dependencies">Installing graphite dependencies</a></h2>
 <pre class="code-multiline language-bash"><code class="language-bash" id="98da77ef6d314d18f2a06231320991da"><span class="token function">apt-get</span> <span class="token function">install</span> -y python2.6 python-pip python-cairo python-django python-django-tagging
 <span class="token function">apt-get</span> <span class="token function">install</span> -y libapache2-mod-wsgi python-twisted python-memcache python-pysqlite2 python-simplejson
 pip <span class="token function">install</span> whisper
@@ -226,7 +226,7 @@ pip <span class="token function">install</span> graphite-web
 <span class="token function">wget</span> https://raw.github.com/tmm1/graphite/master/examples/example-graphite-vhost.conf -O /etc/apache2/sites-available/graphite</code></pre>
 <pre class="code-multiline language-bash"><code class="language-bash" id="e417cfd05864ba10eb197dff62ae67d0"><span class="token comment"># If you are running on a Debian, don't forget to replace in the vhost, the WSGISocketPrefix value by the following:</span>
 WSGISocketPrefix /var/run/apache2/wsgi</code></pre>
-<h2 id="configuring-graphite">Configuring graphite<a href="#configuring-graphite" class="anchor"></a></h2>
+<h2 id="configuring-graphite" class="anchor-title"><a href="#configuring-graphite">Configuring graphite</a></h2>
 <pre class="code-multiline language-bash"><code class="language-bash" id="4dec963a66a3ef6e1c60b7f78107a8aa"><span class="token builtin class-name">cd</span> /opt/graphite/conf/
 <span class="token function">cp</span> graphite.wsgi.example graphite.wsgi
 <span class="token function">cp</span> carbon.conf.example carbon.conf
@@ -265,16 +265,16 @@ WSGISocketPrefix /var/run/apache2/wsgi</code></pre>
 <span class="token constant">pattern</span> <span class="token attr-value"><span class="token punctuation">=</span> .*</span>
 <span class="token constant">xFilesFactor</span> <span class="token attr-value"><span class="token punctuation">=</span> 0.3</span>
 <span class="token constant">aggregationMethod</span> <span class="token attr-value"><span class="token punctuation">=</span> average</span></code></pre>
-<h1 id="let-s-go-back-to-the-installatio">Let's go back to the installation process<a href="#let-s-go-back-to-the-installatio" class="anchor"></a></h1>
+<h1 id="let-s-go-back-to-the-installatio" class="anchor-title"><a href="#let-s-go-back-to-the-installatio">Let's go back to the installation process</a></h1>
 <pre class="code-multiline language-bash"><code class="language-bash" id="cfe5036c5416682c827647795ba43a0d"><span class="token builtin class-name">cd</span> /opt/graphite/webapp/graphite
 python manage.py syncdb
 <span class="token function">chown</span> -R www-data:www-data /opt/graphite/storage/</code></pre>
-<h2 id="enabling-graphite-host">Enabling graphite host<a href="#enabling-graphite-host" class="anchor"></a></h2>
+<h2 id="enabling-graphite-host" class="anchor-title"><a href="#enabling-graphite-host">Enabling graphite host</a></h2>
 <pre class="code-multiline language-bash"><code class="language-bash" id="2626d327c365ddfad10f755161da3313">a2ensite graphite
 /opt/graphite/bin/carbon-cache.py start
 /etc/init.d/apache2 resta</code></pre>
 <p>If you want the full detail on the graphite, take a look at <a href="http://linuxracker.com/2012/03/31/setting-up-graphite-server-on-debian-squeeze/" target="_blank">the source</a> I used for the installations steps.</p>
-<h1 id="install-stat-d">Install <a href="https://github.com/etsy/statsd" target="_blank">Stat.d</a><a href="#install-stat-d" class="anchor"></a></h1>
+<h1 id="install-stat-d" class="anchor-title"><a href="https://github.com/etsy/statsd" target="_blank">Stat.d</a><a href="#install-stat-d">Install </a></h1>
 <pre class="code-multiline language-bash"><code class="language-bash" id="689f2bb1093d18d4dff704002318406e"><span class="token function">sudo</span> <span class="token function">apt-get</span> update <span class="token operator">&amp;&amp;</span> <span class="token function">apt-get</span> <span class="token function">install</span> git-core <span class="token function">curl</span> build-essential openssl libssl-dev
 
 <span class="token comment"># Don't forget to go to the location you want to install node in (like cd /home/) before running these commands</span>
@@ -293,19 +293,19 @@ node -v
 <span class="token function">git</span> clone https://github.com/etsy/statsd
 <span class="token builtin class-name">cd</span> statsd
 <span class="token function">cp</span> exampleConfig.js local.js</code></pre>
-<h2 id="edit-local-js-and-make-it-looks">Edit local.js and make it looks like:<a href="#edit-local-js-and-make-it-looks" class="anchor"></a></h2>
+<h2 id="edit-local-js-and-make-it-looks" class="anchor-title"><a href="#edit-local-js-and-make-it-looks">Edit local.js and make it looks like:</a></h2>
 <pre class="code-multiline language-js"><code class="language-js" id="5b53ab50a103135ec0928dab1ed72acd"><span class="token punctuation">{</span>
 graphitePort<span class="token operator">:</span> <span class="token number">2003</span>
 <span class="token punctuation">,</span> graphiteHost<span class="token operator">:</span> <span class="token string">"localhost"</span>
 <span class="token punctuation">,</span> port<span class="token operator">:</span> <span class="token number">8125</span>
 <span class="token punctuation">}</span></code></pre>
-<h1 id="then-you-need-to-run-stats-d">Then you need to run stats.d<a href="#then-you-need-to-run-stats-d" class="anchor"></a></h1>
+<h1 id="then-you-need-to-run-stats-d" class="anchor-title"><a href="#then-you-need-to-run-stats-d">Then you need to run stats.d</a></h1>
 <pre class="code-multiline language-bash"><code class="language-bash" id="6bd9c0dfaed0ccd1221f4f4d55e6d9fa"><span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">screen</span>
 <span class="token function">screen</span> node stats.js local.js
 
 <span class="token comment"># Then press Ctrl + a + d in order to let run stats.js in background mode thanks to screen.</span></code></pre>
 <p>If you want the full detail, check out the <a href="http://sekati.com/etc/install-nodejs-on-debian-squeeze" target="_blank">source</a>.</p>
-<h3 id="from-now-on-we-have-a-running-c">From now on, we have a running copy of both <strong>Graphite</strong> and <strong>Stat.d</strong> client.<a href="#from-now-on-we-have-a-running-c" class="anchor"></a></h3>
+<h3 id="from-now-on-we-have-a-running-c" class="anchor-title"><strong>Graphite</strong> and <strong>Stat.d</strong> client.<a href="#from-now-on-we-have-a-running-c">From now on, we have a running copy of both </a></h3>
 <p>You can access it with the URL you provided in your vhost</p>
 <p>Now, let's install the <a href="https://github.com/liuggio/StatsDClientBundle/blob/master/Resources/doc/installation.md" target="_blank">StatsDClientBundle</a> in order to monitor our Symfony2 application</p>
 <pre class="code-multiline language-json"><code class="language-json" id="587cd562256957a785eb77f07efc2ee4"><span class="token comment">// composer.json</span>
@@ -341,7 +341,11 @@ graphitePort<span class="token operator">:</span> <span class="token number">200
     <span class="token key atrule">liuggio_stats_d_client.collector.exception</span><span class="token punctuation">:</span> <span class="token string">'collect.exception'</span></code></pre>
 <p>Note that we added the full configuration for the bundle which allow us to collect these usefull information such as logged users vs anonymous, memory usage.</p>
 <p>In the <a href="/en/infra/monitor-your-symfony2-application-via-stats-d-and-graphite-2/">2nd part</a>, we'll see how to monitor custom events in your Symfony2 app.</p></body>
-    </main>
+              <div class="article-credits">
+          Crédits: photo de couverture par
+                        
+                  </div>
+          </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>

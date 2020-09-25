@@ -210,9 +210,9 @@
   
   <div class="article-content">
     <main class="article-content__main">
-      <body><h2 id="the-problem">The problem<a href="#the-problem" class="anchor"></a></h2>
+      <body><h2 id="the-problem" class="anchor-title"><a href="#the-problem">The problem</a></h2>
 <p>When you need to translate the labels of the different forms in your app, you usually have to set a translation key for each label manually.<!--more--></p>
-<h1 id="edit-we-finally-built-a-bundle"><strong>[EDIT]</strong> We finally built a bundle that solve the problem in an even better way and more! <a href="http://github.com/Elao/ElaoFormTranslationBundle" title="Check it out" target="_blank">Check it out</a><a href="#edit-we-finally-built-a-bundle" class="anchor"></a></h1>
+<h1 id="edit-we-finally-built-a-bundle" class="anchor-title"> We finally built a bundle that solve the problem in an even better way and more! <a href="http://github.com/Elao/ElaoFormTranslationBundle" title="Check it out" target="_blank">Check it out</a><a href="#edit-we-finally-built-a-bundle"><strong>[EDIT]</strong></a></h1>
 <p><strong>Here's what it looks like with a simple User form:</strong></p>
 <pre class="code-multiline language-php"><code class="language-php" id="1648afd6c6980fdd971a3d19eb5e2eb3"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -309,7 +309,7 @@
 <p><strong>Problems:</strong> it’s kinda boring, you can easily make typos in the keys, every change you’ll make will involve translations files and the form classes, ... It can become quite painful with the number of forms in you app increasing.</p>
 <p><em>We'd rather have the label translation keys automatically generated, don't we?</em></p>
 <p><strong>Here's how we do it:</strong></p>
-<h2 id="remove-all-label-translation-key">Remove all label translation keys from the forms:<a href="#remove-all-label-translation-key" class="anchor"></a></h2>
+<h2 id="remove-all-label-translation-key" class="anchor-title"><a href="#remove-all-label-translation-key">Remove all label translation keys from the forms:</a></h2>
 <pre class="code-multiline language-php"><code class="language-php" id="117153e45fa098ae09f9790bac62920a"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">Elao<span class="token punctuation">\</span>UserBundle<span class="token punctuation">\</span>Form<span class="token punctuation">\</span>Type</span><span class="token punctuation">;</span>
@@ -352,7 +352,7 @@
     <span class="token comment">// ...</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p><strong>Better right ?</strong></p>
-<h2 id="construct-the-label-translation">Construct the label translation keys automatically with form theming:<a href="#construct-the-label-translation" class="anchor"></a></h2>
+<h2 id="construct-the-label-translation" class="anchor-title"><a href="#construct-the-label-translation">Construct the label translation keys automatically with form theming:</a></h2>
 <pre class="code-multiline language-twig"><code class="language-twig" id="6c82e4301b46beb13c634bb7d603b19c"><span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">extends</span></span> <span class="token string"><span class="token punctuation">"</span>form_div_layout.html.twig<span class="token punctuation">"</span></span> <span class="token rd"><span class="token punctuation">%}</span></span></span>
 
 <span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">block</span></span> <span class="token property">form_label</span> <span class="token rd"><span class="token punctuation">%}</span></span></span>
@@ -397,7 +397,7 @@ We handle the special issue of embedded forms with the <code class="code-inline"
 When we construct the label of an embedded form, we add <code class="code-inline" id="45ee32ec212ecc273cdd4275ebd77daa">.label</code> at the end of the key.
 When the children of this form want to get the parent key, we just return the prefix key (without the <code class="code-inline" id="45ee32ec212ecc273cdd4275ebd77daa">.label</code> addition).
 <em>This has to be done because in YML we can't set a value the key <code class="code-inline" id="c0f2478137b2c4c0cef2e73375f8f95b">register.labels.group</code> and stil set children keys such as <code class="code-inline" id="a15dc21561f9a57e70e2753a3ec68c5c">register.labels.group.name</code>. We need the first one to be <code class="code-inline" id="55d4651ed0c3b6c3fe0296bf66e06e1e">register.labels.group.label</code>.</em></p>
-<h2 id="conclusion">Conclusion:<a href="#conclusion" class="anchor"></a></h2>
+<h2 id="conclusion" class="anchor-title"><a href="#conclusion">Conclusion:</a></h2>
 <p>We are now generating exactly the key we need, automatically:</p>
 <pre class="code-multiline"><code id="7801692dc466b353e4fc5cd95b3d0c62">register.labels.firstname
 register.labels.lastname
@@ -417,7 +417,11 @@ register.labels.group.name</code></pre>
 <p>The logic behind key generation can be <strong>customized</strong> by coding your own macro.</p>
 </li>
 </ul></body>
-    </main>
+              <div class="article-credits">
+          Crédits: photo de couverture par
+                        
+                  </div>
+          </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
