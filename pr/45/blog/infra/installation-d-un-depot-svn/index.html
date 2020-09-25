@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Elao_</title>
+
+                    <!-- Open Graph / Facebook -->
+             <meta property="og:title" content="Elao_" />
+            <meta property="og:locale" content="fr" />
+            <meta name="description" content="Elao est un atelier de co-conception d&#039;applications web et mobile sur mesure." />
+            <meta property="og:description" content="Elao est un atelier de co-conception d&#039;applications web et mobile sur mesure." />
+            <link rel="canonical" href="https://elao.github.io/elao_/pr/45/blog/infra/installation-d-un-depot-svn" />
+            <meta property="og:url" content="https://elao.github.io/elao_/pr/45/blog/infra/installation-d-un-depot-svn" />
+            <meta property="og:site_name" content="elao_" />
+            
+            <!-- Twitter -->
+            <meta property="twitter:card" content="summary">
+            <meta property="twitter:title" content="Elao_">
+            <meta property="twitter:description" content="Elao est un atelier de co-conception d&#039;applications web et mobile sur mesure.">
+            <meta property="twitter:site" content="@tom32i">
+            <meta property="twitter:creator" content="@tom32i">
+                    
+                    <link rel="stylesheet" href="/elao_/pr/45/build/style.42d2826f.css">
+            </head>
+    <body>
+        <header class="header">
+            <div class="container">
+                                    <!--
+                        Todo :
+                        - only on homepage : on scroll .logo.logo--animated becomes .logo.logo--animated.logo--active (triggers its animation)
+                     -->
+                    <a href="/elao_/pr/45/">
+                        <span class="screen-reader">Elao_</span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 300 100" class="logo logo--animated">
+                                <path d="M61.6,61.6H19.7C21,69,24.8,72.2,32.6,72.2c5.9,0,8.8-1.9,11.7-7.8l16.1,6.9C56.2,82,46.9,87.8,32.1,87.8
+                                    c-19.1,0-32-12.6-32-31.6c0-19.5,12.6-32.6,31.4-32.6c18.1,0,30.3,12.6,30.3,31.6C61.7,57.2,61.7,58.9,61.6,61.6z M19.6,49.3h23.6
+                                    c-0.2-7.9-4.1-10.9-11.3-10.9S20.7,41.8,19.6,49.3z"/>
+                                <path d="M71.2,0.1H90v86.5H71.2V0.1z"/>
+                                <path d="M166.1,24.7v61.8h-18.8V72.7c-3.5,9.8-10.5,15.1-20.4,15.1c-17.7,0-27.4-12.9-27.4-32
+                                    c0-19.4,9.3-32.2,26.2-32.2c10.5,0,18,5.4,21.6,15.6V24.7H166.1z M147.9,55.7c0-10.4-4.8-15.2-15.1-15.2c-9.9,0-14.6,4.8-14.6,15.2
+                                    c0,10.1,4.7,14.9,14.6,14.9C143.1,70.7,147.9,65.9,147.9,55.7L147.9,55.7z"/>
+                                <path d="M242.8,55.8c0,19.9-15.3,32-33.6,32s-33.6-12.1-33.6-32s15.3-32.2,33.6-32.2S242.8,35.8,242.8,55.8z M224,55.8
+                                    c0-10.4-4.7-15.2-14.8-15.2c-10.1,0-14.8,4.8-14.8,15.2c0,10.1,4.7,14.9,14.8,14.9S224,65.9,224,55.8L224,55.8z"/>
+                                <rect x="243.1" y="86.5" width="56.7" height="15"/>
+                            </svg>
+                                            </a>
+                
+                
+                                    <!-- Desktop nav -->
+                    <nav class="nav">
+                        <ul>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/pr/45/nos-services">
+                                                                                <span>Nos services</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/pr/45/methodo">
+                                                                                <span>Notre méthodologie</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/pr/45/nos-valeurs">
+                                                                                <span>Nos valeurs</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/pr/45/la-tribu/">
+                                                                                <span>La tribu</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/pr/45/blog/">
+                                                                                <span>Blog</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/pr/45/contact">
+                                                                                    <i class="icon icon--contact" aria-hidden="true"></i>
+                                                                                <span>Contact</span>
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </nav>
+                
+                                    <!-- Mobile nav -->
+                    <nav class="nav-mobile">
+                        <div class="nav-mobile__header">
+                            <a href="/elao_/pr/45/">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 300 100" class="logo logo--animated">
+                                <path d="M61.6,61.6H19.7C21,69,24.8,72.2,32.6,72.2c5.9,0,8.8-1.9,11.7-7.8l16.1,6.9C56.2,82,46.9,87.8,32.1,87.8
+                                    c-19.1,0-32-12.6-32-31.6c0-19.5,12.6-32.6,31.4-32.6c18.1,0,30.3,12.6,30.3,31.6C61.7,57.2,61.7,58.9,61.6,61.6z M19.6,49.3h23.6
+                                    c-0.2-7.9-4.1-10.9-11.3-10.9S20.7,41.8,19.6,49.3z"/>
+                                <path d="M71.2,0.1H90v86.5H71.2V0.1z"/>
+                                <path d="M166.1,24.7v61.8h-18.8V72.7c-3.5,9.8-10.5,15.1-20.4,15.1c-17.7,0-27.4-12.9-27.4-32
+                                    c0-19.4,9.3-32.2,26.2-32.2c10.5,0,18,5.4,21.6,15.6V24.7H166.1z M147.9,55.7c0-10.4-4.8-15.2-15.1-15.2c-9.9,0-14.6,4.8-14.6,15.2
+                                    c0,10.1,4.7,14.9,14.6,14.9C143.1,70.7,147.9,65.9,147.9,55.7L147.9,55.7z"/>
+                                <path d="M242.8,55.8c0,19.9-15.3,32-33.6,32s-33.6-12.1-33.6-32s15.3-32.2,33.6-32.2S242.8,35.8,242.8,55.8z M224,55.8
+                                    c0-10.4-4.7-15.2-14.8-15.2c-10.1,0-14.8,4.8-14.8,15.2c0,10.1,4.7,14.9,14.8,14.9S224,65.9,224,55.8L224,55.8z"/>
+                                <rect x="243.1" y="86.5" width="56.7" height="15"/>
+                            </svg>
+                        
+                            </a>
+                            <button class="nav-toggle nav-toggle--close">
+                                <i class="icon icon--close" aria-hidden="true"></i>
+                                <span class="screen-reader">Fermer le menu</span>
+                            </button>
+                        </div>
+                        <ul>
+                                                            <li class="nav-mobile__item ">
+                                    <a href="/elao_/pr/45/nos-services">
+                                                                                <span>Nos services</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav-mobile__item ">
+                                    <a href="/elao_/pr/45/methodo">
+                                                                                <span>Notre méthodologie</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav-mobile__item ">
+                                    <a href="/elao_/pr/45/etudes-de-cas/">
+                                                                                <span>Nos études de cas</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav-mobile__item ">
+                                    <a href="/elao_/pr/45/nos-valeurs">
+                                                                                <span>Nos valeurs</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav-mobile__item ">
+                                    <a href="/elao_/pr/45/la-tribu/">
+                                                                                <span>La tribu</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav-mobile__item ">
+                                    <a href="/elao_/pr/45/blog/">
+                                                                                <span>Blog</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav-mobile__item nav-mobile__item--large">
+                                    <a href="/elao_/pr/45/contact">
+                                                                                    <i class="icon icon--contact" aria-hidden="true"></i>
+                                                                                <span>Contact</span>
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </nav>
+                    <button class="nav-toggle nav-toggle--open">
+                        <i class="icon icon--hamburger" aria-hidden="true"></i>
+                        <span class="screen-reader">Ouvrir le menu</span>
+                    </button>
+                            </div>
+        </header>
+        <div class="container">
+        <main>
+              <ul class="breadcrumb">
+    <li class="breadcrumb__item">
+      <a href="/elao_/pr/45/blog/">Blog</a>
+    </li>
+    <li class="breadcrumb__item">
+      Installation d&#039;un dépôt SVN
+    </li>
+  </ul>
+
+  <div class="article-banner">
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/45/images/posts/thumbnails/kenny.jpg)"></div>
+
+    <div class="article-info">
+                    <div class="article-author ">
+          <div class="article-author__image">
+                          <img src="/elao_/pr/45/images/authors/gfaivre.jpg" />
+                      </div>
+          <span class="article-author__info">
+            Écrit par
+                          <strong>Guewen FAIVRE</strong>
+                      </span>
+        </div>
+            <div class="article-info__date">
+        <span>Publication <strong>2 décembre 2009</strong></span>
+        <span>Modification <strong>25 septembre 2020</strong></span>
+      </div>
+    </div>
+
+    <div class="article-header">
+      <h1>Installation d&#039;un dépôt SVN</h1>
+      <p>Installation d&#039;un dépôt SVN pour gérer et versioner le code source d&#039;un projet</p>
+      <ul class="article-tag-list">
+                  <li class="article-tag-list__item">
+            <a href="/elao_/pr/45/blog/tag/Linux">#Linux</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/pr/45/blog/tag/SVN">#SVN</a>
+          </li>
+              </ul>
+    </div>
+  </div>
+
+  
+  <div class="article-content">
+    <main class="article-content__main">
+      <body><p><strong>[EDIT]</strong> Il est bien évidemment conseillé aujourd'hui d'utiliser GIT comme SCM ! Cet article est à considérer comme une archive et/ou comme support à ceux qui ont la malchance d' être coincé avec SVN.</p>
+<p><strong>Subversion</strong> (en abrégé <strong>svn</strong>) est un <a title="Système de gestion de versions" target="_blank" href="http://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_versions">système de gestion de versions</a>, il agit sur une arborescence de fichiers afin de conserver toutes les versions des fichiers, ainsi que les différences entre les fichiers. De ce fait, et pour résumer, il permet non seulement de pouvoir revenir à un état T d'une application dans le temps mais également de travailler à plusieurs sur un seul et même projet, les conflits pouvant être engendrés entre deux utilisateurs manipulant un même fichier étant gérés par le serveur subversion.</p>
+<h3 id="les-paquets-installer" class="anchor-title"><a href="#les-paquets-installer">Les paquets à installer:</a></h3>
+<pre class="code-multiline"><code id="0cf1c8470f8e8887cddeb5c55ccd5163">apt-get install subversion libapache2-svn</code></pre>
+<h3 id="d-ploiement-du-d-p-t-subversi" class="anchor-title"><a href="#d-ploiement-du-d-p-t-subversi">Déploiement du dépôt subversion:</a></h3>
+<p>Nous partirons du principe que vous avez décidé de déployer le repository (dépôt) de votre projet dans le répertoire /repositories/. Si ce n’est pas fait nous créons le répertoire:</p>
+<pre class="code-multiline"><code id="f863fe6738bd8911e1ffbf5ea89cee00">mkdir /repositories</code></pre>
+<p>Nous allons ensuite créer notre dépot à l’aide de la commande svn:</p>
+<pre class="code-multiline"><code id="58be83328ea48b580635ac1f8a4cfc4c">svnadmin create /repositories/mon_projet/</code></pre>
+<p>En règle générale la structure d’un dépôt svn est subdivisée en trois répertoires:</p>
+<ul><li>trunk:</li>
+<li>branches:</li>
+<li>tags:</li>
+</ul><p>Si vous disposez déjà d’un existant vous pouvez parfaitement l’importer dans votre nouveau dépôt, dans le trunk:</p>
+<pre class="code-multiline"><code id="36ce0e123eafbeb0be7197a0d2bc5f95">svn import -m "Initialisation du dépot" /elao/projects/mon_projet/ file:///repositories/mon_projet/trunk</code></pre>
+<h3 id="param-trage-du-subversion-et-ap" class="anchor-title"><a href="#param-trage-du-subversion-et-ap">Paramétrage du subversion et Apache</a></h3>
+<p>Afin “d’ouvrir” notre dépôt vers l’extérieur nous allons utiliser Apache, pour des raisons de sécurité, (libre à vous de l’utiliser ou non ) nous utiliserons SSL pour les transactions http. On active le module dav_svn avec la commande :</p>
+<pre class="code-multiline"><code id="8113fcbef4d9c257ba9a9a9551b20cbf">a2enmod dav_svn</code></pre>
+<h3 id="param-trer-votre-vhost-adap" class="anchor-title"><a href="#param-trer-votre-vhost-adap">Paramétrer votre VHost (à adapter selon votre configuration Apache):</a></h3>
+<p>Nous allons commencer par définir quels seront les utilisateurs qui auront accès à notre (nos) dépôt(s) Créons pour celà un répertoire pwd, qui, d’une manière générale contiendra nos fichiers d’accès.</p>
+<pre class="code-multiline"><code id="42e51fefb1fff8c68a0ebe226ca8f986">mkdir /etc/apache2/pwd
+cd pwd</code></pre>
+<p>La création d’un fichier utilisateur se fait à l’aide la commande htpasswd</p>
+<pre class="code-multiline"><code id="2ba5c73d5669a8bb84b3f5b6223fdf2a">htpasswd -c users.pwd guewen</code></pre>
+<p>A noter que l’option -c indique que le fichier doit être créé, celle-ci n’est plus nécessaire une fois que celui-ci existe, ainsi pour ajouter ou mettre à jour un utilisateur on utilisera simplement la commande:</p>
+<pre class="code-multiline"><code id="68cd4d4215a1851c5f2fe7f762131f2d">htpasswd  users.pwd guewen</code></pre>
+<p>La configuration Apache se fait comme suit:</p>
+<pre class="code-multiline language-apacheconf"><code class="language-apacheconf" id="4f1bfcc126d423561a25722b5455f806"><span class="token directive-inline property">ServerName</span>              svn.domain.tld
+<span class="token directive-inline property">DocumentRoot</span>            /mon_domaine/repositories/
+
+<span class="token directive-inline property">SSLEngine</span> on
+<span class="token directive-inline property">SSLCertificateFile</span>      /etc/apache2/ssl/host.crt
+<span class="token directive-inline property">SSLCertificateKeyFile</span>   /etc/apache2/ssl/host.key
+
+<span class="token directive-inline property">DAV</span> svn
+SVNParentPath           /mon_domaine/repositories/
+<span class="token directive-inline property">AuthType</span> Basic
+<span class="token directive-inline property">AuthName</span>                <span class="token string">"ELAO Private Area"</span>
+<span class="token directive-inline property">AuthUserFile</span>            /etc/apache2/pwd/users.pwd
+AuthzSVNAccessFile      /etc/apache2/pwd/perms.acl
+<span class="token directive-inline property">Require</span>                 valid-user</code></pre>
+<h3 id="la-gestion-des-droits" class="anchor-title"><a href="#la-gestion-des-droits">La gestion des droits:</a></h3>
+<p>Les droits sur les différents dépôts svn seront gérés via le fichier perms.acl, l’utilisation d’ACL va nous autoriser à mettre en place des accès complexes basés sur le couple utilisateur/groupe. Il est cependant à noter que l’utilité d’une stratégie d’authentification complexe ne présente d’interet que si votre dépôt est publique ou nécéssite un contrôle strict des accès. Qui dit ACL dit utilisateurs, groupes et bien sur permissions ! Nous allons stocker cette configuration dans le fichier perms.acl. On va commencer par définir les groupes:</p>
+<pre class="code-multiline"><code id="d2aa274eb8968a3a65a69a1114304596">[groups]
+admins = user1, user2
+developpers = user1, user2, user3, user6
+public = guest
+all = admins, developpers, public</code></pre>
+<p>N’oubliez pas de définir les utilisateurs dans le fichier users.pwd ! Une fois vos groupes définis on passe à la configuration des droits sur les dépôts. Il faut savoir que l’on peut non seulement définir des droits sur un dépôt mais également une partie précise du dépôt. Ainsi nous pouvons fixer des droits de lecture (r) pour tout le monde au niveau de la racine du dépôt, par contre les droits d’écriture ne sont ici accordés qu’aux développeurs.</p>
+<pre class="code-multiline"><code id="83a2729edb17e15df822f509b19a92ef">[depex:/]
+@all = r
+
+[depex:/trunk]
+user2 = r
+@developpers = rw</code></pre>
+<p>Attention à toujours préfixer le nom des groupes par un ‘@’</p></body>
+                        </main>
+    <aside class="article-content__aside">
+      <button class="kudo">
+        <span class="kudo__button" aria-hidden="true"></span>
+        <span class="screen-reader">Cet article m’a été utile</span>
+        <span class="kudo__label" aria-hidden="true">Kudos</span>
+      </button>
+    </aside>
+  </div>
+
+  <div class="article-footer">
+                  <div class="article-author">
+          <div class="article-author__image">
+            <img src="/elao_/pr/45/images/authors/gfaivre.jpg" />
+          </div>
+          <span class="article-author__info">
+            Écrit par
+            <strong>Guewen FAIVRE</strong>
+          </span>
+          <div class="article-author__social">
+                          <a href="https://twitter.com/guewen_faivre" class="social social--small">
+                <i class="icon icon--twitter" aria-hidden="true"></i>
+                <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
+              </a>
+                                      <a href="https://github.com/gfaivre "class="social social--small">
+                <i class="icon icon--github" aria-hidden="true"></i>
+                <span class="screen-reader">Compte github de Guewen FAIVRE</span>
+              </a>
+                                      <a href="http://www.elao.com" class="social social--small">
+                <i class="icon icon--website" aria-hidden="true"></i>
+                <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
+              </a>
+                      </div>
+        </div>
+            </div>
+        </main>
+                    <footer class="footer">
+                <section class="footer__links">
+                    <p class="h1 h1--small">
+                        elao
+                        <span>développe</span>
+                         <span>du lien</span>
+                    </p>
+                    <div class="links">
+                        <ul>
+                            <li>
+                                <a href="#">Nos services</a>
+                            </li>
+                            <li>
+                                <a href="#">Nos études de cas</a>
+                            </li>
+                            <li>
+                                <a href="#">Blog</a>
+                            </li>
+                            <li>
+                                <a href="#">Notre méthodologie</a>
+                            </li>
+                            <li>
+                                <a href="#">La tribu</a>
+                            </li>
+                            <li>
+                                <a href="#">Contact</a>
+                            </li>
+                            <li>
+                                <a href="#">Nos valeurs</a>
+                            </li>
+                            <li>
+                                <a href="#">Nous recrutons <span class="bullet">3</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="socials">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="icon icon--github"></i>
+                                    Github
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon icon--twitter"></i>
+                                    Twitter
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon icon--instagram"></i>
+                                    Instagram
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="footer__legals">
+                    <span>© 2014/2020 - ELAO - Tous droits réservés</span>
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Protection des données</a>
+                </section>
+            </footer>
+        </div>
+                            <script src="/elao_/pr/45/build/runtime.58d94204.js"></script><script src="/elao_/pr/45/build/0.4fc588e5.js"></script><script src="/elao_/pr/45/build/app.67723742.js"></script>
+                    </body>
+</html>
