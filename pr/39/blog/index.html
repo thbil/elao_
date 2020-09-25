@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Elao_</title>
+
+                    <!-- Open Graph / Facebook -->
+             <meta property="og:title" content="Elao_" />
+            <meta property="og:locale" content="fr" />
+            <meta name="description" content="Elao est un atelier de co-conception d&#039;applications web et mobile sur mesure." />
+            <meta property="og:description" content="Elao est un atelier de co-conception d&#039;applications web et mobile sur mesure." />
+            <link rel="canonical" href="https://elao.github.io/elao_/pr/39/blog/" />
+            <meta property="og:url" content="https://elao.github.io/elao_/pr/39/blog/" />
+            <meta property="og:site_name" content="elao_" />
+            
+            <!-- Twitter -->
+            <meta property="twitter:card" content="summary">
+            <meta property="twitter:title" content="Elao_">
+            <meta property="twitter:description" content="Elao est un atelier de co-conception d&#039;applications web et mobile sur mesure.">
+            <meta property="twitter:site" content="@tom32i">
+            <meta property="twitter:creator" content="@tom32i">
+                    
+                    <link rel="stylesheet" href="/elao_/pr/39/build/style.177befef.css">
+            </head>
+    <body>
+        <header class="header">
+            <div class="container">
+                                    <!--
+                        Todo :
+                        - only on homepage : on scroll .logo.logo--animated becomes .logo.logo--animated.logo--active (triggers its animation)
+                     -->
+                    <a href="/elao_/pr/39/">
+                        <span class="screen-reader">Elao_</span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 300 100" class="logo logo--animated">
+                                <path d="M61.6,61.6H19.7C21,69,24.8,72.2,32.6,72.2c5.9,0,8.8-1.9,11.7-7.8l16.1,6.9C56.2,82,46.9,87.8,32.1,87.8
+                                    c-19.1,0-32-12.6-32-31.6c0-19.5,12.6-32.6,31.4-32.6c18.1,0,30.3,12.6,30.3,31.6C61.7,57.2,61.7,58.9,61.6,61.6z M19.6,49.3h23.6
+                                    c-0.2-7.9-4.1-10.9-11.3-10.9S20.7,41.8,19.6,49.3z"/>
+                                <path d="M71.2,0.1H90v86.5H71.2V0.1z"/>
+                                <path d="M166.1,24.7v61.8h-18.8V72.7c-3.5,9.8-10.5,15.1-20.4,15.1c-17.7,0-27.4-12.9-27.4-32
+                                    c0-19.4,9.3-32.2,26.2-32.2c10.5,0,18,5.4,21.6,15.6V24.7H166.1z M147.9,55.7c0-10.4-4.8-15.2-15.1-15.2c-9.9,0-14.6,4.8-14.6,15.2
+                                    c0,10.1,4.7,14.9,14.6,14.9C143.1,70.7,147.9,65.9,147.9,55.7L147.9,55.7z"/>
+                                <path d="M242.8,55.8c0,19.9-15.3,32-33.6,32s-33.6-12.1-33.6-32s15.3-32.2,33.6-32.2S242.8,35.8,242.8,55.8z M224,55.8
+                                    c0-10.4-4.7-15.2-14.8-15.2c-10.1,0-14.8,4.8-14.8,15.2c0,10.1,4.7,14.9,14.8,14.9S224,65.9,224,55.8L224,55.8z"/>
+                                <rect x="243.1" y="86.5" width="56.7" height="15"/>
+                            </svg>
+                                            </a>
+                
+                
+                                    <!--
+                        Todo :
+                        - open / close mobile nav on click on .nav-toggle buttons
+                        - when mobile nav is open, .body is .body.no-scroll to prevent background scroll
+                     -->
+                    <!-- Desktop nav -->
+                    <nav class="nav">
+                        <ul>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/pr/39/nos-services">
+                                                                                <span>Nos services</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/pr/39/methodo">
+                                                                                <span>Notre méthodologie</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/pr/39/nos-valeurs">
+                                                                                <span>Nos valeurs</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/pr/39/la-tribu/">
+                                                                                <span>La tribu</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/pr/39/blog/">
+                                                                                <span>Blog</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/pr/39/contact">
+                                                                                    <i class="icon icon--contact" aria-hidden="true"></i>
+                                                                                <span>Contact</span>
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </nav>
+                
+                                    <!-- Mobile nav -->
+                    <nav class="nav-mobile">                        <div class="nav-mobile__header">
+                            <a href="/elao_/pr/39/">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 300 100" class="logo logo--animated">
+                                <path d="M61.6,61.6H19.7C21,69,24.8,72.2,32.6,72.2c5.9,0,8.8-1.9,11.7-7.8l16.1,6.9C56.2,82,46.9,87.8,32.1,87.8
+                                    c-19.1,0-32-12.6-32-31.6c0-19.5,12.6-32.6,31.4-32.6c18.1,0,30.3,12.6,30.3,31.6C61.7,57.2,61.7,58.9,61.6,61.6z M19.6,49.3h23.6
+                                    c-0.2-7.9-4.1-10.9-11.3-10.9S20.7,41.8,19.6,49.3z"/>
+                                <path d="M71.2,0.1H90v86.5H71.2V0.1z"/>
+                                <path d="M166.1,24.7v61.8h-18.8V72.7c-3.5,9.8-10.5,15.1-20.4,15.1c-17.7,0-27.4-12.9-27.4-32
+                                    c0-19.4,9.3-32.2,26.2-32.2c10.5,0,18,5.4,21.6,15.6V24.7H166.1z M147.9,55.7c0-10.4-4.8-15.2-15.1-15.2c-9.9,0-14.6,4.8-14.6,15.2
+                                    c0,10.1,4.7,14.9,14.6,14.9C143.1,70.7,147.9,65.9,147.9,55.7L147.9,55.7z"/>
+                                <path d="M242.8,55.8c0,19.9-15.3,32-33.6,32s-33.6-12.1-33.6-32s15.3-32.2,33.6-32.2S242.8,35.8,242.8,55.8z M224,55.8
+                                    c0-10.4-4.7-15.2-14.8-15.2c-10.1,0-14.8,4.8-14.8,15.2c0,10.1,4.7,14.9,14.8,14.9S224,65.9,224,55.8L224,55.8z"/>
+                                <rect x="243.1" y="86.5" width="56.7" height="15"/>
+                            </svg>
+                        
+                            </a>
+                            <button class="nav-toggle nav-toggle--close">
+                                <i class="icon icon--close" aria-hidden="true"></i>
+                                <span class="screen-reader">Fermer le menu</span>
+                            </button>
+                        </div>
+                        <ul>
+                                                            <li class="nav-mobile__item ">
+                                    <a href="/elao_/pr/39/nos-services">
+                                                                                <span>Nos services</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav-mobile__item ">
+                                    <a href="/elao_/pr/39/methodo">
+                                                                                <span>Notre méthodologie</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav-mobile__item ">
+                                    <a href="/elao_/pr/39/etudes-de-cas/">
+                                                                                <span>Nos études de cas</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav-mobile__item ">
+                                    <a href="/elao_/pr/39/nos-valeurs">
+                                                                                <span>Nos valeurs</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav-mobile__item ">
+                                    <a href="/elao_/pr/39/la-tribu/">
+                                                                                <span>La tribu</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav-mobile__item ">
+                                    <a href="/elao_/pr/39/blog/">
+                                                                                <span>Blog</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav-mobile__item nav-mobile__item--large">
+                                    <a href="/elao_/pr/39/contact">
+                                                                                    <i class="icon icon--contact" aria-hidden="true"></i>
+                                                                                <span>Contact</span>
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </nav>
+                    <button class="nav-toggle nav-toggle--open">
+                        <i class="icon icon--hamburger" aria-hidden="true"></i>
+                        <span class="screen-reader">Ouvrir le menu</span>
+                    </button>
+                            </div>
+        </header>
+        <div class="container">
+        <main>
+                Liste des articles
+
+            <div>
+                                                <div>
+                        <img src="https://images.unsplash.com/photo-1533142266415-ac591a4deae9?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" />
+                        23 sept. 2020
+                                                    Amélie Defrance
+                                                    Thomas Jarrand
+                                                <a href="/elao_/pr/39/blog/styleguide/example">
+                            Petit guide de style du blog
+                        </a>
+                        Tour d&#039;horizon de ce qu&#039;on a pour faire de beaux articles. Et quelques bonnes pratiques de rédaction.
+                    </div>
+                                                                <div>
+                        <img src="/elao_/pr/39/images/posts/thumbnails/webpack-encore-alias.jpg" />
+                        31 juil. 2020
+                        Des namespaces en JavaScript ? C’est possible avec les alias Webpack Encore !
+                        Avec les alias Webpack Encore, adoptez la souplesse des namespaces PHP dans vos modules JavaScript avec des chemins absolus pour un code plus lisible et plus facile à refactorer.
+                        <a href="/elao_/pr/39/blog/dev/webpack-encore-alias-namespace">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Comprendre le cache du client Graphql Apollo
+                        Découverte du fonctionnement du cache du client GraphQL Apollo.
+                        <a href="/elao_/pr/39/blog/dev/apollo-graphql-cache">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        À la recherche d&#039;une développeuse / un développeur Backend
+                        élao recherche une développeuse / un développeur Backend à Lyon.
+                        <a href="/elao_/pr/39/blog/elao/job-developpeur-backend-lyon-2019">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Offusquez vos id dans vos url
+                        Découverte d&#039;alternatives aux ID auto-incrémentés dans les urls et leur mise en place dans le framework Symfony.
+                        <a href="/elao_/pr/39/blog/dev/offusquez-vos-id-dans-vos-url">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        🎃 Films d&#039;Halloween : la sélection de l&#039;équipe 🍿
+                        Quelques idées pour rendre votre soirée d&#039;Halloween un peu plus effrayante ou étrange ... 👻
+                        <a href="/elao_/pr/39/blog/elao/halloween-2019">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Two Way-Binding avec Vue et Vuex
+                        Mise en place d&#039;un Two-Way Binding avec Vue et Vuex.
+                        <a href="/elao_/pr/39/blog/dev/two-ways-binding-avec-vue-et-vuex">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Mettez en valeur vos offres d&#039;emploi grâce aux données structurées
+                        Et si vous rendiez vos offres d&#039;emploi plus visibles dans les pages de résultats des moteurs de recherche grâce aux données structurées ? 
+                        <a href="/elao_/pr/39/blog/dev/donnees-structurees-offre-emploi">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Comment empêcher les moteurs de recherche d&#039;indexer votre app Symfony en staging ?
+                        Les pages de votre application n&#039;ont pas vocation à être présentes dans les moteurs de recherche ? Voici une courte explication pour vous aider à empêcher le crawl et l&#039;indexation.
+                        <a href="/elao_/pr/39/blog/dev/no-index-staging-symfony">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        AFUP Day 2019 à Lyon : le compte-rendu de l&#039;équipe
+                        Notre compte-rendu de l&#039;Afup Day à Lyon, du 17 mai 2019.
+                        <a href="/elao_/pr/39/blog/elao/afup-day-lyon-2019">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Sauvez un cookie 🍪, installez Matomo !
+                        Chez Elao, nous mesurons désormais l&#039;audience de nos propres sites grâce à Matomo. Retour d&#039;expérience. 
+                        <a href="/elao_/pr/39/blog/dev/retour-experience-matomo">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Virtualiser son environnement de développement avec Manalize ✨
+                        Virtualiser son environnement de développement avec Manalize ✨
+                        <a href="/elao_/pr/39/blog/dev/manalize-virtualiser-son-environnement-de-developpement">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Retour sur le Forum PHP 2018
+                        En attendant l&#039;AFUP Day, voici notre retour sur le Forum PHP 2018.
+                        <a href="/elao_/pr/39/blog/elao/forum-php-2018">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Comment démarrer en TDD en PHP ?
+                        Test Driven Development c&#039;est bien mais comment commencer à en faire ?
+                        <a href="/elao_/pr/39/blog/dev/comment-demarrer-tdd-en-php">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Commander au clavier une application Symfony grâce au Routing
+                        Comment ajouter à une application Symfony une UI différente, une interface de commande par texte avec autocompletion.
+                        <a href="/elao_/pr/39/blog/dev/commander-au-clavier-app-symfony-grace-au-routing">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Ecrire des tests Behat proches de son domaine
+                        
+                        <a href="/elao_/pr/39/blog/dev/ecrire-des-tests-behat-proches-de-son-domaine">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        À la recherche de développeurs.euses Back
+                        élao recherche des développeuses/développeurs backend à Paris.
+                        <a href="/elao_/pr/39/blog/elao/job-developpeur-backend-agence-paris-2018">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        La tribu Elao Paris
+                        Elao recherche des passionnés pour développer la tribu parisienne. A travers cette présentation d&#039;Elao à Paris, nous espérons vous donner de bonnes raisons de nous rejoindre.
+                        <a href="/elao_/pr/39/blog/elao/elao-paris">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        À la recherche d&#039;un(e) «Sysadmin»
+                        Élao recherche un ou une Sysadmin à Lyon
+                        <a href="/elao_/pr/39/blog/elao/job-adminsys-agence-lyon-2018">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Retour sur le MiXiT 2018
+                        Nos retours sur les conférences du MiXiT 2018.
+                        <a href="/elao_/pr/39/blog/elao/mixit-2018">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Authentification par lien magique
+                        Retour d&#039;expérience sur la mise en place d&#039;authentification par lien de connexion.
+                        <a href="/elao_/pr/39/blog/dev/authentification-par-lien-magique">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Intégrer des icônes vectorielles dans React Native
+                        Comment intégrer des icônes vectorielles dans une app React Native grâce à une police de caractères personnalisée.
+                        <a href="/elao_/pr/39/blog/dev/react-native-font-icon">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Session recrutements chez élao !
+                        4 postes à pourvoir au sein de notre tribu lyonnaise
+                        <a href="/elao_/pr/39/blog/elao/jobs-agence-lyon-2018">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Facilitateur(trice) projet, j&#039;ai besoin d&#039;aide.
+                        Nous recherchons un facilitateur(trice) projet pour notre agence de Lyon.
+                        <a href="/elao_/pr/39/blog/elao/job-facilitateur-agence-lyon-2018">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        A la recherche d&#039;un développeur ou d&#039;une développeuse Frontend pour notre agence de Lyon
+                        Nous recherchons un développeur ou une développeuse Frontend pour notre agence de Lyon.
+                        <a href="/elao_/pr/39/blog/elao/job-frontend-developpeur-agence-lyon-2018">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        À la recherche d&#039;un développeur ou d&#039;une développeuse Back
+                        élao recherche un développeur ou une développeuse backend à Lyon.
+                        <a href="/elao_/pr/39/blog/elao/job-developpeur-backend-agence-lyon-2018">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Conception et développement d&#039;API : l&#039;interview croisée de l&#039;équipe Élao
+                        Interview croisée des développeurs d&#039;Élao à propos de leurs diverses expériences en conception et développement d&#039;API
+                        <a href="/elao_/pr/39/blog/dev/api-design-elao-team-interview">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        E-learning sans internet ou presque
+                        Retour d&#039;expérience sur la conception de la progressive web app de Chalkboard Education
+                        <a href="/elao_/pr/39/blog/dev/progressive-web-app-chalkboard-education-elearning-sans-internet">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Dates PHP et Timezone UTC, pourquoi est-ce important ?
+                        Mise au point sur les problématiques de timezone avec les dates PHP.
+                        <a href="/elao_/pr/39/blog/dev/date-php-timezone-utc-pourquoi-est-ce-important">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        From react-native init to app stores real quick
+                        From react-native init to stores real quick
+                        <a href="/elao_/pr/39/blog/dev/from-react-native-init-to-app-stores-real-quick.en">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Le Blend Web Mix 2017 arrive !
+                        
+                        <a href="/elao_/pr/39/blog/elao/blendwebmix-2017">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Planification de rendez-vous avec OptaPlanner
+                        
+                        <a href="/elao_/pr/39/blog/dev/planification-de-rdv-avec-optaplanner">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Migrer les mots de passe utilisateur vers une autre méthode d&#039;encodage avec Symfony
+                        Migration continue de mots de passe legacy d&#039;une méthode d&#039;encodage à une autre dans Symfony. Par exemple, migrer de md5 vers bcrypt.
+                        <a href="/elao_/pr/39/blog/dev/migrer-mots-de-passe-utilisateur-autre-methode-encodage-symfony">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Nuit du Hack XV
+                        La quinzième édition de la Nuit Du Hack (#NDHXV) s&#039;est tenue le Samedi 24 Juin 2017 en région parisienne.
+                        <a href="/elao_/pr/39/blog/elao/nuit-du-hack-XV">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        GAD : Github Agile Dashboard
+                        Comment j&#039;ai créé un petit outil en ligne de commande pour m&#039;aider dans mon quotidien agile
+                        <a href="/elao_/pr/39/blog/methodo/github-agile-dashboard">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        L&#039;architecture hexagonale avec Symfony
+                        Présentation de l&#039;architecture hexagonale et de son implémentation avec le framework Symfony.
+                        <a href="/elao_/pr/39/blog/dev/architecture-hexagonale-symfony">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Retour d&#039;expérience d&#039;un stagiaire Elao
+                        Cela fait maintenant 4 mois que je travaille en tant que stagiaire au sein de la tribu Elao Paris et je pense qu&#039;il est intéressant de prendre un peu de recul sur les mois écoulés
+                        <a href="/elao_/pr/39/blog/elao/stagiaire-elao">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Le Design Pattern &#039;Chain of Responsibility&#039;
+                        Nouvel article consacré aux Design Patterns. Aujourd&#039;hui : le pattern Chain of Responsibility
+                        <a href="/elao_/pr/39/blog/dev/design-pattern-chain-of-responsibility">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Améliorez la pertinence de vos résultats ElasticSearch grâce au score
+                        Améliorez la pertinence de vos résultats ElasticSearch grâce au score.
+                        <a href="/elao_/pr/39/blog/dev/ameliorez-pertinence-resultat-elastic-search-score">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Gérer un projet AGILE avec GitHub
+                        Retour d&#039;expérience sur la gestion d&#039;un projet avec GitHub.
+                        <a href="/elao_/pr/39/blog/methodo/gestion-projet-agile-github">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Introduction à Vagrant
+                        Le fonctionnement et les principes utilisés par Vagrant. Comment installer une VM contenant une version minimale d&#039;Ubuntu et la provisionner avec nginx.
+                        <a href="/elao_/pr/39/blog/infra/introduction-a-vagrant">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        DotScale Paris 2017
+                        Aperçu du DotScale Paris 2017
+                        <a href="/elao_/pr/39/blog/elao/dotscale-paris-2017">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Le Design Pattern &#039;Decorator&#039;
+                        Présentation du pattern &#039;Decorator&#039; dans le cadre d&#039;une série consacrée aux Design Patterns
+                        <a href="/elao_/pr/39/blog/dev/design-pattern-decorator">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Le Design Pattern &#039;Abstract Factory&#039;
+                        Deuxième article d&#039;une série consacrée aux Design Patterns. Aujourd&#039;hui : le pattern Abstract Factory
+                        <a href="/elao_/pr/39/blog/dev/design-pattern-abstract-factory">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Le Design Pattern &#039;Factory Method&#039;
+                        Premier article d&#039;une série consacrée aux Design Patterns. Aujourd&#039;hui : le pattern Factory Method
+                        <a href="/elao_/pr/39/blog/dev/design-pattern-factory-method">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Provisionner simplement une stack de monitoring Telegraf + InfluxDB + Grafana avec Manala
+                        Comment utiliser les roles Ansible de Manala pour provisionner simplement une stack de monitoring Telegraf + InfluxDB + Grafana
+                        <a href="/elao_/pr/39/blog/infra/provisonner-simplement-stack-monitoring-telegraf-influxdb-grafana-avec-manala">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Intégrer... notre agence de Lyon
+                        Nous cherchons notre intégratrice/intégrateur web à Lyon.
+                        <a href="/elao_/pr/39/blog/elao/nous-recherchons-notre-integrateur-web-a-lyon">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Utiliser l&#039;API Openstack OVH
+                        Préparer son environnement pour utiliser l&#039;API openstack d&#039;OVH, pré-requis et installation du client
+                        <a href="/elao_/pr/39/blog/infra/utiliser-l-api-openstack-ovh">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Le web n&#039;est pas mort, la revanche par les Progressives Web Apps
+                        Les Progressives Web Apps ont pour objectif de rivaliser avec les apps natives. Voyons comment cela fonctionne et le gain que cela apporte à vos utilisateurs.
+                        <a href="/elao_/pr/39/blog/dev/la-revanche-du-web-par-les-progressive-web-apps">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Notre quotidien d&#039;équipe projet auto-organisée
+                        Retour d&#039;expérience sur la vie d&#039;une équipe projet auto-organisée. Voici ce que nous avons mis en place progressivement, nos expérimentations, nos succès et nos échecs.
+                        <a href="/elao_/pr/39/blog/methodo/notre-quotidien-equipe-projet-auto-organisee">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Blend Web Mix 2016 : un gros coup de boost
+                        
+                        <a href="/elao_/pr/39/blog/elao/blendwebmix-2016">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Retour sur le Forum PHP 2016
+                        Nous étions au Forum PHP 2016 de l&#039;AFUP
+                        <a href="/elao_/pr/39/blog/elao/forum-php-2016">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Réalisez une application Vue.js avec vue-cli
+                        Introduction à la réalisation d&#039;applications frontend avec Vue.js et vue-cli.
+                        <a href="/elao_/pr/39/blog/dev/realisez-une-application-vue-js-avec-vue-cli">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Accéder à une API cross-domain depuis Javascript avec CORS et un reverse proxy nginx
+                        Configurer un reverse proxy avec nginx et CORS pour permettre à une application Javascript d&#039;accéder à une API sur un autre domaine en contournant la Same Origin Policy.
+                        <a href="/elao_/pr/39/blog/infra/acceder-api-cross-domain-depuis-javascript-avec-cors-reverse-proxy-nginx">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Comment intégrer Vue.js dans une application Symfony
+                        Guide d&#039;intrégration de Vue.js dans une application Symfony
+                        <a href="/elao_/pr/39/blog/dev/comment-integrer-vue-js-application-symfony">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Pourquoi devriez-vous utiliser Vue.js dans vos projets ?
+                        Retour d&#039;expérience sur le framework frontend Vue.js et pourquoi l&#039;utiliser
+                        <a href="/elao_/pr/39/blog/dev/pourquoi-devriez-vous-utiliser-vue-js-dans-vos-projets">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        SSH-agent does not automatically load passphrases on the OSX Sierra keychain during startup
+                        SSH-agent does not automatically load passphrases on the OSX Sierra keychain during startup.
+                        <a href="/elao_/pr/39/blog/tech/ssh-agent-does-not-automatically-load-passphrases-on-the-osx-sierra-keychain.en">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Retour sur le Best Of Web 2016
+                        La seconde édition du Best Of Web s&#039;est tenue le Vendredi 10 Juin 2016 à Paris, et a rassemblé le meilleur des meetups de l&#039;année. Retour sur cet événement.
+                        <a href="/elao_/pr/39/blog/elao/best-of-web-2016">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        PHP Tour 2016, Merciiiiii
+                        Les 23 et 24 mai se déroulait à Clermont-Ferrand le PHP Tour 2016. Pour l&#039;occasion l&#039;Afup et Clermont&#039;ech ont à nouveau réuni la communauté open source PHP.
+                        <a href="/elao_/pr/39/blog/elao/phptour-2016">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Retour sur la nCrafts 2016
+                        Les 12 et 13 mai se déroulait à Paris la nCrafts, une conférence indépendante et internationale sur le développement logiciel.
+                        <a href="/elao_/pr/39/blog/elao/ncrafts-2016">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Introduction au provisioning
+                        Introduction aux principes de base de l&#039;approvisionnement (ou provisoning) d&#039;environnements de développement, d&#039;exécution, de production ou encore de test
+                        <a href="/elao_/pr/39/blog/infra/introduction-au-provisioning">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Retour sur la SymfonyCon 2015
+                        Nous étions à la SymfonyCon 2015 pour fêter les 10 ans de Symfony
+                        <a href="/elao_/pr/39/blog/elao/symfonycon-2015">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Comprendre l&#039;héritage des instructions de configuration de Nginx
+                        Nginx fonctionne avec une notion de contexte autorisant certaines instructions de configuration. Nous évoquons dans cet article comment Nginx traite et organise ces différents blocs.
+                        <a href="/elao_/pr/39/blog/infra/comprendre-lheritage-des-instructions-de-configuration-de-nginx">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Spécifions les user stories
+                        L&#039;écriture d&#039;user stories n&#039;est pas aussi simple qu&#039;elle peut le paraître. Avec un minimum de guide, on peut s&#039;améliorer rapidement.
+                        <a href="/elao_/pr/39/blog/methodo/specifions-user-stories">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Retour sur le Forum PHP 2015
+                        Nous étions au Forum PHP de l&#039;AFUP, voici ce que l&#039;on a retenu.
+                        <a href="/elao_/pr/39/blog/elao/forum-php-2015">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Behat 3 pour vos tests fonctionnels Symfony2
+                        Installation et utilisation de Behat 3 pour vos tests fonctionnels Symfony2
+                        <a href="/elao_/pr/39/blog/dev/behat-3-test-fonctionnel-symfony">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Retour sur Paris Web 2015
+                        Paris Web, la conférence francophone des gens qui font le web !
+                        <a href="/elao_/pr/39/blog/elao/retour-paris-web">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Le télétravail, point de vue
+                        Pratique encore relativement marginale dans l&#039;entreprise française, le télétravail s&#039;imposera sans doute dans les années à venir comme une réelle alternative aux méthodes traditionnelles. Bilan sur ses avantages et ses inconvénients, de mon point de vue.
+                        <a href="/elao_/pr/39/blog/elao/le-teletravail-point-de-vue">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Meteor - Archi. multi-apps connectées
+                        Architecture d&#039;une application Meteor décomposée en plusieurs sous-applications connectées à la même base de données MongoDb.
+                        <a href="/elao_/pr/39/blog/dev/meteor-multi-apps-architecture">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Retour sur le Best Of Web 2015
+                        La première édition du Best Of Web s&#039;est tenue le Vendredi 5 Juin 2015 à Paris, et à rassembler le meilleurs des meetups de l&#039;année. Retour sur cet évènement.
+                        <a href="/elao_/pr/39/blog/elao/best-of-web-2015">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Retour sur la NodeSchool Paris
+                        La NodeSchool permet de pratiquer Javascript et Node.js grâce à des ateliers interactifs.
+                        <a href="/elao_/pr/39/blog/elao/nodeschool-paris">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Retour sur le Mix-IT 2015 (Lyon)
+                        L&#039;édition 2015 du Mix-IT s&#039;est tenue les 16 et 17 avril au CPE de Lyon. Retour sur cet événement.
+                        <a href="/elao_/pr/39/blog/elao/mix-it-2015-pt1">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Retour sur le Symfony Live 2015
+                        La septième édition du SymfonyLive Paris s&#039;est tenue le jeudi 9 avril à la Cité Internationale Universitaire de Paris. Retour sur cet évènement.
+                        <a href="/elao_/pr/39/blog/elao/symfony-live-2015">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        SSL - Générer une demande de signature de certificat
+                        Comment générer une demande de signature d&#039;un certificat SSL (CSR) à destination d&#039;une autorité de certification.
+                        <a href="/elao_/pr/39/blog/infra/ssl-generer-une-demande-de-signature-de-certificat-csr">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Authentification HTTP avec HA Proxy
+                        Comment gérer une authentification HTTP basique avec HA Proxy, définir des utilisateurs, des groupes et le type d&#039;authentification souhaitée.
+                        <a href="/elao_/pr/39/blog/infra/authentification-http-avec-haproxy">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Créer un cluster 2 nodes Proxmox
+                        Rapide présentation d&#039;une fonctionnalité intéressante des distributions Proxmox qui permet de faire du clustering avec deux ou plusieures machines physiques.
+                        <a href="/elao_/pr/39/blog/infra/creer-un-cluster-2-nodes-proxmox">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Controller ses services applicatifs avec supervisor
+                        Supervisor est un système de contrôle des processus/services applicatifs destiné aux systèmes de types UNIX.
+                        <a href="/elao_/pr/39/blog/infra/utiliser-supervisor-pour-controler-ses-services-applicatifs">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Installer graphite sur Debian Wheezy
+                        Installation de graphite avec Gunicorn et Nginx sur debian Wheezy.
+                        <a href="/elao_/pr/39/blog/infra/installer-graphite-sur-debian-wheezy">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Utiliser les dépôts officiels Nginx sur Debian Wheezy
+                        Comment configurer et utiliser les dépôts Nginx sur Debian Wheezy.
+                        <a href="/elao_/pr/39/blog/infra/utiliser-les-depots-officiels-nginx-sur-debian-wheezy">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Partitionnement d&#039;un serveur proxmox
+                        Petit billet mémo aujourd&#039;hui concernant le partitionnement d&#039;un serveur Proxmox, rien de bien sorcier en soi mais il est toujours bon d&#039;avoir un référentiel auquel se fier.
+                        <a href="/elao_/pr/39/blog/infra/partitionnement-d-un-serveur-proxmox">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Créer une clé bootable OSX 10.10 Yosemite
+                        Créer une clé bootable OSX 10.10 Yosemite.
+                        <a href="/elao_/pr/39/blog/tech/creer-une-cle-bootable-osx-10-10-yosemite">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Comment bien préparer sa conférence ?
+                        Comment bien préparer sa conférence ?
+                        <a href="/elao_/pr/39/blog/elao/hs-bien-preparer-sa-conference">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Plusieurs mailer dans une application Symfony 2
+                        Plusieurs mailer dans une application Symfony 2
+                        <a href="/elao_/pr/39/blog/dev/plusieurs-mailer-dans-une-application-symfony-2">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        A nice way of handling form label translation
+                        A nice way of handling form label translation
+                        <a href="/elao_/pr/39/blog/dev/a-nice-way-of-handing-form-label-translation.en">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        The BrowserDetectorBundle: working with the Kernel events
+                        The BrowserDetectorBundle: working with the Kernel events
+                        <a href="/elao_/pr/39/blog/dev/the-browserdetectorbundle-working-with-the-kernel-events">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Utilisation de l&#039;évènement kernel.terminate sous Symfony2
+                        Utilisation de l&#039;évènement kernel.terminate sous Symfony2
+                        <a href="/elao_/pr/39/blog/dev/utilisation-de-levenement-kernel-terminate-sous-symfony2">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Feedback : Monitor your Symfony2 application via Stats.d and Graphite
+                        Feedback : Monitor your Symfony2 application via Stats.d and Graphite
+                        <a href="/elao_/pr/39/blog/infra/feedback-monitor-your-symfony2-application-via-stats-d-and-graphite.en">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Bonnes pratiques Symfony2 : notre condensé !
+                        Bonnes pratiques Symfony2 : notre condensé !
+                        <a href="/elao_/pr/39/blog/dev/bonnes-pratiques-symfony2-notre-condense">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Twig : Quelques pro-tips issue du Symfony Live 2013
+                        Twig : Quelques pro-tips issue du Symfony Live 2013
+                        <a href="/elao_/pr/39/blog/dev/twig-quelques-pro-tips-issue-du-symfony-live-2013">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Maintenabilité et performance avec Sass et Compass
+                        Maintenabilité et performance avec Sass et Compass
+                        <a href="/elao_/pr/39/blog/dev/maintenabilite-et-performance-avec-sass-et-compass">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Feedback on a side-effect with Symfony 2.2, subdomains and sessions
+                        Feedback on a side-effect with Symfony 2.2, subdomains and sessions
+                        <a href="/elao_/pr/39/blog/dev/subdomains-symfony2-2-session-authentication.en">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)
+                        Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application.
+                        <a href="/elao_/pr/39/blog/infra/install-stats-d-graphite-on-a-debian-server-to-monitor-a-symfony2-application.en">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Monitor your Symfony2 application via Stats.d and Graphite (2/2)
+                        Monitor your Symfony2 application via Stats.d and Graphite Part. 2
+                        <a href="/elao_/pr/39/blog/infra/monitor-your-symfony2-application-via-stats-d-and-graphite-2.en">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Responsive Web Design
+                        Responsive Web Design
+                        <a href="/elao_/pr/39/blog/dev/responsive-web-design">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        How to manage translations for your object using SonataAdminBundle
+                        How to manage translations for your object using SonataAdminBundle
+                        <a href="/elao_/pr/39/blog/dev/how-to-manage-translations-for-your-object-using-sonataadminbundle.en">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Migrer un site web sans interruption de service grâce au reverse proxy d&#039;Apache.
+                        Migrer un site web sans interruption de service grâce au reverse proxy d&#039;Apache.
+                        <a href="/elao_/pr/39/blog/infra/migrer-un-site-web-sans-interruption-de-service-grace-au-reverse-proxy-dapache">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Symfony 2 - Doctrine 2 - Cheat Sheets
+                        Symfony 2 - Doctrine 2 - Cheat Sheets
+                        <a href="/elao_/pr/39/blog/dev/symfony-2-doctrine-2-cheat-sheets.en">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Django (3ème partie) : les templates, et bien d&#039;autres choses ...
+                        Django (3ème partie) : les templates, et bien d&#039;autres choses ...
+                        <a href="/elao_/pr/39/blog/dev/django-3eme-partie-les-templates-et-bien-dautres-choses">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Django (2nde partie) : le Modèle et l’Admin
+                        Django (2nde partie) : le Modèle et l’Admin
+                        <a href="/elao_/pr/39/blog/dev/django-2nde-partie-le-modele-et-ladmin">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Créer une autorité de certification et des certificats SSL auto-signés
+                        Créer une autorité de certification et des certificats SSL auto-signés
+                        <a href="/elao_/pr/39/blog/infra/creer-une-autorite-de-certification-et-des-certificats-ssl-auto-signes">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Premiers pas avec le framework Python &quot;Django&quot;
+                        Premiers pas avec le framework Python &quot;Django&quot;
+                        <a href="/elao_/pr/39/blog/dev/premiers-pas-avec-le-framework-python-django">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin
+                        Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin.
+                        <a href="/elao_/pr/39/blog/dev/installation-et-premiers-pas-avec-le-plugin-symfony-sfimagetransformextraplugin">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Symfony 2 – L’injection de dépendances
+                        Symfony 2 – L’injection de dépendances
+                        <a href="/elao_/pr/39/blog/dev/symfony-2-linjection-de-dependances">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Configuration de Bind sous Mac OS X
+                        Configuration de Bind sous Mac OS X.
+                        <a href="/elao_/pr/39/blog/tech/configuration-de-bind-sous-mac-os-x">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Propel - Utiliser des champs calculés
+                        Propel - Utiliser des champs calculés
+                        <a href="/elao_/pr/39/blog/dev/propel-utiliser-des-champs-calcules">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Utilisation de la commande find - cas pratiques
+                        Utilisation de la commande find - cas pratiques
+                        <a href="/elao_/pr/39/blog/infra/utilisation-de-la-commande-find-cas-pratiques">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Authentifications multiples à partir de clés SSH
+                        Authentifications multiples à partir de clés SSH.
+                        <a href="/elao_/pr/39/blog/infra/authentifications-multiples-a-partir-de-cles-ssh">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Sécuriser ses accès serveur: Authentification par clés SSH
+                        Sécuriser ses accès serveur: Authentification par clés SSH.
+                        <a href="/elao_/pr/39/blog/infra/securiser-ses-acces-serveur-authentification-par-cles-ssh">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Installation de FUSE et s3fs sur une Debian Lenny
+                        Installation de FUSE et s3fs sur une Debian Lenny
+                        <a href="/elao_/pr/39/blog/infra/installation-de-fuse-et-s3fs-sur-une-debian-lenny">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Syntaxe des enregistrements SPF (Sender Privacy Framework)
+                        Syntaxe des enregistrements SPF, cas d&#039;utilisation et options de configuration.
+                        <a href="/elao_/pr/39/blog/infra/syntaxe-des-enregistrements-spf-sender-privacy-framework">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Opération sur un fichier avec la commande find
+                        Opération sur un fichier avec la commande find
+                        <a href="/elao_/pr/39/blog/infra/operation-sur-un-fichier-avec-la-commande-find">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                                                <div>
+                        Installation d&#039;un dépôt SVN
+                        Installation d&#039;un dépôt SVN pour gérer et versioner le code source d&#039;un projet
+                        <a href="/elao_/pr/39/blog/infra/installation-d-un-depot-svn">
+                            Lire l'article_
+                        </a>
+                    </div>
+                                    <div>
+            </main>
+                    <footer class="footer">
+                <section class="footer__links">
+                    <p class="h1 h1--small">
+                        elao
+                        <span>développe</span>
+                         <span>du lien</span>
+                    </p>
+                    <div class="links">
+                        <ul>
+                            <li>
+                                <a href="#">Nos services</a>
+                            </li>
+                            <li>
+                                <a href="#">Nos études de cas</a>
+                            </li>
+                            <li>
+                                <a href="#">Blog</a>
+                            </li>
+                            <li>
+                                <a href="#">Notre méthodologie</a>
+                            </li>
+                            <li>
+                                <a href="#">La tribu</a>
+                            </li>
+                            <li>
+                                <a href="#">Contact</a>
+                            </li>
+                            <li>
+                                <a href="#">Nos valeurs</a>
+                            </li>
+                            <li>
+                                <a href="#">Nous recrutons <span class="bullet">3</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="socials">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="icon icon--github"></i>
+                                    Github
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon icon--twitter"></i>
+                                    Twitter
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon icon--instagram"></i>
+                                    Instagram
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="footer__legals">
+                    <span>© 2014/2020 - ELAO - Tous droits réservés</span>
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Protection des données</a>
+                </section>
+            </footer>
+        </div>
+                            <script src="/elao_/pr/39/build/runtime.2799e85a.js"></script><script src="/elao_/pr/39/build/app.a7244376.js"></script>
+                    </body>
+</html>
