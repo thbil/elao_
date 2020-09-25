@@ -451,11 +451,7 @@
 <p>It'll grab all the fields tagged with the <em>Translatable via its listener</em>, then it'll read the properties annotations in order to add in your form all the fields with the right type (string / text). You have to specify an array of locales</p>
 <p>So Have Fun translating your objects into the AdminBundle, and we can say thank you to <a href="https://github.com/a2lix" target="_blank">a2lix</a> who made this usefull, yet uknown Bundle.</p>
 <p>You can find another example, on how to Translate your object in a form, (but outside the SonataAdminBundle) on the owner repo <a href="https://github.com/a2lix/DemoTranslationBundle" target="_blank">here</a>.</p></body>
-              <div class="article-credits">
-          Crédits: photo de couverture par
-                        
-                  </div>
-          </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>

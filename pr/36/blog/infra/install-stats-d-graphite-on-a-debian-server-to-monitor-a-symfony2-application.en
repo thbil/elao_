@@ -341,11 +341,7 @@ graphitePort<span class="token operator">:</span> <span class="token number">200
     <span class="token key atrule">liuggio_stats_d_client.collector.exception</span><span class="token punctuation">:</span> <span class="token string">'collect.exception'</span></code></pre>
 <p>Note that we added the full configuration for the bundle which allow us to collect these usefull information such as logged users vs anonymous, memory usage.</p>
 <p>In the <a href="/en/infra/monitor-your-symfony2-application-via-stats-d-and-graphite-2/">2nd part</a>, we'll see how to monitor custom events in your Symfony2 app.</p></body>
-              <div class="article-credits">
-          Crédits: photo de couverture par
-                        
-                  </div>
-          </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>

@@ -243,11 +243,7 @@
         <span class="token key atrule">lifetime</span><span class="token punctuation">:</span> <span class="token number">31536000</span>
         <span class="token key atrule">path</span><span class="token punctuation">:</span>     /
         <span class="token key atrule">domain</span><span class="token punctuation">:</span>   .my<span class="token punctuation">-</span>domain.com <span class="token comment"># Defaults to the current domain from $_SERVER</span></code></pre></body>
-              <div class="article-credits">
-          Crédits: photo de couverture par
-                        
-                  </div>
-          </main>
+                        </main>
     <aside class="article-content__aside">
       <button class="kudo">
         <span class="kudo__button" aria-hidden="true"></span>
