@@ -221,7 +221,7 @@ Long story short : <strong>DON'T</strong>.</p>
 <p>Once I realized that my monitoring system was the problem (especially carbon), I decided to shut it down. The difference was clearly visible. From 95% I/O disk usage to 0-1%.</p>
 <p><strong>I won ~60%</strong> on my server response time (both monitored by google analytics and newrelic).</p>
 <div style="text-align:center;">
-![response time Feedback : Monitor your Symfony2 application via Stats.d and Graphite](/enimages/posts/2012/memory_usage.png)
+![response time Feedback : Monitor your Symfony2 application via Stats.d and Graphite](/en/images/posts/2012/memory_usage.png)
 </div></body>
                         </main>
     <aside class="article-content__aside">

@@ -356,7 +356,7 @@ chmod 777 web/thumbnails</code></pre>
 <p>La documentation du plugin est très floue quant à la manière d’indiquer l’emplacement d’une image dans le répertoire public de notre application. En fait, les images doivent être stockées dans le répertoire web/uploads ou un de ses sous-répertoires, mais la documentation n’est absolument pas claire sur ce point (et sur bien d’autres !).</p>
 </blockquote>
 <p>Copions l’image du logo ZF dans le répertoire public :</p>
-<pre class="code-multiline"><code id="dbfd4ba91f32b9e6b0d2a1fc9dfe08cc">cp webimages/zf.jpg web/uploads/zf.jpg</code></pre>
+<pre class="code-multiline"><code id="47e75e8f4fe5799d2c0ca096cf08855f">cp web/images/zf.jpg web/uploads/zf.jpg</code></pre>
 <p>Nous devons à présent déclarer une route pointant sur le module sfImageTransformator, chargé de transformer les images. Comme nous souhaitons modifier une image du répertoire public de l’application, nous précisons dans l’entrée “options” que l’image source est de type “File” :</p>
 <pre class="code-multiline language-yaml"><code class="language-yaml" id="cd5e8104981601f6784e452dd21ab0d3"><span class="token comment"># apps/frontend/config/routing.yml</span>
 <span class="token key atrule">sf_image_file</span><span class="token punctuation">:</span>
