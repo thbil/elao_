@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>5 décembre 2016</strong></span>
-        <span>Modification <strong>28 septembre 2020</strong></span>
+        <span>Modification <strong>29 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -343,7 +343,7 @@ Ces ressources sont mises en cache et n'ont pas besoin d'être retéléchargées
 Ensuite, les données sont récupérées via des <em>fetch</em> d'API par exemple et viennent s'insérer dans votre présentation à l'aide par exemple de votre framework Frontend préféré.
 Les requêtes à ces API peuvent elles-mêmes être mises en cache.</p>
 <p class="text-center">
-    <img src="/images/posts/2016/pwa/appshell.png" alt="Appshell" style="max-width:80%" id="appshell"></p>
+    <img src="/elao_/images/posts/2016/pwa/appshell.png" alt="Appshell" style="max-width:80%" id="appshell"></p>
 <h3 id="c-est-r-serv-aux-apps-mobiles" class="anchor-title"><a href="#c-est-r-serv-aux-apps-mobiles">C'est réservé aux apps mobiles ?</a></h3>
 <p>Il est vrai que le problème de connectivité, on l'a surtout en position de mobilité et grâce à la gestion du cache, une web app reste utilisable même en mode déconnecté.
 Mais rien ne vous empêche d'utiliser un Service Worker pour booster vos applications web <em>desktop</em>.
@@ -353,7 +353,7 @@ Les mastodontes tels que Gmail ou Facebook les utilisent couramment.</p>
 offrant aux utilisateurs un accès plus rapide.</p>
 <p>L'ouverture du site dans le navigateur se présente comme une application native avec également un Splash Screen :</p>
 <p class="text-center">
-    <img src="/images/posts/2016/pwa/splashscreen.gif" alt="splashscreen" style="max-width:80%" id="splashscreen"></p>
+    <img src="/elao_/images/posts/2016/pwa/splashscreen.gif" alt="splashscreen" style="max-width:80%" id="splashscreen"></p>
 <p>Ce Web App Manifest se présente sous forme d'un fichier json :</p>
 <pre class="code-multiline language-json"><code class="language-json" id="0896c690edd9ccd39b2c1244905a3083"><span class="token punctuation">{</span>
   <span class="token property">"short_name"</span><span class="token operator">:</span> <span class="token string">"Elao App"</span><span class="token punctuation">,</span>
@@ -538,20 +538,20 @@ Un article à lire à ce sujet : <a href="https://medium.com/@AdityaPunjani/buil
 <p>Le panel "Application" de Developer Tools de Chrome est déjà assez riche en fonctionnalités pour débuguer toutes les facettes d'une Progressive Web App.</p>
 <p>Il permet de consulter le Cache Storage :</p>
 <p class="text-center">
-    <img src="/images/posts/2016/pwa/chrome-devtools-cachestorage.png" alt="Cache storage" style="max-width:80%" id="cache-storage"></p>
+    <img src="/elao_/images/posts/2016/pwa/chrome-devtools-cachestorage.png" alt="Cache storage" style="max-width:80%" id="cache-storage"></p>
 <p>Vérifier le contenu du Web App Manifest et simuler l'ajout à l'écran d'accueil.
 Sous Chrome desktop, l'ajout sera effectivement fait dans les onglets Applications.</p>
 <p class="text-center">
-    <img src="/images/posts/2016/pwa/chrome-devtools-manifest.png" alt="service worker" style="max-width:80%" id="service-worker"></p>
+    <img src="/elao_/images/posts/2016/pwa/chrome-devtools-manifest.png" alt="service worker" style="max-width:80%" id="service-worker"></p>
 <p>Consulter le Service Worker utilisé et avoir différentes options parmi lesquelles :</p>
 <ul><li>simuler la déconnection avec "offline",</li>
 <li>mettre à jour le Service Worker notamment en phase de développement avec "Update on reload",</li>
 <li>contourner le service worker pour obliger le navigateur à récupérer une ressource depuis le réseau (au lieu du cache) avec "Bypass for network".</li>
 </ul><p class="text-center">
-    <img src="/images/posts/2016/pwa/chrome-devtools-serviceworker.png" alt="service worker" style="max-width:80%" id="service-worker"></p>
+    <img src="/elao_/images/posts/2016/pwa/chrome-devtools-serviceworker.png" alt="service worker" style="max-width:80%" id="service-worker"></p>
 <p>Enfin, une fonction "Clear storage" permet de tout réinitialiser :</p>
 <p class="text-center">
-    <img src="/images/posts/2016/pwa/chrome-devtools-clearstorage.png" alt="service worker" style="max-width:80%" id="service-worker"></p>
+    <img src="/elao_/images/posts/2016/pwa/chrome-devtools-clearstorage.png" alt="service worker" style="max-width:80%" id="service-worker"></p>
 <p>Pour en savoir plus, voir cet article <a href="https://developers.google.com/web/tools/chrome-devtools/progressive-web-apps" target="_blank">Debug Progressive Web Apps</a>.</p>
 <p>De plus, voici d'autres outils - tous propulsés par Google - pour faciliter le développement d'une Progressive Web App :</p>
 <ul><li><a href="https://github.com/GoogleChrome/sw-precache/" target="_blank">Service Worker Precache</a> est un module node pour faciliter la gestion de la mise en cache des ressouces statiques (HTML, JavaScript, CSS, images, etc.) via un Service Worker. Un <a href="https://codelabs.developers.google.com/codelabs/sw-precache/index.html" target="_blank">codelab</a> est disponible.</li>

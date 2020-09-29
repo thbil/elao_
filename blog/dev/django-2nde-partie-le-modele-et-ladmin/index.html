@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>6 octobre 2010</strong></span>
-        <span>Modification <strong>28 septembre 2020</strong></span>
+        <span>Modification <strong>29 septembre 2020</strong></span>
       </div>
     </div>
 
@@ -345,11 +345,11 @@ admin<span class="token punctuation">.</span>autodiscover<span class="token punc
 <pre class="code-multiline"><code id="7f3b27fe44ab000ce56db013e33e31de">python manage.py runserver</code></pre>
 <p>... et admirer le résultat en nous rendant à l'URL suivante : <a href="http://localhost:8000/admin/" target="_blank"></a><a href="http://localhost:8000/admin/" target="_blank">http://localhost:8000/admin/</a>. Nous sommes alors invités à nous loguer :</p>
 <div style="text-align:center;">
-![django admin Django (2nde partie) : le Modèle et lAdmin](/images/posts/2010/django-admin.gif)
+![django admin Django (2nde partie) : le Modèle et lAdmin](images/posts/2010/django-admin.gif)
 </div>
 <p>Saisissez les identifiants que vous aviez précisés lorsque nous avions lancé la commande <em>python manage.py syncdb</em>. Voici le résultat après login :</p>
 <div style="text-align:center;">
-![Capture Site administration Django site admin Mozilla Firefox Django (2nde partie) : le Modèle et lAdmin" width="75%](/images/posts/2010/Capture-Site-administration-Django-site-admin-Mozilla-Firefox.png)
+![Capture Site administration Django site admin Mozilla Firefox Django (2nde partie) : le Modèle et lAdmin" width="75%](images/posts/2010/Capture-Site-administration-Django-site-admin-Mozilla-Firefox.png)
 </div>
 <p>A présent, nous allons éditer le fichier contenant la définition de nos deux classes du modèle, <em>Item</em> et <em>Sport</em>, afin qu'elles soient prises en compte par l'Admin de Django. Pour cela, nous allons éditer le fichier <em>shop/models.py</em> et y ajouter les lignes suivantes :</p>
 <pre class="code-multiline language-python"><code class="language-python" id="d746deef2dc3156abdba1feb01dcba3a"><span class="token comment"># shop/models.py</span>
@@ -368,7 +368,7 @@ admin<span class="token punctuation">.</span>site<span class="token punctuation"
 admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>register<span class="token punctuation">(</span>Item<span class="token punctuation">,</span> ItemAdmin<span class="token punctuation">)</span></code></pre>
 <p>Rendez-vous à présent sur la page <a href="http://localhost:8000/admin/" target="_blank"></a><a href="http://localhost:8000/admin/" target="_blank">http://localhost:8000/admin/</a> pour constater que l'Admin de Django a bien enregistré nos deux classes du modèle. Si tout s'est correctement déroulé, vous devriez voir la liste des entités gérées sur la page d'accueil :</p>
 <div style="text-align:center;">
-![Django Admin Model Classes Django (2nde partie) : le Modèle et lAdmin](/images/posts/2010/Django-Admin-Model-Classes.png)
+![Django Admin Model Classes Django (2nde partie) : le Modèle et lAdmin](images/posts/2010/Django-Admin-Model-Classes.png)
 </div>
 <p>N'hésitez pas à naviguer dans l'interface d'Administration de Django pour découvrir les nombreuses fonctionnalités offertes, mais avant de créer des articles, nous devons préalablement déterminer le chemin du répertoire "<em>media</em>" où seront notamment placées les images liées aux articles. Pour cela, nous allons préciser la valeur de la constante <em>MEDIA_ROOT</em> dans le fichier <em>settings.py</em>, puis créer une nouvelle route destinée à servir les fichiers statiques contenus dans ce répertoire "<em>media</em>".</p>
 <blockquote>
