@@ -170,16 +170,16 @@
     <div class="article-info">
                     <div class="article-author ">
           <div class="article-author__image">
-                          <img src="/elao_/images/authors/xroldo.jpeg" />
+                          <img src="/elao_/images/authors/xavierr.jpg" />
                       </div>
           <span class="article-author__info">
             Écrit par
-                          <strong>Xavier ROLDO</strong>
+                          <strong>Xavier R</strong>
                       </span>
         </div>
             <div class="article-info__date">
         <span>Publication <strong>15 septembre 2010</strong></span>
-        <span>Modification <strong>5 octobre 2020</strong></span>
+        <span>Modification <strong>10 octobre 2020</strong></span>
       </div>
     </div>
 
@@ -377,14 +377,14 @@ INSTALLED_APPS <span class="token operator">=</span> <span class="token punctuat
 <ol start="3"><li>Rédiger la template</li>
 </ol><p>Avec Django, il est nécessaire de mettre à jour le fichier settings.py pour indiquer au framework dans quel répertoire du disque dur il doit rechercher les fichiers de templating. Nous allons donc créer à la racine de notre projet un répertoire "templates" destiné à recevoir nos templates et modifier le fichier de configuration pour y mentionner ce répertoire (rechercher dans le fichier settings.py la ligne contenant <strong>TEMPLATE_DIRS</strong>) :</p>
 <pre class="code-multiline"><code id="6afb8da76a37229649f7633ff077faed">mkdir templates</code></pre>
-<pre class="code-multiline language-python"><code class="language-python" id="afbfeaef39d64ef6ce7ad946fa13af36"><span class="token comment"># monprojet/settings.py</span>
+<pre class="code-multiline language-python"><code class="language-python" id="224e551d6e3a2b3b877ab8972f255cfc"><span class="token comment"># monprojet/settings.py</span>
 
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 TEMPLATE_DIRS <span class="token operator">=</span> <span class="token punctuation">(</span>
     <span class="token comment"># Put strings here, like &amp;amp;quot;/home/html/django_templates&amp;amp;quot; or &amp;amp;quot;C:/www/django/templates&amp;amp;quot;.</span>
     <span class="token comment"># Always use forward slashes, even on Windows.</span>
     <span class="token comment"># Don't forget to use absolute paths, not relative paths.</span>
-    <span class="token string">'/home/roldo/workspace-django/monprojet/templates/'</span><span class="token punctuation">,</span>
+    <span class="token string">'/home/me/workspace-django/monprojet/templates/'</span><span class="token punctuation">,</span>
 <span class="token punctuation">)</span>
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
 <p>Et enfin, créer la template et y ajouter le contenu suivant :</p>
@@ -421,20 +421,20 @@ TEMPLATE_DIRS <span class="token operator">=</span> <span class="token punctuati
   <div class="article-footer">
                   <div class="article-author">
           <div class="article-author__image">
-            <img src="/elao_/images/authors/xroldo.jpeg" />
+            <img src="/elao_/images/authors/xavierr.jpg" />
           </div>
           <span class="article-author__info">
             Écrit par
-            <strong>Xavier ROLDO</strong>
+            <strong>Xavier R</strong>
           </span>
           <div class="article-author__social">
                                       <a href="https://github.com/xavier-rdo "class="social social--small">
                 <i class="icon icon--github" aria-hidden="true"></i>
-                <span class="screen-reader">Compte github de Xavier ROLDO</span>
+                <span class="screen-reader">Compte github de Xavier R</span>
               </a>
                                       <a href="http://www.elao.com" class="social social--small">
                 <i class="icon icon--website" aria-hidden="true"></i>
-                <span class="screen-reader">Site personnel de Xavier ROLDO</span>
+                <span class="screen-reader">Site personnel de Xavier R</span>
               </a>
                       </div>
         </div>
