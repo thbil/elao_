@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>25 janvier 2017</strong></span>
-        <span>Modification <strong>10 octobre 2020</strong></span>
+        <span>Modification <strong>14 octobre 2020</strong></span>
       </div>
     </div>
 
@@ -363,7 +363,7 @@ system</code></pre>
     <span class="token key atrule">template</span><span class="token punctuation">:</span> configs/server.<span class="token punctuation">{</span><span class="token punctuation">{</span> _env <span class="token punctuation">}</span><span class="token punctuation">}</span>.j2
     <span class="token key atrule">config</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> <span class="token key atrule">server_name</span><span class="token punctuation">:</span> grafana.foobar.com
-      <span class="token punctuation">-</span> location /<span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">location /</span><span class="token punctuation">:</span>
         <span class="token punctuation">-</span> <span class="token key atrule">proxy_pass</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span><span class="token number">3000</span></code></pre>
 <p>Il faut également indiquer le domaine à <strong>Grafana</strong> en ajoutant la configuration suivante :</p>
 <pre class="code-multiline language-yaml"><code class="language-yaml" id="e044e1655673bad961f94c7a01402378"><span class="token key atrule">manala_grafana_config</span><span class="token punctuation">:</span>

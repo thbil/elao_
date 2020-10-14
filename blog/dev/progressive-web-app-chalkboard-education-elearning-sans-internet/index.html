@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>22 novembre 2017</strong></span>
-        <span>Modification <strong>10 octobre 2020</strong></span>
+        <span>Modification <strong>14 octobre 2020</strong></span>
       </div>
     </div>
 
@@ -346,12 +346,12 @@ Il est indiqué le nombre de Ko à télécharger pour chaque mise à jour.</p>
 <a href="https://developer.mozilla.org/fr/docs/Web/API/Storage/LocalStorage" target="_blank">LocalStorage</a> et de réhydrater le <em>store</em> dès lors
 que la page web est rechargée :</p>
 <pre class="code-multiline language-js"><code class="language-js" id="a63d6cd1dcd0a99c459af49e527f4303"><span class="token comment">// store.js</span>
-<span class="token keyword module">import</span> <span class="token maybe-class-name">ApolloClient</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> createNetworkInterface <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'apollo-client'</span><span class="token punctuation">;</span>
-<span class="token keyword module">import</span> <span class="token punctuation">{</span> applyMiddleware<span class="token punctuation">,</span> compose<span class="token punctuation">,</span> createStore <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'redux'</span><span class="token punctuation">;</span>
-<span class="token keyword module">import</span> <span class="token punctuation">{</span> autoRehydrate <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'redux-persist'</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">ApolloClient</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> createNetworkInterface <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'apollo-client'</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> applyMiddleware<span class="token punctuation">,</span> compose<span class="token punctuation">,</span> createStore <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'redux'</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> autoRehydrate <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'redux-persist'</span><span class="token punctuation">;</span>
 
-<span class="token keyword module">import</span> appReducer <span class="token keyword module">from</span> <span class="token string">'../reducers'</span><span class="token punctuation">;</span>
-<span class="token keyword module">import</span> defaultState <span class="token keyword module">from</span> <span class="token string">'./defaultState'</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token imports">appReducer</span> <span class="token keyword module">from</span> <span class="token string">'../reducers'</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token imports">defaultState</span> <span class="token keyword module">from</span> <span class="token string">'./defaultState'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">createStore</span><span class="token punctuation">(</span>
   appReducer<span class="token punctuation">,</span>
@@ -379,7 +379,7 @@ hors-ligne sans que l'url ait été visitée au préalable, il est quasi indispe
 <li>la liste des <em>courses</em> (ses <em>folders</em>, les <em>sessions</em> des <em>folders</em>, les <em>files</em> des <em>sessions</em>),</li>
 <li>et le <em>user</em> courant.</li>
 </ul><pre class="code-multiline language-js"><code class="language-js" id="900b4311a8128eaabeda244c2d88ee37"><span class="token comment">// src/graphql/query/CoursesQuery.js</span>
-<span class="token keyword module">import</span> gql <span class="token keyword module">from</span> <span class="token string">'graphql-tag'</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token imports">gql</span> <span class="token keyword module">from</span> <span class="token string">'graphql-tag'</span><span class="token punctuation">;</span>
 
 <span class="token keyword module">export</span> <span class="token keyword module">default</span> gql<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token graphql language-graphql">
   <span class="token punctuation">{</span>
@@ -420,7 +420,7 @@ ne l'avons pas utilisée étant donné que notre application n'est pas <em>API-c
 <p>Et pour l'identification de l'étudiant•e, on passe le <em>token user</em> dans l'entête HTTP
 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization" target="_blank">Authorization</a> de cette façon :</p>
 <pre class="code-multiline language-js"><code class="language-js" id="f27d52372a8dc02f6b1fe9d8f5aaf77d"><span class="token comment">// store.js</span>
-<span class="token keyword module">import</span> <span class="token maybe-class-name">ApolloClient</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> createNetworkInterface <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'apollo-client'</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">ApolloClient</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> createNetworkInterface <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'apollo-client'</span><span class="token punctuation">;</span>
 
 <span class="token comment">// ...</span>
 
@@ -430,7 +430,7 @@ networkInterface<span class="token punctuation">.</span><span class="token metho
   <span class="token punctuation">{</span>
     <span class="token function">applyMiddleware</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token comment">// Create the header object if needed</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>req<span class="token punctuation">.</span><span class="token property-access">options</span><span class="token punctuation">.</span><span class="token property-access">headers</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>req<span class="token punctuation">.</span><span class="token property-access">options</span><span class="token punctuation">.</span><span class="token property-access">headers</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         req<span class="token punctuation">.</span><span class="token property-access">options</span><span class="token punctuation">.</span><span class="token property-access">headers</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
 
@@ -476,7 +476,7 @@ module<span class="token punctuation">.</span><span class="token property-access
     <span class="token string">'build/index.html'</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
   runtimeCaching<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
-    urlPattern<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token language-regex"><span class="token special-escape escape">\.</span><span class="token quantifier number">*</span><span class="token special-escape escape">\.</span><span class="token group punctuation">(?:</span>svg<span class="token alternation keyword">|</span>jpg<span class="token alternation keyword">|</span>gif<span class="token alternation keyword">|</span>png<span class="token group punctuation">)</span></span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span>
+    urlPattern<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"><span class="token special-escape escape">\.</span><span class="token quantifier number">*</span><span class="token special-escape escape">\.</span><span class="token group punctuation">(?:</span>svg<span class="token alternation keyword">|</span>jpg<span class="token alternation keyword">|</span>gif<span class="token alternation keyword">|</span>png<span class="token group punctuation">)</span></span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span>
     handler<span class="token operator">:</span> <span class="token string">'cacheFirst'</span>
   <span class="token punctuation">}</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>

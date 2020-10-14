@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>6 novembre 2019</strong></span>
-        <span>Modification <strong>10 octobre 2020</strong></span>
+        <span>Modification <strong>14 octobre 2020</strong></span>
       </div>
     </div>
 
@@ -319,9 +319,9 @@ Plus d'informations sur ces paramètres dans la <a href="https://github.com/jens
         <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">inner</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">generate</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token variable">$parameters</span><span class="token punctuation">,</span> <span class="token variable">$referenceType</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">match</span><span class="token punctuation">(</span><span class="token variable">$pathinfo</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token keyword">match</span><span class="token punctuation">(</span><span class="token variable">$pathinfo</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token variable">$parameters</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">inner</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token variable">$pathinfo</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$parameters</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">inner</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token keyword">match</span><span class="token punctuation">(</span><span class="token variable">$pathinfo</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
         <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$parameters</span> <span class="token keyword">as</span> <span class="token variable">$key</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$key</span> <span class="token operator">===</span> <span class="token single-quoted-string string">'id'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>

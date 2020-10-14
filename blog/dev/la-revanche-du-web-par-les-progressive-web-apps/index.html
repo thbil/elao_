@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>5 décembre 2016</strong></span>
-        <span>Modification <strong>10 octobre 2020</strong></span>
+        <span>Modification <strong>14 octobre 2020</strong></span>
       </div>
     </div>
 
@@ -243,7 +243,7 @@ Dans les transports souterrains, dans un lieu confiné ou dans de lointaines cam
 mais celle-ci est dépréciée au profit du <a href="https://developer.mozilla.org/fr/docs/Web/API/Service_Worker_API/Using_Service_Workers" target="_blank">Service Worker</a>.</p>
 <h3 id="comment-a-marche" class="anchor-title"><a href="#comment-a-marche">Comment ça marche ?</a></h3>
 <p>Un service worker est déclaré ainsi dans le code JavaScript de vos pages :</p>
-<pre class="code-multiline language-js"><code class="language-js" id="e9c4570ade762079d0c0d3d9563b5061"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">'serviceWorker'</span> <span class="token keyword">in</span> <span class="token dom variable">navigator</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="code-multiline language-js"><code class="language-js" id="e9c4570ade762079d0c0d3d9563b5061"><span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token string">'serviceWorker'</span> <span class="token keyword">in</span> <span class="token dom variable">navigator</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'load'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token dom variable">navigator</span><span class="token punctuation">.</span><span class="token property-access">serviceWorker</span><span class="token punctuation">.</span><span class="token method function property-access">register</span><span class="token punctuation">(</span><span class="token string">'/service-worker.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -272,7 +272,7 @@ self<span class="token punctuation">.</span><span class="token method function p
   event<span class="token punctuation">.</span><span class="token method function property-access">waitUntil</span><span class="token punctuation">(</span>
     caches<span class="token punctuation">.</span><span class="token method function property-access">open</span><span class="token punctuation">(</span><span class="token constant">CACHE_NAME</span><span class="token punctuation">)</span>
       <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">cache</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> cache<span class="token punctuation">.</span><span class="token method function property-access">addAll</span><span class="token punctuation">(</span>urlsToCache<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword control-flow">return</span> cache<span class="token punctuation">.</span><span class="token method function property-access">addAll</span><span class="token punctuation">(</span>urlsToCache<span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
@@ -282,12 +282,12 @@ Si la ressource n'est pas trouvée en cache, on tente notre chance via le résea
   event<span class="token punctuation">.</span><span class="token method function property-access">respondWith</span><span class="token punctuation">(</span>
     caches<span class="token punctuation">.</span><span class="token method function property-access">match</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token property-access">request</span><span class="token punctuation">)</span>
       <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          <span class="token keyword">return</span> response<span class="token punctuation">;</span>
+        <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword control-flow">return</span> response<span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
 
         <span class="token comment">// use the network to fetch request</span>
-        <span class="token keyword">return</span> <span class="token function">fetch</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token property-access">request</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword control-flow">return</span> <span class="token function">fetch</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token property-access">request</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">)</span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -296,11 +296,11 @@ Si la ressource n'est pas trouvée en cache, on tente notre chance via le résea
 <pre class="code-multiline language-js"><code class="language-js" id="9422435414994d6f4d4a4bab0832f4b7"><span class="token comment">// we need to clone the response.</span>
 <span class="token keyword">var</span> fetchRequest <span class="token operator">=</span> event<span class="token punctuation">.</span><span class="token property-access">request</span><span class="token punctuation">.</span><span class="token method function property-access">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword">return</span> <span class="token function">fetch</span><span class="token punctuation">(</span>fetchRequest<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span>
+<span class="token keyword control-flow">return</span> <span class="token function">fetch</span><span class="token punctuation">(</span>fetchRequest<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span>
   <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// Check if we received a valid response</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>response <span class="token operator">||</span> response<span class="token punctuation">.</span><span class="token property-access">status</span> <span class="token operator">!==</span> <span class="token number">200</span> <span class="token operator">||</span> response<span class="token punctuation">.</span><span class="token property-access">type</span> <span class="token operator">!==</span> <span class="token string">'basic'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> response<span class="token punctuation">;</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>response <span class="token operator">||</span> response<span class="token punctuation">.</span><span class="token property-access">status</span> <span class="token operator">!==</span> <span class="token number">200</span> <span class="token operator">||</span> response<span class="token punctuation">.</span><span class="token property-access">type</span> <span class="token operator">!==</span> <span class="token string">'basic'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span> response<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment">// we need to clone it so we have two streams.</span>
@@ -311,7 +311,7 @@ Si la ressource n'est pas trouvée en cache, on tente notre chance via le résea
         cache<span class="token punctuation">.</span><span class="token method function property-access">put</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token property-access">request</span><span class="token punctuation">,</span> responseToCache<span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">return</span> response<span class="token punctuation">;</span>
+    <span class="token keyword control-flow">return</span> response<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Il s'agit ici d'un exemple simple. La gestion du cache n'est pas forcément triviale.
@@ -325,10 +325,10 @@ Il n'y a pas de "meilleure solution"; tout dépendra de votre besoin.</p>
 
   event<span class="token punctuation">.</span><span class="token method function property-access">waitUntil</span><span class="token punctuation">(</span>
     caches<span class="token punctuation">.</span><span class="token method function property-access">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">cacheNames</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token known-class-name class-name">Promise</span><span class="token punctuation">.</span><span class="token method function property-access">all</span><span class="token punctuation">(</span>
+      <span class="token keyword control-flow">return</span> <span class="token known-class-name class-name">Promise</span><span class="token punctuation">.</span><span class="token method function property-access">all</span><span class="token punctuation">(</span>
         cacheNames<span class="token punctuation">.</span><span class="token method function property-access">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">cacheName</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>cacheWhitelist<span class="token punctuation">.</span><span class="token method function property-access">indexOf</span><span class="token punctuation">(</span>cacheName<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> caches<span class="token punctuation">.</span><span class="token method function property-access">delete</span><span class="token punctuation">(</span>cacheName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>cacheWhitelist<span class="token punctuation">.</span><span class="token method function property-access">indexOf</span><span class="token punctuation">(</span>cacheName<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword control-flow">return</span> caches<span class="token punctuation">.</span><span class="token method function property-access">delete</span><span class="token punctuation">(</span>cacheName<span class="token punctuation">)</span><span class="token punctuation">;</span>
           <span class="token punctuation">}</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
       <span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -406,17 +406,17 @@ et différer l'affichage lorsque l'utilisateur aura cliqué sur un bouton :</p>
   <span class="token comment">// Stash the event so it can be triggered later.</span>
   deferredPrompt <span class="token operator">=</span> e<span class="token punctuation">;</span>
 
-  <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token keyword control-flow">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 btnSave<span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span><span class="token punctuation">(</span>deferredPrompt <span class="token operator">!==</span> <span class="token keyword nil">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span><span class="token punctuation">(</span>deferredPrompt <span class="token operator">!==</span> <span class="token keyword nil">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     deferredPrompt<span class="token punctuation">.</span><span class="token method function property-access">prompt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     deferredPrompt<span class="token punctuation">.</span><span class="token property-access">userChoice</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">choiceResult</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span><span class="token punctuation">(</span>choiceResult<span class="token punctuation">.</span><span class="token property-access">outcome</span> <span class="token operator">==</span> <span class="token string">'accepted'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">if</span><span class="token punctuation">(</span>choiceResult<span class="token punctuation">.</span><span class="token property-access">outcome</span> <span class="token operator">==</span> <span class="token string">'accepted'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'App added to home screen'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
         <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'User cancelled home screen install'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
 
@@ -433,13 +433,13 @@ btnSave<span class="token punctuation">.</span><span class="token method functio
 <pre class="code-multiline language-js"><code class="language-js" id="0f48e32ea4a3b6a0a9618ccd26c23126"><span class="token keyword">var</span> swRegistration<span class="token punctuation">;</span>
 <span class="token keyword">var</span> isSubscribed <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
 
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">'serviceWorker'</span> <span class="token keyword">in</span> <span class="token dom variable">navigator</span> <span class="token operator">&amp;&amp;</span> <span class="token string">'PushManager'</span> <span class="token keyword">in</span> <span class="token dom variable">window</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token string">'serviceWorker'</span> <span class="token keyword">in</span> <span class="token dom variable">navigator</span> <span class="token operator">&amp;&amp;</span> <span class="token string">'PushManager'</span> <span class="token keyword">in</span> <span class="token dom variable">window</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">// Register the Service Worker</span>
   <span class="token dom variable">navigator</span><span class="token punctuation">.</span><span class="token property-access">serviceWorker</span><span class="token punctuation">.</span><span class="token method function property-access">register</span><span class="token punctuation">(</span><span class="token string">'/myserviceworker.js'</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">serviceWorkerRegistered</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     swRegistration <span class="token operator">=</span> serviceWorkerRegistered<span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token method function property-access">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token keyword control-flow">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">error</span><span class="token punctuation">(</span><span class="token string">'Service Worker Error'</span><span class="token punctuation">,</span> error<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -448,17 +448,17 @@ btnSave<span class="token punctuation">.</span><span class="token method functio
   <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">subscription</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     isSubscribed <span class="token operator">=</span> <span class="token operator">!</span><span class="token punctuation">(</span>subscription <span class="token operator">===</span> <span class="token keyword null nil">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>isSubscribed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>isSubscribed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'User IS subscribed.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
       <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'User is NOT subscribed.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token comment">// On click on a "Subscribe to notification" button, call the pushManager to subscribe the user</span>
   myButton<span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>swRegistration <span class="token operator">!==</span> <span class="token keyword nil">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>swRegistration <span class="token operator">!==</span> <span class="token keyword nil">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">const</span> applicationServerKey <span class="token operator">=</span> <span class="token function">urlB64ToUint8Array</span><span class="token punctuation">(</span><span class="token string">"yourApplicationServerPublicKey"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -475,7 +475,7 @@ btnSave<span class="token punctuation">.</span><span class="token method functio
 
       isSubscribed <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token method function property-access">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token keyword control-flow">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'Failed to subscribe the user: '</span><span class="token punctuation">,</span> error<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>

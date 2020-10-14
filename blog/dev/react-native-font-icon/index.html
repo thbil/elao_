@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>6 mars 2018</strong></span>
-        <span>Modification <strong>10 octobre 2020</strong></span>
+        <span>Modification <strong>14 octobre 2020</strong></span>
       </div>
     </div>
 
@@ -294,9 +294,9 @@ La partie variable pour chaque icône ici est <code class="code-inline" id="6725
 <img src="/elao_/images/posts/2018/react-native-font-icon/icon_code.png" alt="" title="" id="icon-code-png"><p>Bien que cette notation fonctionne, je vous propose de créer un composant réutilisable et plus simple à utiliser !</p>
 <h3 id="cr-er-un-composant-icon" class="anchor-title"><a href="#cr-er-un-composant-icon">Créer un composant Icon</a></h3>
 <p>Nous allons maintenant créer un composant <code class="code-inline" id="817434295a673aed431435658b65d9a7">Icon</code> chargé de rendre une icône.</p>
-<pre class="code-multiline language-javascript"><code class="language-javascript" id="fd43cd8c25ed728ad9d4acd14839d8ae"><span class="token keyword module">import</span> <span class="token maybe-class-name">React</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">Component</span> <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
-<span class="token keyword module">import</span> <span class="token maybe-class-name">PropTypes</span> <span class="token keyword module">from</span> <span class="token string">'prop-types'</span><span class="token punctuation">;</span>
-<span class="token keyword module">import</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">Text</span><span class="token punctuation">,</span> <span class="token maybe-class-name">StyleSheet</span> <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'react-native'</span><span class="token punctuation">;</span>
+<pre class="code-multiline language-javascript"><code class="language-javascript" id="fd43cd8c25ed728ad9d4acd14839d8ae"><span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">React</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">Component</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">PropTypes</span></span> <span class="token keyword module">from</span> <span class="token string">'prop-types'</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Text</span><span class="token punctuation">,</span> <span class="token maybe-class-name">StyleSheet</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'react-native'</span><span class="token punctuation">;</span>
 
 <span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token keyword">class</span> <span class="token class-name">Icon</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
   <span class="token doc-comment comment">/**
@@ -334,7 +334,7 @@ La partie variable pour chaque icône ici est <code class="code-inline" id="6725
 
     <span class="token keyword">delete</span> style<span class="token punctuation">.</span><span class="token property-access">fontWeight</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">return</span> style<span class="token punctuation">;</span>
+    <span class="token keyword control-flow">return</span> style<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 
   <span class="token doc-comment comment">/**
@@ -344,7 +344,7 @@ La partie variable pour chaque icône ici est <code class="code-inline" id="6725
     <span class="token keyword">const</span> <span class="token punctuation">{</span> icons<span class="token punctuation">,</span> styles <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">constructor</span><span class="token punctuation">;</span>
     <span class="token keyword">const</span> <span class="token punctuation">{</span> icon<span class="token punctuation">,</span> style <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">props</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">return</span> <span class="token operator">&lt;</span><span class="token maybe-class-name">Text</span> style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">safeIconStyle</span><span class="token punctuation">(</span><span class="token punctuation">[</span>styles<span class="token punctuation">.</span><span class="token property-access">icon</span><span class="token punctuation">,</span> style<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>icons<span class="token punctuation">[</span>icon<span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span><span class="token maybe-class-name">Text</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+    <span class="token keyword control-flow">return</span> <span class="token operator">&lt;</span><span class="token maybe-class-name">Text</span> style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">safeIconStyle</span><span class="token punctuation">(</span><span class="token punctuation">[</span>styles<span class="token punctuation">.</span><span class="token property-access">icon</span><span class="token punctuation">,</span> style<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>icons<span class="token punctuation">[</span>icon<span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span><span class="token maybe-class-name">Text</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <h3 id="utilisation-du-composant-icon" class="anchor-title"><a href="#utilisation-du-composant-icon">Utilisation du composant Icon</a></h3>

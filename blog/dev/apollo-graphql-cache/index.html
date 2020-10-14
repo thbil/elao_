@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>17 février 2020</strong></span>
-        <span>Modification <strong>10 octobre 2020</strong></span>
+        <span>Modification <strong>14 octobre 2020</strong></span>
       </div>
     </div>
 
@@ -222,13 +222,13 @@
 <span class="token comment"># installing each piece independently</span>
 <span class="token function">yarn</span> <span class="token function">add</span> apollo-client apollo-cache-inmemory apollo-link-http graphql-tag graphql</code></pre>
 <p>On instancie le client avec l'url du endpoint GraphQL :</p>
-<pre class="code-multiline language-javascript"><code class="language-javascript" id="b126761a2d2637e8e882402fa056d923"><span class="token keyword module">import</span> <span class="token maybe-class-name">ApolloClient</span> <span class="token keyword module">from</span> <span class="token string">'apollo-boost'</span>
+<pre class="code-multiline language-javascript"><code class="language-javascript" id="b126761a2d2637e8e882402fa056d923"><span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">ApolloClient</span></span> <span class="token keyword module">from</span> <span class="token string">'apollo-boost'</span>
 
 <span class="token keyword">const</span> client <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ApolloClient</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   uri<span class="token operator">:</span> <span class="token string">'https://graphql.example.com'</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>Et c'est parti, on peut lancer nos requêtes GraphQL :</p>
-<pre class="code-multiline language-javascript"><code class="language-javascript" id="e0bd0a297085019d626babffa541bad1"><span class="token keyword module">import</span> gql <span class="token keyword module">from</span> <span class="token string">'graphql-tag'</span>
+<pre class="code-multiline language-javascript"><code class="language-javascript" id="e0bd0a297085019d626babffa541bad1"><span class="token keyword module">import</span> <span class="token imports">gql</span> <span class="token keyword module">from</span> <span class="token string">'graphql-tag'</span>
 
 client
   <span class="token punctuation">.</span><span class="token method function property-access">query</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
@@ -243,11 +243,11 @@ client
     </span><span class="token template-punctuation string">`</span></span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token arrow operator">=&gt;</span> <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token method function property-access">catch</span><span class="token punctuation">(</span><span class="token parameter">error</span> <span class="token arrow operator">=&gt;</span> <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+  <span class="token punctuation">.</span><span class="token keyword control-flow">catch</span><span class="token punctuation">(</span><span class="token parameter">error</span> <span class="token arrow operator">=&gt;</span> <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <p>A partir de ce moment, cette requête est cachée en mémoire. Vous pouvez la relancer autant de fois que vous le souhaitez, aucun appel réseau ne sera fait.</p>
 <h2 id="mutations" class="anchor-title"><a href="#mutations">Mutations</a></h2>
 <p>Le client permet évidemment d'exécuter des mutations (modifications de données) :</p>
-<pre class="code-multiline language-javascript"><code class="language-javascript" id="0aa3a1c5320db418254ab780e5acdfcf"><span class="token keyword module">import</span> gql <span class="token keyword module">from</span> <span class="token string">'graphql-tag'</span><span class="token punctuation">;</span>
+<pre class="code-multiline language-javascript"><code class="language-javascript" id="0aa3a1c5320db418254ab780e5acdfcf"><span class="token keyword module">import</span> <span class="token imports">gql</span> <span class="token keyword module">from</span> <span class="token string">'graphql-tag'</span><span class="token punctuation">;</span>
 
 client
   <span class="token punctuation">.</span><span class="token method function property-access">mutate</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
@@ -264,7 +264,7 @@ client
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token arrow operator">=&gt;</span> <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token method function property-access">catch</span><span class="token punctuation">(</span><span class="token parameter">error</span> <span class="token arrow operator">=&gt;</span> <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+  <span class="token punctuation">.</span><span class="token keyword control-flow">catch</span><span class="token punctuation">(</span><span class="token parameter">error</span> <span class="token arrow operator">=&gt;</span> <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <p>Grâce à cette mutation, nos données on été mise à jour sur notre serveur. Par contre par la même notre cache n'est plus à jour, et comme dit précédement, Apollo ne refera pas l'appel à l'API pour la requête.</p>
 <blockquote>
 <p>Il y a seulement 2 problèmes compliqués en informatique : nommer les choses, et l’invalidation de cache.</p>
@@ -380,9 +380,9 @@ client
 <p>Je vous parlais du côté <em>state manager</em> du cache, et bien c'est ce qui se passe ici. Les objets y sont stockés avec une clé de cache de façon à pouvoir mettre à jour tous les résultats de requête concernés en une fois lorsque que l'un d'eux est modifié (sous couvert qu'ils soient identifiables par un <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code> évidemment).</p>
 <h2 id="configurer-le-cache" class="anchor-title"><a href="#configurer-le-cache">Configurer le cache</a></h2>
 <p>Si vos objets n'ont pas de propriété <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code> mais une propriété <code class="code-inline" id="ef7c876f00f3acddd00fa671f52d0b1f">uuid</code> par exemple, il est possible de configurer le cache pour l'utiliser et conserver la mise à jour automatique :</p>
-<pre class="code-multiline language-javascript"><code class="language-javascript" id="b175c489f59df8e8479ce6756e136b46"><span class="token keyword module">import</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">InMemoryCache</span> <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'apollo-cache-inmemory'</span><span class="token punctuation">;</span>
-<span class="token keyword module">import</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">HttpLink</span> <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'apollo-link-http'</span><span class="token punctuation">;</span>
-<span class="token keyword module">import</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">ApolloClient</span> <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'apollo-client'</span><span class="token punctuation">;</span>
+<pre class="code-multiline language-javascript"><code class="language-javascript" id="b175c489f59df8e8479ce6756e136b46"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">InMemoryCache</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'apollo-cache-inmemory'</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">HttpLink</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'apollo-link-http'</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">ApolloClient</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'apollo-client'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> link <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HttpLink</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -392,15 +392,15 @@ client
 
 <span class="token keyword">const</span> client <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ApolloClient</span><span class="token punctuation">(</span><span class="token punctuation">{</span> link<span class="token punctuation">,</span> cache <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Il est également possible de définir cet identifiant selon le type de l'objet :</p>
-<pre class="code-multiline language-javascript"><code class="language-javascript" id="f6d138920fb87d5128798cf7baef04d8"><span class="token keyword module">import</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">InMemoryCache</span><span class="token punctuation">,</span> defaultDataIdFromObject <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'apollo-cache-inmemory'</span><span class="token punctuation">;</span>
+<pre class="code-multiline language-javascript"><code class="language-javascript" id="f6d138920fb87d5128798cf7baef04d8"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">InMemoryCache</span><span class="token punctuation">,</span> defaultDataIdFromObject <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'apollo-cache-inmemory'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> cache <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InMemoryCache</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   <span class="token function-variable function">dataIdFromObject</span><span class="token operator">:</span> <span class="token parameter">object</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>object<span class="token punctuation">.</span><span class="token property-access">__typename</span> <span class="token operator">===</span> <span class="token string">'Todo'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> object<span class="token punctuation">.</span><span class="token property-access">uuid</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>object<span class="token punctuation">.</span><span class="token property-access">__typename</span> <span class="token operator">===</span> <span class="token string">'Todo'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span> object<span class="token punctuation">.</span><span class="token property-access">uuid</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">return</span> <span class="token function">defaultDataIdFromObject</span><span class="token punctuation">(</span>ojbect<span class="token punctuation">)</span>
+    <span class="token keyword control-flow">return</span> <span class="token function">defaultDataIdFromObject</span><span class="token punctuation">(</span>ojbect<span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>D'autre configuration sont possibles, je vous encourage à lire <a href="https://www.apollographql.com/docs/react/caching/cache-configuration/" target="_blank">la documentation à ce sujet</a> pour les découvrir.</p>
@@ -424,7 +424,7 @@ client
 <span class="token punctuation">}</span></code></pre>
 <p>Les deux requêtes utilisent les même données mais Apollo fera la seconde requête même si l'objet est déjà dans le case de la première car les données ne sont pas stockés avec la même clé de cache.</p>
 <p>La redirection de cache permettra d'aller chercher ces données dans le cache d'une autre requête.</p>
-<pre class="code-multiline language-javascript"><code class="language-javascript" id="395d3fcfc81c38e4d143ad0342829c32"><span class="token keyword module">import</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">InMemoryCache</span> <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'apollo-cache-inmemory'</span>
+<pre class="code-multiline language-javascript"><code class="language-javascript" id="395d3fcfc81c38e4d143ad0342829c32"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">InMemoryCache</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'apollo-cache-inmemory'</span>
 
 <span class="token keyword">const</span> cache <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InMemoryCache</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   cacheRedirects<span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -481,26 +481,26 @@ client
  */</span>
 <span class="token keyword">function</span> <span class="token function">deepDeleteAll</span><span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> predicate</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">let</span> count <span class="token operator">=</span> <span class="token number">0</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isArray</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token function">isArray</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">.</span><span class="token method function property-access">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">predicate</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token function">predicate</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         value<span class="token punctuation">.</span><span class="token method function property-access">splice</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
         count<span class="token operator">++</span>
-      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
         count <span class="token operator">+=</span> <span class="token function">deepDeleteAll</span><span class="token punctuation">(</span>item<span class="token punctuation">,</span> predicate<span class="token punctuation">)</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isPlainObject</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token function">isPlainObject</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token known-class-name class-name">Object</span><span class="token punctuation">.</span><span class="token method function property-access">keys</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">forEach</span><span class="token punctuation">(</span><span class="token parameter">key</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">predicate</span><span class="token punctuation">(</span>value<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token function">predicate</span><span class="token punctuation">(</span>value<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">delete</span> value<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
         count<span class="token operator">++</span>
-      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
         count <span class="token operator">+=</span> <span class="token function">deepDeleteAll</span><span class="token punctuation">(</span>value<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">,</span> predicate<span class="token punctuation">)</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
-  <span class="token keyword">return</span> count
+  <span class="token keyword control-flow">return</span> count
 <span class="token punctuation">}</span>
 
 <span class="token doc-comment comment">/**
@@ -535,8 +535,8 @@ client
 <p>Par default, le cache Apollo utilise l'adapteur <code class="code-inline" id="e7e257ea4465b7f923b3e2b116f1782e">InMemoryCache</code> qui comme son nom l'indique, stocke le cache en mémoire. Dans le cas d'une application web, chaque actualisation de la page ou nouvel onglet remet le cache à zero. En cas d'app native, cela se fera à chaque fermeture de l'app.</p>
 <p>Heureusement il est possible de <a href="https://github.com/apollographql/apollo-cache-persist#storage-providers" target="_blank">persister le cache</a> de façon non volatile en fournissant un <em>storage provider</em>. En <em>local storage</em> pour du web par exemple, ou encore dans une base <em>SQLite</em> ou en fichier pour les app natives.</p>
 <p>Par exemple avec du <em>local storage</em> :</p>
-<pre class="code-multiline language-javascript"><code class="language-javascript" id="8da84f138f73c2596fe9e84f286652e2"><span class="token keyword module">import</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">InMemoryCache</span> <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'apollo-cache-inmemory'</span><span class="token punctuation">;</span>
-<span class="token keyword module">import</span> <span class="token punctuation">{</span> persistCache <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'apollo-cache-persist'</span><span class="token punctuation">;</span>
+<pre class="code-multiline language-javascript"><code class="language-javascript" id="8da84f138f73c2596fe9e84f286652e2"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">InMemoryCache</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'apollo-cache-inmemory'</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> persistCache <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'apollo-cache-persist'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> cache <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InMemoryCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 

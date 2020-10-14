@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>31 juillet 2020</strong></span>
-        <span>Modification <strong>10 octobre 2020</strong></span>
+        <span>Modification <strong>14 octobre 2020</strong></span>
       </div>
     </div>
 
@@ -217,7 +217,7 @@
             audio/
                 AudioPlayer.js</code></pre>
 <p>Si on souhaite charger la classe <code class="code-inline" id="129a860545e73b19bb88ab90211cd0b0">Loader</code> depuis <code class="code-inline" id="9875cb9f6eccd432273d37cb3653ad9b">AudioPlayer</code>, on s'y prend comme ça :</p>
-<pre class="code-multiline language-javascript"><code class="language-javascript" id="612987ecf27d9cd6c7b7b88b3fd4dc6d"><span class="token keyword module">import</span> <span class="token maybe-class-name">Loader</span> <span class="token keyword module">from</span> <span class="token string">'../../core/Loader.js'</span><span class="token punctuation">;</span></code></pre>
+<pre class="code-multiline language-javascript"><code class="language-javascript" id="612987ecf27d9cd6c7b7b88b3fd4dc6d"><span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">Loader</span></span> <span class="token keyword module">from</span> <span class="token string">'../../core/Loader.js'</span><span class="token punctuation">;</span></code></pre>
 <p>Ce n'est pas toujours plaisant à écrire de tête et encore moins à refactorer.</p>
 <h2 id="c-t-back" class="anchor-title"><a href="#c-t-back">Côté back</a></h2>
 <p>En PHP, on est habitué aux <strong>namespaces</strong>, qui permettent de référencer une classe par un chemin <strong>absolu</strong> qui ne dépend donc pas de l'endroit où l'on se trouve.</p>
@@ -240,7 +240,7 @@
         <span class="token string">'App'</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>__dirname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/assets/js</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>On peut maintenant, depuis n'importe quel fichier, importer la classe <code class="code-inline" id="129a860545e73b19bb88ab90211cd0b0">Loader</code> via un chemin absolu utilisant l'alias :</p>
-<pre class="code-multiline language-javascript"><code class="language-javascript" id="fd04a8837c938b8e8875fb3091fb5ee9"><span class="token keyword module">import</span> <span class="token maybe-class-name">Loader</span> <span class="token keyword module">from</span> <span class="token string">'App/core/Loader.js'</span><span class="token punctuation">;</span></code></pre>
+<pre class="code-multiline language-javascript"><code class="language-javascript" id="fd04a8837c938b8e8875fb3091fb5ee9"><span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">Loader</span></span> <span class="token keyword module">from</span> <span class="token string">'App/core/Loader.js'</span><span class="token punctuation">;</span></code></pre>
 <p>Et voila, on a des "namespaces" pour nos modules javascript ! 🎉</p>
 <h2 id="bonus" class="anchor-title"><a href="#bonus">Bonus</a></h2>
 <p>Vous intégrez votre CSS et vos images au build directement depuis votre code JS ?</p>
@@ -257,7 +257,7 @@
     <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>Et simplifiez-vous la vie :</p>
 <pre class="code-multiline language-javascript"><code class="language-javascript" id="d4db7d6eac42ffc0454211c61de64764"><span class="token keyword module">import</span> <span class="token string">'Style/app.scss'</span><span class="token punctuation">;</span>
-<span class="token keyword module">import</span> logoPath <span class="token keyword module">from</span> <span class="token string">'Images/logo.png'</span><span class="token punctuation">;</span></code></pre>
+<span class="token keyword module">import</span> <span class="token imports">logoPath</span> <span class="token keyword module">from</span> <span class="token string">'Images/logo.png'</span><span class="token punctuation">;</span></code></pre>
 <hr></body>
                         <div class="article-credits">
             Crédits: photo de couverture par
