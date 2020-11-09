@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>17 décembre 2015</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -215,19 +215,19 @@ prévue plus tôt, dans deux ans, soit en 2017;</li>
 <li>La certification Symfony précédemment liée à la version 2.3 est maintenant disponible pour la version 3.0;</li>
 <li>L'un des chantiers pour le futur de Symfony est de rendre le <em>filesystem</em>, <em>read-only</em>, ce que signifie que la
 gestion du cache devra être revue.</li>
-</ul><h3 id="dig-in-security-with-symfony-by" class="anchor-title"><a href="#dig-in-security-with-symfony-by">Dig in Security with Symfony by Sarah Khalil</a></h3>
+</ul><h3 id="dig-in-security-with-symfony-by-sarah-khalil" class="anchor-title"><a href="#dig-in-security-with-symfony-by-sarah-khalil">Dig in Security with Symfony by Sarah Khalil</a></h3>
 <p>Plongeon au coeur du composant <em>Security</em> de Symfony. Ce qu'il faut retenir c'est qu'il ne faut plus utiliser les
 <a href="http://symfony.com/doc/current/cookbook/security/acl.html" target="_blank">ACL</a>
 mais les <a href="http://symfony.com/doc/current/cookbook/security/voters.html" target="_blank">Voters</a>.
 Rien de nouveau donc, dommage que cela soit une redite de la documentation.</p>
 <p><a href="https://speakerdeck.com/saro0h/symfonycon-paris-dig-in-security" target="_blank">Les slides</a></p>
-<h3 id="the-cloud-is-the-future-and-you" class="anchor-title"><a href="#the-cloud-is-the-future-and-you">The cloud is the future, and your architecture isn't ready by David Zuelke</a></h3>
+<h3 id="the-cloud-is-the-future-and-your-architecture-isn-t-ready-by-david-zuelke" class="anchor-title"><a href="#the-cloud-is-the-future-and-your-architecture-isn-t-ready-by-david-zuelke">The cloud is the future, and your architecture isn't ready by David Zuelke</a></h3>
 <p>Retour d'expérience d'Heroku sur les bonnes pratiques pour rendre une application éligible au Cloud.</p>
 <p>À retenir, en vrac :</p>
 <ul><li>Ne pas mettre la configuration de vos environnments (dev, prod...) dans votre code mais directement sur la plateforme.</li>
 <li>Utiliser  <em>getenv($var)</em> dans le code pour récupérer une variable d'environnement.</li>
 </ul><p>Pour en savoir plus sur l'ensemble de ces bonnes pratiques, un site a été créé : <a href="http://12factor.net/" target="_blank">12factor</a>.</p>
-<h3 id="building-high-profile-webapps-wi" class="anchor-title"><a href="#building-high-profile-webapps-wi">Building high profile webapps with Symfony and API Platform by Kévin Dunglas</a></h3>
+<h3 id="building-high-profile-webapps-with-symfony-and-api-platform-by-kevin-dunglas" class="anchor-title"><a href="#building-high-profile-webapps-with-symfony-and-api-platform-by-kevin-dunglas">Building high profile webapps with Symfony and API Platform by Kévin Dunglas</a></h3>
 <p>Retour d'expérience sur un projet pour beIN SPORTS : l'implémentation d'une plateforme API et de multiples consommateurs
 de cette API de natures différentes : backoffice en Symfony, site web, applications mobiles, Xbox.</p>
 <p>À retenir, en vrac :</p>
@@ -237,7 +237,7 @@ de cette API de natures différentes : backoffice en Symfony, site web, applicat
 ils se calquent sur l'URI de l'API.</li>
 </ul><p>J'ai beaucoup aimé ce retour d'expérience même si l'on peut regretter le manque de spontanéité de la présentation.</p>
 <p><a href="https://speakerdeck.com/dunglas/a-high-profile-project-with-symfony-and-api-platform-bein-sports" target="_blank">Les slides</a></p>
-<h3 id="symfony-routing-under-the-hood-b" class="anchor-title"><a href="#symfony-routing-under-the-hood-b">Symfony routing under the hood by David Buchmann</a></h3>
+<h3 id="symfony-routing-under-the-hood-by-david-buchmann" class="anchor-title"><a href="#symfony-routing-under-the-hood-by-david-buchmann">Symfony routing under the hood by David Buchmann</a></h3>
 <p>Idem que pour le composant Security, un plongeon en détail dans le composant <em>Routing</em>, son fonctionnement et comment
 l'optimiser.
 Un tour d'horizon de l'éco-système de bundles permettant de l'étendre (gestion d'URL traduites par exemple avec
@@ -249,7 +249,7 @@ avant de trouver la bonne.</li>
 <li>Plus la route est restrictive, plus il faut l'avoir haut dans la liste des routes.</li>
 <li>Eviter les expressions régulières lorsque c'est possible.</li>
 </ul><p><a href="http://davidbu.ch/slides/2015-12-03-symfony-routing.html" target="_blank">Les slides</a></p>
-<h3 id="doctrine-2-to-use-or-not-to-use" class="anchor-title"><a href="#doctrine-2-to-use-or-not-to-use">Doctrine 2: To Use or Not to Use by Benjamin Eberlei</a></h3>
+<h3 id="doctrine-2-to-use-or-not-to-use-by-benjamin-eberlei" class="anchor-title"><a href="#doctrine-2-to-use-or-not-to-use-by-benjamin-eberlei">Doctrine 2: To Use or Not to Use by Benjamin Eberlei</a></h3>
 <p>Benjamin Eberlei, qui participe au développement de l'ORM Doctrine a expliqué dans quels cas utiliser Doctrine et dans
 quels cas il ne faut pas.</p>
 <p>La frustration des développeurs par rapport à un ORM, notamment le temps perdu à trouver comment gérer un cas complexe
@@ -263,11 +263,11 @@ et construire un
 <a href="http://doctrine-orm.readthedocs.org/projects/doctrine-orm/en/latest/reference/dql-doctrine-query-language.html#new-operator-syntax" target="_blank">Data Transfer Objects (DTOs)</a>.</p>
 <p>J'ai beaucoup apprécié la franchise de Benjamin. La présentation était sobre et pédagogique, un modèle du genre.</p>
 <p><a href="https://qafoo.com/talks/15_09_symfony_live_london_doctrine2_to_use_or_not_to_use.pdf" target="_blank">Les slides</a></p>
-<h3 id="a-journey-down-the-open-road-by" class="anchor-title"><a href="#a-journey-down-the-open-road-by">A Journey Down the Open Road by Yoav Kutner</a></h3>
+<h3 id="a-journey-down-the-open-road-by-yoav-kutner" class="anchor-title"><a href="#a-journey-down-the-open-road-by-yoav-kutner">A Journey Down the Open Road by Yoav Kutner</a></h3>
 <p>Le fondateur de Magento puis de la suite Oro (OroCRM, OroPlatform, OroCommerce...) revient sur dix ans d'entreprenariat
 dans la création d'outils Open Source. La présentation rondement menée a été finalement écourtée faute de temps, dommage
 c'était passionnant !</p>
-<h3 id="guard-authentication-powerful" class="anchor-title"><a href="#guard-authentication-powerful">Guard Authentication: Powerful, Beautiful Security by Ryan Weaver</a></h3>
+<h3 id="guard-authentication-powerful-beautiful-security-by-ryan-weaver" class="anchor-title"><a href="#guard-authentication-powerful-beautiful-security-by-ryan-weaver">Guard Authentication: Powerful, Beautiful Security by Ryan Weaver</a></h3>
 <p><a href="http://symfony.com/blog/new-in-symfony-2-8-guard-authentication-component" target="_blank"><em>Guard</em></a> disponible
 avec Symfony 2.8/3.0 est un nouveau composant de sécurité permettant la mise en place d'un mécanisme d'authentification
 facilement personnalisable.
@@ -275,7 +275,7 @@ Contrairement à ce qui se faisait avant avec le composant <em>Security</em>, la
 est davantage dans une classe PHP.
 Ryan Weaver, pédagogue et speaker de qualité, nous donne vraiment envie de vite essayer ce composant.</p>
 <p><a href="http://www.slideshare.net/weaverryan/guard-authentication-powerful-beautiful-security" target="_blank">Les slides</a></p>
-<h3 id="how-symfony-3-0-moves-forward-wi" class="anchor-title"><a href="#how-symfony-3-0-moves-forward-wi">How Symfony 3.0 moves forward without letting anyone behind by Nicolas Grekas</a></h3>
+<h3 id="how-symfony-3-0-moves-forward-without-letting-anyone-behind-by-nicolas-grekas" class="anchor-title"><a href="#how-symfony-3-0-moves-forward-without-letting-anyone-behind-by-nicolas-grekas">How Symfony 3.0 moves forward without letting anyone behind by Nicolas Grekas</a></h3>
 <p>Le passage de Symfony 1 à la version 2 a été très douloureuse pour les développeurs ayant très tôt adopté ce
 framework.
 La version 2 était une refonte complète du framework et cassait donc toute compatibilité avec la version 1.</p>
@@ -289,17 +289,17 @@ de les corriger :
 <li><a href="https://github.com/umpirsky/Symfony-Upgrade-Fixer" target="_blank">Symfony Upgrade Fixer</a></li>
 </ul></li>
 </ul><p><a href="https://speakerdeck.com/nicolasgrekas/how-symfony-3-dot-0-moves-forward-without-letting-anyone-behind" target="_blank">Les slides</a></p>
-<h3 id="matters-of-state-by-kris-wallsmi" class="anchor-title"><a href="#matters-of-state-by-kris-wallsmi">Matters of State by Kris Wallsmith</a></h3>
+<h3 id="matters-of-state-by-kris-wallsmith" class="anchor-title"><a href="#matters-of-state-by-kris-wallsmith">Matters of State by Kris Wallsmith</a></h3>
 <p>L'idée, à l'état de concept, de Kriss Wallsmith est de mettre en place des évènements sur le modèle métier ou sur certains
 attributs du modèle en s'inspirant de ce qui se fait en React.
 Cela ressemble fortement également aux évènements Doctrine mais avec une granularité plus fine et un couplage à l'ORM
 moins forte. A suivre, donc.</p>
 <p><a href="http://fr.slideshare.net/kriswallsmith/matters-of-state-55843873" target="_blank">Les slides</a></p>
-<h3 id="new-symfony-tips-and-tricks-by-j" class="anchor-title"><a href="#new-symfony-tips-and-tricks-by-j">New Symfony Tips and Tricks by Javier Eguiluz</a></h3>
+<h3 id="new-symfony-tips-and-tricks-by-javier-eguiluz" class="anchor-title"><a href="#new-symfony-tips-and-tricks-by-javier-eguiluz">New Symfony Tips and Tricks by Javier Eguiluz</a></h3>
 <p>Javier est déjà connu pour animer le blog officiel de Symfony et pour distiller ses bonnes astuces. Il vient nous présenter
 une nouvelle très bonne fournée d'astuces en vrac principalement focalisées sur les nouveautés de Symfony 3 et Twig 2.</p>
 <p><a href="http://www.slideshare.net/javier.eguiluz/new-symfony-tips-tricks-symfonycon-paris-2015" target="_blank">Les slides à savourer ici</a>.</p>
-<h3 id="perfect-caching-with-foshttpca" class="anchor-title"><a href="#perfect-caching-with-foshttpca">"Perfect" caching with FOSHttpCache by Andre Rømcke</a></h3>
+<h3 id="perfect-caching-with-foshttpcache-by-andre-romcke" class="anchor-title"><a href="#perfect-caching-with-foshttpcache-by-andre-romcke">"Perfect" caching with FOSHttpCache by Andre Rømcke</a></h3>
 <p>Nous avions déjà assisté à cette présentation au Symfony Live 2015.
 Il s'agit d'une présentation des différentes manières de cacher du contenu utilisateur.</p>
 <p>Le cache dans le contexte user a toujours semblé impossible. Or, "l'User context Hash" est possible :</p>
@@ -311,13 +311,13 @@ Il s'agit d'une présentation des différentes manières de cacher du contenu ut
 </ul><p>Ressources :</p>
 <ul><li><a href="https://github.com/FriendsOfSymfony/FOSHttpCacheBundle" target="_blank">Voir la doc de FOSHttpCacheBundle</a></li>
 <li>et plus spécifiquement <a href="https://github.com/FriendsOfSymfony/FOSHttpCacheBundle/blob/master/Resources/doc/features/user-context.rst" target="_blank">la doc sur le User Context</a></li>
-</ul><h3 id="new-symfony3-form-component-by-b" class="anchor-title"><a href="#new-symfony3-form-component-by-b">New Symfony3 Form component by Bernhard Schussek</a></h3>
+</ul><h3 id="new-symfony3-form-component-by-bernhard-schussek" class="anchor-title"><a href="#new-symfony3-form-component-by-bernhard-schussek">New Symfony3 Form component by Bernhard Schussek</a></h3>
 <p>Bernhard Schussek est celui à qui nous devons le composant Form de Symfony. Il revient dans cette présentation sur les
 changements dans Symfony 3. Cela ne va pas faire que des heureux ! En vrac :</p>
 <ul><li>Plus de nom de Type, utiliser la syntaxe : <code class="code-inline" id="22d97abe67a64a62d9579f8d70751b6a">TextType::class</code> au lieu de <code class="code-inline" id="24f1389943513af2ca924c8a108de80b">'text'</code></li>
 <li>Ne pas utiliser les <em>Form theme</em>, mais coder les champs du formulaire en HTML (étonnant ?)</li>
 </ul><p><a href="https://speakerdeck.com/webmozart/symfony2-forms-dos-and-donts" target="_blank">Les slides</a></p>
-<h3 id="behind-the-scenes-of-maintaining" class="anchor-title"><a href="#behind-the-scenes-of-maintaining">Behind the Scenes of Maintaining an Open Source Project by Jordi Boggiano</a></h3>
+<h3 id="behind-the-scenes-of-maintaining-an-open-source-project-by-jordi-boggiano" class="anchor-title"><a href="#behind-the-scenes-of-maintaining-an-open-source-project-by-jordi-boggiano">Behind the Scenes of Maintaining an Open Source Project by Jordi Boggiano</a></h3>
 <p>Jordi Boggiano a créé et maintient Composer. Cet outil de gestion des dépendances dédié à PHP a très vite été adopté
 par les développeurs et l'écosystème PHP. Symfony a sans doute également contribué à populariser Composer.
 Moins qu'une présentation technique, Jordi a fait un retour d'expérience sur plusieurs années de maintenance d'un
@@ -330,7 +330,7 @@ projet Open Source comme Composer :</p>
 du code ou la modification du Coding Styles en "Airbnb Code Style";</li>
 <li>le burnout du contributeur open source;</li>
 </ul><p><a href="http://slides.seld.be/?file=2015-12-04+Behind+the+Scenes+of+Maintaining+an+Open+Source+Project.html" target="_blank">Les slides</a></p>
-<h3 id="comparing-symfony2-perfs-in-php7" class="anchor-title"><a href="#comparing-symfony2-perfs-in-php7">Comparing Symfony2 perfs in PHP7 migration by Julien Pauli</a></h3>
+<h3 id="comparing-symfony2-perfs-in-php7-migration-by-julien-pauli" class="anchor-title"><a href="#comparing-symfony2-perfs-in-php7-migration-by-julien-pauli">Comparing Symfony2 perfs in PHP7 migration by Julien Pauli</a></h3>
 <p>Julien Pauli nous amène dans les profondeurs du fonctionnement interne de PHP7 pour nous expliquer l'augmentation
 notable de performance de PHP7.</p>
 <p>Ce qu'il faut retenir :</p>
@@ -339,7 +339,7 @@ indispensable sur des frameworks comme Symfony.</li>
 <li>Beaucoup de travail fait dans le cœur de PHP pour exploiter au mieux les caches L1 &amp; L2 des CPU, ce qui explique la
 plus faible consommation mémoire et la rapidité de ce dernier.</li>
 <li>Ces changements internes ont eu beaucoup d'impact sur les extensions de PHP qui ont dû être adaptées.</li>
-</ul><h3 id="symfony-your-next-microframewor" class="anchor-title"><a href="#symfony-your-next-microframewor">Symfony: Your next Microframework by Ryan Weaver</a></h3>
+</ul><h3 id="symfony-your-next-microframework-by-ryan-weaver" class="anchor-title"><a href="#symfony-your-next-microframework-by-ryan-weaver">Symfony: Your next Microframework by Ryan Weaver</a></h3>
 <p>Ryan nous montre comment on peut exploiter la full stack symfony dans un seul fichier, comme le fait Silex, puis faire evoluer la structures des fichiers au fur et à mesure que l'on rajoute des composants. Cette approche à le merite d'etre très didactique en nous montrant le roles de chaque brique.</p>
 <p>Ryan nous montre comment on peut exploiter la full stack Symfony dans un seul fichier, comme le fait Silex. Puis faire
 évoluer la structure des fichiers au fur et à mesure que l'on rajoute des composants. Cette approche a le mérite d'être

@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>13 mars 2015</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -216,9 +216,9 @@
 <p>A la génération de cette requête, un certain nombre d'informations vous seront donc demandées, celles-ci sont appelées "Distinguished Name" (DN). La plupart des informations à renseigner sont triviales hormis le "Common Name" (CN) qui doit exactement correspondre au FQDN (Fully Qualified Domain Name) de la machine à laquelle est destiné le certificat.</p>
 <p>Bien que l'importance de celles-ci soit toute relative, elles devraient néanmoins, refléter au maximum la réalité lorsque vous achetez un certificat SSL auprès d'une autorité de certification.</p>
 <p>Il est bien entendu possible de passer l'ensemble de ces informations via la ligne de commande lors de la génération du certificat.</p>
-<h1 id="g-n-rer-des-csrs" class="anchor-title"><a href="#g-n-rer-des-csrs">Générer des CSRs</a></h1>
+<h1 id="generer-des-csrs" class="anchor-title"><a href="#generer-des-csrs">Générer des CSRs</a></h1>
 <p>A présent que nous savons à quoi servent ces fameuses requêtes nous listerons ci-dessous les différents cas de figure qui pourraient nous conduire à en avoir besoin et comment les générer.</p>
-<h2 id="g-n-rer-une-cl-priv-e-et-un" class="anchor-title"><a href="#g-n-rer-une-cl-priv-e-et-un">Générer une clé privée et une CSR</a></h2>
+<h2 id="generer-une-cle-privee-et-une-csr" class="anchor-title"><a href="#generer-une-cle-privee-et-une-csr">Générer une clé privée et une CSR</a></h2>
 <p>Cette méthode est particulièrement indiquée si vous souhaitez utiliser HTTPS (HTTP + TLS) et donc générer un certificat pour un serveur web (Apache ou Nginx par exemple), pour ensuite le faire certifier par une CA ou demander la délivrance d'un certificat SSL à une CA reconnue.</p>
 <p>Il est possible, si la CA le permet, d'utiliser SHA-2 pour signer le certificat avec l'option <code class="code-inline" id="34197c62ac0261904c97629ded3b0dab">-sha256</code> (<a href="https://www.gandi.net/ssl" target="_blank">Gandi</a> le gère parfaitement)</p>
 <p>Pour créer une clé privée de 2048 bits et une CSR utilisez la commande suivante:</p>
@@ -255,7 +255,7 @@ Please enter the following 'extra' attributes
 to be sent with your certificate request
 A challenge password []:
 An optional company name []:</code></pre>
-<h2 id="g-n-rer-une-csr-partir-d-un" class="anchor-title"><a href="#g-n-rer-une-csr-partir-d-un">Générer une CSR à partir d'une clé privée</a></h2>
+<h2 id="generer-une-csr-a-partir-d-une-cle-privee" class="anchor-title"><a href="#generer-une-csr-a-partir-d-une-cle-privee">Générer une CSR à partir d'une clé privée</a></h2>
 <p>Dans le cas où vous disposez déjà d'une clé privée et que vous souhaitez l'utiliser pour la délivrance d'un certificat à partir d'une CA, il nous faudra utiliser la commande suivante:</p>
 <pre class="code-multiline"><code id="c2fe4a5eaf97f41d1edc4bd78040381b">openssl req -key bismuth-elao.key -new -out bismuth-elao.csr</code></pre>
 <p>Il suffit ensuite de renseigner les différentes informations demandées pour la génération de la CSR, attention à bien spécifier le CN (Common Name).</p>
@@ -263,7 +263,7 @@ An optional company name []:</code></pre>
 <ul><li>L'option <code class="code-inline" id="6df4718fa8021e1f2c3d9303905cdec5">-key</code> permet de spécifier la clé à utiliser pour générer la nouvelle requête.</li>
 <li>L'option <code class="code-inline" id="4d1b89bdd5a5a98696afd6232cf1b03d">-new</code> indique la génération d'une CSR.</li>
 </ul></blockquote>
-<h2 id="g-n-rer-une-csr-partir-d-un" class="anchor-title"><a href="#g-n-rer-une-csr-partir-d-un">Générer une CSR à partir d'une clé privée et d'un certificat</a></h2>
+<h2 id="generer-une-csr-a-partir-d-une-cle-privee-et-d-un-certificat" class="anchor-title"><a href="#generer-une-csr-a-partir-d-une-cle-privee-et-d-un-certificat">Générer une CSR à partir d'une clé privée et d'un certificat</a></h2>
 <p>Ce cas de figure peut se présenter dans le cas où vous avez perdu la CSR originale, rien de bien critique pour le coup, cette manipulation épargne juste de perdre du temps à ressaisir les informations de la CSR, celles-ci sont dans ce cas là, extraites du certificat.</p>
 <pre class="code-multiline"><code id="871e199b344a039ee55fc62a7b0607fa">openssl x509
     -in bismuth-elao.crt

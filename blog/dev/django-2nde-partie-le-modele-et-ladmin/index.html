@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>6 octobre 2010</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -209,7 +209,7 @@
       <body><p>Bonjour à toutes et à tous,</p>
 <p>Aujourd'hui, dans notre série consacrée à Django, nous abordons un second volet autrement plus intéressant que le premier (pour ceux qui ont raté l'épisode précédent, c'est <a href="/dev/premiers-pas-avec-le-framework-python-django" target="_blank">ici</a> que ça se passe). En effet, ce billet sera consacré d'une part au Modèle, que nous avions négligé précédemment, d'autre part à l'interface d'administration fournie par Django (<em>Django Admin Site</em>). J'aurais pu consacrer un article entier à la couche "Modèle" et aborder les nombreuses possibilités offertes par le Framework dans ce domaine. Mais mon précédent billet avait essentiellement pour but de nous familiariser avec Django, aussi d'un point de vue purement fonctionnel, le résultat finalement obtenu pouvait nous laisser sur notre faim. J'ai donc choisi ici de dépeindre le modèle dans ses grandes lignes, plutôt que d'entrer dans le détail, afin que nous puissions rapidement mettre en pratique nos connaissances, par le biais de l'interface d'Administration de Django. Mais sachez que les points importants sur lesquels nous ferons l'impasse aujourd'hui feront l'objet de futurs articles.</p>
 <p>Avant de débuter ce tutoriel, assurez-vous que Python et Django sont installés sur votre ordinateur. Si tel n'est pas le cas, référez-vous à notre <a href="/dev/premiers-pas-avec-le-framework-python-django" target="_blank">introduction au Framework Django</a> pour connaître la marche à suivre.</p>
-<h3 id="pr-sentation-du-projet-et-du-mo" class="anchor-title"><a href="#pr-sentation-du-projet-et-du-mo">Présentation du projet et du modèle</a></h3>
+<h3 id="presentation-du-projet-et-du-modele" class="anchor-title"><a href="#presentation-du-projet-et-du-modele">Présentation du projet et du modèle</a></h3>
 <p>Le projet qui va nous servir de fil rouge tout au long de cet article (et ceux qui suivront) consiste en un site de vente d'articles de sport. Nous allons donc dans un premier temps créer notre projet (je nommerai ce projet "elao", c'est un nom court, concis, idéal donc pour un nom de projet) et une application que je nommerai "shop". Allez, c'est parti !</p>
 <p>Nous ouvrons donc une ligne de commande, nous nous plaçons dans le répertoire qui contient nos projets Django ("workspace-django" en ce qui me concerne), et nous lançons les commandes nécessaires pour initialiser le projet et créer l'application "shop" :</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="da823825aaba8aa6d507ea1f6edbbaad"><span class="token builtin class-name">cd</span> ~/workspace-django
@@ -332,7 +332,7 @@ python manage.py sqlall shop # où 'shop' correspond à notre application</code>
 <span class="token punctuation">[</span><span class="token operator">&lt;</span>Sport<span class="token punctuation">:</span> Football<span class="token operator">&gt;</span><span class="token punctuation">]</span></code></pre>
 <p>Rien de très compliqué. Nous venons de créer deux objets de la classe "Sport", que nous avons sauvegardés en base de données. Ensuite, nous avons utilisé un gestionnaire de Modèle, <em>ModelManager</em>, en l'occurrence <em>sport.objects</em>, pour exécuter des requêtes sur la table <em>elao_sport</em>. Nous aurons l'occasion de revenir sur cette notion de <em>ModelManager</em> à l'occasion de futurs articles. Pour quitter le shell interactif, il suffit de saisir <strong>CTL + D</strong> au clavier.</p>
 <p>Voilà, nous n'avons fait qu'effleurer le sujet du Modèle de Django, nous aurons l'occasion d'y revenir, mais pour l'heure, il est temps de passer à l'Admin de Django, histoire de constater de visu les ajouts que nous avons faits en base de données au moyen de l'ORM !</p>
-<h3 id="le-site-d-administration-de-djan" class="anchor-title"><a href="#le-site-d-administration-de-djan">Le site d'Administration de Django</a></h3>
+<h3 id="le-site-d-administration-de-django" class="anchor-title"><a href="#le-site-d-administration-de-django">Le site d'Administration de Django</a></h3>
 <p>Pour accéder à l'interface d'administration de Django, il faut dans un premier temps activer l'admin en mettant à jour le tuple INSTALLED_APPS ; cela consiste à décommenter la ligne <em>django.contrib.admin</em> du fichier <em>settings.py</em> (si vous avez suivi les étapes depuis le début, nous l'avons déjà fait). Il faut également décommenter la route permettant d'accéder à l'Admin. Pour cela, il faut éditer le fichier <em>urls.py</em> et décommenter la ligne correspondante :</p>
 <pre class="code-multiline language-python"><code class="language-python" id="b0a90c7553fb57534f701970db9c00a0"><span class="token comment"># urls.py</span>
 <span class="token comment"># ...</span>

@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>29 janvier 2019</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -205,16 +205,16 @@
 
       <ul class="table-of-content">
               <li class="table-of-content__item">
-          <a href="#qu-est-ce-qu-un-environnement-de">Qu&#039;est-ce qu&#039;un environnement de développement virtuel ?</a>
+          <a href="#qu-est-ce-qu-un-environnement-de-developpement-virtuel">Qu&#039;est-ce qu&#039;un environnement de développement virtuel ?</a>
         </li>
               <li class="table-of-content__item">
-          <a href="#les-avantages-de-la-machine-virt">Les avantages de la machine virtuelle</a>
+          <a href="#les-avantages-de-la-machine-virtuelle">Les avantages de la machine virtuelle</a>
         </li>
               <li class="table-of-content__item">
           <a href="#manalizer-son-projet">Manalizer son projet</a>
         </li>
               <li class="table-of-content__item">
-          <a href="#pr-requis">Pré-requis</a>
+          <a href="#pre-requis">Pré-requis</a>
         </li>
               <li class="table-of-content__item">
           <a href="#au-lancement">Au lancement</a>
@@ -223,7 +223,7 @@
           <a href="#au-quotidien">Au quotidien</a>
         </li>
               <li class="table-of-content__item">
-          <a href="#cr-er-la-vm">Créer la VM</a>
+          <a href="#creer-la-vm">Créer la VM</a>
         </li>
               <li class="table-of-content__item">
           <a href="#lancer-la-vm">Lancer la VM</a>
@@ -235,7 +235,7 @@
           <a href="#le-tester-c-est-l-adopter">Le tester, c&#039;est l&#039;adopter !</a>
         </li>
               <li class="table-of-content__item">
-          <a href="#une-derni-re-chose">Une dernière chose ...</a>
+          <a href="#une-derniere-chose">Une dernière chose ...</a>
         </li>
           </ul>
   
@@ -243,10 +243,10 @@
     <main class="article-content__main">
       <body><p>Il y a certains changements, dans notre manière de travailler, qui facilitent tellement la vie (coucou Git) qu'une fois adoptés, on ne se voit plus revenir en arrière.</p>
 <p>Et bien chez nous, à élao, depuis quelques années on est passé aux environnements de développement virtuels. Et on n'envisage pas de s'en passer !</p>
-<h2 id="qu-est-ce-qu-un-environnement-de" class="anchor-title"><a href="#qu-est-ce-qu-un-environnement-de">Qu'est-ce qu'un environnement de développement virtuel ?</a></h2>
+<h2 id="qu-est-ce-qu-un-environnement-de-developpement-virtuel" class="anchor-title"><a href="#qu-est-ce-qu-un-environnement-de-developpement-virtuel">Qu'est-ce qu'un environnement de développement virtuel ?</a></h2>
 <p>C'est une machine virtuelle (que nous appellerons simplement VM) qui tourne sur mon ordinateur et dans laquelle vit mon application.</p>
 <p>L'idée c'est d'avoir tout l'environnement de mon application (version de PHP, configuration Nginx, packages Node ou extensions PHP particulières) installé, configuré et fonctionnel dans cette VM et ce de manière <strong>automatique</strong> (c'est à dire au lancement d'une simple commande, sans intervention manuelle).</p>
-<h2 id="les-avantages-de-la-machine-virt" class="anchor-title"><a href="#les-avantages-de-la-machine-virt">Les avantages de la machine virtuelle</a></h2>
+<h2 id="les-avantages-de-la-machine-virtuelle" class="anchor-title"><a href="#les-avantages-de-la-machine-virtuelle">Les avantages de la machine virtuelle</a></h2>
 <ul><li>(Re)monter et supprimer un projet sans effort sur ma machine à l'aide d'une seule commande.</li>
 <li>Partager le même environnement au sein d'une équipe projet.</li>
 <li>Développer dans des conditions et dans un contexte proches de la prod (même moteur de base de données, même version de PHP, etc.).</li>
@@ -255,7 +255,7 @@
 <li>Versionner tout ce contexte projet au même titre que son code source.</li>
 </ul><h2 id="manalizer-son-projet" class="anchor-title"><a href="#manalizer-son-projet">Manalizer son projet</a></h2>
 <p>Et pour faire ça nous utilisons <strong><a href="http://www.manala.io/" target="_blank">Manala</a></strong>, un outil petit et puissant qui permet de décrire l'environnement de notre projet sous la forme d'une configuration texte, puis de monter et lancer une VM selon cette recette.</p>
-<h3 id="pr-requis" class="anchor-title"><a href="#pr-requis">Pré-requis</a></h3>
+<h3 id="pre-requis" class="anchor-title"><a href="#pre-requis">Pré-requis</a></h3>
 <p>Tout d'abord, installons l'outil de configuration en ligne de commande dédié : <strong>manalize</strong></p>
 <pre class="code-multiline"><code id="1c12d82a21d2bf7d92077b9329bdf273">curl -LSs https://raw.githubusercontent.com/manala/manalize/master/installer.php | php</code></pre>
 <p><em>💡 Note :</em> il est aussi possible de <a href="https://github.com/manala/manalize#installation" target="_blank">l'installer via git ou composer</a>.</p>
@@ -271,7 +271,7 @@
 <p>Pour l'exemple, je vais créer un nouveau projet <a href="https://symfony.com/download" target="_blank">Symfony</a> vide avec :</p>
 <pre class="code-multiline"><code id="4e9124da01ad69ef06a89ac4384ee23f">symfony new --full acme
 cd acme</code></pre>
-<img src="/elao_/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project.png" alt="" title="" id="empty-symfony-project-png"><img src="/elao_/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project_browser.png" alt="" title="" id="empty-symfony-project-browser-pn"><p>Puis créer un environnement virtuel Manala pour cette application :</p>
+<img src="/elao_/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project.png" alt="" title="" id="empty-symfony-project-png"><img src="/elao_/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project_browser.png" alt="" title="" id="empty-symfony-project-browser-png"><p>Puis créer un environnement virtuel Manala pour cette application :</p>
 <pre class="code-multiline"><code id="be798b2aba437dca70435f4c6d61d29c">manalize setup .</code></pre>
 <p>À travers son outil de setup interactif, Manala me demande de faire un certain nombre de choix concernant les technologies nécessaires au fonctionnement de mon projet à intégrer dans la VM.</p>
 <p>Puisque nous travaillons beaucoup avec Symfony chez élao, Manala propose une pré-configuration adaptée aux projets Symfony, embarquant entre autres PHP et Mysql. C'est ce que j'utiliserai ici :</p>
@@ -282,7 +282,7 @@ cd acme</code></pre>
 <li><code class="code-inline" id="b67911656ef5d18c4ae36cb6741b7965">Makefile</code> : Liste de commandes Make servant à piloter la VM et le projet depuis la console.</li>
 </ul><p><em>💡 Note :</em> Ces fichiers font maintenant partie du code source du projet et seront versionnés et publiés dans Git. Ils pourront également évoluer et s'étoffer au fur et à mesure de la vie du projet.</p>
 <h3 id="au-quotidien" class="anchor-title"><a href="#au-quotidien">Au quotidien</a></h3>
-<h4 id="cr-er-la-vm" class="anchor-title"><a href="#cr-er-la-vm">Créer la VM</a></h4>
+<h4 id="creer-la-vm" class="anchor-title"><a href="#creer-la-vm">Créer la VM</a></h4>
 <p>Lorsque je viens de mettre en place Manala sur mon projet, ou bien lorsque je clone un projet existant, utilisant déjà Manala, sur ma machine hôte; je dois d'abord créer la machine virtuelle :</p>
 <pre class="code-multiline"><code id="4fd2c64dcfff0125ebf36e5089c49f7c">make setup</code></pre>
 <h4 id="lancer-la-vm" class="anchor-title"><a href="#lancer-la-vm">Lancer la VM</a></h4>
@@ -302,7 +302,7 @@ cd acme</code></pre>
 <p>Il est également totalement open-source, disponible et utilisable par tous.</p>
 <p>Vous avez un projet qui tourne localement sur votre machine ?
 Pourquoi ne pas tester un petit <code class="code-inline" id="be798b2aba437dca70435f4c6d61d29c">manalize setup .</code> dès maintenant et voir votre projet tourner dans un environnement virtuel ?</p>
-<h2 id="une-derni-re-chose" class="anchor-title"><a href="#une-derni-re-chose">Une dernière chose ...</a></h2>
+<h2 id="une-derniere-chose" class="anchor-title"><a href="#une-derniere-chose">Une dernière chose ...</a></h2>
 <p>En 2019, une nouvelle mouture de <code class="code-inline" id="f4e13a6099d36e3d648f91bcd0d2fd58">manalize</code> devrait pointer le bout de son nez, encore plus cool !
 Mais ça fera l'objet d'un prochain article. 😉</p>
 <hr><p><span>Photo par <a href="https://unsplash.com/photos/zen35Y3B834" target="_blank">Mark Mühlberger</a> sur <a href="https://unsplash.com" target="_blank">Unsplash</a></span></p></body>

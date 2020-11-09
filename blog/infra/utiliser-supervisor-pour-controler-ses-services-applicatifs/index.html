@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>22 décembre 2014</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -225,7 +225,7 @@ Il est configurable via le fichier <code class="code-inline" id="53585b857fac115
 <h2 id="supervisorctl" class="anchor-title"><a href="#supervisorctl">Supervisorctl</a></h2>
 <p><strong>Supervisorctl</strong> est le client permettant d'administrer les services gérés par supervisor. Il est capable de se connecter à plusieurs démons <strong>supervisord</strong>  et permet de démarrer / arrêter des services. Il est possible de les faire fonctionner soit via une socket soit via TCP. Il est également possible de gérer une authentification lors de la connexion au démon.</p>
 <h1 id="utiliser-supervisor" class="anchor-title"><a href="#utiliser-supervisor">Utiliser supervisor</a></h1>
-<h2 id="ajouter-un-service-supervisor" class="anchor-title"><a href="#ajouter-un-service-supervisor">Ajouter un service à Supervisor</a></h2>
+<h2 id="ajouter-un-service-a-supervisor" class="anchor-title"><a href="#ajouter-un-service-a-supervisor">Ajouter un service à Supervisor</a></h2>
 <p>Pour ajouter un service à supervisor il suffit de le déclarer en ajoutant un fichier dans <code class="code-inline" id="35dd810a7ec81a0bcfadd24ef5eb125f">/etc/supervisor/conf.d</code>.</p>
 <p>Attention celui-ci doit se terminer par l'extension <code class="code-inline" id="a2b11a8323f2bacebd54851aea409219">.conf</code> pour être correctement pris en compte par le démon.</p>
 <pre class="code-multiline"><code id="f2217f03b1b5f1dba9b87ab670009370">[program:blogd]
@@ -245,12 +245,12 @@ redirect_stderr=true</code></pre>
 mailcatcher                      RUNNING    pid 7840, uptime 2 days, 4:51:46
 phantomjs                        RUNNING    pid 7842, uptime 2 days, 4:51:46
 blogd                            RUNNING    pid 11929, uptime 0:02:41</code></pre>
-<h2 id="red-marrer-un-service" class="anchor-title"><a href="#red-marrer-un-service">Redémarrer un service</a></h2>
+<h2 id="redemarrer-un-service" class="anchor-title"><a href="#redemarrer-un-service">Redémarrer un service</a></h2>
 <p>La syntaxe pour redémarrer un service est on ne peut plus simple.</p>
 <pre class="code-multiline"><code id="5d2352073b3e1618a3c7fdbfb1a7cc59">supervisor&gt; restart blogd
 blogd: stopped
 blogd: started</code></pre>
-<h2 id="parcourir-les-logs-depuis-le-cli" class="anchor-title"><a href="#parcourir-les-logs-depuis-le-cli">Parcourir les logs depuis le client</a></h2>
+<h2 id="parcourir-les-logs-depuis-le-client" class="anchor-title"><a href="#parcourir-les-logs-depuis-le-client">Parcourir les logs depuis le client</a></h2>
 <pre class="code-multiline"><code id="d042d12f0d27934aaf2cf404b5d380ef">supervisor&gt; tail -f blogd
 ==&gt; Press Ctrl-C to exit &lt;==
 var/blog/content/posts/images/ =&gt; web/blog/medias

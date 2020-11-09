@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>23 avril 2017</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -203,12 +203,12 @@
       <body><p>Vagrant est un outil qui simplifie la création et la gestion d’environnements virtualisés.
 Si par le passé on avait recours à des plateformes comme LAMP/MAMP/XAMP pour gérer son environnement de développement, <!-- more --> cela posait souvent problème car les versions des dépendances logicielles pouvaient varier une fois l’application déployée sur un environnement externe, notamment en production. On se retrouvait alors à perdre un temps considérable pour corriger des bugs en production qui n’étaient pas reproductibles en développement, et inversement.</p>
 <p>Vagrant permet de travailler dans un environnement reproductible avec les mêmes versions pour toutes vos dépendances. Parce qu’il utilise le principe de virtualisation, il est donc compatible avec la majorité des OS actuels. Ainsi, un développeur travaillant sous Mac aura accès au même environnement qu'un développeur sous Windows ou Linux tout en conservant son IDE favori.</p>
-<h1 id="comment-a-fonctionne" class="anchor-title"><a href="#comment-a-fonctionne">Comment ça fonctionne ?</a></h1>
+<h1 id="comment-ca-fonctionne" class="anchor-title"><a href="#comment-ca-fonctionne">Comment ça fonctionne ?</a></h1>
 <p>Vagrant est en réalité une surcouche autour de solutions de virtualisation comme Virtualbox ou VMware. Il exécute une série d'instructions spécifiées dans un fichier de configuration (le Vagrantfile) pour créer et configurer une ou plusieurs machines virtuelles.</p>
 <blockquote>
 <p>A noter que Vagrant n’est pas un outil de provisioning, il ne chargera pas directement vos dépendances logicielles dans la VM. La solution de base consiste à lui fournir un script shell contenant les instructions nécessaires au provisionnement. Par la suite, il sera intéressant de l'associer à une solution comme Ansible, Puppet ou Chef qui se chargera d'automatiser ce processus. Voir l'article <a href="/fr/infra/introduction-au-provisioning/">introduction au provisioning</a></p>
 </blockquote>
-<h1 id="les-concepts-sur-lesquels-repose" class="anchor-title"><a href="#les-concepts-sur-lesquels-repose">Les concepts sur lesquels repose Vagrant</a></h1>
+<h1 id="les-concepts-sur-lesquels-repose-vagrant" class="anchor-title"><a href="#les-concepts-sur-lesquels-repose-vagrant">Les concepts sur lesquels repose Vagrant</a></h1>
 <p><strong>Le Vagrantfile</strong></p>
 <p>Le fichier de configuration principal de Vagrant. Ecrit en ruby, il sert à définir le dossier racine du projet qui sera utilisé par les options de configuration de Vagrant. C'est ausssi dans ce fichier que l'on définira le type de machine (la box) souhaité, la configuration réseau, le provider, la méthode de provisionnement ainsi que d'éventuels plugins.</p>
 <p><strong>Les boxes</strong></p>

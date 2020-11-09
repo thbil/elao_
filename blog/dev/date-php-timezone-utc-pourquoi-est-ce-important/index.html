@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>21 novembre 2017</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -209,7 +209,7 @@
   
   <div class="article-content">
     <main class="article-content__main">
-      <body><h1 id="timezone-utc-pourquoi-est-ce-im" class="anchor-title"><a href="#timezone-utc-pourquoi-est-ce-im">Timezone UTC, pourquoi est-ce important ?</a></h1>
+      <body><h1 id="timezone-utc-pourquoi-est-ce-important" class="anchor-title"><a href="#timezone-utc-pourquoi-est-ce-important">Timezone UTC, pourquoi est-ce important ?</a></h1>
 <h2 id="la-timezone-c-est-quoi" class="anchor-title"><a href="#la-timezone-c-est-quoi">La timezone c'est quoi ?</a></h2>
 <p>La timezone est une information associée à une date permettant de connaître son fuseau horaire. Cette timezone est décrite par un nom de continent et un nom de ville.</p>
 <pre class="code-multiline"><code id="cd7bcb0bba25653f938f9232717351a3">Europe/Paris
@@ -222,11 +222,11 @@ Australia/Sydney</code></pre>
 <p>Si vous avez déjà travaillé avec des dates en PHP, vous avez surement été confronté à des problèmes de timezone. La plupart du temps, vous avez résolu le problème en remplaçant la timezone par defaut par la vôtre.</p>
 <pre class="code-multiline language-ini"><code class="language-ini" id="d06a3a8ea469f18ab96eea52d7040016"><span class="token constant">date.timezone</span> <span class="token attr-value"><span class="token punctuation">=</span> Europe/Paris</span></code></pre>
 <p>Si cette solution règle votre souci immédiatement, nous allons voir que sur le long terme, ce n'est pas forcement une bonne idée.</p>
-<h2 id="les-probl-mes" class="anchor-title"><a href="#les-probl-mes">Les problèmes</a></h2>
+<h2 id="les-problemes" class="anchor-title"><a href="#les-problemes">Les problèmes</a></h2>
 <p>Si vous persistez vos dates dans une base de données, sachez que la plupart des SGBD ne stockent pas la timezone sur les champs de type <code class="code-inline" id="dfeaaeb4316477bd556ea5e8c3295887">datetime</code> ou <code class="code-inline" id="d7e6d55ba379a13d08c25d15faf2a23b">timestamp</code>. Vous perdez donc cette information.</p>
 <p>Dans le cas où vos utilisateurs peuvent provenir de plusieurs pays, vous allez être confronté à des incohérences de date. Les heures entrées par un utilisateur dans sa timezone n'auront pas la même signification pour un autre utilisateur ou pour votre système.</p>
 <p>Ainsi il sera impossible de faire des comparaisons de dates sans erreur.</p>
-<h3 id="franco-fran-ais" class="anchor-title"><a href="#franco-fran-ais">Franco-français</a></h3>
+<h3 id="franco-francais" class="anchor-title"><a href="#franco-francais">Franco-français</a></h3>
 <blockquote>
 <p>Mon application est en français, il n'y aura pas d'autre timezone, autant rester en Europe/Paris.</p>
 </blockquote>

@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>25 janvier 2017</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -324,8 +324,8 @@ system</code></pre>
 <h3 id="grafana" class="anchor-title"><a href="#grafana">Grafana</a></h3>
 <p>Par defaut <strong>Grafana</strong> est accesible sur le port <code class="code-inline" id="e93028bdc1aacdfb3687181f2031765d">3000</code> avec pour identifiant et mot de passe "admin" / "admin". Vous accédez alors au "Home Dashboard". Avant toute chose il faut ajouter notre base de données InfluxDB comme source de données. Pour cela dans le menu, sélectionnez <em>Data Sources</em> puis <em>Add data source</em>. Nommez votre source, sélectionnez le type "InfluxDB", renseignez l'url <code class="code-inline" id="dc5025de8b60c0a511df7c07d81ead97">http://localhost:8086</code> et le nom de base de données <code class="code-inline" id="aa3a0177193f5479812eadbbb3e6c303">telegraf</code>. Par défaut il n'y a pas d'identifiant ni de mot de passe sur la base de données. Cliquez sur <em>Save and test</em> et si tout va bien vous devriez obtenir le message <em>Data source is working</em>.</p>
 <p>À partir de là vous pouvez créer votre premier <em>dashboard</em> (Menu &gt; Dashboard &gt; New). Pour avoir rapidement une base, vous pouvez également importer (Menu &gt; Dashboard &gt; Import) <a href="https://gist.github.com/maximecolin/ae5876ff844ce6a5dca95bc179bfa72d" target="_blank">cette configuration de dashboard</a> que j'ai initiée pour vous.</p>
-<figure><img src="/elao_/images/posts/2016/monitoring-grafana.jpg" alt="Dashboard Grafana de monitoring système" id="dashboard-grafana-de-monitoring"><figcaption style="text-align:center;font-style:italic;">Dashboard Grafana de monitoring système</figcaption></figure><h2 id="pour-aller-plus-loin" class="anchor-title"><a href="#pour-aller-plus-loin">Pour aller plus loin</a></h2>
-<h3 id="provisionner-les-datasources-et" class="anchor-title"><a href="#provisionner-les-datasources-et">Provisionner les datasources et les dashboards</a></h3>
+<figure><img src="/elao_/images/posts/2016/monitoring-grafana.jpg" alt="Dashboard Grafana de monitoring système" id="dashboard-grafana-de-monitoring-systeme"><figcaption style="text-align:center;font-style:italic;">Dashboard Grafana de monitoring système</figcaption></figure><h2 id="pour-aller-plus-loin" class="anchor-title"><a href="#pour-aller-plus-loin">Pour aller plus loin</a></h2>
+<h3 id="provisionner-les-datasources-et-les-dashboards" class="anchor-title"><a href="#provisionner-les-datasources-et-les-dashboards">Provisionner les datasources et les dashboards</a></h3>
 <p>Une fois que vous avez configuré vos <em>datasources</em> et créé vos <em>dashboards</em> vous souhaiterez peut-être de les intégrer à votre provisonning afin d'automatiser leur configuration. Le rôle <code class="code-inline" id="78a7e4f03532bd610f8f5189864031e3">manala.grafana</code> permet celà.</p>
 <p>Pour configurer une <em>datasource</em>, renseignez les mêmes informations que dans le formulaire de l'administration de <strong>Grafana</strong> :</p>
 <pre class="code-multiline language-yaml"><code class="language-yaml" id="1072360ccbbae5698e6b70b4357048b4"><span class="token key atrule">manala_grafana_datasources_exclusive</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
@@ -369,7 +369,7 @@ system</code></pre>
 <pre class="code-multiline language-yaml"><code class="language-yaml" id="e044e1655673bad961f94c7a01402378"><span class="token key atrule">manala_grafana_config</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> <span class="token key atrule">server</span><span class="token punctuation">:</span>
     <span class="token punctuation">-</span> <span class="token key atrule">domain</span><span class="token punctuation">:</span> grafana.foobar</code></pre>
-<h3 id="s-curiser-grafana" class="anchor-title"><a href="#s-curiser-grafana">Sécuriser Grafana</a></h3>
+<h3 id="securiser-grafana" class="anchor-title"><a href="#securiser-grafana">Sécuriser Grafana</a></h3>
 <p>Une première mesure consiste à changer l'identifiant et le mot de passe administrateur de <strong>Grafana</strong> et désactiver la création de compte. Dans votre fichier de configuration <strong>Ansible</strong> :</p>
 <pre class="code-multiline language-yaml"><code class="language-yaml" id="90c841f089e10ee8bb9bfc9d4ad24c80"><span class="token key atrule">manala_grafana_config</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> <span class="token key atrule">security</span><span class="token punctuation">:</span>
@@ -386,7 +386,7 @@ system</code></pre>
   <span class="token punctuation">-</span> <span class="token key atrule">server</span><span class="token punctuation">:</span>
     <span class="token punctuation">-</span> <span class="token key atrule">http_port</span><span class="token punctuation">:</span> <span class="token number">3000</span></code></pre>
 <p>Pour une configuration encore plus poussée, vous pouvez lire la <a href="http://docs.grafana.org/installation/configuration/" target="_blank">documentation de Grafana</a>.</p>
-<h3 id="s-curiser-influxdb" class="anchor-title"><a href="#s-curiser-influxdb">Sécuriser InfluxDB</a></h3>
+<h3 id="securiser-influxdb" class="anchor-title"><a href="#securiser-influxdb">Sécuriser InfluxDB</a></h3>
 <p>Si vous laissez <strong>Telegraf</strong> créer sa propre base de données <strong>InfluxDB</strong>, celle-ci n'aura pas de mot de passe. Vous avez la possibilité de sécuriser votre base de données si vous le souhaitez, la configuration du rôle <code class="code-inline" id="5566d50300baae6d3777a0627bb71404">manala.influxdb</code> permet de gérer les utilisateurs et les permissions.</p>
 <p>Par exemple vous pouvez ajouter un utilisateur <em>telegraf</em> qui a les droit d'écriture/lecture et un utilisateur <em>grafana</em> qui n'a que le droit de lecture</p>
 <pre class="code-multiline language-yaml"><code class="language-yaml" id="8ba5d00f7b612ce1aed181c863bb260f"><span class="token key atrule">manala_influxdb_databases</span><span class="token punctuation">:</span>
@@ -428,7 +428,7 @@ system</code></pre>
     <span class="token key atrule">username</span><span class="token punctuation">:</span>  grafana
     <span class="token key atrule">password</span><span class="token punctuation">:</span>  fCCWkXemR</code></pre>
 <h2 id="en-production" class="anchor-title"><a href="#en-production">En production</a></h2>
-<h3 id="diviser-pour-mieux-r-gner" class="anchor-title"><a href="#diviser-pour-mieux-r-gner">Diviser pour mieux régner</a></h3>
+<h3 id="diviser-pour-mieux-regner" class="anchor-title"><a href="#diviser-pour-mieux-regner">Diviser pour mieux régner</a></h3>
 <p>Pour l'article et dans un soucis de simplicité, je vous ai fait installer l'ensemble des outils sur le même serveur. Généralement, en production, on sépare le collecteur (Telegraf) de la persistance (InfluxDB) et de l'exploitation des données (Grafana) et ce pour des raisons de performance et de disponibilité.</p>
 <p>Et oui, si votre serveur éprouve quelques difficulés, vous aimeriez bien qu'il n'en soit pas de même pour votre dashboard. Un monitoring qui tombe en panne en même temps que le serveur qu'il surveille n'a plus aucun intérêt.</p>
 <p>Concernant les performances, selon la volumétrie de données que vous enregistrez, l'impact peut être non négligeable voire important. Il vaut donc mieux traiter les données sur un serveur à part.</p>

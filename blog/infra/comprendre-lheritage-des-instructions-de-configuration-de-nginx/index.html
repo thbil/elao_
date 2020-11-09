@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>11 janvier 2016</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -234,7 +234,7 @@
 <span class="token keyword">events</span> <span class="token punctuation">{</span>
     <span class="token keyword">worker_connections</span> <span class="token number">1024</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<h1 id="les-directives-de-type-cha-ne" class="anchor-title"><a href="#les-directives-de-type-cha-ne">Les directives de type chaîne</a></h1>
+<h1 id="les-directives-de-type-chaine" class="anchor-title"><a href="#les-directives-de-type-chaine">Les directives de type chaîne</a></h1>
 <p>Il est très important de garder à l'esprit que les directives de configuration s'appliquent <strong>toujours</strong> vers le bas, il n'y a aucune chance qu'une directive ait un impact sur une directive de plus haut ou de même niveau.
 Même lorsqu'une directive <code class="code-inline" id="d5189de027922f81005951e6efe0efd5">location</code> renvoie vers une directive identique le contexte de la première n'a <strong>plus aucune valeur</strong>.</p>
 <p>A l'inverse les contextes pouvant être imbriqués les uns dans les autres, Nginx considère également l'héritage des directives de configuration, la règle étant que si une directive est valide dans deux contextes imbriqués, une directive déclarée dans un contexte parent s'appliquera à ses enfants comme valeur par défaut.</p>
@@ -260,7 +260,7 @@ Même lorsqu'une directive <code class="code-inline" id="d5189de027922f81005951e
 <blockquote>
 <p>Pour rappel un <code class="code-inline" id="bb54288caaecd39acee15e7ab82daa04">array-type</code> est un type de données utilisé pour décrire une collection d'éléments identifiés unitairement par une clé, <strong>ils sont compilés au lancement du programme</strong>.</p>
 </blockquote>
-<h2 id="a-l-int-rieur-d-un-m-me-contex" class="anchor-title"><a href="#a-l-int-rieur-d-un-m-me-contex">A l'intérieur d'un même contexte</a></h2>
+<h2 id="a-l-interieur-d-un-meme-contexte" class="anchor-title"><a href="#a-l-interieur-d-un-meme-contexte">A l'intérieur d'un même contexte</a></h2>
 <p>La redéfinition d'une directive array-type à l'intérieur d'un même bloc, par exemple un bloc <code class="code-inline" id="d5189de027922f81005951e6efe0efd5">location</code>, entraine l'ajout de la nouvelle clé à la structure.</p>
 <h3 id="exemple" class="anchor-title"><a href="#exemple">Exemple</a></h3>
 <pre class="code-multiline language-nginx"><code class="language-nginx" id="09af2b6ecfe2636d0501e469a3939f31"><span class="token keyword">fastcgi_param</span> SCRIPT_FILENAME <span class="token variable">$document_root</span><span class="token variable">$fastcgi_script_name</span><span class="token punctuation">;</span>
@@ -269,7 +269,7 @@ Même lorsqu'une directive <code class="code-inline" id="d5189de027922f81005951e
 <pre class="code-multiline language-yaml"><code class="language-yaml" id="e246bc7375cca80278484310647a481b"><span class="token key atrule">fastcgi_param</span><span class="token punctuation">:</span>
     <span class="token punctuation">-</span> <span class="token key atrule">SCRIPT_FILENAME</span><span class="token punctuation">:</span> $document_root$fastcgi_script_name
     <span class="token punctuation">-</span> <span class="token key atrule">HTTPS</span><span class="token punctuation">:</span> off</code></pre>
-<h2 id="a-l-int-rieur-de-contextes-diff" class="anchor-title"><a href="#a-l-int-rieur-de-contextes-diff">A l'intérieur de contextes différents</a></h2>
+<h2 id="a-l-interieur-de-contextes-differents" class="anchor-title"><a href="#a-l-interieur-de-contextes-differents">A l'intérieur de contextes différents</a></h2>
 <p>Dans ce cas le comportement sera le même qu'une <strong>surcharge de directive</strong>, la nouvelle définition écrasant la précédente, il ne faut donc pas considérer que l'on ajoute une nouvelle clé à un tableau existant car n'oubliez pas, les directives n'ont d'existence que dans <strong>le contexte auquel elles appartiennent</strong>.
 Ce comportement justifie souvent d'avoir une même configuration qui se répête dans deux blocs différents alors qu'une seule clé est modifiée.</p>
 <h3 id="exemple" class="anchor-title"><a href="#exemple">Exemple</a></h3>

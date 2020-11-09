@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>17 juin 2018</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -425,7 +425,7 @@ Nous allons réaliser le <em>step</em> précédent <code class="code-inline" id=
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>Et c'est tout, pas besoin de <em>parser</em> le <em>DOM</em> pour retrouver la valeur du prix de la formule et vérifier si il est égale à A ou B. Cela rend les <em>steps</em> Behat beaucoup plus lisibles.</p>
-<h1 id="passage-d-informations-entre-ste" class="anchor-title"><em>step</em> 📦<a href="#passage-d-informations-entre-ste">Passage d'informations entre </a></h1>
+<h1 id="passage-d-informations-entre-step" class="anchor-title"><em>step</em> 📦<a href="#passage-d-informations-entre-step">Passage d'informations entre </a></h1>
 <p>Au fur et à mesure de l'utilisation de ce système, vous vous rendrez compte qu'il manque quelque chose... En effet, les différents <em>steps</em> sont distincts les uns des autres, ne communiquant pas, ils ne peuvent pas utiliser les valeurs des autres <em>steps</em>.
 Imaginons que vous souhaitez créer une formule "Early bird" et que celle-ci soit disponible uniquement jusqu'à une certaine date. Pour réaliser ce <em>step</em> il vous faudra donc soit créer un nouveau <em>step</em> qui permet de créer une formule avec une référence, un prix et une date de fin de disponibilité. Cela nous fait dupliquer une partie du code précédent et ce n'est pas forcément pertinent.</p>
 <p>Pour éviter cela, il est intéresant de pouvoir récupérer un élément du <em>step</em> précédent dans le <em>step</em> suivant afin de modifier certaines valeurs.</p>
@@ -571,7 +571,7 @@ Ce <em>Storage</em> contient simplement un tableau indexé par type de donnée s
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>À la lecture de notre test fonctionnel, nous comprenons tout de suite dans quel contexte nous nous trouvons, avec une formule non disponible, et nous testons qu'elle n'est plus achetable par un utilisateur.</p>
-<h1 id="axes-d-am-lioration" class="anchor-title"><a href="#axes-d-am-lioration">Axes d'amélioration 🚀</a></h1>
+<h1 id="axes-d-amelioration" class="anchor-title"><a href="#axes-d-amelioration">Axes d'amélioration 🚀</a></h1>
 <p>Afin de rendre nos tests fonctionnels encore plus compréhensibles, nous avons de futurs axes d'amélioration comme pouvoir naviguer sur le site sans faire mention des urls qui n'ont pas toujours de notion métier.
 Ce qui permettrait la rédaction de <em>steps</em> tel que:</p>
 <pre class="code-multiline language-diff"><code class="language-diff" id="cdf5813eb74a194e4fa6ba939ea6d8a6"><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line"> When I go to this page "/fr/buy"

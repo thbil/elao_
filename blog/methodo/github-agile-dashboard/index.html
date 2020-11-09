@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>4 juillet 2017</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -229,7 +229,7 @@
 <img src="/elao_/images/posts/2017/github-agile-dashboard/github-milestone.png" alt="github-milestone" title="github-milestone" id="github-milestone"><p>Le problème, c'est que GitHub ne connait pas notre convention décrivant la valeur en point des stories et ne peut donc pas l'exploiter.</p>
 <p>L'avancement proposé en nombre de ticket clos n'est pas représentatif de l'avancement en terme de points, qu'on doit obtenir en additionnant les points de toutes les issues.</p>
 <p><em>Et puis un jour, on en a eu marre de faire ces totaux à la main</em> 😇</p>
-<h2 id="gad-notre-ligne-de-command-agil" class="anchor-title"><a href="#gad-notre-ligne-de-command-agil">GAD, notre ligne de command agile</a></h2>
+<h2 id="gad-notre-ligne-de-command-agile" class="anchor-title"><a href="#gad-notre-ligne-de-command-agile">GAD, notre ligne de command agile</a></h2>
 <p>Alors j'ai pris un moment pour faire un petit outil en ligne de commande qui ferait ce travail pour nous.</p>
 <ul><li>On récupère la liste des issues du projet via <a href="https://developer.github.com/v3/" target="_blank">l'API GitHub</a>.</li>
 <li>On obtient les issues, milestone, labels, users et pull-request du projet en un seul appel HTTP !</li>
@@ -255,7 +255,7 @@ La command <code class="code-inline" id="5cd1a2c6812a26f4af0bfe8eaf6422d7">gad</
 <h2 id="ce-qu-on-en-retire" class="anchor-title"><a href="#ce-qu-on-en-retire">Ce qu'on en retire</a></h2>
 <h3 id="retour-sur-investissement" class="anchor-title"><a href="#retour-sur-investissement">Retour sur investissement</a></h3>
 <p>La première version fonctionnelle de GAD était prête après une petite après-midi de travail et accélérait déjà quelques tâches rébarbatives de notre quotidien agile. Un investissement vite "remboursé" !</p>
-<h3 id="les-joies-simple-de-la-ligne-de" class="anchor-title"><a href="#les-joies-simple-de-la-ligne-de">Les joies simple de la ligne de commande</a></h3>
+<h3 id="les-joies-simple-de-la-ligne-de-commande" class="anchor-title"><a href="#les-joies-simple-de-la-ligne-de-commande">Les joies simple de la ligne de commande</a></h3>
 <p><code class="code-inline" id="5873cade84adddbdd85ce9248ea2a629">gad sprint</code> devient petit à petit un réflexe (comme <code class="code-inline" id="6ca42d12c6d2b040d7784c6ebbfd3426">git status</code>) et nous permet d'avoir un rapide aperçu de l'avancement du sprint, directement dans le terminal, sans même avoir besoin de prendre en main la souris 😬</p>
 <p>L'avantage de la ligne de commande, c'est qu'on bénéficie directement de la puissance du terminal :</p>
 <blockquote>
@@ -263,7 +263,7 @@ La command <code class="code-inline" id="5cd1a2c6812a26f4af0bfe8eaf6422d7">gad</
 </blockquote>
 <pre class="code-multiline language-shell"><code class="language-shell" id="34a43cea6dd0c46369c5553d5f6cbe35">gad changelog --sprint<span class="token operator">=</span>-1 <span class="token operator">|</span> <span class="token function">grep</span> <span class="token number">42</span></code></pre>
 <p>😎</p>
-<h3 id="et-moi-dans-tout-a" class="anchor-title"><a href="#et-moi-dans-tout-a">Et moi dans tout ça ?</a></h3>
+<h3 id="et-moi-dans-tout-ca" class="anchor-title"><a href="#et-moi-dans-tout-ca">Et moi dans tout ça ?</a></h3>
 <p>GAD n'est probablement pas l'outil qui va révolutionner votre façon de travailler et multiplier la productivité de vos équipes, notamment car il a été conçu <em>sur-mesure</em> pour nos besoins et notre façon de travailler.</p>
 <p>Mais puisqu'il est open-source, je vous propose tout de même de <a href="https://www.npmjs.com/package/@elao/github-agile-dashboard" target="_blank">l'essayer</a> ou de <a href="https://github.com/Elao/github-agile-dashboard" target="_blank">jeter un oeil à son code</a>.</p>
 <p>Je vous invite aussi à être attentif·ve :</p>

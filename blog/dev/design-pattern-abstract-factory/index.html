@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>11 avril 2017</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -212,13 +212,13 @@
 </div>
 <h2 id="classification" class="anchor-title"><a href="#classification">Classification</a></h2>
 <p>Le pattern <code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code> est classé dans la catégorie des <strong>Design Patterns de création</strong>.</p>
-<h2 id="d-finition" class="anchor-title"><a href="#d-finition">Définition</a></h2>
+<h2 id="definition" class="anchor-title"><a href="#definition">Définition</a></h2>
 <blockquote>
 <p>Provide an interface for creating families of related or dependent objects without specifying their concrete classes.</p>
 </blockquote>
 <p>C'est une très jolie définition dont je ne me lasse pas ... (Comme toute définition, elle paraît assez barbare tant que l'on n'a pas approfondi le concept, ce que je vous propose de faire dans les paragraphes qui suivent).</p>
 <p>En résumé, le pattern <code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code> va nous permettre d'instancier des familles de produits dépendant les uns des autres sans qu'il soit nécessaire de préciser leur type concret (je ne suis pas sûr qu'on soit plus avancé ...)</p>
-<h2 id="sch-ma-du-design-pattern-abstra" class="anchor-title"><code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code><a href="#sch-ma-du-design-pattern-abstra">Schéma du design pattern </a></h2>
+<h2 id="schema-du-design-pattern-abstract-factory" class="anchor-title"><code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code><a href="#schema-du-design-pattern-abstract-factory">Schéma du design pattern </a></h2>
 <p class="text-center">
     {{}}
 </p>
@@ -228,13 +228,13 @@
 <li>à droite les produits à instancier</li>
 </ul><p>Les produits appartiennent à une famille. Sur ce schéma le produit A1 et le produit B1 appartiennent à la même famille et sont donc destinés à collaborer ensemble. Le produit A2 et le produit B2 appartiennent à une autre famille et sont également conçus pour collaborer ensemble. En revanche, A1 et B2 ne peuvent pas fonctionner ensemble. Il est donc important d'instancier des produits qui sont compatibles (autrement dit, qui appartiennent à la même famille) et c'est là qu'interviennent les fabriques abstraites.</p>
 <p>Je suis sûr qu'au cours de votre carrière de développeur vous avez été amenés à modéliser des contraintes métiers énoncées peu ou prou ainsi : "<em>si mon produit est une instance de A, alors c'est mon service A qui le gère ; si mon produit est une instance de B, alors c'est mon service B qui le gère</em>". Ne cherchez pas plus loin, c'est justement à ce genre de problématique que répond le pattern <code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code>.</p>
-<h2 id="exemple-de-probl-mes-familiaux" class="anchor-title"><a href="#exemple-de-probl-mes-familiaux">Exemple de problèmes familiaux ...</a></h2>
+<h2 id="exemple-de-problemes-familiaux" class="anchor-title"><a href="#exemple-de-problemes-familiaux">Exemple de problèmes familiaux ...</a></h2>
 <p>J'ai développé une extension Chrome qui permet de présenter des statistiques structurées à partir du détail d'un commit sur Github : nom du projet, nom de l'auteur, liste des fichiers concernés par les modifications, nombre de lignes supprimées, nombre de lignes ajoutées, etc.</p>
 <p>Pour ce faire, j'ai développé une librairie qui contient deux classes qui analysent le contenu HTML d'une page Github et en extraient les données pertinentes :</p>
 <ul><li>la première classe <code class="code-inline" id="6b5e652c03489366972d52d5aa3ce2a6">GithubCrawler</code> parse le DOM (cette classe connaît les chemins XPATH qui permettent d'extraire les données brutes au format HTML)</li>
 <li>la seconde classe <code class="code-inline" id="8f962f457dd44b50ac847fd857dcc106">GithubParser</code> sait parser les données brutes retournées par mon crawler pour en extraire les données épurées (débarrassées des tags HTML notamment) et les structurer</li>
 </ul><p>Mon client est aux anges et souhaite donc étendre ce fonctionnel aux projets hébergés sur Gitlab (vous la voyez arriver la nouvelle <code class="code-inline" id="ed81c0311eb5364a8d6d1d1b63f3c51d">famille</code> ?). Bien évidemment, la structure HTML des pages Gitlab est complètement différente des pages Github, et mon parser Github est tout à fait incapable de comprendre les données retournées par mon crawler Gitlab ... La contrainte est donc la suivante : si mon crawler est un crawler Github, alors je dois utiliser le parser Github ; si mon crawler est un crawler Gitlab, alors je dois utiliser le parser Gitlab. Et mon client ne compte pas s'arrêter là, il souhaite bien évidemment aussi gérer les pages Bitbucket ...</p>
-<h2 id="r-solution-de-la-probl-matique" class="anchor-title"><code class="code-inline" id="65e83a834deb2a41513d933cb5fa5570">AbstractFactory</code><a href="#r-solution-de-la-probl-matique">Résolution de la problématique à l'aide du DP </a></h2>
+<h2 id="resolution-de-la-problematique-a-l-aide-du-dp-abstractfactory" class="anchor-title"><code class="code-inline" id="65e83a834deb2a41513d933cb5fa5570">AbstractFactory</code><a href="#resolution-de-la-problematique-a-l-aide-du-dp-abstractfactory">Résolution de la problématique à l'aide du DP </a></h2>
 <p>Vous l'aurez sans doute deviné, nous nous trouvons en présence de trois familles de produits différentes : la famille des produits Github, la famille des produits Gitlab et la famille des produits Bickbucket. Dans chacune de ces familles, on retrouve un produit <code class="code-inline" id="820d17d3f859f4391cce177be0c93fde">Crawler</code> et un produit <code class="code-inline" id="9a83ab0d60fed7c37d928ccb30d1b6ae">Parser</code> conçus pour collaborer ensemble.</p>
 <p>Comment garantir que j'utilise des produits d'une même famille ? Réponse : le pattern <strong>Abstract Factory</strong>. Ce qui nous donne le récapitulatif suivant :</p>
 <table><tr><th> </th>

@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>27 avril 2017</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -280,7 +280,7 @@
 <div style="border-left: 5px solid #ffa600;padding: 20px;margin: 20px 0;">
     Attention, les `boosts` indiqués au `mapping` ne fonctionneront que sur les requêtes de type `term`. Pour les requêtes de type `range` ou `match` par exemple, il faudra préciser les `boosts` dans la requête comme expliqué dans la suite de l'article.
 </div>
-<h2 id="requ-ter" class="anchor-title"><a href="#requ-ter">Requêter</a></h2>
+<h2 id="requeter" class="anchor-title"><a href="#requeter">Requêter</a></h2>
 <h3 id="analyzer" class="anchor-title"><a href="#analyzer">Analyzer</a></h3>
 <p>Pour utiliser votre <code class="code-inline" id="b43bf56130ef201d20e437829192ea14">analyser</code> lors de la recherche, vous devez le préciser dans votre requête. Vous pouvez compléter votre requête avec les options <code class="code-inline" id="b4160057229b3295e34dce5a9618e79f">fuzziness</code> et <code class="code-inline" id="091b68ba08a375c70c7bc1eafbe1af90">minimum_should_match</code>.</p>
 <p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-minimum-should-match.html" target="_blank"><code class="code-inline" id="091b68ba08a375c70c7bc1eafbe1af90">minimum_should_match</code></a> permet d'indiquer le pourcentage minimum de votre recherche qui doit être trouvé dans vos documents.</p>
@@ -463,7 +463,7 @@
 </div>
 </div>
 <p>Dans cet exemple, la pertinence d'un résultat repose sur la note du document via la formule suivante : <code class="code-inline" id="ac7021b97cb43f55588beffe0da83ba5">sqrt(1.1 * doc.rate)</code>.</p>
-<h4 id="les-fonctions-de-d-croissance" class="anchor-title"><a href="#les-fonctions-de-d-croissance">Les fonctions de décroissance</a></h4>
+<h4 id="les-fonctions-de-decroissance" class="anchor-title"><a href="#les-fonctions-de-decroissance">Les fonctions de décroissance</a></h4>
 <p>Les fonctions de décroissance (<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html#function-decay" target="_blank"><code class="code-inline" id="18e62ab37e43c39ac5759a0c39b2baf6">decay function</code></a>) sont une autre méthode pour modifier le score de vos résultats. Elles se basent sur des fonctions mathématiques pour réduire le score de vos résultats.</p>
 <div class="tabs">
 <div class="nav">

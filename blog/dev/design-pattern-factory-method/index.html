@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>10 avril 2017</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -204,7 +204,7 @@
 <ul><li><a href="#biblio">Repères bibliographiques</a></li>
 <li><a href="#not-a-pipe">Ceci n'est pas une pipe</a></li>
 <li><a href="#factory-method">Le Design Pattern 'Factory Method'</a></li>
-</ul><h2 id="quelques-rep-res-bibliographiq" class="anchor-title"> Quelques repères bibliographiques en guise de préambule<a href="#quelques-rep-res-bibliographiq"><a name="biblio"></a></a></h2>
+</ul><h2 id="quelques-reperes-bibliographiques-en-guise-de-preambule" class="anchor-title"> Quelques repères bibliographiques en guise de préambule<a href="#quelques-reperes-bibliographiques-en-guise-de-preambule"><a name="biblio"></a></a></h2>
 <p>Avant d'entrer dans le vif du sujet en abordant notre premier Design Pattern, permettez-moi de citer deux ouvrages incontournables lorsque l'on évoque ce sujet.</p>
 <p class="text-center">
     {{}}
@@ -249,18 +249,18 @@ On peut déplorer que la plupart des exemples du livre s'appuient sur le langage
 <li>les classes devraient être ouvertes à l'extension mais fermées à la modification</li>
 <li>etc.</li>
 </ul><p>Mais nous aurons l'occasion d'y revenir ...</p>
-<h2 id="notre-premier-dp-la-factory-m" class="anchor-title"> Notre premier DP : la <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code><a href="#notre-premier-dp-la-factory-m"><a name="factory-method"></a></a></h2>
+<h2 id="notre-premier-dp-la-factory-method" class="anchor-title"> Notre premier DP : la <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code><a href="#notre-premier-dp-la-factory-method"><a name="factory-method"></a></a></h2>
 <h3 id="introduction" class="anchor-title"><a href="#introduction">Introduction</a></h3>
 <p>Les principes d'une bonne conception objet recommandent de programmer pour des interfaces plutôt que des implémentations (c'est au demeurant un principe qui s'accommode très bien avec celui de l'injection de dépendance). Concrètement, cela consiste par exemple à privilégier des méthodes de classes qui acceptent en arguments des interfaces (ou classes abstraites) plutôt que des classes concrètes. Cela étant, même si l'on programme pour des interfaces, nous devons nécessairement nous résoudre à instancier des objets concrets pour que notre application s'exécute. Et c'est là qu'entrent en scène les design patterns de création, et notamment les deux Design patterns de <em>Factory</em> identifiés par le <em>Gang of Four</em>, à savoir la <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> et l'<code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code>.</p>
 <p>Pour l'heure, intéressons-nous au premier de ces deux patterns de <em>Factory</em>.</p>
 <h3 id="classification" class="anchor-title"><a href="#classification">Classification</a></h3>
 <p>La <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> est classée dans la catégorie des <strong>Design Patterns de création</strong>.</p>
-<h3 id="d-finition" class="anchor-title"><a href="#d-finition">Définition</a></h3>
+<h3 id="definition" class="anchor-title"><a href="#definition">Définition</a></h3>
 <blockquote>
 <p>Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses</p>
 </blockquote>
 <p>Cette définition peut paraître assez obscure à première vue, mais croyez-moi, le pattern est d'une affligeante simplicité.</p>
-<h3 id="sch-ma" class="anchor-title"><a href="#sch-ma">Schéma</a></h3>
+<h3 id="schema" class="anchor-title"><a href="#schema">Schéma</a></h3>
 <p class="text-center">
     {{}}
     <figcaption style="text-align: center;font-style: italic;">Schéma du Design Pattern 'Factory Method'</figcaption></p>
@@ -270,7 +270,7 @@ On peut déplorer que la plupart des exemples du livre s'appuient sur le langage
 <li>Le créateur concret : il étend <em>Creator</em> et instancie l'objet attendu</li>
 <li>Le produit : c'est l'interface de l'objet à instancier</li>
 <li>Le produit concret : c'est l'objet à instancier</li>
-</ul><h3 id="expos-de-la-probl-matique" class="anchor-title"><a href="#expos-de-la-probl-matique">Exposé de la problématique</a></h3>
+</ul><h3 id="expose-de-la-problematique" class="anchor-title"><a href="#expose-de-la-problematique">Exposé de la problématique</a></h3>
 <pre class="code-multiline language-php"><code class="language-php" id="438c1fddeeed1ec109f41d0f90008f5e"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
     <span class="token keyword">class</span> <span class="token class-name">OrderHandler</span> <span class="token punctuation">{</span>
         <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">orderProduct</span><span class="token punctuation">(</span>Order <span class="token variable">$order</span><span class="token punctuation">,</span> int <span class="token variable">$qty</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Product <span class="token punctuation">{</span>
@@ -288,7 +288,7 @@ On peut déplorer que la plupart des exemples du livre s'appuient sur le langage
 <li>nous n'avons pas développé pour des interfaces,</li>
 <li>nous avons créé un couplage très fort (trop fort ?) entre nos deux classes.</li>
 </ul><p>Il est possible qu'en l'état actuel de l'application, ce code fasse parfaitement l'affaire. Mais il est préférable de rendre son code ouvert aux évolutions, et c'est particulièrement vrai lorsque l'on développe des services destinés à être consommés par des tiers (librairie <em>open source</em> par exemple) ou bien des classes métiers dont les spécifications sont susceptibles d'évoluer fréquemment.</p>
-<h3 id="le-design-pattern-factory-method" class="anchor-title"><code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> à la rescousse<a href="#le-design-pattern-factory-method">Le design pattern </a></h3>
+<h3 id="le-design-pattern-factory-method-a-la-rescousse" class="anchor-title"><code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> à la rescousse<a href="#le-design-pattern-factory-method-a-la-rescousse">Le design pattern </a></h3>
 <p>Nous allons à présent modifier notre classe <code class="code-inline" id="f454b76d1cda09695d0fe30bb3447acd">OrderHandler</code> pour nous rapprocher du pattern :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="21e2b1250e9a91bef21ab903fc656839"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
     <span class="token keyword">class</span> <span class="token class-name">OrderHandler</span> <span class="token punctuation">{</span>

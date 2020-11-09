@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>6 novembre 2019</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -207,12 +207,12 @@
   <div class="article-content">
     <main class="article-content__main">
       <body><p>L'une des pratiques les plus courantes du web pour accéder à un contenu de base de données est d'inclure l'identifiant (<code class="code-inline" id="b718adec73e04ce3ec720dd11a06a308">ID</code>) de celui-ci dans l'url. Cet identifiant est dans la grande majorité des cas un entier positif auto-incrémenté par la base de données. Cet identifiant se retrouve ainsi exposé dans les urls. Bien qu'elle pose un certain nombre de problèmes, cette pratique est très simple et très répandue.</p>
-<h2 id="probl-mes-de-s-curit-et-de-c" class="anchor-title"><a href="#probl-mes-de-s-curit-et-de-c">Problèmes de sécurité et de confidentialité</a></h2>
+<h2 id="problemes-de-securite-et-de-confidentialite" class="anchor-title"><a href="#problemes-de-securite-et-de-confidentialite">Problèmes de sécurité et de confidentialité</a></h2>
 <p>Exposer ces identifiants dans les urls pose principalement des problèmes de <strong>sécurité</strong> et de <strong>confidentialité</strong>.</p>
 <p>Ces problèmes sont dus à la prédictabilité de l'identifiant. En effet, celui-ci étant auto-incrémenté, si vous avez une url avec un identifiant, il est très facile de déduire les urls d'autres contenus en incrémentant ou décrémentant l'identifiant dans l'url.</p>
 <p>Il est alors simple pour un attaquant ou simplement un utilisateur curieux de tenter d'accéder à des contenus qui ne lui sont pas destinés. Couplé à d'autres failles ou défauts de sécurité, cela lui facilitera grandement la tâche. Il est également simple de crawler votre contenu sans connaitre à l'avance toutes les urls, mais simplement en bouclant sur un identifiant incrémenté.</p>
 <p>Et enfin, il est également simple de connaitre vos volumes de données. Par exemple, si je m'inscris sur un site et que je vois dans une url que mon compte utilisateur à l'ID 100, je sais qu'il n'y a que 100 utilisateurs inscrits sur ce site, si je passe une commande et qu'elle a l'identifiant 30, je sais qu'il n'y a eu que 30 commandes et je peux ensuite déduire le nombre de commandes moyen par utilisateur. Autant d'informations sensibles, surtout si vous êtes en concurrence.</p>
-<h2 id="les-alternatives-aux-ids-auto-in" class="anchor-title"><a href="#les-alternatives-aux-ids-auto-in">Les alternatives aux IDs auto-incrémentés</a></h2>
+<h2 id="les-alternatives-aux-ids-auto-incrementes" class="anchor-title"><a href="#les-alternatives-aux-ids-auto-incrementes">Les alternatives aux IDs auto-incrémentés</a></h2>
 <p>Plusieurs alternatives aux identifiants auto-incrémentés existent.</p>
 <p>L'une des plus connues est l'<strong><a href="https://fr.wikipedia.org/wiki/Universal_Unique_Identifier" target="_blank">UUID</a></strong>. Cet identifiant de 32 caractères hexadécimaux est généré de façon unique par un algorithme. A partir de l'UUID d'un contenu il n'est pas possible de prédire celui des autres. Il est très utilisé lors d'échanges API; néanmoins il souffre d'un inconvéniant majeur pour des urls, sa longueur.</p>
 <p>L'url suivante est quand même beaucoup moins lisible et pratique que la même utilisant des IDs entiers :</p>
@@ -245,7 +245,7 @@ figure pre {
 figure {
   margin: 20px 0;
 }
-</style><h2 id="int-gration-dans-symfony" class="anchor-title"><a href="#int-gration-dans-symfony">Intégration dans Symfony</a></h2>
+</style><h2 id="integration-dans-symfony" class="anchor-title"><a href="#integration-dans-symfony">Intégration dans Symfony</a></h2>
 <p>Tout d'abord créons un service pour offusquer nos IDs.</p>
 <pre class="code-multiline language-php"><code class="language-php" id="8993fa175afbc254aba58d400993c99c"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">interface</span> <span class="token class-name">ObfuscatorInterface</span>
@@ -366,7 +366,7 @@ Plus d'informations sur ces paramètres dans la <a href="https://github.com/jens
         <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Response</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
-<h2 id="rendre-notre-syst-me-configurab" class="anchor-title"><a href="#rendre-notre-syst-me-configurab">Rendre notre système configurable</a></h2>
+<h2 id="rendre-notre-systeme-configurable" class="anchor-title"><a href="#rendre-notre-systeme-configurable">Rendre notre système configurable</a></h2>
 <p>Notre offuscation fonctionne mais uniquement sur les paramètres <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code>. Nous aurons peut être besoin d'offusquer d'autres paramètres ou d'exclure certaines routes.</p>
 <p>Pour cela ajoutons une méthode <code class="code-inline" id="cd3c6265a726bca865fe9b74b4fd5ec4">mustBeObfuscated</code> à notre <code class="code-inline" id="9f484bcd1b56f5125466c648f60d7671">Obfuscator</code> et déportons y la logique utilisée dans le router et dans le resolver :</p>
 <pre class="code-multiline language-diff"><code class="language-diff" id="622fa2f3e414c83da7b9c74d038aac09"><span class="token deleted-arrow deleted"><span class="token prefix deleted">&lt;</span><span class="token line">?php

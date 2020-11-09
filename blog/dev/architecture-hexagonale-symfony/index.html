@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>21 juin 2017</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -211,7 +211,7 @@
           <a href="#une-architecture-hexagonale">Une architecture hexagonale</a>
         </li>
               <li class="table-of-content__item">
-          <a href="#une-architecture-en-couches-ou">Une architecture en couches (ou en oignon)</a>
+          <a href="#une-architecture-en-couches-ou-en-oignon">Une architecture en couches (ou en oignon)</a>
         </li>
               <li class="table-of-content__item">
           <a href="#qu-est-ce-qu-on-met-dedans">Qu&#039;est ce qu&#039;on met dedans ?</a>
@@ -220,7 +220,7 @@
           <a href="#pourquoi">Pourquoi ?</a>
         </li>
               <li class="table-of-content__item">
-          <a href="#et-symfony-dans-tout-a">Et Symfony dans tout ça ?</a>
+          <a href="#et-symfony-dans-tout-ca">Et Symfony dans tout ça ?</a>
         </li>
               <li class="table-of-content__item">
           <a href="#framework-agnostique">Framework agnostique</a>
@@ -242,7 +242,7 @@
 </ul><p>La forme hexagonale — qui aurait tout aussi bien pu être octogonale ou pentagonale — est là pour mettre en évidence les différentes facettes par lesquelles votre application communique avec l'extérieur via des adapteurs.</p>
 <p>Le <strong>code technique</strong> c'est tout l'environnement nécessaire à votre application sans faire partie de son coeur métier. Tout ou partie de ce code peut être remplacé sans impacter votre métier. Cela comprend — entre autres — la persistance (base de données), le système de fichier, le cache, l'applicatif externe (API, binaires, ...), les bibliothèques et frameworks, etc.</p>
 <p>Le <strong>code métier</strong> c'est tout le code qui traduit le métier de votre client. Il s'agit des règles métier, de la logique métier, du code purement applicatif, ... Ce code est irremplaçable et constitue le coeur de votre application.</p>
-<h2 id="une-architecture-en-couches-ou" class="anchor-title"><a href="#une-architecture-en-couches-ou">Une architecture en couches (ou en oignon)</a></h2>
+<h2 id="une-architecture-en-couches-ou-en-oignon" class="anchor-title"><a href="#une-architecture-en-couches-ou-en-oignon">Une architecture en couches (ou en oignon)</a></h2>
 <p class="text-center">
     <img src="/elao_/images/posts/2017/onionman.jpg" alt="Onion man" id="onion-man"></p>
 <p>Afin d'aller encore un peu plus loin dans le découplage de mon code et de me donner un cadre facilitant la séparation du code technique et du code métier, je me suis également inspiré de deux autres architectures proches dans l'idée :</p>
@@ -302,7 +302,7 @@
 </ol><p>Au final, l'investissement de départ est un peu plus grand, quoiqu'avec l'habitude pas tant, mais est largement amorti sur la durée de vie du projet tant les évolutions et la testabilité sont simplifiées.</p>
 <p class="text-center">
     <img src="/elao_/images/posts/2017/good-work-chuck-norris.jpg" alt="Good work" id="good-work"></p>
-<h1 id="et-symfony-dans-tout-a" class="anchor-title"><a href="#et-symfony-dans-tout-a">Et Symfony dans tout ça ?</a></h1>
+<h1 id="et-symfony-dans-tout-ca" class="anchor-title"><a href="#et-symfony-dans-tout-ca">Et Symfony dans tout ça ?</a></h1>
 <p>Tout d'abord j'essaie de créer le moins possible de bundles, voire pas du tout. Cette fonctionnalité de Symfony n'est d'aucune utilité pour cette architecture, elle reste néanmoins indispensable sur certaines fonctions selon la version du framework.</p>
 <p>Symfony tend d'ailleurs vers le <em>no bundle</em> dans ses versions les plus récentes (3.3 sortie dernièrement et 4.0 à venir).</p>
 <h2 id="framework-agnostique" class="anchor-title"><a href="#framework-agnostique">Framework agnostique</a></h2>

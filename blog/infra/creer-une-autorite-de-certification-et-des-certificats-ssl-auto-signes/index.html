@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>5 octobre 2010</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -204,7 +204,7 @@
 <p>Petit memo aujourd'hui pour les admin sys</p>
 <p>Nous allons voir comment créer sa propre autorité de certification et créer ses propres certificats SSL auto-signés, toujours très utiles lorsque l'on a des problématiques de connexion sécurisée.<!--more-->
 L'ensemble de ces manipulations ont été réalisées sur des serveurs Linux / Debian Lenny.</p>
-<h3 id="cr-er-son-propre-ca-certificat" class="anchor-title"><a href="#cr-er-son-propre-ca-certificat">Créer son propre CA (Certificate Authority)</a></h3>
+<h3 id="creer-son-propre-ca-certificate-authority" class="anchor-title"><a href="#creer-son-propre-ca-certificate-authority">Créer son propre CA (Certificate Authority)</a></h3>
 <p>Nous allons commencer par créer une clé privée</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="43687bc072862b8a3751054098c7f046">root@my_server:~<span class="token comment"># openssl genrsa -des3 -out elao-ca.key 2048</span>
 Generating RSA private key, <span class="token number">2048</span> bit long modulus
@@ -222,7 +222,7 @@ Enter pass phrase <span class="token keyword">for</span> elao-ca.key:</code></pr
 Enter pass phrase for elao-ca.key:</code></pre>
 <p>Le contenu de notre certificat est vérifiable grâce à la commande suivante :</p>
 <pre class="code-multiline"><code id="abbea37b2326b86905f5195ae9763b03">openssl x509 -in elao-ca.crt -text -noout</code></pre>
-<h3 id="cr-er-une-cl-et-un-certificat" class="anchor-title"><a href="#cr-er-une-cl-et-un-certificat">Créer une clé et un certificat pour le serveur</a></h3>
+<h3 id="creer-une-cle-et-un-certificat-pour-le-serveur" class="anchor-title"><a href="#creer-une-cle-et-un-certificat-pour-le-serveur">Créer une clé et un certificat pour le serveur</a></h3>
 <p>Maintenant que nous disposons de notre autorité de certification nous allons pouvoir créer et signer les certificats à destination de notre serveur.</p>
 <pre class="code-multiline"><code id="b9043d8b3c399723bb63690eaa28b58f">openssl genrsa -des3 -out elao-server.key 1024</code></pre>
 <p>Comme vous le constatez nous restons sur un cryptage à 1024 bits, en effet il est risqué d'aller au delà car certains navigateurs ne supportent pas les cryptages supérieurs.</p>
@@ -231,7 +231,7 @@ Un certificat n’est ni plus, ni moins qu’une clé qui a été signée par un
 <p><strong>Note:</strong></p>
 <p>Une autorité de certification est une entité autorisée à signer les certificats SSL, elles ne sont que quelques unes à faire autorité. Lorsqu’un certificat est signé par l’une d’entre elles, les navigateurs accepterons automatiquement le certificat comme étant valide, si un certificat est signé par une autorité de certification absente de la liste des autorités fiables du navigateur celui-ci renverra un avertissement à l’utilisateur lui précisant que le certificat a été signé par une autorité non reconnue et lui demandera de confirmer qu’il accepte bien le certificat.</p>
 <p>Ce qui se traduit sous Firefox par exemple par ce type d’écran:</p>
-<img title="firefox-ssl" src="/blog/medias/creer-une-autorite-de-certification-et-des-certificats-ssl-auto-signes/firefox-ssl.png" alt="firefox ssl Créer une autorité de certification et des certificats SSL auto signés" width="700" height="386" id="firefox-ssl-cr-er-une-autorit"><p>Au cours de cette étape plusieurs questions vous serons posées et se présenteront ainsi, vos réponses seront utilisées par le certificat et utilisées par les navigateurs afin de vérifier que le certificat provient d’une source sûre. Les utilisateurs seront en mesure d’inspecter ces détails à n’importe quel moment à partir de l’instant où ils se connectent à votre site.</p>
+<img title="firefox-ssl" src="/blog/medias/creer-une-autorite-de-certification-et-des-certificats-ssl-auto-signes/firefox-ssl.png" alt="firefox ssl Créer une autorité de certification et des certificats SSL auto signés" width="700" height="386" id="firefox-ssl-creer-une-autorite-de-certification-et-des-certificats-ssl-auto-signes"><p>Au cours de cette étape plusieurs questions vous serons posées et se présenteront ainsi, vos réponses seront utilisées par le certificat et utilisées par les navigateurs afin de vérifier que le certificat provient d’une source sûre. Les utilisateurs seront en mesure d’inspecter ces détails à n’importe quel moment à partir de l’instant où ils se connectent à votre site.</p>
 <pre class="code-multiline"><code id="9ac4c983c83623aac25ca51c511d91b9">openssl req -new -key elao-server.key -out elao-server.csr</code></pre>
 <p>... qui devrait aboutir sur:</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="5e52c6003e08ee78d3690936535ae396">Enter pass phrase <span class="token keyword">for</span> elao-server.tld.key:

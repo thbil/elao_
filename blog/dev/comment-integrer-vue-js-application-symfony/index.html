@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>21 octobre 2016</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -242,7 +242,7 @@ module<span class="token punctuation">.</span><span class="token property-access
 <pre class="code-multiline"><code id="fd3dad3e156d7f8ca10f7dd7b90c9f89">yarn encore dev --watch --watch-poll</code></pre>
 <h2 id="integration" class="anchor-title"><a href="#integration">Integration</a></h2>
 <p>Vous avez alors plusieurs posibilités pour intégrer des composants <strong>Vue.js</strong> dans votre application <strong>Symfony</strong>. Vous pouvez <a href="#m%C3%A9langer-twig-et-vue-js">intégrer directement vos template Vue.js dans Twig</a> ou utiliser des <a href="#single-file-component">Single File Component</a>.</p>
-<h3 id="m-langer-twig-et-vue-js" class="anchor-title"><a href="#m-langer-twig-et-vue-js">Mélanger Twig et Vue.js</a></h3>
+<h3 id="melanger-twig-et-vue-js" class="anchor-title"><a href="#melanger-twig-et-vue-js">Mélanger Twig et Vue.js</a></h3>
 <p>Vous pouvez intégrer directement du templating <strong>Vue.js</strong> dans votre template <strong>Twig</strong>.</p>
 <p>Néanmoins, il faut savoir que Twig et Vue.js utilisent les mêmes délimiteurs pour afficher les variables. S'il est possible de <a href="https://twig.symfony.com/doc/3.x/recipes.html#customizing-the-syntax" target="_blank">modifier les délimiteurs utilisés par Twig</a> comme de modifier ceux par Vue.js. Je recommende plutôt d'encadrer votre template Vue.js par les balises <code class="code-inline" id="11379f73059195615f647a7778127903">{% verbatim %}{% endverbatim %}</code> pour indiquer à Twig de ne pas interpréter le code à l'interieur.</p>
 <pre class="code-multiline language-html"><code class="language-html" id="bd5115574811580b534dd9c65650f98b"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>{{ 'Ce texte est rendu par Twig' }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>

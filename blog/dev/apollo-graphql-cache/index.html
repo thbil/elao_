@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>17 février 2020</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -214,7 +214,7 @@
 <p><a href="https://www.apollographql.com/" target="_blank">Apollo GraphQL</a> est un service SAAS proposant une solution serveur GraphQL qui fournit également un très bon <a href="https://github.com/apollographql/apollo-client" target="_blank">client GraphQL Javascript</a>. Le client est open source et fonctionne avec n'importe quel serveur GraphQL.</p>
 <p>GraphQL propose beaucoup d'avantages par rapport à d'autres protocoles API <em>over HTTP</em> comme REST par exemple (batching de query, sélection des données à retourner, format des données, ...) mais souffre d'un défaut si l'on peut dire : comme toutes les requêtes sont effectuées en POST sur le même endpoint, il est impossible de poser un simple <strong>cache</strong> HTTP en amont. Pas de Varnish, pas de <strong>cache</strong> navigateur, etc.</p>
 <p>Si l'on veut mettre du <strong>cache</strong> côté client, il sera forcement applicatif. C'est justement l'une des grandes forces d'<strong>ApolloClient</strong>, il propose un <strong>cache très performant</strong>, chose qui va nous intéresser dans cet article.</p>
-<h2 id="premi-re-requ-te" class="anchor-title"><a href="#premi-re-requ-te">Première requête</a></h2>
+<h2 id="premiere-requete" class="anchor-title"><a href="#premiere-requete">Première requête</a></h2>
 <p>L'utilisation basique du client est très simple et dans la veine de ce qu'on retrouve dans n'importe quel client API.</p>
 <p>L'installation :</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="42811a453950a92201a490b8c574ed2a"><span class="token comment"># installing the preset package</span>
@@ -270,7 +270,7 @@ client
 <p>Il y a seulement 2 problèmes compliqués en informatique : nommer les choses, et l’invalidation de cache.</p>
 </blockquote>
 <p>Nous allons donc devoir mettre à jour ce cache, et pour le coup, c'est plutôt simple.</p>
-<h2 id="lire-et-crire-dans-le-cache" class="anchor-title"><a href="#lire-et-crire-dans-le-cache">Lire et écrire dans le cache</a></h2>
+<h2 id="lire-et-ecrire-dans-le-cache" class="anchor-title"><a href="#lire-et-ecrire-dans-le-cache">Lire et écrire dans le cache</a></h2>
 <p>Le cache d'Apollo et son paradygme est un peu spécial. Il ne s'agit pas seulement d'un simple cache de requête. Il agit comme un <em>state manager</em> à l'instar de <a href="https://redux.js.org/" target="_blank">Redux</a> ou <a href="https://vuex.vuejs.org/" target="_blank">Vuex</a>. Les données récupérées via une requête sont automatiquement stockées dans le cache mais il nous est possible d'y accéder et même d'y inserer ou d'y modifier de données sans refaire de requête.</p>
 <p>Pour cela nous allons utiliser les méthodes <code class="code-inline" id="6049d14e5ad8b9569d7bfc875e1e19f5">readQuery</code> et <code class="code-inline" id="487ef08341270e780f4c1f508fdb096a">writeQuery</code>. Attention, il faut appeler ces méthodes avec exactement la même requête GraphQL (variables inclues) que celle utilisée pour recupérer les données.</p>
 <p>Pour cela nous allons utliser la méthode <code class="code-inline" id="6049d14e5ad8b9569d7bfc875e1e19f5">readQuery</code> pour lire les données attaché à la requête :</p>
@@ -360,7 +360,7 @@ client
   fragment<span class="token operator">:</span> <span class="token maybe-class-name">TodoFields</span>
   data<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token spread operator">...</span>todo<span class="token punctuation">,</span> completed<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<h2 id="mise-jour-automatique" class="anchor-title"><a href="#mise-jour-automatique">Mise à jour automatique</a></h2>
+<h2 id="mise-a-jour-automatique" class="anchor-title"><a href="#mise-a-jour-automatique">Mise à jour automatique</a></h2>
 <p>Heuresement, il n'est pas toujours obligatoire de mettre manuellement à jour le cache comme ci-dessus. Il y a certains cas où le cache est automatiquement mis à jour par Apollo.</p>
 <p>Lorsque vous réalisez une requête recupérant des données contenant un <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code>, par exemple :</p>
 <pre class="code-multiline language-graphql"><code class="language-graphql" id="964c827ae030b525dbe7c35cd91eadf1"><span class="token keyword">query</span> <span class="token punctuation">{</span>
@@ -434,7 +434,7 @@ client
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<h2 id="g-rer-la-suppression-de-donn-e" class="anchor-title"><a href="#g-rer-la-suppression-de-donn-e">Gérer la suppression de données</a></h2>
+<h2 id="gerer-la-suppression-de-donnees" class="anchor-title"><a href="#gerer-la-suppression-de-donnees">Gérer la suppression de données</a></h2>
 <p>Si la mise à jour automatique est simple (un objet identifié par son ID peut être mise à jour automatiquement pour toutes les requêtes dans le cache), c'est un peu plus compliqué pour les suppressions.</p>
 <p>Comme pour l'ajout, vous allez devoir mettre à jour manuellement le cache de chaque requête retournant la donnée supprimée.</p>
 <pre class="code-multiline language-javascript"><code class="language-javascript" id="d6e8c8cd16f739f59b5c3b9899bae2bc"><span class="token keyword">const</span> <span class="token constant">REMOVE_TODO</span> <span class="token operator">=</span> gql<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token graphql language-graphql">

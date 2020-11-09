@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>12 juillet 2010</strong></span>
-        <span>Modification <strong>14 octobre 2020</strong></span>
+        <span>Modification <strong>9 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -208,7 +208,7 @@
 <p>Il s'agit d'un plugin très puissant permettant d'appliquer des traitements à des images au moyen de fichiers de configuration, sans qu'il soit donc nécessaire de polluer le code métier. Par ailleurs, il permet d'appliquer plusieurs traitements successifs de manière très intuitive. Il gère lui-même l'emplacement des fichiers générés et propose un système de cache réduisant les délais de transmission des images déjà générées.</p>
 <p>Le sfImageTransformExtraPlugin est dépendant du plugin <a href="http://www.symfony-project.org/plugins/sfImageTransformPlugin" target="_blank">sfImageTransformPlugin</a> mais ne l'installez pas avant d'avoir lu la suite ! Pour faciliter la lecture et éviter toute confusion (les noms des deux plugins sont très proches), dans la suite de l'article je ferai référence au "plugin de base" pour sfImageTransformPlugin et au "plugin Extra" pour sfImageTransformExtraPlugin.</p>
 <p>L'outil est donc très puissant mais sa documentation contient de nombreuses zones d'ombre qui ne facilitent absolument pas sa prise en main. Et les ennuis commencent dès l'installation ! D'où l'intérêt de cet article.</p>
-<h3 id="l-installation-des-plugins-ou-le" class="anchor-title"><del>des emm...</del> de nos démarches<a href="#l-installation-des-plugins-ou-le">L'installation des plugins ou le début </a></h3>
+<h3 id="l-installation-des-plugins-ou-le-debut-des-emm-de-nos-demarches" class="anchor-title"><del>des emm...</del> de nos démarches<a href="#l-installation-des-plugins-ou-le-debut-des-emm-de-nos-demarches">L'installation des plugins ou le début </a></h3>
 <blockquote>
 <p>Le plugin sfImageTransformPlugin nécessite que GD ou ImageMagick soit installé sur votre machine.</p>
 </blockquote>
@@ -233,14 +233,14 @@
 <blockquote>
 <p>A ce stade des opérations, nous n'activons pas encore le plugin "Extra". La configuration du plugin se fera plus tard car pour l'heure, nous allons tester le plugin sfImageTransformPlugin. Nous nous soucierons du plugin "Extra" plus tard.</p>
 </blockquote>
-<h3 id="a-pr-sent-essayons-le-plugin-d" class="anchor-title"><a href="#a-pr-sent-essayons-le-plugin-d">A présent, essayons le plugin de base</a></h3>
+<h3 id="a-present-essayons-le-plugin-de-base" class="anchor-title"><a href="#a-present-essayons-le-plugin-de-base">A présent, essayons le plugin de base</a></h3>
 <p>Nous allons nous assurer dans un premier temps que le plugin de base (sfImageTransformPlugin) est correctement installé et configuré. Pour cela, nous allons créer une page très simple, avec un bouton déclenchant un traitement sur une image de notre choix. Commençons par créer un module "image" dans l'application "Frontend".</p>
 <p>Si elle n'existe pas encore, on crée l'application "Frontend" ...</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="202d18af4f857ffd6327defcd8023c88">./symfony generate:app frontend</code></pre>
 <p>... puis le module :</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="f183522c0665e16e06613c18ebe45a3b">./symfony generate:module frontend image</code></pre>
 <p>Pour notre démonstration, j'ai choisi cette image, partant du principe qu'un prosélytisme de bon aloi ne saurait nuire à la carrière d'un développeur :</p>
-<img src="/elao_/images/posts/2010/zf.jpg" alt="Installation et premier pas avec le plugin sfImageTransformExtraPlugin" title="Installation et premier pas avec le plugin sfImageTransformExtraPlugin" id="installation-et-premier-pas-avec"><p>J'ai nommé cette image zf.jpg et je l'ai placée dans le répertoire web/images de notre projet.</p>
+<img src="/elao_/images/posts/2010/zf.jpg" alt="Installation et premier pas avec le plugin sfImageTransformExtraPlugin" title="Installation et premier pas avec le plugin sfImageTransformExtraPlugin" id="installation-et-premier-pas-avec-le-plugin-sfimagetransformextraplugin"><p>J'ai nommé cette image zf.jpg et je l'ai placée dans le répertoire web/images de notre projet.</p>
 <p>Nous allons dans un premier temps écrire le code de notre template pour y insérer le formulaire par lequel nous allons appeler la transformation de notre image :</p>
 <pre class="code-multiline language-html"><code class="language-html" id="a78123e639f9e3a3e52250d1fd79d471"># apps/frontend/modules/image/templates/indexSuccess.php
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Image Transform &amp; Extra plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
@@ -252,7 +252,7 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>Comme nous venons juste de créer le module, pensez à supprimer le code par défaut de la méthode executeIndex du fichier <code class="code-inline" id="af2f8d23a83286b4b84675fedb15eb0d">apps/frontend/modules/actions/actions.class.php</code>. Affichons à présent la page dans notre navigateur : <a href="http://mon_hote_virtuel/frontend_dev.php/image" target="_blank">http://mon_hote_virtuel/frontend_dev.php/image</a>. Le résultat est admirable ... je ne m'en lasse pas ...</p>
-<img src="/elao_/images/posts/2010/sfImageTransformExtrePlugin.png" alt="indexSuccess.php Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin" title="indexSuccess.php Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin" id="indexsuccess-php-installation-et"><p>Cela étant, notre but étant d'utiliser dans un premier temps le plugin sfImageTransformPlugin, nous allons écrire une méthode sans prétention qui va appliquer un traitement à cette image lorsque nous soumettons le formulaire. Pour cela, nous allons modifier le fichier actions.class.php afin de mettre à jour la méthode executeIndex :</p>
+<img src="/elao_/images/posts/2010/sfImageTransformExtrePlugin.png" alt="indexSuccess.php Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin" title="indexSuccess.php Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin" id="indexsuccess-php-installation-et-premiers-pas-avec-le-plugin-symfony-sfimagetransformextraplugin"><p>Cela étant, notre but étant d'utiliser dans un premier temps le plugin sfImageTransformPlugin, nous allons écrire une méthode sans prétention qui va appliquer un traitement à cette image lorsque nous soumettons le formulaire. Pour cela, nous allons modifier le fichier actions.class.php afin de mettre à jour la méthode executeIndex :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="77260ecbc1738808bd892e8a548b26ac"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token shell-comment comment"># apps/frontend/modules/image/actions/actions.class.php</span>
 <span class="token keyword">class</span> <span class="token class-name">imageActions</span> <span class="token keyword">extends</span> <span class="token class-name">sfActions</span>
@@ -278,7 +278,7 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>Rien de très compliqué, à la soumission du formulaire, nous créons une miniature de notre image d'origine (dimension 100 px) et nous l'affichons dans le navigateur. Cette méthode n'est pas d'un grand intérêt, je l'avoue ; elle a pour seule but de s'assurer que nous avons correctement configuré le plugin de base. A présent, attaquons-nous au plat de résistance :</p>
-<h3 id="la-b-te-le-plugin-extra" class="anchor-title"><a href="#la-b-te-le-plugin-extra">La bête : le plugin "Extra"</a></h3>
+<h3 id="la-bete-le-plugin-extra" class="anchor-title"><a href="#la-bete-le-plugin-extra">La bête : le plugin "Extra"</a></h3>
 <p>Nous allons commencer par activer le plugin :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="157bf895e34455b629fcad39f2386bc0"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token comment">// ...</span>
