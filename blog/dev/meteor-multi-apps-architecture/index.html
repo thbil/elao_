@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>23 juin 2015</strong></span>
-        <span>Modification <strong>9 novembre 2020</strong></span>
+        <span>Modification <strong>30 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -213,7 +213,7 @@
 <ul><li>le <em>front</em> pour les users standards (sur le domaine <code class="code-inline" id="afaf2cbcfe2083746d53675d37fcb0cb">http://project.dev</code> par exemple)</li>
 <li>le <em>back</em> pour les administrateurs (sur le sous-domaine <code class="code-inline" id="a0136bd45a1f1f482aefc5fb5c4cd49b">http://admin.project.dev</code> par exemple)</li>
 </ul><p>Ces deux applications utilisent les mêmes données et doivent donc accéder à la même base de données.</p>
-<h2 id="architecture-des-dossiers-fichiers" class="anchor-title"><a href="#architecture-des-dossiers-fichiers">Architecture des dossiers/fichiers</a></h2>
+<h2 id="architecture-des-dossiers-fichiers">Architecture des dossiers/fichiers</h2>
 <pre class="code-multiline"><code id="ab553bae03a0aa2f549c39d10810999b">➜  my-project  tree -a
 .
 ├── .gitignore
@@ -240,7 +240,7 @@
         ├── players.js
         └── playgrounds.js</code></pre>
 <p>Nous avons deux applications Meteor (<em>front</em> et <em>back</em>). Ces deux applications portent des liens symboliques vers des packages du dossier <code class="code-inline" id="bdf1e8ce92aa8ff6883c617f10480430">/packages</code> afin de faire de la réutilisation de code.</p>
-<h2 id="run-des-applications" class="anchor-title"><a href="#run-des-applications">Run des applications</a></h2>
+<h2 id="run-des-applications">Run des applications</h2>
 <p>En local (DEV), nous prenons le parti de lancer Mongo sur l'application <em>front</em> et de connecter le <em>back</em> sur le Mongo du <em>front</em>.</p>
 <p>Par défaut, Meteor lance l'<strong>application</strong> sur le port <strong>3000</strong> et <strong>Mongo</strong> est ouvert sur le port <strong>3001</strong>.</p>
 <pre class="code-multiline language-shell"><code class="language-shell" id="8ddf977c4e415644f9c52cebbc6f5f9f">➜  front  meteor
@@ -250,7 +250,7 @@
 <pre class="code-multiline language-shell"><code class="language-shell" id="4f36edc204db94241adfd6916595e05c">➜  back  <span class="token assign-left variable">MONGO_URL</span><span class="token operator">=</span>mongodb://localhost:3001/meteor <span class="token assign-left variable">MONGO_OPLOG_URL</span><span class="token operator">=</span>mongodb://localhost:3001/local meteor -p<span class="token operator">=</span><span class="token number">3080</span>
 <span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span>
 <span class="token operator">=</span><span class="token operator">&gt;</span> App running at: http://localhost:3080/</code></pre>
-<h2 id="conclusion" class="anchor-title"><a href="#conclusion">Conclusion</a></h2>
+<h2 id="conclusion">Conclusion</h2>
 <p>En conclusion, décomposer une application en plusieurs sous-applications permet de mieux gérer son code et d'intervenir sur les sources envoyées aux clients.</p>
 <p>Cela légitimise la création de packages "applicatifs" (telles que les collections, règles métiers partagées, etc.), ce qui est une bonne pratique !</p></body>
                         </main>

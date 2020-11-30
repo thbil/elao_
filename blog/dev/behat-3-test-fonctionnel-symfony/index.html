@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>6 janvier 2016</strong></span>
-        <span>Modification <strong>9 novembre 2020</strong></span>
+        <span>Modification <strong>30 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -213,9 +213,9 @@
 La documentation sur Behat 2.5 est prédominante par rapport à la version 3, ce qui nous a obligé à faire le tri pour configurer correctement notre stack.
 Nous avons donc décidé de vous partager notre set up et la façon dont nous utilisons Behat 3.</p>
 <!--more-->
-<h2 id="behat" class="anchor-title"><a href="#behat">Behat</a></h2>
+<h2 id="behat">Behat</h2>
 <p>Behat nous permet de réaliser les tests fonctionnels des applications que nous développons. Il a l'atout d'être extensible et nous permet d'écrire des scénarios compréhensibles à la fois par des humains et par Behat via le language <a href="http://docs.behat.org/en/latest/guides/1.gherkin.html" target="_blank">Gherkin</a>.</p>
-<h3 id="installation" class="anchor-title"><a href="#installation">Installation:</a></h3>
+<h3 id="installation">Installation:</h3>
 <p>Avant toute chose, nous devons ajouter Behat à notre projet.</p>
 <pre class="code-multiline language-json"><code class="language-json" id="e15abf291f01fbec67c9931fbbb0a266"><span class="token punctuation">{</span>
     <span class="token property">"require-dev"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -231,7 +231,7 @@ Nous avons donc décidé de vous partager notre set up et la façon dont nous ut
 <p>Après avoir lancer un <code class="code-inline" id="3dc99c89a8e5bc19d5f5f9aed42f06cf">$ composer install</code> on peut maintenant lancer un:
 <code class="code-inline" id="abe40c85eebd6294e1b2efd4c8b251b0">$ vendor/bin/behat --init</code>
 Ce qui va intialiser le répertoire <code class="code-inline" id="b10716f0f6bfde868629eb037eee49bd">/features</code> et créer le répertoire <code class="code-inline" id="a9917b0ef0fdd6d678e996772d6b51cf">/bootstrap</code> comportant le FeatureContext.php</p>
-<h3 id="configuration" class="anchor-title"><a href="#configuration">Configuration:</a></h3>
+<h3 id="configuration">Configuration:</h3>
 <p>Ensuite, il faut créer un fichier <code class="code-inline" id="7bde54db60a6e933518d8b61b929edce">behat.yml.dist</code> à la racine de notre projet dans lequel on va placer la configuration de Behat.</p>
 <pre class="code-multiline language-yaml"><code class="language-yaml" id="0c0a3f877d7897e6f50424274ccce89c"><span class="token key atrule">default</span><span class="token punctuation">:</span>
     <span class="token key atrule">extensions</span><span class="token punctuation">:</span>
@@ -259,7 +259,7 @@ Ce qui va intialiser le répertoire <code class="code-inline" id="b10716f0f6bfde
     <span class="token atrule">Then</span> <span class="token atrule">I</span> should not see <span class="token string">"Hello World!"</span></code></pre>
 <p>Il nous est possible d'écrire <em>de base</em> toutes ces étapes grâce à l'ajout de Mink. Si ces étapes ne marchent pas, vérifier bien que votre FeatureContext étend bien MinkContext.</p>
 <p><code class="code-inline" id="3e5778646e0ca07ac8b594a16d164651">class FeatureContext extends MinkContext</code></p>
-<h3 id="extra" class="anchor-title"><a href="#extra">Extra:</a></h3>
+<h3 id="extra">Extra:</h3>
 <p>Nous utilisons également d'autres extensions pour nous faciliter la vie, notamment Alice pour écrire nos fixtures en yaml et une extension Behat pour appeler nos fixtures au moment où elles sont nécessaires.</p>
 <pre class="code-multiline language-json"><code class="language-json" id="2d2f0ffb5db82cd945663a81b90e72cd"><span class="token punctuation">{</span>
     require<span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -327,7 +327,7 @@ Ce qui va intialiser le répertoire <code class="code-inline" id="b10716f0f6bfde
         <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">kernel</span> <span class="token operator">=</span> <span class="token variable">$kernel</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
-<h3 id="en-conclusion" class="anchor-title"><a href="#en-conclusion">En conclusion</a></h3>
+<h3 id="en-conclusion">En conclusion</h3>
 <p>Une configuration un peu différence de Behat 2.5 mais pas si compliquée comme on a pu le voir.</p>
 <p>Des extensions bien utiles pour faire des fixtures en yaml et obtenir des <code class="code-inline" id="fca3ffea6534176432f58b5a22ed22e1">steps</code> déjà fonctionnels.</p>
 <p>Nous privilégions la regénération de nos fixtures à chacun de nos tests, ce qui permet de ne pas polluer les tests entre eux. Si un test change une valeur, le second n'a pas à la prendre en compte, la valeur est remise à l'initiale.</p>

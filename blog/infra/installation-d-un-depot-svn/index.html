@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>2 décembre 2009</strong></span>
-        <span>Modification <strong>9 novembre 2020</strong></span>
+        <span>Modification <strong>30 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -202,9 +202,9 @@
     <main class="article-content__main">
       <body><p><strong>[EDIT]</strong> Il est bien évidemment conseillé aujourd'hui d'utiliser GIT comme SCM ! Cet article est à considérer comme une archive et/ou comme support à ceux qui ont la malchance d' être coincé avec SVN.</p>
 <p><strong>Subversion</strong> (en abrégé <strong>svn</strong>) est un <a title="Système de gestion de versions" target="_blank" href="http://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_versions">système de gestion de versions</a>, il agit sur une arborescence de fichiers afin de conserver toutes les versions des fichiers, ainsi que les différences entre les fichiers. De ce fait, et pour résumer, il permet non seulement de pouvoir revenir à un état T d'une application dans le temps mais également de travailler à plusieurs sur un seul et même projet, les conflits pouvant être engendrés entre deux utilisateurs manipulant un même fichier étant gérés par le serveur subversion.</p>
-<h3 id="les-paquets-a-installer" class="anchor-title"><a href="#les-paquets-a-installer">Les paquets à installer:</a></h3>
+<h3 id="les-paquets-a-installer">Les paquets à installer:</h3>
 <pre class="code-multiline"><code id="0cf1c8470f8e8887cddeb5c55ccd5163">apt-get install subversion libapache2-svn</code></pre>
-<h3 id="deploiement-du-depot-subversion" class="anchor-title"><a href="#deploiement-du-depot-subversion">Déploiement du dépôt subversion:</a></h3>
+<h3 id="deploiement-du-depot-subversion">Déploiement du dépôt subversion:</h3>
 <p>Nous partirons du principe que vous avez décidé de déployer le repository (dépôt) de votre projet dans le répertoire /repositories/. Si ce n’est pas fait nous créons le répertoire:</p>
 <pre class="code-multiline"><code id="f863fe6738bd8911e1ffbf5ea89cee00">mkdir /repositories</code></pre>
 <p>Nous allons ensuite créer notre dépot à l’aide de la commande svn:</p>
@@ -215,10 +215,10 @@
 <li>tags:</li>
 </ul><p>Si vous disposez déjà d’un existant vous pouvez parfaitement l’importer dans votre nouveau dépôt, dans le trunk:</p>
 <pre class="code-multiline"><code id="36ce0e123eafbeb0be7197a0d2bc5f95">svn import -m "Initialisation du dépot" /elao/projects/mon_projet/ file:///repositories/mon_projet/trunk</code></pre>
-<h3 id="parametrage-du-subversion-et-apache" class="anchor-title"><a href="#parametrage-du-subversion-et-apache">Paramétrage du subversion et Apache</a></h3>
+<h3 id="parametrage-du-subversion-et-apache">Paramétrage du subversion et Apache</h3>
 <p>Afin “d’ouvrir” notre dépôt vers l’extérieur nous allons utiliser Apache, pour des raisons de sécurité, (libre à vous de l’utiliser ou non ) nous utiliserons SSL pour les transactions http. On active le module dav_svn avec la commande :</p>
 <pre class="code-multiline"><code id="8113fcbef4d9c257ba9a9a9551b20cbf">a2enmod dav_svn</code></pre>
-<h3 id="parametrer-votre-vhost-a-adapter-selon-votre-configuration-apache" class="anchor-title"><a href="#parametrer-votre-vhost-a-adapter-selon-votre-configuration-apache">Paramétrer votre VHost (à adapter selon votre configuration Apache):</a></h3>
+<h3 id="parametrer-votre-vhost-a-adapter-selon-votre-configuration-apache">Paramétrer votre VHost (à adapter selon votre configuration Apache):</h3>
 <p>Nous allons commencer par définir quels seront les utilisateurs qui auront accès à notre (nos) dépôt(s) Créons pour celà un répertoire pwd, qui, d’une manière générale contiendra nos fichiers d’accès.</p>
 <pre class="code-multiline"><code id="42e51fefb1fff8c68a0ebe226ca8f986">mkdir /etc/apache2/pwd
 cd pwd</code></pre>
@@ -241,7 +241,7 @@ SVNParentPath           /mon_domaine/repositories/
 <span class="token directive-inline property">AuthUserFile</span>            /etc/apache2/pwd/users.pwd
 AuthzSVNAccessFile      /etc/apache2/pwd/perms.acl
 <span class="token directive-inline property">Require</span>                 valid-user</code></pre>
-<h3 id="la-gestion-des-droits" class="anchor-title"><a href="#la-gestion-des-droits">La gestion des droits:</a></h3>
+<h3 id="la-gestion-des-droits">La gestion des droits:</h3>
 <p>Les droits sur les différents dépôts svn seront gérés via le fichier perms.acl, l’utilisation d’ACL va nous autoriser à mettre en place des accès complexes basés sur le couple utilisateur/groupe. Il est cependant à noter que l’utilité d’une stratégie d’authentification complexe ne présente d’interet que si votre dépôt est publique ou nécéssite un contrôle strict des accès. Qui dit ACL dit utilisateurs, groupes et bien sur permissions ! Nous allons stocker cette configuration dans le fichier perms.acl. On va commencer par définir les groupes:</p>
 <pre class="code-multiline"><code id="d2aa274eb8968a3a65a69a1114304596">[groups]
 admins = user1, user2

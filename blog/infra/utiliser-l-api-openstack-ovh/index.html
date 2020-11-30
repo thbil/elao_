@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>16 décembre 2016</strong></span>
-        <span>Modification <strong>9 novembre 2020</strong></span>
+        <span>Modification <strong>30 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -212,7 +212,7 @@
       <body><p>OVH propose depuis quelque temps déjà d'accéder à certaines ressources de votre infrastructure à travers l'API Openstack.
 Bien que pas mal d'opérations soient réalisables grâce au manager, certaines d'entre elles, un peu poussées, ne sont réalisables qu'à travers l'<a href="https://api.ovh.com/" target="_blank">API OVH</a> et/ou l'API OpenStack qui est d'ailleurs partiellement exploitée par le dashboard <a href="https://horizon.cloud.ovh.net/" target="_blank">Horizon</a>.</p>
 <p>Nous allons voir en détails l'installation d'un environnement client pour exploiter l'API Openstack en console.</p>
-<h2 id="pre-requis" class="anchor-title"><a href="#pre-requis">Pré-requis</a></h2>
+<h2 id="pre-requis">Pré-requis</h2>
 <ul><li>Python 2.7 ou supérieur</li>
 <li>Le paquet «SetupTools»</li>
 <li>pip</li>
@@ -246,7 +246,7 @@ Toutefois, pour certaines opérations, il peut être nécessaire de passer par l
 <li><code class="code-inline" id="e3a3325113108fdb22f5f6c2c854499f">senlin</code> - Clustering service API</li>
 <li><code class="code-inline" id="818056dbd7e201243206b9c7cd88481c">swift</code> - Object Storage API</li>
 <li><code class="code-inline" id="21c47a94df5344fe00f4894c770d0dcf">trove</code> - Database service API</li>
-</ul><h2 id="configuration-authentification" class="anchor-title"><a href="#configuration-authentification">Configuration/Authentification</a></h2>
+</ul><h2 id="configuration-authentification">Configuration/Authentification</h2>
 <p>Avant de pouvoir exploiter pleinement l'environnement que nous venons d'installer il nous faut récupérer nos autorisations à partir du manager OVH (dans la partie Cloud plus précisément).
 Vous trouverez au niveau de vos différents environnements une entrée «OpenStack» qui vous permettra:</p>
 <ul><li>de générer un compte utilisateur</li>
@@ -263,7 +263,7 @@ Vous trouverez au niveau de vos différents environnements une entrée «OpenSta
 <li><code class="code-inline" id="ab904376487f9adadc232e6e3e6d3f99">OS_TENANT_NAME</code></li>
 <li><code class="code-inline" id="b583d36884a35e7a5580cece5f5fef0c">OS_USERNAME</code></li>
 <li><code class="code-inline" id="babeb4453a9883e74df057a623c87f5f">OS_PASSWORD</code></li>
-</ul><h2 id="connexion" class="anchor-title"><a href="#connexion">Connexion</a></h2>
+</ul><h2 id="connexion">Connexion</h2>
 <p>Une fois les étapes précédentes terminées vous devriez être capable de vous connecter avec le client. Nous pouvons vérifier le bon fonctionnement de l'environnement en listant nos conteneurs par exemple:</p>
 <pre class="code-multiline"><code id="770241b4fc888779066e534e9f4a9a07">root@97cbc23bcd97:/srv# openstack server list
 +--------------------------------------+----------+--------+-------------------------+
@@ -272,7 +272,7 @@ Vous trouverez au niveau de vos différents environnements une entrée «OpenSta
 | 73fv7fb4-1234-4fff-9a51-eb4e5fbf654a | GW_XXXXX | ACTIVE | Ext-Net=XXX.XXX.XXX.XXX |
 | 73fv7fb4-1234-4fff-9a51-eb4e5fbf654a | GW_XXXXX | ACTIVE | Ext-Net=XXX.XXX.XXX.XXX |
 +--------------------------------------+----------+--------+-------------------------+</code></pre>
-<h2 id="zones-geographiques" class="anchor-title"><a href="#zones-geographiques">Zones géographiques</a></h2>
+<h2 id="zones-geographiques">Zones géographiques</h2>
 <p>Certains l'auront remarqué, il existe une dernière variable d'importance dans le fichier de configuration. La variable <code class="code-inline" id="c2d4664376a4d7b31d5463553f03f998">OS_REGION_NAME</code> permet, en effet, de spécifier à quel DC vous souhaitez vous connecter:</p>
 <ul><li>Roubaix (RBX1)</li>
 <li>Gravelines (GRA1)</li>

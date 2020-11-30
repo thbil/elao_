@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>23 avril 2010</strong></span>
-        <span>Modification <strong>9 novembre 2020</strong></span>
+        <span>Modification <strong>30 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -205,17 +205,17 @@
     <main class="article-content__main">
       <body><p>La commande find, outils ô combien indispensable des administrateurs systèmes, permet d'effectuer et d'automatiser tout un tas de tâches de maintenance courantes.<!--more--></p>
 <p>Ce petit memo se veut être un post de centralisation des lignes de commande pratiques, pouvant dépanner l'admin en détresse !</p>
-<h3 id="rechercher-un-fichier" class="anchor-title"><a href="#rechercher-un-fichier">Rechercher un fichier</a></h3>
+<h3 id="rechercher-un-fichier">Rechercher un fichier</h3>
 <pre class="code-multiline"><code id="99a0e0ad70bd243a0c468f4e18639fba">find . -name "databases*"</code></pre>
 <p>Cette commande renverra tous les fichier du répertoire courant <strong>ET</strong> de ses sous répertoires dont le nom correspond au masque suivant l'option <strong>-name</strong>.</p>
-<h3 id="rechercher-tous-les-fichiers-de-type-repertoire" class="anchor-title"><a href="#rechercher-tous-les-fichiers-de-type-repertoire">Rechercher tous les fichiers de type répertoire</a></h3>
+<h3 id="rechercher-tous-les-fichiers-de-type-repertoire">Rechercher tous les fichiers de type répertoire</h3>
 <pre class="code-multiline"><code id="3d65b1dd9b380214e6d2964c91f42a27">find . -name "config" -type d</code></pre>
-<h3 id="lister-le-contenu-de-repertoires-correspondant-a-un-masque" class="anchor-title"><a href="#lister-le-contenu-de-repertoires-correspondant-a-un-masque">Lister le contenu de répertoires correspondant à un masque</a></h3>
+<h3 id="lister-le-contenu-de-repertoires-correspondant-a-un-masque">Lister le contenu de répertoires correspondant à un masque</h3>
 <pre class="code-multiline"><code id="26802a6a7d1fb0fc549e805f8eadc80d">find . -type d -name "config" -exec ls -l {} \;</code></pre>
-<h3 id="modifier-les-droits-des-fichiers-de-type-repertoire" class="anchor-title"><a href="#modifier-les-droits-des-fichiers-de-type-repertoire">Modifier les droits des fichiers de type répertoire</a></h3>
+<h3 id="modifier-les-droits-des-fichiers-de-type-repertoire">Modifier les droits des fichiers de type répertoire</h3>
 <pre class="code-multiline"><code id="f963badae0e926fbd24413caa3a37861">find . -type d -exec chmod g+x {} \;</code></pre>
 <p>Commande très utile pour donner les droits d'exécution aux seuls répertoires par exemple.</p>
-<h3 id="recherche-a-l-aide-d-operateurs-logiques" class="anchor-title"><a href="#recherche-a-l-aide-d-operateurs-logiques">Recherche à l'aide d'opérateurs logiques</a></h3>
+<h3 id="recherche-a-l-aide-d-operateurs-logiques">Recherche à l'aide d'opérateurs logiques</h3>
 <pre class="code-multiline"><code id="42f5f18b85766af5947ba171380a0f22">find /tmp \( ! -user webmaster \)</code></pre>
 <p>Cette commande renverra tous les fichier de /tmp n'appartenant pas à l'utilisateur webmaster</p>
 <pre class="code-multiline"><code id="ec71c799eba806131c639f8a3fcf3a49">find / \( -type d -a -user webmaster \)</code></pre>

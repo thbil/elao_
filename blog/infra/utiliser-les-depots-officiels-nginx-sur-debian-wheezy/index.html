@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>19 décembre 2014</strong></span>
-        <span>Modification <strong>9 novembre 2020</strong></span>
+        <span>Modification <strong>30 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -209,23 +209,23 @@
       <body><p>Bonjour à tous !</p>
 <p>Petit mémo aujourd'hui pour pouvoir utiliser une version à jour de <a href="http://nginx.org/" target="_blank"><strong>Nginx</strong></a> sur une Debian Wheezy, celle-ci ne fournissant des paquets qu'en version 1.2.1 au moment de l'écriture de ce billet.</p>
 <p>Attention toutes les étapes à suivre nécessitent un accès «root»</p>
-<h2 id="ajouter-les-sources-officielles" class="anchor-title"><a href="#ajouter-les-sources-officielles">Ajouter les sources officielles</a></h2>
+<h2 id="ajouter-les-sources-officielles">Ajouter les sources officielles</h2>
 <p>La première étape et d'ajouter une entrée pour les dépôts officiels dans les sources d'APT.
 Nous allons donc créer un fichier appelé <strong>«nginx.list»</strong> dans <code class="code-inline" id="c381aaac19b8bacad63872d54b6ee3b2">/etc/apt/sources.list.d</code></p>
 <p>Celui-ci doit contenir les lignes suivantes:</p>
 <pre class="code-multiline"><code id="b34dd16263a3a1e034c87453bebf513e">deb http://nginx.org/packages/debian/ wheezy nginx
 deb-src http://nginx.org/packages/debian/ wheezy nginx</code></pre>
-<h2 id="recuperer-la-cle-pgp" class="anchor-title"><a href="#recuperer-la-cle-pgp">Récupérer la clé PGP</a></h2>
+<h2 id="recuperer-la-cle-pgp">Récupérer la clé PGP</h2>
 <p>Nous allons à présent ajouter la signature numérique des dépôts officiels (étape nécessaire pour que le système sache qu'il peut avoir «confiance» en ces nouveaux dépôts.)</p>
 <pre class="code-multiline"><code id="f27e885b250cacbbdee081f1791a75e3">curl http://nginx.org/packages/keys/nginx_signing.key | apt-key add -</code></pre>
-<h2 id="prioriser-l-installation-des-paquets-facultatif" class="anchor-title"><a href="#prioriser-l-installation-des-paquets-facultatif">Prioriser l'installation des paquets (facultatif)</a></h2>
+<h2 id="prioriser-l-installation-des-paquets-facultatif">Prioriser l'installation des paquets (facultatif)</h2>
 <p>Il nous reste à présent à donner les instructions de priorité au gestionnaire de paquets, à savoir doit-il privilégié les paquets dits stables fournis par Debian ou doit-il utiliser les paquets officiels fournis par les dépôts Nginx.</p>
 <p>Cette étape est facultative mais permet d'être rigoureux et d'éviter un éventuel conflit.</p>
 <p>Pour cette étape créez un fichier supplémentaire appelé ... nginx dans <code class="code-inline" id="8983d8943be25eb015b4dd1863f63810">/etc/apt/preferences.d/nginx</code>. Il nous servira à exprimer de manière explicite notre souhait de privilégier les paquets officiels et devra contenir les lignes suivantes:</p>
 <pre class="code-multiline"><code id="675079f0d5a098de2ba7dc2fb37344dc">Package: nginx
 Pin: origin nginx.org
 Pin-Priority: 900</code></pre>
-<h2 id="installer-nginx" class="anchor-title"><a href="#installer-nginx">Installer Nginx</a></h2>
+<h2 id="installer-nginx">Installer Nginx</h2>
 <p>Voila nous sommes parés il ne reste plus qu'a mettre à jour notre index de paquets et installer nginx à l'aide des commandes suivantes:</p>
 <pre class="code-multiline"><code id="1b281061c07f9c15a1278d5eff4fd9e7">apt-get update
 apt-get install nginx</code></pre></body>

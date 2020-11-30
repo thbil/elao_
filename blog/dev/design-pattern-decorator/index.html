@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>4 mai 2017</strong></span>
-        <span>Modification <strong>9 novembre 2020</strong></span>
+        <span>Modification <strong>30 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -203,25 +203,25 @@
       <body><p>Le <em>Gang of Four</em> a classé les design patterns dans trois catégories : les DP de création, les DP structurels et les DP comportementaux (<em>behavior</em>).</p>
 <p>Au début de cette série, nous avons abordé deux design patterns de création : la <a href="/fr/dev/design-pattern-factory-method"><code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code></a> et le pattern <a href="/fr/dev/design-pattern-abstract-factory"><code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code></a>. Je vous propose aujourd'hui de nous pencher sur notre premier design pattern structurel : le <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code>.</p>
 <p>Il y sera notamment question de modération, de sexe et de grossièretés. Autant de bonnes raisons de poursuivre votre lecture.</p>
-<h2 id="classification" class="anchor-title"><a href="#classification">Classification</a></h2>
+<h2 id="classification">Classification</h2>
 <p>Le <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code> appartient à la famille des <strong>design patterns structurels</strong>.</p>
-<h2 id="definition" class="anchor-title"><a href="#definition">Définition</a></h2>
+<h2 id="definition">Définition</h2>
 <blockquote>
 <p>Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.</p>
 </blockquote>
 <p>Que nous apprend cette définition (GoF) ? Elle nous apprend que le Design Pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code> permet d'ajouter <strong>dynamiquement</strong> des responsabilités à un objet existant et que cette solution apporte plus de <strong>souplesse</strong> que l'héritage.</p>
 <p>Nous allons donc nous efforcer de démontrer ses avantages par rapport à l'héritage.</p>
 <p>Noter que le terme <code class="code-inline" id="e229a672e0df4c202a248ad2e24adab8">Wrapper</code> est un synonyme de <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code> (GoF).</p>
-<h2 id="diagramme-du-design-pattern-decorator" class="anchor-title"><code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code><a href="#diagramme-du-design-pattern-decorator">Diagramme du Design pattern </a></h2>
+<h2 id="diagramme-du-design-pattern-decorator">Diagramme du Design pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code></h2>
 <p class="text-center">
     {{}}
     <figcaption style="text-align: center;font-style: italic;">Diagramme du Design Pattern 'Decorator'</figcaption></p>
-<h2 id="participants" class="anchor-title"><a href="#participants">Participants</a></h2>
+<h2 id="participants">Participants</h2>
 <ul><li><strong>Component</strong> est une interface qu'implémentent à la fois l'objet décoré et les objets qui le décorent</li>
 <li><strong>ConcreteComponent</strong> représente l'objet décoré (qui implémente <code class="code-inline" id="2cb05e4bb7830be982f0922fed86b4cd">Component</code>)</li>
 <li><strong>Decorator</strong> représente l'interface des décorateurs</li>
 <li>On trouve ensuite les décorateurs concrets (<strong>ConcreteDecoratorA</strong>, etc.)</li>
-</ul><h2 id="expose-du-cas-concret-sexe-et-violence-a-tous-les-etages" class="anchor-title"><a href="#expose-du-cas-concret-sexe-et-violence-a-tous-les-etages">Exposé du cas concret (sexe et violence à tous les étages)</a></h2>
+</ul><h2 id="expose-du-cas-concret-sexe-et-violence-a-tous-les-etages">Exposé du cas concret (sexe et violence à tous les étages)</h2>
 <p>Nous allons à présent nous attacher à montrer l'implémentation de ce Design Pattern à travers un cas concret.</p>
 <p>Vous avez développé une application Web qui met en relation des vendeurs et des acheteurs. Vous mettez à disposition des utilisateurs une messagerie privée qui permet aux acheteurs et aux vendeurs de communiquer.</p>
 <p>Votre application rencontre un franc succès mais des dérives ont été constatées dans l'utilisation de la messagerie (spam, injures, etc.). Il apparaît donc nécessaire de développer un système de modération, automatisé compte tenu des volumes d'échanges à traiter.</p>
@@ -259,7 +259,7 @@
 <span class="token keyword">echo</span> <span class="token variable">$moderator</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">moderate</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"nique ta mère\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Affiche 'poutou à ta maman'</span></span></code></pre>
 <p>Cependant, les administrateurs de l'application se sont aperçus que certains vendeurs profitaient de la messagerie privée pour communiquer leurs coordonnées aux acheteurs afin de traiter en direct et ainsi passer outre les commissions versées au site.</p>
 <p>Il nous faut donc renforcer le système de modération pour empêcher les vendeurs de communiquer leurs coordonnées via la messagerie. L'occasion de voir comment le Design Pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code> va nous permettre d'enrichir la modération tout en conservant une certaine souplesse.</p>
-<h2 id="le-pattern-decorator-en-action" class="anchor-title"><code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code> en action<a href="#le-pattern-decorator-en-action">Le pattern </a></h2>
+<h2 id="le-pattern-decorator-en-action">Le pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code> en action</h2>
 <p>Nous allons rédiger une classe qui va ajouter des fonctionnalités de modération en décorant notre classe initiale <code class="code-inline" id="ca65a68e10b3c65ac897ff8b89f9f728">Moderator</code> :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="1878f22fcb86c4054ed3942db2903506"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -299,7 +299,7 @@
             <span class="token keyword">new</span> <span class="token class-name">Moderator</span><span class="token punctuation">(</span><span class="token variable">$replacements</span><span class="token punctuation">)</span>
         <span class="token punctuation">)</span>
     <span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
-<h2 id="avantages-du-pattern-decorator-par-rapport-a-l-heritage" class="anchor-title"><code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code> par rapport à l'héritage<a href="#avantages-du-pattern-decorator-par-rapport-a-l-heritage">Avantages du pattern </a></h2>
+<h2 id="avantages-du-pattern-decorator-par-rapport-a-l-heritage">Avantages du pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code> par rapport à l'héritage</h2>
 <p>Supposons que nous soyons passés par l'héritage pour enrichir notre service de modération, ce qui nous donnerait :</p>
 <p><strong>PhoneNumberModerator</strong> hérite de <strong>EmailAddressModerator</strong> qui hérite de <strong>Moderator</strong>.</p>
 <p>Outre le fait que la chaîne d'héritage semble un peu forcée (pourquoi <strong>PhoneNumberModerator</strong> hériterait de <strong>EmailAddressModerator</strong> ?), la solution de l'héritage manque de souplesse. En effet, ici, utiliser <strong>PhoneNumberModerator</strong> implique nécessairement d'utiliser <strong>EmailAddressModerator</strong>. Il n'est pas possible d'utiliser nos services <em>à la carte</em>, ce que permet le pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code>.</p>
@@ -307,7 +307,7 @@
 <p>Autre avantage du pattern, le chaînage des décorateurs est potentiellement extensible à l'infini. Il est ainsi très facile d'ajouter une nouvelle classe de modération sans qu'il soit nécessaire de modifier la hiérarchie d'héritage.</p>
 <p>Enfin, comme la chaîne des décorateurs est construite de manière dynamique lors de leur instanciation, il est possible d'introduire des services de manière conditionnelle. Par exemple, on pourrait ajouter un service de modération qui bannirait les expressions à caractère sexuel, uniquement si l'utilisateur courant est mineur.</p>
 <p>Au final, cet exemple est une parfaite illustration de l'avantage de la composition sur l'héritage.</p>
-<h2 id="autres-usages-du-pattern-decorator" class="anchor-title"><code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code><a href="#autres-usages-du-pattern-decorator">Autres usages du pattern </a></h2>
+<h2 id="autres-usages-du-pattern-decorator">Autres usages du pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code></h2>
 <p>Le design pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code> est également très utilisé pour ajouter des fonctionnalités de cache à des services existants.</p>
 <p>C'est notamment le cas de la classe <a href="https://github.com/symfony/symfony/blob/master/src/Symfony/Component/HttpKernel/HttpCache/HttpCache.php" target="_blank"><code class="code-inline" id="cbd8f4eaaa6db9d6087aaea4351b469a">HttpCache</code></a> de Symfony :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="79d176c4b6772dc4fc152470c2e0d61c"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>

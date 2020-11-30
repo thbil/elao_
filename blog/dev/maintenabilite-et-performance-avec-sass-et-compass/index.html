@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>9 avril 2013</strong></span>
-        <span>Modification <strong>9 novembre 2020</strong></span>
+        <span>Modification <strong>30 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -204,14 +204,14 @@
   <div class="article-content">
     <main class="article-content__main">
       <body><p>L'augmentation croissante du nombre de règles et de fichiers, le souci de la compatibilité des navigateurs, l'utilisation de CSS3, le travail en équipe, ... sont autant de facteurs qui complexifient le code CSS et peuvent le rendre hors de contrôle. <!--more-->L’objectif de cet article est de vous présenter les différentes fonctionnalités du préprocesseur Sass et son utilisation avec Compass qui vous aideront à gagner du temps sur vos intégrations.</p>
-<h3 id="1-sass" class="anchor-title"><a href="#1-sass">1. Sass</a></h3>
-<h4 id="presentation-de-sass" class="anchor-title"><a href="#presentation-de-sass">Presentation de Sass</a></h4>
+<h3 id="1-sass">1. Sass</h3>
+<h4 id="presentation-de-sass">Presentation de Sass</h4>
 <p>Sass est un préprocesseur et une extension CSS3 dont l’objectif est d’apporter à CSS la puissance des langages de développement tel que PHP, Java ou Ruby. Il s’agit de nombreux atouts comme les variables, les opérations, les sélecteurs imbriqués, les extensions de classes ou la vérification du code non négligeables pour produire un code lisible et performant dans sa maintenabilité.</p>
-<h4 id="principales-fonctionnalites" class="anchor-title"><a href="#principales-fonctionnalites">Principales fonctionnalités :</a></h4>
+<h4 id="principales-fonctionnalites">Principales fonctionnalités :</h4>
 <ul><li><strong>Les variables</strong> vont permettre de stocker n'importe quelles informations (couleur, taille, texte, etc.) dans un objet que l'on déclare :</li>
 </ul><pre class="code-multiline language-css"><code class="language-css" id="ad5a941ede3a1cee41cd40cbf656fd2c">$macouleur = <span class="token hexcode color">#FFF</span> <span class="token punctuation">;</span></code></pre>
 <ul><li><strong>Les règles imbriquées et les sélecteurs avancés</strong> vont rendre les règles CSS plus compréhensibles selon le principe DRY ( Don’t Repeat Yourself ) avec l’imbrication des règles filles ou des actions contextualisées.</li>
-</ul><h5 id="exemple-d-une-navigation" class="anchor-title"><a href="#exemple-d-une-navigation"><em>Exemple d’une navigation :</em></a></h5>
+</ul><h5 id="exemple-d-une-navigation"><em>Exemple d’une navigation :</em></h5>
 <p>HTML</p>
 <pre class="code-multiline language-html"><code class="language-html" id="5d77b1c0bdaa813e4819fe20225d7667"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nav</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
@@ -279,7 +279,7 @@
     <span class="token keyword">@extend</span> .error<span class="token punctuation">;</span> 
     <span class="token property">border-width</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token unit">px</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<h4 id="deux-extensions-de-fichiers-possibles" class="anchor-title"><a href="#deux-extensions-de-fichiers-possibles">Deux extensions de fichiers possibles</a></h4>
+<h4 id="deux-extensions-de-fichiers-possibles">Deux extensions de fichiers possibles</h4>
 <p>Sass possède deux syntaxes :</p>
 <ul><li>Le SCSS est la plus répandue car elle reprend la syntaxe CSS. Son extension de fichiers est .scss</li>
 </ul><pre class="code-multiline language-scss"><code class="language-scss" id="849b897a2df3716f4e16d6796acb49df"><span class="token comment">/* SCSS */</span>
@@ -295,10 +295,10 @@
     <span class="token property">margin-bottom</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token unit">em</span>
     .entry
         <span class="token property">color</span><span class="token punctuation">:</span> <span class="token color">red</span></code></pre>
-<h4 id="installation" class="anchor-title"><a href="#installation">Installation</a></h4>
+<h4 id="installation">Installation</h4>
 <p>SASS nécessite le langage <code class="code-inline" id="948ea267d4a32b3d91b837b54298de0a">RUBY</code> pour fonctionner. Assurez vous d’avoir un environnement Ruby à jour ou installer le. Puis installer SASS, avec la commande</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="99830be51ea10c3182a91b07d608e9a8">gem <span class="token function">install</span> sass</code></pre>
-<h4 id="utilisation" class="anchor-title"><a href="#utilisation">Utilisation</a></h4>
+<h4 id="utilisation">Utilisation</h4>
 <p>Vos fichiers .scss ou .sass sont créés et prêts à être compilés en <code class="code-inline" id="7e41fc8d06132d780c53f3be7d206bc2">.css</code>.</p>
 <p>Plusieurs façons :</p>
 <ul><li>
@@ -307,11 +307,11 @@
 <li>
 <p>intégré à un framework comme Compass.</p>
 </li>
-</ul><h3 id="2-compass" class="anchor-title"><a href="#2-compass">2. Compass</a></h3>
-<h4 id="presentation" class="anchor-title"><a href="#presentation">Presentation</a></h4>
+</ul><h3 id="2-compass">2. Compass</h3>
+<h4 id="presentation">Presentation</h4>
 <p>Compass est un framework pour Sass qui fournit une collection d'outils et de mixins déjà programmés. Il suffit d'importer Compass dans vos fichiers .scss pour y avoir accès et les utiliser dans vos projets :</p>
 <pre class="code-multiline language-scss"><code class="language-scss" id="3c3ad1fcfcfa2792745ba8c479d9f185"><span class="token keyword">@import</span> <span class="token string">"compass"</span><span class="token punctuation">;</span></code></pre>
-<h4 id="fonctionnalites" class="anchor-title"><a href="#fonctionnalites">Fonctionnalités</a></h4>
+<h4 id="fonctionnalites">Fonctionnalités</h4>
 <ul><li>Propriétés CSS3 et préfixe constructeur</li>
 </ul><p>Si les nouveautés apportées par CSS3 sont assez fantastiques et prometteuses, leur mise en place cross-browser est plus complexe. Elle nécessite en effet des préfixes constructeur différents selon chaque navigateur. Compass prévoit des mixins pour un certain nombre de propriétés CSS3.</p>
 <p><strong>Box-shadow</strong></p>
@@ -337,10 +337,10 @@
 <span class="token selector">.icons-home </span><span class="token punctuation">{</span>
   <span class="token property">background-position</span><span class="token punctuation">:</span> <span class="token number">0</span> <span class="token number">-72</span><span class="token unit">px</span><span class="token punctuation">;</span>
  <span class="token punctuation">}</span></code></pre>
-<h4 id="installation" class="anchor-title"><a href="#installation">Installation</a></h4>
+<h4 id="installation">Installation</h4>
 <p>Un projet Compass se crée en ligne de commande. Si le terminal vous rebute un peu, plusieurs outils tels quel Compass.app, CodeKit ou Scout ont une interface dédiée pour vous aider dans cette tâche.</p>
 <pre class="code-multiline language-scss"><code class="language-scss" id="2ed7b886716b2c9fe6dd40fddd45186c">gem install compass</code></pre>
-<h4 id="creation-et-compilation-d-un-projet" class="anchor-title"><a href="#creation-et-compilation-d-un-projet">Création et compilation d'un projet</a></h4>
+<h4 id="creation-et-compilation-d-un-projet">Création et compilation d'un projet</h4>
 <pre class="code-multiline language-scss"><code class="language-scss" id="092d6b41137427cac85548b083d088a1">compass create nomduprojet</code></pre>
 <p>Vous disposez alors d'un exemple possible d'arborescence de projet avec un ensemble de répertoires et fichiers.</p>
 <ul><li>un fichier de configuration config.rb</li>
@@ -352,7 +352,7 @@
 <li>un répertoire stylesheets qui reçoit les fichiers sources compilées.</li>
 </ul><p>Vous travaillerez désormais avec les fichiers.scss contenus dans le répertoire sass. Pour que Compass détecte chaque modification dans votre fichier <code class="code-inline" id="f6f75ae81aa646f12f0eab27d54a9cb5">.scss</code> et le compile en <code class="code-inline" id="7e41fc8d06132d780c53f3be7d206bc2">.css</code> dans le répertoire stylesheets, lancez la commande :</p>
 <pre class="code-multiline"><code id="a869757b31f3a1aeee752860595b434b">compass watch</code></pre>
-<h3 id="conclusion" class="anchor-title"><a href="#conclusion">Conclusion</a></h3>
+<h3 id="conclusion">Conclusion</h3>
 <p>Même si cet article ne présente que les grandes lignes de l'utilisation de Sass et Compass, j'espère avoir réussi à vous montrer sa puissance et sa valeur ajoutée apportée. Il y a encore de nombreuses autres fonctionnalités et mixins à découvrir pour gagner du temps et en productivité dans vos intégrations.</p>
 <p>Quelques ressources pour vous aider à sauter le pas :</p>
 <ul><li>les documentations de <a title="Sass Doc" href="http://sass-lang.com/" target="_blank">Sass</a> et de <a title="Compass Doc" href="http://compass-style.org/" target="_blank">Compass</a>,</li>

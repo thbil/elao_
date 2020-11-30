@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>4 juillet 2017</strong></span>
-        <span>Modification <strong>9 novembre 2020</strong></span>
+        <span>Modification <strong>30 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -229,7 +229,7 @@
 <img src="/elao_/images/posts/2017/github-agile-dashboard/github-milestone.png" alt="github-milestone" title="github-milestone" id="github-milestone"><p>Le problème, c'est que GitHub ne connait pas notre convention décrivant la valeur en point des stories et ne peut donc pas l'exploiter.</p>
 <p>L'avancement proposé en nombre de ticket clos n'est pas représentatif de l'avancement en terme de points, qu'on doit obtenir en additionnant les points de toutes les issues.</p>
 <p><em>Et puis un jour, on en a eu marre de faire ces totaux à la main</em> 😇</p>
-<h2 id="gad-notre-ligne-de-command-agile" class="anchor-title"><a href="#gad-notre-ligne-de-command-agile">GAD, notre ligne de command agile</a></h2>
+<h2 id="gad-notre-ligne-de-command-agile">GAD, notre ligne de command agile</h2>
 <p>Alors j'ai pris un moment pour faire un petit outil en ligne de commande qui ferait ce travail pour nous.</p>
 <ul><li>On récupère la liste des issues du projet via <a href="https://developer.github.com/v3/" target="_blank">l'API GitHub</a>.</li>
 <li>On obtient les issues, milestone, labels, users et pull-request du projet en un seul appel HTTP !</li>
@@ -244,7 +244,7 @@
 <img src="/elao_/images/posts/2017/github-agile-dashboard/backlog.png" alt="gad backlog" title="gad backlog" id="gad-backlog"><blockquote>
 <p>Est-ce qu'il y a des PR que je n'ai pas encore review ?</p>
 </blockquote>
-<img src="/elao_/images/posts/2017/github-agile-dashboard/review.png" alt="gad review" title="gad review" id="gad-review"><h2 id="faire-son-propre-cli-avec-node" class="anchor-title"><a href="#faire-son-propre-cli-avec-node">Faire son propre CLI avec Node</a></h2>
+<img src="/elao_/images/posts/2017/github-agile-dashboard/review.png" alt="gad review" title="gad review" id="gad-review"><h2 id="faire-son-propre-cli-avec-node">Faire son propre CLI avec Node</h2>
 <p>GAD est codé en <em>Node</em>, mais de nombreux languages seront capables de répondre à une telle problématique.</p>
 <p>Node fournit quelques outils pratiques pour réaliser rapidement un petit outil en ligne de commande :</p>
 <ul><li>L'API __<a href="https://nodejs.org/api/readline.html#readline_example_tiny_cli" target="_blank">ReadLine</a>__ qui propose quelques fonctionnalités dédiées au CLI, <em>out of the box</em>.</li>
@@ -252,10 +252,10 @@
 <li>La clé <strong>bin</strong> du <code class="code-inline" id="b9cfc7f2cdf78a7f4b91a753d10865a2">package.json</code> permet de déclarer un module en tant qu'exécutable : <code class="code-inline" id="5df4c38c69a89c13de2e5e495643c069">"bin": { "gad": "./gad.js" }</code>
 La command <code class="code-inline" id="5cd1a2c6812a26f4af0bfe8eaf6422d7">gad</code> sera automatiquement disponible une fois le module installé en global sur la machine (<code class="code-inline" id="0da002587f1e5f033b1106635932e475">npm i -g @elao/github-agile-dashboard</code>) !</li>
 </ul><p><strong>Note :</strong> lorsqu'il est exécuté, gad récupère de précieuses informations, grâce à  <em>git</em>, comme l'url du repository (<code class="code-inline" id="74a340d9de7b7f4bafaf5c7251091889">git -C . config --get remote.origin.url</code>) ou l'utilisateur GitHub courant (<code class="code-inline" id="d0f21a3873bb8fa2ed961b30a53dbd58">git config --global github.user</code>)</p>
-<h2 id="ce-qu-on-en-retire" class="anchor-title"><a href="#ce-qu-on-en-retire">Ce qu'on en retire</a></h2>
-<h3 id="retour-sur-investissement" class="anchor-title"><a href="#retour-sur-investissement">Retour sur investissement</a></h3>
+<h2 id="ce-qu-on-en-retire">Ce qu'on en retire</h2>
+<h3 id="retour-sur-investissement">Retour sur investissement</h3>
 <p>La première version fonctionnelle de GAD était prête après une petite après-midi de travail et accélérait déjà quelques tâches rébarbatives de notre quotidien agile. Un investissement vite "remboursé" !</p>
-<h3 id="les-joies-simple-de-la-ligne-de-commande" class="anchor-title"><a href="#les-joies-simple-de-la-ligne-de-commande">Les joies simple de la ligne de commande</a></h3>
+<h3 id="les-joies-simple-de-la-ligne-de-commande">Les joies simple de la ligne de commande</h3>
 <p><code class="code-inline" id="5873cade84adddbdd85ce9248ea2a629">gad sprint</code> devient petit à petit un réflexe (comme <code class="code-inline" id="6ca42d12c6d2b040d7784c6ebbfd3426">git status</code>) et nous permet d'avoir un rapide aperçu de l'avancement du sprint, directement dans le terminal, sans même avoir besoin de prendre en main la souris 😬</p>
 <p>L'avantage de la ligne de commande, c'est qu'on bénéficie directement de la puissance du terminal :</p>
 <blockquote>
@@ -263,7 +263,7 @@ La command <code class="code-inline" id="5cd1a2c6812a26f4af0bfe8eaf6422d7">gad</
 </blockquote>
 <pre class="code-multiline language-shell"><code class="language-shell" id="34a43cea6dd0c46369c5553d5f6cbe35">gad changelog --sprint<span class="token operator">=</span>-1 <span class="token operator">|</span> <span class="token function">grep</span> <span class="token number">42</span></code></pre>
 <p>😎</p>
-<h3 id="et-moi-dans-tout-ca" class="anchor-title"><a href="#et-moi-dans-tout-ca">Et moi dans tout ça ?</a></h3>
+<h3 id="et-moi-dans-tout-ca">Et moi dans tout ça ?</h3>
 <p>GAD n'est probablement pas l'outil qui va révolutionner votre façon de travailler et multiplier la productivité de vos équipes, notamment car il a été conçu <em>sur-mesure</em> pour nos besoins et notre façon de travailler.</p>
 <p>Mais puisqu'il est open-source, je vous propose tout de même de <a href="https://www.npmjs.com/package/@elao/github-agile-dashboard" target="_blank">l'essayer</a> ou de <a href="https://github.com/Elao/github-agile-dashboard" target="_blank">jeter un oeil à son code</a>.</p>
 <p>Je vous invite aussi à être attentif·ve :</p>

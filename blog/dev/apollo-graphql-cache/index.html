@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>17 février 2020</strong></span>
-        <span>Modification <strong>9 novembre 2020</strong></span>
+        <span>Modification <strong>30 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -209,12 +209,12 @@
   
   <div class="article-content">
     <main class="article-content__main">
-      <body><h2 id="introduction" class="anchor-title"><a href="#introduction">Introduction</a></h2>
+      <body><h2 id="introduction">Introduction</h2>
 <p>GraphQL est un standard qui s'impose peu à peu dans le monde des API. Comme tout protocole API, il vient avec différents clients facilitant le dialogue avec le serveur.</p>
 <p><a href="https://www.apollographql.com/" target="_blank">Apollo GraphQL</a> est un service SAAS proposant une solution serveur GraphQL qui fournit également un très bon <a href="https://github.com/apollographql/apollo-client" target="_blank">client GraphQL Javascript</a>. Le client est open source et fonctionne avec n'importe quel serveur GraphQL.</p>
 <p>GraphQL propose beaucoup d'avantages par rapport à d'autres protocoles API <em>over HTTP</em> comme REST par exemple (batching de query, sélection des données à retourner, format des données, ...) mais souffre d'un défaut si l'on peut dire : comme toutes les requêtes sont effectuées en POST sur le même endpoint, il est impossible de poser un simple <strong>cache</strong> HTTP en amont. Pas de Varnish, pas de <strong>cache</strong> navigateur, etc.</p>
 <p>Si l'on veut mettre du <strong>cache</strong> côté client, il sera forcement applicatif. C'est justement l'une des grandes forces d'<strong>ApolloClient</strong>, il propose un <strong>cache très performant</strong>, chose qui va nous intéresser dans cet article.</p>
-<h2 id="premiere-requete" class="anchor-title"><a href="#premiere-requete">Première requête</a></h2>
+<h2 id="premiere-requete">Première requête</h2>
 <p>L'utilisation basique du client est très simple et dans la veine de ce qu'on retrouve dans n'importe quel client API.</p>
 <p>L'installation :</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="42811a453950a92201a490b8c574ed2a"><span class="token comment"># installing the preset package</span>
@@ -245,7 +245,7 @@ client
   <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token arrow operator">=&gt;</span> <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token keyword control-flow">catch</span><span class="token punctuation">(</span><span class="token parameter">error</span> <span class="token arrow operator">=&gt;</span> <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <p>A partir de ce moment, cette requête est cachée en mémoire. Vous pouvez la relancer autant de fois que vous le souhaitez, aucun appel réseau ne sera fait.</p>
-<h2 id="mutations" class="anchor-title"><a href="#mutations">Mutations</a></h2>
+<h2 id="mutations">Mutations</h2>
 <p>Le client permet évidemment d'exécuter des mutations (modifications de données) :</p>
 <pre class="code-multiline language-javascript"><code class="language-javascript" id="0aa3a1c5320db418254ab780e5acdfcf"><span class="token keyword module">import</span> <span class="token imports">gql</span> <span class="token keyword module">from</span> <span class="token string">'graphql-tag'</span><span class="token punctuation">;</span>
 
@@ -270,7 +270,7 @@ client
 <p>Il y a seulement 2 problèmes compliqués en informatique : nommer les choses, et l’invalidation de cache.</p>
 </blockquote>
 <p>Nous allons donc devoir mettre à jour ce cache, et pour le coup, c'est plutôt simple.</p>
-<h2 id="lire-et-ecrire-dans-le-cache" class="anchor-title"><a href="#lire-et-ecrire-dans-le-cache">Lire et écrire dans le cache</a></h2>
+<h2 id="lire-et-ecrire-dans-le-cache">Lire et écrire dans le cache</h2>
 <p>Le cache d'Apollo et son paradygme est un peu spécial. Il ne s'agit pas seulement d'un simple cache de requête. Il agit comme un <em>state manager</em> à l'instar de <a href="https://redux.js.org/" target="_blank">Redux</a> ou <a href="https://vuex.vuejs.org/" target="_blank">Vuex</a>. Les données récupérées via une requête sont automatiquement stockées dans le cache mais il nous est possible d'y accéder et même d'y inserer ou d'y modifier de données sans refaire de requête.</p>
 <p>Pour cela nous allons utiliser les méthodes <code class="code-inline" id="6049d14e5ad8b9569d7bfc875e1e19f5">readQuery</code> et <code class="code-inline" id="487ef08341270e780f4c1f508fdb096a">writeQuery</code>. Attention, il faut appeler ces méthodes avec exactement la même requête GraphQL (variables inclues) que celle utilisée pour recupérer les données.</p>
 <p>Pour cela nous allons utliser la méthode <code class="code-inline" id="6049d14e5ad8b9569d7bfc875e1e19f5">readQuery</code> pour lire les données attaché à la requête :</p>
@@ -322,7 +322,7 @@ client
       <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<h2 id="fragments" class="anchor-title"><a href="#fragments">Fragments</a></h2>
+<h2 id="fragments">Fragments</h2>
 <p>De la même manière qu'avec <code class="code-inline" id="6049d14e5ad8b9569d7bfc875e1e19f5">readQuery</code> et <code class="code-inline" id="487ef08341270e780f4c1f508fdb096a">writeQuery</code>, il est posible de mettre à jour des portions de requêtes utilisant le même fragment avec les méthodes <code class="code-inline" id="2bd958871bf3808abd7ce8a031471b3e">readFragment</code> et <code class="code-inline" id="154246f31f1ad6339c54f814319845e6">writeFragment</code>.</p>
 <p>Par exemple avec les requêtes suivantes :</p>
 <pre class="code-multiline language-graphql"><code class="language-graphql" id="2d22997fc5d2e3057a10684ea59b5160"><span class="token keyword">fragment</span> <span class="token fragment function">TodoFields</span> <span class="token keyword">on</span> <span class="token class-name">Todo</span> <span class="token punctuation">{</span>
@@ -360,7 +360,7 @@ client
   fragment<span class="token operator">:</span> <span class="token maybe-class-name">TodoFields</span>
   data<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token spread operator">...</span>todo<span class="token punctuation">,</span> completed<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<h2 id="mise-a-jour-automatique" class="anchor-title"><a href="#mise-a-jour-automatique">Mise à jour automatique</a></h2>
+<h2 id="mise-a-jour-automatique">Mise à jour automatique</h2>
 <p>Heuresement, il n'est pas toujours obligatoire de mettre manuellement à jour le cache comme ci-dessus. Il y a certains cas où le cache est automatiquement mis à jour par Apollo.</p>
 <p>Lorsque vous réalisez une requête recupérant des données contenant un <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code>, par exemple :</p>
 <pre class="code-multiline language-graphql"><code class="language-graphql" id="964c827ae030b525dbe7c35cd91eadf1"><span class="token keyword">query</span> <span class="token punctuation">{</span>
@@ -378,7 +378,7 @@ client
 <span class="token punctuation">}</span></code></pre>
 <p>Apollo a compris que vous intevennez sur le même objet (même type et meme id). Le cache sera alors automatiquement mis à jour et la propriété <code class="code-inline" id="b068931cc450442b63f5b3d276ea4297">name</code> sera modifiée partout. Attention par contre, le cache sera mis à jour avec les données renvoyées par la mutation, il faut donc bien faire attention à selectionner les données que l'on souhaite modifier dans le cache.</p>
 <p>Je vous parlais du côté <em>state manager</em> du cache, et bien c'est ce qui se passe ici. Les objets y sont stockés avec une clé de cache de façon à pouvoir mettre à jour tous les résultats de requête concernés en une fois lorsque que l'un d'eux est modifié (sous couvert qu'ils soient identifiables par un <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code> évidemment).</p>
-<h2 id="configurer-le-cache" class="anchor-title"><a href="#configurer-le-cache">Configurer le cache</a></h2>
+<h2 id="configurer-le-cache">Configurer le cache</h2>
 <p>Si vos objets n'ont pas de propriété <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code> mais une propriété <code class="code-inline" id="ef7c876f00f3acddd00fa671f52d0b1f">uuid</code> par exemple, il est possible de configurer le cache pour l'utiliser et conserver la mise à jour automatique :</p>
 <pre class="code-multiline language-javascript"><code class="language-javascript" id="b175c489f59df8e8479ce6756e136b46"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">InMemoryCache</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'apollo-cache-inmemory'</span><span class="token punctuation">;</span>
 <span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">HttpLink</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'apollo-link-http'</span><span class="token punctuation">;</span>
@@ -404,7 +404,7 @@ client
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>D'autre configuration sont possibles, je vous encourage à lire <a href="https://www.apollographql.com/docs/react/caching/cache-configuration/" target="_blank">la documentation à ce sujet</a> pour les découvrir.</p>
-<h2 id="redirection-de-cache" class="anchor-title"><a href="#redirection-de-cache">Redirection de cache</a></h2>
+<h2 id="redirection-de-cache">Redirection de cache</h2>
 <p>Dans certains cas, les données que vous requêtez peuvent déjà être présentes dans le cache d'une autre requête. L'exemple typique est lorsque vous fait un requête listant des objets, puis plus tard une requête avec les mêmes données retournant l'un de ces objets.</p>
 <p>Par exemple pour la liste :</p>
 <pre class="code-multiline language-graphql"><code class="language-graphql" id="fcb50093e482c3648ce36593546aabbf"><span class="token keyword">query</span> Todos <span class="token punctuation">{</span>
@@ -434,7 +434,7 @@ client
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<h2 id="gerer-la-suppression-de-donnees" class="anchor-title"><a href="#gerer-la-suppression-de-donnees">Gérer la suppression de données</a></h2>
+<h2 id="gerer-la-suppression-de-donnees">Gérer la suppression de données</h2>
 <p>Si la mise à jour automatique est simple (un objet identifié par son ID peut être mise à jour automatiquement pour toutes les requêtes dans le cache), c'est un peu plus compliqué pour les suppressions.</p>
 <p>Comme pour l'ajout, vous allez devoir mettre à jour manuellement le cache de chaque requête retournant la donnée supprimée.</p>
 <pre class="code-multiline language-javascript"><code class="language-javascript" id="d6e8c8cd16f739f59b5c3b9899bae2bc"><span class="token keyword">const</span> <span class="token constant">REMOVE_TODO</span> <span class="token operator">=</span> gql<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token graphql language-graphql">
@@ -524,14 +524,14 @@ client
     variables<span class="token operator">:</span> <span class="token punctuation">{</span> id<span class="token operator">:</span> todo<span class="token punctuation">.</span><span class="token property-access">id</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token function-variable function">update</span><span class="token operator">:</span> <span class="token parameter">cache</span> <span class="token arrow operator">=&gt;</span> cache<span class="token punctuation">.</span><span class="token method function property-access">delete</span><span class="token punctuation">(</span>todo<span class="token punctuation">)</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<h2 id="fetch-policy" class="anchor-title"><a href="#fetch-policy">Fetch policy</a></h2>
+<h2 id="fetch-policy">Fetch policy</h2>
 <p>Pour chaque requête vous pouvez configurer l'option <code class="code-inline" id="756c4ea0f96895611e6721021bca7112">fetchPolicy</code> afin d'indiquer à Apollo comment utiliser le cache.</p>
 <ul><li><code class="code-inline" id="ae90bbf1549b5dc9ad755458a2d09cf2">cache-first</code> : c'est la valeur par defaut, le client recherche le résultat dans le cache avant de faire une requête.</li>
 <li><code class="code-inline" id="55e6be0c60b430d2c54d3d8e104735d4">cache-and-network</code> : le client retournera le contenu du cache mais fera tout de même la requête afin de le mettre à jour, permet d'avoir une réponse rapide.</li>
 <li><code class="code-inline" id="9dfabc18d8b0830701675915eacda927">network-only</code> : le client ne retournera jamais le contenu du cache pour cette requête et fera systématiquement un appel réseau.</li>
 <li><code class="code-inline" id="d08cccb388110b519688b7d507db8a0b">cache-only</code> : le client ne fera aucun appel réseau et se contentera de lire le cache.</li>
 <li><code class="code-inline" id="00bc63c3a47875d37eb7004340988ca4">no-cache</code> : le client fera un appel réseau et ne lira pas le cache, mais au contraire de <code class="code-inline" id="9dfabc18d8b0830701675915eacda927">network-only</code>, le résultat de la requête ne sera pas écrit dans le cache.</li>
-</ul><h2 id="persistence" class="anchor-title"><a href="#persistence">Persistence</a></h2>
+</ul><h2 id="persistence">Persistence</h2>
 <p>Par default, le cache Apollo utilise l'adapteur <code class="code-inline" id="e7e257ea4465b7f923b3e2b116f1782e">InMemoryCache</code> qui comme son nom l'indique, stocke le cache en mémoire. Dans le cas d'une application web, chaque actualisation de la page ou nouvel onglet remet le cache à zero. En cas d'app native, cela se fera à chaque fermeture de l'app.</p>
 <p>Heureusement il est possible de <a href="https://github.com/apollographql/apollo-cache-persist#storage-providers" target="_blank">persister le cache</a> de façon non volatile en fournissant un <em>storage provider</em>. En <em>local storage</em> pour du web par exemple, ou encore dans une base <em>SQLite</em> ou en fichier pour les app natives.</p>
 <p>Par exemple avec du <em>local storage</em> :</p>
@@ -548,7 +548,7 @@ client
 <span class="token keyword">const</span> client <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ApolloClient</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   cache<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<h2 id="conclusion" class="anchor-title"><a href="#conclusion">Conclusion</a></h2>
+<h2 id="conclusion">Conclusion</h2>
 <p>Cet article n'est qu'un petit aperçu des possibilités offertes par le cache Apollo. Pour plus de détails, je vous conseille de lire attentivement les documentations très complètes sur la <a href="https://www.apollographql.com/docs/react/caching/cache-configuration/" target="_blank">configuration du cache</a> et la <a href="https://www.apollographql.com/docs/react/caching/cache-interaction/" target="_blank">manipulation de cache</a> qui ont inspiré cet article.</p></body>
                         </main>
     <aside class="article-content__aside">

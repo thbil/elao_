@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>31 juillet 2020</strong></span>
-        <span>Modification <strong>9 novembre 2020</strong></span>
+        <span>Modification <strong>30 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -206,7 +206,7 @@
       <body><p>Si vous travaillez avec Symfony et gérez votre base de code javascript avec Webpack Encore, j'ai aujourd'hui une petite astuce méconnue qui pourrait vous simplifier la vie : les alias Webpack.</p>
 <!--more-->
 <p><em>Note: Si vous n'utilisez pas Webpack Encore dans vos projets Symfony, vous devriez peut-être y jeter un oeil ...</em></p>
-<h2 id="contexte" class="anchor-title"><a href="#contexte">Contexte</a></h2>
+<h2 id="contexte">Contexte</h2>
 <p>Par défaut, les imports de modules ES6 utilisent un chemin <strong>relatif</strong> à l'emplacement du fichier.</p>
 <p>Prenons l'arborescence suivante :</p>
 <pre class="code-multiline"><code id="41de8fe82da1499f4c4634e12454e16b">assets/
@@ -219,7 +219,7 @@
 <p>Si on souhaite charger la classe <code class="code-inline" id="129a860545e73b19bb88ab90211cd0b0">Loader</code> depuis <code class="code-inline" id="9875cb9f6eccd432273d37cb3653ad9b">AudioPlayer</code>, on s'y prend comme ça :</p>
 <pre class="code-multiline language-javascript"><code class="language-javascript" id="612987ecf27d9cd6c7b7b88b3fd4dc6d"><span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">Loader</span></span> <span class="token keyword module">from</span> <span class="token string">'../../core/Loader.js'</span><span class="token punctuation">;</span></code></pre>
 <p>Ce n'est pas toujours plaisant à écrire de tête et encore moins à refactorer.</p>
-<h2 id="cote-back" class="anchor-title"><a href="#cote-back">Côté back</a></h2>
+<h2 id="cote-back">Côté back</h2>
 <p>En PHP, on est habitué aux <strong>namespaces</strong>, qui permettent de référencer une classe par un chemin <strong>absolu</strong> qui ne dépend donc pas de l'endroit où l'on se trouve.</p>
 <p>On commence par définir un namespace pour un chemin donné dans notre <code class="code-inline" id="b5d0ee8c97c7abd7e3fa29b9a27d1780">composer.json</code> :</p>
 <pre class="code-multiline language-json"><code class="language-json" id="80752484f43c4d7ea549aa6cdd16bc96"><span class="token property">"autoload"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -229,7 +229,7 @@
 <span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre>
 <p>Et on peut maintenant utiliser la classe <code class="code-inline" id="9c6968b70659f410eb8de9e4fa30574b">src/Kernel.php</code> via le namespace <code class="code-inline" id="84c286e617608d253008bb9cc35fbe01">App/Kernel</code> partout dans notre application.</p>
 <p>C'est ce qu'on souhaite mettre en place côté client grâce aux alias webpack !</p>
-<h2 id="les-alias-webpack" class="anchor-title"><a href="#les-alias-webpack">Les alias Webpack</a></h2>
+<h2 id="les-alias-webpack">Les alias Webpack</h2>
 <p>Comme on configure l'autoload côté back, on peut configurer des alias côté front dans notre configuration Webpack Encore :</p>
 <pre class="code-multiline language-javascript"><code class="language-javascript" id="5ae6995a1578c5e737cbcecc25652c44"><span class="token comment">//webpack.config.js</span>
 <span class="token maybe-class-name">Encore</span>
@@ -242,7 +242,7 @@
 <p>On peut maintenant, depuis n'importe quel fichier, importer la classe <code class="code-inline" id="129a860545e73b19bb88ab90211cd0b0">Loader</code> via un chemin absolu utilisant l'alias :</p>
 <pre class="code-multiline language-javascript"><code class="language-javascript" id="fd04a8837c938b8e8875fb3091fb5ee9"><span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">Loader</span></span> <span class="token keyword module">from</span> <span class="token string">'App/core/Loader.js'</span><span class="token punctuation">;</span></code></pre>
 <p>Et voila, on a des "namespaces" pour nos modules javascript ! 🎉</p>
-<h2 id="bonus" class="anchor-title"><a href="#bonus">Bonus</a></h2>
+<h2 id="bonus">Bonus</h2>
 <p>Vous intégrez votre CSS et vos images au build directement depuis votre code JS ?</p>
 <p>Déclarez des alias pour ceux-ci :</p>
 <pre class="code-multiline language-javascript"><code class="language-javascript" id="24461c4d80bf83fc846b817b3fdaa0e1"><span class="token comment">//webpack.config.js</span>

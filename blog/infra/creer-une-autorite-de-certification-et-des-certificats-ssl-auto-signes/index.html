@@ -179,7 +179,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>5 octobre 2010</strong></span>
-        <span>Modification <strong>9 novembre 2020</strong></span>
+        <span>Modification <strong>30 novembre 2020</strong></span>
       </div>
     </div>
 
@@ -204,7 +204,7 @@
 <p>Petit memo aujourd'hui pour les admin sys</p>
 <p>Nous allons voir comment créer sa propre autorité de certification et créer ses propres certificats SSL auto-signés, toujours très utiles lorsque l'on a des problématiques de connexion sécurisée.<!--more-->
 L'ensemble de ces manipulations ont été réalisées sur des serveurs Linux / Debian Lenny.</p>
-<h3 id="creer-son-propre-ca-certificate-authority" class="anchor-title"><a href="#creer-son-propre-ca-certificate-authority">Créer son propre CA (Certificate Authority)</a></h3>
+<h3 id="creer-son-propre-ca-certificate-authority">Créer son propre CA (Certificate Authority)</h3>
 <p>Nous allons commencer par créer une clé privée</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="43687bc072862b8a3751054098c7f046">root@my_server:~<span class="token comment"># openssl genrsa -des3 -out elao-ca.key 2048</span>
 Generating RSA private key, <span class="token number">2048</span> bit long modulus
@@ -222,7 +222,7 @@ Enter pass phrase <span class="token keyword">for</span> elao-ca.key:</code></pr
 Enter pass phrase for elao-ca.key:</code></pre>
 <p>Le contenu de notre certificat est vérifiable grâce à la commande suivante :</p>
 <pre class="code-multiline"><code id="abbea37b2326b86905f5195ae9763b03">openssl x509 -in elao-ca.crt -text -noout</code></pre>
-<h3 id="creer-une-cle-et-un-certificat-pour-le-serveur" class="anchor-title"><a href="#creer-une-cle-et-un-certificat-pour-le-serveur">Créer une clé et un certificat pour le serveur</a></h3>
+<h3 id="creer-une-cle-et-un-certificat-pour-le-serveur">Créer une clé et un certificat pour le serveur</h3>
 <p>Maintenant que nous disposons de notre autorité de certification nous allons pouvoir créer et signer les certificats à destination de notre serveur.</p>
 <pre class="code-multiline"><code id="b9043d8b3c399723bb63690eaa28b58f">openssl genrsa -des3 -out elao-server.key 1024</code></pre>
 <p>Comme vous le constatez nous restons sur un cryptage à 1024 bits, en effet il est risqué d'aller au delà car certains navigateurs ne supportent pas les cryptages supérieurs.</p>
