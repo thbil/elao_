@@ -1,0 +1,19 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/elao_/pr/71/build/runtime.ea406071.js",
+        "/elao_/pr/71/build/0.4fc588e5.js",
+        "/elao_/pr/71/build/app.67723742.js"
+      ]
+    },
+    "style": {
+      "js": [
+        "/elao_/pr/71/build/runtime.ea406071.js"
+      ],
+      "css": [
+        "/elao_/pr/71/build/style.a131d065.css"
+      ]
+    }
+  }
+}
