@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +8,11 @@
 
                     <!-- Open Graph / Facebook -->
              <meta property="og:title" content="Elao_" />
-            <meta property="og:locale" content="fr" />
+            <meta property="og:locale" content="en" />
             <meta name="description" content="Elao est un atelier de co-conception d&#039;applications web et mobile sur mesure." />
             <meta property="og:description" content="Elao est un atelier de co-conception d&#039;applications web et mobile sur mesure." />
-            <link rel="canonical" href="https://elao.github.io/elao_/pr/72/blog/infra/install-stats-d-graphite-on-a-debian-server-to-monitor-a-symfony2-application.en" />
-            <meta property="og:url" content="https://elao.github.io/elao_/pr/72/blog/infra/install-stats-d-graphite-on-a-debian-server-to-monitor-a-symfony2-application.en" />
+            <link rel="canonical" href="https://elao.github.io/elao_/pr/72/blog/dev/subdomains-symfony2-2-session-authentication" />
+            <meta property="og:url" content="https://elao.github.io/elao_/pr/72/blog/dev/subdomains-symfony2-2-session-authentication" />
             <meta property="og:site_name" content="elao_" />
             
             <!-- Twitter -->
@@ -162,12 +162,12 @@
       <a href="/elao_/pr/72/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)
+      Feedback on a side-effect with Symfony 2.2, subdomains and sessions
     </li>
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/72/images/posts/thumbnails/rocket.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/72/images/posts/thumbnails/turtle.jpg)"></div>
 
     <div class="article-info">
                     <div class="article-author ">
@@ -180,23 +180,20 @@
                       </span>
         </div>
             <div class="article-info__date">
-        <span>Publication <strong>23 novembre 2012</strong></span>
+        <span>Publication <strong>28 février 2013</strong></span>
         <span>Modification <strong>13 janvier 2021</strong></span>
       </div>
     </div>
 
     <div class="article-header">
-      <h1>Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application (1/2)</h1>
-      <p>Install Stats.d / Graphite on a debian server in order to monitor a Symfony2 application.</p>
+      <h1>Feedback on a side-effect with Symfony 2.2, subdomains and sessions</h1>
+      <p>Feedback on a side-effect with Symfony 2.2, subdomains and sessions</p>
       <ul class="article-tag-list">
                   <li class="article-tag-list__item">
-            <a href="/elao_/pr/72/blog/tag/Linux" rel="nofollow">#Linux</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/pr/72/blog/tag/Monitoring" rel="nofollow">#Monitoring</a>
-          </li>
-                  <li class="article-tag-list__item">
             <a href="/elao_/pr/72/blog/tag/Symfony" rel="nofollow">#Symfony</a>
+          </li>
+                  <li class="article-tag-list__item">
+            <a href="/elao_/pr/72/blog/tag/PHP" rel="nofollow">#PHP</a>
           </li>
               </ul>
     </div>
@@ -205,140 +202,45 @@
   
   <div class="article-content">
     <main class="article-content__main">
-      <body><p>During this tutorial, we will install Stats.d and Graphite on the same server our application is running on. Don't forget that it's best if you monitor your application with graphite &amp; stats.d using another server because that will not be the case in this tutorial.</p>
-<h3 id="requirements">Requirements :</h3>
-<ul><li>A Linux based server (this tutorial will explain the steps for Debian)</li>
-<li>A running Symfony2 application</li>
-<li><a href="https://github.com/liuggio/StatsDClientBundle" target="_blank">StatsDClientBundle</a></li>
-</ul><p><strong>Here's the result we'll have at the end (screenshot from a personal web application) :</strong></p>
-<img src="/en/images/posts/2012/memory_usage.png" alt="graphite" class="outside-left" id="graphite"><img src="/en/images/posts/2012/users.png" alt="graphite" class="" id="graphite"><img src="/en/images/posts/2012/memory_usage.png" alt="graphite" class="outside-right" id="graphite"><h1 id="install-graphite">Install Graphite</h1>
-<h2 id="installing-graphite-dependencies">Installing graphite dependencies</h2>
-<pre class="code-multiline language-bash"><code class="language-bash" id="98da77ef6d314d18f2a06231320991da"><span class="token function">apt-get</span> <span class="token function">install</span> -y python2.6 python-pip python-cairo python-django python-django-tagging
-<span class="token function">apt-get</span> <span class="token function">install</span> -y libapache2-mod-wsgi python-twisted python-memcache python-pysqlite2 python-simplejson
-pip <span class="token function">install</span> whisper
-pip <span class="token function">install</span> carbon
-pip <span class="token function">install</span> graphite-web
-
-<span class="token comment"># Setup a vhost by grabbing the example the graphite team released on their repo.</span>
-<span class="token comment"># In this file, you'll provide the url used to access to your Graphite dashboard</span>
-<span class="token function">wget</span> https://raw.github.com/tmm1/graphite/master/examples/example-graphite-vhost.conf -O /etc/apache2/sites-available/graphite</code></pre>
-<pre class="code-multiline language-bash"><code class="language-bash" id="e417cfd05864ba10eb197dff62ae67d0"><span class="token comment"># If you are running on a Debian, don't forget to replace in the vhost, the WSGISocketPrefix value by the following:</span>
-WSGISocketPrefix /var/run/apache2/wsgi</code></pre>
-<h2 id="configuring-graphite">Configuring graphite</h2>
-<pre class="code-multiline language-bash"><code class="language-bash" id="4dec963a66a3ef6e1c60b7f78107a8aa"><span class="token builtin class-name">cd</span> /opt/graphite/conf/
-<span class="token function">cp</span> graphite.wsgi.example graphite.wsgi
-<span class="token function">cp</span> carbon.conf.example carbon.conf
-<span class="token function">cp</span> storage-schemas.conf.example storage-schemas.conf</code></pre>
-<pre class="code-multiline language-ini"><code class="language-ini" id="382ad2f3bc7a89867b2447df4477a8a5"><span class="token comment"># Edit storage-schemas.conf in order to include a custom tweak provided by stats.d</span>
-<span class="token selector">[stats]</span>
-<span class="token constant">pattern</span> <span class="token attr-value"><span class="token punctuation">=</span> ^stats.*</span>
-<span class="token constant">retentions</span> <span class="token attr-value"><span class="token punctuation">=</span> 10:2160,60:10080,600:262974</span>
-
-<span class="token selector">[carbon]</span>
-<span class="token constant">pattern</span> <span class="token attr-value"><span class="token punctuation">=</span> ^carbon\.</span>
-<span class="token constant">retentions</span> <span class="token attr-value"><span class="token punctuation">=</span> 60:90d</span>
-
-<span class="token selector">[default_1min_for_1day]</span>
-<span class="token constant">pattern</span> <span class="token attr-value"><span class="token punctuation">=</span> .*</span>
-<span class="token constant">retentions</span> <span class="token attr-value"><span class="token punctuation">=</span> 60s:1d</span></code></pre>
-<pre class="code-multiline language-bash"><code class="language-bash" id="cb0f037e6ee67f65e203394f1c09c211"><span class="token comment"># Create a vi storage-aggregation.conf</span>
-<span class="token function">vi</span> storage-aggregation.conf</code></pre>
-<pre class="code-multiline language-ini"><code class="language-ini" id="fe63e757d5eae401274ffc8fa4b4e89f"><span class="token comment"># Then copy paste in it the following parameters</span>
-<span class="token selector">[min]</span>
-<span class="token constant">pattern</span> <span class="token attr-value"><span class="token punctuation">=</span> \.min$</span>
-<span class="token constant">xFilesFactor</span> <span class="token attr-value"><span class="token punctuation">=</span> 0.1</span>
-<span class="token constant">aggregationMethod</span> <span class="token attr-value"><span class="token punctuation">=</span> min</span>
-
-<span class="token selector">[max]</span>
-<span class="token constant">pattern</span> <span class="token attr-value"><span class="token punctuation">=</span> \.max$</span>
-<span class="token constant">xFilesFactor</span> <span class="token attr-value"><span class="token punctuation">=</span> 0.1</span>
-<span class="token constant">aggregationMethod</span> <span class="token attr-value"><span class="token punctuation">=</span> max</span>
-
-<span class="token selector">[sum]</span>
-<span class="token constant">pattern</span> <span class="token attr-value"><span class="token punctuation">=</span> \.count$</span>
-<span class="token constant">xFilesFactor</span> <span class="token attr-value"><span class="token punctuation">=</span> 0</span>
-<span class="token constant">aggregationMethod</span> <span class="token attr-value"><span class="token punctuation">=</span> sum</span>
-
-<span class="token selector">[default_average]</span>
-<span class="token constant">pattern</span> <span class="token attr-value"><span class="token punctuation">=</span> .*</span>
-<span class="token constant">xFilesFactor</span> <span class="token attr-value"><span class="token punctuation">=</span> 0.3</span>
-<span class="token constant">aggregationMethod</span> <span class="token attr-value"><span class="token punctuation">=</span> average</span></code></pre>
-<h1 id="let-s-go-back-to-the-installation-process">Let's go back to the installation process</h1>
-<pre class="code-multiline language-bash"><code class="language-bash" id="cfe5036c5416682c827647795ba43a0d"><span class="token builtin class-name">cd</span> /opt/graphite/webapp/graphite
-python manage.py syncdb
-<span class="token function">chown</span> -R www-data:www-data /opt/graphite/storage/</code></pre>
-<h2 id="enabling-graphite-host">Enabling graphite host</h2>
-<pre class="code-multiline language-bash"><code class="language-bash" id="2626d327c365ddfad10f755161da3313">a2ensite graphite
-/opt/graphite/bin/carbon-cache.py start
-/etc/init.d/apache2 resta</code></pre>
-<p>If you want the full detail on the graphite, take a look at <a href="http://linuxracker.com/2012/03/31/setting-up-graphite-server-on-debian-squeeze/" target="_blank">the source</a> I used for the installations steps.</p>
-<h1 id="install-stat-d">Install <a href="https://github.com/etsy/statsd" target="_blank">Stat.d</a></h1>
-<pre class="code-multiline language-bash"><code class="language-bash" id="689f2bb1093d18d4dff704002318406e"><span class="token function">sudo</span> <span class="token function">apt-get</span> update <span class="token operator">&amp;&amp;</span> <span class="token function">apt-get</span> <span class="token function">install</span> git-core <span class="token function">curl</span> build-essential openssl libssl-dev
-
-<span class="token comment"># Don't forget to go to the location you want to install node in (like cd /home/) before running these commands</span>
-<span class="token function">git</span> clone https://github.com/joyent/node.git
-<span class="token builtin class-name">cd</span> node
-<span class="token function">git</span> checkout v0.8.12
-
-./configure --openssl-libpath<span class="token operator">=</span>/usr/lib/ssl
-<span class="token function">make</span>
-<span class="token function">make</span> <span class="token builtin class-name">test</span>
-<span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span>
-node -v
-<span class="token function">npm</span> -v
-
-<span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>
-<span class="token function">git</span> clone https://github.com/etsy/statsd
-<span class="token builtin class-name">cd</span> statsd
-<span class="token function">cp</span> exampleConfig.js local.js</code></pre>
-<h2 id="edit-local-js-and-make-it-looks-like">Edit local.js and make it looks like:</h2>
-<pre class="code-multiline language-js"><code class="language-js" id="5b53ab50a103135ec0928dab1ed72acd"><span class="token punctuation">{</span>
-graphitePort<span class="token operator">:</span> <span class="token number">2003</span>
-<span class="token punctuation">,</span> graphiteHost<span class="token operator">:</span> <span class="token string">"localhost"</span>
-<span class="token punctuation">,</span> port<span class="token operator">:</span> <span class="token number">8125</span>
-<span class="token punctuation">}</span></code></pre>
-<h1 id="then-you-need-to-run-stats-d">Then you need to run stats.d</h1>
-<pre class="code-multiline language-bash"><code class="language-bash" id="6bd9c0dfaed0ccd1221f4f4d55e6d9fa"><span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">screen</span>
-<span class="token function">screen</span> node stats.js local.js
-
-<span class="token comment"># Then press Ctrl + a + d in order to let run stats.js in background mode thanks to screen.</span></code></pre>
-<p>If you want the full detail, check out the <a href="http://sekati.com/etc/install-nodejs-on-debian-squeeze" target="_blank">source</a>.</p>
-<h3 id="from-now-on-we-have-a-running-copy-of-both-graphite-and-stat-d-client">From now on, we have a running copy of both <strong>Graphite</strong> and <strong>Stat.d</strong> client.</h3>
-<p>You can access it with the URL you provided in your vhost</p>
-<p>Now, let's install the <a href="https://github.com/liuggio/StatsDClientBundle/blob/master/Resources/doc/installation.md" target="_blank">StatsDClientBundle</a> in order to monitor our Symfony2 application</p>
-<pre class="code-multiline language-json"><code class="language-json" id="587cd562256957a785eb77f07efc2ee4"><span class="token comment">// composer.json</span>
-<span class="token property">"require"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    # ..
-    <span class="token property">"liuggio/statsd-client-bundle"</span><span class="token operator">:</span> <span class="token string">"&gt;=1.2"</span><span class="token punctuation">,</span>
-    # ..
-<span class="token punctuation">}</span></code></pre>
-<pre class="code-multiline language-php"><code class="language-php" id="deb330f165a9c71a838d13b56dc31bdd">// After running php composer.phar update liuggio/statsd-client-bundle
-// Enable the Bundle in AppKernel.php
-<span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token keyword">class</span> <span class="token class-name">AppKernel</span> <span class="token keyword">extends</span> <span class="token class-name">Kernel</span>
- <span class="token punctuation">{</span>
-     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">registerBundles</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-     <span class="token punctuation">{</span>
-         <span class="token variable">$bundles</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
-         <span class="token comment">// ...</span>
-            <span class="token keyword">new</span> <span class="token class-name">Liuggio<span class="token punctuation">\</span>StatsDClientBundle<span class="token punctuation">\</span>LiuggioStatsDClientBundle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-         <span class="token comment">// ...</span>
-
-<span class="token comment">// Then add the full configuration for the Bundle in app/config/config.yml</span></span></code></pre>
-<pre class="code-multiline language-yaml"><code class="language-yaml" id="8c0b3b6747c6666e778b2b0c15990867"><span class="token key atrule">liuggio_stats_d_client</span><span class="token punctuation">:</span>
-  <span class="token key atrule">connection</span><span class="token punctuation">:</span>
-    <span class="token key atrule">host</span><span class="token punctuation">:</span> localhost
-    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8125</span>
-    <span class="token key atrule">fail_silently</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-  <span class="token key atrule">enable_collector</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token comment">#default is false</span>
-  <span class="token key atrule">collectors</span><span class="token punctuation">:</span>
-    <span class="token key atrule">liuggio_stats_d_client.collector.dbal</span><span class="token punctuation">:</span> <span class="token string">'collect.query'</span>
-    <span class="token key atrule">liuggio_stats_d_client.collector.visitor</span><span class="token punctuation">:</span> <span class="token string">'collect.visitor'</span>
-    <span class="token key atrule">liuggio_stats_d_client.collector.memory</span><span class="token punctuation">:</span> <span class="token string">'collect.memory'</span>
-    <span class="token key atrule">liuggio_stats_d_client.collector.user</span><span class="token punctuation">:</span> <span class="token string">'collect.user'</span>
-    <span class="token key atrule">liuggio_stats_d_client.collector.exception</span><span class="token punctuation">:</span> <span class="token string">'collect.exception'</span></code></pre>
-<p>Note that we added the full configuration for the bundle which allow us to collect these usefull information such as logged users vs anonymous, memory usage.</p>
-<p>In the <a href="/en/infra/monitor-your-symfony2-application-via-stats-d-and-graphite-2/">2nd part</a>, we'll see how to monitor custom events in your Symfony2 app.</p></body>
+      <body><p>This is a small feedback regarding the new Symfony 2.2 feature which makes the subdomains handling easier. By the way you can see the official documentation about <a style="text-align: justify;" href="http://symfony.com/doc/master/components/routing/hostname_pattern.html" target="_blank">routing &amp; subdomains here</a>.</p>
+<h3 id="scenario">Scenario</h3>
+<p>With the support of subdomains in the Symfony 2.2 routing component, you're all excited and decide to take advantage of that feature.</p>
+<h3 id="problem-1">Problem 1</h3>
+<p>Once you've opened one or more dedicated routes involving a subdomain, your users keep complaining about your application asking them to re-auth although they did it 5 minutes ago. Yeah, that's right, the session isn't shared across main domain and the subdomain.</p>
+<p><strong>Cause :</strong> You forgot to set the path of the session cookie to a value that allows session sharing for all your subdomains too. By default, the value of <em>cookie_domain</em> takes the current domain from <code class="code-inline" id="74cf5004d8aceafd2531cc620a36c278">$_SERVER</code> superglobal (which will in most case will output www.my-domain.com).</p>
+<p><strong>Solution :</strong> Add to your config.yml under the <em>session</em> key <code class="code-inline" id="2e290ec383073b4dbe58c4c051c94660">cookie_domain : .my-domain.com</code>. Just see the gist below for the example. If you use the <code class="code-inline" id="ea2bff02d99c26cb38c1b87b2a434604">remember_me</code> feature, don't forget to change the domain value of <code class="code-inline" id="9818925d214309e5b3cbbee315600a8a">security.yml</code> (see the 2nd gist).</p>
+<h3 id="problem-2">Problem 2</h3>
+<p>Once you've deployed the fix on your dev-preprod-prod server (choose the right stage according whether you like risks or not), you keep trying to login with your credentials without being actually logged in (and of course, no errors are logged).</p>
+<p><strong>Cause :</strong> If you open any tool which let us visualize the cookies stored by a website, you'll figure out soon that you have 2 cookies <code class="code-inline" id="754d3b148df7a597947f5556cbe06628">PHPSESSID</code> with differents values in the domain (one with www.my-domain.com and the other with .my-domain.com).</p>
+<p><strong>Solution :</strong> Change the name of the session cookie. It will prevent conflicts which will lead to a silent login failure.</p>
+<p>There you are, with your subdomain ready application. Enjoy.</p>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="35f6016f8ec9203fae2f4577c9586438"><span class="token key atrule">framework</span><span class="token punctuation">:</span>
+    <span class="token key atrule">esi</span><span class="token punctuation">:</span>             <span class="token punctuation">{</span> <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token punctuation">}</span>
+    <span class="token key atrule">translator</span><span class="token punctuation">:</span>      <span class="token punctuation">{</span> <span class="token key atrule">fallback</span><span class="token punctuation">:</span> %locale% <span class="token punctuation">}</span>
+    <span class="token key atrule">secret</span><span class="token punctuation">:</span>          %secret%
+    <span class="token key atrule">router</span><span class="token punctuation">:</span>
+        <span class="token key atrule">resource</span><span class="token punctuation">:</span> <span class="token string">"%kernel.root_dir%/config/routing.yml"</span>
+        <span class="token key atrule">strict_requirements</span><span class="token punctuation">:</span> %kernel.debug%
+    <span class="token key atrule">form</span><span class="token punctuation">:</span>            <span class="token null important">~</span>
+    <span class="token key atrule">csrf_protection</span><span class="token punctuation">:</span> <span class="token null important">~</span>
+    <span class="token key atrule">validation</span><span class="token punctuation">:</span>      <span class="token punctuation">{</span> <span class="token key atrule">enable_annotations</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token punctuation">}</span>
+    <span class="token key atrule">templating</span><span class="token punctuation">:</span>
+        <span class="token key atrule">engines</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'twig'</span><span class="token punctuation">]</span>
+        <span class="token comment">#assets_version: SomeVersionScheme</span>
+    <span class="token key atrule">default_locale</span><span class="token punctuation">:</span>  <span class="token string">"%locale%"</span>
+    <span class="token key atrule">trusted_proxies</span><span class="token punctuation">:</span> <span class="token null important">~</span>
+    <span class="token key atrule">session</span><span class="token punctuation">:</span>
+        <span class="token key atrule">cookie_lifetime</span><span class="token punctuation">:</span> <span class="token number">0</span>
+        <span class="token key atrule">save_path</span><span class="token punctuation">:</span> %kernel.root_dir%/var/sessions
+        <span class="token key atrule">cookie_domain</span><span class="token punctuation">:</span> .my<span class="token punctuation">-</span>domain.com
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> SFSESSID
+    <span class="token key atrule">fragments</span><span class="token punctuation">:</span>       <span class="token null important">~</span></code></pre>
+<pre class="code-multiline language-yaml"><code class="language-yaml" id="c60f5534308853b7fadbe471bf3eddca"><span class="token key atrule">main</span><span class="token punctuation">:</span>
+    <span class="token key atrule">remember_me</span><span class="token punctuation">:</span>
+        <span class="token key atrule">key</span><span class="token punctuation">:</span>      <span class="token string">"%secret%"</span>
+        <span class="token key atrule">lifetime</span><span class="token punctuation">:</span> <span class="token number">31536000</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span>     /
+        <span class="token key atrule">domain</span><span class="token punctuation">:</span>   .my<span class="token punctuation">-</span>domain.com <span class="token comment"># Defaults to the current domain from $_SERVER</span></code></pre></body>
                         </main>
     <aside class="article-content__aside">
       <button class="kudo">

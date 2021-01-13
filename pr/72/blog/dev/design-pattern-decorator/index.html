@@ -232,33 +232,33 @@
 
 <span class="token keyword">interface</span> <span class="token class-name">ModeratorInterface</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">moderate</span><span class="token punctuation">(</span>string <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> string<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">moderate</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Moderator</span> <span class="token keyword">implements</span> <span class="token class-name">ModeratorInterface</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token variable">$replacements</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token keyword">array</span> <span class="token variable">$replacements</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token keyword type-hint">array</span> <span class="token variable">$replacements</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">replacements</span> <span class="token operator">=</span> <span class="token variable">$replacements</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">replacements</span> <span class="token operator">=</span> <span class="token variable">$replacements</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">moderate</span><span class="token punctuation">(</span>string <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> string
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">moderate</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token function">strtr</span><span class="token punctuation">(</span><span class="token variable">$text</span><span class="token punctuation">,</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">replacements</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token function">strtr</span><span class="token punctuation">(</span><span class="token variable">$text</span><span class="token punctuation">,</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">replacements</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>Exemple d'utilisation :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="e2a4adfd1ad2abdba50abf221864444f"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token variable">$replacements</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
-    <span class="token single-quoted-string string">'abruti'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'individu aux capacités intellectuelles limitées'</span><span class="token punctuation">,</span>
-    <span class="token single-quoted-string string">'nique ta mère'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'poutou à ta maman'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'abruti'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'individu aux capacités intellectuelles limitées'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'nique ta mère'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'poutou à ta maman'</span><span class="token punctuation">,</span>
 <span class="token punctuation">]</span><span class="token punctuation">;</span>
 
 <span class="token variable">$moderator</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Moderator</span><span class="token punctuation">(</span><span class="token variable">$replacements</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token variable">$moderator</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">moderate</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"nique ta mère\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Affiche 'poutou à ta maman'</span></span></code></pre>
+<span class="token keyword">echo</span> <span class="token variable">$moderator</span><span class="token operator">-&gt;</span><span class="token function">moderate</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"nique ta mère\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Affiche 'poutou à ta maman'</span></span></code></pre>
 <p>Cependant, les administrateurs de l'application se sont aperçus que certains vendeurs profitaient de la messagerie privée pour communiquer leurs coordonnées aux acheteurs afin de traiter en direct et ainsi passer outre les commissions versées au site.</p>
 <p>Il nous faut donc renforcer le système de modération pour empêcher les vendeurs de communiquer leurs coordonnées via la messagerie. L'occasion de voir comment le Design Pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code> va nous permettre d'enrichir la modération tout en conservant une certaine souplesse.</p>
 <h2 id="le-pattern-decorator-en-action">Le pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code> en action</h2>
@@ -270,19 +270,19 @@
     <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name">ModeratorInterface</span> */</span>
     <span class="token keyword">private</span> <span class="token variable">$decorated</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">static</span> <span class="token keyword">private</span> <span class="token variable">$phonePattern</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'/[0-9]{10}/'</span><span class="token punctuation">;</span>
+    <span class="token keyword">static</span> <span class="token keyword">private</span> <span class="token variable">$phonePattern</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'/[0-9]{10}/'</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span>ModeratorInterface <span class="token variable">$baseModerator</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">ModeratorInterface</span> <span class="token variable">$baseModerator</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">decorated</span> <span class="token operator">=</span> <span class="token variable">$baseModerator</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">decorated</span> <span class="token operator">=</span> <span class="token variable">$baseModerator</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">moderate</span><span class="token punctuation">(</span>string <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> string
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">moderate</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span>
             <span class="token scope"><span class="token keyword">self</span><span class="token punctuation">::</span></span><span class="token variable">$phonePattern</span><span class="token punctuation">,</span>
-            <span class="token single-quoted-string string">'**********'</span><span class="token punctuation">,</span>
-            <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">decorated</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">moderate</span><span class="token punctuation">(</span><span class="token variable">$text</span><span class="token punctuation">)</span>
+            <span class="token string single-quoted-string">'**********'</span><span class="token punctuation">,</span>
+            <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">decorated</span><span class="token operator">-&gt;</span><span class="token function">moderate</span><span class="token punctuation">(</span><span class="token variable">$text</span><span class="token punctuation">)</span>
         <span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
@@ -291,7 +291,7 @@
 <pre class="code-multiline language-php"><code class="language-php" id="ea8e871356ac3deb4271f792fdcbc700"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
     <span class="token variable">$moderator</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PhoneNumberModerator</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Moderator</span><span class="token punctuation">(</span><span class="token variable">$replacements</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">echo</span> <span class="token variable">$moderator</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">moderate</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"nique ta mère ; appelez-nous au 0600000000.\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token variable">$moderator</span><span class="token operator">-&gt;</span><span class="token function">moderate</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"nique ta mère ; appelez-nous au 0600000000.\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token comment">// Affiche : "poutou à ta maman ; appelez-nous au **********."</span></span></code></pre>
 <p>Il nous faudra également obfusquer les adresses email et il convient donc de rédiger une classe <code class="code-inline" id="464aabe56253d3454fe6e72f0e09b705">EmailAddressModerator</code> (assez similaire à <code class="code-inline" id="adfd9f2d77d22c1fb7de0f2f67ad6df4">PhoneNumberModerator</code>).</p>
 <p>Le code pour instancier les services modérateurs devient donc :</p>
@@ -313,7 +313,7 @@
 <p>Le design pattern <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code> est également très utilisé pour ajouter des fonctionnalités de cache à des services existants.</p>
 <p>C'est notamment le cas de la classe <a href="https://github.com/symfony/symfony/blob/master/src/Symfony/Component/HttpKernel/HttpCache/HttpCache.php" target="_blank"><code class="code-inline" id="cbd8f4eaaa6db9d6087aaea4351b469a">HttpCache</code></a> de Symfony :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="79d176c4b6772dc4fc152470c2e0d61c"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-        <span class="token variable">$kernel</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AppKernel</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'prod'</span><span class="token punctuation">,</span> <span class="token boolean constant">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$kernel</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AppKernel</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'prod'</span><span class="token punctuation">,</span> <span class="token constant boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment">// AppCache hérite de HttpCache:</span>
         <span class="token variable">$kernel</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AppCache</span><span class="token punctuation">(</span><span class="token variable">$kernel</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
 <p>Source : <a href="http://symfony.com/doc/current/http_cache.html#symfony-reverse-proxy" target="_blank">http://symfony.com/doc/current/http_cache.html#symfony-reverse-proxy</a></p>

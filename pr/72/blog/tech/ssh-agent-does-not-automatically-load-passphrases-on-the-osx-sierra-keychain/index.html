@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +8,11 @@
 
                     <!-- Open Graph / Facebook -->
              <meta property="og:title" content="Elao_" />
-            <meta property="og:locale" content="fr" />
+            <meta property="og:locale" content="en" />
             <meta name="description" content="Elao est un atelier de co-conception d&#039;applications web et mobile sur mesure." />
             <meta property="og:description" content="Elao est un atelier de co-conception d&#039;applications web et mobile sur mesure." />
-            <link rel="canonical" href="https://elao.github.io/elao_/pr/72/blog/dev/subdomains-symfony2-2-session-authentication.en" />
-            <meta property="og:url" content="https://elao.github.io/elao_/pr/72/blog/dev/subdomains-symfony2-2-session-authentication.en" />
+            <link rel="canonical" href="https://elao.github.io/elao_/pr/72/blog/tech/ssh-agent-does-not-automatically-load-passphrases-on-the-osx-sierra-keychain" />
+            <meta property="og:url" content="https://elao.github.io/elao_/pr/72/blog/tech/ssh-agent-does-not-automatically-load-passphrases-on-the-osx-sierra-keychain" />
             <meta property="og:site_name" content="elao_" />
             
             <!-- Twitter -->
@@ -162,38 +162,38 @@
       <a href="/elao_/pr/72/blog/">Blog</a>
     </li>
     <li class="breadcrumb__item">
-      Feedback on a side-effect with Symfony 2.2, subdomains and sessions
+      SSH-agent does not automatically load passphrases on the OSX Sierra keychain during startup
     </li>
   </ul>
 
   <div class="article-banner">
-    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/72/images/posts/thumbnails/turtle.jpg)"></div>
+    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/pr/72/images/posts/thumbnails/badass_vader.jpg)"></div>
 
     <div class="article-info">
                     <div class="article-author ">
           <div class="article-author__image">
-                          <img src="/elao_/pr/72/images/authors/tbessoussa.jpg" />
+                          <img src="/elao_/pr/72/images/authors/gfaivre.jpg" />
                       </div>
           <span class="article-author__info">
             Écrit par
-                          <strong>Tristan BESSOUSSA</strong>
+                          <strong>Guewen FAIVRE</strong>
                       </span>
         </div>
             <div class="article-info__date">
-        <span>Publication <strong>28 février 2013</strong></span>
+        <span>Publication <strong>14 octobre 2016</strong></span>
         <span>Modification <strong>13 janvier 2021</strong></span>
       </div>
     </div>
 
     <div class="article-header">
-      <h1>Feedback on a side-effect with Symfony 2.2, subdomains and sessions</h1>
-      <p>Feedback on a side-effect with Symfony 2.2, subdomains and sessions</p>
+      <h1>SSH-agent does not automatically load passphrases on the OSX Sierra keychain during startup</h1>
+      <p>SSH-agent does not automatically load passphrases on the OSX Sierra keychain during startup.</p>
       <ul class="article-tag-list">
                   <li class="article-tag-list__item">
-            <a href="/elao_/pr/72/blog/tag/Symfony" rel="nofollow">#Symfony</a>
+            <a href="/elao_/pr/72/blog/tag/SSH" rel="nofollow">#SSH</a>
           </li>
                   <li class="article-tag-list__item">
-            <a href="/elao_/pr/72/blog/tag/PHP" rel="nofollow">#PHP</a>
+            <a href="/elao_/pr/72/blog/tag/OSX" rel="nofollow">#OSX</a>
           </li>
               </ul>
     </div>
@@ -202,45 +202,53 @@
   
   <div class="article-content">
     <main class="article-content__main">
-      <body><p>This is a small feedback regarding the new Symfony 2.2 feature which makes the subdomains handling easier. By the way you can see the official documentation about <a style="text-align: justify;" href="http://symfony.com/doc/master/components/routing/hostname_pattern.html" target="_blank">routing &amp; subdomains here</a>.</p>
-<h3 id="scenario">Scenario</h3>
-<p>With the support of subdomains in the Symfony 2.2 routing component, you're all excited and decide to take advantage of that feature.</p>
-<h3 id="problem-1">Problem 1</h3>
-<p>Once you've opened one or more dedicated routes involving a subdomain, your users keep complaining about your application asking them to re-auth although they did it 5 minutes ago. Yeah, that's right, the session isn't shared across main domain and the subdomain.</p>
-<p><strong>Cause :</strong> You forgot to set the path of the session cookie to a value that allows session sharing for all your subdomains too. By default, the value of <em>cookie_domain</em> takes the current domain from <code class="code-inline" id="74cf5004d8aceafd2531cc620a36c278">$_SERVER</code> superglobal (which will in most case will output www.my-domain.com).</p>
-<p><strong>Solution :</strong> Add to your config.yml under the <em>session</em> key <code class="code-inline" id="2e290ec383073b4dbe58c4c051c94660">cookie_domain : .my-domain.com</code>. Just see the gist below for the example. If you use the <code class="code-inline" id="ea2bff02d99c26cb38c1b87b2a434604">remember_me</code> feature, don't forget to change the domain value of <code class="code-inline" id="9818925d214309e5b3cbbee315600a8a">security.yml</code> (see the 2nd gist).</p>
-<h3 id="problem-2">Problem 2</h3>
-<p>Once you've deployed the fix on your dev-preprod-prod server (choose the right stage according whether you like risks or not), you keep trying to login with your credentials without being actually logged in (and of course, no errors are logged).</p>
-<p><strong>Cause :</strong> If you open any tool which let us visualize the cookies stored by a website, you'll figure out soon that you have 2 cookies <code class="code-inline" id="754d3b148df7a597947f5556cbe06628">PHPSESSID</code> with differents values in the domain (one with www.my-domain.com and the other with .my-domain.com).</p>
-<p><strong>Solution :</strong> Change the name of the session cookie. It will prevent conflicts which will lead to a silent login failure.</p>
-<p>There you are, with your subdomain ready application. Enjoy.</p>
-<pre class="code-multiline language-yaml"><code class="language-yaml" id="35f6016f8ec9203fae2f4577c9586438"><span class="token key atrule">framework</span><span class="token punctuation">:</span>
-    <span class="token key atrule">esi</span><span class="token punctuation">:</span>             <span class="token punctuation">{</span> <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token punctuation">}</span>
-    <span class="token key atrule">translator</span><span class="token punctuation">:</span>      <span class="token punctuation">{</span> <span class="token key atrule">fallback</span><span class="token punctuation">:</span> %locale% <span class="token punctuation">}</span>
-    <span class="token key atrule">secret</span><span class="token punctuation">:</span>          %secret%
-    <span class="token key atrule">router</span><span class="token punctuation">:</span>
-        <span class="token key atrule">resource</span><span class="token punctuation">:</span> <span class="token string">"%kernel.root_dir%/config/routing.yml"</span>
-        <span class="token key atrule">strict_requirements</span><span class="token punctuation">:</span> %kernel.debug%
-    <span class="token key atrule">form</span><span class="token punctuation">:</span>            <span class="token null important">~</span>
-    <span class="token key atrule">csrf_protection</span><span class="token punctuation">:</span> <span class="token null important">~</span>
-    <span class="token key atrule">validation</span><span class="token punctuation">:</span>      <span class="token punctuation">{</span> <span class="token key atrule">enable_annotations</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token punctuation">}</span>
-    <span class="token key atrule">templating</span><span class="token punctuation">:</span>
-        <span class="token key atrule">engines</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'twig'</span><span class="token punctuation">]</span>
-        <span class="token comment">#assets_version: SomeVersionScheme</span>
-    <span class="token key atrule">default_locale</span><span class="token punctuation">:</span>  <span class="token string">"%locale%"</span>
-    <span class="token key atrule">trusted_proxies</span><span class="token punctuation">:</span> <span class="token null important">~</span>
-    <span class="token key atrule">session</span><span class="token punctuation">:</span>
-        <span class="token key atrule">cookie_lifetime</span><span class="token punctuation">:</span> <span class="token number">0</span>
-        <span class="token key atrule">save_path</span><span class="token punctuation">:</span> %kernel.root_dir%/var/sessions
-        <span class="token key atrule">cookie_domain</span><span class="token punctuation">:</span> .my<span class="token punctuation">-</span>domain.com
-        <span class="token key atrule">name</span><span class="token punctuation">:</span> SFSESSID
-    <span class="token key atrule">fragments</span><span class="token punctuation">:</span>       <span class="token null important">~</span></code></pre>
-<pre class="code-multiline language-yaml"><code class="language-yaml" id="c60f5534308853b7fadbe471bf3eddca"><span class="token key atrule">main</span><span class="token punctuation">:</span>
-    <span class="token key atrule">remember_me</span><span class="token punctuation">:</span>
-        <span class="token key atrule">key</span><span class="token punctuation">:</span>      <span class="token string">"%secret%"</span>
-        <span class="token key atrule">lifetime</span><span class="token punctuation">:</span> <span class="token number">31536000</span>
-        <span class="token key atrule">path</span><span class="token punctuation">:</span>     /
-        <span class="token key atrule">domain</span><span class="token punctuation">:</span>   .my<span class="token punctuation">-</span>domain.com <span class="token comment"># Defaults to the current domain from $_SERVER</span></code></pre></body>
+      <body><p>Some of us encountered an issue after upgrading to Mac OS Sierra.
+Indeed right after it our ssh keys (<strong>with passphrases</strong>) were not forwarded to the remote hosts anymore.</p>
+<!--more-->
+<p>In previous versions of mac OSX, <code class="code-inline" id="266afd044aec2d88e6aa5ed5f12e0a07">ssh-agent</code> used to remember the passphrases for the keys added to the keychain (with <code class="code-inline" id="c6fb130c7020f2a953c452ee1c4812f9">ssh-add -K</code>) and after a reboot (or logout/login), it automatically picked up the passphrases from the keychain with no extra step and it was perfect !</p>
+<p>Unfortunately after upgrading to Sierra this way no longer works and command <code class="code-inline" id="c6fb130c7020f2a953c452ee1c4812f9">ssh-add -K</code> in Sierra no longer saves SSH keys in OS's keychain.</p>
+<p><strong>Apple Developer stated:</strong></p>
+<blockquote>
+<p>Engineering has determined that this issue behaves as intended based on the following information:
+That’s expected. We re-aligned our behavior with the mainstream OpenSSH in this area.
+You can fix this pretty easily by running ssh-add -A in your rc script if you want your keys to always be loaded.</p>
+</blockquote>
+<p>We still can login to remote hosts via ssh <strong>BUT</strong> ssh keys with passphrase are not forwarded to the host which makes the agent somewhat useless.</p>
+<h1 id="doing-it-manually">Doing it manually</h1>
+<p>If you are fine with the behavior and don't want to store your passphrases into keychain you can do it the old way by manually adding keys to the agent:</p>
+<pre class="code-multiline"><code id="0a437720001587a76380021490cca3dc">ssh-add -K /path/to/private/key</code></pre>
+<p>and to add identities to the agent using any passphrases stored in your keychain.</p>
+<pre class="code-multiline"><code id="2da3bcca27a36bfd821f0b01992ff42c">ssh-add -A</code></pre>
+<h1 id="using-ssh-config-file">Using ssh config file</h1>
+<p>A permanent (and probably the "cleanest") workaround to this behavior consists in using the new SSH option <code class="code-inline" id="28538255e1cdd92033e3b82445477c9c">AddKeysToAgent</code> option in your <code class="code-inline" id="c8c740debe99f7a030e8a35b528b5ddc">.ssh/config</code> file as shown below</p>
+<pre class="code-multiline language-shell"><code class="language-shell" id="bb4651c63985578ea19d83dd761ac8b5">Host *
+  AddKeysToAgent <span class="token function">yes</span></code></pre>
+<p>N.B: This option does not add keys previously saved into the keychain <strong>to the agent on boot;</strong> it adds keys to the agent <strong>on use</strong>.
+In other words, the keys are not added to the agent until you actually use them.</p>
+<p>Furthermore, this option is FreeBSD specific and will result an error on other Unix-like systems.</p>
+<p><strong>You will have to re-enter your passphrase the first time you are using it after a logout or a reboot.</strong></p>
+<h1 id="using-a-profile-dot-file">Using a «profile dot file»</h1>
+<p>For CLI users a partial solution is to add this to your dot files (<code class="code-inline" id="ec20fb240e117fea7b0049c21edf1ef3">.zshrc</code>, <code class="code-inline" id="85cf9b51417c7cfb8766aa6b56f7edb9">.bashrc</code>, <code class="code-inline" id="9e0037ad71166970bde5f910189cc94a">.bash_profile</code> ...).</p>
+<pre class="code-multiline language-shell"><code class="language-shell" id="2e6f5dcc8860d87b59cbce5c40794725">ssh-add -K ~/.ssh/my_private_key <span class="token operator">&amp;&gt;</span> /dev/null
+ssh-add -A <span class="token operator">&amp;&gt;</span> /dev/null</code></pre>
+<p><strong>This will only be effective when using terminal.</strong></p>
+<h1 id="using-a-launch-agent-non-tested-solution">Using a launch agent (non-tested solution)</h1>
+<p>The last solution is to call command <code class="code-inline" id="2da3bcca27a36bfd821f0b01992ff42c">ssh-add -A</code> on every startup of macOS.</p>
+<pre class="code-multiline language-xml"><code class="language-xml" id="58671d4294090bbccf32082b13399686"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">plist</span> <span class="token name">PUBLIC</span> <span class="token string">"-//Apple//DTD PLIST 1.0//EN"</span> <span class="token string">"http://www.apple.com/DTDs/PropertyList-1.0.dtd"</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plist</span> <span class="token attr-name">version</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1.0<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dict</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>key</span><span class="token punctuation">&gt;</span></span>Label<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>key</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">&gt;</span></span>ssh-add-a<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>key</span><span class="token punctuation">&gt;</span></span>ProgramArguments<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>key</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>array</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">&gt;</span></span>ssh-add<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">&gt;</span></span>-A<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>array</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>key</span><span class="token punctuation">&gt;</span></span>RunAtLoad<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>key</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>true</span><span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dict</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plist</span><span class="token punctuation">&gt;</span></span></code></pre></body>
                         </main>
     <aside class="article-content__aside">
       <button class="kudo">
@@ -254,24 +262,24 @@
   <div class="article-footer">
                   <div class="article-author">
           <div class="article-author__image">
-            <img src="/elao_/pr/72/images/authors/tbessoussa.jpg" />
+            <img src="/elao_/pr/72/images/authors/gfaivre.jpg" />
           </div>
           <span class="article-author__info">
             Écrit par
-            <strong>Tristan BESSOUSSA</strong>
+            <strong>Guewen FAIVRE</strong>
           </span>
           <div class="article-author__social">
-                          <a href="https://twitter.com/sf_tristanb" class="social social--small">
+                          <a href="https://twitter.com/guewen_faivre" class="social social--small">
                 <i class="icon icon--twitter" aria-hidden="true"></i>
-                <span class="screen-reader">Compte twitter de Tristan BESSOUSSA</span>
+                <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
               </a>
-                                      <a href="https://github.com/tristanbes "class="social social--small">
+                                      <a href="https://github.com/gfaivre "class="social social--small">
                 <i class="icon icon--github" aria-hidden="true"></i>
-                <span class="screen-reader">Compte github de Tristan BESSOUSSA</span>
+                <span class="screen-reader">Compte github de Guewen FAIVRE</span>
               </a>
                                       <a href="http://www.elao.com" class="social social--small">
                 <i class="icon icon--website" aria-hidden="true"></i>
-                <span class="screen-reader">Site personnel de Tristan BESSOUSSA</span>
+                <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
               </a>
                       </div>
         </div>

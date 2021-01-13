@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +8,11 @@
 
                     <!-- Open Graph / Facebook -->
              <meta property="og:title" content="Elao_" />
-            <meta property="og:locale" content="fr" />
+            <meta property="og:locale" content="en" />
             <meta name="description" content="Elao est un atelier de co-conception d&#039;applications web et mobile sur mesure." />
             <meta property="og:description" content="Elao est un atelier de co-conception d&#039;applications web et mobile sur mesure." />
-            <link rel="canonical" href="https://elao.github.io/elao_/pr/72/blog/dev/how-to-manage-translations-for-your-object-using-sonataadminbundle.en" />
-            <meta property="og:url" content="https://elao.github.io/elao_/pr/72/blog/dev/how-to-manage-translations-for-your-object-using-sonataadminbundle.en" />
+            <link rel="canonical" href="https://elao.github.io/elao_/pr/72/blog/dev/how-to-manage-translations-for-your-object-using-sonataadminbundle" />
+            <meta property="og:url" content="https://elao.github.io/elao_/pr/72/blog/dev/how-to-manage-translations-for-your-object-using-sonataadminbundle" />
             <meta property="og:site_name" content="elao_" />
             
             <!-- Twitter -->
@@ -290,7 +290,7 @@
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">translations</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayCollection</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">translations</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayCollection</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token doc-comment comment">/**
@@ -300,63 +300,63 @@
      */</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">id</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">id</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getLocale</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">locale</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">locale</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setLocale</span><span class="token punctuation">(</span><span class="token variable">$locale</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">locale</span> <span class="token operator">=</span> <span class="token variable">$locale</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">locale</span> <span class="token operator">=</span> <span class="token variable">$locale</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setName</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">name</span> <span class="token operator">=</span> <span class="token variable">$name</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">name</span> <span class="token operator">=</span> <span class="token variable">$name</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">name</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">name</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setDescription</span><span class="token punctuation">(</span><span class="token variable">$description</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">description</span> <span class="token operator">=</span> <span class="token variable">$description</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">description</span> <span class="token operator">=</span> <span class="token variable">$description</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">description</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">description</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getTranslations</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">translations</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">translations</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">addTranslation</span><span class="token punctuation">(</span>ProfileTranslation <span class="token variable">$t</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">addTranslation</span><span class="token punctuation">(</span><span class="token class-name type-declaration">ProfileTranslation</span> <span class="token variable">$t</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">translations</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token variable">$t</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token variable">$t</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setObject</span><span class="token punctuation">(</span><span class="token this">$this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">translations</span><span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token variable">$t</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$t</span><span class="token operator">-&gt;</span><span class="token function">setObject</span><span class="token punctuation">(</span><span class="token this">$this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">removeTranslation</span><span class="token punctuation">(</span>ProfileTranslation <span class="token variable">$t</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">removeTranslation</span><span class="token punctuation">(</span><span class="token class-name type-declaration">ProfileTranslation</span> <span class="token variable">$t</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">translations</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">removeElement</span><span class="token punctuation">(</span><span class="token variable">$t</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">translations</span><span class="token operator">-&gt;</span><span class="token function">removeElement</span><span class="token punctuation">(</span><span class="token variable">$t</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setTranslations</span><span class="token punctuation">(</span><span class="token variable">$translations</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">translations</span> <span class="token operator">=</span> <span class="token variable">$translations</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">translations</span> <span class="token operator">=</span> <span class="token variable">$translations</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span></span></code></pre>
@@ -387,9 +387,9 @@
      */</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$locale</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">,</span> <span class="token variable">$field</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">,</span> <span class="token variable">$content</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setLocale</span><span class="token punctuation">(</span><span class="token variable">$locale</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setField</span><span class="token punctuation">(</span><span class="token variable">$field</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setContent</span><span class="token punctuation">(</span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token function">setLocale</span><span class="token punctuation">(</span><span class="token variable">$locale</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token function">setField</span><span class="token punctuation">(</span><span class="token variable">$field</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token function">setContent</span><span class="token punctuation">(</span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token doc-comment comment">/**
@@ -418,11 +418,11 @@
      *
      * <span class="token keyword">@param</span> <span class="token class-name"><span class="token punctuation">\</span>Sonata<span class="token punctuation">\</span>AdminBundle<span class="token punctuation">\</span>Datagrid<span class="token punctuation">\</span>ListMapper</span> <span class="token parameter">$list</span> list
      */</span>
-    <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">configureListFields</span><span class="token punctuation">(</span>ListMapper <span class="token variable">$list</span><span class="token punctuation">)</span>
+    <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">configureListFields</span><span class="token punctuation">(</span><span class="token class-name type-declaration">ListMapper</span> <span class="token variable">$list</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$list</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addIdentifier</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'name'</span><span class="token punctuation">,</span> <span class="token constant">null</span><span class="token punctuation">,</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'label'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'Name'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'description'</span><span class="token punctuation">,</span> <span class="token constant">null</span><span class="token punctuation">,</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'label'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'Description'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token operator">-&gt;</span><span class="token function">addIdentifier</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'name'</span><span class="token punctuation">,</span> <span class="token constant">null</span><span class="token punctuation">,</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'label'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'Name'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'description'</span><span class="token punctuation">,</span> <span class="token constant">null</span><span class="token punctuation">,</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'label'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'Description'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token doc-comment comment">/**
@@ -430,12 +430,12 @@
      *
      * <span class="token keyword">@param</span> <span class="token class-name">FormMapper</span> <span class="token parameter">$formMapper</span> formMapper
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">configureFormFields</span><span class="token punctuation">(</span>FormMapper <span class="token variable">$formMapper</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">configureFormFields</span><span class="token punctuation">(</span><span class="token class-name type-declaration">FormMapper</span> <span class="token variable">$formMapper</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$formMapper</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'translations'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'a2lix_translations'</span><span class="token punctuation">,</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
-                <span class="token single-quoted-string string">'by_reference'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token boolean constant">false</span><span class="token punctuation">,</span>
-                <span class="token single-quoted-string string">'locales'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'fr'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'en'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'translations'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'a2lix_translations'</span><span class="token punctuation">,</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
+                <span class="token string single-quoted-string">'by_reference'</span> <span class="token operator">=&gt;</span> <span class="token constant boolean">false</span><span class="token punctuation">,</span>
+                <span class="token string single-quoted-string">'locales'</span> <span class="token operator">=&gt;</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'fr'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'en'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
         <span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 

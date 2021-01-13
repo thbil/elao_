@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +8,11 @@
 
                     <!-- Open Graph / Facebook -->
              <meta property="og:title" content="Elao_" />
-            <meta property="og:locale" content="fr" />
+            <meta property="og:locale" content="en" />
             <meta name="description" content="Elao est un atelier de co-conception d&#039;applications web et mobile sur mesure." />
             <meta property="og:description" content="Elao est un atelier de co-conception d&#039;applications web et mobile sur mesure." />
-            <link rel="canonical" href="https://elao.github.io/elao_/pr/72/blog/dev/a-nice-way-of-handing-form-label-translation.en" />
-            <meta property="og:url" content="https://elao.github.io/elao_/pr/72/blog/dev/a-nice-way-of-handing-form-label-translation.en" />
+            <link rel="canonical" href="https://elao.github.io/elao_/pr/72/blog/dev/a-nice-way-of-handing-form-label-translation" />
+            <meta property="og:url" content="https://elao.github.io/elao_/pr/72/blog/dev/a-nice-way-of-handing-form-label-translation" />
             <meta property="og:site_name" content="elao_" />
             
             <!-- Twitter -->
@@ -223,43 +223,43 @@
 
 <span class="token keyword">class</span> <span class="token class-name">RegisterType</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractType</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">buildForm</span><span class="token punctuation">(</span>FormBuilderInterface <span class="token variable">$builder</span><span class="token punctuation">,</span> <span class="token keyword">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">buildForm</span><span class="token punctuation">(</span><span class="token class-name type-declaration">FormBuilderInterface</span> <span class="token variable">$builder</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$builder</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'firstname'</span><span class="token punctuation">,</span> <span class="token constant">null</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token single-quoted-string string">'label'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'register.labels.firstname'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'lastname'</span><span class="token punctuation">,</span> <span class="token constant">null</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token single-quoted-string string">'label'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'register.labels.lastname'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'email'</span><span class="token punctuation">,</span> <span class="token constant">null</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token single-quoted-string string">'label'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'register.labels.email'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'phone'</span><span class="token punctuation">,</span> <span class="token constant">null</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token single-quoted-string string">'label'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'register.labels.phone'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span>
-                <span class="token single-quoted-string string">'password'</span><span class="token punctuation">,</span>
-                <span class="token single-quoted-string string">'repeated'</span><span class="token punctuation">,</span>
+            <span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'firstname'</span><span class="token punctuation">,</span> <span class="token constant">null</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'label'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'register.labels.firstname'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'lastname'</span><span class="token punctuation">,</span> <span class="token constant">null</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'label'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'register.labels.lastname'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'email'</span><span class="token punctuation">,</span> <span class="token constant">null</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'label'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'register.labels.email'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'phone'</span><span class="token punctuation">,</span> <span class="token constant">null</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'label'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'register.labels.phone'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span>
+                <span class="token string single-quoted-string">'password'</span><span class="token punctuation">,</span>
+                <span class="token string single-quoted-string">'repeated'</span><span class="token punctuation">,</span>
                 <span class="token punctuation">[</span>
-                    <span class="token single-quoted-string string">'type'</span>            <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'password'</span><span class="token punctuation">,</span>
-                    <span class="token single-quoted-string string">'first_options'</span>   <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token single-quoted-string string">'label'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'register.labels.password.first'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-                    <span class="token single-quoted-string string">'second_options'</span>  <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token single-quoted-string string">'label'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'register.labels.password.second'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token string single-quoted-string">'type'</span>            <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'password'</span><span class="token punctuation">,</span>
+                    <span class="token string single-quoted-string">'first_options'</span>   <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'label'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'register.labels.password.first'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token string single-quoted-string">'second_options'</span>  <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'label'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'register.labels.password.second'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                 <span class="token punctuation">]</span>
             <span class="token punctuation">)</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span>
-                <span class="token single-quoted-string string">'group'</span><span class="token punctuation">,</span>
+            <span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span>
+                <span class="token string single-quoted-string">'group'</span><span class="token punctuation">,</span>
                 <span class="token keyword">new</span> <span class="token class-name">GroupType</span><span class="token punctuation">,</span>
                 <span class="token punctuation">[</span>
-                    <span class="token single-quoted-string string">'label'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'register.labels.team.label'</span>
+                    <span class="token string single-quoted-string">'label'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'register.labels.team.label'</span>
                 <span class="token punctuation">]</span>
             <span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setDefaultOptions</span><span class="token punctuation">(</span>OptionsResolverInterface <span class="token variable">$resolver</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setDefaultOptions</span><span class="token punctuation">(</span><span class="token class-name type-declaration">OptionsResolverInterface</span> <span class="token variable">$resolver</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token variable">$resolver</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setDefaults</span><span class="token punctuation">(</span>
+        <span class="token variable">$resolver</span><span class="token operator">-&gt;</span><span class="token function">setDefaults</span><span class="token punctuation">(</span>
             <span class="token punctuation">[</span>
-                <span class="token single-quoted-string string">'data_class'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'Elao\UserBundle\Entity\User'</span><span class="token punctuation">,</span>
+                <span class="token string single-quoted-string">'data_class'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'Elao\UserBundle\Entity\User'</span><span class="token punctuation">,</span>
             <span class="token punctuation">]</span>
         <span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token single-quoted-string string">'register'</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string single-quoted-string">'register'</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <pre class="code-multiline language-php"><code class="language-php" id="a55ab0bc9f66b135d4dcdc6c6a90f270"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
@@ -272,23 +272,23 @@
 
 <span class="token keyword">class</span> <span class="token class-name">GroupType</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractType</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">buildForm</span><span class="token punctuation">(</span>FormBuilderInterface <span class="token variable">$builder</span><span class="token punctuation">,</span> <span class="token keyword">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">buildForm</span><span class="token punctuation">(</span><span class="token class-name type-declaration">FormBuilderInterface</span> <span class="token variable">$builder</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token variable">$builder</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'name'</span><span class="token punctuation">,</span> <span class="token constant">null</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token single-quoted-string string">'label'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'register.labels.team.name'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$builder</span><span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'name'</span><span class="token punctuation">,</span> <span class="token constant">null</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'label'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'register.labels.team.name'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setDefaultOptions</span><span class="token punctuation">(</span>OptionsResolverInterface <span class="token variable">$resolver</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setDefaultOptions</span><span class="token punctuation">(</span><span class="token class-name type-declaration">OptionsResolverInterface</span> <span class="token variable">$resolver</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token variable">$resolver</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setDefaults</span><span class="token punctuation">(</span>
+        <span class="token variable">$resolver</span><span class="token operator">-&gt;</span><span class="token function">setDefaults</span><span class="token punctuation">(</span>
             <span class="token punctuation">[</span>
-                <span class="token single-quoted-string string">'data_class'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'Elao\UserBundle\Entity\Group'</span><span class="token punctuation">,</span>
+                <span class="token string single-quoted-string">'data_class'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'Elao\UserBundle\Entity\Group'</span><span class="token punctuation">,</span>
             <span class="token punctuation">]</span>
         <span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token single-quoted-string string">'group'</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string single-quoted-string">'group'</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <pre class="code-multiline language-yaml"><code class="language-yaml" id="601b449922a90200f60cfb7696a4bf52"><span class="token key atrule">register</span><span class="token punctuation">:</span>
@@ -319,15 +319,15 @@
 
 <span class="token keyword">class</span> <span class="token class-name">RegisterType</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractType</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">buildForm</span><span class="token punctuation">(</span>FormBuilderInterface <span class="token variable">$builder</span><span class="token punctuation">,</span> <span class="token keyword">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">buildForm</span><span class="token punctuation">(</span><span class="token class-name type-declaration">FormBuilderInterface</span> <span class="token variable">$builder</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$builder</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'firstname'</span><span class="token punctuation">)</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'lastname'</span><span class="token punctuation">)</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'email'</span><span class="token punctuation">)</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'phone'</span><span class="token punctuation">)</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'password'</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'repeated'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token single-quoted-string string">'type'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token single-quoted-string string">'password'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'group'</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">GroupType</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'firstname'</span><span class="token punctuation">)</span>
+            <span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'lastname'</span><span class="token punctuation">)</span>
+            <span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'email'</span><span class="token punctuation">)</span>
+            <span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'phone'</span><span class="token punctuation">)</span>
+            <span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'password'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'repeated'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'type'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'password'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'group'</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">GroupType</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment">// ...</span>
@@ -342,9 +342,9 @@
 
 <span class="token keyword">class</span> <span class="token class-name">GroupType</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractType</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">buildForm</span><span class="token punctuation">(</span>FormBuilderInterface <span class="token variable">$builder</span><span class="token punctuation">,</span> <span class="token keyword">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">buildForm</span><span class="token punctuation">(</span><span class="token class-name type-declaration">FormBuilderInterface</span> <span class="token variable">$builder</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token variable">$builder</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$builder</span><span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment">// ...</span>
