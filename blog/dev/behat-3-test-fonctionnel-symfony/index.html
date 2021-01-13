@@ -251,8 +251,8 @@ Ce qui va intialiser le répertoire <code class="code-inline" id="b10716f0f6bfde
 <p>On peut maintenant commencer à écrire nos features et à tester notre application. Créer donc un fichier <code class="code-inline" id="9838c8185c8960205f7679f5fbe90d61">hello.feature</code> dans le répertoire <code class="code-inline" id="07e93a5f6fb44673dabba783cda176ef">/feature</code></p>
 <pre class="code-multiline language-gherkin"><code class="language-gherkin" id="b0bb37806c5522394ee60579c7d024f6"><span class="token feature"><span class="token keyword">Feature:</span><span class="token important"> Hello world</span>
   I need to be able to see hello world
-
-</span>  <span class="token scenario"><span class="token keyword">Scenario:</span><span class="token important"> I can see hello world</span></span>
+</span>
+  <span class="token scenario"><span class="token keyword">Scenario:</span><span class="token important"> I can see hello world</span></span>
     <span class="token atrule">When</span> <span class="token atrule">I</span> go to <span class="token string">"/"</span>
     <span class="token atrule">Then</span> <span class="token atrule">I</span> should see <span class="token string">"Hello World!"</span>
 
@@ -284,8 +284,8 @@ Ce qui va intialiser le répertoire <code class="code-inline" id="b10716f0f6bfde
 <p>Ce qui nous permet de faire des features comme cela:</p>
 <pre class="code-multiline language-gherkin"><code class="language-gherkin" id="29f633c66baf64538168f23b3b6ce510"><span class="token feature"><span class="token keyword">Feature:</span><span class="token important"> Go to the second page</span>
   I need to be able to go to the second page
-
-</span>  <span class="token scenario"><span class="token keyword">Background:</span><span class="token important"> Re-init the database and load the fixtures</span></span>
+</span>
+  <span class="token scenario"><span class="token keyword">Background:</span><span class="token important"> Re-init the database and load the fixtures</span></span>
     <span class="token atrule">Given</span> the database is empty
     <span class="token atrule">And</span> the fixtures <span class="token string">"data.yml"</span> are loaded
 
@@ -324,9 +324,9 @@ Ce qui va intialiser le répertoire <code class="code-inline" id="b10716f0f6bfde
     <span class="token doc-comment comment">/**
      * <span class="token keyword">@param</span> <span class="token class-name"><span class="token punctuation">\</span>Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpKernel<span class="token punctuation">\</span>KernelInterface</span> <span class="token parameter">$kernel</span>
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setKernel</span><span class="token punctuation">(</span>\<span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpKernel<span class="token punctuation">\</span>KernelInterface</span> <span class="token variable">$kernel</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setKernel</span><span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified type-declaration"><span class="token punctuation">\</span>Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpKernel<span class="token punctuation">\</span>KernelInterface</span> <span class="token variable">$kernel</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">kernel</span> <span class="token operator">=</span> <span class="token variable">$kernel</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">kernel</span> <span class="token operator">=</span> <span class="token variable">$kernel</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <h3 id="en-conclusion">En conclusion</h3>

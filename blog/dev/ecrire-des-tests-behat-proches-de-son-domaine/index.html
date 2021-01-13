@@ -217,21 +217,21 @@ Nos <em>commands</em> utilisent donc déjà ces méthodes pour créer des formul
 
 <span class="token keyword">class</span> <span class="token class-name">Product</span>
 <span class="token punctuation">{</span>
-  <span class="token keyword">public</span> <span class="token keyword">const</span> <span class="token constant">TYPE_PLAN</span> <span class="token operator">=</span> <span class="token single-quoted-string string">'plan'</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span> <span class="token keyword">const</span> <span class="token constant">TYPE_PLAN</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'plan'</span><span class="token punctuation">;</span>
 
   <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">createPlan</span><span class="token punctuation">(</span>
-      string <span class="token variable">$reference</span><span class="token punctuation">,</span>
-      int <span class="token variable">$price</span><span class="token punctuation">,</span>
-      float <span class="token variable">$vat</span><span class="token punctuation">,</span>
-      int <span class="token variable">$stock</span>
+      <span class="token keyword type-hint">string</span> <span class="token variable">$reference</span><span class="token punctuation">,</span>
+      <span class="token keyword type-hint">int</span> <span class="token variable">$price</span><span class="token punctuation">,</span>
+      <span class="token keyword type-hint">float</span> <span class="token variable">$vat</span><span class="token punctuation">,</span>
+      <span class="token keyword type-hint">int</span> <span class="token variable">$stock</span>
   <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">self</span><span class="token punctuation">(</span>
+      <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token keyword">self</span><span class="token punctuation">(</span>
         <span class="token scope"><span class="token keyword">self</span><span class="token punctuation">::</span></span><span class="token constant">TYPE_PLAN</span><span class="token punctuation">,</span>
         <span class="token variable">$reference</span><span class="token punctuation">,</span>
         <span class="token variable">$price</span><span class="token punctuation">,</span>
         <span class="token variable">$vat</span><span class="token punctuation">,</span>
         <span class="token variable">$stock</span><span class="token punctuation">,</span>
-        <span class="token keyword">new</span> <span class="token class-name"><span class="token punctuation">\</span>DateTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>DateTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
       <span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
@@ -239,8 +239,8 @@ Nos <em>commands</em> utilisent donc déjà ces méthodes pour créer des formul
 <p>Mais, arrêtons de tourner autour du pot. À quoi ressemble un test fonctionnel avec une orientation métier ?</p>
 <pre class="code-multiline language-gherkin"><code class="language-gherkin" id="3ca4dbd71e78cfacc5a8a3f87f641ddd"><span class="token feature"><span class="token keyword">Feature:</span><span class="token important"> Manage the plans</span>
   As an Admin, in order to manage my plans, I need to be able to create and update the plans
-
-</span>  <span class="token scenario"><span class="token keyword">Scenario:</span><span class="token important"> I can update a plan</span></span>
+</span>
+  <span class="token scenario"><span class="token keyword">Scenario:</span><span class="token important"> I can update a plan</span></span>
     <span class="token atrule">Given</span> the database is purged
     <span class="token atrule">And</span> there is a plan named <span class="token string">"Premium"</span> with a price of 100
     <span class="token atrule">And</span> the super admin <span class="token string">"admin@example.net"</span> is created
@@ -291,12 +291,12 @@ Nos <em>commands</em> utilisent donc déjà ces méthodes pour créer des formul
     <span class="token keyword">private</span> <span class="token variable">$productRepository</span><span class="token punctuation">;</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span>
-        ProductRepositoryInterface <span class="token variable">$productRepository</span>
+        <span class="token class-name type-declaration">ProductRepositoryInterface</span> <span class="token variable">$productRepository</span>
     <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">productRepository</span> <span class="token operator">=</span> <span class="token variable">$productRepository</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">productRepository</span> <span class="token operator">=</span> <span class="token variable">$productRepository</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">createPlan</span><span class="token punctuation">(</span>string <span class="token variable">$reference</span><span class="token punctuation">,</span> int <span class="token variable">$price</span><span class="token punctuation">)</span><span class="token punctuation">:</span> void
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">createPlan</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$reference</span><span class="token punctuation">,</span> <span class="token keyword type-hint">int</span> <span class="token variable">$price</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">void</span>
     <span class="token punctuation">{</span>
          <span class="token variable">$plan</span> <span class="token operator">=</span> <span class="token scope">Product<span class="token punctuation">::</span></span><span class="token function">createPlan</span><span class="token punctuation">(</span>
             <span class="token variable">$reference</span><span class="token punctuation">,</span>
@@ -305,7 +305,7 @@ Nos <em>commands</em> utilisent donc déjà ces méthodes pour créer des formul
             <span class="token number">100</span>
         <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">productRepository</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token variable">$plan</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">productRepository</span><span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token variable">$plan</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>Ce <em>Manager</em> utilise la méthode <em>static</em> que nous avons vue précédemment qui est également utilisée dans notre code métier. Nous aurions pu utiliser notre <em>Command Handler</em> métier qui permet de créer une formule et donc ne pas à avoir à dupliquer certaines parties de notre code, mais pour des raisons de simplifications, nous partirons sur cet exemple.</p>
@@ -322,14 +322,14 @@ Nos <em>commands</em> utilisent donc déjà ces méthodes pour créer des formul
     <span class="token keyword">private</span> <span class="token variable">$productManager</span><span class="token punctuation">;</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span>
-        ProductManager <span class="token variable">$productManager</span>
+        <span class="token class-name type-declaration">ProductManager</span> <span class="token variable">$productManager</span>
     <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">productManager</span> <span class="token operator">=</span> <span class="token variable">$productManager</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">productManager</span> <span class="token operator">=</span> <span class="token variable">$productManager</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getProductManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> ProductManager
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getProductManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">ProductManager</span>
     <span class="token punctuation">{</span>
-         <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">productManager</span><span class="token punctuation">;</span>
+         <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">productManager</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>Et enfin, nous allons créer un <em>ProductContext</em> afin de créer notre <em>step</em> Gherkin</p>
@@ -347,19 +347,19 @@ Nos <em>commands</em> utilisent donc déjà ces méthodes pour créer des formul
     <span class="token keyword">private</span> <span class="token variable">$productProxy</span><span class="token punctuation">;</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span>
-        ProductProxy <span class="token variable">$productProxy</span>
+        <span class="token class-name type-declaration">ProductProxy</span> <span class="token variable">$productProxy</span>
     <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">productProxy</span> <span class="token operator">=</span> <span class="token variable">$productProxy</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">productProxy</span> <span class="token operator">=</span> <span class="token variable">$productProxy</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token doc-comment comment">/**
      * @Given there is a plan named :reference with a price of :price
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">createPlan</span><span class="token punctuation">(</span>string <span class="token variable">$reference</span><span class="token punctuation">,</span> int <span class="token variable">$price</span><span class="token punctuation">)</span><span class="token punctuation">:</span> void
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">createPlan</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$reference</span><span class="token punctuation">,</span> <span class="token keyword type-hint">int</span> <span class="token variable">$price</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">void</span>
     <span class="token punctuation">{</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">productProxy</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getProductManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">createPlan</span><span class="token punctuation">(</span><span class="token variable">$reference</span><span class="token punctuation">,</span> <span class="token variable">$price</span><span class="token punctuation">)</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">productProxy</span>
+            <span class="token operator">-&gt;</span><span class="token function">getProductManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token operator">-&gt;</span><span class="token function">createPlan</span><span class="token punctuation">(</span><span class="token variable">$reference</span><span class="token punctuation">,</span> <span class="token variable">$price</span><span class="token punctuation">)</span>
         <span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
@@ -395,10 +395,10 @@ Nous allons réaliser le <em>step</em> précédent <code class="code-inline" id=
 <span class="token punctuation">{</span>
     <span class="token comment">// ...</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getPlanByReference</span><span class="token punctuation">(</span>string <span class="token variable">$reference</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Product
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getPlanByReference</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$reference</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">Product</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">productRepository</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getPlanByReference</span><span class="token punctuation">(</span><span class="token variable">$reference</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">productRepository</span>
+            <span class="token operator">-&gt;</span><span class="token function">getPlanByReference</span><span class="token punctuation">(</span><span class="token variable">$reference</span><span class="token punctuation">)</span>
         <span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
@@ -416,14 +416,14 @@ Nous allons réaliser le <em>step</em> précédent <code class="code-inline" id=
     <span class="token doc-comment comment">/**
      * @Given the plan :reference must cost :price
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">thePlanMustCost</span><span class="token punctuation">(</span>string <span class="token variable">$reference</span><span class="token punctuation">,</span> int <span class="token variable">$price</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">thePlanMustCost</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$reference</span><span class="token punctuation">,</span> <span class="token keyword type-hint">int</span> <span class="token variable">$price</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token variable">$plan</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">productProxy</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getProductManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getPlanByReference</span><span class="token punctuation">(</span><span class="token variable">$reference</span><span class="token punctuation">)</span>
+        <span class="token variable">$plan</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">productProxy</span>
+            <span class="token operator">-&gt;</span><span class="token function">getProductManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token operator">-&gt;</span><span class="token function">getPlanByReference</span><span class="token punctuation">(</span><span class="token variable">$reference</span><span class="token punctuation">)</span>
         <span class="token punctuation">;</span>
 
-        <span class="token scope">Assert<span class="token punctuation">::</span></span><span class="token function">same</span><span class="token punctuation">(</span><span class="token variable">$plan</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token variable">$price</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token scope">Assert<span class="token punctuation">::</span></span><span class="token function">same</span><span class="token punctuation">(</span><span class="token variable">$plan</span><span class="token operator">-&gt;</span><span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token variable">$price</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>Et c'est tout, pas besoin de <em>parser</em> le <em>DOM</em> pour retrouver la valeur du prix de la formule et vérifier si il est égale à A ou B. Cela rend les <em>steps</em> Behat beaucoup plus lisibles.</p>
@@ -445,14 +445,14 @@ Ce <em>Storage</em> contient simplement un tableau indexé par type de donnée s
     <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name"><span class="token keyword">array</span></span> */</span>
     <span class="token keyword">private</span> <span class="token variable">$storage</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">set</span><span class="token punctuation">(</span>string <span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token variable">$value</span><span class="token punctuation">)</span><span class="token punctuation">:</span> void
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">set</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token variable">$value</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">void</span>
     <span class="token punctuation">{</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">storage</span><span class="token punctuation">[</span><span class="token variable">$name</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$value</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">storage</span><span class="token punctuation">[</span><span class="token variable">$name</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$value</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">storage</span><span class="token punctuation">[</span><span class="token variable">$name</span><span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token constant">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">storage</span><span class="token punctuation">[</span><span class="token variable">$name</span><span class="token punctuation">]</span> <span class="token operator">??</span> <span class="token constant">null</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>On peut ensuite injecter ce <em>storage</em> à notre <em>ProductProxy</em> et on pourra piocher dans les données pour les modifier.</p>
@@ -466,18 +466,18 @@ Ce <em>Storage</em> contient simplement un tableau indexé par type de donnée s
     <span class="token keyword">private</span> <span class="token variable">$storage</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span>
-        ProductManager <span class="token variable">$productManager</span><span class="token punctuation">,</span>
-        Storage <span class="token variable">$storage</span>
+        <span class="token class-name type-declaration">ProductManager</span> <span class="token variable">$productManager</span><span class="token punctuation">,</span>
+        <span class="token class-name type-declaration">Storage</span> <span class="token variable">$storage</span>
     <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">productManager</span> <span class="token operator">=</span> <span class="token variable">$productManager</span><span class="token punctuation">;</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">storage</span> <span class="token operator">=</span> <span class="token variable">$storage</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">productManager</span> <span class="token operator">=</span> <span class="token variable">$productManager</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">storage</span> <span class="token operator">=</span> <span class="token variable">$storage</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment">// ...</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getStorage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Storage
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getStorage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">Storage</span>
     <span class="token punctuation">{</span>
-         <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">storage</span><span class="token punctuation">;</span>
+         <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">storage</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>En repartant de notre test fonctionnel en Gherkin, nous pouvons donc avoir les <em>steps</em> suivantes:</p>
@@ -500,12 +500,12 @@ Ce <em>Storage</em> contient simplement un tableau indexé par type de donnée s
     <span class="token keyword">private</span> <span class="token variable">$productRepository</span><span class="token punctuation">;</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span>
-        ProductRepositoryInterface <span class="token variable">$productRepository</span>
+        <span class="token class-name type-declaration">ProductRepositoryInterface</span> <span class="token variable">$productRepository</span>
     <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">productRepository</span> <span class="token operator">=</span> <span class="token variable">$productRepository</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">productRepository</span> <span class="token operator">=</span> <span class="token variable">$productRepository</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">createPlan</span><span class="token punctuation">(</span>string <span class="token variable">$reference</span><span class="token punctuation">,</span> int <span class="token variable">$price</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Product
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">createPlan</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$reference</span><span class="token punctuation">,</span> <span class="token keyword type-hint">int</span> <span class="token variable">$price</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">Product</span>
     <span class="token punctuation">{</span>
          <span class="token variable">$plan</span> <span class="token operator">=</span> <span class="token scope">Product<span class="token punctuation">::</span></span><span class="token function">createPlan</span><span class="token punctuation">(</span>
             <span class="token variable">$reference</span><span class="token punctuation">,</span>
@@ -514,19 +514,19 @@ Ce <em>Storage</em> contient simplement un tableau indexé par type de donnée s
             <span class="token number">100</span>
         <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">productRepository</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token variable">$plan</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">productRepository</span><span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token variable">$plan</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
         <span class="token comment">// We now return the plan after the creation</span>
         <span class="token keyword">return</span> <span class="token variable">$plan</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setAvailability</span><span class="token punctuation">(</span>
-        Product <span class="token variable">$plan</span><span class="token punctuation">,</span>
-        <span class="token operator">?</span>\<span class="token package">DateTimeInterface</span> <span class="token variable">$availability</span>
-    <span class="token punctuation">)</span><span class="token punctuation">:</span> void <span class="token punctuation">{</span>
-        <span class="token variable">$plan</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">updateEndOfAvailability</span><span class="token punctuation">(</span><span class="token variable">$availability</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name type-declaration">Product</span> <span class="token variable">$plan</span><span class="token punctuation">,</span>
+        <span class="token operator">?</span><span class="token class-name class-name-fully-qualified type-declaration"><span class="token punctuation">\</span>DateTimeInterface</span> <span class="token variable">$availability</span>
+    <span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">void</span> <span class="token punctuation">{</span>
+        <span class="token variable">$plan</span><span class="token operator">-&gt;</span><span class="token function">updateEndOfAvailability</span><span class="token punctuation">(</span><span class="token variable">$availability</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">productRepository</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token variable">$plan</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">productRepository</span><span class="token operator">-&gt;</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token variable">$plan</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <pre class="code-multiline language-php"><code class="language-php" id="95ca6f88ed9ad2eadd142e325560a7f4"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
@@ -541,16 +541,16 @@ Ce <em>Storage</em> contient simplement un tableau indexé par type de donnée s
     <span class="token doc-comment comment">/**
      * @Given there is a plan named :reference with a price of :price
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">createPlan</span><span class="token punctuation">(</span>string <span class="token variable">$reference</span><span class="token punctuation">,</span> int <span class="token variable">$price</span><span class="token punctuation">)</span><span class="token punctuation">:</span> void
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">createPlan</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$reference</span><span class="token punctuation">,</span> <span class="token keyword type-hint">int</span> <span class="token variable">$price</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">void</span>
     <span class="token punctuation">{</span>
         <span class="token comment">// We receive the return of the createPlan function</span>
-        <span class="token variable">$plan</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">productProxy</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getProductManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">createPlan</span><span class="token punctuation">(</span><span class="token variable">$reference</span><span class="token punctuation">,</span> <span class="token variable">$price</span><span class="token punctuation">)</span>
+        <span class="token variable">$plan</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">productProxy</span>
+            <span class="token operator">-&gt;</span><span class="token function">getProductManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token operator">-&gt;</span><span class="token function">createPlan</span><span class="token punctuation">(</span><span class="token variable">$reference</span><span class="token punctuation">,</span> <span class="token variable">$price</span><span class="token punctuation">)</span>
         <span class="token punctuation">;</span>
 
         <span class="token comment">// And we set the plan in the storage for further usage</span>
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">productProxy</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getStorage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'plan'</span><span class="token punctuation">,</span> <span class="token variable">$plan</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">productProxy</span><span class="token operator">-&gt;</span><span class="token function">getStorage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'plan'</span><span class="token punctuation">,</span> <span class="token variable">$plan</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment">// ...</span>
@@ -558,16 +558,16 @@ Ce <em>Storage</em> contient simplement un tableau indexé par type de donnée s
     <span class="token doc-comment comment">/**
      * @Given this plan is not available anymore
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">planNotAvailable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> void
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">planNotAvailable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">void</span>
     <span class="token punctuation">{</span>
         <span class="token comment">// We retrieve the previous plan from the storage</span>
-        <span class="token variable">$plan</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">productProxy</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getStorage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'plan'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$plan</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">productProxy</span><span class="token operator">-&gt;</span><span class="token function">getStorage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'plan'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">productProxy</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getProductManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setAvailability</span><span class="token punctuation">(</span>
+        <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">productProxy</span>
+            <span class="token operator">-&gt;</span><span class="token function">getProductManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token operator">-&gt;</span><span class="token function">setAvailability</span><span class="token punctuation">(</span>
                 <span class="token variable">$plan</span><span class="token punctuation">,</span>
-                <span class="token keyword">new</span> <span class="token class-name"><span class="token punctuation">\</span>DateTime</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'1999-10-10 10:00:00.000'</span><span class="token punctuation">)</span>
+                <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>DateTime</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'1999-10-10 10:00:00.000'</span><span class="token punctuation">)</span>
             <span class="token punctuation">)</span>
         <span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
