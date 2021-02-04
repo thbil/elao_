@@ -3,7 +3,7 @@
     "app": {
       "js": [
         "/elao_/pr/94/build/runtime.53492a29.js",
-        "/elao_/pr/94/build/0.4fc588e5.js",
+        "/elao_/pr/94/build/0.6d9790f4.js",
         "/elao_/pr/94/build/app.ba54e536.js"
       ]
     },
@@ -12,7 +12,7 @@
         "/elao_/pr/94/build/runtime.53492a29.js"
       ],
       "css": [
-        "/elao_/pr/94/build/style.37cab23f.css"
+        "/elao_/pr/94/build/style.d296635b.css"
       ]
     }
   }
