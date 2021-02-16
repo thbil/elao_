@@ -2,7 +2,7 @@
   "build/0.6d9790f4.js": "/elao_/build/0.6d9790f4.js",
   "build/app.js": "/elao_/build/app.ba54e536.js",
   "build/runtime.js": "/elao_/build/runtime.3ea599f4.js",
-  "build/style.css": "/elao_/build/style.5ce95ead.css",
+  "build/style.css": "/elao_/build/style.c393f6c9.css",
   "build/fonts/antikor-bold.woff2": "/elao_/build/fonts/antikor-bold.7a339861.woff2",
   "build/fonts/antikor-bold.woff": "/elao_/build/fonts/antikor-bold.8cb64e99.woff",
   "build/fonts/antikor-medium.woff": "/elao_/build/fonts/antikor-medium.10ecc354.woff",
@@ -22,6 +22,7 @@
   "build/images/certifications/symfony.svg": "/elao_/build/images/certifications/symfony.5719e944.svg",
   "build/images/icomoon.svg": "/elao_/build/images/icomoon.6fb9a1cb.svg",
   "build/images/kudo.svg": "/elao_/build/images/kudo.3a216d48.svg",
+  "build/images/stamp.svg": "/elao_/build/images/stamp.5cb2ee39.svg",
   "build/images/technos/algolia.svg": "/elao_/build/images/technos/algolia.2b3e9a06.svg",
   "build/images/technos/css3.svg": "/elao_/build/images/technos/css3.33a1f55d.svg",
   "build/images/technos/graphql.svg": "/elao_/build/images/technos/graphql.25a223e4.svg",
@@ -33,5 +34,7 @@
   "build/images/technos/svg.svg": "/elao_/build/images/technos/svg.fa41d1ce.svg",
   "build/images/technos/symfony.svg": "/elao_/build/images/technos/symfony.575a3abe.svg",
   "build/images/technos/vue.svg": "/elao_/build/images/technos/vue.643605a6.svg",
+  "build/images/textarea-lines-dark.svg": "/elao_/build/images/textarea-lines-dark.4babeb9b.svg",
+  "build/images/textarea-lines.svg": "/elao_/build/images/textarea-lines.4b927293.svg",
   "build/images/tipi.svg": "/elao_/build/images/tipi.52d6d773.svg"
 }
