@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>10 avril 2015</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -236,19 +236,27 @@
 <p>Il s'agit d'une présentation des différentes manières de cacher du contenu personnalisé. Au travers du concept du "user context", comment mutualiser du cache entre des utilisateurs connectés et partageant le même profil de permission ? Nous étudierons également les Edge Side Includes (ESI) et comment cacher des fragments différemment. Ces concepts sont rendus possibles avec Varnish et le composant HttpCache de Symfony, grâce à FOSHttpCacheBundle, que des projets comme le CMS Open Source eZ Publish utilise.</p>
 <p>Le cache dans le contexte user a toujours semblé impossible.
 Introduction de "l'User context Hash" :</p>
-<ul><li>transparent : reverse proxy</li>
+<ul>
+<li>transparent : reverse proxy</li>
 <li>footprint pour chaque user</li>
-</ul><p>Faire attention :</p>
-<ul><li>à nettoyer le cookie header quand le hash est <em>fetché</em></li>
+</ul>
+<p>Faire attention :</p>
+<ul>
+<li>à nettoyer le cookie header quand le hash est <em>fetché</em></li>
 <li>à vérifier que les Vary header sont corrects</li>
-</ul><p>Combiner plusieurs Vary Header :</p>
-<ul><li>Différentes règles de cache : no caching, Vary: user context, Vary: Cookie</li>
+</ul>
+<p>Combiner plusieurs Vary Header :</p>
+<ul>
+<li>Différentes règles de cache : no caching, Vary: user context, Vary: Cookie</li>
 <li>ESI de différentes règles pour des fragments spécifiques</li>
-</ul><p>La présentation se termine par un use case sous forme d'une pièce de théâtre assez drôle avec des vrais cookies (oui le biscuit) : accès à un résumé d'article (user anonymous) ou à l'article complet (user authentifié).</p>
+</ul>
+<p>La présentation se termine par un use case sous forme d'une pièce de théâtre assez drôle avec des vrais cookies (oui le biscuit) : accès à un résumé d'article (user anonymous) ou à l'article complet (user authentifié).</p>
 <p>Ressources :</p>
-<ul><li><a href="https://github.com/FriendsOfSymfony/FOSHttpCacheBundle" target="_blank">Voir la doc de FOSHttpCacheBundle</a></li>
+<ul>
+<li><a href="https://github.com/FriendsOfSymfony/FOSHttpCacheBundle" target="_blank">Voir la doc de FOSHttpCacheBundle</a></li>
 <li>et plus spécifiquement <a href="https://github.com/FriendsOfSymfony/FOSHttpCacheBundle/blob/master/Resources/doc/features/user-context.rst" target="_blank">la doc sur le User Context</a></li>
-</ul><h2 id="laisse-pas-trainer-ton-log-par-olivier-dolbeau">Laisse pas traîner ton log ! par Olivier Dolbeau</h2>
+</ul>
+<h2 id="laisse-pas-trainer-ton-log-par-olivier-dolbeau">Laisse pas traîner ton log ! par Olivier Dolbeau</h2>
 <p>Introduction à comment tirer parti des logs grâce à Monolog et à la stack ELK (Elasticsearch / Logstash / Kibana) et en faire des dashboards.</p>
 <p>En savoir plus : <a href="https://speakerdeck.com/odolbeau/laisse-pas-trainer-ton-log" target="_blank">Speakerdeck Laisse pas traîner ton log !</a></p>
 <h2 id="retour-d-experience-attention-cherie-ca-va-trancher-par-bastien-jaillot">Retour d’expérience : attention chérie, ça va trancher par Bastien Jaillot</h2>
@@ -260,22 +268,27 @@ Introduction de "l'User context Hash" :</p>
 "Tout logiciel reflète l'organisation qui l'a créée" (loi de Conway). Tout ce qui se rapporte à l'informatique arrive aux développeurs. Le SI est devenu lui même un monolithe.</p>
 <p>Il s'agit non pas d'une présentation technique mais d'un retour d'expérience sur le changement.</p>
 <p>Électro-choc et solution pour amorcer le changement :</p>
-<ul><li>Démarrer un projet ambitieux.</li>
+<ul>
+<li>Démarrer un projet ambitieux.</li>
 <li>Une personne pour gérer le "bruit" (gestion du parc SI).</li>
 <li>Ne plus corriger les anomalies non bloquantes, ni d'évolutions. Site en jachère.</li>
 <li>Redémarrer le développement du site en partant sur de meilleures bases et recrutement de profils spécialisés développement web.</li>
-</ul><p>Ne pas oublier :</p>
-<ul><li>Faire attention à la communication interne.</li>
+</ul>
+<p>Ne pas oublier :</p>
+<ul>
+<li>Faire attention à la communication interne.</li>
 <li>Prendre du temps, avoir du recul.</li>
 <li>Être à l'écoute des problématiques rencontrées par l'entreprise et réfléchir à comment les résoudre.</li>
 <li>Se baser sur l'humain.</li>
-</ul><h2 id="symfony-et-sonata-project-chez-canal-par-thomas-rabaix">Symfony et Sonata Project chez Canal+ par Thomas Rabaix</h2>
+</ul>
+<h2 id="symfony-et-sonata-project-chez-canal-par-thomas-rabaix">Symfony et Sonata Project chez Canal+ par Thomas Rabaix</h2>
 <p>Pitch :</p>
 <blockquote>
 <p>La présentation abordera l’usage de Symfony2, l’organisation du code et l’usage du projet Sonata chez Canal+ pour répondre aux enjeux de la refonte d’une partie de la plateforme web. La plateforme présente de nombreux challenges techniques: SDK, API privée, API publique restful+hal, création de contenus riches, 5 applications différentes avec une base de code commune.</p>
 </blockquote>
 <p>En vrac :</p>
-<ul><li>Un même socle Symfony</li>
+<ul>
+<li>Un même socle Symfony</li>
 <li>Composants partagés</li>
 <li>Applications découplées</li>
 <li>Tests unitaires sur l'ensemble des applications</li>
@@ -283,34 +296,41 @@ Introduction de "l'User context Hash" :</p>
 <li>SonataRestAdminBundle : administrer des contenus depuis plusieurs sources via APIs. Devrait être <em>open sourcé</em> sous peu.</li>
 <li>Nginx pour gérer le crop/resize des images afin de ne pas stocker les images temporaires sur le filesystem</li>
 <li>Création d'un <a href="https://github.com/ekino/php-hal-client" target="_blank">client pour consommer une API Hateoas (HAL)</a></li>
-</ul><h2 id="elasticsearch-dans-une-infrastructure-symfony2-par-nicolas-badey">ElasticSearch dans une infrastructure Symfony2 par Nicolas Badey</h2>
+</ul>
+<h2 id="elasticsearch-dans-une-infrastructure-symfony2-par-nicolas-badey">ElasticSearch dans une infrastructure Symfony2 par Nicolas Badey</h2>
 <p>Présentation d'ElasticSearch avec Elastica et son intégration dans Symfony2.</p>
 <p><a href="https://speakerdeck.com/nicolasbadey/elasticsearch-with-elastica-in-symfony2-architecture" target="_blank">Speakerdeck de la présentation ElasticSearch</a></p>
 <h2 id="openclassrooms-le-pattern-view-model-avec-symfony2-par-kuzniak-romain">OpenClassrooms - Le pattern View Model avec Symfony2 par Kuzniak Romain</h2>
 <p>Le pattern View Model est un pattern simple qui permet d’apporter des solutions à beaucoup de problèmes :</p>
-<ul><li>Découpler la logique métier de la présentation</li>
+<ul>
+<li>Découpler la logique métier de la présentation</li>
 <li>Permettre le refactoring</li>
 <li>Faciliter les tests</li>
 <li>Permettre de paralléliser le travail front et back</li>
 <li>Construire des ressources API</li>
 <li>Contrat entre le front et le back sur le contenu d'un ViewModel</li>
-</ul><p>Superbe et simple introduction à ce pattern. En savoir plus : <a href="http://fr.wikipedia.org/wiki/Mod%C3%A8le-Vue-VueMod%C3%A8le" target="_blank">Pattern Modèle-Vue-VueModèle</a></p>
+</ul>
+<p>Superbe et simple introduction à ce pattern. En savoir plus : <a href="http://fr.wikipedia.org/wiki/Mod%C3%A8le-Vue-VueMod%C3%A8le" target="_blank">Pattern Modèle-Vue-VueModèle</a></p>
 <h2 id="meetic-backend-mutation-with-symfony-par-joris-calabrese">Meetic backend mutation with Symfony par Joris Calabrese</h2>
 <p>Comment Meetic opère son changement technologique sur son SI. De la création d’API jusqu’à la mise en place d’une démarche qualité tout en passant par l'adoption du Behavior Driven Development.</p>
 <p>En vrac :</p>
-<ul><li>Migration d'un code monolithique vers des API REST en Sf2</li>
+<ul>
+<li>Migration d'un code monolithique vers des API REST en Sf2</li>
 <li>Exemple de microservices : AB Test, GEO, Permission, Configuration</li>
 <li>Déploiement avec Composer, Satis, Sf2 et Capistrano sur des centaines de serveurs</li>
 <li>Démarche Qualité (Back, Front, App)</li>
 <li>Méthodologie : Agilité, DevOps, TDD, BDD.</li>
 <li>Next steps : Kafka, Continuous Delivery.</li>
-</ul><p>Monter en compétences :</p>
-<ul><li>Learning permanent</li>
+</ul>
+<p>Monter en compétences :</p>
+<ul>
+<li>Learning permanent</li>
 <li>Gitlab, merge request, code review</li>
 <li>Metrics jenkins sur ce qui ne va pas / CI jenkins</li>
 <li>Dashboard physique</li>
 <li>Personne extérieures qui viennent présenter des choses nouvelles et enrichir l'équipe.</li>
-</ul><p>LA phrase du jour : L'intégration continue c'est "Harder better faster stronger" (Daft Punk) :)</p>
+</ul>
+<p>LA phrase du jour : L'intégration continue c'est "Harder better faster stronger" (Daft Punk) :)</p>
 <p><a href="http://fr.slideshare.net/meeticTech/meetic-backend-mutation-with-symfony" target="_blank">Superbe présentation à découvrir sur Slideshare</a></p>
 <h2 id="faites-plaisir-a-vos-utilisateurs-surveillez-votre-prod-par-gregoire-pineau">Faites plaisir à vos utilisateurs : surveillez votre prod par Grégoire Pineau</h2>
 <p>Développer une application Symfony est maintenant chose commune, mais en connaissez-vous vraiment le comportement en production ? <a href="https://speakerdeck.com/lyrixx/symfony-live-2015-paris-monitorer-sa-prod" target="_blank">Le SpeakerDeck Monitorer sa prod</a></p>
@@ -318,12 +338,14 @@ Introduction de "l'User context Hash" :</p>
 <p>Il n'y a que des bugs faciles à résoudre… quand on a de quoi les cerner ! <a href="http://fr.slideshare.net/nicolas.grekas/symfony-debug-vardumper" target="_blank">Voir la présentation Symfony Debug et VarDumper</a></p>
 <h2 id="construire-des-applications-api-centric-avec-symfony-par-kevin-dunglas">Construire des applications API-centric avec Symfony par Kévin Dunglas</h2>
 <p>Présentation très intéressante sur une architecture qui permet de construire des applications performantes, évolutives et interopérables :</p>
-<ul><li>Un modèle de données dérivé du vocabulaire Schema.org généré avec <a href="https://github.com/dunglas/php-schema" target="_blank">PHP Schema</a>.</li>
+<ul>
+<li>Un modèle de données dérivé du vocabulaire Schema.org généré avec <a href="https://github.com/dunglas/php-schema" target="_blank">PHP Schema</a>.</li>
 <li>Une API REST hypermedia et auto-découvrable (JSON-LD + Hydra) réalisée avec <a href="https://github.com/dunglas/DunglasJsonLdApiBundle" target="_blank">DunglasJsonLdApiBundle</a> (pour Symfony 2.7+).</li>
 <li>Sérialisation et validation avancées des données grâce aux nouvelles fonctionnalités du composant Serializer de Symfony 2.7 et du Validator.</li>
 <li>Authentification stateless (cookie-less) avec JSON Web Token et <a href="https://github.com/lexik/LexikJWTAuthenticationBundle" target="_blank">LexikJWTAuthenticationBundle</a>.</li>
 <li>BDD et web acceptance testing avec Behat, Mink et Behatch.</li>
-</ul><h2 id="le-dic-ce-chef-d-orchestre-par-adrien-brault">Le DIC, ce chef d'orchestre! par Adrien Brault</h2>
+</ul>
+<h2 id="le-dic-ce-chef-d-orchestre-par-adrien-brault">Le DIC, ce chef d'orchestre! par Adrien Brault</h2>
 <p><a href="https://speakerdeck.com/adrienbrault/le-dic-ce-chef-dorchestre" target="_blank">Introduction au conteneur d'injection de dépendances (DIC) de Symfony</a> et à une utilisation plus avancée.</p>
 <h2 id="docker-dans-le-developpement-web-et-l-integration-continue-par-jeremy-derusse">Docker dans le développement web et l'intégration continue par Jérémy DERUSSÉ</h2>
 <p>Pitch :</p>
@@ -456,6 +478,6 @@ Cerise (de Groupama) sur le gâteau, j'aurai le droit de revenir, car j'ai gagn�
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

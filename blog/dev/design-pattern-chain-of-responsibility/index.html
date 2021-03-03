@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>13 mai 2017</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -229,34 +229,43 @@
 <p>Concrètement, le pattern consiste principalement à construire une chaîne de <em>handlers</em> chargée de traiter une requête (aka <em>command</em>).</p>
 <h2 id="quand-l-utiliser">Quand l'utiliser ?</h2>
 <p>Voici les différentes situations que référence le <em>GoF</em> :</p>
-<ul><li>il existe plusieurs objets susceptibles de traiter une requête, mais l'objet qui traitera la requête (<em>handler</em>) n'est pas connu <em>a priori</em> (mais doit être déterminé automatiquement par la chaîne)</li>
+<ul>
+<li>il existe plusieurs objets susceptibles de traiter une requête, mais l'objet qui traitera la requête (<em>handler</em>) n'est pas connu <em>a priori</em> (mais doit être déterminé automatiquement par la chaîne)</li>
 <li>vous souhaitez transmettre une requête à un objet parmi plusieurs, sans le désigner explicitement</li>
 <li>la liste des objets susceptibles de traiter la requête devrait être construite dynamiquement</li>
-</ul><h2 id="diagramme-du-design-pattern-chain-of-responsibility">Diagramme du Design pattern <code class="code-inline" id="0e4c6982c4346789e10bcb3eb7ee3946">Chain of Responsibility</code></h2>
+</ul>
+<h2 id="diagramme-du-design-pattern-chain-of-responsibility">Diagramme du Design pattern <code class="code-inline" id="0e4c6982c4346789e10bcb3eb7ee3946">Chain of Responsibility</code></h2>
 <p class="text-center">
     {{}}
-    <figcaption style="text-align: center;font-style: italic;">Diagramme du Design Pattern 'Chain of Responsility'</figcaption></p>
+    <figcaption style="text-align: center;font-style: italic;">Diagramme du Design Pattern 'Chain of Responsility'</figcaption>
+</p>
 <h2 id="participants">Participants</h2>
-<ul><li>Le <strong>Handler</strong> :
-<ul><li>définit une interface que les handlers devront implémenter</li>
+<ul>
+<li>Le <strong>Handler</strong> :
+<ul>
+<li>définit une interface que les handlers devront implémenter</li>
 <li>peut implémenter la logique de chaînage des successeurs</li>
 </ul></li>
 <li>Les <strong>Concrete Handlers</strong> :
-<ul><li>traitent les requêtes dont ils sont responsables</li>
+<ul>
+<li>traitent les requêtes dont ils sont responsables</li>
 <li>peuvent accéder à leur successeur dans la chaîne</li>
 <li>si un <em>handler</em> sait traiter une requête, il le fait ; dans le cas contraire, il la transmet à son successeur</li>
 </ul></li>
 <li>Le <strong>client</strong> est l'émetteur de la requête, qu'il passe à la chaîne</li>
-</ul><h2 id="si-tous-les-fous-du-monde-voulaient-bien-se-donner-la-main"><em>Si tous les fous du monde voulaient bien se donner la main ...</em></h2>
+</ul>
+<h2 id="si-tous-les-fous-du-monde-voulaient-bien-se-donner-la-main"><em>Si tous les fous du monde voulaient bien se donner la main ...</em></h2>
 <blockquote>
 <p>Illustrer un Design Pattern à l'aide d'un exemple pertinent ou un tant soit peu réaliste n'est pas toujours chose aisée. Aussi, notez que l'exemple qui suit est <strike>honteusement</strike> largement inspiré d'un article publié sur le blog <a href="http://spaghetti.io/cont/article/a-chain-of-responsibility-implementation-inside-the-symfony-container/15/1.html#.WRcQErzyi-w" target="_blank">spaghetti.io</a>. Je vous invite à consulter cet article puisque l'auteur ne se contente pas de présenter le Design Pattern, mais propose un exemple d'implémentation dans un contexte Symfony, ainsi que des pistes très intéressantes pour construire la chaîne et la configurer dans le DIC (<em>Dependency Injection Container</em>).</p>
 </blockquote>
 <p>Vous maintenez une application de <em>e-commerce</em> dont le catalogue de produits est mis à jour à l'aide d'imports. Les fichiers d'import des produits à intégrer au catalogue proviennent de plusieurs sources et ne sont donc pas standardisés : il existe des sources de données au format XML, d'autres au format JSON et enfin certaines au format CSV.</p>
 <p>Votre importeur doit donc supporter ces trois formats et pour cela, il va s'appuyer sur trois extracteurs spécialisés :</p>
-<ul><li>ProductJsonExtractor</li>
+<ul>
+<li>ProductJsonExtractor</li>
 <li>ProductXmlExtractor</li>
 <li>ProductCsvExtractor</li>
-</ul><blockquote>
+</ul>
+<blockquote>
 <p>Vous l'aurez sans doute deviné, si l'on se réfère au diagramme des participants, notre importeur correspond au <strong>Client</strong> tandis que les trois extracteurs correspondent aux <strong>Concrete Handlers</strong>.</p>
 </blockquote>
 <p>Voici à quoi ressemble un <em>extractor</em> avant que nous n'appliquions le pattern <em>CoR</em> :</p>
@@ -283,10 +292,12 @@
 <p>Rien de compliqué, cette classe reçoit un fichier en entrée et en extrait une liste de produits.</p>
 <p>Noter que pour l'heure, <code class="code-inline" id="8e2c370970792feb8dbf80c2d05cf8d6">ProductXmlExtractor</code> (tout comme les deux autres <em>extractors</em>) implémente une interface <code class="code-inline" id="8a5dbb05e8dd7ae606674bfe535f9eb1">ProductExtractorInterface</code> qui expose simplement une méthode <code class="code-inline" id="79ee7205c96c30ec2f60b3eab7ee8af4">extractProducts</code>. J'utilise également pour les valeurs de retour une classe <code class="code-inline" id="797dcf4ee098d79bad677ebcc403cfca">ProductDto</code> (c'est un bête conteneur de données, pardonnez-moi le pléonasme).</p>
 <p>Voici à présent ce que nous allons faire :</p>
-<ul><li><a href="#chain-construct">construire la chaîne dans une classe abstraite dédiée</a></li>
+<ul>
+<li><a href="#chain-construct">construire la chaîne dans une classe abstraite dédiée</a></li>
 <li><a href="#concrete-handlers">mettre à jour les <em>handlers</em> concrets</a></li>
 <li><a href="#chain-usage">instancier la chaîne et la consommer</a></li>
-</ul><h2 id="logique-de-construction-de-la-chaine"><a name="chain-construct"></a> Logique de construction de la chaîne</h2>
+</ul>
+<h2 id="logique-de-construction-de-la-chaine"><a name="chain-construct"></a> Logique de construction de la chaîne</h2>
 <blockquote>
 <p>"Tu aimeras ton prochain comme toi-même"</p>
 </blockquote>
@@ -540,6 +551,6 @@
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

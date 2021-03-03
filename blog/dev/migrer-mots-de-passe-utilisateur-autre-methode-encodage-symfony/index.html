@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>12 septembre 2017</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -233,22 +233,32 @@
 <p>Par définition, il n'est pas possible de retrouver simplement le mot de passe à partir du hash. Vous ne pouvez donc pas simplement migrer l'ensemble de mots de passe au moment d'importer les données dans le nouveau système. La seule personne à connaitre le mot de passe en clair est l'utilisateur lui-même.</p>
 <p>L'idée est donc de réaliser une migration continue lorsque l'utilisateur rentre son mot de passe.</p>
 <p>Par exemple, pour une migration de mots de passe de <code class="code-inline" id="1bc29b36f623ba82aaf6724fd3b16718">md5</code> vers <code class="code-inline" id="51f01b313d48b72f46376150e6e12a98">bcrypt</code>, lors d'une tentative de connexion :</p>
-<ul><li>Si l'utilisateur n'a pas été migré, on vérifie que le mot de passe fourni correspond au hash <code class="code-inline" id="1bc29b36f623ba82aaf6724fd3b16718">md5</code>. Si c'est le cas, on calcule le hash <code class="code-inline" id="51f01b313d48b72f46376150e6e12a98">bcrypt</code> à partir du mot de passe, puis on le stocke.</li>
+<ul>
+<li>Si l'utilisateur n'a pas été migré, on vérifie que le mot de passe fourni correspond au hash <code class="code-inline" id="1bc29b36f623ba82aaf6724fd3b16718">md5</code>. Si c'est le cas, on calcule le hash <code class="code-inline" id="51f01b313d48b72f46376150e6e12a98">bcrypt</code> à partir du mot de passe, puis on le stocke.</li>
 <li>Si l'utilisateur a déjà été migré, on vérifie le mot de passe avec le hash <code class="code-inline" id="51f01b313d48b72f46376150e6e12a98">bcrypt</code></li>
-</ul><p>Ainsi, chaque utilisateur migrera son mot de passe lors de sa première connexion à la nouvelle plateforme. Une fois que tous les utilisateurs auront été migrés, nous pourront effacer complètement les hashs <code class="code-inline" id="1bc29b36f623ba82aaf6724fd3b16718">md5</code> de la base de données et n'utiliser que <code class="code-inline" id="51f01b313d48b72f46376150e6e12a98">bcrypt</code>.</p>
-<figure style="text-align: center;"><a href="images/posts/2017/password-encoding-switch.png">
-        <img src="/elao_/images/posts/2017/password-encoding-switch.png" style="max-width: 600px;" alt="Logique de migration" id="logique-de-migration"></a>
-    <figcaption>Processus d'authentification</figcaption></figure><h1 id="symfony">Symfony</h1>
+</ul>
+<p>Ainsi, chaque utilisateur migrera son mot de passe lors de sa première connexion à la nouvelle plateforme. Une fois que tous les utilisateurs auront été migrés, nous pourront effacer complètement les hashs <code class="code-inline" id="1bc29b36f623ba82aaf6724fd3b16718">md5</code> de la base de données et n'utiliser que <code class="code-inline" id="51f01b313d48b72f46376150e6e12a98">bcrypt</code>.</p>
+<figure style="text-align: center;">
+    <a href="images/posts/2017/password-encoding-switch.png">
+        <img src="/elao_/images/posts/2017/password-encoding-switch.png" style="max-width: 600px;" alt="Logique de migration" id="logique-de-migration">
+    </a>
+    <figcaption>Processus d'authentification</figcaption>
+</figure>
+<h1 id="symfony">Symfony</h1>
 <p>Il est possible de réaliser une méthode d'authentification intégrant ce processus de migration dans Symfony. Pour cela vous devez implémenter une authentification personnalisée. Plusieurs solutions s'offrent à vous, de la plus complexe à la plus simple:</p>
-<ul><li><a href="http://symfony.com/doc/current/security/custom_authentication_provider.html" target="_blank">Créer un Authentication Provider</a></li>
+<ul>
+<li><a href="http://symfony.com/doc/current/security/custom_authentication_provider.html" target="_blank">Créer un Authentication Provider</a></li>
 <li><a href="http://symfony.com/doc/current/security/guard_authentication.html" target="_blank">Créer un système d'authentification avec Guard</a></li>
 <li><a href="http://symfony.com/doc/current/security/custom_password_authenticator.html" target="_blank">Créer un Form Password Authenticator</a></li>
-</ul><p>Si vous utilisez un formulaire de connexion simple, de type login/password avec l'option <code class="code-inline" id="d1ade55e74c014e97429b1988fe9c588">form_login</code>, la dernière solution est la plus simple. A la place d'utiliser <code class="code-inline" id="d1ade55e74c014e97429b1988fe9c588">form_login</code>, nous allons utiliser <code class="code-inline" id="fa938cd32723583e40742a3866827dda">simple_form</code> qui fonctionne de la même façon hormis qu'il faudra lui fournir un service dédié à l'authentification grâce à la clé <code class="code-inline" id="725d91977f189d4930c6344b016d55de">authenticator</code>.</p>
+</ul>
+<p>Si vous utilisez un formulaire de connexion simple, de type login/password avec l'option <code class="code-inline" id="d1ade55e74c014e97429b1988fe9c588">form_login</code>, la dernière solution est la plus simple. A la place d'utiliser <code class="code-inline" id="d1ade55e74c014e97429b1988fe9c588">form_login</code>, nous allons utiliser <code class="code-inline" id="fa938cd32723583e40742a3866827dda">simple_form</code> qui fonctionne de la même façon hormis qu'il faudra lui fournir un service dédié à l'authentification grâce à la clé <code class="code-inline" id="725d91977f189d4930c6344b016d55de">authenticator</code>.</p>
 <p>Ce service doit implémenter la classe <a href="http://api.symfony.com/3.0/Symfony/Component/Security/Http/Authentication/SimpleFormAuthenticatorInterface.html" target="_blank"><code class="code-inline" id="2c937bd6d72e38e576d0f3b8575847d5">SimpleFormAuthenticatorInterface</code></a> qui requiert l'implémentation des trois méthodes suivantes :</p>
-<ul><li><code class="code-inline" id="edf827e5ac5466e8c7d089f4bb5cecbd">createToken</code> : le formulaire est de type login/password, nous allons donc créer un <code class="code-inline" id="88837a3a69e4d25b836efde4aa299edb">UsernamePasswordToken</code>.</li>
+<ul>
+<li><code class="code-inline" id="edf827e5ac5466e8c7d089f4bb5cecbd">createToken</code> : le formulaire est de type login/password, nous allons donc créer un <code class="code-inline" id="88837a3a69e4d25b836efde4aa299edb">UsernamePasswordToken</code>.</li>
 <li><code class="code-inline" id="a2da5aafcb240a5b452c50d8963bb1c8">supportsToken</code> : l'authenticator supportera les <code class="code-inline" id="88837a3a69e4d25b836efde4aa299edb">UsernamePasswordToken</code>.</li>
 <li><code class="code-inline" id="1977adc8e5b3a2698814d9e0f3bdf1ef">authenticateToken</code> : et enfin, c'est ici que nous allons mettre notre logique d'authentification.</li>
-</ul><p>Dans l'exemple suivant, la méthode d'encodage "legacy" est la suivante : <code class="code-inline" id="04c309e39673cc293610030f3837ce76">HASH = MD5(PASSWORD + SALT)</code>. Si l'application à refondre est déjà une application Symfony utilisant un encodeur de Symfony, vous pouvez le reproduire dans votre refonte et l'injecter dans votre service.</p>
+</ul>
+<p>Dans l'exemple suivant, la méthode d'encodage "legacy" est la suivante : <code class="code-inline" id="04c309e39673cc293610030f3837ce76">HASH = MD5(PASSWORD + SALT)</code>. Si l'application à refondre est déjà une application Symfony utilisant un encodeur de Symfony, vous pouvez le reproduire dans votre refonte et l'injecter dans votre service.</p>
 <pre class="code-multiline language-php"><code class="language-php" id="4b8c551b3ef4414362029e06777dfb58"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Infrastructure</span><span class="token punctuation">;</span>
@@ -439,6 +449,6 @@
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

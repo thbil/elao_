@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>2 décembre 2009</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -224,10 +224,12 @@
 <p>Nous allons ensuite créer notre dépot à l’aide de la commande svn:</p>
 <pre class="code-multiline"><code id="58be83328ea48b580635ac1f8a4cfc4c">svnadmin create /repositories/mon_projet/</code></pre>
 <p>En règle générale la structure d’un dépôt svn est subdivisée en trois répertoires:</p>
-<ul><li>trunk:</li>
+<ul>
+<li>trunk:</li>
 <li>branches:</li>
 <li>tags:</li>
-</ul><p>Si vous disposez déjà d’un existant vous pouvez parfaitement l’importer dans votre nouveau dépôt, dans le trunk:</p>
+</ul>
+<p>Si vous disposez déjà d’un existant vous pouvez parfaitement l’importer dans votre nouveau dépôt, dans le trunk:</p>
 <pre class="code-multiline"><code id="36ce0e123eafbeb0be7197a0d2bc5f95">svn import -m "Initialisation du dépot" /elao/projects/mon_projet/ file:///repositories/mon_projet/trunk</code></pre>
 <h3 id="parametrage-du-subversion-et-apache">Paramétrage du subversion et Apache</h3>
 <p>Afin “d’ouvrir” notre dépôt vers l’extérieur nous allons utiliser Apache, pour des raisons de sécurité, (libre à vous de l’utiliser ou non ) nous utiliserons SSL pour les transactions http. On active le module dav_svn avec la commande :</p>
@@ -374,6 +376,6 @@ user2 = r
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

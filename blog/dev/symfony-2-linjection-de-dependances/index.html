@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>3 juin 2010</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -216,7 +216,8 @@
     <main class="article-content__main">
       <body><p><strong>Avertissement :</strong>
 Depuis la rédaction de cet article sur l'injection de dépendances, le coeur de Symfony2 a évolué de façon notable, en particulier certaines classes du répertoire <strong>DependencyInjection</strong> mentionnées dans cet article ont été renommées, révisées, ou refondues. Toutefois, les principes généraux décrits dans cet article restent d'actualité.</p>
-<img src="/elao_/images/posts/2010/dependency-injection-symfony.png" alt='dependency injection symfony Symfony 2 Linjection de dépendances" width="278" height="236' title='dependency injection symfony Symfony 2 Linjection de dépendances" width="278" height="236' id="dependency-injection-symfony-symfony-2-linjection-de-dependances-width-278-height-236"><p>Cet article est le premier d'une série à venir sur Symfony 2. Pour commencer, je vous invite à télécharger la <a href="http://symfony-reloaded.org/code" target="_blank">sandbox</a> de Symfony 2. J'ai décidé de commencer par l'injection de dépendances car il s'agit d'un composant clé de Symfony 2, et que la bonne compréhension de cette nouvelle version du Framework doit forcément en passer par là. L'injection de dépendance est réellement au coeur du Framework.</p>
+<img src="/elao_/images/posts/2010/dependency-injection-symfony.png" alt='dependency injection symfony Symfony 2 Linjection de dépendances" width="278" height="236' title='dependency injection symfony Symfony 2 Linjection de dépendances" width="278" height="236' id="dependency-injection-symfony-symfony-2-linjection-de-dependances-width-278-height-236">
+<p>Cet article est le premier d'une série à venir sur Symfony 2. Pour commencer, je vous invite à télécharger la <a href="http://symfony-reloaded.org/code" target="_blank">sandbox</a> de Symfony 2. J'ai décidé de commencer par l'injection de dépendances car il s'agit d'un composant clé de Symfony 2, et que la bonne compréhension de cette nouvelle version du Framework doit forcément en passer par là. L'injection de dépendance est réellement au coeur du Framework.</p>
 <p>Nous allons commencer par tenter d'éclaircir cette notion (ou ce design pattern), puis nous verrons plus concrètement l'implémentation qui en est faite au sein de Symfony 2. Commençons par une petite définition.</p>
 <blockquote>
 <p>Définition Wikipedia:</p>
@@ -224,21 +225,25 @@ Depuis la rédaction de cet article sur l'injection de dépendances, le coeur de
 </blockquote>
 <h3 id="qu-est-ce-que-l-injection-de-dependances">Qu'est ce que l'injection de dépendances ?</h3>
 <p>En programmation objet, et particulièrement avec les Frameworks, nous sommes souvent amenés à manipuler un grand nombre de classes d'objet différentes. Ces différents objets sont chargés de fournir une fonctionnalité ou un "service". Dans une application standard, nous serons par exemple amenés à manipuler :</p>
-<ul><li>Un objet <strong>User</strong>, supposé représenter l'utilisateur connecté à l'application</li>
+<ul>
+<li>Un objet <strong>User</strong>, supposé représenter l'utilisateur connecté à l'application</li>
 <li>Un objet <strong>Session</strong>, pour la gestion de la session de l'utilisateur</li>
 <li>Un objet <strong>Requete</strong>, représentant la requête envoyée par un client</li>
 <li>Un objet <strong>Réponse</strong>, pour la réponse que l'application va renvoyer</li>
 <li>Un objet <strong>Log</strong>, pour pouvoir gérer des logs</li>
 <li>Un objet <strong>Mailer</strong>, pour pouvoir envoyer des mails</li>
 <li>etc ...</li>
-</ul><p>La nécessité de l'injecteur de dépendances provient, d'une part, du fait que certains de ces objets sont liés entre eux, ou plutôt "dépendants" les uns des autres, d'autre part, que les objets sont de plus en plus découplés et scindés en classes bien particulières. Par exemple, le service "<strong>Mailer</strong>" utilisera peut être le service "<strong>Log</strong>" pour enregistrer les mails qui sont envoyés par l'application.</p>
+</ul>
+<p>La nécessité de l'injecteur de dépendances provient, d'une part, du fait que certains de ces objets sont liés entre eux, ou plutôt "dépendants" les uns des autres, d'autre part, que les objets sont de plus en plus découplés et scindés en classes bien particulières. Par exemple, le service "<strong>Mailer</strong>" utilisera peut être le service "<strong>Log</strong>" pour enregistrer les mails qui sont envoyés par l'application.</p>
 <p>L'idée de l'injection de dépendances est d'utiliser un fichier de configuration pour auto-générer une classe (un "container") qui contiendra des méthodes nous permettant d'accéder à ces services ; elle contiendra l'initialisation des services (via l'instanciation de la classe qui les représente), gérera les dépendances de ces services (via les constructeurs ou l'appel de méthodes), la configuration des services, etc....</p>
 <p>Pour illustrer ce concept, voyons un petit exemple.</p>
 <p>Imaginons que nous ayons trois services :</p>
-<ul><li>un mailer (chargé d'envoyer des mails)</li>
+<ul>
+<li>un mailer (chargé d'envoyer des mails)</li>
 <li>un logger (chargé d'enregistrer des logs)</li>
 <li>un router (chargé du routing)</li>
-</ul><p>L'injecteur de dépendances pourrait ressembler à quelque chose comme ça :</p>
+</ul>
+<p>L'injecteur de dépendances pourrait ressembler à quelque chose comme ça :</p>
 <h4 id="fichier-de-configuration">Fichier de configuration</h4>
 <pre class="code-multiline"><code id="f794ccffe4fc5f9fe5f66c00566abb74">* Service 'mailer'
 - Utiliser la classe 'MonMailer'
@@ -272,10 +277,12 @@ Depuis la rédaction de cet article sur l'injection de dépendances, le coeur de
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>L'injection de dépendances permet donc une gestion beaucoup plus claire et souple de ces différents "services". En modifiant ce fichier de configuration nous pourrions très simplement :</p>
-<ul><li>Changer la classe utilisée pour représenter un service</li>
+<ul>
+<li>Changer la classe utilisée pour représenter un service</li>
 <li>Ajouter un service</li>
 <li>Modifier / Ajouter des dépendances</li>
-</ul><h3 id="symfony-1-x-et-le-factories-yml">Symfony 1.x et le factories.yml</h3>
+</ul>
+<h3 id="symfony-1-x-et-le-factories-yml">Symfony 1.x et le factories.yml</h3>
 <p>A l'origine, sous Symfony 1.x, ce qui remplaçait plus ou moins l'injecteur de dépendances était le fichier <strong>factories.yml</strong> avec comme container l'objet <strong>sfContext</strong>. Ce fichier était chargé en cache (<strong>factories.yml.php</strong>) et les différents 'services' inclus dans l'objet <strong>sfContext</strong> au travers de sa propriété <strong>factories</strong>.</p>
 <pre class="code-multiline language-php"><code class="language-php" id="1b093262e3737cf80bc6bf23d11346f1"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">class</span> <span class="token class-name">sfContext</span> <span class="token keyword">implements</span> <span class="token class-name">ArrayAccess</span>
@@ -316,71 +323,100 @@ Depuis la rédaction de cet article sur l'injection de dépendances, le coeur de
 En premier lieu, je vous conseille vivement la lecture de la documentation de Fabien Potencier dédiée au composant:
 <a href="http://components.symfony-project.org/dependency-injection/trunk/book/00-Introduction" target="_blank">Symfony Dependency Injection</a> (il s'agit du composant php 5.2, mais la documentation est toujours d'actualité dans le sens où le fonctionnement est identique).</p>
 <p>Jetons un oeil aux sources du composant (<em>/sandbox/src/vendor/symfony/src/Symfony/Components/DependencyInjection</em>) :</p>
-<img src="/elao_/images/posts/2010/di-folder.png" alt='di folder Symfony 2   Linjection de dépendances" width="284" height="253' title='di folder Symfony 2   Linjection de dépendances" width="284" height="253' id="di-folder-symfony-2-linjection-de-dependances-width-284-height-253"><ul><li>Le répertoire <strong>*Dumper<strong> <em>va contenir les classes permettant de dumper un </em></strong>Builder*</strong> sous un format spécifique (Yaml, Xml, PHP, Graphviz).</li>
+<img src="/elao_/images/posts/2010/di-folder.png" alt='di folder Symfony 2   Linjection de dépendances" width="284" height="253' title='di folder Symfony 2   Linjection de dépendances" width="284" height="253' id="di-folder-symfony-2-linjection-de-dependances-width-284-height-253">
+<ul>
+<li>Le répertoire <strong>*Dumper<strong> <em>va contenir les classes permettant de dumper un </em></strong>Builder*</strong> sous un format spécifique (Yaml, Xml, PHP, Graphviz).</li>
 <li>Le répertoire <strong><em>Loader</em></strong> var contenir les classes permettant de charger des <strong><em>BuilderConfiguration</em></strong> à partir de formats spécifiques (Yaml, Xml, Ini)</li>
 <li><strong><em>Container</em></strong> est notre classe de base, ie le container qui va contenir les différents services et les paramètres associés.</li>
 <li><strong><em>Builder</em></strong> est une classe qui étend <strong><em>Container</em></strong> et qui va permettre d'auto-générer le <strong><em>Container</em></strong> à partir de la configuration, elle va consommer des objets de la classe <strong><em>BuilderConfiguration</em></strong> afin d'enrichir le <strong><em>Container</em></strong>.</li>
 <li><strong><em>BuilderConfiguration</em></strong> est la classe qui permet de configurer le <strong><em>Builder</em></strong>. Les objets <strong><em>BuilderConfiguration</em></strong> vont contenir des définitions de services, des ressources nécessaires au fonctionnement des services déclarés, etc...</li>
 <li><strong><em>Definition</em></strong> est la classe qui représente la définition d'un service. C'est à partir des objets de cette classe que le builder va pouvoir construire les services.</li>
-</ul><p>Le fonctionnement est somme toute assez simple. Les différents loaders vont permettre de générer des objets du type BuilderConfiguration (qui contiendront des objets Definition) qui seront mergés au sein du Builder pour aboutir à notre Container. Les dumpers permettront de faire l'opération inverse, à savoir : générer un fichier de définitions pour les formats Yaml et Xml, un output Graphviz et enfin un objet php Container en ce qui concerne le dumper PHP.
+</ul>
+<p>Le fonctionnement est somme toute assez simple. Les différents loaders vont permettre de générer des objets du type BuilderConfiguration (qui contiendront des objets Definition) qui seront mergés au sein du Builder pour aboutir à notre Container. Les dumpers permettront de faire l'opération inverse, à savoir : générer un fichier de définitions pour les formats Yaml et Xml, un output Graphviz et enfin un objet php Container en ce qui concerne le dumper PHP.
 Un schéma valant mieux qu'un long discours, on peut synthétiser le fonctionnement comme suit :
 Note: Le loader de fichiers .ini n'a pas été représenté puisqu'il ne permet que de définir des paramètres.</p>
-<img src="/elao_/images/posts/2010/injection-dependances.png" alt='injection dependances Symfony 2   Linjection de dépendances" width="846" height="468' title='injection dependances Symfony 2   Linjection de dépendances" width="846" height="468' id="injection-dependances-symfony-2-linjection-de-dependances-width-846-height-468"><p><strong>Le dumper Graphviz</strong>: Ce dumper a pour objectif de générer un dump exploitable par le logiciel <a href="http://graphviz.org/" target="_blank">Graphviz</a> ; il va nous permettre d'obtenir un graphique représentant nos services et leurs dépendances.
+<img src="/elao_/images/posts/2010/injection-dependances.png" alt='injection dependances Symfony 2   Linjection de dépendances" width="846" height="468' title='injection dependances Symfony 2   Linjection de dépendances" width="846" height="468' id="injection-dependances-symfony-2-linjection-de-dependances-width-846-height-468">
+<p><strong>Le dumper Graphviz</strong>: Ce dumper a pour objectif de générer un dump exploitable par le logiciel <a href="http://graphviz.org/" target="_blank">Graphviz</a> ; il va nous permettre d'obtenir un graphique représentant nos services et leurs dépendances.
 <strong><strong>Le cache:</strong></strong> Afin d'accélérer le fonctionnement des applications utilisant l'injection de dépendances, il est évident que les différents fichiers de configuration ne seront pas reparsés à chaque appel. En réalité, le container sera dumpé sous la forme d'une classe PHP et mise en cache.</p>
 <p>Attardons nous un peu sur ces fameuses définitions de services qui sont un peu la pierre angulaire de l'injection de dépendances.</p>
-<table style="width: 100%;" border="0"><tr><th colspan="2">
+<table style="width: 100%;" border="0">
+  <tr>
+    <th colspan="2">
       Définition d'un service (La classe Definition)
     </th>
-  </tr><tr><td>
+  </tr>
+
+  <tr>
+    <td>
       <span style="-webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; font-size: 13px; line-height: 19px;">$class</span>
     </td>
 
     <td>
       Il s'agit de la classe de base représentant le service
     </td>
-  </tr><tr><td>
+  </tr>
+
+  <tr>
+    <td>
       <span style="-webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; font-size: 13px; line-height: 19px;">$file</span>
     </td>
 
     <td>
       Eventuel fichier à inclure avant de déclarer le fichier
     </td>
-  </tr><tr><td>
+  </tr>
+
+  <tr>
+    <td>
       <span style="-webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; font-size: 13px; line-height: 19px;">$constructor</span>
     </td>
 
     <td>
       Le constructeur de la classe représentant le service
     </td>
-  </tr><tr><td>
+  </tr>
+
+  <tr>
+    <td>
       <span style="-webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; font-size: 13px; line-height: 19px;">$arguments</span>
     </td>
 
     <td>
       Les arguments à passer au constructeur
     </td>
-  </tr><tr><td>
+  </tr>
+
+  <tr>
+    <td>
       <span style="-webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; font-size: 13px; line-height: 19px;">$shared</span>
     </td>
 
     <td>
       Booléen définissant si le service est partagé (singleton) ou réinstancié quand on y accède
     </td>
-  </tr><tr><td>
+  </tr>
+
+  <tr>
+    <td>
       <span style="-webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; font-size: 13px; line-height: 19px;">$calls</span>
     </td>
 
     <td>
       Des éventuelles méthodes et leurs paramètres à appeler après avoir initialisé le service
     </td>
-  </tr><tr><td>
+  </tr>
+
+  <tr>
+    <td>
       <span style="-webkit-border-horizontal-spacing: 0px; -webkit-border-vertical-spacing: 0px; font-size: 13px; line-height: 19px;">$annotations</span>
     </td>
 
     <td>
       Annotations associées au service (nous y reviendrons plus tard)
     </td>
-  </tr></table><p>A partir de ces informations, le builder sera capable de recréer la méthode permettant d'accéder au service.
+  </tr>
+</table>
+<p>A partir de ces informations, le builder sera capable de recréer la méthode permettant d'accéder au service.
 De façon très synthétique et grossière, la définition nous permettrait d'aboutir à une méthode comme ceci:</p>
 <pre class="code-multiline language-php"><code class="language-php" id="3ab82ac5281b69656e9032b652ba4861"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getServiceXXX</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -708,6 +744,6 @@ Nous allons simplement modifier la classe associée dans la définition de ce se
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

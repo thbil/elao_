@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>4 mai 2012</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -227,19 +227,23 @@ Pour un site statique cela ne pose guère de problème puisque nous sommes dans 
 <p>Les IP failover sont, pour résumer, des interfaces "virtuelles" qui peuvent être facilement redirigées vers une machine physique, OVH propose par exemple ce système sur tous ses serveurs dédiés. Grâce à celles-ci, la problématique du downtime se pose moins, en effet une fois que notre site a été "déménagé", il suffit de modifier le pointage de cette IP failover sans impact sur le pointage des DNS.</p>
 </blockquote>
 <p><strong>Cette stratégie trouve par contre ses limites dans différents cas :</strong></p>
-<ul><li>Si l'on est dans le cas d'un serveur mutualisé (qui n'héberge donc pas qu'une seule application).</li>
+<ul>
+<li>Si l'on est dans le cas d'un serveur mutualisé (qui n'héberge donc pas qu'une seule application).</li>
 <li>S'il est impossible de faire un transfert complet des différents sites en même temps.</li>
 <li>Si l'on ne souhaite tout simplement "déménager" qu'une seule application</li>
-</ul><p>Dans le cas d'applications à l'architecture complexe pour lesquelles il est quasiment impossible d'assurer le transfert applicatif en une seule fois. On se retrouve donc souvent avec une partie des applications sur la nouvelle machine et le reste sur l'ancienne.</p>
+</ul>
+<p>Dans le cas d'applications à l'architecture complexe pour lesquelles il est quasiment impossible d'assurer le transfert applicatif en une seule fois. On se retrouve donc souvent avec une partie des applications sur la nouvelle machine et le reste sur l'ancienne.</p>
 <p>Il est heureusement possible de se servir des serveurs web comme de "reverse proxy".
 Dans le cadre de ce mémo nous utiliseront <a href="http://httpd.apache.org/" title="Apache" target="_blank">Apache</a> mais il est également possible d'utiliser <a href="http://nginx.com/" title="Nginx" target="_blank">Nginx</a>, voir même <a href="http://www.squid-cache.org/" title="Squid" target="_blank">Squid</a> qui doit être capable de faire du reverse proxy.</p>
 <p><strong>Nous partirons du principe que :</strong></p>
-<ul><li>Votre (vos) application(s) et base(s) de données ont été transférées sur leur nouveau serveur, que tout fonctionne et que tout a été vérifié par qui de droit.</li>
+<ul>
+<li>Votre (vos) application(s) et base(s) de données ont été transférées sur leur nouveau serveur, que tout fonctionne et que tout a été vérifié par qui de droit.</li>
 <li>Un nouveau "Virtual Host" (désolé ça ne veux pas avec "Hôte virtuel" ...), a été configuré et est fonctionnel.</li>
 <li>Les mods <code class="code-inline" id="431387eb7262e1cfc79b125eb8a67c60">proxy</code> et <code class="code-inline" id="21ca3d34bc556c5e2aa77fdbfb78a618">[proxy_http][4]</code> sont "chargés" par Apache sur notre serveur d'origine.</li>
 <li>Le site à déplacer sera <code class="code-inline" id="e7cbcfb06a5b315657e7f06281d1aed3">www.my-domain.com</code>.</li>
 <li>L'IP du "nouveau" serveur sera XXX.XXX.XXX.XXX</li>
-</ul><p><strong>Tout le reste se passe du coté de "l'ancien" serveur, nous commencerons par modifier la résolution de nom local concernant le domaine concerné en éditant le fichier <code class="code-inline" id="ad942c725cd0cae65ca4c63717ec464c">/etc/hosts</code> pour y rajouter l'entrée suivante :</strong></p>
+</ul>
+<p><strong>Tout le reste se passe du coté de "l'ancien" serveur, nous commencerons par modifier la résolution de nom local concernant le domaine concerné en éditant le fichier <code class="code-inline" id="ad942c725cd0cae65ca4c63717ec464c">/etc/hosts</code> pour y rajouter l'entrée suivante :</strong></p>
 <blockquote>
 <p>XXX.XXX.XXX.XXX www.my-domain.com</p>
 </blockquote>
@@ -360,6 +364,6 @@ Nous pouvons dès lors demander la redirection du nom de domaine vers l'IP du "n
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

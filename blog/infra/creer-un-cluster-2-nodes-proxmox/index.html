@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>16 janvier 2015</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -223,15 +223,19 @@
 <p>Le "cluster" Proxmox permet notamment de faire de la migration de container d'une machine à une autre "à chaud", de gérer l'ensemble de ces containers à partir de l'un ou l'autre des hyperviseurs ... bref rien d'indispensable en soit mais pas mal de petites choses foutrement utiles.</p>
 <p>Pour ceux d'entres vous qui souhaitent faire ça entre deux data-centres différents je ne saurais que trop vous recommander la solution vRack fournie par OVH qui remplacera de manière simple, fiable et sécurisée les bons vieux VPN.</p>
 <h2 id="installer-promox">Installer Promox</h2>
-<img src="https://placeimg.com/300/300/any" alt="" class="outside-left" id="any"><p>Rien de surprenant ici, la première étape consistera à installer une distribution Proxmox sur vos deux machines.</p>
+<img src="https://placeimg.com/300/300/any" alt="" class="outside-left" id="any">
+<p>Rien de surprenant ici, la première étape consistera à installer une distribution Proxmox sur vos deux machines.</p>
 <p>L'installation de base de la distribution peut convenir pour tester la solution mais dans le cas d'une exploitation un peu plus poussée je vous conseille de jeter un oeil à <a href="http://www.elao.com/fr/blog/partitionnement-d-un-serveur-proxmox" target="_blank"><strong>ce post</strong></a> qui concerne le partitionement des machines.</p>
 <h2 id="preparer-le-reseau">Préparer le réseau</h2>
-<img src="https://placeimg.com/400/400/any" alt="" class="outside-right" id="any"><p>Condition indispensable à nos machines pour qu'elle puisse fonctionner sous forme de cluster, il faut qu'elles soient capables de faire du "<a href="http://fr.wikipedia.org/wiki/Multicast" target="_blank">multicast</a>".</p>
+<img src="https://placeimg.com/400/400/any" alt="" class="outside-right" id="any">
+<p>Condition indispensable à nos machines pour qu'elle puisse fonctionner sous forme de cluster, il faut qu'elles soient capables de faire du "<a href="http://fr.wikipedia.org/wiki/Multicast" target="_blank">multicast</a>".</p>
 <p>Le premier piège à éviter est donc celui de s'assurer que les deux machines peuvent dialoguer sur un même réseau sécurisé. C'est là qu'entre en jeu la technologie <a href="https://www.ovh.com/fr/solutions/vrack/" target="_blank">vRack</a> d'OVH ou un bon vieux VPN.</p>
 <p>En imaginant que nous ayont configuré un réseau local (privé) 172.16.0.0 nous avons donc deux machines:</p>
-<ul><li>Tartanpion, ayant pour IP publique 87.37.23.91 et pour IP privée 172.16.0.1</li>
+<ul>
+<li>Tartanpion, ayant pour IP publique 87.37.23.91 et pour IP privée 172.16.0.1</li>
 <li>Bismuth, ayant pour IP publique  76.32.45.12 et pour IP privée 172.16.0.2</li>
-</ul><p>Sous cette forme, une légère modification au niveau du fichier <code class="code-inline" id="ad942c725cd0cae65ca4c63717ec464c">/etc/hosts</code> de chacune de vos machines est nécessaire.
+</ul>
+<p>Sous cette forme, une légère modification au niveau du fichier <code class="code-inline" id="ad942c725cd0cae65ca4c63717ec464c">/etc/hosts</code> de chacune de vos machines est nécessaire.
 Avec une configuration standard nous aurons donc dans ce fichier (pour tartanpion)</p>
 <pre class="code-multiline"><code id="7fd28392f9c8437bf98241fa04e5961b">127.0.0.1   localhost.localdomain localhost
 87.37.23.91 tartanpion.elao.local tartanpion</code></pre>
@@ -243,7 +247,8 @@ Avec une configuration standard nous aurons donc dans ce fichier (pour tartanpio
 <p>Avec cette configuration notre noeud Proxmox (tartanpion) s'auto résoudra bien en utilisant son IP privée lors du dialogue avec le deuxième noeud (bismuth).
 Cette modification a pour but de "forcer" les hyperviseurs à dialoguer entre eux via leur IP privée de manière sécurisée, mais également de pouvoir faire du multicast sur ce réseau.
 La modification est bien entendu, à faire sur les deux noeuds qui constituerons notre futur cluster (cette modification est valable pour l'ensemble des machines membres de votre cluster).</p>
-<img src="https://placeimg.com/640/280/any" alt="" class="full" id="any"><h2 id="creer-un-cluster-proxmox-et-y-ajouter-des-noeuds">Créer un cluster proxmox et y ajouter des noeuds</h2>
+<img src="https://placeimg.com/640/280/any" alt="" class="full" id="any">
+<h2 id="creer-un-cluster-proxmox-et-y-ajouter-des-noeuds">Créer un cluster proxmox et y ajouter des noeuds</h2>
 <p>La création d'un cluster et l'ajout d'un ou plusieurs noeuds ne posent en soit guère de problème, il faudra toutefois faire attention à la notion de quorum dans notre cluster (nous en parlerons plus tard).</p>
 <p>Sur l'un des deux hyperviseurs (peu importe lequel), créons le cluster ayant pour nom "elao":</p>
 <pre class="code-multiline"><code id="d037a64f924566746027b448605c3201">pvecm create elao</code></pre>
@@ -279,7 +284,8 @@ Node addresses: 172.16.0.1</code></pre>
 </blockquote>
 <p>Pour faire rapide le fonctionnement d'un cluster haute disponibilité fonctionne à partir de ce principe de quorum qui représente le nombre minimal de vote lors d'une délibération pour prendre une décision.
 Dans notre cas avec 2 machines nous ne pouvons pas avoir de quorum lors d'un incident, nos noeuds vont donc passer en lecture-seule pour éviter de se retrouver dans un état de <a href="http://en.wikipedia.org/wiki/Split-brain_(computing)" target="_blank">"<strong>split-brain</strong>"</a> (écriture sur les différents noeuds sans concertation). Etat désastreux pour une infra, qui peut amener une perte de données plus ou moins importante.</p>
-<img src="https://placeimg.com/640/480/any" alt="" class="center" id="any"><p>Pour l'instant un <code class="code-inline" id="59ac3009b3f898262a3c565cea44b9d7">pvecm status</code> doit retourner quelque chose comme:</p>
+<img src="https://placeimg.com/640/480/any" alt="" class="center" id="any">
+<p>Pour l'instant un <code class="code-inline" id="59ac3009b3f898262a3c565cea44b9d7">pvecm status</code> doit retourner quelque chose comme:</p>
 <pre class="code-multiline"><code id="ac2e02fa9189a7564c166cc5895240be">Version: 6.2.0
 Config Version: 2
 Cluster Name: elao
@@ -447,6 +453,6 @@ Node addresses: 172.16.0.1</code></pre>
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

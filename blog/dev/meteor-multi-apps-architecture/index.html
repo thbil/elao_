@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>23 juin 2015</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -221,12 +221,16 @@
   <div class="article-content">
     <main class="article-content__main">
       <body><p>Etant donnée que Meteor envoie tous les fichiers du projet aux clients web (hormis les dossiers spéciaux tels que <code class="code-inline" id="90ba4f4e30c3bc345088ef67ce3864dd">/server</code>, <code class="code-inline" id="770b76f7b7b90b1c020ff5111c7b62af">/private</code>, <code class="code-inline" id="15276d0be2c414e04b17f65f7b1d8323">/public</code>), toute l'application est packagée et envoyée.<!--more--> Cela pose plusieurs problèmes dont :</p>
-<ul><li>la difficulté d'alléger la masse de code envoyé au client (templates html + helpers &amp; libs js + styles css) ;</li>
+<ul>
+<li>la difficulté d'alléger la masse de code envoyé au client (templates html + helpers &amp; libs js + styles css) ;</li>
 <li>la difficulté de "protéger" son application par omission de code (typiquement le code de la partie <code class="code-inline" id="11f6b3285bf71a87811c3dadccb7b166">/admin</code> ne devrait être envoyé qu'aux utilisateurs de type admin).</li>
-</ul><p>Pour palier à ces problèmes, nous architecturons notre application en 2 sous-applications :</p>
-<ul><li>le <em>front</em> pour les users standards (sur le domaine <code class="code-inline" id="afaf2cbcfe2083746d53675d37fcb0cb">http://project.dev</code> par exemple)</li>
+</ul>
+<p>Pour palier à ces problèmes, nous architecturons notre application en 2 sous-applications :</p>
+<ul>
+<li>le <em>front</em> pour les users standards (sur le domaine <code class="code-inline" id="afaf2cbcfe2083746d53675d37fcb0cb">http://project.dev</code> par exemple)</li>
 <li>le <em>back</em> pour les administrateurs (sur le sous-domaine <code class="code-inline" id="a0136bd45a1f1f482aefc5fb5c4cd49b">http://admin.project.dev</code> par exemple)</li>
-</ul><p>Ces deux applications utilisent les mêmes données et doivent donc accéder à la même base de données.</p>
+</ul>
+<p>Ces deux applications utilisent les mêmes données et doivent donc accéder à la même base de données.</p>
 <h2 id="architecture-des-dossiers-fichiers">Architecture des dossiers/fichiers</h2>
 <pre class="code-multiline"><code id="ab553bae03a0aa2f549c39d10810999b">➜  my-project  tree -a
 .
@@ -367,6 +371,6 @@
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

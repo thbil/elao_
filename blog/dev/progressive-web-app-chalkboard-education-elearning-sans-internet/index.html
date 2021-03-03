@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>22 novembre 2017</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -252,23 +252,28 @@ Une première preuve de concept a été réalisée en <a href="https://facebook.
 résultat une application Android déployée sur Google Play Store à destination de plusieurs centaines d'étudiant•e•s de
 l'University Of Ghana.</p>
 <p class="text-center">
-    <img src="/elao_/images/posts/2017/chalkboard-education/app-react-native.png" alt="React native app" id="react-native-app"></p>
+    <img src="/elao_/images/posts/2017/chalkboard-education/app-react-native.png" alt="React native app" id="react-native-app">
+</p>
 <h2 id="progressive-web-app">Progressive Web App</h2>
 <p>Avec l'émergence des <a href="/fr/dev/la-revanche-du-web-par-les-progressive-web-apps/">Progressive Web Apps</a>, nous avons
 conseillé Chalkboard Education de revenir au web pour plusieurs raisons :</p>
-<ul><li>Le public visé est majoritairement sur Android, OS pour lequel actuellement les navigateurs supportent le mieux le
+<ul>
+<li>Le public visé est majoritairement sur Android, OS pour lequel actuellement les navigateurs supportent le mieux le
 Service Worker et le Web App Manifest, éléments clés du concept de Progressive Web App.</li>
 <li>Avec une application web, la couverture des appareils ciblés est beaucoup plus large.</li>
 <li>Le coût du développement est moins important que le développement d'applications natives pour Android et iOS.</li>
 <li>Le poids d'une web app est beaucoup moins important qu'une application native ce qui est un avantage pour des
 populations ayant un accès limité à Internet.</li>
 <li>La fréquence de mise à jour est plus simple et ne dépend pas de la bonne volonté des stores d'applications.</li>
-</ul><p>En quoi Chalkboard Education est une Progressive Web App ?</p>
-<ul><li>Le <em>front</em> déclare un <a href="https://developer.mozilla.org/fr/docs/Web/Manifest" target="_blank">manifeste d'une application web</a> permettant
+</ul>
+<p>En quoi Chalkboard Education est une Progressive Web App ?</p>
+<ul>
+<li>Le <em>front</em> déclare un <a href="https://developer.mozilla.org/fr/docs/Web/Manifest" target="_blank">manifeste d'une application web</a> permettant
 d'installer Chalkboard Education sur l'écran d'accueil du smartphone ou tablette.</li>
 <li>Utilisation hors-ligne de l'application : tous les contenus sont pré-chargés et mis en cache permettant la consulation
 des cours par les étudiant•e•s sans Internet.</li>
-</ul><h3 id="react-et-redux">React et Redux ♥️</h3>
+</ul>
+<h3 id="react-et-redux">React et Redux ♥️</h3>
 <p>Il était évident pour nous que l'application front devrait être autonome et mise en cache navigateur.
 Nous avons fait le choix de
 <a href="https://github.com/facebookincubator/create-react-app" target="_blank">React</a>, avec du routing géré par
@@ -278,23 +283,28 @@ et des états gérés par <a href="https://github.com/reactjs/redux" target="_bl
 <p>L'étudiant•e reçoit son accès par SMS contenant un lien permettant de l'identifier. A l'ouverture de l'application, le
 contenu des cours est préchargé. La progression du chargement est affichée en haut de l'interface :</p>
 <div style="text-align:center;">
-<video src="images/posts/2017/chalkboard-education/demo-chalkboard.mp4" loop autoplay style="height:500px; border:1px solid #333"></video></div>
+<video src="images/posts/2017/chalkboard-education/demo-chalkboard.mp4" loop autoplay style="height:500px; border:1px solid #333"></video>
+</div>
 <h3 id="ui-ux-inspirees-des-applications-natives">UI/UX inspirées des applications natives</h3>
 <p>Pour l'UI de l'application, nous avons utilisé <a href="http://www.material-ui.com/" target="_blank">Material UI</a>, un ensemble de composants
 React qui implémente les bonnes pratiques <em>Material Design</em> édictées par Google.</p>
 <p class="text-center">
-    <img src="/elao_/images/posts/2017/chalkboard-education/submit-progression.png" alt="Submit progression" style="height:500px; border:1px solid #333" id="submit-progression"></p>
+    <img src="/elao_/images/posts/2017/chalkboard-education/submit-progression.png" alt="Submit progression" style="height:500px; border:1px solid #333" id="submit-progression">
+</p>
 <p>Nous avons également travaillé l'UX pour mobile afin de s'approcher de l'UX des applications natives. Pour cela, nous
 nous sommes inspirés d'applications existantes et nous nous sommes fixé quelques règles :</p>
-<ul><li>Barre de navigation fixée en haut.</li>
+<ul>
+<li>Barre de navigation fixée en haut.</li>
 <li>Éviter les formulaires : un formulaire avec deux champs radio a été remplacé par deux boutons par exemple.</li>
 <li>Centrer à l'écran les actions à faire par l'utilisateur.</li>
 <li>Ecran simple avec une seule action à faire:
-<ul><li>choisir un cours dans une liste,</li>
+<ul>
+<li>choisir un cours dans une liste,</li>
 <li>lire un cours et passer à la suite</li>
 <li>valider sa progression en choisissant parmi SMS ou Internet...</li>
 </ul></li>
-</ul><p>Le développement était testé sur un ancien smartphone Android avec une ancienne version de Chrome afin de se mettre
+</ul>
+<p>Le développement était testé sur un ancien smartphone Android avec une ancienne version de Chrome afin de se mettre
 quasi en conditions réelles.</p>
 <h3 id="mobile-first-et-offline-first">Mobile-first et Offline-first</h3>
 <p>L'application web de Chalkboard Education a été conçue à la fois pour un usage en <em>Mobile-first</em> et un usage en
@@ -302,13 +312,15 @@ quasi en conditions réelles.</p>
 <p>L'étudiant•e avec son téléphone connecté à un <em>hotspot wifi</em> télécharge les contenus, cours et images à la première
 connexion.</p>
 <p>Les contenus sont stockés de différentes manières dans le navigateur de l'étudiant•e:</p>
-<ul><li>le contenu du cours est dans le store Redux et persisté en
+<ul>
+<li>le contenu du cours est dans le store Redux et persisté en
 <a href="https://developer.mozilla.org/fr/docs/Web/API/Storage/LocalStorage" target="_blank">localStorage</a>,</li>
 <li>les médias (images) du cours sont stockés en
 <a href="https://developer.mozilla.org/fr/docs/Web/API/CacheStorage" target="_blank">CacheStorage</a>
 grâce au
 <a href="https://developer.mozilla.org/fr/docs/Web/API/ServiceWorker" target="_blank">Service Worker</a> déclaré par l'application.</li>
-</ul><p>L'étudiant•e peut ainsi consulter les cours hors connexions.</p>
+</ul>
+<p>L'étudiant•e peut ainsi consulter les cours hors connexions.</p>
 <p>Une vérification de mise à jour est faite toutes les 24h si l'utilisateur a une connexion internet.
 Il est indiqué le nombre de Ko à télécharger pour chaque mise à jour.</p>
 <p><a href="https://github.com/rt2zz/redux-persist" target="_blank">Redux Persist</a> permet de persister le <em>store Redux</em> en
@@ -340,14 +352,18 @@ hors-ligne sans que l'url ait été visitée au préalable, il est quasi indispe
 (/#/whatever) et le <a href="https://reacttraining.com/react-router/web/api/HashRouter" target="_blank">HashRouter</a> de React Router fait le boulot.</p>
 <h3 id="api-graphql">API GraphQL ♥️</h3>
 <p>Nous avons choisi d'implémenter une API <a href="http://graphql.org/" target="_blank">GraphQL</a> au lieu de REST :</p>
-<ul><li>pour minimiser le nombre de requêtes HTTP,</li>
+<ul>
+<li>pour minimiser le nombre de requêtes HTTP,</li>
 <li>laisser le <em>front</em> choisir les contenus qu'il souhaite utiliser,</li>
 <li>parce que GraphQL c'est quand même bien cool.</li>
-</ul><p>Par exemple dans la requête suivante le <em>front</em> demande à la fois :</p>
-<ul><li>un <em>currentDate</em> (une date serveur),</li>
+</ul>
+<p>Par exemple dans la requête suivante le <em>front</em> demande à la fois :</p>
+<ul>
+<li>un <em>currentDate</em> (une date serveur),</li>
 <li>la liste des <em>courses</em> (ses <em>folders</em>, les <em>sessions</em> des <em>folders</em>, les <em>files</em> des <em>sessions</em>),</li>
 <li>et le <em>user</em> courant.</li>
-</ul><pre class="code-multiline language-js"><code class="language-js" id="900b4311a8128eaabeda244c2d88ee37"><span class="token comment">// src/graphql/query/CoursesQuery.js</span>
+</ul>
+<pre class="code-multiline language-js"><code class="language-js" id="900b4311a8128eaabeda244c2d88ee37"><span class="token comment">// src/graphql/query/CoursesQuery.js</span>
 <span class="token keyword module">import</span> <span class="token imports">gql</span> <span class="token keyword module">from</span> <span class="token string">'graphql-tag'</span><span class="token punctuation">;</span>
 
 <span class="token keyword module">export</span> <span class="token keyword module">default</span> gql<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token graphql language-graphql">
@@ -453,7 +469,8 @@ module<span class="token punctuation">.</span><span class="token property-access
 <p>Sur Chalkboard Education, l'étudiant•e doit valider sa progression. Pour cela il lui est laissé le choix d'utiliser
 internet ou... le SMS.</p>
 <p class="text-center">
-    <img src="/elao_/images/posts/2017/chalkboard-education/submit-validation.png" alt="Submit validation by SMS" style="height:500px; border:1px solid #333" id="submit-validation-by-sms"></p>
+    <img src="/elao_/images/posts/2017/chalkboard-education/submit-validation.png" alt="Submit validation by SMS" style="height:500px; border:1px solid #333" id="submit-validation-by-sms">
+</p>
 <p>Un code est généré par l'application web. Ce code est envoyé par SMS par l'étudiant•e à un numéro donné.</p>
 <p>A noter que pour déclencher la rédaction d'un SMS sous Android, il est possible d'utiliser un lien HTML avec
 le <em>scheme</em> <code class="code-inline" id="011b9c49959114e5a18897e14b63bf66">sms:</code></p>
@@ -471,15 +488,18 @@ javascript <em>buildés</em>. Sur ce projet, nous avons essayé d'avoir le minim
 <h3 id="audit">Audit</h3>
 <p>Le panel Audit de Chrome indique qu'on est plutôt pas mal :</p>
 <p class="text-center">
-    <img src="/elao_/images/posts/2017/chalkboard-education/audit.png" alt="Audit" id="audit"></p>
+    <img src="/elao_/images/posts/2017/chalkboard-education/audit.png" alt="Audit" id="audit">
+</p>
 <h2 id="back-office-et-api-avec-symfony">Back office et API avec Symfony ♥️</h2>
 <p>Chalkboard Education a besoin d'un back-office d'administration permettant de :</p>
-<ul><li>gérer les étudiant•e•s (créer, importer),</li>
+<ul>
+<li>gérer les étudiant•e•s (créer, importer),</li>
 <li>saisir les contenus des cours,</li>
 <li>assigner des cours aux étudiant•e•s,</li>
 <li>envoyer un SMS contenant l'url d'accès à un.e étudiant•e,</li>
 <li>voir la progression des étudiant•e•s pour chaque cours.</li>
-</ul><p>Le back-office permet aussi de traiter automatiquement des SMS reçu contenant des codes de validation de session et
+</ul>
+<p>Le back-office permet aussi de traiter automatiquement des SMS reçu contenant des codes de validation de session et
 d'envoyer à l'étudiant•e un SMS en retour contenant un lien d'activation.</p>
 <p>Etant donné que l'on connait bien Symfony, c'était la solution idéale pour rapidement <em>bootstraper</em> le back office
 d'administration et l'API.</p>
@@ -490,11 +510,13 @@ fonctionnalités du Back-Office.</p>
 <p>Pour tous nos <em>controllers</em>, nous nous sommes inspirés du <em>pattern Action-Domain-Response (ADR)</em> avec les
 <a href="http://symfony.com/doc/current/controller/service.html#invokable-controllers" target="_blank">Invokable Controllers</a>.</p>
 <p>Cela a beaucoup d'avantages :</p>
-<ul><li>Une classe <em>controller</em> = une action.</li>
+<ul>
+<li>Une classe <em>controller</em> = une action.</li>
 <li>Peu de ligne de code dans un <em>controller</em> : <em>Keep It Simple Stupid</em>.</li>
 <li>Cela pousse à découpler le code, et toute logique hors <em>controller</em> est déportée dans des services du domaine.</li>
 <li>Une classe de <em>controller</em> est ainsi facilement testable unitairement.</li>
-</ul><p>Exemple de "nouveau" <em>controller</em> :</p>
+</ul>
+<p>Exemple de "nouveau" <em>controller</em> :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="c967f7d6551f73b5c8a437bd99bc300c"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Ui<span class="token punctuation">\</span>Admin<span class="token punctuation">\</span>Action<span class="token punctuation">\</span>Course</span><span class="token punctuation">;</span>
@@ -714,6 +736,6 @@ je vais faire progresser le monde. »
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

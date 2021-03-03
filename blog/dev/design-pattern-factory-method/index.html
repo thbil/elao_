@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>10 avril 2017</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -215,19 +215,24 @@
   <div class="article-content">
     <main class="article-content__main">
       <body><p>Plan de l'article :</p>
-<ul><li><a href="#biblio">Repères bibliographiques</a></li>
+<ul>
+<li><a href="#biblio">Repères bibliographiques</a></li>
 <li><a href="#not-a-pipe">Ceci n'est pas une pipe</a></li>
 <li><a href="#factory-method">Le Design Pattern 'Factory Method'</a></li>
-</ul><h2 id="quelques-reperes-bibliographiques-en-guise-de-preambule"><a name="biblio"></a> Quelques repères bibliographiques en guise de préambule</h2>
+</ul>
+<h2 id="quelques-reperes-bibliographiques-en-guise-de-preambule"><a name="biblio"></a> Quelques repères bibliographiques en guise de préambule</h2>
 <p>Avant d'entrer dans le vif du sujet en abordant notre premier Design Pattern, permettez-moi de citer deux ouvrages incontournables lorsque l'on évoque ce sujet.</p>
 <p class="text-center">
     {{}}
-    <figcaption style="text-align: center;font-style: italic;">Design Patterns: Elements of Reusable Object-Oriented Software</figcaption></p>
+    <figcaption style="text-align: center;font-style: italic;">Design Patterns: Elements of Reusable Object-Oriented Software</figcaption>
+</p>
 <p>En effet, difficile d'entamer une série d'articles consacrés aux Design Patterns sans faire référence à la bible en la matière : <em>Design Patterns: Elements of Reusable Object-Oriented Software</em>. Ce livre publié en 1994 par quatre développeurs, Gamma, Helm, Johnson et Vlissides, plus connus sous le nom du <em>Gang of Four</em>, recense 23 Design Patterns classés en trois catégories :</p>
-<ul><li>les Design Patterns de création</li>
+<ul>
+<li>les Design Patterns de création</li>
 <li>les Design Patterns comportementaux (<em>Behavior</em>)</li>
 <li>les Design Patterns structurels</li>
-</ul><p>Le Design Pattern que nous allons étudier aujourd'hui (<em>Factory Method</em>) appartient à la première catégorie.</p>
+</ul>
+<p>Le Design Pattern que nous allons étudier aujourd'hui (<em>Factory Method</em>) appartient à la première catégorie.</p>
 <p>Bien qu'écrit il y a plus de vingt ans, ce livre fait toujours autorité et c'est à lui qu'il faut se référer lorsque l'on souhaite connaître l'anatomie d'un Pattern ou éviter les quiproquos au sein d'une équipe de développeurs. Il n'est pas forcément d'une lecture agréable et s'apparente plus à un annuaire ou un dictionnaire : le lire peut s'avérer rébarbatif, mais il est indispensable de le garder à portée de main pour y trouver les informations dont on a besoin.</p>
 <p>Je ne m'étendrai pas sur la définition exacte d'un Design Pattern, ni sur le formalisme à adopter pour présenter un pattern (le livre le fait très bien), ni sur les principes qui sous-tendent une bonne conception objet (comme l'acronyme SOLID par exemple) car nous aurons l'occasion d'y revenir au moment d'aborder certains patterns.</p>
 <div class="aside-note">
@@ -235,7 +240,8 @@ On peut déplorer que la plupart des exemples du livre s'appuient sur le langage
 </div>
 <p class="text-center">
     {{}}
-    <figcaption style="text-align: center;font-style: italic;">Head First Design Patterns</figcaption></p>
+    <figcaption style="text-align: center;font-style: italic;">Head First Design Patterns</figcaption>
+</p>
 <p>Complément idéal à la bible des Design Patterns, <em>Head First Design Patterns</em> (O'Reilly 2004) constitue une excellente introduction aux principaux design patterns. Par rapport au premier ouvrage, il adopte une démarche résolument pratique et recourt à un éventail remarquable de techniques pédagogiques pour aborder les design patterns (traits d'humour, schémas explicatifs, dialogues fictifs en situation autour des différents patterns, démarches didactiques, etc.). Apprendre les design patterns peut s'avérer fastidieux, mais rien de tout ça ici ! Je recommande particulièrement cet ouvrage si vous souhaitez vous initier aux design patterns sans drame ... Par ailleurs, la plupart des exemples s'appuient sur le langage Java, beaucoup plus abordable et actuel que Smalltalk.</p>
 <p>Enfin, je ne peux passer sous silence deux autres ouvrages qui me paraissent fondamentaux s'agissant de conception objet, à savoir <em>Domain-Driven Design: Tackling Complexity in the Heart of Software</em> d'Eric Evans (livre pas forcément très digeste mais dont on ne peut pas ignorer l'influence) et <em>Catalog of Patterns of Enterprise Application Architecture</em> de Martin Fowler : qu'est-ce qui définit exactement une entité ? un value object ? un repository ? etc. Nous avons tous une vague idée de ces concepts mais c'est dans cet ouvrage que se trouvent les réponses à ces questions.</p>
 <h2 id="ceci-n-est-pas-une-pipe"><a name="not-a-pipe"></a> Ceci n'est pas une pipe</h2>
@@ -257,12 +263,14 @@ On peut déplorer que la plupart des exemples du livre s'appuient sur le langage
 <p>Ne me faites pas dire ce que je n'ai pas dit ... Je ne prétends pas du tout que le code ci-dessus relève d'une mauvaise conception. Ni que cette classe n'est pas une <em>factory</em>. Simplement, si l'on se réfère à la définition exacte du pattern <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code>, on s'apercevra que l'on n'est pas en présence d'un pattern.</p>
 <p>Pour autant, cela ne signifie pas que ce code mérite l'anathème, loin de là. J'évoquais tout à l'heure les principes d'une bonne conception objet, et parmi les bonnes pratiques, il est préconisé d'isoler ce qui varie (<em>encapsulate what varies</em>). Or c'est exactement ce que fait cette classe : elle isole en son sein un pan de code qui repose sur un embranchement (<em>switch</em>). De ce point de vue, ce code est parfaitement valide.</p>
 <p>Noter que cette bonne pratique objet qui consiste à isoler ce qui varie est mentionnée parmi d'autres dans le livre <em>Head First Design Pattern</em>. Citons-en quelques-unes :</p>
-<ul><li>favoriser la composition plutôt que l'héritage (citée également par le <em>Gang of Four</em>)</li>
+<ul>
+<li>favoriser la composition plutôt que l'héritage (citée également par le <em>Gang of Four</em>)</li>
 <li>programmer pour des interfaces plutôt que pour des implémentations (<em>idem</em>)</li>
 <li>s'efforcer de limiter le couplage entre les objets qui collaborent (<em>strive for loosely couple designs between objects that interact</em>)</li>
 <li>les classes devraient être ouvertes à l'extension mais fermées à la modification</li>
 <li>etc.</li>
-</ul><p>Mais nous aurons l'occasion d'y revenir ...</p>
+</ul>
+<p>Mais nous aurons l'occasion d'y revenir ...</p>
 <h2 id="notre-premier-dp-la-factory-method"><a name="factory-method"></a> Notre premier DP : la <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code></h2>
 <h3 id="introduction">Introduction</h3>
 <p>Les principes d'une bonne conception objet recommandent de programmer pour des interfaces plutôt que des implémentations (c'est au demeurant un principe qui s'accommode très bien avec celui de l'injection de dépendance). Concrètement, cela consiste par exemple à privilégier des méthodes de classes qui acceptent en arguments des interfaces (ou classes abstraites) plutôt que des classes concrètes. Cela étant, même si l'on programme pour des interfaces, nous devons nécessairement nous résoudre à instancier des objets concrets pour que notre application s'exécute. Et c'est là qu'entrent en scène les design patterns de création, et notamment les deux Design patterns de <em>Factory</em> identifiés par le <em>Gang of Four</em>, à savoir la <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> et l'<code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code>.</p>
@@ -277,14 +285,17 @@ On peut déplorer que la plupart des exemples du livre s'appuient sur le langage
 <h3 id="schema">Schéma</h3>
 <p class="text-center">
     {{}}
-    <figcaption style="text-align: center;font-style: italic;">Schéma du Design Pattern 'Factory Method'</figcaption></p>
+    <figcaption style="text-align: center;font-style: italic;">Schéma du Design Pattern 'Factory Method'</figcaption>
+</p>
 <h3 id="participants">Participants</h3>
 <p>On distingue sur le schéma ci-dessus les participants suivants :</p>
-<ul><li>Le créateur : classe concrète ou abstraite notamment chargée de <em>fabriquer</em> l'objet attendu</li>
+<ul>
+<li>Le créateur : classe concrète ou abstraite notamment chargée de <em>fabriquer</em> l'objet attendu</li>
 <li>Le créateur concret : il étend <em>Creator</em> et instancie l'objet attendu</li>
 <li>Le produit : c'est l'interface de l'objet à instancier</li>
 <li>Le produit concret : c'est l'objet à instancier</li>
-</ul><h3 id="expose-de-la-problematique">Exposé de la problématique</h3>
+</ul>
+<h3 id="expose-de-la-problematique">Exposé de la problématique</h3>
 <pre class="code-multiline language-php"><code class="language-php" id="438c1fddeeed1ec109f41d0f90008f5e"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
     <span class="token keyword">class</span> <span class="token class-name">OrderHandler</span> <span class="token punctuation">{</span>
         <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">orderProduct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Order</span> <span class="token variable">$order</span><span class="token punctuation">,</span> <span class="token keyword type-hint">int</span> <span class="token variable">$qty</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">Product</span> <span class="token punctuation">{</span>
@@ -298,10 +309,12 @@ On peut déplorer que la plupart des exemples du livre s'appuient sur le langage
     <span class="token punctuation">}</span></span></code></pre>
 <p>La classe <code class="code-inline" id="f454b76d1cda09695d0fe30bb3447acd">OrderHandler</code> contient notamment une méthode <code class="code-inline" id="4452382afcfa03da536e0f17ebe42d6d">orderProduct</code> qui retourne un produit commandé après l'avoir instancié. Par rapport à notre schéma ci-dessus, <code class="code-inline" id="f454b76d1cda09695d0fe30bb3447acd">OrderHandler</code> correspondrait au <code class="code-inline" id="ef1d00d8a237a1bbe431e1091f5715fb">Creator</code> tandis que <code class="code-inline" id="deb10517653c255364175796ace3553f">Product</code> correspondrait à <code class="code-inline" id="87570424120ece0aa466a2ac89cd6d69">ConcreteProduct</code>.</p>
 <p>Nous pouvons craindre que cette classe <code class="code-inline" id="f454b76d1cda09695d0fe30bb3447acd">OrderHandler</code> et la classe concrète <code class="code-inline" id="deb10517653c255364175796ace3553f">Product</code> soient trop étroitement liées. En effet, que se passe-t-il si nous devons gérer d'autres types de produits (des produits matériels, mais aussi des prestations de services par exemple) ? Dans son état actuel, la classe <code class="code-inline" id="f454b76d1cda09695d0fe30bb3447acd">OrderHandler</code> nous lie trop fortement à la classe <code class="code-inline" id="deb10517653c255364175796ace3553f">Product</code>. Nous avons notamment enfreint plusieurs recommandations :</p>
-<ul><li>notre classe n'est pas ouverte à l'extension,</li>
+<ul>
+<li>notre classe n'est pas ouverte à l'extension,</li>
 <li>nous n'avons pas développé pour des interfaces,</li>
 <li>nous avons créé un couplage très fort (trop fort ?) entre nos deux classes.</li>
-</ul><p>Il est possible qu'en l'état actuel de l'application, ce code fasse parfaitement l'affaire. Mais il est préférable de rendre son code ouvert aux évolutions, et c'est particulièrement vrai lorsque l'on développe des services destinés à être consommés par des tiers (librairie <em>open source</em> par exemple) ou bien des classes métiers dont les spécifications sont susceptibles d'évoluer fréquemment.</p>
+</ul>
+<p>Il est possible qu'en l'état actuel de l'application, ce code fasse parfaitement l'affaire. Mais il est préférable de rendre son code ouvert aux évolutions, et c'est particulièrement vrai lorsque l'on développe des services destinés à être consommés par des tiers (librairie <em>open source</em> par exemple) ou bien des classes métiers dont les spécifications sont susceptibles d'évoluer fréquemment.</p>
 <h3 id="le-design-pattern-factory-method-a-la-rescousse">Le design pattern <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> à la rescousse</h3>
 <p>Nous allons à présent modifier notre classe <code class="code-inline" id="f454b76d1cda09695d0fe30bb3447acd">OrderHandler</code> pour nous rapprocher du pattern :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="21e2b1250e9a91bef21ab903fc656839"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
@@ -323,9 +336,11 @@ On peut déplorer que la plupart des exemples du livre s'appuient sur le langage
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span></span></code></pre>
 <p>Les modifications apportées consistent à :</p>
-<ul><li>introduire une interface <code class="code-inline" id="b1e2398023779dfea602f3526b414d59">OrderableInterface</code> qu'implémente désormais <code class="code-inline" id="deb10517653c255364175796ace3553f">Product</code></li>
+<ul>
+<li>introduire une interface <code class="code-inline" id="b1e2398023779dfea602f3526b414d59">OrderableInterface</code> qu'implémente désormais <code class="code-inline" id="deb10517653c255364175796ace3553f">Product</code></li>
 <li>déporter dans une méthode dédiée (<code class="code-inline" id="1c43c67bab8db278ba27b2e3d4df467e">createProduct</code>) l'instanciation d'un produit concret (<code class="code-inline" id="deb10517653c255364175796ace3553f">Product</code>)</li>
-</ul><h3 id="commentaires">Commentaires</h3>
+</ul>
+<h3 id="commentaires">Commentaires</h3>
 <p>On note tout d'abord, comme le laisse deviner la classe <code class="code-inline" id="f454b76d1cda09695d0fe30bb3447acd">OrderHandler</code>, que le pattern <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> est souvent implémenté par des classes dont la création de produit n'est pas la principale responsabilité ; ici <code class="code-inline" id="f454b76d1cda09695d0fe30bb3447acd">OrderHandler</code> est une classe métier qui ne se contente pas d'instancier un produit ; elle est par exemple plus riche fonctionnellement que la classe <code class="code-inline" id="df38f3fff38715f5a828cb4513ec1063">MyFactory</code> que j'avais présentée tout à l'heure.</p>
 <p>En résumé, et comme son nom l'indique, le pattern <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> consiste tout simplement à déporter dans une méthode dédiée l'instanciation de l'objet attendu. Cette méthode se résume finalement à un simple <code class="code-inline" id="376c2c521c8fa91f7f529db30e32047a">return new Product();</code>. Concept d'une extrême simplicité mais qui nous permet d'obtenir une classe ouverte à l'extension, en permettant le cas échéant à ses enfants d'instancier un autre type.</p>
 <h3 id="design-patterns-voisins">Design patterns voisins</h3>
@@ -437,6 +452,6 @@ On peut déplorer que la plupart des exemples du livre s'appuient sur le langage
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

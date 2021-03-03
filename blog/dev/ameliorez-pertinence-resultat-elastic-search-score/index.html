@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>27 avril 2017</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -236,10 +236,12 @@
 <h2 id="une-histoire-de-score">Une histoire de score</h2>
 <p>Lors d'une recherche ElasticSearch, un score est calculé pour chaque document du résultat. Ce score est censé représenter la pertinence du document afin de pouvoir ordonner les résultats. Néanmoins il ne représente que la pertinence des résultats face aux paramètres de la recherche et d'indexation.</p>
 <p>Pour calculer ce score, ElasticSearch va s'appuyer sur trois critères :</p>
-<ul><li>La <strong>fréquence du terme</strong> recherché dans le document. Plus le terme est fréquent, plus son poids sera élevé.</li>
+<ul>
+<li>La <strong>fréquence du terme</strong> recherché dans le document. Plus le terme est fréquent, plus son poids sera élevé.</li>
 <li>La <strong>fréquence inverse du terme</strong> à travers tous les documents. Plus le terme est fréquent, moins il aura de poids.</li>
 <li>La <strong>longueur du champ</strong>. Plus le champ est grand, plus le poids sera faible ; inversement, plus le champ est petit, plus le poids sera élevé.</li>
-</ul><p>Par defaut, ElasticSearch combine ces 3 règles pour obtenir un score, mais certaines peuvent être désactivées si elles ne vous semblent pas correspondre à vos données. Pour plus d'informations sur le calcul du score, lisez la <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/scoring-theory.html" target="_blank">théorie du score</a> sur le site d'ElasticSearch.</p>
+</ul>
+<p>Par defaut, ElasticSearch combine ces 3 règles pour obtenir un score, mais certaines peuvent être désactivées si elles ne vous semblent pas correspondre à vos données. Pour plus d'informations sur le calcul du score, lisez la <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/scoring-theory.html" target="_blank">théorie du score</a> sur le site d'ElasticSearch.</p>
 <p>Ces règles permettent déjà d'avoir une bonne notion de pertinence mais restent assez simples et ne prennent pas en compte le métier de vos données. Pour ajouter plus de logique dans les scores, vous devrez introduire vos propres règles qui influenceront voire remplaceront le score.</p>
 <h2 id="indexation">Indexation</h2>
 <p>L'indexation est la première étape lorsque qu'il s'agit d'optimiser la pertinence de son moteur de recherche. Car c'est grâce aux données indéxées qu'ElasticSearch va calculer les scores.</p>
@@ -250,11 +252,13 @@
 <p>ElasticSearch propose <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-analyzers.html" target="_blank">plusieurs <code class="code-inline" id="505c039011caaa109aeba3cec287a678">analysers</code></a> configurables. Chaque <code class="code-inline" id="d07d1da44efa33dae6b0debbc593c92d">analyzer</code> est une combinaison d'un <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html" target="_blank"><code class="code-inline" id="df65931bf434e4e24dd3e4fd2a7f4473">tokeniser</code></a> chargé de découper votre donnée en tokens, de <code class="code-inline" id="8fc26d630c4135fd646f74409a7c5a73">char filters</code> chargés de filtrer les caractères et de <code class="code-inline" id="23d0b829a1ce78ea51550ed697149617">token filters</code> chargés de filtrer les tokens.</p>
 <p>Vous pouvez également <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-custom-analyzer.html" target="_blank">créer votre propre <code class="code-inline" id="d07d1da44efa33dae6b0debbc593c92d">analyzer</code></a> en combinant vous-même <code class="code-inline" id="df65931bf434e4e24dd3e4fd2a7f4473">tokeniser</code>, <code class="code-inline" id="8fc26d630c4135fd646f74409a7c5a73">char filters</code> et <code class="code-inline" id="23d0b829a1ce78ea51550ed697149617">token filters</code>. Pour configurer un moteur de recherche efficace, il est donc recommandé de choisir ou créer un <code class="code-inline" id="b43bf56130ef201d20e437829192ea14">analyser</code> adapté à chacune des données indéxées.</p>
 <p>Par exemple, pour obtenir une indexation efficace d'un texte, il existe quelques filtres très importants à mettre en place :</p>
-<ul><li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html#analysis-stemmer-tokenfilter" target="_blank"><code class="code-inline" id="fce9c62d39c833a8144ab45f9005aa9e">stemmer</code></a> : Permet une analyse linguistique de votre texte basée sur les racines des mots dans une langue donnée (une recherche sur le mot "collection" trouvera ainsi les mots "collectionner" ou "collectionneur" par exemple).</li>
+<ul>
+<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html#analysis-stemmer-tokenfilter" target="_blank"><code class="code-inline" id="fce9c62d39c833a8144ab45f9005aa9e">stemmer</code></a> : Permet une analyse linguistique de votre texte basée sur les racines des mots dans une langue donnée (une recherche sur le mot "collection" trouvera ainsi les mots "collectionner" ou "collectionneur" par exemple).</li>
 <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stop-tokenfilter.html" target="_blank"><code class="code-inline" id="ef399b2d446bb37b7c32ad2cc1b6045b">stop</code></a> : Permet de filtrer les <em>stop words</em>, c'est-à-dire les mots de liaison qui ne sont pas porteurs de sens et qui ne feraient que polluer l'index (en français par exemple : "de", "en", "à", "le", "la", ...).</li>
 <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-keyword-marker-tokenfilter.html" target="_blank"><code class="code-inline" id="14e175572c79c13b7537e47267efb05b">keyword_marker</code></a> : Permet d'indiquer des mots clés à considérer comme un seul token et non comme plusieurs mots (par exemple "service worker" ou "sous domaine" sont des mots clés).</li>
 <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lowercase-tokenfilter.html" target="_blank"><code class="code-inline" id="f82413ecc07fb74bf40ccfe963a5c4b6">lowercase</code></a> : Permet de tout indexer en <em>lowercase</em> afin de ne pas être sensible à la casse.</li>
-</ul><p>Il existe bien évidemment <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lang-analyzer.html#french-analyzer" target="_blank">des <code class="code-inline" id="505c039011caaa109aeba3cec287a678">analysers</code> par langue déjà prêts à l'emploi</a>, mais l'idée est de vous montrer qu'il est important de bien indiquer à <strong>ElasticSearch</strong> comment analyser vos données.</p>
+</ul>
+<p>Il existe bien évidemment <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lang-analyzer.html#french-analyzer" target="_blank">des <code class="code-inline" id="505c039011caaa109aeba3cec287a678">analysers</code> par langue déjà prêts à l'emploi</a>, mais l'idée est de vous montrer qu'il est important de bien indiquer à <strong>ElasticSearch</strong> comment analyser vos données.</p>
 <h3 id="boost">Boost</h3>
 <p>Vous pouvez ajouter dans votre mapping des <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-boost.html" target="_blank">boost</a> sur certaines propriétés afin de privilégier automatiquement ces propriétés lors du calcul de pertinence.</p>
 <div class="tabs">
@@ -412,12 +416,14 @@
 <h3 id="les-fonctions-de-score">Les fonctions de score</h3>
 <p>Les fonctions de score permettent de modifier le score de vos résultats.</p>
 <p>Il existe plusieurs types de fonctions de score :</p>
-<ul><li><code class="code-inline" id="c0d970d59d173f0eb4e832a989fe82b2">script_score</code></li>
+<ul>
+<li><code class="code-inline" id="c0d970d59d173f0eb4e832a989fe82b2">script_score</code></li>
 <li><code class="code-inline" id="7edabf994b76a00cbc60c95af337db8f">weight</code></li>
 <li><code class="code-inline" id="a128fd93e7dc00454086b733fc10abf3">random_score</code></li>
 <li><code class="code-inline" id="fb6f378b0f8be7fac90fa554969399d0">field_value_factor</code></li>
 <li><code class="code-inline" id="35bf203ff7274404dd26f5ec06d4cb15">decay functions</code></li>
-</ul><p>Je vais surtout détailler les fonctions <code class="code-inline" id="3205c0ded576131ea255ad2bd38b0fb2">script</code> et <code class="code-inline" id="63faabca234a29640f3344e74c0672da">decay</code> car ce sont celles qui permettent le plus d'implémenter une logique de pertinence. Pour les autres vous pouvez lire <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html#score-functions" target="_blank">la documentation sur les fonctions de score</a>.</p>
+</ul>
+<p>Je vais surtout détailler les fonctions <code class="code-inline" id="3205c0ded576131ea255ad2bd38b0fb2">script</code> et <code class="code-inline" id="63faabca234a29640f3344e74c0672da">decay</code> car ce sont celles qui permettent le plus d'implémenter une logique de pertinence. Pour les autres vous pouvez lire <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html#score-functions" target="_blank">la documentation sur les fonctions de score</a>.</p>
 <h4 id="les-scripts-de-score">Les scripts de score</h4>
 <p>Les scripts de score (<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html#function-script-score" target="_blank"><code class="code-inline" id="c0d970d59d173f0eb4e832a989fe82b2">script_score</code></a>) vous permettent de modifier le score de vos résultats à partir d'un script ou d'une formule de votre choix. Vous avez accès au document dont vous modifiez le score et pouvez donc utiliser l'une de ses propriétés dans le calcul. <code class="code-inline" id="94051e850d51ff2bd7aca7151d3561f8">_score</code> est une variable qui contient le score original.</p>
 <div class="tabs">
@@ -512,14 +518,17 @@
 </div>
 </div>
 <p>Chaque fonction de décroissance est caratérisée par les propriétés <code class="code-inline" id="7c49b153d4b59f8c0cf8c3e18dc80cb7">origin</code>, <code class="code-inline" id="7a86c157ee9713c34fbd7a1ee40f0c5a">offset</code>, <code class="code-inline" id="0cb47aeb6e5f9323f0969e628c4e59f5">scale</code> et <code class="code-inline" id="63faabca234a29640f3344e74c0672da">decay</code>.</p>
-<ul><li><code class="code-inline" id="7c49b153d4b59f8c0cf8c3e18dc80cb7">origin</code> est la valeur centrale à partir de laquelle sera calculée la distance de vos résultats. D'une manière générale, plus vos résultats s'éloigneront de cette valeur centrale, plus le score sera réduit.</li>
+<ul>
+<li><code class="code-inline" id="7c49b153d4b59f8c0cf8c3e18dc80cb7">origin</code> est la valeur centrale à partir de laquelle sera calculée la distance de vos résultats. D'une manière générale, plus vos résultats s'éloigneront de cette valeur centrale, plus le score sera réduit.</li>
 <li><code class="code-inline" id="7a86c157ee9713c34fbd7a1ee40f0c5a">offset</code> est la distance à partir de laquelle s'appliquera votre fonction de décroissance. Avant cette distance le score ne sera pas modifié.</li>
 <li><code class="code-inline" id="0cb47aeb6e5f9323f0969e628c4e59f5">scale</code> est la valeur à laquelle votre fonction de décroissance appliquera la réduction souhaitée.</li>
 <li><code class="code-inline" id="63faabca234a29640f3344e74c0672da">decay</code> est la valeur de réduction de score souhaitée (pourcentage de 0 à 1).</li>
-</ul><p>Dans l'exemple ci-dessus, la valeur centrale est le 24 avril 2017 et on souhaite qu'à 6 jours (1 jour d'offset + 5 jours de scale) de cette date, soit le 18 et le 30 avril, le score soit réduit de moitié. La réduction du score des autres résultats sera calculée par la fonction de décroissance choisie.</p>
+</ul>
+<p>Dans l'exemple ci-dessus, la valeur centrale est le 24 avril 2017 et on souhaite qu'à 6 jours (1 jour d'offset + 5 jours de scale) de cette date, soit le 18 et le 30 avril, le score soit réduit de moitié. La réduction du score des autres résultats sera calculée par la fonction de décroissance choisie.</p>
 <p>Il existe 3 fonctions de décroissances, <a href="https://fr.wikipedia.org/wiki/Fonction_lin%C3%A9aire" target="_blank">linéaire</a>, <a href="https://fr.wikipedia.org/wiki/Fonction_exponentielle" target="_blank">exponentielle</a> et <a href="https://fr.wikipedia.org/wiki/Fonction_gaussienne" target="_blank">gaussienne</a>.</p>
 <p>La fonction linéaire est une droite, la décroissance est proportionelle à la distance. Avec la fonction exponentielle, la décroissance est très forte au début et diminue rapidement avec la distance jusqu'à tendre vers zero. Avec la fonction gaussienne, la décroissance est également très forte au début mais diminue moins rapidement.</p>
-<img src="/elao_/images/posts/2017/es-decay-graph.png" alt="Decay functions" title="Decay functions" id="decay-functions"><p>Les fonctions de décroissance peuvent être appliquées sur des valeurs numériques, des dates (<code class="code-inline" id="7a86c157ee9713c34fbd7a1ee40f0c5a">offset</code> et <code class="code-inline" id="0cb47aeb6e5f9323f0969e628c4e59f5">scale</code> sont alors exprimés en durée : 5h ou 1d par exemple) ou des géopoints (<code class="code-inline" id="7a86c157ee9713c34fbd7a1ee40f0c5a">offset</code> et <code class="code-inline" id="0cb47aeb6e5f9323f0969e628c4e59f5">scale</code> sont alors exprimés en distance : 100m ou 5km par exemple).</p>
+<img src="/elao_/images/posts/2017/es-decay-graph.png" alt="Decay functions" title="Decay functions" id="decay-functions">
+<p>Les fonctions de décroissance peuvent être appliquées sur des valeurs numériques, des dates (<code class="code-inline" id="7a86c157ee9713c34fbd7a1ee40f0c5a">offset</code> et <code class="code-inline" id="0cb47aeb6e5f9323f0969e628c4e59f5">scale</code> sont alors exprimés en durée : 5h ou 1d par exemple) ou des géopoints (<code class="code-inline" id="7a86c157ee9713c34fbd7a1ee40f0c5a">offset</code> et <code class="code-inline" id="0cb47aeb6e5f9323f0969e628c4e59f5">scale</code> sont alors exprimés en distance : 100m ou 5km par exemple).</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>Avec toutes ces fonctionnalités, vous dévriez être capables de gérer la pertinence de votre moteur de recherche assez finement. Attention néanmoins, cet article n'est pas exhaustif, <strong>ElasticSearch</strong> propose bien d'autres possibilités.</p>
 <p>L'important est de ne pas se limiter à la configuration de base et d'adapter l'algorithme de score à vos données et vos besoins.</p>
@@ -530,7 +539,8 @@
     .container .tabs .nav a.active { background-color: #444; color: #fff; }
     .container .tabs .tab { display: none; clear: both; }
     .container .tabs .tab.active { display: block; }
-</style><script type="text/javascript">
+</style>
+<script type="text/javascript">
     function Tabs (element)
     {
         this.element = element;
@@ -660,6 +670,6 @@
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

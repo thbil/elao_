@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>20 décembre 2014</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -226,20 +226,24 @@
       <body><p>Parmi de nombreuses solutions de monitoring l'une d'entre elle fait pas mal parler d'elle en ce moment. <a href="http://graphite.wikidot.com/" target="_blank"><strong>Graphite</strong></a> se veut capable de rendre des graphiques en temps réel de l'état de vos plateformes (systèmes ou applicatives) à partir d'informations collectées sur l'ensemble de votre infra.</p>
 <p>Que l'on soit bien d'accord nous ne sommes pas dans le même type de monitoring que peut fournir, par exemple des solutions comme <a href="http://www.zabbix.com/" target="_blank"><strong>Zabbix</strong></a>, qui proposeront, certes, des graphs à partir des différentes ressources "monitorées" mais également des solutions permettant d'alerter les équipes Infra en cas de problèmes (par Email ou par SMS).</p>
 <p><u><strong>Graphite est aujourd'hui séparés en plusieurs composants:</strong></u></p>
-<ul><li><a href="https://github.com/graphite-project/carbon" target="_blank"><strong>Carbon</strong></a>, qui est en charge de recevoir les métriques qui lui sont envoyés via le réseau et de les stocker en utilisant l'un des "storage backend" qui lui est fourni. Il sera bientôt remplacé par <a href="https://github.com/graphite-project/ceres" target="_blank"><strong>Ceres</strong></a> (Nom de code MegaCarbon).</li>
+<ul>
+<li><a href="https://github.com/graphite-project/carbon" target="_blank"><strong>Carbon</strong></a>, qui est en charge de recevoir les métriques qui lui sont envoyés via le réseau et de les stocker en utilisant l'un des "storage backend" qui lui est fourni. Il sera bientôt remplacé par <a href="https://github.com/graphite-project/ceres" target="_blank"><strong>Ceres</strong></a> (Nom de code MegaCarbon).</li>
 <li><a href="https://github.com/graphite-project/whisper" target="_blank"><strong>Whisper</strong></a> est en charge du stockage des informations, c'est une TSDB (Time Serie Database), en bon français une base de données fichiers permettant de stocker des métriques horodatés.</li>
 <li><a href="https://github.com/graphite-project/graphite-web" target="_blank"><strong>Graphite-web</strong></a> qui fourni une interface permettant de créer des graphiques à partir des données collectées par Carbon et Whisper.</li>
-</ul><p>Nous verrons au cours de ce tutoriel la mise en place d'une stack de monitoring basée sur ces différents composants.</p>
+</ul>
+<p>Nous verrons au cours de ce tutoriel la mise en place d'une stack de monitoring basée sur ces différents composants.</p>
 <h2 id="installation-des-paquets">Installation des paquets</h2>
 <p>Nous allons, dans un premier temps, avoir besoin des paquets suivants (Les versions utilisées pour la réalisation de cet article sont spécifiées):</p>
-<ul><li>nginx (1.6.2)</li>
+<ul>
+<li>nginx (1.6.2)</li>
 <li>python-dev (2.7.3-4+deb7u1)</li>
 <li>python-pip (1.1.3)</li>
 <li>memcached (1.4.13-0.2+deb7u1)</li>
 <li>libcairo2-dev (1.12.2-3)</li>
 <li>pkg-config (0.26-1)</li>
 <li>libyaml-dev (0.1.4-2+deb7u5)</li>
-</ul><p>_Attention  l'installation de la version 1.6.2 de Nginx nécessite <a href="http://www.elao.com/fr/blog/utiliser-les-depots-officiels-nginx-sur-debian-wheezy" target="_blank"><strong>d'utiliser les dépôts officiels Nginx</strong></a> et non pas ceux de Debian dans lesquels Nginx est fourni en version 1.2.1._</p>
+</ul>
+<p>_Attention  l'installation de la version 1.6.2 de Nginx nécessite <a href="http://www.elao.com/fr/blog/utiliser-les-depots-officiels-nginx-sur-debian-wheezy" target="_blank"><strong>d'utiliser les dépôts officiels Nginx</strong></a> et non pas ceux de Debian dans lesquels Nginx est fourni en version 1.2.1._</p>
 <pre class="code-multiline"><code id="1a66362b9bc088062556f4ba758d0169">apt-get install nginx python-dev python-pip memcached  libcairo2-dev pkg-config git libyaml-dev</code></pre>
 <h2 id="installation-de-l-environnement-python">Installation de l'environnement Python</h2>
 <p>Graphite web exploitant le Framework Django et diverses autres librairies python nous allons les installer:</p>
@@ -268,7 +272,8 @@ python setup.py install</code></pre>
 <p>Le chemin d'installation par défaut est <code class="code-inline" id="8f2568933fd552e97e39c97ac1e84e06">/opt/graphite</code> il est bien sur possible de personnaliser cette installation.</p>
 <h3 id="personnaliser-l-installation-de-carbon">Personnaliser l'installation de Carbon</h3>
 <p>Si les paramètre d'installation par défaut de Carbon ne vous conviennent pas vous pouvez les modifier avec les options suivantes:</p>
-<ul><li>
+<ul>
+<li>
 <p><code class="code-inline" id="49d984adc876f8e2cb3158f445cdcae3">--prefix</code> Qui va correspondre au chemin d'installation des répertoire bin/ et conf/ (pour rappel par défaut ils sont installés  dans <code class="code-inline" id="8f2568933fd552e97e39c97ac1e84e06">/opt/graphite</code>)</p>
 </li>
 <li>
@@ -280,7 +285,8 @@ python setup.py install</code></pre>
 <li>
 <p><code class="code-inline" id="93d749ff6dd1980e9f116bb479388726">--install-scripts</code> Qui correspondra à l'emplacement ou sont stockés les scripts (Par défaut dans <code class="code-inline" id="c1111bd512b29e821b120b86446026b8">bin</code> relativement à <code class="code-inline" id="851f5ac9941d720844d143ed9cfcf60a">prefix</code>)</p>
 </li>
-</ul><p>Si l'on souhaite tout installer dans /srv/graphite</p>
+</ul>
+<p>Si l'on souhaite tout installer dans /srv/graphite</p>
 <p><code class="code-inline" id="a5861e93f9a41db7501595d3a874f321">python setup.py install --prefix=/srv/graphite --install-lib=/srv/graphite/webapp</code></p>
 <p>Si vous souhaitez donc coller un maximum au shema type des système Linux on peut donc imaginer quelque chose comme:</p>
 <p><code class="code-inline" id="c01554a7070e00951a41b513932b7fd3">python setup.py install --install-scripts=/usr/bin --install-lib=/usr/lib/python2.7/site-packages --install-data=/var/lib/graphite</code></p>
@@ -296,11 +302,13 @@ python setup.py install</code></pre>
 <p>Comme pour Carbon le chemin d'installation est par défaut <code class="code-inline" id="8f2568933fd552e97e39c97ac1e84e06">/opt/graphite</code> il est également possible de personnaliser cette installation.</p>
 <h3 id="personnaliser-l-installation-de-graphite-web">Personnaliser l'installation de Graphite Web</h3>
 <p>Il est tout à fait possible, comme pour Carbon, de personnaliser notre installation de Graphite web:</p>
-<ul><li><code class="code-inline" id="49d984adc876f8e2cb3158f445cdcae3">--prefix</code> Qui va correspondre au chemin d'installation des répertoire bin/ et conf/ (pour rappel par défaut ils sont installés  dans <code class="code-inline" id="8f2568933fd552e97e39c97ac1e84e06">/opt/graphite</code>)</li>
+<ul>
+<li><code class="code-inline" id="49d984adc876f8e2cb3158f445cdcae3">--prefix</code> Qui va correspondre au chemin d'installation des répertoire bin/ et conf/ (pour rappel par défaut ils sont installés  dans <code class="code-inline" id="8f2568933fd552e97e39c97ac1e84e06">/opt/graphite</code>)</li>
 <li><code class="code-inline" id="c9f1ec5725726c71de2c3cc8f1437fd5">--install-lib</code> Qui correspondra à l'installation des modules et librairies python. (Par défaut <code class="code-inline" id="4910e6ae452154158b2ecbb60a06cabc">/opt/graphite/lib</code>)</li>
 <li><code class="code-inline" id="d08ce536d8dc99525de6eb88baa5d824">--install-data</code> Qui correspondra à l'emplacement où seront placés les répertoires <code class="code-inline" id="ddecebdea58b5f264d27f1f7909bab74">storage</code> et <code class="code-inline" id="3a8e4c06e471595f6eb262bb9b5582d9">conf</code> ( Il est égal par défaut à la valeur de <code class="code-inline" id="851f5ac9941d720844d143ed9cfcf60a">prefix</code>)</li>
 <li><code class="code-inline" id="93d749ff6dd1980e9f116bb479388726">--install-scripts</code> Qui correspondra à l'emplacement ou sont stockés les scripts (Par défaut dans <code class="code-inline" id="c1111bd512b29e821b120b86446026b8">bin</code> relativement à <code class="code-inline" id="851f5ac9941d720844d143ed9cfcf60a">prefix</code>)</li>
-</ul><p>Si l'on souhaite tout installer dans /srv/graphite</p>
+</ul>
+<p>Si l'on souhaite tout installer dans /srv/graphite</p>
 <p><code class="code-inline" id="a5861e93f9a41db7501595d3a874f321">python setup.py install --prefix=/srv/graphite --install-lib=/srv/graphite/webapp</code></p>
 <p>Si vous souhaitez donc coller un maximum au schema type des système Linux on peut donc imaginer quelque chose comme:</p>
 <p><code class="code-inline" id="c01554a7070e00951a41b513932b7fd3">python setup.py install --install-scripts=/usr/bin --install-lib=/usr/lib/python2.7/site-packages --install-data=/var/lib/graphite</code></p>
@@ -417,6 +425,6 @@ mv /opt/graphite/webapp/graphite/local_settings.py.example  local_settings.py</c
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

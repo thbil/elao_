@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>21 juin 2017</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -228,28 +228,37 @@
       <body><h1 id="introduction">Introduction</h1>
 <p>L'architecture hexagonale, également appelée <em>Ports &amp; Adapters</em>, présente deux caratéristiques lorsqu'on la schématise : une forme <strong>hexagonale</strong> (d'où son nom) et une séparation entre l'<strong>application</strong>, l'<strong>extérieur</strong> et une partie contenant des <strong>adapteurs</strong> permettant aux deux de communiquer.</p>
 <p>Elle a été pensé par <a href="http://alistair.cockburn.us/Hexagonal+architecture" target="_blank">Alistair Cockburn</a> dans les années 2000. Son but est de permettre à une application d'être pilotée sans distinction par des utilisateurs, des programmes, des tests automatisés ou des scripts ainsi que d'être développée et testée de façon isolée de son contexte d'exécution et de ses bases de données.</p>
-<img src="/elao_/images/posts/2017/hexagonal-architecture.png" alt="Architecture hexagonale" title="Architecture hexagonale" id="architecture-hexagonale"><h2 id="une-architecture-hexagonale">Une architecture hexagonale</h2>
+<img src="/elao_/images/posts/2017/hexagonal-architecture.png" alt="Architecture hexagonale" title="Architecture hexagonale" id="architecture-hexagonale">
+<h2 id="une-architecture-hexagonale">Une architecture hexagonale</h2>
 <p>Les deux grands principes de base de l'architecture hexagonale sont :</p>
-<ul><li>La <strong>séparation entre le code métier et le code technique</strong>. Le but est de rendre votre code métier <strong>agnostique</strong> de l'architecture technique dans laquelle votre application sera exécutée.</li>
+<ul>
+<li>La <strong>séparation entre le code métier et le code technique</strong>. Le but est de rendre votre code métier <strong>agnostique</strong> de l'architecture technique dans laquelle votre application sera exécutée.</li>
 <li>L'<strong>inversion de dépendance</strong> : votre code technique dépend de votre code métier et non l'inverse comme dans une architecture plus classique. Pour cela vous allez massivement utiliser le <strong>design pattern adapter</strong>.</li>
-</ul><p>La forme hexagonale — qui aurait tout aussi bien pu être octogonale ou pentagonale — est là pour mettre en évidence les différentes facettes par lesquelles votre application communique avec l'extérieur via des adapteurs.</p>
+</ul>
+<p>La forme hexagonale — qui aurait tout aussi bien pu être octogonale ou pentagonale — est là pour mettre en évidence les différentes facettes par lesquelles votre application communique avec l'extérieur via des adapteurs.</p>
 <p>Le <strong>code technique</strong> c'est tout l'environnement nécessaire à votre application sans faire partie de son coeur métier. Tout ou partie de ce code peut être remplacé sans impacter votre métier. Cela comprend — entre autres — la persistance (base de données), le système de fichier, le cache, l'applicatif externe (API, binaires, ...), les bibliothèques et frameworks, etc.</p>
 <p>Le <strong>code métier</strong> c'est tout le code qui traduit le métier de votre client. Il s'agit des règles métier, de la logique métier, du code purement applicatif, ... Ce code est irremplaçable et constitue le coeur de votre application.</p>
 <h2 id="une-architecture-en-couches-ou-en-oignon">Une architecture en couches (ou en oignon)</h2>
 <p class="text-center">
-    <img src="/elao_/images/posts/2017/onionman.jpg" alt="Onion man" id="onion-man"></p>
+    <img src="/elao_/images/posts/2017/onionman.jpg" alt="Onion man" id="onion-man">
+</p>
 <p>Afin d'aller encore un peu plus loin dans le découplage de mon code et de me donner un cadre facilitant la séparation du code technique et du code métier, je me suis également inspiré de deux autres architectures proches dans l'idée :</p>
-<ul><li><a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank">The Clean Architecture</a> de Uncle Bob</li>
+<ul>
+<li><a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank">The Clean Architecture</a> de Uncle Bob</li>
 <li><a href="http://jeffreypalermo.com/blog/the-onion-architecture-part-1/" target="_blank">The Onion Architecture</a> de Jeffrey Palermo</li>
-</ul><p>Ces deux architectures séparent le code en différentes couches imbriquées. Le nombre de couches dépendra de la complexité de votre application et jusqu'où vous souhaitez pousser le découplage.</p>
+</ul>
+<p>Ces deux architectures séparent le code en différentes couches imbriquées. Le nombre de couches dépendra de la complexité de votre application et jusqu'où vous souhaitez pousser le découplage.</p>
 <p>Pour ma part je suis partie sur les quatres couches suivantes qui représentes assez bien les différentes parties d'une application <strong>Symfony</strong> (de la plus profonde à la moins profonde) :</p>
-<ul><li>Domain</li>
+<ul>
+<li>Domain</li>
 <li>Application</li>
 <li>Infrastructure</li>
 <li>Ui</li>
-</ul><p>L'idée est que chaque couche peut utiliser une couche inférieure mais jamais une couche supérieure, ou en tout cas pas directement.</p>
+</ul>
+<p>L'idée est que chaque couche peut utiliser une couche inférieure mais jamais une couche supérieure, ou en tout cas pas directement.</p>
 <p class="text-center">
-    <img src="/elao_/images/posts/2017/clean-architecture.png" alt="Clean architecture" id="clean-architecture"></p>
+    <img src="/elao_/images/posts/2017/clean-architecture.png" alt="Clean architecture" id="clean-architecture">
+</p>
 <p>Les seules moyens de traverser une couche supérieure sont les <strong>événements</strong>, les <strong>exceptions</strong> et les <strong>adapteurs</strong>.</p>
 <p>Les <strong>événements</strong> et les <strong>exceptions</strong> peuvent être lancés dans une couche inférieure et traités dans une couche supérieure. Quand au design pattern <strong>adapter</strong>, il permet de définir une interface du service dont vous avez besoin mais située dans une couche supérieure. L'adapteur correspondant sera implémenté dans ladite couche et l'injection de dépendances permettra d'assembler le tout en conservant le principe de séparation des couches.</p>
 <p>Cette séparation en couches n'est pas indispensable à l'architecture hexagonale mais offre un cadre strict permettant de bien séparer votre code applicatif de votre infrastructure ainsi que les différentes parties de votre code. Vous pouvez vous contenter de séparer Domain/Application (code métier) de Infrastructure/UI (code technique).</p>
@@ -274,7 +283,8 @@
 <h2 id="pourquoi">Pourquoi ?</h2>
 <p>Généralement lorsque je présente cette architecture on me fait souvent les remarques suivantes : "C'est compliqué !", "Faut écrire beaucoup plus de code !" (cf. les adapteurs), "Ça prend trop de temps !", ...</p>
 <p>Certes cette architecture est plus complexe, implique un peu plus de code et demande un peu plus de réflexion qu'une architecture "classique" mais offre tout de même plusieurs avantages de taille.</p>
-<ol><li>
+<ol>
+<li>
 <p>Le code (en particulier le code métier) est beaucoup plus facile à tester unitairement. Il s'agit de pur PHP, débarrassé de toute relation à votre framework ou votre architecture. Toutes les dépendances extérieures à votre métier sont des interfaces que vous pouvez facilement mocker ou implémenter pour vos tests. Votre code métier peut être couvert à 100% par les test unitaires.</p>
 </li>
 <li>
@@ -292,9 +302,11 @@
 <li>
 <p>En début de projet, vous pouvez mettre en place une infrastructure simple (persistance en mémoire/fichier, API mockée, ...) afin de vous concentrer sur la valeur ajoutée : les fonctionnalités métier.</p>
 </li>
-</ol><p>Au final, l'investissement de départ est un peu plus grand, quoiqu'avec l'habitude pas tant, mais est largement amorti sur la durée de vie du projet tant les évolutions et la testabilité sont simplifiées.</p>
+</ol>
+<p>Au final, l'investissement de départ est un peu plus grand, quoiqu'avec l'habitude pas tant, mais est largement amorti sur la durée de vie du projet tant les évolutions et la testabilité sont simplifiées.</p>
 <p class="text-center">
-    <img src="/elao_/images/posts/2017/good-work-chuck-norris.jpg" alt="Good work" id="good-work"></p>
+    <img src="/elao_/images/posts/2017/good-work-chuck-norris.jpg" alt="Good work" id="good-work">
+</p>
 <h1 id="et-symfony-dans-tout-ca">Et Symfony dans tout ça ?</h1>
 <p>Tout d'abord j'essaie de créer le moins possible de bundles, voire pas du tout. Cette fonctionnalité de Symfony n'est d'aucune utilité pour cette architecture, elle reste néanmoins indispensable sur certaines fonctions selon la version du framework.</p>
 <p>Symfony tend d'ailleurs vers le <em>no bundle</em> dans ses versions les plus récentes (3.3 sortie dernièrement et 4.0 à venir).</p>
@@ -440,6 +452,6 @@
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

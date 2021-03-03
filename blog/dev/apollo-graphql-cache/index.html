@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>17 février 2020</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -540,12 +540,14 @@ client
   <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <h2 id="fetch-policy">Fetch policy</h2>
 <p>Pour chaque requête vous pouvez configurer l'option <code class="code-inline" id="756c4ea0f96895611e6721021bca7112">fetchPolicy</code> afin d'indiquer à Apollo comment utiliser le cache.</p>
-<ul><li><code class="code-inline" id="ae90bbf1549b5dc9ad755458a2d09cf2">cache-first</code> : c'est la valeur par defaut, le client recherche le résultat dans le cache avant de faire une requête.</li>
+<ul>
+<li><code class="code-inline" id="ae90bbf1549b5dc9ad755458a2d09cf2">cache-first</code> : c'est la valeur par defaut, le client recherche le résultat dans le cache avant de faire une requête.</li>
 <li><code class="code-inline" id="55e6be0c60b430d2c54d3d8e104735d4">cache-and-network</code> : le client retournera le contenu du cache mais fera tout de même la requête afin de le mettre à jour, permet d'avoir une réponse rapide.</li>
 <li><code class="code-inline" id="9dfabc18d8b0830701675915eacda927">network-only</code> : le client ne retournera jamais le contenu du cache pour cette requête et fera systématiquement un appel réseau.</li>
 <li><code class="code-inline" id="d08cccb388110b519688b7d507db8a0b">cache-only</code> : le client ne fera aucun appel réseau et se contentera de lire le cache.</li>
 <li><code class="code-inline" id="00bc63c3a47875d37eb7004340988ca4">no-cache</code> : le client fera un appel réseau et ne lira pas le cache, mais au contraire de <code class="code-inline" id="9dfabc18d8b0830701675915eacda927">network-only</code>, le résultat de la requête ne sera pas écrit dans le cache.</li>
-</ul><h2 id="persistence">Persistence</h2>
+</ul>
+<h2 id="persistence">Persistence</h2>
 <p>Par default, le cache Apollo utilise l'adapteur <code class="code-inline" id="e7e257ea4465b7f923b3e2b116f1782e">InMemoryCache</code> qui comme son nom l'indique, stocke le cache en mémoire. Dans le cas d'une application web, chaque actualisation de la page ou nouvel onglet remet le cache à zero. En cas d'app native, cela se fera à chaque fermeture de l'app.</p>
 <p>Heureusement il est possible de <a href="https://github.com/apollographql/apollo-cache-persist#storage-providers" target="_blank">persister le cache</a> de façon non volatile en fournissant un <em>storage provider</em>. En <em>local storage</em> pour du web par exemple, ou encore dans une base <em>SQLite</em> ou en fichier pour les app natives.</p>
 <p>Par exemple avec du <em>local storage</em> :</p>
@@ -668,6 +670,6 @@ client
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

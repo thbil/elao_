@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>10 octobre 2017</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -219,10 +219,12 @@
 organisateurs d’événements une plateforme de gestion de rendez-vous B2B.</p>
 <p>Avant l’événement les participants s’inscrivent sur la plateforme et consultent le catalogue des participants :</p>
 <p class="text-center">
-    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/vimeet-catalogue.png" alt="Catalogue Vimeet" id="catalogue-vimeet"></p>
+    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/vimeet-catalogue.png" alt="Catalogue Vimeet" id="catalogue-vimeet">
+</p>
 <p>Les participants demandent en rendez-vous d'autres participants, acceptent ou refusent des propositions de rendez-vous :</p>
 <p class="text-center">
-    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/vimeet-gdr.png" alt="Catalogue Vimeet" id="catalogue-vimeet"></p>
+    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/vimeet-gdr.png" alt="Catalogue Vimeet" id="catalogue-vimeet">
+</p>
 <p>Avant l’ouverture de l’événement l’agenda des rendez-vous de chaque participant est généré.
 Toutes les demandes de rendez-vous acceptées ne sont pas satisfaites faute de disponibilité commune entre les
 participants.</p>
@@ -236,12 +238,14 @@ Une demande de rendez-vous acceptée est transformée en rendez-vous en lui allo
 <p>L'objectif de l'organisateur est <strong>de maximiser le nombre de rendez-vous</strong>.</p>
 <p>L'objectif d'un participant est <strong>d'avoir le maximum de ses demandes de rendez-vous positionnées en rendez-vous</strong>.</p>
 <p>À cela s'ajoutent quelques règles de gestion :</p>
-<ul><li>chaque participant a un nombre limité de rendez-vous selon le forfait qu'il a choisi,</li>
+<ul>
+<li>chaque participant a un nombre limité de rendez-vous selon le forfait qu'il a choisi,</li>
 <li>des priorités entre les types de participants,</li>
 <li>priorisation du positionnement d'un rendez-vous sur le lieu attribué au participant plutôt que sur un lieu
 mutualisé,</li>
 <li>le participant et les lieux peuvent être en indisponibilité pour certains créneaux de rendez-vous.</li>
-</ul><h2 id="probleme-difficile-a-resoudre">Problème difficile à résoudre</h2>
+</ul>
+<h2 id="probleme-difficile-a-resoudre">Problème difficile à résoudre</h2>
 <p>Il s'agit d'un __<a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet" target="_blank">problème NP-complet</a>__ car le problème est
 difficile à résoudre : pour avoir la solution idéale, il faudrait calculer toutes les combinaisons possibles.
 Ce qui pourrait prendre des années voire une éternité.</p>
@@ -250,7 +254,8 @@ Ce qui pourrait prendre des années voire une éternité.</p>
 l'<a href="https://fr.wikipedia.org/wiki/Algorithme_de_colonies_de_fourmis" target="_blank">algorithme de colonies de fourmis</a>
 ou l'<a href="https://fr.wikipedia.org/wiki/Algorithme_g%C3%A9n%C3%A9tique" target="_blank">algorithme génétique</a>.</p>
 <p class="text-center">
-    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/algorithmes.png" alt="Algorithme génétique et algorithme de colonies de fourmis" id="algorithme-genetique-et-algorithme-de-colonies-de-fourmis"></p>
+    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/algorithmes.png" alt="Algorithme génétique et algorithme de colonies de fourmis" id="algorithme-genetique-et-algorithme-de-colonies-de-fourmis">
+</p>
 <p>Ce sont des algorithmes difficiles à maîtriser.</p>
 <p>Un <em>proof of concept</em> en PHP a été codé pour positionner séquentiellement des rendez-vous puis évaluer la solution
 globale. Cela a été intéressant pour comprendre comment modéliser le problème, mais la lenteur des itérations nous a
@@ -262,19 +267,24 @@ poussés à aller vers d'autres langages ou vers des librairies Open Source.</p>
 un meta langage pour écrire des règles de gestion.</p>
 <p>OptaPlanner est livré avec des exemples variés :</p>
 <p class="text-center">
-    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/optaplanner-examples.png" alt="Optaplanner exemples" id="optaplanner-exemples"></p>
+    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/optaplanner-examples.png" alt="Optaplanner exemples" id="optaplanner-exemples">
+</p>
 <p>Dont, l'optimisation de l'agenda des professeurs :</p>
 <p class="text-center">
-    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/optaplanner-teacher-agenda.png" alt="Optimisation agenda de profs" id="optimisation-agenda-de-profs"></p>
+    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/optaplanner-teacher-agenda.png" alt="Optimisation agenda de profs" id="optimisation-agenda-de-profs">
+</p>
 <p>L'affectation des lits d'un hôpital :</p>
 <p class="text-center">
-    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/optaplanner-hospital.png" alt="Optimisation lits d'hôpital" id="optimisation-lits-d-hopital"></p>
+    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/optaplanner-hospital.png" alt="Optimisation lits d'hôpital" id="optimisation-lits-d-hopital">
+</p>
 <p>La minimisation du trajet d'un voyageur de commerce :</p>
 <p class="text-center">
-    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/optaplanner-traveller.png" alt="Optimisation trajet du voyageur de commerce" id="optimisation-trajet-du-voyageur-de-commerce"></p>
+    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/optaplanner-traveller.png" alt="Optimisation trajet du voyageur de commerce" id="optimisation-trajet-du-voyageur-de-commerce">
+</p>
 <p>Et même l'optimisation du plan de tables d'un mariage :</p>
 <p class="text-center">
-    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/optaplanner-wedding.png" alt="Optimisation du plan de table de mariage" id="optimisation-du-plan-de-table-de-mariage"></p>
+    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/optaplanner-wedding.png" alt="Optimisation du plan de table de mariage" id="optimisation-du-plan-de-table-de-mariage">
+</p>
 <p>Sous le capot, OptaPlanner implémente de nombreux algorithmes de
 <a href="https://fr.wikipedia.org/wiki/Heuristique_(math%C3%A9matiques)" target="_blank">construction heuristique</a>
 et de
@@ -290,15 +300,19 @@ une falaise à gravir par avis de tempête. La bonne idée est de partir d’un 
 et l’adapter petit à petit.</p>
 <h3 id="modeliser-le-probleme">Modéliser le problème</h3>
 <p>Il n'est jamais simple de modéliser un problème de planification. Le moyen d'y arriver est de définir :</p>
-<ul><li><strong>l'Objectif</strong> : ici, maximiser le nombre de rendez-vous positionnés c'est à dire avec un créneau et un lieu.</li>
+<ul>
+<li><strong>l'Objectif</strong> : ici, maximiser le nombre de rendez-vous positionnés c'est à dire avec un créneau et un lieu.</li>
 <li><strong>les ressources</strong> : ici, les <strong>créneaux</strong> de rendez-vous et les <strong>lieux</strong> de rendez-vous.</li>
 <li><strong>Contraintes</strong> :
-<ul><li>"<strong>Hard</strong>" : celles qui empêchent la tenue d'un rendez-vous</li>
+<ul>
+<li>"<strong>Hard</strong>" : celles qui empêchent la tenue d'un rendez-vous</li>
 <li>"<strong>Soft</strong>" : celles permettant d'optimiser le positionnement des rendez-vous</li>
 </ul></li>
-</ul><h3 id="les-annotations-de-optaplanner">Les annotations de OptaPlanner</h3>
+</ul>
+<h3 id="les-annotations-de-optaplanner">Les annotations de OptaPlanner</h3>
 <p class="text-center">
-    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/model-annotations.png" alt="Modèle" id="modele"></p>
+    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/model-annotations.png" alt="Modèle" id="modele">
+</p>
 <p>Voici un extrait du code de MeetingSchedule :</p>
 <pre class="code-multiline language-java"><code class="language-java" id="80cec02456f721d7f5b92aa9adcb90ed"><span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>optaplanner<span class="token punctuation">.</span>core<span class="token punctuation">.</span>api<span class="token punctuation">.</span>domain<span class="token punctuation">.</span>solution<span class="token punctuation">.</span></span><span class="token class-name">PlanningEntityCollectionProperty</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>optaplanner<span class="token punctuation">.</span>core<span class="token punctuation">.</span>api<span class="token punctuation">.</span>domain<span class="token punctuation">.</span>solution<span class="token punctuation">.</span></span><span class="token class-name">PlanningScore</span><span class="token punctuation">;</span>
@@ -364,7 +378,8 @@ et l’adapter petit à petit.</p>
         <span class="token keyword">return</span> spot<span class="token punctuation">;</span>
     <span class="token punctuation">}</span></code></pre>
 <p>On peut voir que ce code comporte des annotations fournies par OptaPlanner :</p>
-<ul><li><strong>@PlanningSolution</strong> : définit l'entité d'une solution optimale contenant tous les rendez-vous.</li>
+<ul>
+<li><strong>@PlanningSolution</strong> : définit l'entité d'une solution optimale contenant tous les rendez-vous.</li>
 <li><strong>@PlanningEntityCollectionProperty</strong> : définit une collection de <em>PlanningEntity</em>.</li>
 <li><strong>@ProblemFactCollectionProperty</strong> : définit qu'une propriété sur une classe <em>PlanningSolution</em> est une collection
 de données qui sert au planificateur mais qui ne changent pas lors de la résolution.</li>
@@ -372,7 +387,8 @@ de données qui sert au planificateur mais qui ne changent pas lors de la résol
 <li><strong>@PlanningEntity</strong> : définit l'élément d'une solution, ici un rendez-vous (<em>meeting</em>).</li>
 <li><strong>@PlanningVariable</strong> : définit la variable (la ressource) que OptaPlanner attribue au PlanningEntity grâce à ses
 algorithmes de construction heuristique. Ici le créneau (<em>slot</em>) et le lieu (<em>spot</em>).</li>
-</ul><h3 id="les-regles-de-gestion-et-les-contraintes">Les règles de gestion et les contraintes</h3>
+</ul>
+<h3 id="les-regles-de-gestion-et-les-contraintes">Les règles de gestion et les contraintes</h3>
 <p><strong>Décrire les contraintes</strong> de notre problème au solveur d'OptaPlanner est fait en <strong>Drools</strong>.
 Grâce à ces règles, OptaPlanner évalue <strong>le score d'une solution</strong>.
 L'idée est que chaque règle va permettre d'agir sur ce score, en pénalisant la solution plus ou moins fortement.</p>
@@ -513,18 +529,24 @@ sans créneau ni lieu (<em>spot</em> et <em>slot</em> à null) et les ressources
 <h2 id="demo">Demo</h2>
 <p>Visualisation d'une solution optimale des plannings de rendez-vous des participants d'un événement :</p>
 <p class="text-center">
-    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/planner-real-event.gif" alt="Demo" id="demo"></p>
-<ul><li><em>Spot</em> : les lieux</li>
+    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/planner-real-event.gif" alt="Demo" id="demo">
+</p>
+<ul>
+<li><em>Spot</em> : les lieux</li>
 <li><em>User</em> : les participants</li>
 <li><em>Sheet</em> : les rendez-vous par fiche de participation (généralement équivalente à une fiche société).</li>
-</ul><p>Le participant a ensuite son agenda des rendez-vous accessible sur son ordinateur ou sur mobile :</p>
+</ul>
+<p>Le participant a ensuite son agenda des rendez-vous accessible sur son ordinateur ou sur mobile :</p>
 <p class="text-center">
-    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/vimeet-agenda-mobile.png" alt="Agenda utilisateur" style="height: 600px" id="agenda-utilisateur"></p>
+    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/vimeet-agenda-mobile.png" alt="Agenda utilisateur" style="height: 600px" id="agenda-utilisateur">
+</p>
 <h2 id="bilan">Bilan</h2>
 <p>Notre instance d'OptaPlanner pour <a href="https://www.elao.com/fr/etudes-de-cas/vimeet/" target="_blank">Vimeet</a> a maintenant réalisé la planification de dizaines d'événements depuis début</p>
-<ol start="2017"><li>Les organisateurs ont noté en moyenne une <strong>augmentation de 10%</strong> des rendez-vous positionnés par rapport à
+<ol start="2017">
+<li>Les organisateurs ont noté en moyenne une <strong>augmentation de 10%</strong> des rendez-vous positionnés par rapport à
 l'ancienne application de planification des rendez-vous.</li>
-</ol><p>De plus, les organisateurs d’événements sont maintenant <strong>autonomes</strong> pour réaliser la planification de
+</ol>
+<p>De plus, les organisateurs d’événements sont maintenant <strong>autonomes</strong> pour réaliser la planification de
 rendez-vous. Depuis le backoffice Vimeet, ils cliquent sur un bouton "Planifier" et quelques minutes plus tard,
 les agendas de rendez-vous sont créés. L'application de planification est maintenant dépourvue d'UI et est
 appelée comme une API.</p>
@@ -532,32 +554,47 @@ appelée comme une API.</p>
 Il est fonction des ressources en créneaux et en lieux de l'événement et du nombre de demandes acceptées.
 En réalité, on pourrait faire tourner le planificateur autant qu'on le souhaite. <strong>Plus il a de temps de calcul,
 plus il va tendre vers une meilleure solution.</strong></p>
-<table border="1" style="width: 100%"><thead><tr><th></th>
+<table border="1" style="width: 100%">
+    <thead>
+        <tr>
+            <th></th>
             <th>Demandes de Rdv acceptées</th>
             <th>Rdv positionnés</th>
             <th>% transformation</th>
             <th>Temps de calcul</th>
-        </tr></thead><tbody><tr><th>Event X</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Event X</th>
             <td class="text-center">630</td>
             <td class="text-center">560</td>
             <td class="text-center">89%</td>
             <td class="text-center">3 minutes</td>
-        </tr><tr><th>Event Y</th>
+        </tr>
+        <tr>
+            <th>Event Y</th>
             <td class="text-center">6700</td>
             <td class="text-center">5400</td>
             <td class="text-center">80%</td>
             <td class="text-center">6 heures</td>
-        </tr></tbody></table><p class="text-center">
-    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/stats-planifications.png" alt="Planifications" id="planifications"><i>Les statistiques et les planifications successives réalisées pour un événement</i>
+        </tr>
+    </tbody>
+</table>
+<p class="text-center">
+    <img src="/elao_/images/posts/2017/planification-de-rdv-avec-optaplanner/stats-planifications.png" alt="Planifications" id="planifications">
+    <i>Les statistiques et les planifications successives réalisées pour un événement</i>
 </p>
 <h2 id="axes-d-amelioration">Axes d'amélioration</h2>
-<ul><li><strong>Améliorer la vitesse du solveur</strong> : améliorer le modèle, ré-écrire les règles,
+<ul>
+<li><strong>Améliorer la vitesse du solveur</strong> : améliorer le modèle, ré-écrire les règles,
 <a href="https://docs.optaplanner.org/7.3.0.Final/optaplanner-docs/html_single/index.html#benchmarker" target="_blank">benchmarker les algorithmes</a>...</li>
 <li><strong>Ajouter des règles métier pour satisfaire encore plus le participant</strong> : par exemple à la fois diluer les rendez-vous
 d’un participant sur la journée mais aussi réduire les écarts entre rendez-vous
 (par exemple pas de rendez-vous en début puis en fin de journée).</li>
 <li><strong>Faire de la planification en continu</strong> même pendant l’événement pour positionner des rendez-vous en temps réel.</li>
-</ul><h2 id="quand-utiliser-optaplanner">Quand utiliser OptaPlanner ?</h2>
+</ul>
+<h2 id="quand-utiliser-optaplanner">Quand utiliser OptaPlanner ?</h2>
 <p>Lorsqu'un problème possède des <strong>objectifs</strong>, des <strong>règles de gestion</strong> et tout cela avec des <strong>ressources limitées</strong>,
 c'est très probablement un problème de planification auquel OptaPlanner peut répondre.</p></body>
                         </main>
@@ -664,6 +701,6 @@ c'est très probablement un problème de planification auquel OptaPlanner peut r
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>5 décembre 2009</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -225,7 +225,8 @@
 <p><a href="http://www.openspf.org/SPF_Record_Syntax#redirect" target="_blank">redirect</a> | <a href="http://www.openspf.org/SPF_Record_Syntax#exp" target="_blank">exp</a></p>
 <h3 id="les-mecanismes">Les mécanismes</h3>
 <p>Les mécanismes peuvent être préfixer par l'un de ces quatres "qualificateurs" :</p>
-<ul><li>
+<ul>
+<li>
 <p>"+" Pass (A passé la vérification)</p>
 </li>
 <li>
@@ -240,37 +241,58 @@
 <li>
 <p>Si un mécanisme abouti, la valeur de son qualificateur est utilisée. Le qualificateur par défaut est "+" (Pass).</p>
 </li>
-</ul><pre class="code-multiline"><code id="13feecd6d90274aef4e5827b80fd64f3">Par exemple: "v=spf1 -all" "v=spf1 a -all" "v=spf1 a mx -all" "v=spf1 +a +mx -all"</code></pre>
+</ul>
+<pre class="code-multiline"><code id="13feecd6d90274aef4e5827b80fd64f3">Par exemple: "v=spf1 -all" "v=spf1 a -all" "v=spf1 a mx -all" "v=spf1 +a +mx -all"</code></pre>
 <p>Les mécanismes sont évalués dans l'ordre :</p>
-<ul><li>Si aucun mécanisme ou modificateur ne correspond, la réponse par défaut est "Neutral" (Neutre). <br> Si un domaine n'a pas d'enregistrement SPF, le résultat est "None" (Aucun).</li>
+<ul>
+<li>Si aucun mécanisme ou modificateur ne correspond, la réponse par défaut est "Neutral" (Neutre). <br> Si un domaine n'a pas d'enregistrement SPF, le résultat est "None" (Aucun).</li>
 <li>Si un domaine renvoi une erreur temporaire pendant la lecture DNS, vous aurez la réponse "TempError" (Erreur temporaire), elle est aussi appellée "error" dans les anciennes documentations.</li>
 <li>Si une erreur de syntaxe ou d'évaluation apparait (par exemple le domaine renvoi un mécanisme non reconnu) le résultat est "PermError" (Erreur permanente, autrefois appellée "Unknow" (inconnue)).</li>
-</ul><p><strong>L'évaluation d'un enregistrement SPF peut retourner l'un de ces résultats :</strong></p>
-<table width="100%" border="1" align="center"><tr><td>Résultat</td>
+</ul>
+<p><strong>L'évaluation d'un enregistrement SPF peut retourner l'un de ces résultats :</strong></p>
+<table width="100%" border="1" align="center">
+  <tr>
+    <td>Résultat</td>
     <td>Explication</td>
     <td>Action résultante</td>
-  </tr><tr><td>Pass</td>
+  </tr>
+  <tr>
+    <td>Pass</td>
     <td>L'enregistrement SPF a désigné l'hôte comme autorisé à envoyer</td>
     <td>Accepté</td>
- </tr><tr><td>Fail</td>
+ </tr>
+  <tr>
+    <td>Fail</td>
     <td>L'enregistrement SPF a désigné l'hôte comme non autorisé à envoyer</td>
     <td>Rejeté</td>
- </tr><tr><td>SoftFail</td>
+ </tr>
+  <tr>
+    <td>SoftFail</td>
     <td>L'enregistrement SPF a désigné l'hôte comme non autorisé à envoyer mais est en cours de transition</td>
     <td>Accepté mais relevé</td>
- </tr><tr><td>Neutral</td>
+ </tr>
+  <tr>
+    <td>Neutral</td>
     <td>L'enregistrement SPF a explicitement renvoyé que rien ne pouvait être dit à propos de la validité de la requête</td>
     <td>Accepté</td>
- </tr><tr><td>None</td>
+ </tr>
+  <tr>
+    <td>None</td>
     <td>Le domaine n'a pas d'enregistrement SPF ou alors l'enregistrement SPF n'évalue pas un résultat</td>
     <td>Accepté</td>
- </tr><tr><td>PermError</td>
+ </tr>
+  <tr>
+    <td>PermError</td>
     <td>Une erreur permanente a été renvoyée (badly formatted SPF record). (Enregistrement SPF mal formaté)</td>
     <td>Non spécifié</td>
- </tr><tr><td>TempError</td>
+ </tr>
+  <tr>
+    <td>TempError</td>
     <td>Une erreur passagère (temporaire) est arrivée</td>
     <td>Accepté ou rejeté</td>
-  </tr></table><h3 id="le-mecanisme-all">Le mécanisme "all"</h3>
+  </tr>
+</table>
+<h3 id="le-mecanisme-all">Le mécanisme "all"</h3>
 <p>Ce mécanisme correspond toujours, on le retrouve habituellement à la fin de l'enregistrement.</p>
 <p><strong>Exemples:</strong></p>
 <pre class="code-multiline"><code id="a94fda36e5bbd7b984ae385213834a55">"v=spf1 mx -all"</code></pre>
@@ -425,6 +447,6 @@ mx:/</code></pre>
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

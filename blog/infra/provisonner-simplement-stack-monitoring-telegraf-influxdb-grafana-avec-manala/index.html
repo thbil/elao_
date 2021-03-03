@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>25 janvier 2017</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -236,11 +236,13 @@
 <p>Le <strong>monitoring</strong> consiste à surveiller et logger une série de métriques dans le temps et de les représenter sous forme de graphiques. Le monitoring vous permet de détecter voir d'anticiper des anomalies ou des pannes, que ce soit de votre infrastucture ou de votre applicatif.</p>
 <p>Le <strong>monitoring</strong> peut vous permettre de déclencher des alertes sur certains seuils de <strong>métriques</strong> afin de réagir avant qu'un problème devienne critique.</p>
 <p>Celà peut être :</p>
-<ul><li>un pic de charge important indiquant un problème de performance ou un pic de visiteurs</li>
+<ul>
+<li>un pic de charge important indiquant un problème de performance ou un pic de visiteurs</li>
 <li>un pic de trafic anormal causé par une attaque</li>
 <li>à l'inverse une perte soudaine de traffic pouvant indiquer une panne ou une indisponibilité</li>
 <li>...</li>
-</ul><p>Vous pouvez également mesurer un gain ou une perte de <strong>performance</strong> à la suite d'une mise à jour.</p>
+</ul>
+<p>Vous pouvez également mesurer un gain ou une perte de <strong>performance</strong> à la suite d'une mise à jour.</p>
 <p>En conclusion, le monitoring permet de <strong>surveiller</strong> la santé de votre serveur/application.</p>
 <h2 id="la-stack">La stack</h2>
 <h3 id="telegraf">Telegraf</h3>
@@ -305,7 +307,8 @@
     <span class="token key atrule">template</span><span class="token punctuation">:</span> configs/input_net.conf.j2</code></pre>
 <p>La configuration du fichier <code class="code-inline" id="bcb27117aa4a499ab27bda71df24b85b">output_influxdb.conf</code> indique sur quel support de stockage <strong>Telegraf</strong> doit envoyer les données collectées. Ici on indique l'url de API d'<strong>InfluxDB</strong> ainsi que le nom et les identifiants de la base de données à utiliser.</p>
 <p>Les fichiers <code class="code-inline" id="98816dd26aaf01abfccd406c74b69f50">input_*.conf</code> suivants permettent de configurer les métriques à collecter. Le rôle est fourni avec des fichiers de configurations pour les plusieurs métriques mais vous pouvez ajouter vos propres fichiers de configuration.</p>
-<ul><li>cpu</li>
+<ul>
+<li>cpu</li>
 <li>disk</li>
 <li>diskio</li>
 <li>haproxy</li>
@@ -313,7 +316,8 @@
 <li>net</li>
 <li>swap</li>
 <li>system</li>
-</ul><p>Les rôles <a href="https://github.com/manala/ansible-role-influxdb" target="_blank">manala.influxdb</a> et <a href="https://github.com/manala/ansible-role-grafana" target="_blank">manala.grafana</a> ne nécessitent pas de configuration particulière pour fonctionner.</p>
+</ul>
+<p>Les rôles <a href="https://github.com/manala/ansible-role-influxdb" target="_blank">manala.influxdb</a> et <a href="https://github.com/manala/ansible-role-grafana" target="_blank">manala.grafana</a> ne nécessitent pas de configuration particulière pour fonctionner.</p>
 <p>Je vous encourage néanmoins à jeter un oeil à la configuration de ces deux rôles si vous souhaitez aller plus loin, notamment concernant la sécurité des deux outils ou l'activation de fonctionnalités de Grafana.</p>
 <h2 id="prise-en-main">Prise en main</h2>
 <h3 id="influxdb">InfluxDB</h3>
@@ -338,7 +342,11 @@ system</code></pre>
 <h3 id="grafana">Grafana</h3>
 <p>Par defaut <strong>Grafana</strong> est accesible sur le port <code class="code-inline" id="e93028bdc1aacdfb3687181f2031765d">3000</code> avec pour identifiant et mot de passe "admin" / "admin". Vous accédez alors au "Home Dashboard". Avant toute chose il faut ajouter notre base de données InfluxDB comme source de données. Pour cela dans le menu, sélectionnez <em>Data Sources</em> puis <em>Add data source</em>. Nommez votre source, sélectionnez le type "InfluxDB", renseignez l'url <code class="code-inline" id="dc5025de8b60c0a511df7c07d81ead97">http://localhost:8086</code> et le nom de base de données <code class="code-inline" id="aa3a0177193f5479812eadbbb3e6c303">telegraf</code>. Par défaut il n'y a pas d'identifiant ni de mot de passe sur la base de données. Cliquez sur <em>Save and test</em> et si tout va bien vous devriez obtenir le message <em>Data source is working</em>.</p>
 <p>À partir de là vous pouvez créer votre premier <em>dashboard</em> (Menu &gt; Dashboard &gt; New). Pour avoir rapidement une base, vous pouvez également importer (Menu &gt; Dashboard &gt; Import) <a href="https://gist.github.com/maximecolin/ae5876ff844ce6a5dca95bc179bfa72d" target="_blank">cette configuration de dashboard</a> que j'ai initiée pour vous.</p>
-<figure><img src="/elao_/images/posts/2016/monitoring-grafana.jpg" alt="Dashboard Grafana de monitoring système" id="dashboard-grafana-de-monitoring-systeme"><figcaption style="text-align:center;font-style:italic;">Dashboard Grafana de monitoring système</figcaption></figure><h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
+<figure>
+    <img src="/elao_/images/posts/2016/monitoring-grafana.jpg" alt="Dashboard Grafana de monitoring système" id="dashboard-grafana-de-monitoring-systeme">
+    <figcaption style="text-align:center;font-style:italic;">Dashboard Grafana de monitoring système</figcaption>
+</figure>
+<h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
 <h3 id="provisionner-les-datasources-et-les-dashboards">Provisionner les datasources et les dashboards</h3>
 <p>Une fois que vous avez configuré vos <em>datasources</em> et créé vos <em>dashboards</em> vous souhaiterez peut-être de les intégrer à votre provisonning afin d'automatiser leur configuration. Le rôle <code class="code-inline" id="78a7e4f03532bd610f8f5189864031e3">manala.grafana</code> permet celà.</p>
 <p>Pour configurer une <em>datasource</em>, renseignez les mêmes informations que dans le formulaire de l'administration de <strong>Grafana</strong> :</p>
@@ -577,6 +585,6 @@ system</code></pre>
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

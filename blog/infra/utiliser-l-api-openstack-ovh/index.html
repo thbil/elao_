@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>16 décembre 2016</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -227,10 +227,12 @@
 Bien que pas mal d'opérations soient réalisables grâce au manager, certaines d'entre elles, un peu poussées, ne sont réalisables qu'à travers l'<a href="https://api.ovh.com/" target="_blank">API OVH</a> et/ou l'API OpenStack qui est d'ailleurs partiellement exploitée par le dashboard <a href="https://horizon.cloud.ovh.net/" target="_blank">Horizon</a>.</p>
 <p>Nous allons voir en détails l'installation d'un environnement client pour exploiter l'API Openstack en console.</p>
 <h2 id="pre-requis">Pré-requis</h2>
-<ul><li>Python 2.7 ou supérieur</li>
+<ul>
+<li>Python 2.7 ou supérieur</li>
 <li>Le paquet «SetupTools»</li>
 <li>pip</li>
-</ul><p>Si vous ne souhaitez pas faire l'installation sur votre machine de travail, vous trouverez <a href="https://hub.docker.com/r/manala/openstack-api-client-debian/" target="_blank">ici</a>, un conteneur Docker prêt à l'utilisation.
+</ul>
+<p>Si vous ne souhaitez pas faire l'installation sur votre machine de travail, vous trouverez <a href="https://hub.docker.com/r/manala/openstack-api-client-debian/" target="_blank">ici</a>, un conteneur Docker prêt à l'utilisation.
 Je prends le devant des Trolls, oui Docker n'a pas été conçu pour ça mais pour une fois qu'on lui trouve une utilité pratique... :D</p>
 <p><strong>Sinon</strong> voici les étapes à suivre (La machine utilisée est une Debian 8, je vous laisse le soin de corriger le nom des paquets qui pouraient différer d'une distribution à une autre.):</p>
 <pre class="code-multiline"><code id="70c0554ebee4621f46005fa9aef6ee86">apt-get --no-install-recommends -y install vim python python-setuptools python-dev python-pip libyaml-dev gcc g++</code></pre>
@@ -240,7 +242,8 @@ Je prends le devant des Trolls, oui Docker n'a pas été conçu pour ça mais po
 Toutefois, pour certaines opérations, il peut être nécessaire de passer par les anciens clients. Leur installation est assez simple et se fait également à l'aide de <strong><code class="code-inline" id="62ad1c2a46c5298f3e2c95d3babf8d0c">pip</code></strong>:</p>
 <pre class="code-multiline"><code id="1e9477a5afe48d6b526e32a653ead860">pip install python-novaclient</code></pre>
 <p><strong>Pour rappel:</strong></p>
-<ul><li><code class="code-inline" id="923b3cefc3439b9a63a350da2ff1206c">barbican</code> - Key Manager Service API</li>
+<ul>
+<li><code class="code-inline" id="923b3cefc3439b9a63a350da2ff1206c">barbican</code> - Key Manager Service API</li>
 <li><code class="code-inline" id="4161ff0e1519a6226d1117b428fc831a">ceilometer</code> - Telemetry API</li>
 <li><code class="code-inline" id="8f795e66db9f792f7eb19a8b4e39b2bc">cinder</code> - Block Storage API and extensions</li>
 <li><code class="code-inline" id="32aa941aa956d090981742fddc7f437d">cloudkitty</code> - Rating service API</li>
@@ -260,24 +263,30 @@ Toutefois, pour certaines opérations, il peut être nécessaire de passer par l
 <li><code class="code-inline" id="e3a3325113108fdb22f5f6c2c854499f">senlin</code> - Clustering service API</li>
 <li><code class="code-inline" id="818056dbd7e201243206b9c7cd88481c">swift</code> - Object Storage API</li>
 <li><code class="code-inline" id="21c47a94df5344fe00f4894c770d0dcf">trove</code> - Database service API</li>
-</ul><h2 id="configuration-authentification">Configuration/Authentification</h2>
+</ul>
+<h2 id="configuration-authentification">Configuration/Authentification</h2>
 <p>Avant de pouvoir exploiter pleinement l'environnement que nous venons d'installer il nous faut récupérer nos autorisations à partir du manager OVH (dans la partie Cloud plus précisément).
 Vous trouverez au niveau de vos différents environnements une entrée «OpenStack» qui vous permettra:</p>
-<ul><li>de générer un compte utilisateur</li>
+<ul>
+<li>de générer un compte utilisateur</li>
 <li>de vous rendre sur l'interface Horizon</li>
 <li>de récupérer un fichier préconfiguré avec vos identifiants</li>
 <li>de (re)générer un token OpenStack</li>
-</ul><div class="text-center">
-    <img src="/elao_/images/posts/2016/ovh-openstack/ovh-os.png" alt="API OpenStack OVH" id="api-openstack-ovh"></div>
+</ul>
+<div class="text-center">
+    <img src="/elao_/images/posts/2016/ovh-openstack/ovh-os.png" alt="API OpenStack OVH" id="api-openstack-ovh">
+</div>
 <p>Une fois que vous avez créé un utilisateur, récupérez votre fichier de configuration (il s'agit en fait d'un simple fichier qui exporte les variables utilisées par le client OpenStack pour établir sa connexion) et «sourcez» le:</p>
 <pre class="code-multiline"><code id="d920a4cfb0591ee3959231b93a3c7746">. ./openrc.sh</code></pre>
 <p>Les variables suivantes devraient être initialisées:</p>
-<ul><li><code class="code-inline" id="5f9a3a9abf38615d84184431d020b221">OS_AUTH_URL</code></li>
+<ul>
+<li><code class="code-inline" id="5f9a3a9abf38615d84184431d020b221">OS_AUTH_URL</code></li>
 <li><code class="code-inline" id="c212a666ce8159182978e88e4234da01">OS_TENANT_ID</code></li>
 <li><code class="code-inline" id="ab904376487f9adadc232e6e3e6d3f99">OS_TENANT_NAME</code></li>
 <li><code class="code-inline" id="b583d36884a35e7a5580cece5f5fef0c">OS_USERNAME</code></li>
 <li><code class="code-inline" id="babeb4453a9883e74df057a623c87f5f">OS_PASSWORD</code></li>
-</ul><h2 id="connexion">Connexion</h2>
+</ul>
+<h2 id="connexion">Connexion</h2>
 <p>Une fois les étapes précédentes terminées vous devriez être capable de vous connecter avec le client. Nous pouvons vérifier le bon fonctionnement de l'environnement en listant nos conteneurs par exemple:</p>
 <pre class="code-multiline"><code id="770241b4fc888779066e534e9f4a9a07">root@97cbc23bcd97:/srv# openstack server list
 +--------------------------------------+----------+--------+-------------------------+
@@ -288,11 +297,14 @@ Vous trouverez au niveau de vos différents environnements une entrée «OpenSta
 +--------------------------------------+----------+--------+-------------------------+</code></pre>
 <h2 id="zones-geographiques">Zones géographiques</h2>
 <p>Certains l'auront remarqué, il existe une dernière variable d'importance dans le fichier de configuration. La variable <code class="code-inline" id="c2d4664376a4d7b31d5463553f03f998">OS_REGION_NAME</code> permet, en effet, de spécifier à quel DC vous souhaitez vous connecter:</p>
-<ul><li>Roubaix (RBX1)</li>
+<ul>
+<li>Roubaix (RBX1)</li>
 <li>Gravelines (GRA1)</li>
 <li>ou Beauharnois (BHS1)</li>
-</ul><p>Elle est d'importance car pour chacun de ces DC vous ne verrez (et c'est logique) que les instances qui lui sont rattachées.</p>
-<hr><p>Une bonne partie de l'API openstack vous est à présent accessible et couvrira les manques fonctionnels du manager ainsi que les carences de l'API OVH pour la configuration d'environnements un tant soit peu complexes.
+</ul>
+<p>Elle est d'importance car pour chacun de ces DC vous ne verrez (et c'est logique) que les instances qui lui sont rattachées.</p>
+<hr>
+<p>Une bonne partie de l'API openstack vous est à présent accessible et couvrira les manques fonctionnels du manager ainsi que les carences de l'API OVH pour la configuration d'environnements un tant soit peu complexes.
 L'utilisation des différents clients s'avère, de prime abord, peu aisée mais on s'y fait vite.</p>
 <p>Comme à l'accoutumé cet article est ouvert à toutes critiques, suggestions et/ou corrections.</p></body>
                         </main>
@@ -399,6 +411,6 @@ L'utilisation des différents clients s'avère, de prime abord, peu aisée mais 
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

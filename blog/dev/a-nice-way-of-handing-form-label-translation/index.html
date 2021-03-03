@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>13 septembre 2013</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -399,10 +399,12 @@
 <span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">endspaceless</span></span> <span class="token rd"><span class="token punctuation">%}</span></span></span>
 <span class="token tag"><span class="token ld"><span class="token punctuation">{%</span> <span class="token keyword">endmacro</span></span> <span class="token rd"><span class="token punctuation">%}</span></span></span></code></pre>
 <p>What we do here:</p>
-<ul><li>Extend the <code class="code-inline" id="4a064225e7b795f4e6ce6dc4558b1f99">*form\_div\_layout.html*</code>.</li>
+<ul>
+<li>Extend the <code class="code-inline" id="4a064225e7b795f4e6ce6dc4558b1f99">*form\_div\_layout.html*</code>.</li>
 <li>Override the default <code class="code-inline" id="ee6b3c494bc3dd3687666e92752a5b28">**form_label**</code> to set the <code class="code-inline" id="18167d6b93cb71816a0ce71664acea3c">**label**</code> variable (if not provided) before rendering the default template with <em>parent()</em></li>
 <li>Use the recursive macro <code class="code-inline" id="3ef35ab17366d6b170882eb619606402">**form\_parent\_name**</code> to construct the key this way: <em>[parent_form].labels.[child]</em></li>
-</ul><p><strong>Note:</strong>
+</ul>
+<p><strong>Note:</strong>
 We handle the special issue of embedded forms with the <code class="code-inline" id="851f5ac9941d720844d143ed9cfcf60a">prefix</code> variable in the macro.
 When we construct the label of an embedded form, we add <code class="code-inline" id="45ee32ec212ecc273cdd4275ebd77daa">.label</code> at the end of the key.
 When the children of this form want to get the parent key, we just return the prefix key (without the <code class="code-inline" id="45ee32ec212ecc273cdd4275ebd77daa">.label</code> addition).
@@ -417,7 +419,8 @@ register.labels.password.first
 register.labels.password.second
 register.labels.group.label
 register.labels.group.name</code></pre>
-<ul><li>
+<ul>
+<li>
 <p>All your label are now rendered with a generated translation key that <strong>logically follows your forms structure</strong>.</p>
 </li>
 <li>
@@ -531,6 +534,6 @@ register.labels.group.name</code></pre>
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

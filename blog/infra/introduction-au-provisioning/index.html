@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>3 février 2016</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -228,26 +228,38 @@
 <h1 id="pourquoi-le-provisioning">Pourquoi le « provisioning » ?</h1>
 <p>Le provisioning répond à un besoin à la fois de robustesse, de rapidité de déploiement et/ou de mise à disposition d'environnements plus ou moins complexes. Nous avons ainsi pour habitude chez <a href="https://www.elao.com" target="_blank">ELAO</a> d'y avoir recours pour l'ensemble de nos environnements "du dev à la prod".</p>
 <h2 id="le-provisionning-apporte-plusieurs-choses-parmis-lesquelles">Le provisionning apporte plusieurs choses parmis lesquelles:</h2>
-<ul><li>L'automatisation de tâches parfois rébarbatives.</li>
+<ul>
+<li>L'automatisation de tâches parfois rébarbatives.</li>
 <li>La garantie de ne pas "oublier" un composant essentiel lors de l'installation d'un nouvel environnement.</li>
 <li>La facilité et la rapidité d'avoir à disposition un environnement parfaitement fonctionnel.</li>
 <li>La garantie d'avoir des environnements les plus identiques possibles.</li>
-</ul><h1 id="quand-automatiser">Quand automatiser ?</h1>
+</ul>
+<h1 id="quand-automatiser">Quand automatiser ?</h1>
 <p>Les aficionados vous diront « <em>Tout le temps !</em> ».
 La nécessité d'automatiser une tâche ou un traitement restant à la discretion du technicien (développeur, SysAdmin ...), chez <a href="https://www.elao.com" target="_blank">ELAO</a> nous avons pour parti pris d'automatiser systématiquement tous les projets «Actifs» (Ceux où il y a une activité de développement, de TMA ou encore d'évolution fonctionnelle).
 L'ensemble de nos infras de production et de demo ne dérogent pas à cette règle, ce fonctionnement nous permet d'avoir des environnements <strong>homogènes</strong>, facilement <strong>scalables</strong> et rapidement <strong>reproduisibles</strong>.</p>
 <h1 id="provisionner-oui-mais-avec-quoi">« Provisionner » oui, mais avec quoi ?</h1>
 <p>Il existe plusieurs outils plus ou moins connus permettant d'automatiser. Quatre d'entres eux sont en «concurrence» directe, leur choix relevant autant du but poursuivi que de l'affinité de chacun avec ceux-ci.</p>
-<ul><li><strong>Le script shell</strong></li>
-</ul><p>Historiquement il s'agit sans doute de la façon la plus ancienne d'assurer le provisioning de ses environnements. Difficilement maintenable et extrêmement spécifique, il tend à être délaissé au profit d'outils plus haut niveau.</p>
-<ul><li><a href="http://www.chef.io/" target="_blank"><strong>Chef</strong></a> - 2009 (Première révision stable)</li>
-</ul><p>L'un des plus connus il est écrit principalement en Ruby et en Erlang, il obéit à une organisation à base de « recipes » qui s'organisent sous la forme d'un « cookBook ».</p>
-<ul><li><a href="https://puppetlabs.com/" target="_blank"><strong>Puppet</strong></a> - 2005 (Première révision stable)</li>
-</ul><p>Concurrent direct de Chef il adopte la même approche, il est lui aussi écrit en Ruby et fonctionne sur la base de « manifests » ensuite compilés sous forme de « catalogs ».</p>
-<ul><li><a href="http://saltstack.com/" target="_blank"><strong>Salt</strong></a> - 2011 (Première révision stable)</li>
-</ul><p>Salt est écrit en Python et s'articule autour de modules spécifiques (Execution module, State module, Renderer module).</p>
-<ul><li><a href="http://www.ansible.com/" target="_blank"><strong>Ansible</strong></a> - 2012 (Première révision stable)</li>
-</ul><p>Ansible est le «petit dernier» si l'on peut dire, il est également écrit en Python et a l'avantage non négligeable d'être facilement accessible même pour des profils ayant peu de compétences et d'affinité avec l'administration système.</p>
+<ul>
+<li><strong>Le script shell</strong></li>
+</ul>
+<p>Historiquement il s'agit sans doute de la façon la plus ancienne d'assurer le provisioning de ses environnements. Difficilement maintenable et extrêmement spécifique, il tend à être délaissé au profit d'outils plus haut niveau.</p>
+<ul>
+<li><a href="http://www.chef.io/" target="_blank"><strong>Chef</strong></a> - 2009 (Première révision stable)</li>
+</ul>
+<p>L'un des plus connus il est écrit principalement en Ruby et en Erlang, il obéit à une organisation à base de « recipes » qui s'organisent sous la forme d'un « cookBook ».</p>
+<ul>
+<li><a href="https://puppetlabs.com/" target="_blank"><strong>Puppet</strong></a> - 2005 (Première révision stable)</li>
+</ul>
+<p>Concurrent direct de Chef il adopte la même approche, il est lui aussi écrit en Ruby et fonctionne sur la base de « manifests » ensuite compilés sous forme de « catalogs ».</p>
+<ul>
+<li><a href="http://saltstack.com/" target="_blank"><strong>Salt</strong></a> - 2011 (Première révision stable)</li>
+</ul>
+<p>Salt est écrit en Python et s'articule autour de modules spécifiques (Execution module, State module, Renderer module).</p>
+<ul>
+<li><a href="http://www.ansible.com/" target="_blank"><strong>Ansible</strong></a> - 2012 (Première révision stable)</li>
+</ul>
+<p>Ansible est le «petit dernier» si l'on peut dire, il est également écrit en Python et a l'avantage non négligeable d'être facilement accessible même pour des profils ayant peu de compétences et d'affinité avec l'administration système.</p>
 <p>Il fonctionne à base de « roles » plus ou moins spécifiques et de « playbooks ». Il a la particularité d'être  « agentless » et ne nécessite donc pas l'installation d'un quelconque client avant de pouvoir fonctionner à la différence de Chef et Puppet.</p>
 <p>C'est la solution que nous avons choisi d'utiliser chez <a href="https://www.elao.com" target="_blank">ELAO</a>.</p>
 <h1 id="et-la-virtualisation">Et la virtualisation ?</h1>
@@ -360,6 +372,6 @@ De même il devient beaucoup plus facile (attention je n'ai pas dit simple) d'as
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

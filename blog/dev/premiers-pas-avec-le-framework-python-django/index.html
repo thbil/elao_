@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>15 septembre 2010</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -353,14 +353,18 @@ INSTALLED_APPS <span class="token operator">=</span> <span class="token punctuat
 <span class="token punctuation">)</span></code></pre>
 <p>Profitez de cette modification pour consulter le contenu de ce fichier. C'est notamment dans ce fichier que l'on définit le mode debug (<strong>DEBUG = True</strong>), les paramètres de connexion à la base de données, l'emplacement où nous enregistrerons les templates, le répertoire "<strong>media</strong>" destiné à accueillir les fichiers statiques (feuilles de style, images, fichiers javascript ...) et bien d'autre choses. Pour connaître les principaux paramètres enregistrés dans ce fichier, je vous encourage à consulter la page de la documentation de Django traitant de la configuration d'un projet : <a href="http://docs.djangoproject.com/en/1.2/topics/settings/" target="_blank">Django Settings</a>.</p>
 <p>A présent, nous pouvons nous atteler à la rédaction du code qui va nous permettre d'afficher le tant attendu "Hello World" dans notre navigateur préféré. Cela va consister à :</p>
-<ol><li>Ajouter une URL dans le fichier <em>monprojet/urls.py</em></li>
+<ol>
+<li>Ajouter une URL dans le fichier <em>monprojet/urls.py</em></li>
 <li>Ajouter une fonction dans le fichier <em>monprojet/hello/views.py</em></li>
 <li>Ecrire la template</li>
-</ol><blockquote>
+</ol>
+<blockquote>
 <p>Noter le nom du fichier dans lequel nous rédigerons le code de notre fonction : <strong>views.py</strong>. En fait, Django est un Framework Web mettant en oeuvre le principe <strong>MVC</strong>, tel que vous avez l'habitude de le rencontrer dans d'autres frameworks. Pour être plus précis, dans le cas de Django, les créateurs du framework préfèrent parler de MTV : <strong>Model-Template-View</strong>. Il s'agit d'une nuance dans l'interprétation du MVC. En fait, sous Django, les fonctions qui s'apparenteraient dans d'autres frameworks à des actions ou des contrôleurs sont enregistrées dans le fichier views.py. Cela peut être déroutant pour un développeur familier avec les principes MVC. Sachez simplement que c'est avant tout affaire de terminologie. Pour l'heure, acceptez le fait que le code de ce que vous considérez comme vos actions ou contrôleurs se trouve dans le fichier views.py et que c'est donc dans ce fichier que l'on trouve la logique correspondant au "C" de MVC ... Quant aux vues (dans le sens MVC du terme), elles sont représentées par les templates. Mais fondamentalement, cela ne change en rien les habitudes acquises sur d'autres frameworks MVC, à partir du moment où vous avez digéré cette subtilité sémantique, quelque peu déroutante, il faut l'admettre, lorsque l'on débute sous Django.</p>
 </blockquote>
-<ol><li>Créer une URL (fichier urls.py)</li>
-</ol><p>Pour ajouter l'URL pointant sur notre méthode, nous allons ajouter une ligne à la fin du fichier <strong>urls.py</strong> :</p>
+<ol>
+<li>Créer une URL (fichier urls.py)</li>
+</ol>
+<p>Pour ajouter l'URL pointant sur notre méthode, nous allons ajouter une ligne à la fin du fichier <strong>urls.py</strong> :</p>
 <pre class="code-multiline language-python"><code class="language-python" id="556c5f6e0631026d1ad2ca0b9d6576e0">urlpatterns <span class="token operator">=</span> patterns<span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span>
     <span class="token comment"># Example:</span>
     <span class="token comment"># (r'^monprojet/', include('monprojet.foo.urls')),</span>
@@ -372,15 +376,19 @@ INSTALLED_APPS <span class="token operator">=</span> <span class="token punctuat
 <p>Nous venons simplement de préciser que c'est la fonction "hello" du module "views" de l'application "hello" qui doit être appelée lorsque l'URL invoquée correspond exactement au pattern "hello/". Pour créer des URLS sous Django, vous noterez qu'il faut connaître un peu les expressions régulières. Ca, je me suis bien gardé de le préciser en introduction de peur de faire fuir le lecteur. J'avoue que le procédé est assez malhonnête, j'ai quelques scrupules, mais sincèrement, combien d'entre vous seraient parvenus jusqu'ici si j'avais mentionné les expressions régulières dès le début de cet article ? Et puis, sachez que moi-même je ne suis pas très rompu à la syntaxe des REGEXP, alors voici quelques exemples qui vont vous permettre de gérer 90 % des cas que vous serez amenés à rencontrer dans le cadre de l'ajout d'URLs sous Django :</p>
 <blockquote>
 <p><strong>Quelques expressions régulières utiles</strong> :</p>
-<ul><li><strong>^videos/</strong> : toute URL commençant par "videos/"</li>
+<ul>
+<li><strong>^videos/</strong> : toute URL commençant par "videos/"</li>
 <li><strong>extract/$</strong> : toute URL se terminant par "extract/"</li>
 <li><strong>^gallery/$</strong> : toute URL correspondant exactement à l'expression "gallery/"</li>
 <li><strong>^photo/show/(?P<id>\d+)/$</id></strong> : toute URL commençant par "photo/show/" suivi d'un nombre (correspondant au paramètre "id")</li>
 <li><strong>^photo/show/(?P<slug>[a-z0-9\-]+)/$</slug></strong> : la même chose mais avec un paramètre "slug" (ne contenant donc que des chiffres, des tirets et des lettres minuscules).</li>
-</ul></blockquote>
+</ul>
+</blockquote>
 <p>A présent, si nous nous rendons sur la page <a href="http://localhost:8000/hello/" target="_blank"></a><a href="http://localhost:8000/hello/" target="_blank">http://localhost:8000/hello/</a>, nous recevons une exception de type "ViewDoesNotExist" qui indique que nous sommes sur la bonne voie. En effet, cette erreur implique que notre route a bien été prise en compte et qu'il nous faut donc rédiger la fonction "hello.views.hello".</p>
-<ol start="2"><li>Rédiger la fonction <strong>hello</strong> (fichier hello/views.py)</li>
-</ol><p>Voici le code complet du fichier views.py contenant notre fonction "hello" :</p>
+<ol start="2">
+<li>Rédiger la fonction <strong>hello</strong> (fichier hello/views.py)</li>
+</ol>
+<p>Voici le code complet du fichier views.py contenant notre fonction "hello" :</p>
 <pre class="code-multiline language-python"><code class="language-python" id="d9480d0ac1283d1820f35ec9f11aa90d"><span class="token comment"># monprojet/hello/views.py</span>
 <span class="token keyword">from</span> django<span class="token punctuation">.</span>shortcuts <span class="token keyword">import</span> render_to_response
 
@@ -388,8 +396,10 @@ INSTALLED_APPS <span class="token operator">=</span> <span class="token punctuat
   <span class="token keyword">return</span> render_to_response<span class="token punctuation">(</span><span class="token string">'hello.html'</span><span class="token punctuation">)</span></code></pre>
 <p>Si vous découvrez le langage Python, il n'y a rien de très compliqué. Noter qu'en Python, les délimitations des blocs de code (comme la définition du corps d'une méthode par exemple) sont marquées au moyen de l'indentation (là où les langages avec une syntaxe héritée du C utilisent les accolades). Nous utilisons également une méthode raccourcie de Django très utile, <strong>render_to_response</strong>, qui permet de retourner une réponse HTTP en lui passant en paramètre le nom de la template à afficher. Cette méthode appartenant au package django.shortcuts, il est nécessaire d'importer ce paquetage au début du code source.</p>
 <p>Si nous rechargeons la page <a href="http://localhost:8000/hello/" target="_blank"></a><a href="http://localhost:8000/hello/" target="_blank">http://localhost:8000/hello/</a>, nous recevons cette fois une exception de type "TemplateDoesNotExist". Notre fonction a bien été appelée mais il nous reste à créer la template.</p>
-<ol start="3"><li>Rédiger la template</li>
-</ol><p>Avec Django, il est nécessaire de mettre à jour le fichier settings.py pour indiquer au framework dans quel répertoire du disque dur il doit rechercher les fichiers de templating. Nous allons donc créer à la racine de notre projet un répertoire "templates" destiné à recevoir nos templates et modifier le fichier de configuration pour y mentionner ce répertoire (rechercher dans le fichier settings.py la ligne contenant <strong>TEMPLATE_DIRS</strong>) :</p>
+<ol start="3">
+<li>Rédiger la template</li>
+</ol>
+<p>Avec Django, il est nécessaire de mettre à jour le fichier settings.py pour indiquer au framework dans quel répertoire du disque dur il doit rechercher les fichiers de templating. Nous allons donc créer à la racine de notre projet un répertoire "templates" destiné à recevoir nos templates et modifier le fichier de configuration pour y mentionner ce répertoire (rechercher dans le fichier settings.py la ligne contenant <strong>TEMPLATE_DIRS</strong>) :</p>
 <pre class="code-multiline"><code id="6afb8da76a37229649f7633ff077faed">mkdir templates</code></pre>
 <pre class="code-multiline language-python"><code class="language-python" id="224e551d6e3a2b3b877ab8972f255cfc"><span class="token comment"># monprojet/settings.py</span>
 
@@ -522,6 +532,6 @@ TEMPLATE_DIRS <span class="token operator">=</span> <span class="token punctuati
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

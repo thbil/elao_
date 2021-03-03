@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>6 novembre 2019</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -230,17 +230,25 @@
 <p>Plusieurs alternatives aux identifiants auto-incrémentés existent.</p>
 <p>L'une des plus connues est l'<strong><a href="https://fr.wikipedia.org/wiki/Universal_Unique_Identifier" target="_blank">UUID</a></strong>. Cet identifiant de 32 caractères hexadécimaux est généré de façon unique par un algorithme. A partir de l'UUID d'un contenu il n'est pas possible de prédire celui des autres. Il est très utilisé lors d'échanges API; néanmoins il souffre d'un inconvéniant majeur pour des urls, sa longueur.</p>
 <p>L'url suivante est quand même beaucoup moins lisible et pratique que la même utilisant des IDs entiers :</p>
-<figure><pre>https://www.example.com/shop/category/b441a884-5d46-423b-8317-ddb6f7e3f2fb/product/f0283088-5bd3-4acc-bc42-e6d173d33dd8?filter=165779fc-171d-4f3c-8c60-a2351d6468d3</pre>
-  <figcaption>Une url avec des UUIDs</figcaption></figure><figure><pre>https://www.example.com/shop/category/3/product/56?filter=33</pre>
-  <figcaption>Une url avec des IDs</figcaption></figure><p>Une autre solution pourrait être d'utiliser des <strong>identifiants entiers non auto-incrémentés</strong>. Cela nécessite néanmoins la mise en place d'un algorithme permettant de générer de manière unique ces identifiants. C'est une solution qui peut être viable, mais pas forcement simple à mettre en place et la perte d'auto-increment côté base de données peut être handicapant.</p>
+<figure>
+  <pre>https://www.example.com/shop/category/b441a884-5d46-423b-8317-ddb6f7e3f2fb/product/f0283088-5bd3-4acc-bc42-e6d173d33dd8?filter=165779fc-171d-4f3c-8c60-a2351d6468d3</pre>
+  <figcaption>Une url avec des UUIDs</figcaption>
+</figure>
+<figure>
+  <pre>https://www.example.com/shop/category/3/product/56?filter=33</pre>
+  <figcaption>Une url avec des IDs</figcaption>
+</figure>
+<p>Une autre solution pourrait être d'utiliser des <strong>identifiants entiers non auto-incrémentés</strong>. Cela nécessite néanmoins la mise en place d'un algorithme permettant de générer de manière unique ces identifiants. C'est une solution qui peut être viable, mais pas forcement simple à mettre en place et la perte d'auto-increment côté base de données peut être handicapant.</p>
 <h2 id="l-offuscation">L'offuscation</h2>
 <p>Afin de conserver mes identifiants auto-incrementés en interne mais de ne pas les exposer j'ai opté pour l'<a href="https://fr.wikipedia.org/wiki/Offuscation" target="_blank">offuscation</a>. Le principe est simple, mes IDs sont encodés avant d'être inséré dans les urls puis décodés à chaque requête de façon à ce que l'utilisateur ne voie jamais les vrais IDs.</p>
 <p>En PHP il existe plusieurs bibliothèques permettant d'offusquer un ID numérique, encodant un entier en une chaîne héxadécidémale, une chaîne base64 ou un autre entier par exemple.</p>
-<ul><li><a href="https://hashids.org/" target="_blank">hashids</a></li>
+<ul>
+<li><a href="https://hashids.org/" target="_blank">hashids</a></li>
 <li><a href="https://github.com/zackkitzmiller/tiny-php" target="_blank">zackkitzmiller/tiny</a></li>
 <li><a href="https://github.com/marekweb/opaque-id" target="_blank">marekweb/opaque-id</a></li>
 <li><a href="https://github.com/jenssegers/optimus" target="_blank">jenssegers/optimus</a></li>
-</ul><p>J'ai utilisé <a href="https://github.com/jenssegers/optimus" target="_blank"><strong>optimus</strong></a> qui transforme votre ID en un autre entier. Néanmoins n'importe quelle autre bibliothèque fonctionnera pour la suite de cette article.</p>
+</ul>
+<p>J'ai utilisé <a href="https://github.com/jenssegers/optimus" target="_blank"><strong>optimus</strong></a> qui transforme votre ID en un autre entier. Néanmoins n'importe quelle autre bibliothèque fonctionnera pour la suite de cette article.</p>
 <pre class="code-multiline language-php"><code class="language-php" id="20328f69ecbe43bfd9ffba3cb1b6d80b"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token variable">$optimus</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Optimus</span><span class="token punctuation">(</span><span class="token number">1580030173</span><span class="token punctuation">,</span> <span class="token number">59260789</span><span class="token punctuation">,</span> <span class="token number">1163945558</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token variable">$encoded</span> <span class="token operator">=</span> <span class="token variable">$optimus</span><span class="token operator">-&gt;</span><span class="token function">encode</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1535832388</span>
@@ -259,7 +267,8 @@ figure pre {
 figure {
   margin: 20px 0;
 }
-</style><h2 id="integration-dans-symfony">Intégration dans Symfony</h2>
+</style>
+<h2 id="integration-dans-symfony">Intégration dans Symfony</h2>
 <p>Tout d'abord créons un service pour offusquer nos IDs.</p>
 <pre class="code-multiline language-php"><code class="language-php" id="8993fa175afbc254aba58d400993c99c"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">interface</span> <span class="token class-name">ObfuscatorInterface</span>
@@ -547,6 +556,6 @@ class ObfuscatorUrlGenerator implements RouterInterface
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

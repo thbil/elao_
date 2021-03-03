@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>6 novembre 2014</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -229,23 +229,29 @@
 </p>
 <p>Il présente cependant un gros défaut qui est celui de ne pas laisser d'espace non partitionné à disposition de Proxmox dans le groupe LV, condition <i>sine qua non</i> pour pouvoir effectuer des sauvegardes de type "snapshot" de nos containers (ou de nos machines virtuelles).</p>
 <p>Pour rappel le backup "à chaud" sous Proxmox fonctionne de la façon suivante:</p>
-<ul><li>Proxmox crée une partition virtuelle à la volée.</li>
+<ul>
+<li>Proxmox crée une partition virtuelle à la volée.</li>
 <li>Il déclenche un premier rsync du container (ou de la VM) pour récupérer le "gros" des fichiers.</li>
 <li>Il déclenche un deuxième rsync afin de mettre à jour les fichiers ayant été modifiés entre le début et la fin du premier.</li>
 <li>Il crée une archive compressée qu'il stocke dans <code class="code-inline" id="c7b09ceecb85753c86cf7755d5939d52">/var/lib/vz/dump</code></li>
 <li>Il détruit la partition virtuelle initialement créée</li>
-</ul><p>Nous préférerons donc définir un partitionnement comme ci-dessous (La machine utilisée disposait d'un espace total de 3 To):</p>
+</ul>
+<p>Nous préférerons donc définir un partitionnement comme ci-dessous (La machine utilisée disposait d'un espace total de 3 To):</p>
 <p class="text-center">
     ![Partitionnement-d-un-serveur-proxmox - Partitionnement personnalisé](images/posts/2014/proxmox_partition_elao_1000.png)
 </p>
-<ul><li>500 Mo pour <code class="code-inline" id="a53bfb333437907a8d5bdc636d15c75d">/boot</code> (Devrait amplement suffire à couvrir les MAJ kernel)</li>
+<ul>
+<li>500 Mo pour <code class="code-inline" id="a53bfb333437907a8d5bdc636d15c75d">/boot</code> (Devrait amplement suffire à couvrir les MAJ kernel)</li>
 <li>10 Go pour <code class="code-inline" id="6666cd76f96956469e7be39d750cc7d9">/</code></li>
 <li>2 * 1 Go pour le swap</li>
-</ul><p>Le reste est partitionné avec du LVM ce qui nous laisse une grande souplesse pour éventuellement réallouer de l'espace disque.</p>
-<ul><li>10 Go pour <code class="code-inline" id="d42b9c57d24cf5db3bd8d332dc35437f">/tmp</code> (Que l'on passe en tmpfs et pour laquelle on ajoute les options nodev, nosuid et noexec par sécurité)</li>
+</ul>
+<p>Le reste est partitionné avec du LVM ce qui nous laisse une grande souplesse pour éventuellement réallouer de l'espace disque.</p>
+<ul>
+<li>10 Go pour <code class="code-inline" id="d42b9c57d24cf5db3bd8d332dc35437f">/tmp</code> (Que l'on passe en tmpfs et pour laquelle on ajoute les options nodev, nosuid et noexec par sécurité)</li>
 <li>1 To pour <code class="code-inline" id="6bc86eb322cf4593d00d57000367a45f">/var/lib/vz</code> qui va recevoir les VMs et Containers</li>
 <li>150 Go pour <code class="code-inline" id="c7b09ceecb85753c86cf7755d5939d52">/var/lib/vz/dump</code> (Dans la pratique je ne l'utilise pas et préfère utiliser les 500 Go de backup externe fourni avec OVH pour chaque serveur dédié monté en NFS)</li>
-</ul><p>Attention toutefois à conserver au moins 50 Go d'espace non partitionné pour pouvoir effectuer des snapshots, veuillez à adapter cette espace à la taille de votre plus grosse VM.</p>
+</ul>
+<p>Attention toutefois à conserver au moins 50 Go d'espace non partitionné pour pouvoir effectuer des snapshots, veuillez à adapter cette espace à la taille de votre plus grosse VM.</p>
 <p>A cet espace nécessaire aux snapshots on gardera le reste de l'espace disque non partitionné pour pouvoir le redistribuer si jamais on se rend compte qu'une partition est trop petite.</p>
 <p>Comme d'habitude, remarques et critiques de ce schéma sont plus que les bienvenues ;)</p></body>
                         </main>
@@ -352,6 +358,6 @@
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>

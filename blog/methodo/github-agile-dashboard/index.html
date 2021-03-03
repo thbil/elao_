@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4311328b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.803de596.css">
             </head>
     <body>
         <header class="header">
@@ -193,7 +193,7 @@
         </div>
             <div class="article-info__date">
         <span>Publication <strong>4 juillet 2017</strong></span>
-        <span>Modification <strong>2 mars 2021</strong></span>
+        <span>Modification <strong>3 mars 2021</strong></span>
       </div>
     </div>
 
@@ -235,37 +235,47 @@
       <body><p>Sur notre projet du moment, notre équipe utilise beaucoup <em>GitHub</em> comme support agile.</p>
 <p>De manière assez similaire à ce que <a href="/fr/methodo/gestion-projet-agile-github/">Maxime a mis en place de son coté</a>.</p>
 <p>En bref :</p>
-<ul><li>Une story = une issue</li>
+<ul>
+<li>Une story = une issue</li>
 <li>Un sprint = une milestone avec une échéance</li>
 <li>On inscrit l'estimation en point d'une story dans son titre :  <code class="code-inline" id="ebc333ad53b873b3656fb9bd1cf03a6f">Ma story [3]</code></li>
 <li>Une milestone "Backlog" contient toutes les autres stories.</li>
-</ul><p>Ça nous convient bien et GitHub nous fournit un aperçu de l'avancée de la milestone (et donc du sprint) en cours :</p>
-<img src="/elao_/images/posts/2017/github-agile-dashboard/github-milestone.png" alt="github-milestone" title="github-milestone" id="github-milestone"><p>Le problème, c'est que GitHub ne connait pas notre convention décrivant la valeur en point des stories et ne peut donc pas l'exploiter.</p>
+</ul>
+<p>Ça nous convient bien et GitHub nous fournit un aperçu de l'avancée de la milestone (et donc du sprint) en cours :</p>
+<img src="/elao_/images/posts/2017/github-agile-dashboard/github-milestone.png" alt="github-milestone" title="github-milestone" id="github-milestone">
+<p>Le problème, c'est que GitHub ne connait pas notre convention décrivant la valeur en point des stories et ne peut donc pas l'exploiter.</p>
 <p>L'avancement proposé en nombre de ticket clos n'est pas représentatif de l'avancement en terme de points, qu'on doit obtenir en additionnant les points de toutes les issues.</p>
 <p><em>Et puis un jour, on en a eu marre de faire ces totaux à la main</em> 😇</p>
 <h2 id="gad-notre-ligne-de-command-agile">GAD, notre ligne de command agile</h2>
 <p>Alors j'ai pris un moment pour faire un petit outil en ligne de commande qui ferait ce travail pour nous.</p>
-<ul><li>On récupère la liste des issues du projet via <a href="https://developer.github.com/v3/" target="_blank">l'API GitHub</a>.</li>
+<ul>
+<li>On récupère la liste des issues du projet via <a href="https://developer.github.com/v3/" target="_blank">l'API GitHub</a>.</li>
 <li>On obtient les issues, milestone, labels, users et pull-request du projet en un seul appel HTTP !</li>
 <li>On extrait la valeur en point des stories à partir du titre des issues.</li>
-</ul><p>À partir de ces données, il est très simple de classer les stories du sprint en cours par état (<em>todo</em>, <em>doing</em>, <em>ready-to-review</em> et <em>done</em>) et de calculer les sommes de points respectives.</p>
+</ul>
+<p>À partir de ces données, il est très simple de classer les stories du sprint en cours par état (<em>todo</em>, <em>doing</em>, <em>ready-to-review</em> et <em>done</em>) et de calculer les sommes de points respectives.</p>
 <p>Comme toutes ces données sont horodatées, on a même de quoi générer un petit <strong>burndown chart</strong> !</p>
 <p>Dans le répertoire de notre projet, si on tape <code class="code-inline" id="5873cade84adddbdd85ce9248ea2a629">gad sprint</code>, on obtient :</p>
-<img src="/elao_/images/posts/2017/github-agile-dashboard/sprint.png" alt="gad sprint" title="gad sprint" id="gad-sprint"><p>Dès que nous avons identifié un besoin qui revenait souvent, on a rajouté une commande à GAD :</p>
+<img src="/elao_/images/posts/2017/github-agile-dashboard/sprint.png" alt="gad sprint" title="gad sprint" id="gad-sprint">
+<p>Dès que nous avons identifié un besoin qui revenait souvent, on a rajouté une commande à GAD :</p>
 <blockquote>
 <p>Combien de points reste-t-il dans le backlog ?</p>
 </blockquote>
-<img src="/elao_/images/posts/2017/github-agile-dashboard/backlog.png" alt="gad backlog" title="gad backlog" id="gad-backlog"><blockquote>
+<img src="/elao_/images/posts/2017/github-agile-dashboard/backlog.png" alt="gad backlog" title="gad backlog" id="gad-backlog">
+<blockquote>
 <p>Est-ce qu'il y a des PR que je n'ai pas encore review ?</p>
 </blockquote>
-<img src="/elao_/images/posts/2017/github-agile-dashboard/review.png" alt="gad review" title="gad review" id="gad-review"><h2 id="faire-son-propre-cli-avec-node">Faire son propre CLI avec Node</h2>
+<img src="/elao_/images/posts/2017/github-agile-dashboard/review.png" alt="gad review" title="gad review" id="gad-review">
+<h2 id="faire-son-propre-cli-avec-node">Faire son propre CLI avec Node</h2>
 <p>GAD est codé en <em>Node</em>, mais de nombreux languages seront capables de répondre à une telle problématique.</p>
 <p>Node fournit quelques outils pratiques pour réaliser rapidement un petit outil en ligne de commande :</p>
-<ul><li>L'API __<a href="https://nodejs.org/api/readline.html#readline_example_tiny_cli" target="_blank">ReadLine</a>__ qui propose quelques fonctionnalités dédiées au CLI, <em>out of the box</em>.</li>
+<ul>
+<li>L'API __<a href="https://nodejs.org/api/readline.html#readline_example_tiny_cli" target="_blank">ReadLine</a>__ qui propose quelques fonctionnalités dédiées au CLI, <em>out of the box</em>.</li>
 <li>Le module <strong><a href="https://github.com/substack/minimist" target="_blank">minimist</a></strong> propose de parser les options et arguments d'une commande à  partir d'une chaine de caractères.</li>
 <li>La clé <strong>bin</strong> du <code class="code-inline" id="b9cfc7f2cdf78a7f4b91a753d10865a2">package.json</code> permet de déclarer un module en tant qu'exécutable : <code class="code-inline" id="5df4c38c69a89c13de2e5e495643c069">"bin": { "gad": "./gad.js" }</code>
 La command <code class="code-inline" id="5cd1a2c6812a26f4af0bfe8eaf6422d7">gad</code> sera automatiquement disponible une fois le module installé en global sur la machine (<code class="code-inline" id="0da002587f1e5f033b1106635932e475">npm i -g @elao/github-agile-dashboard</code>) !</li>
-</ul><p><strong>Note :</strong> lorsqu'il est exécuté, gad récupère de précieuses informations, grâce à  <em>git</em>, comme l'url du repository (<code class="code-inline" id="74a340d9de7b7f4bafaf5c7251091889">git -C . config --get remote.origin.url</code>) ou l'utilisateur GitHub courant (<code class="code-inline" id="d0f21a3873bb8fa2ed961b30a53dbd58">git config --global github.user</code>)</p>
+</ul>
+<p><strong>Note :</strong> lorsqu'il est exécuté, gad récupère de précieuses informations, grâce à  <em>git</em>, comme l'url du repository (<code class="code-inline" id="74a340d9de7b7f4bafaf5c7251091889">git -C . config --get remote.origin.url</code>) ou l'utilisateur GitHub courant (<code class="code-inline" id="d0f21a3873bb8fa2ed961b30a53dbd58">git config --global github.user</code>)</p>
 <h2 id="ce-qu-on-en-retire">Ce qu'on en retire</h2>
 <h3 id="retour-sur-investissement">Retour sur investissement</h3>
 <p>La première version fonctionnelle de GAD était prête après une petite après-midi de travail et accélérait déjà quelques tâches rébarbatives de notre quotidien agile. Un investissement vite "remboursé" !</p>
@@ -387,6 +397,6 @@ Alors pourquoi ne pas développer votre propre utilitaire en ligne de commande p
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.3ea599f4.js"></script><script src="/elao_/build/0.6d9790f4.js"></script><script src="/elao_/build/app.ba54e536.js"></script>
+                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
                     </body>
 </html>
