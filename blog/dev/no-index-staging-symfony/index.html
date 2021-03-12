@@ -61,7 +61,6 @@
                             </svg>
                                             </a>
                 
-                
                                     <!-- Desktop nav -->
                     <nav class="nav">
                         <ul>
@@ -72,7 +71,12 @@
                                 </li>
                                                             <li class="nav__item">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/etudes-de-cas/">
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav__item">
@@ -130,12 +134,12 @@
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
-                                                                                <span>Nos études de cas</span>
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
@@ -169,57 +173,59 @@
         </header>
         <div class="container">
         <main>
-              <ul class="breadcrumb">
-    <li class="breadcrumb__item">
-      <a href="/elao_/blog/">Blog</a>
-    </li>
-    <li class="breadcrumb__item">
-      Comment empêcher les moteurs de recherche d&#039;indexer votre app Symfony en staging ?
-    </li>
-  </ul>
+                <ul class="breadcrumb">
+        <li class="breadcrumb__item">
+            <a href="/elao_/blog/">Blog</a>
+        </li>
+        <li class="breadcrumb__item">
+            Comment empêcher les moteurs de recherche d&#039;indexer votre app Symfony en staging ?
+        </li>
+    </ul>
 
-  <div class="article-banner">
-    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/judging-sardine-small.jpg)"></div>
+    <div class="article-banner">
+        <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/judging-sardine-small.jpg)"></div>
 
-    <div class="article-info">
-                    <div class="article-author article-author--multi">
-          <div class="article-author__image">
-                          <img src="/elao_/images/authors/mcolin.jpg" />
-                          <img src="/elao_/images/authors/aldeboissieu.jpg" />
-                      </div>
-          <span class="article-author__info">
+        <div class="article-info">
+                                        <div class="article-author article-author--multi">
+                    <div class="article-author__image">
+                                                    <img src="/elao_/images/authors/mcolin.jpg"/>
+                                                    <img src="/elao_/images/authors/aldeboissieu.jpg"/>
+                                            </div>
+                    <span class="article-author__info">
             Écrit par
-                          <strong>Maxime COLIN</strong>
-                          <strong>Anne‑Laure De Boissieu</strong>
+                            <strong>Maxime COLIN</strong>
+                            <strong>Anne‑Laure De Boissieu</strong>
                       </span>
+                </div>
+                        <div class="article-info__date">
+                <span>Publication <strong>10 juillet 2019</strong></span>
+                <span>Modification <strong>12 mars 2021</strong></span>
+            </div>
         </div>
-            <div class="article-info__date">
-        <span>Publication <strong>10 juillet 2019</strong></span>
-        <span>Modification <strong>12 mars 2021</strong></span>
-      </div>
+
+        <div class="article-header">
+            <h1>Comment empêcher les moteurs de recherche d&#039;indexer votre app Symfony en staging ?</h1>
+            <p>Les pages de votre application n&#039;ont pas vocation à être présentes dans les moteurs de recherche ? Voici une courte explication pour vous aider à empêcher le crawl et l&#039;indexation.</p>
+            <ul class="article-tag-list">
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Symfony" rel="nofollow">#Symfony</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/seo" rel="nofollow">#seo</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/no-index" rel="nofollow">#no-index</a>
+                    </li>
+                            </ul>
+        </div>
     </div>
 
-    <div class="article-header">
-      <h1>Comment empêcher les moteurs de recherche d&#039;indexer votre app Symfony en staging ?</h1>
-      <p>Les pages de votre application n&#039;ont pas vocation à être présentes dans les moteurs de recherche ? Voici une courte explication pour vous aider à empêcher le crawl et l&#039;indexation.</p>
-      <ul class="article-tag-list">
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Symfony" rel="nofollow">#Symfony</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/seo" rel="nofollow">#seo</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/no-index" rel="nofollow">#no-index</a>
-          </li>
-              </ul>
-    </div>
-  </div>
+    
+    <div class="article-content">
+        <main class="article-content__main">
 
-  
-  <div class="article-content">
-    <main class="article-content__main">
-      <body><p>L'indexation par les robots des moteurs de recherche des urls de staging ou de démonstration sont des cas classiques de <a href="https://www.webrankinfo.com/dossiers/conseils/horreurs-du-seo" target="_blank">#SEOHorrorStories</a>. En effet, cette situation est gênante, pour deux raisons :</p>
+            
+            <body><p>L'indexation par les robots des moteurs de recherche des urls de staging ou de démonstration sont des cas classiques de <a href="https://www.webrankinfo.com/dossiers/conseils/horreurs-du-seo" target="_blank">#SEOHorrorStories</a>. En effet, cette situation est gênante, pour deux raisons :</p>
 <ul>
 <li>L'entreprise ne souhaite probablement pas exposer à ses concurrents ou aux curieux du travail en cours,</li>
 <li>Le contenu relatif à l'entreprise est disponible sous plusieurs urls, induisant un fort risque de dilution de la pertinence du contenu du site "officiel", puisque celui-ci peut être proposé sur deux pages différentes (c'est ce qu'on appelle la duplication de contenu).</li>
@@ -257,64 +263,59 @@ Bien sûr, dans les deux cas, les robots ne peuvent pas accéder aux pages, emp�
 <p>Bon à savoir : la directive Noindex, qui était rarement utilisée, <a href="&lt;https://webmasters.googleblog.com/2019/07/a-note-on-unsupported-rules-in-robotstxt.html&gt;">a été officiellement abandonnée par Google</a>.</p>
 <h2 id="oups-mon-site-avec-des-urls-de-staging-a-ete-indexe">Oups, mon site avec des urls de staging a été indexé ...</h2>
 <p>Faites le nécessaire pour empêcher les futures visites de robots. Vous pouvez ensuite utiliser <a href="https://www.google.com/webmasters/tools/removals" target="_blank">l'outil de suppression d'URL de la Search Console</a>, et demander la suppression des URLs problématiques.</p></body>
-                        </main>
-    <aside class="article-content__aside">
-      <button class="kudo">
-        <span class="kudo__button" aria-hidden="true"></span>
-        <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label" aria-hidden="true">Kudos</span>
-      </button>
-    </aside>
-  </div>
+                                                </main>
+        <aside class="article-content__aside">
+                    </aside>
+    </div>
 
-  <div class="article-footer">
-                  <div class="article-author">
-          <div class="article-author__image">
-            <img src="/elao_/images/authors/mcolin.jpg" />
-          </div>
-          <span class="article-author__info">
+    <div class="article-footer">
+                                    <div class="article-author">
+                    <div class="article-author__image">
+                        <img src="/elao_/images/authors/mcolin.jpg"/>
+                    </div>
+                    <span class="article-author__info">
             Écrit par
             <strong>Maxime COLIN</strong>
           </span>
-          <div class="article-author__social">
-                          <a href="https://twitter.com/colin_maxime" class="social social--small">
-                <i class="icon icon--twitter" aria-hidden="true"></i>
-                <span class="screen-reader">Compte twitter de Maxime COLIN</span>
-              </a>
-                                      <a href="https://github.com/maximecolin "class="social social--small">
-                <i class="icon icon--github" aria-hidden="true"></i>
-                <span class="screen-reader">Compte github de Maxime COLIN</span>
-              </a>
-                                      <a href="http://www.maximecolin.fr" class="social social--small">
-                <i class="icon icon--website" aria-hidden="true"></i>
-                <span class="screen-reader">Site personnel de Maxime COLIN</span>
-              </a>
-                      </div>
-        </div>
-              <div class="article-author">
-          <div class="article-author__image">
-            <img src="/elao_/images/authors/aldeboissieu.jpg" />
-          </div>
-          <span class="article-author__info">
+                    <div class="article-author__social">
+                                                    <a href="https://twitter.com/colin_maxime" class="social social--small">
+                                <i class="icon icon--twitter" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte twitter de Maxime COLIN</span>
+                            </a>
+                                                                            <a href="https://github.com/maximecolin " class="social social--small">
+                                <i class="icon icon--github" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte github de Maxime COLIN</span>
+                            </a>
+                                                                            <a href="http://www.maximecolin.fr" class="social social--small">
+                                <i class="icon icon--website" aria-hidden="true"></i>
+                                <span class="screen-reader">Site personnel de Maxime COLIN</span>
+                            </a>
+                                            </div>
+                </div>
+                            <div class="article-author">
+                    <div class="article-author__image">
+                        <img src="/elao_/images/authors/aldeboissieu.jpg"/>
+                    </div>
+                    <span class="article-author__info">
             Co-écrit par
             <strong>Anne‑Laure De Boissieu</strong>
           </span>
-          <div class="article-author__social">
-                          <a href="https://twitter.com/AnneLaure2B" class="social social--small">
-                <i class="icon icon--twitter" aria-hidden="true"></i>
-                <span class="screen-reader">Compte twitter de Anne‑Laure De Boissieu</span>
-              </a>
-                                      <a href="https://github.com/al2b "class="social social--small">
-                <i class="icon icon--github" aria-hidden="true"></i>
-                <span class="screen-reader">Compte github de Anne‑Laure De Boissieu</span>
-              </a>
-                                      <a href="http://www.elao.com" class="social social--small">
-                <i class="icon icon--website" aria-hidden="true"></i>
-                <span class="screen-reader">Site personnel de Anne‑Laure De Boissieu</span>
-              </a>
-                      </div>
-        </div>
-            </div>
+                    <div class="article-author__social">
+                                                    <a href="https://twitter.com/AnneLaure2B" class="social social--small">
+                                <i class="icon icon--twitter" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte twitter de Anne‑Laure De Boissieu</span>
+                            </a>
+                                                                            <a href="https://github.com/al2b " class="social social--small">
+                                <i class="icon icon--github" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte github de Anne‑Laure De Boissieu</span>
+                            </a>
+                                                                            <a href="http://www.elao.com" class="social social--small">
+                                <i class="icon icon--website" aria-hidden="true"></i>
+                                <span class="screen-reader">Site personnel de Anne‑Laure De Boissieu</span>
+                            </a>
+                                            </div>
+                </div>
+                        </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">
@@ -325,34 +326,28 @@ Bien sûr, dans les deux cas, les robots ne peuvent pas accéder aux pages, emp�
                     </p>
                     <div class="links">
                         <ul>
-                            <li>
-                                <a href="/elao_/nos-services">Nos services</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/etudes-de-cas/">Nos études de cas</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/blog/">Blog</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/methodo">Notre méthodologie</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/la-tribu/">La tribu</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/contact">Contact</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/nos-valeurs">Nos valeurs</a>
-                            </li>
-                            <li>
-                                                                <a href="/elao_/recrutement/">
-                                    Nous recrutons
-                                                                            <span class="bullet">2</span>
-                                                                    </a>
-                            </li>
-                        </ul>
+                                                            <li>
+                                    <a href="/elao_/nos-services">Nos services</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/la-tribu/">La tribu</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/methodo">Méthodologie</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/blog/">Blog</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/etudes-de-cas/">Études de cas</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/contact">Contact</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/nos-valeurs">Nos valeurs</a>
+                                </li>
+                                                    </ul>
                     </div>
                     <div class="socials">
                         <ul>

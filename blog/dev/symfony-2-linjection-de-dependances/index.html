@@ -61,7 +61,6 @@
                             </svg>
                                             </a>
                 
-                
                                     <!-- Desktop nav -->
                     <nav class="nav">
                         <ul>
@@ -72,7 +71,12 @@
                                 </li>
                                                             <li class="nav__item">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/etudes-de-cas/">
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav__item">
@@ -130,12 +134,12 @@
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
-                                                                                <span>Nos études de cas</span>
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
@@ -169,52 +173,54 @@
         </header>
         <div class="container">
         <main>
-              <ul class="breadcrumb">
-    <li class="breadcrumb__item">
-      <a href="/elao_/blog/">Blog</a>
-    </li>
-    <li class="breadcrumb__item">
-      Symfony 2 – L’injection de dépendances
-    </li>
-  </ul>
+                <ul class="breadcrumb">
+        <li class="breadcrumb__item">
+            <a href="/elao_/blog/">Blog</a>
+        </li>
+        <li class="breadcrumb__item">
+            Symfony 2 – L’injection de dépendances
+        </li>
+    </ul>
 
-  <div class="article-banner">
-    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/event-dispatcher.jpg)"></div>
+    <div class="article-banner">
+        <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/event-dispatcher.jpg)"></div>
 
-    <div class="article-info">
-                    <div class="article-author ">
-          <div class="article-author__image">
-                          <img src="/elao_/images/authors/vbouzeran.jpg" />
-                      </div>
-          <span class="article-author__info">
+        <div class="article-info">
+                                        <div class="article-author ">
+                    <div class="article-author__image">
+                                                    <img src="/elao_/images/authors/vbouzeran.jpg"/>
+                                            </div>
+                    <span class="article-author__info">
             Écrit par
-                          <strong>Vincent BOUZERAN</strong>
+                            <strong>Vincent BOUZERAN</strong>
                       </span>
+                </div>
+                        <div class="article-info__date">
+                <span>Publication <strong>3 juin 2010</strong></span>
+                <span>Modification <strong>12 mars 2021</strong></span>
+            </div>
         </div>
-            <div class="article-info__date">
-        <span>Publication <strong>3 juin 2010</strong></span>
-        <span>Modification <strong>12 mars 2021</strong></span>
-      </div>
+
+        <div class="article-header">
+            <h1>Symfony 2 – L’injection de dépendances</h1>
+            <p>Symfony 2 – L’injection de dépendances</p>
+            <ul class="article-tag-list">
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Symfony" rel="nofollow">#Symfony</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/PHP" rel="nofollow">#PHP</a>
+                    </li>
+                            </ul>
+        </div>
     </div>
 
-    <div class="article-header">
-      <h1>Symfony 2 – L’injection de dépendances</h1>
-      <p>Symfony 2 – L’injection de dépendances</p>
-      <ul class="article-tag-list">
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Symfony" rel="nofollow">#Symfony</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/PHP" rel="nofollow">#PHP</a>
-          </li>
-              </ul>
-    </div>
-  </div>
+    
+    <div class="article-content">
+        <main class="article-content__main">
 
-  
-  <div class="article-content">
-    <main class="article-content__main">
-      <body><p><strong>Avertissement :</strong>
+            
+            <body><p><strong>Avertissement :</strong>
 Depuis la rédaction de cet article sur l'injection de dépendances, le coeur de Symfony2 a évolué de façon notable, en particulier certaines classes du répertoire <strong>DependencyInjection</strong> mentionnées dans cet article ont été renommées, révisées, ou refondues. Toutefois, les principes généraux décrits dans cet article restent d'actualité.</p>
 <img src="/elao_/images/posts/2010/dependency-injection-symfony.png" alt='dependency injection symfony Symfony 2 Linjection de dépendances" width="278" height="236' title='dependency injection symfony Symfony 2 Linjection de dépendances" width="278" height="236' id="dependency-injection-symfony-symfony-2-linjection-de-dependances-width-278-height-236">
 <p>Cet article est le premier d'une série à venir sur Symfony 2. Pour commencer, je vous invite à télécharger la <a href="http://symfony-reloaded.org/code" target="_blank">sandbox</a> de Symfony 2. J'ai décidé de commencer par l'injection de dépendances car il s'agit d'un composant clé de Symfony 2, et que la bonne compréhension de cette nouvelle version du Framework doit forcément en passer par là. L'injection de dépendance est réellement au coeur du Framework.</p>
@@ -644,37 +650,32 @@ Nous allons simplement modifier la classe associée dans la définition de ce se
 <p>Comme vous avez pu le découvrir dans cet article, l'injecteur de dépendances de Symfony 2 est vraiment puissant. Nous pouvons customizer, tweaker, étendre le fonctionnement du coeur même du Framework par ce biais.</p>
 <p>L'injection de dépendances ne devrait plus avoir de secrets pour vous !</p>
 <p>PS: Merci à Xavier R pour sa relecture et ses remarques avisées.</p></body>
-                        </main>
-    <aside class="article-content__aside">
-      <button class="kudo">
-        <span class="kudo__button" aria-hidden="true"></span>
-        <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label" aria-hidden="true">Kudos</span>
-      </button>
-    </aside>
-  </div>
+                                                </main>
+        <aside class="article-content__aside">
+                    </aside>
+    </div>
 
-  <div class="article-footer">
-                  <div class="article-author">
-          <div class="article-author__image">
-            <img src="/elao_/images/authors/vbouzeran.jpg" />
-          </div>
-          <span class="article-author__info">
+    <div class="article-footer">
+                                    <div class="article-author">
+                    <div class="article-author__image">
+                        <img src="/elao_/images/authors/vbouzeran.jpg"/>
+                    </div>
+                    <span class="article-author__info">
             Écrit par
             <strong>Vincent BOUZERAN</strong>
           </span>
-          <div class="article-author__social">
-                                      <a href="https://github.com/Vincz "class="social social--small">
-                <i class="icon icon--github" aria-hidden="true"></i>
-                <span class="screen-reader">Compte github de Vincent BOUZERAN</span>
-              </a>
-                                      <a href="http://www.elao.com" class="social social--small">
-                <i class="icon icon--website" aria-hidden="true"></i>
-                <span class="screen-reader">Site personnel de Vincent BOUZERAN</span>
-              </a>
-                      </div>
-        </div>
-            </div>
+                    <div class="article-author__social">
+                                                                            <a href="https://github.com/Vincz " class="social social--small">
+                                <i class="icon icon--github" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte github de Vincent BOUZERAN</span>
+                            </a>
+                                                                            <a href="http://www.elao.com" class="social social--small">
+                                <i class="icon icon--website" aria-hidden="true"></i>
+                                <span class="screen-reader">Site personnel de Vincent BOUZERAN</span>
+                            </a>
+                                            </div>
+                </div>
+                        </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">
@@ -685,34 +686,28 @@ Nous allons simplement modifier la classe associée dans la définition de ce se
                     </p>
                     <div class="links">
                         <ul>
-                            <li>
-                                <a href="/elao_/nos-services">Nos services</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/etudes-de-cas/">Nos études de cas</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/blog/">Blog</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/methodo">Notre méthodologie</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/la-tribu/">La tribu</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/contact">Contact</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/nos-valeurs">Nos valeurs</a>
-                            </li>
-                            <li>
-                                                                <a href="/elao_/recrutement/">
-                                    Nous recrutons
-                                                                            <span class="bullet">2</span>
-                                                                    </a>
-                            </li>
-                        </ul>
+                                                            <li>
+                                    <a href="/elao_/nos-services">Nos services</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/la-tribu/">La tribu</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/methodo">Méthodologie</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/blog/">Blog</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/etudes-de-cas/">Études de cas</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/contact">Contact</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/nos-valeurs">Nos valeurs</a>
+                                </li>
+                                                    </ul>
                     </div>
                     <div class="socials">
                         <ul>

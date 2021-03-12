@@ -61,7 +61,6 @@
                             </svg>
                                             </a>
                 
-                
                                     <!-- Desktop nav -->
                     <nav class="nav">
                         <ul>
@@ -72,7 +71,12 @@
                                 </li>
                                                             <li class="nav__item">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/etudes-de-cas/">
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav__item">
@@ -130,12 +134,12 @@
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
-                                                                                <span>Nos études de cas</span>
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
@@ -169,63 +173,65 @@
         </header>
         <div class="container">
         <main>
-              <ul class="breadcrumb">
-    <li class="breadcrumb__item">
-      <a href="/elao_/blog/">Blog</a>
-    </li>
-    <li class="breadcrumb__item">
-      L&#039;architecture hexagonale avec Symfony
-    </li>
-  </ul>
-
-  <div class="article-banner">
-    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/hexagons.jpg)"></div>
-
-    <div class="article-info">
-                    <div class="article-author ">
-          <div class="article-author__image">
-                          <img src="/elao_/images/authors/mcolin.jpg" />
-                      </div>
-          <span class="article-author__info">
-            Écrit par
-                          <strong>Maxime COLIN</strong>
-                      </span>
-        </div>
-            <div class="article-info__date">
-        <span>Publication <strong>21 juin 2017</strong></span>
-        <span>Modification <strong>12 mars 2021</strong></span>
-      </div>
-    </div>
-
-    <div class="article-header">
-      <h1>L&#039;architecture hexagonale avec Symfony</h1>
-      <p>Présentation de l&#039;architecture hexagonale et de son implémentation avec le framework Symfony.</p>
-      <ul class="article-tag-list">
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Architecture" rel="nofollow">#Architecture</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Conception" rel="nofollow">#Conception</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Symfony" rel="nofollow">#Symfony</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/PHP" rel="nofollow">#PHP</a>
-          </li>
-              </ul>
-    </div>
-  </div>
-
-      <ul class="table-of-content">
-              <li class="table-of-content__item">
-          <a href="#">Conclusion</a>
+                <ul class="breadcrumb">
+        <li class="breadcrumb__item">
+            <a href="/elao_/blog/">Blog</a>
         </li>
-          </ul>
-  
-  <div class="article-content">
-    <main class="article-content__main">
-      <body><h1 id="introduction">Introduction</h1>
+        <li class="breadcrumb__item">
+            L&#039;architecture hexagonale avec Symfony
+        </li>
+    </ul>
+
+    <div class="article-banner">
+        <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/hexagons.jpg)"></div>
+
+        <div class="article-info">
+                                        <div class="article-author ">
+                    <div class="article-author__image">
+                                                    <img src="/elao_/images/authors/mcolin.jpg"/>
+                                            </div>
+                    <span class="article-author__info">
+            Écrit par
+                            <strong>Maxime COLIN</strong>
+                      </span>
+                </div>
+                        <div class="article-info__date">
+                <span>Publication <strong>21 juin 2017</strong></span>
+                <span>Modification <strong>12 mars 2021</strong></span>
+            </div>
+        </div>
+
+        <div class="article-header">
+            <h1>L&#039;architecture hexagonale avec Symfony</h1>
+            <p>Présentation de l&#039;architecture hexagonale et de son implémentation avec le framework Symfony.</p>
+            <ul class="article-tag-list">
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Architecture" rel="nofollow">#Architecture</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Conception" rel="nofollow">#Conception</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Symfony" rel="nofollow">#Symfony</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/PHP" rel="nofollow">#PHP</a>
+                    </li>
+                            </ul>
+        </div>
+    </div>
+
+            <ul class="table-of-content">
+                            <li class="table-of-content__item">
+                    <a href="#">Conclusion</a>
+                </li>
+                    </ul>
+    
+    <div class="article-content">
+        <main class="article-content__main">
+
+            
+            <body><h1 id="introduction">Introduction</h1>
 <p>L'architecture hexagonale, également appelée <em>Ports &amp; Adapters</em>, présente deux caratéristiques lorsqu'on la schématise : une forme <strong>hexagonale</strong> (d'où son nom) et une séparation entre l'<strong>application</strong>, l'<strong>extérieur</strong> et une partie contenant des <strong>adapteurs</strong> permettant aux deux de communiquer.</p>
 <p>Elle a été pensé par <a href="http://alistair.cockburn.us/Hexagonal+architecture" target="_blank">Alistair Cockburn</a> dans les années 2000. Son but est de permettre à une application d'être pilotée sans distinction par des utilisateurs, des programmes, des tests automatisés ou des scripts ainsi que d'être développée et testée de façon isolée de son contexte d'exécution et de ses bases de données.</p>
 <img src="/elao_/images/posts/2017/hexagonal-architecture.png" alt="Architecture hexagonale" title="Architecture hexagonale" id="architecture-hexagonale">
@@ -348,41 +354,36 @@
 <h1 id="conclusion">Conclusion</h1>
 <p>Pour conclure, je dirai que l'architecture hexagonale n'est pas une fin en soi ni l'architecture ultime. Je la vois davantage comme un cadre permettant de se contraindre à respecter le principe de séparation entre le code métier et code technique.</p>
 <p>Comme tout paradigme, il a ses faiblesses et ses exceptions, mais pour l'utiliser sur tous mes projets depuis quelques années, il m'a beaucoup fait progresser vers une conception propre, solide, testable et maintenable.</p></body>
-                        </main>
-    <aside class="article-content__aside">
-      <button class="kudo">
-        <span class="kudo__button" aria-hidden="true"></span>
-        <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label" aria-hidden="true">Kudos</span>
-      </button>
-    </aside>
-  </div>
+                                                </main>
+        <aside class="article-content__aside">
+                    </aside>
+    </div>
 
-  <div class="article-footer">
-                  <div class="article-author">
-          <div class="article-author__image">
-            <img src="/elao_/images/authors/mcolin.jpg" />
-          </div>
-          <span class="article-author__info">
+    <div class="article-footer">
+                                    <div class="article-author">
+                    <div class="article-author__image">
+                        <img src="/elao_/images/authors/mcolin.jpg"/>
+                    </div>
+                    <span class="article-author__info">
             Écrit par
             <strong>Maxime COLIN</strong>
           </span>
-          <div class="article-author__social">
-                          <a href="https://twitter.com/colin_maxime" class="social social--small">
-                <i class="icon icon--twitter" aria-hidden="true"></i>
-                <span class="screen-reader">Compte twitter de Maxime COLIN</span>
-              </a>
-                                      <a href="https://github.com/maximecolin "class="social social--small">
-                <i class="icon icon--github" aria-hidden="true"></i>
-                <span class="screen-reader">Compte github de Maxime COLIN</span>
-              </a>
-                                      <a href="http://www.maximecolin.fr" class="social social--small">
-                <i class="icon icon--website" aria-hidden="true"></i>
-                <span class="screen-reader">Site personnel de Maxime COLIN</span>
-              </a>
-                      </div>
-        </div>
-            </div>
+                    <div class="article-author__social">
+                                                    <a href="https://twitter.com/colin_maxime" class="social social--small">
+                                <i class="icon icon--twitter" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte twitter de Maxime COLIN</span>
+                            </a>
+                                                                            <a href="https://github.com/maximecolin " class="social social--small">
+                                <i class="icon icon--github" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte github de Maxime COLIN</span>
+                            </a>
+                                                                            <a href="http://www.maximecolin.fr" class="social social--small">
+                                <i class="icon icon--website" aria-hidden="true"></i>
+                                <span class="screen-reader">Site personnel de Maxime COLIN</span>
+                            </a>
+                                            </div>
+                </div>
+                        </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">
@@ -393,34 +394,28 @@
                     </p>
                     <div class="links">
                         <ul>
-                            <li>
-                                <a href="/elao_/nos-services">Nos services</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/etudes-de-cas/">Nos études de cas</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/blog/">Blog</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/methodo">Notre méthodologie</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/la-tribu/">La tribu</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/contact">Contact</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/nos-valeurs">Nos valeurs</a>
-                            </li>
-                            <li>
-                                                                <a href="/elao_/recrutement/">
-                                    Nous recrutons
-                                                                            <span class="bullet">2</span>
-                                                                    </a>
-                            </li>
-                        </ul>
+                                                            <li>
+                                    <a href="/elao_/nos-services">Nos services</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/la-tribu/">La tribu</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/methodo">Méthodologie</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/blog/">Blog</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/etudes-de-cas/">Études de cas</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/contact">Contact</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/nos-valeurs">Nos valeurs</a>
+                                </li>
+                                                    </ul>
                     </div>
                     <div class="socials">
                         <ul>

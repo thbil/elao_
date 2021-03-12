@@ -61,7 +61,6 @@
                             </svg>
                                             </a>
                 
-                
                                     <!-- Desktop nav -->
                     <nav class="nav">
                         <ul>
@@ -72,7 +71,12 @@
                                 </li>
                                                             <li class="nav__item">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/etudes-de-cas/">
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav__item">
@@ -130,12 +134,12 @@
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
-                                                                                <span>Nos études de cas</span>
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
@@ -169,61 +173,63 @@
         </header>
         <div class="container">
         <main>
-              <ul class="breadcrumb">
-    <li class="breadcrumb__item">
-      <a href="/elao_/blog/">Blog</a>
-    </li>
-    <li class="breadcrumb__item">
-      Réalisez une application Vue.js avec vue-cli
-    </li>
-  </ul>
+                <ul class="breadcrumb">
+        <li class="breadcrumb__item">
+            <a href="/elao_/blog/">Blog</a>
+        </li>
+        <li class="breadcrumb__item">
+            Réalisez une application Vue.js avec vue-cli
+        </li>
+    </ul>
 
-  <div class="article-banner">
-    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/vuejs.jpg)"></div>
+    <div class="article-banner">
+        <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/vuejs.jpg)"></div>
 
-    <div class="article-info">
-                    <div class="article-author ">
-          <div class="article-author__image">
-                          <img src="/elao_/images/authors/mcolin.jpg" />
-                      </div>
-          <span class="article-author__info">
+        <div class="article-info">
+                                        <div class="article-author ">
+                    <div class="article-author__image">
+                                                    <img src="/elao_/images/authors/mcolin.jpg"/>
+                                            </div>
+                    <span class="article-author__info">
             Écrit par
-                          <strong>Maxime COLIN</strong>
+                            <strong>Maxime COLIN</strong>
                       </span>
+                </div>
+                        <div class="article-info__date">
+                <span>Publication <strong>4 novembre 2016</strong></span>
+                <span>Modification <strong>12 mars 2021</strong></span>
+            </div>
         </div>
-            <div class="article-info__date">
-        <span>Publication <strong>4 novembre 2016</strong></span>
-        <span>Modification <strong>12 mars 2021</strong></span>
-      </div>
+
+        <div class="article-header">
+            <h1>Réalisez une application Vue.js avec vue-cli</h1>
+            <p>Introduction à la réalisation d&#039;applications frontend avec Vue.js et vue-cli.</p>
+            <ul class="article-tag-list">
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Vuejs" rel="nofollow">#Vuejs</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Javascript" rel="nofollow">#Javascript</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Front" rel="nofollow">#Front</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Frontend" rel="nofollow">#Frontend</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Framework" rel="nofollow">#Framework</a>
+                    </li>
+                            </ul>
+        </div>
     </div>
 
-    <div class="article-header">
-      <h1>Réalisez une application Vue.js avec vue-cli</h1>
-      <p>Introduction à la réalisation d&#039;applications frontend avec Vue.js et vue-cli.</p>
-      <ul class="article-tag-list">
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Vuejs" rel="nofollow">#Vuejs</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Javascript" rel="nofollow">#Javascript</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Front" rel="nofollow">#Front</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Frontend" rel="nofollow">#Frontend</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Framework" rel="nofollow">#Framework</a>
-          </li>
-              </ul>
-    </div>
-  </div>
+    
+    <div class="article-content">
+        <main class="article-content__main">
 
-  
-  <div class="article-content">
-    <main class="article-content__main">
-      <body><p>Dans mes précédents articles je vous présentais <a href="/fr/dev/pourquoi-devriez-vous-utiliser-vue-js-dans-vos-projets/">pourquoi utiliser Vue.js dans vos projets</a> et <a href="/fr/dev/comment-integrer-vue-js-application-symfony/">comment intégrer Vue.js à une application Symfony</a>. Je vais maintenant vous présenter une autre facette du framework d'Evan You, la création d'applications frontend grâce à l'outil <a href="https://github.com/vuejs/vue-cli" target="_blank">vue-cli</a>.</p>
+            
+            <body><p>Dans mes précédents articles je vous présentais <a href="/fr/dev/pourquoi-devriez-vous-utiliser-vue-js-dans-vos-projets/">pourquoi utiliser Vue.js dans vos projets</a> et <a href="/fr/dev/comment-integrer-vue-js-application-symfony/">comment intégrer Vue.js à une application Symfony</a>. Je vais maintenant vous présenter une autre facette du framework d'Evan You, la création d'applications frontend grâce à l'outil <a href="https://github.com/vuejs/vue-cli" target="_blank">vue-cli</a>.</p>
 <h2 id="vue-cli">vue-cli</h2>
 <p>Comme je l'avais annoncé, le framework est très <strong>polyvalent</strong>. Facile à utiliser et à intégrer à une technologie backend, il permet également de réaliser des applications frontend. Et pour nous faciliter la chose, le framework met à notre disposition <code class="code-inline" id="72520653c6aea38df112ee7055ff92e7">vue-cli</code>, un outil en ligne de commande qui encapsule et automatise tout ce dont vous aurez besoin pour créer votre application <strong>Vue.js</strong>.</p>
 <p>L'installation se fait simplement grâce à <code class="code-inline" id="bb30e85411b56df41296726ab445dc8f">npm</code> :</p>
@@ -283,41 +289,36 @@ h1 {
     <img src="/elao_/images/posts/2016/vuecli-devtool.png" alt="Application" id="application">
     <figcaption style="text-align: center;font-style: italic;">Devtools Vue.js</figcaption>
 </figure></body>
-                        </main>
-    <aside class="article-content__aside">
-      <button class="kudo">
-        <span class="kudo__button" aria-hidden="true"></span>
-        <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label" aria-hidden="true">Kudos</span>
-      </button>
-    </aside>
-  </div>
+                                                </main>
+        <aside class="article-content__aside">
+                    </aside>
+    </div>
 
-  <div class="article-footer">
-                  <div class="article-author">
-          <div class="article-author__image">
-            <img src="/elao_/images/authors/mcolin.jpg" />
-          </div>
-          <span class="article-author__info">
+    <div class="article-footer">
+                                    <div class="article-author">
+                    <div class="article-author__image">
+                        <img src="/elao_/images/authors/mcolin.jpg"/>
+                    </div>
+                    <span class="article-author__info">
             Écrit par
             <strong>Maxime COLIN</strong>
           </span>
-          <div class="article-author__social">
-                          <a href="https://twitter.com/colin_maxime" class="social social--small">
-                <i class="icon icon--twitter" aria-hidden="true"></i>
-                <span class="screen-reader">Compte twitter de Maxime COLIN</span>
-              </a>
-                                      <a href="https://github.com/maximecolin "class="social social--small">
-                <i class="icon icon--github" aria-hidden="true"></i>
-                <span class="screen-reader">Compte github de Maxime COLIN</span>
-              </a>
-                                      <a href="http://www.maximecolin.fr" class="social social--small">
-                <i class="icon icon--website" aria-hidden="true"></i>
-                <span class="screen-reader">Site personnel de Maxime COLIN</span>
-              </a>
-                      </div>
-        </div>
-            </div>
+                    <div class="article-author__social">
+                                                    <a href="https://twitter.com/colin_maxime" class="social social--small">
+                                <i class="icon icon--twitter" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte twitter de Maxime COLIN</span>
+                            </a>
+                                                                            <a href="https://github.com/maximecolin " class="social social--small">
+                                <i class="icon icon--github" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte github de Maxime COLIN</span>
+                            </a>
+                                                                            <a href="http://www.maximecolin.fr" class="social social--small">
+                                <i class="icon icon--website" aria-hidden="true"></i>
+                                <span class="screen-reader">Site personnel de Maxime COLIN</span>
+                            </a>
+                                            </div>
+                </div>
+                        </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">
@@ -328,34 +329,28 @@ h1 {
                     </p>
                     <div class="links">
                         <ul>
-                            <li>
-                                <a href="/elao_/nos-services">Nos services</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/etudes-de-cas/">Nos études de cas</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/blog/">Blog</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/methodo">Notre méthodologie</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/la-tribu/">La tribu</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/contact">Contact</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/nos-valeurs">Nos valeurs</a>
-                            </li>
-                            <li>
-                                                                <a href="/elao_/recrutement/">
-                                    Nous recrutons
-                                                                            <span class="bullet">2</span>
-                                                                    </a>
-                            </li>
-                        </ul>
+                                                            <li>
+                                    <a href="/elao_/nos-services">Nos services</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/la-tribu/">La tribu</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/methodo">Méthodologie</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/blog/">Blog</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/etudes-de-cas/">Études de cas</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/contact">Contact</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/nos-valeurs">Nos valeurs</a>
+                                </li>
+                                                    </ul>
                     </div>
                     <div class="socials">
                         <ul>

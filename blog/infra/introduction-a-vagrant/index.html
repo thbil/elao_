@@ -61,7 +61,6 @@
                             </svg>
                                             </a>
                 
-                
                                     <!-- Desktop nav -->
                     <nav class="nav">
                         <ul>
@@ -72,7 +71,12 @@
                                 </li>
                                                             <li class="nav__item">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/etudes-de-cas/">
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav__item">
@@ -130,12 +134,12 @@
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
-                                                                                <span>Nos études de cas</span>
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
@@ -169,52 +173,54 @@
         </header>
         <div class="container">
         <main>
-              <ul class="breadcrumb">
-    <li class="breadcrumb__item">
-      <a href="/elao_/blog/">Blog</a>
-    </li>
-    <li class="breadcrumb__item">
-      Introduction à Vagrant
-    </li>
-  </ul>
+                <ul class="breadcrumb">
+        <li class="breadcrumb__item">
+            <a href="/elao_/blog/">Blog</a>
+        </li>
+        <li class="breadcrumb__item">
+            Introduction à Vagrant
+        </li>
+    </ul>
 
-  <div class="article-banner">
-    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/vagrant.png)"></div>
+    <div class="article-banner">
+        <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/vagrant.png)"></div>
 
-    <div class="article-info">
-                    <div class="article-author ">
-          <div class="article-author__image">
-                          <img src="/elao_/images/authors/mbernard.jpg" />
-                      </div>
-          <span class="article-author__info">
+        <div class="article-info">
+                                        <div class="article-author ">
+                    <div class="article-author__image">
+                                                    <img src="/elao_/images/authors/mbernard.jpg"/>
+                                            </div>
+                    <span class="article-author__info">
             Écrit par
-                          <strong>Maximilien BERNARD</strong>
+                            <strong>Maximilien BERNARD</strong>
                       </span>
+                </div>
+                        <div class="article-info__date">
+                <span>Publication <strong>23 avril 2017</strong></span>
+                <span>Modification <strong>12 mars 2021</strong></span>
+            </div>
         </div>
-            <div class="article-info__date">
-        <span>Publication <strong>23 avril 2017</strong></span>
-        <span>Modification <strong>12 mars 2021</strong></span>
-      </div>
+
+        <div class="article-header">
+            <h1>Introduction à Vagrant</h1>
+            <p>Le fonctionnement et les principes utilisés par Vagrant. Comment installer une VM contenant une version minimale d&#039;Ubuntu et la provisionner avec nginx.</p>
+            <ul class="article-tag-list">
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Vagrant" rel="nofollow">#Vagrant</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Virtualisation" rel="nofollow">#Virtualisation</a>
+                    </li>
+                            </ul>
+        </div>
     </div>
 
-    <div class="article-header">
-      <h1>Introduction à Vagrant</h1>
-      <p>Le fonctionnement et les principes utilisés par Vagrant. Comment installer une VM contenant une version minimale d&#039;Ubuntu et la provisionner avec nginx.</p>
-      <ul class="article-tag-list">
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Vagrant" rel="nofollow">#Vagrant</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Virtualisation" rel="nofollow">#Virtualisation</a>
-          </li>
-              </ul>
-    </div>
-  </div>
+    
+    <div class="article-content">
+        <main class="article-content__main">
 
-  
-  <div class="article-content">
-    <main class="article-content__main">
-      <body><p>Vagrant est un outil qui simplifie la création et la gestion d’environnements virtualisés.
+            
+            <body><p>Vagrant est un outil qui simplifie la création et la gestion d’environnements virtualisés.
 Si par le passé on avait recours à des plateformes comme LAMP/MAMP/XAMP pour gérer son environnement de développement, <!-- more --> cela posait souvent problème car les versions des dépendances logicielles pouvaient varier une fois l’application déployée sur un environnement externe, notamment en production. On se retrouvait alors à perdre un temps considérable pour corriger des bugs en production qui n’étaient pas reproductibles en développement, et inversement.</p>
 <p>Vagrant permet de travailler dans un environnement reproductible avec les mêmes versions pour toutes vos dépendances. Parce qu’il utilise le principe de virtualisation, il est donc compatible avec la majorité des OS actuels. Ainsi, un développeur travaillant sous Mac aura accès au même environnement qu'un développeur sous Windows ou Linux tout en conservant son IDE favori.</p>
 <h1 id="comment-ca-fonctionne">Comment ça fonctionne ?</h1>
@@ -274,37 +280,32 @@ vagrant@precise32:~$</code></pre>
 <p>sources:
 <a href="https://www.vagrantup.com/docs/" target="_blank">https://www.vagrantup.com/docs/</a>
 <a href="http://blog.scottlowe.org/2014/09/12/a-quick-introduction-to-vagrant/" target="_blank">http://blog.scottlowe.org/2014/09/12/a-quick-introduction-to-vagrant/</a></p></body>
-                        </main>
-    <aside class="article-content__aside">
-      <button class="kudo">
-        <span class="kudo__button" aria-hidden="true"></span>
-        <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label" aria-hidden="true">Kudos</span>
-      </button>
-    </aside>
-  </div>
+                                                </main>
+        <aside class="article-content__aside">
+                    </aside>
+    </div>
 
-  <div class="article-footer">
-                  <div class="article-author">
-          <div class="article-author__image">
-            <img src="/elao_/images/authors/mbernard.jpg" />
-          </div>
-          <span class="article-author__info">
+    <div class="article-footer">
+                                    <div class="article-author">
+                    <div class="article-author__image">
+                        <img src="/elao_/images/authors/mbernard.jpg"/>
+                    </div>
+                    <span class="article-author__info">
             Écrit par
             <strong>Maximilien BERNARD</strong>
           </span>
-          <div class="article-author__social">
-                          <a href="https://twitter.com/mb3rnard" class="social social--small">
-                <i class="icon icon--twitter" aria-hidden="true"></i>
-                <span class="screen-reader">Compte twitter de Maximilien BERNARD</span>
-              </a>
-                                      <a href="https://github.com/mb3rnard "class="social social--small">
-                <i class="icon icon--github" aria-hidden="true"></i>
-                <span class="screen-reader">Compte github de Maximilien BERNARD</span>
-              </a>
-                                  </div>
-        </div>
-            </div>
+                    <div class="article-author__social">
+                                                    <a href="https://twitter.com/mb3rnard" class="social social--small">
+                                <i class="icon icon--twitter" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte twitter de Maximilien BERNARD</span>
+                            </a>
+                                                                            <a href="https://github.com/mb3rnard " class="social social--small">
+                                <i class="icon icon--github" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte github de Maximilien BERNARD</span>
+                            </a>
+                                                                    </div>
+                </div>
+                        </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">
@@ -315,34 +316,28 @@ vagrant@precise32:~$</code></pre>
                     </p>
                     <div class="links">
                         <ul>
-                            <li>
-                                <a href="/elao_/nos-services">Nos services</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/etudes-de-cas/">Nos études de cas</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/blog/">Blog</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/methodo">Notre méthodologie</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/la-tribu/">La tribu</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/contact">Contact</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/nos-valeurs">Nos valeurs</a>
-                            </li>
-                            <li>
-                                                                <a href="/elao_/recrutement/">
-                                    Nous recrutons
-                                                                            <span class="bullet">2</span>
-                                                                    </a>
-                            </li>
-                        </ul>
+                                                            <li>
+                                    <a href="/elao_/nos-services">Nos services</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/la-tribu/">La tribu</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/methodo">Méthodologie</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/blog/">Blog</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/etudes-de-cas/">Études de cas</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/contact">Contact</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/nos-valeurs">Nos valeurs</a>
+                                </li>
+                                                    </ul>
                     </div>
                     <div class="socials">
                         <ul>

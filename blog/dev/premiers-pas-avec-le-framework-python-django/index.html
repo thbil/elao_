@@ -61,7 +61,6 @@
                             </svg>
                                             </a>
                 
-                
                                     <!-- Desktop nav -->
                     <nav class="nav">
                         <ul>
@@ -72,7 +71,12 @@
                                 </li>
                                                             <li class="nav__item">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/etudes-de-cas/">
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav__item">
@@ -130,12 +134,12 @@
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
-                                                                                <span>Nos études de cas</span>
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
@@ -169,58 +173,60 @@
         </header>
         <div class="container">
         <main>
-              <ul class="breadcrumb">
-    <li class="breadcrumb__item">
-      <a href="/elao_/blog/">Blog</a>
-    </li>
-    <li class="breadcrumb__item">
-      Premiers pas avec le framework Python &quot;Django&quot;
-    </li>
-  </ul>
+                <ul class="breadcrumb">
+        <li class="breadcrumb__item">
+            <a href="/elao_/blog/">Blog</a>
+        </li>
+        <li class="breadcrumb__item">
+            Premiers pas avec le framework Python &quot;Django&quot;
+        </li>
+    </ul>
 
-  <div class="article-banner">
-    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/first_step.jpg)"></div>
+    <div class="article-banner">
+        <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/first_step.jpg)"></div>
 
-    <div class="article-info">
-                    <div class="article-author ">
-          <div class="article-author__image">
-                          <img src="/elao_/images/authors/xavierr.jpg" />
-                      </div>
-          <span class="article-author__info">
+        <div class="article-info">
+                                        <div class="article-author ">
+                    <div class="article-author__image">
+                                                    <img src="/elao_/images/authors/xavierr.jpg"/>
+                                            </div>
+                    <span class="article-author__info">
             Écrit par
-                          <strong>Xavier R</strong>
+                            <strong>Xavier R</strong>
                       </span>
+                </div>
+                        <div class="article-info__date">
+                <span>Publication <strong>15 septembre 2010</strong></span>
+                <span>Modification <strong>12 mars 2021</strong></span>
+            </div>
         </div>
-            <div class="article-info__date">
-        <span>Publication <strong>15 septembre 2010</strong></span>
-        <span>Modification <strong>12 mars 2021</strong></span>
-      </div>
+
+        <div class="article-header">
+            <h1>Premiers pas avec le framework Python &quot;Django&quot;</h1>
+            <p>Premiers pas avec le framework Python &quot;Django&quot;</p>
+            <ul class="article-tag-list">
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Django" rel="nofollow">#Django</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Framework" rel="nofollow">#Framework</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/MVC" rel="nofollow">#MVC</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Python" rel="nofollow">#Python</a>
+                    </li>
+                            </ul>
+        </div>
     </div>
 
-    <div class="article-header">
-      <h1>Premiers pas avec le framework Python &quot;Django&quot;</h1>
-      <p>Premiers pas avec le framework Python &quot;Django&quot;</p>
-      <ul class="article-tag-list">
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Django" rel="nofollow">#Django</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Framework" rel="nofollow">#Framework</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/MVC" rel="nofollow">#MVC</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Python" rel="nofollow">#Python</a>
-          </li>
-              </ul>
-    </div>
-  </div>
+    
+    <div class="article-content">
+        <main class="article-content__main">
 
-  
-  <div class="article-content">
-    <main class="article-content__main">
-      <body><p>Bonjour à toutes et à tous,</p>
+            
+            <body><p>Bonjour à toutes et à tous,</p>
 <p>Aujourd'hui, nous allons faire la connaissance de <a href="http://www.djangoproject.com/" target="_blank">Django</a>, le framework Web à l'usage des perfectionnistes soumis à des délais (ce n'est pas moi qui le dis, ce sont les pères fondateurs du Framework eux-mêmes !).</p>
 <p>Il s'agira d'une simple initiation au framework, destinée essentiellement aux développeurs qui souhaitent, comme moi, découvrir l'outil à travers un cas concret d'une affligeante banalité, puisque nous allons nous limiter pour l'heure à un très modeste "Hello, World". Mais rassurez-vous, au-delà de cet exemple simple, pour ne pas dire simplet, ce sera surtout l'occasion d'aborder par la pratique quelques concepts-clés du Framework. A mesure que nous avancerons dans ce projet (d'une ambition démesurée), nous nous attarderons sur certains aspects du framework, parfois pour les comparer aux autres frameworks Web. Enfin, je n'exclus pas de rédiger d'autres articles sur Django s'il s'avère que ce billet reçoit quelques échos favorables.</p>
 <p><strong>A qui s'adresse ce tutoriel ? Quels sont les pré-requis pour suivre ce tutoriel ? Je n'y connais rien en Python, est-ce que ça vaut la peine que je poursuive la lecture de cet article ? Et puis qu'ai-je à gagner à découvrir un nouveau framework, le mien me convient parfaitement, merci ! Je ne connais pas non plus les autres frameworks, ai-je intérêt à lire ce billet ?</strong></p>
@@ -432,37 +438,32 @@ TEMPLATE_DIRS <span class="token operator">=</span> <span class="token punctuati
 <h3 id="conclusion-plus-que-precaire">Conclusion (plus que précaire ...)</h3>
 <p>Que venons-nous de faire ? Eh bien, nous venons tout simplement de développer un projet informatique, basé sur le Framework Django et reposant sur le paradigme MVC à trois couches. Nous sommes donc à présent en mesure d'honorer tous les besoins d'un client qui souhaiterait se doter d'une application basée sur le Framework Django, bâtie sur le paradigme MVC à trois couches, et destinée à ... afficher "Hello World".</p>
 <p>Bon, je vous le concède, les projets informatiques avec un cahier des charges aussi faméliques ne sont pas légion ... Il nous reste donc de nombreux aspects à aborder pour prétendre développer des applications un tant soit peu évoluées avec Django. Qu'à cela ne tienne, nous aurons sans doute l'occasion d'y revenir à l'occasion de prochains tutoriels ...</p></body>
-                        </main>
-    <aside class="article-content__aside">
-      <button class="kudo">
-        <span class="kudo__button" aria-hidden="true"></span>
-        <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label" aria-hidden="true">Kudos</span>
-      </button>
-    </aside>
-  </div>
+                                                </main>
+        <aside class="article-content__aside">
+                    </aside>
+    </div>
 
-  <div class="article-footer">
-                  <div class="article-author">
-          <div class="article-author__image">
-            <img src="/elao_/images/authors/xavierr.jpg" />
-          </div>
-          <span class="article-author__info">
+    <div class="article-footer">
+                                    <div class="article-author">
+                    <div class="article-author__image">
+                        <img src="/elao_/images/authors/xavierr.jpg"/>
+                    </div>
+                    <span class="article-author__info">
             Écrit par
             <strong>Xavier R</strong>
           </span>
-          <div class="article-author__social">
-                                      <a href="https://github.com/xavier-rdo "class="social social--small">
-                <i class="icon icon--github" aria-hidden="true"></i>
-                <span class="screen-reader">Compte github de Xavier R</span>
-              </a>
-                                      <a href="http://www.elao.com" class="social social--small">
-                <i class="icon icon--website" aria-hidden="true"></i>
-                <span class="screen-reader">Site personnel de Xavier R</span>
-              </a>
-                      </div>
-        </div>
-            </div>
+                    <div class="article-author__social">
+                                                                            <a href="https://github.com/xavier-rdo " class="social social--small">
+                                <i class="icon icon--github" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte github de Xavier R</span>
+                            </a>
+                                                                            <a href="http://www.elao.com" class="social social--small">
+                                <i class="icon icon--website" aria-hidden="true"></i>
+                                <span class="screen-reader">Site personnel de Xavier R</span>
+                            </a>
+                                            </div>
+                </div>
+                        </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">
@@ -473,34 +474,28 @@ TEMPLATE_DIRS <span class="token operator">=</span> <span class="token punctuati
                     </p>
                     <div class="links">
                         <ul>
-                            <li>
-                                <a href="/elao_/nos-services">Nos services</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/etudes-de-cas/">Nos études de cas</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/blog/">Blog</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/methodo">Notre méthodologie</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/la-tribu/">La tribu</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/contact">Contact</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/nos-valeurs">Nos valeurs</a>
-                            </li>
-                            <li>
-                                                                <a href="/elao_/recrutement/">
-                                    Nous recrutons
-                                                                            <span class="bullet">2</span>
-                                                                    </a>
-                            </li>
-                        </ul>
+                                                            <li>
+                                    <a href="/elao_/nos-services">Nos services</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/la-tribu/">La tribu</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/methodo">Méthodologie</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/blog/">Blog</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/etudes-de-cas/">Études de cas</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/contact">Contact</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/nos-valeurs">Nos valeurs</a>
+                                </li>
+                                                    </ul>
                     </div>
                     <div class="socials">
                         <ul>

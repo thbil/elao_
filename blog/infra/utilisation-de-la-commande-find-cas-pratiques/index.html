@@ -61,7 +61,6 @@
                             </svg>
                                             </a>
                 
-                
                                     <!-- Desktop nav -->
                     <nav class="nav">
                         <ul>
@@ -72,7 +71,12 @@
                                 </li>
                                                             <li class="nav__item">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/etudes-de-cas/">
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav__item">
@@ -130,12 +134,12 @@
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
-                                                                                <span>Nos études de cas</span>
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
@@ -169,55 +173,57 @@
         </header>
         <div class="container">
         <main>
-              <ul class="breadcrumb">
-    <li class="breadcrumb__item">
-      <a href="/elao_/blog/">Blog</a>
-    </li>
-    <li class="breadcrumb__item">
-      Utilisation de la commande find - cas pratiques
-    </li>
-  </ul>
+                <ul class="breadcrumb">
+        <li class="breadcrumb__item">
+            <a href="/elao_/blog/">Blog</a>
+        </li>
+        <li class="breadcrumb__item">
+            Utilisation de la commande find - cas pratiques
+        </li>
+    </ul>
 
-  <div class="article-banner">
-    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/homer-do-not-care.png)"></div>
+    <div class="article-banner">
+        <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/homer-do-not-care.png)"></div>
 
-    <div class="article-info">
-                    <div class="article-author ">
-          <div class="article-author__image">
-                          <img src="/elao_/images/authors/gfaivre.jpg" />
-                      </div>
-          <span class="article-author__info">
+        <div class="article-info">
+                                        <div class="article-author ">
+                    <div class="article-author__image">
+                                                    <img src="/elao_/images/authors/gfaivre.jpg"/>
+                                            </div>
+                    <span class="article-author__info">
             Écrit par
-                          <strong>Guewen FAIVRE</strong>
+                            <strong>Guewen FAIVRE</strong>
                       </span>
+                </div>
+                        <div class="article-info__date">
+                <span>Publication <strong>23 avril 2010</strong></span>
+                <span>Modification <strong>12 mars 2021</strong></span>
+            </div>
         </div>
-            <div class="article-info__date">
-        <span>Publication <strong>23 avril 2010</strong></span>
-        <span>Modification <strong>12 mars 2021</strong></span>
-      </div>
+
+        <div class="article-header">
+            <h1>Utilisation de la commande find - cas pratiques</h1>
+            <p>Utilisation de la commande find - cas pratiques</p>
+            <ul class="article-tag-list">
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Linux" rel="nofollow">#Linux</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Trucs%20et%20astuces" rel="nofollow">#Trucs et astuces</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Tips" rel="nofollow">#Tips</a>
+                    </li>
+                            </ul>
+        </div>
     </div>
 
-    <div class="article-header">
-      <h1>Utilisation de la commande find - cas pratiques</h1>
-      <p>Utilisation de la commande find - cas pratiques</p>
-      <ul class="article-tag-list">
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Linux" rel="nofollow">#Linux</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Trucs%20et%20astuces" rel="nofollow">#Trucs et astuces</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Tips" rel="nofollow">#Tips</a>
-          </li>
-              </ul>
-    </div>
-  </div>
+    
+    <div class="article-content">
+        <main class="article-content__main">
 
-  
-  <div class="article-content">
-    <main class="article-content__main">
-      <body><p>La commande find, outils ô combien indispensable des administrateurs systèmes, permet d'effectuer et d'automatiser tout un tas de tâches de maintenance courantes.<!--more--></p>
+            
+            <body><p>La commande find, outils ô combien indispensable des administrateurs systèmes, permet d'effectuer et d'automatiser tout un tas de tâches de maintenance courantes.<!--more--></p>
 <p>Ce petit memo se veut être un post de centralisation des lignes de commande pratiques, pouvant dépanner l'admin en détresse !</p>
 <h3 id="rechercher-un-fichier">Rechercher un fichier</h3>
 <pre class="code-multiline"><code id="99a0e0ad70bd243a0c468f4e18639fba">find . -name "databases*"</code></pre>
@@ -236,41 +242,36 @@
 <p>Cette commande renverra tous les fichiers de type répertoire <strong>ET</strong> (option -a) qui appartiennent à webmaster</p>
 <pre class="code-multiline"><code id="ea1b2d33c090f0e344e375de448ddaa4">find / \( -name a.out -o -name ’*.o’ \) -atime +7 -exec rm {} \;</code></pre>
 <p>Cette commande supprimera tous les fichiers dont le nom correspond est a.out <strong>OU</strong> se terminant par .o <strong>ET</strong> dont la date de dernier accès est antérieure à 7 jours.</p></body>
-                        </main>
-    <aside class="article-content__aside">
-      <button class="kudo">
-        <span class="kudo__button" aria-hidden="true"></span>
-        <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label" aria-hidden="true">Kudos</span>
-      </button>
-    </aside>
-  </div>
+                                                </main>
+        <aside class="article-content__aside">
+                    </aside>
+    </div>
 
-  <div class="article-footer">
-                  <div class="article-author">
-          <div class="article-author__image">
-            <img src="/elao_/images/authors/gfaivre.jpg" />
-          </div>
-          <span class="article-author__info">
+    <div class="article-footer">
+                                    <div class="article-author">
+                    <div class="article-author__image">
+                        <img src="/elao_/images/authors/gfaivre.jpg"/>
+                    </div>
+                    <span class="article-author__info">
             Écrit par
             <strong>Guewen FAIVRE</strong>
           </span>
-          <div class="article-author__social">
-                          <a href="https://twitter.com/guewen_faivre" class="social social--small">
-                <i class="icon icon--twitter" aria-hidden="true"></i>
-                <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-              </a>
-                                      <a href="https://github.com/gfaivre "class="social social--small">
-                <i class="icon icon--github" aria-hidden="true"></i>
-                <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-              </a>
-                                      <a href="http://www.elao.com" class="social social--small">
-                <i class="icon icon--website" aria-hidden="true"></i>
-                <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-              </a>
-                      </div>
-        </div>
-            </div>
+                    <div class="article-author__social">
+                                                    <a href="https://twitter.com/guewen_faivre" class="social social--small">
+                                <i class="icon icon--twitter" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
+                            </a>
+                                                                            <a href="https://github.com/gfaivre " class="social social--small">
+                                <i class="icon icon--github" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte github de Guewen FAIVRE</span>
+                            </a>
+                                                                            <a href="http://www.elao.com" class="social social--small">
+                                <i class="icon icon--website" aria-hidden="true"></i>
+                                <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
+                            </a>
+                                            </div>
+                </div>
+                        </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">
@@ -281,34 +282,28 @@
                     </p>
                     <div class="links">
                         <ul>
-                            <li>
-                                <a href="/elao_/nos-services">Nos services</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/etudes-de-cas/">Nos études de cas</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/blog/">Blog</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/methodo">Notre méthodologie</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/la-tribu/">La tribu</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/contact">Contact</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/nos-valeurs">Nos valeurs</a>
-                            </li>
-                            <li>
-                                                                <a href="/elao_/recrutement/">
-                                    Nous recrutons
-                                                                            <span class="bullet">2</span>
-                                                                    </a>
-                            </li>
-                        </ul>
+                                                            <li>
+                                    <a href="/elao_/nos-services">Nos services</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/la-tribu/">La tribu</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/methodo">Méthodologie</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/blog/">Blog</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/etudes-de-cas/">Études de cas</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/contact">Contact</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/nos-valeurs">Nos valeurs</a>
+                                </li>
+                                                    </ul>
                     </div>
                     <div class="socials">
                         <ul>

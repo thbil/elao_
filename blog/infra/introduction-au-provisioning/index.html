@@ -61,7 +61,6 @@
                             </svg>
                                             </a>
                 
-                
                                     <!-- Desktop nav -->
                     <nav class="nav">
                         <ul>
@@ -72,7 +71,12 @@
                                 </li>
                                                             <li class="nav__item">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/etudes-de-cas/">
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav__item">
@@ -130,12 +134,12 @@
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
-                                                                                <span>Nos études de cas</span>
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
@@ -169,55 +173,57 @@
         </header>
         <div class="container">
         <main>
-              <ul class="breadcrumb">
-    <li class="breadcrumb__item">
-      <a href="/elao_/blog/">Blog</a>
-    </li>
-    <li class="breadcrumb__item">
-      Introduction au provisioning
-    </li>
-  </ul>
+                <ul class="breadcrumb">
+        <li class="breadcrumb__item">
+            <a href="/elao_/blog/">Blog</a>
+        </li>
+        <li class="breadcrumb__item">
+            Introduction au provisioning
+        </li>
+    </ul>
 
-  <div class="article-banner">
-    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/puppet.jpg)"></div>
+    <div class="article-banner">
+        <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/puppet.jpg)"></div>
 
-    <div class="article-info">
-                    <div class="article-author ">
-          <div class="article-author__image">
-                          <img src="/elao_/images/authors/gfaivre.jpg" />
-                      </div>
-          <span class="article-author__info">
+        <div class="article-info">
+                                        <div class="article-author ">
+                    <div class="article-author__image">
+                                                    <img src="/elao_/images/authors/gfaivre.jpg"/>
+                                            </div>
+                    <span class="article-author__info">
             Écrit par
-                          <strong>Guewen FAIVRE</strong>
+                            <strong>Guewen FAIVRE</strong>
                       </span>
+                </div>
+                        <div class="article-info__date">
+                <span>Publication <strong>3 février 2016</strong></span>
+                <span>Modification <strong>12 mars 2021</strong></span>
+            </div>
         </div>
-            <div class="article-info__date">
-        <span>Publication <strong>3 février 2016</strong></span>
-        <span>Modification <strong>12 mars 2021</strong></span>
-      </div>
+
+        <div class="article-header">
+            <h1>Introduction au provisioning</h1>
+            <p>Introduction aux principes de base de l&#039;approvisionnement (ou provisoning) d&#039;environnements de développement, d&#039;exécution, de production ou encore de test</p>
+            <ul class="article-tag-list">
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Ansible" rel="nofollow">#Ansible</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Linux" rel="nofollow">#Linux</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Virtualisation" rel="nofollow">#Virtualisation</a>
+                    </li>
+                            </ul>
+        </div>
     </div>
 
-    <div class="article-header">
-      <h1>Introduction au provisioning</h1>
-      <p>Introduction aux principes de base de l&#039;approvisionnement (ou provisoning) d&#039;environnements de développement, d&#039;exécution, de production ou encore de test</p>
-      <ul class="article-tag-list">
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Ansible" rel="nofollow">#Ansible</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Linux" rel="nofollow">#Linux</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Virtualisation" rel="nofollow">#Virtualisation</a>
-          </li>
-              </ul>
-    </div>
-  </div>
+    
+    <div class="article-content">
+        <main class="article-content__main">
 
-  
-  <div class="article-content">
-    <main class="article-content__main">
-      <body><p>De plus en plus répandu au sein des services IT, l'approvisionnement (ou provisioning en anglais) devient une composante incontournable des environnements techniques. <!--more--> Depuis longtemps utilisé par les sysadmin (soit sous la forme de "simples" scripts shell ou via des technologies spécialisées), l'avènement des DevOps permet aujourd'hui de démocratiser son utilisation. On le retrouve ainsi de plus en plus au sein des environnements de développement comme de production.</p>
+            
+            <body><p>De plus en plus répandu au sein des services IT, l'approvisionnement (ou provisioning en anglais) devient une composante incontournable des environnements techniques. <!--more--> Depuis longtemps utilisé par les sysadmin (soit sous la forme de "simples" scripts shell ou via des technologies spécialisées), l'avènement des DevOps permet aujourd'hui de démocratiser son utilisation. On le retrouve ainsi de plus en plus au sein des environnements de développement comme de production.</p>
 <p>La "culture" DevOps et plus largement AGILE repose sur des principes simples que sont l'automatisation, la réutilisabilité ou encore l'amélioration continue, principes auxquels le provisionning répond largement.</p>
 <h1 id="c-est-quoi-le-provisioning">C'est quoi le provisioning ?</h1>
 <p>Le provisioning c'est (globalement) l'automatisation de tâches variées et diverses allant de l'installation d'un environnement de développement à la mise en place d'infrastructures extrêmement complexes. Il a été historiquement et très largement utilisé dans l'industrie des télécoms.</p>
@@ -268,41 +274,36 @@ L'ensemble de nos infras de production et de demo ne dérogent pas à cette règ
 De même il devient beaucoup plus facile (attention je n'ai pas dit simple) d'assurer la scalabilité des applications, encore une fois car la mise à disposition des environnements techniques est plus rapide.</p>
 <p>Il devient également de plus en plus commun de virtualiser les environnements de développement (nous utilisons par exemple le couple <strong>Vagrant / Ansible</strong>), ces outils permettant à un développeur d'être rapidement opérationel et de se concentrer sur l'essentiel de son métier, la création d'applications.</p>
 <p>Loin d'être exhaustive sur le sujet, cette introduction reste ouverte à toute remarque et/ou complément.</p></body>
-                        </main>
-    <aside class="article-content__aside">
-      <button class="kudo">
-        <span class="kudo__button" aria-hidden="true"></span>
-        <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label" aria-hidden="true">Kudos</span>
-      </button>
-    </aside>
-  </div>
+                                                </main>
+        <aside class="article-content__aside">
+                    </aside>
+    </div>
 
-  <div class="article-footer">
-                  <div class="article-author">
-          <div class="article-author__image">
-            <img src="/elao_/images/authors/gfaivre.jpg" />
-          </div>
-          <span class="article-author__info">
+    <div class="article-footer">
+                                    <div class="article-author">
+                    <div class="article-author__image">
+                        <img src="/elao_/images/authors/gfaivre.jpg"/>
+                    </div>
+                    <span class="article-author__info">
             Écrit par
             <strong>Guewen FAIVRE</strong>
           </span>
-          <div class="article-author__social">
-                          <a href="https://twitter.com/guewen_faivre" class="social social--small">
-                <i class="icon icon--twitter" aria-hidden="true"></i>
-                <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-              </a>
-                                      <a href="https://github.com/gfaivre "class="social social--small">
-                <i class="icon icon--github" aria-hidden="true"></i>
-                <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-              </a>
-                                      <a href="http://www.elao.com" class="social social--small">
-                <i class="icon icon--website" aria-hidden="true"></i>
-                <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-              </a>
-                      </div>
-        </div>
-            </div>
+                    <div class="article-author__social">
+                                                    <a href="https://twitter.com/guewen_faivre" class="social social--small">
+                                <i class="icon icon--twitter" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
+                            </a>
+                                                                            <a href="https://github.com/gfaivre " class="social social--small">
+                                <i class="icon icon--github" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte github de Guewen FAIVRE</span>
+                            </a>
+                                                                            <a href="http://www.elao.com" class="social social--small">
+                                <i class="icon icon--website" aria-hidden="true"></i>
+                                <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
+                            </a>
+                                            </div>
+                </div>
+                        </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">
@@ -313,34 +314,28 @@ De même il devient beaucoup plus facile (attention je n'ai pas dit simple) d'as
                     </p>
                     <div class="links">
                         <ul>
-                            <li>
-                                <a href="/elao_/nos-services">Nos services</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/etudes-de-cas/">Nos études de cas</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/blog/">Blog</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/methodo">Notre méthodologie</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/la-tribu/">La tribu</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/contact">Contact</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/nos-valeurs">Nos valeurs</a>
-                            </li>
-                            <li>
-                                                                <a href="/elao_/recrutement/">
-                                    Nous recrutons
-                                                                            <span class="bullet">2</span>
-                                                                    </a>
-                            </li>
-                        </ul>
+                                                            <li>
+                                    <a href="/elao_/nos-services">Nos services</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/la-tribu/">La tribu</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/methodo">Méthodologie</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/blog/">Blog</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/etudes-de-cas/">Études de cas</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/contact">Contact</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/nos-valeurs">Nos valeurs</a>
+                                </li>
+                                                    </ul>
                     </div>
                     <div class="socials">
                         <ul>

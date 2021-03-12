@@ -61,7 +61,6 @@
                             </svg>
                                             </a>
                 
-                
                                     <!-- Desktop nav -->
                     <nav class="nav">
                         <ul>
@@ -72,7 +71,12 @@
                                 </li>
                                                             <li class="nav__item">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/etudes-de-cas/">
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav__item">
@@ -130,12 +134,12 @@
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
-                                                                                <span>Nos études de cas</span>
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
@@ -169,61 +173,63 @@
         </header>
         <div class="container">
         <main>
-              <ul class="breadcrumb">
-    <li class="breadcrumb__item">
-      <a href="/elao_/blog/">Blog</a>
-    </li>
-    <li class="breadcrumb__item">
-      Comprendre le cache du client Graphql Apollo
-    </li>
-  </ul>
+                <ul class="breadcrumb">
+        <li class="breadcrumb__item">
+            <a href="/elao_/blog/">Blog</a>
+        </li>
+        <li class="breadcrumb__item">
+            Comprendre le cache du client Graphql Apollo
+        </li>
+    </ul>
 
-  <div class="article-banner">
-    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/graphql-apollo.jpg)"></div>
+    <div class="article-banner">
+        <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/graphql-apollo.jpg)"></div>
 
-    <div class="article-info">
-                    <div class="article-author ">
-          <div class="article-author__image">
-                          <img src="/elao_/images/authors/mcolin.jpg" />
-                      </div>
-          <span class="article-author__info">
+        <div class="article-info">
+                                        <div class="article-author ">
+                    <div class="article-author__image">
+                                                    <img src="/elao_/images/authors/mcolin.jpg"/>
+                                            </div>
+                    <span class="article-author__info">
             Écrit par
-                          <strong>Maxime COLIN</strong>
+                            <strong>Maxime COLIN</strong>
                       </span>
+                </div>
+                        <div class="article-info__date">
+                <span>Publication <strong>17 février 2020</strong></span>
+                <span>Modification <strong>12 mars 2021</strong></span>
+            </div>
         </div>
-            <div class="article-info__date">
-        <span>Publication <strong>17 février 2020</strong></span>
-        <span>Modification <strong>12 mars 2021</strong></span>
-      </div>
+
+        <div class="article-header">
+            <h1>Comprendre le cache du client Graphql Apollo</h1>
+            <p>Découverte du fonctionnement du cache du client GraphQL Apollo.</p>
+            <ul class="article-tag-list">
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/GraphQL" rel="nofollow">#GraphQL</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Cache" rel="nofollow">#Cache</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Apollo" rel="nofollow">#Apollo</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Javascript" rel="nofollow">#Javascript</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/API" rel="nofollow">#API</a>
+                    </li>
+                            </ul>
+        </div>
     </div>
 
-    <div class="article-header">
-      <h1>Comprendre le cache du client Graphql Apollo</h1>
-      <p>Découverte du fonctionnement du cache du client GraphQL Apollo.</p>
-      <ul class="article-tag-list">
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/GraphQL" rel="nofollow">#GraphQL</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Cache" rel="nofollow">#Cache</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Apollo" rel="nofollow">#Apollo</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Javascript" rel="nofollow">#Javascript</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/API" rel="nofollow">#API</a>
-          </li>
-              </ul>
-    </div>
-  </div>
+    
+    <div class="article-content">
+        <main class="article-content__main">
 
-  
-  <div class="article-content">
-    <main class="article-content__main">
-      <body><h2 id="introduction">Introduction</h2>
+            
+            <body><h2 id="introduction">Introduction</h2>
 <p>GraphQL est un standard qui s'impose peu à peu dans le monde des API. Comme tout protocole API, il vient avec différents clients facilitant le dialogue avec le serveur.</p>
 <p><a href="https://www.apollographql.com/" target="_blank">Apollo GraphQL</a> est un service SAAS proposant une solution serveur GraphQL qui fournit également un très bon <a href="https://github.com/apollographql/apollo-client" target="_blank">client GraphQL Javascript</a>. Le client est open source et fonctionne avec n'importe quel serveur GraphQL.</p>
 <p>GraphQL propose beaucoup d'avantages par rapport à d'autres protocoles API <em>over HTTP</em> comme REST par exemple (batching de query, sélection des données à retourner, format des données, ...) mais souffre d'un défaut si l'on peut dire : comme toutes les requêtes sont effectuées en POST sur le même endpoint, il est impossible de poser un simple <strong>cache</strong> HTTP en amont. Pas de Varnish, pas de <strong>cache</strong> navigateur, etc.</p>
@@ -566,41 +572,36 @@ client
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <h2 id="conclusion">Conclusion</h2>
 <p>Cet article n'est qu'un petit aperçu des possibilités offertes par le cache Apollo. Pour plus de détails, je vous conseille de lire attentivement les documentations très complètes sur la <a href="https://www.apollographql.com/docs/react/caching/cache-configuration/" target="_blank">configuration du cache</a> et la <a href="https://www.apollographql.com/docs/react/caching/cache-interaction/" target="_blank">manipulation de cache</a> qui ont inspiré cet article.</p></body>
-                        </main>
-    <aside class="article-content__aside">
-      <button class="kudo">
-        <span class="kudo__button" aria-hidden="true"></span>
-        <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label" aria-hidden="true">Kudos</span>
-      </button>
-    </aside>
-  </div>
+                                                </main>
+        <aside class="article-content__aside">
+                    </aside>
+    </div>
 
-  <div class="article-footer">
-                  <div class="article-author">
-          <div class="article-author__image">
-            <img src="/elao_/images/authors/mcolin.jpg" />
-          </div>
-          <span class="article-author__info">
+    <div class="article-footer">
+                                    <div class="article-author">
+                    <div class="article-author__image">
+                        <img src="/elao_/images/authors/mcolin.jpg"/>
+                    </div>
+                    <span class="article-author__info">
             Écrit par
             <strong>Maxime COLIN</strong>
           </span>
-          <div class="article-author__social">
-                          <a href="https://twitter.com/colin_maxime" class="social social--small">
-                <i class="icon icon--twitter" aria-hidden="true"></i>
-                <span class="screen-reader">Compte twitter de Maxime COLIN</span>
-              </a>
-                                      <a href="https://github.com/maximecolin "class="social social--small">
-                <i class="icon icon--github" aria-hidden="true"></i>
-                <span class="screen-reader">Compte github de Maxime COLIN</span>
-              </a>
-                                      <a href="http://www.maximecolin.fr" class="social social--small">
-                <i class="icon icon--website" aria-hidden="true"></i>
-                <span class="screen-reader">Site personnel de Maxime COLIN</span>
-              </a>
-                      </div>
-        </div>
-            </div>
+                    <div class="article-author__social">
+                                                    <a href="https://twitter.com/colin_maxime" class="social social--small">
+                                <i class="icon icon--twitter" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte twitter de Maxime COLIN</span>
+                            </a>
+                                                                            <a href="https://github.com/maximecolin " class="social social--small">
+                                <i class="icon icon--github" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte github de Maxime COLIN</span>
+                            </a>
+                                                                            <a href="http://www.maximecolin.fr" class="social social--small">
+                                <i class="icon icon--website" aria-hidden="true"></i>
+                                <span class="screen-reader">Site personnel de Maxime COLIN</span>
+                            </a>
+                                            </div>
+                </div>
+                        </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">
@@ -611,34 +612,28 @@ client
                     </p>
                     <div class="links">
                         <ul>
-                            <li>
-                                <a href="/elao_/nos-services">Nos services</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/etudes-de-cas/">Nos études de cas</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/blog/">Blog</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/methodo">Notre méthodologie</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/la-tribu/">La tribu</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/contact">Contact</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/nos-valeurs">Nos valeurs</a>
-                            </li>
-                            <li>
-                                                                <a href="/elao_/recrutement/">
-                                    Nous recrutons
-                                                                            <span class="bullet">2</span>
-                                                                    </a>
-                            </li>
-                        </ul>
+                                                            <li>
+                                    <a href="/elao_/nos-services">Nos services</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/la-tribu/">La tribu</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/methodo">Méthodologie</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/blog/">Blog</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/etudes-de-cas/">Études de cas</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/contact">Contact</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/nos-valeurs">Nos valeurs</a>
+                                </li>
+                                                    </ul>
                     </div>
                     <div class="socials">
                         <ul>

@@ -61,7 +61,6 @@
                             </svg>
                                             </a>
                 
-                
                                     <!-- Desktop nav -->
                     <nav class="nav">
                         <ul>
@@ -72,7 +71,12 @@
                                 </li>
                                                             <li class="nav__item">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/etudes-de-cas/">
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav__item">
@@ -130,12 +134,12 @@
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
-                                                                                <span>Nos études de cas</span>
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
@@ -169,55 +173,57 @@
         </header>
         <div class="container">
         <main>
-              <ul class="breadcrumb">
-    <li class="breadcrumb__item">
-      <a href="/elao_/blog/">Blog</a>
-    </li>
-    <li class="breadcrumb__item">
-      Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin
-    </li>
-  </ul>
+                <ul class="breadcrumb">
+        <li class="breadcrumb__item">
+            <a href="/elao_/blog/">Blog</a>
+        </li>
+        <li class="breadcrumb__item">
+            Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin
+        </li>
+    </ul>
 
-  <div class="article-banner">
-    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/toad.jpg)"></div>
+    <div class="article-banner">
+        <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/toad.jpg)"></div>
 
-    <div class="article-info">
-                    <div class="article-author ">
-          <div class="article-author__image">
-                          <img src="/elao_/images/authors/xavierr.jpg" />
-                      </div>
-          <span class="article-author__info">
+        <div class="article-info">
+                                        <div class="article-author ">
+                    <div class="article-author__image">
+                                                    <img src="/elao_/images/authors/xavierr.jpg"/>
+                                            </div>
+                    <span class="article-author__info">
             Écrit par
-                          <strong>Xavier R</strong>
+                            <strong>Xavier R</strong>
                       </span>
+                </div>
+                        <div class="article-info__date">
+                <span>Publication <strong>12 juillet 2010</strong></span>
+                <span>Modification <strong>12 mars 2021</strong></span>
+            </div>
         </div>
-            <div class="article-info__date">
-        <span>Publication <strong>12 juillet 2010</strong></span>
-        <span>Modification <strong>12 mars 2021</strong></span>
-      </div>
+
+        <div class="article-header">
+            <h1>Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin</h1>
+            <p>Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin.</p>
+            <ul class="article-tag-list">
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/D%C3%A9veloppement" rel="nofollow">#Développement</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/PHP" rel="nofollow">#PHP</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Symfony" rel="nofollow">#Symfony</a>
+                    </li>
+                            </ul>
+        </div>
     </div>
 
-    <div class="article-header">
-      <h1>Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin</h1>
-      <p>Installation et premiers pas avec le plugin Symfony sfImageTransformExtraPlugin.</p>
-      <ul class="article-tag-list">
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/D%C3%A9veloppement" rel="nofollow">#Développement</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/PHP" rel="nofollow">#PHP</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Symfony" rel="nofollow">#Symfony</a>
-          </li>
-              </ul>
-    </div>
-  </div>
+    
+    <div class="article-content">
+        <main class="article-content__main">
 
-  
-  <div class="article-content">
-    <main class="article-content__main">
-      <body><p>Bonjour,</p>
+            
+            <body><p>Bonjour,</p>
 <p>Nous allons voir aujourd'hui comment installer et utiliser le plugin <a href="http://www.symfony-project.org/plugins/sfImageTransformExtraPlugin" target="_blank">sfImageTransformExtraPlugin</a>.</p>
 <p>Il s'agit d'un plugin très puissant permettant d'appliquer des traitements à des images au moyen de fichiers de configuration, sans qu'il soit donc nécessaire de polluer le code métier. Par ailleurs, il permet d'appliquer plusieurs traitements successifs de manière très intuitive. Il gère lui-même l'emplacement des fichiers générés et propose un système de cache réduisant les délais de transmission des images déjà générées.</p>
 <p>Le sfImageTransformExtraPlugin est dépendant du plugin <a href="http://www.symfony-project.org/plugins/sfImageTransformPlugin" target="_blank">sfImageTransformPlugin</a> mais ne l'installez pas avant d'avoir lu la suite ! Pour faciliter la lecture et éviter toute confusion (les noms des deux plugins sont très proches), dans la suite de l'article je ferai référence au "plugin de base" pour sfImageTransformPlugin et au "plugin Extra" pour sfImageTransformExtraPlugin.</p>
@@ -407,37 +413,32 @@ chmod 777 web/thumbnails</code></pre>
 <p>Cet article est beaucoup plus long que ce à quoi je m’attendais et pourtant nous n’avons fait qu’effleurer le sujet, tant sont vastes les possibilités offertes par le plugin. sfImageTransformExtraPlugin est indéniablement un outil qui mérite que l’on s’y intéresse mais sa prise en main est assez délicate, en raison notamment d’une documentation que je juge assez approximative (ce qui est tout de même compréhensible, c’est un peu le revers de la médaille : plus un outil est riche, plus la mise à jour de la documentation est problématique). Cet article n’avait donc pas d’autre prétention que de vous initier à ce plugin et vous mettre le pied à l’étrier en évitant les premiers écueils.</p>
 <h3 id="remerciements">Remerciements</h3>
 <p>Je tiens à remercier chaleureusement Yves Heitz sans qui la rédaction de ce billet n’aurait pas été possible. Il a essuyé les plâtres en mettant en oeuvre le plugin sur un projet réel et il a su contourner les nombreux écueils auxquels on se heurte lorsque l’on souhaite utiliser le plugin.</p></body>
-                        </main>
-    <aside class="article-content__aside">
-      <button class="kudo">
-        <span class="kudo__button" aria-hidden="true"></span>
-        <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label" aria-hidden="true">Kudos</span>
-      </button>
-    </aside>
-  </div>
+                                                </main>
+        <aside class="article-content__aside">
+                    </aside>
+    </div>
 
-  <div class="article-footer">
-                  <div class="article-author">
-          <div class="article-author__image">
-            <img src="/elao_/images/authors/xavierr.jpg" />
-          </div>
-          <span class="article-author__info">
+    <div class="article-footer">
+                                    <div class="article-author">
+                    <div class="article-author__image">
+                        <img src="/elao_/images/authors/xavierr.jpg"/>
+                    </div>
+                    <span class="article-author__info">
             Écrit par
             <strong>Xavier R</strong>
           </span>
-          <div class="article-author__social">
-                                      <a href="https://github.com/xavier-rdo "class="social social--small">
-                <i class="icon icon--github" aria-hidden="true"></i>
-                <span class="screen-reader">Compte github de Xavier R</span>
-              </a>
-                                      <a href="http://www.elao.com" class="social social--small">
-                <i class="icon icon--website" aria-hidden="true"></i>
-                <span class="screen-reader">Site personnel de Xavier R</span>
-              </a>
-                      </div>
-        </div>
-            </div>
+                    <div class="article-author__social">
+                                                                            <a href="https://github.com/xavier-rdo " class="social social--small">
+                                <i class="icon icon--github" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte github de Xavier R</span>
+                            </a>
+                                                                            <a href="http://www.elao.com" class="social social--small">
+                                <i class="icon icon--website" aria-hidden="true"></i>
+                                <span class="screen-reader">Site personnel de Xavier R</span>
+                            </a>
+                                            </div>
+                </div>
+                        </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">
@@ -448,34 +449,28 @@ chmod 777 web/thumbnails</code></pre>
                     </p>
                     <div class="links">
                         <ul>
-                            <li>
-                                <a href="/elao_/nos-services">Nos services</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/etudes-de-cas/">Nos études de cas</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/blog/">Blog</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/methodo">Notre méthodologie</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/la-tribu/">La tribu</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/contact">Contact</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/nos-valeurs">Nos valeurs</a>
-                            </li>
-                            <li>
-                                                                <a href="/elao_/recrutement/">
-                                    Nous recrutons
-                                                                            <span class="bullet">2</span>
-                                                                    </a>
-                            </li>
-                        </ul>
+                                                            <li>
+                                    <a href="/elao_/nos-services">Nos services</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/la-tribu/">La tribu</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/methodo">Méthodologie</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/blog/">Blog</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/etudes-de-cas/">Études de cas</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/contact">Contact</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/nos-valeurs">Nos valeurs</a>
+                                </li>
+                                                    </ul>
                     </div>
                     <div class="socials">
                         <ul>

@@ -61,7 +61,6 @@
                             </svg>
                                             </a>
                 
-                
                                     <!-- Desktop nav -->
                     <nav class="nav">
                         <ul>
@@ -72,7 +71,12 @@
                                 </li>
                                                             <li class="nav__item">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/etudes-de-cas/">
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav__item">
@@ -130,12 +134,12 @@
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
-                                                                                <span>Nos études de cas</span>
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
@@ -169,52 +173,54 @@
         </header>
         <div class="container">
         <main>
-              <ul class="breadcrumb">
-    <li class="breadcrumb__item">
-      <a href="/elao_/blog/">Blog</a>
-    </li>
-    <li class="breadcrumb__item">
-      Sécuriser ses accès serveur: Authentification par clés SSH
-    </li>
-  </ul>
+                <ul class="breadcrumb">
+        <li class="breadcrumb__item">
+            <a href="/elao_/blog/">Blog</a>
+        </li>
+        <li class="breadcrumb__item">
+            Sécuriser ses accès serveur: Authentification par clés SSH
+        </li>
+    </ul>
 
-  <div class="article-banner">
-    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/hdd_partition.jpg)"></div>
+    <div class="article-banner">
+        <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/hdd_partition.jpg)"></div>
 
-    <div class="article-info">
-                    <div class="article-author ">
-          <div class="article-author__image">
-                          <img src="/elao_/images/authors/gfaivre.jpg" />
-                      </div>
-          <span class="article-author__info">
+        <div class="article-info">
+                                        <div class="article-author ">
+                    <div class="article-author__image">
+                                                    <img src="/elao_/images/authors/gfaivre.jpg"/>
+                                            </div>
+                    <span class="article-author__info">
             Écrit par
-                          <strong>Guewen FAIVRE</strong>
+                            <strong>Guewen FAIVRE</strong>
                       </span>
+                </div>
+                        <div class="article-info__date">
+                <span>Publication <strong>5 mars 2010</strong></span>
+                <span>Modification <strong>12 mars 2021</strong></span>
+            </div>
         </div>
-            <div class="article-info__date">
-        <span>Publication <strong>5 mars 2010</strong></span>
-        <span>Modification <strong>12 mars 2021</strong></span>
-      </div>
+
+        <div class="article-header">
+            <h1>Sécuriser ses accès serveur: Authentification par clés SSH</h1>
+            <p>Sécuriser ses accès serveur: Authentification par clés SSH.</p>
+            <ul class="article-tag-list">
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/ssh" rel="nofollow">#ssh</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/S%C3%A9curit%C3%A9" rel="nofollow">#Sécurité</a>
+                    </li>
+                            </ul>
+        </div>
     </div>
 
-    <div class="article-header">
-      <h1>Sécuriser ses accès serveur: Authentification par clés SSH</h1>
-      <p>Sécuriser ses accès serveur: Authentification par clés SSH.</p>
-      <ul class="article-tag-list">
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/ssh" rel="nofollow">#ssh</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/S%C3%A9curit%C3%A9" rel="nofollow">#Sécurité</a>
-          </li>
-              </ul>
-    </div>
-  </div>
+    
+    <div class="article-content">
+        <main class="article-content__main">
 
-  
-  <div class="article-content">
-    <main class="article-content__main">
-      <body><p>Il n'est pas rare aujourd'hui que les administrateurs système soit amené à manipuler plusieurs dizaine de mots de passe, il existe, bien entendu, diversent façon de les "stocker", comme par exemple le logiciel Keepass, permettant de gérer vos différents mots de passe. Il est cependant encore plus facile d'utiliser une authentification basée sur une clé publique.</p>
+            
+            <body><p>Il n'est pas rare aujourd'hui que les administrateurs système soit amené à manipuler plusieurs dizaine de mots de passe, il existe, bien entendu, diversent façon de les "stocker", comme par exemple le logiciel Keepass, permettant de gérer vos différents mots de passe. Il est cependant encore plus facile d'utiliser une authentification basée sur une clé publique.</p>
 <p>Nous allons donc voir comment utiliser une authentification par clé ssh.
 Cela facilitera l'administration des serveurs mais permettra également de mettre en place certains scripts. Comme par exemple la sauvegarde des données à partir d'un autre serveur</p>
 <h3 id="pre-requis">Pré-requis</h3>
@@ -278,41 +284,36 @@ chmod 600 ~/.ssh/authorized_keys</code></pre>
 <p>Nous pouvons à présent directement nous connecter au serveur avec notre clé en utilisant la commande suivante:</p>
 <pre class="code-multiline"><code id="65f2b13026ea30c941685bfaf47a8010">ssh -i ~/.ssh/amartin root@serveur.tld</code></pre>
 <p>L’option “-i” indiquant vous l’aurez compris la clé privée à utiliser pour initier la transaction avec le serveur.</p></body>
-                        </main>
-    <aside class="article-content__aside">
-      <button class="kudo">
-        <span class="kudo__button" aria-hidden="true"></span>
-        <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label" aria-hidden="true">Kudos</span>
-      </button>
-    </aside>
-  </div>
+                                                </main>
+        <aside class="article-content__aside">
+                    </aside>
+    </div>
 
-  <div class="article-footer">
-                  <div class="article-author">
-          <div class="article-author__image">
-            <img src="/elao_/images/authors/gfaivre.jpg" />
-          </div>
-          <span class="article-author__info">
+    <div class="article-footer">
+                                    <div class="article-author">
+                    <div class="article-author__image">
+                        <img src="/elao_/images/authors/gfaivre.jpg"/>
+                    </div>
+                    <span class="article-author__info">
             Écrit par
             <strong>Guewen FAIVRE</strong>
           </span>
-          <div class="article-author__social">
-                          <a href="https://twitter.com/guewen_faivre" class="social social--small">
-                <i class="icon icon--twitter" aria-hidden="true"></i>
-                <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
-              </a>
-                                      <a href="https://github.com/gfaivre "class="social social--small">
-                <i class="icon icon--github" aria-hidden="true"></i>
-                <span class="screen-reader">Compte github de Guewen FAIVRE</span>
-              </a>
-                                      <a href="http://www.elao.com" class="social social--small">
-                <i class="icon icon--website" aria-hidden="true"></i>
-                <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
-              </a>
-                      </div>
-        </div>
-            </div>
+                    <div class="article-author__social">
+                                                    <a href="https://twitter.com/guewen_faivre" class="social social--small">
+                                <i class="icon icon--twitter" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte twitter de Guewen FAIVRE</span>
+                            </a>
+                                                                            <a href="https://github.com/gfaivre " class="social social--small">
+                                <i class="icon icon--github" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte github de Guewen FAIVRE</span>
+                            </a>
+                                                                            <a href="http://www.elao.com" class="social social--small">
+                                <i class="icon icon--website" aria-hidden="true"></i>
+                                <span class="screen-reader">Site personnel de Guewen FAIVRE</span>
+                            </a>
+                                            </div>
+                </div>
+                        </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">
@@ -323,34 +324,28 @@ chmod 600 ~/.ssh/authorized_keys</code></pre>
                     </p>
                     <div class="links">
                         <ul>
-                            <li>
-                                <a href="/elao_/nos-services">Nos services</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/etudes-de-cas/">Nos études de cas</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/blog/">Blog</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/methodo">Notre méthodologie</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/la-tribu/">La tribu</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/contact">Contact</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/nos-valeurs">Nos valeurs</a>
-                            </li>
-                            <li>
-                                                                <a href="/elao_/recrutement/">
-                                    Nous recrutons
-                                                                            <span class="bullet">2</span>
-                                                                    </a>
-                            </li>
-                        </ul>
+                                                            <li>
+                                    <a href="/elao_/nos-services">Nos services</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/la-tribu/">La tribu</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/methodo">Méthodologie</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/blog/">Blog</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/etudes-de-cas/">Études de cas</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/contact">Contact</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/nos-valeurs">Nos valeurs</a>
+                                </li>
+                                                    </ul>
                     </div>
                     <div class="socials">
                         <ul>

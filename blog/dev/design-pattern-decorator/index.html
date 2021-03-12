@@ -61,7 +61,6 @@
                             </svg>
                                             </a>
                 
-                
                                     <!-- Desktop nav -->
                     <nav class="nav">
                         <ul>
@@ -72,7 +71,12 @@
                                 </li>
                                                             <li class="nav__item">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/etudes-de-cas/">
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav__item">
@@ -130,12 +134,12 @@
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
-                                                                                <span>Nos études de cas</span>
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
@@ -169,52 +173,54 @@
         </header>
         <div class="container">
         <main>
-              <ul class="breadcrumb">
-    <li class="breadcrumb__item">
-      <a href="/elao_/blog/">Blog</a>
-    </li>
-    <li class="breadcrumb__item">
-      Le Design Pattern &#039;Decorator&#039;
-    </li>
-  </ul>
+                <ul class="breadcrumb">
+        <li class="breadcrumb__item">
+            <a href="/elao_/blog/">Blog</a>
+        </li>
+        <li class="breadcrumb__item">
+            Le Design Pattern &#039;Decorator&#039;
+        </li>
+    </ul>
 
-  <div class="article-banner">
-    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/decorator_pattern.jpg)"></div>
+    <div class="article-banner">
+        <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/decorator_pattern.jpg)"></div>
 
-    <div class="article-info">
-                    <div class="article-author ">
-          <div class="article-author__image">
-                          <img src="/elao_/images/authors/xavierr.jpg" />
-                      </div>
-          <span class="article-author__info">
+        <div class="article-info">
+                                        <div class="article-author ">
+                    <div class="article-author__image">
+                                                    <img src="/elao_/images/authors/xavierr.jpg"/>
+                                            </div>
+                    <span class="article-author__info">
             Écrit par
-                          <strong>Xavier R</strong>
+                            <strong>Xavier R</strong>
                       </span>
+                </div>
+                        <div class="article-info__date">
+                <span>Publication <strong>4 mai 2017</strong></span>
+                <span>Modification <strong>12 mars 2021</strong></span>
+            </div>
         </div>
-            <div class="article-info__date">
-        <span>Publication <strong>4 mai 2017</strong></span>
-        <span>Modification <strong>12 mars 2021</strong></span>
-      </div>
+
+        <div class="article-header">
+            <h1>Le Design Pattern &#039;Decorator&#039;</h1>
+            <p>Présentation du pattern &#039;Decorator&#039; dans le cadre d&#039;une série consacrée aux Design Patterns</p>
+            <ul class="article-tag-list">
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Design%20Pattern" rel="nofollow">#Design Pattern</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Conception" rel="nofollow">#Conception</a>
+                    </li>
+                            </ul>
+        </div>
     </div>
 
-    <div class="article-header">
-      <h1>Le Design Pattern &#039;Decorator&#039;</h1>
-      <p>Présentation du pattern &#039;Decorator&#039; dans le cadre d&#039;une série consacrée aux Design Patterns</p>
-      <ul class="article-tag-list">
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Design%20Pattern" rel="nofollow">#Design Pattern</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Conception" rel="nofollow">#Conception</a>
-          </li>
-              </ul>
-    </div>
-  </div>
+    
+    <div class="article-content">
+        <main class="article-content__main">
 
-  
-  <div class="article-content">
-    <main class="article-content__main">
-      <body><p>Le <em>Gang of Four</em> a classé les design patterns dans trois catégories : les DP de création, les DP structurels et les DP comportementaux (<em>behavior</em>).</p>
+            
+            <body><p>Le <em>Gang of Four</em> a classé les design patterns dans trois catégories : les DP de création, les DP structurels et les DP comportementaux (<em>behavior</em>).</p>
 <p>Au début de cette série, nous avons abordé deux design patterns de création : la <a href="/fr/dev/design-pattern-factory-method"><code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code></a> et le pattern <a href="/fr/dev/design-pattern-abstract-factory"><code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code></a>. Je vous propose aujourd'hui de nous pencher sur notre premier design pattern structurel : le <code class="code-inline" id="5041ffe849fcde6f23f9d99c2e949265">Decorator</code>.</p>
 <p>Il y sera notamment question de modération, de sexe et de grossièretés. Autant de bonnes raisons de poursuivre votre lecture.</p>
 <h2 id="classification">Classification</h2>
@@ -333,37 +339,32 @@
         <span class="token variable">$kernel</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AppCache</span><span class="token punctuation">(</span><span class="token variable">$kernel</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
 <p>Source : <a href="http://symfony.com/doc/current/http_cache.html#symfony-reverse-proxy" target="_blank">http://symfony.com/doc/current/http_cache.html#symfony-reverse-proxy</a></p>
 <p>La classe <code class="code-inline" id="22554c2f3f431fa4243965df392b9ea9">AppCache</code> de Symfony implémente l'interface <code class="code-inline" id="0c1e20bd8106272498d98bc2dab30ac5">HttpKernelInterface</code> (via son parent <code class="code-inline" id="cbd8f4eaaa6db9d6087aaea4351b469a">HttpCache</code>), tout comme la classe <code class="code-inline" id="3caeb9565027419ea673f2f760ededf0">AppKernel</code> qu'elle décore.</p></body>
-                        </main>
-    <aside class="article-content__aside">
-      <button class="kudo">
-        <span class="kudo__button" aria-hidden="true"></span>
-        <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label" aria-hidden="true">Kudos</span>
-      </button>
-    </aside>
-  </div>
+                                                </main>
+        <aside class="article-content__aside">
+                    </aside>
+    </div>
 
-  <div class="article-footer">
-                  <div class="article-author">
-          <div class="article-author__image">
-            <img src="/elao_/images/authors/xavierr.jpg" />
-          </div>
-          <span class="article-author__info">
+    <div class="article-footer">
+                                    <div class="article-author">
+                    <div class="article-author__image">
+                        <img src="/elao_/images/authors/xavierr.jpg"/>
+                    </div>
+                    <span class="article-author__info">
             Écrit par
             <strong>Xavier R</strong>
           </span>
-          <div class="article-author__social">
-                                      <a href="https://github.com/xavier-rdo "class="social social--small">
-                <i class="icon icon--github" aria-hidden="true"></i>
-                <span class="screen-reader">Compte github de Xavier R</span>
-              </a>
-                                      <a href="http://www.elao.com" class="social social--small">
-                <i class="icon icon--website" aria-hidden="true"></i>
-                <span class="screen-reader">Site personnel de Xavier R</span>
-              </a>
-                      </div>
-        </div>
-            </div>
+                    <div class="article-author__social">
+                                                                            <a href="https://github.com/xavier-rdo " class="social social--small">
+                                <i class="icon icon--github" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte github de Xavier R</span>
+                            </a>
+                                                                            <a href="http://www.elao.com" class="social social--small">
+                                <i class="icon icon--website" aria-hidden="true"></i>
+                                <span class="screen-reader">Site personnel de Xavier R</span>
+                            </a>
+                                            </div>
+                </div>
+                        </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">
@@ -374,34 +375,28 @@
                     </p>
                     <div class="links">
                         <ul>
-                            <li>
-                                <a href="/elao_/nos-services">Nos services</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/etudes-de-cas/">Nos études de cas</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/blog/">Blog</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/methodo">Notre méthodologie</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/la-tribu/">La tribu</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/contact">Contact</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/nos-valeurs">Nos valeurs</a>
-                            </li>
-                            <li>
-                                                                <a href="/elao_/recrutement/">
-                                    Nous recrutons
-                                                                            <span class="bullet">2</span>
-                                                                    </a>
-                            </li>
-                        </ul>
+                                                            <li>
+                                    <a href="/elao_/nos-services">Nos services</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/la-tribu/">La tribu</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/methodo">Méthodologie</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/blog/">Blog</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/etudes-de-cas/">Études de cas</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/contact">Contact</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/nos-valeurs">Nos valeurs</a>
+                                </li>
+                                                    </ul>
                     </div>
                     <div class="socials">
                         <ul>

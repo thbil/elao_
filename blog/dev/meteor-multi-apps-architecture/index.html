@@ -61,7 +61,6 @@
                             </svg>
                                             </a>
                 
-                
                                     <!-- Desktop nav -->
                     <nav class="nav">
                         <ul>
@@ -72,7 +71,12 @@
                                 </li>
                                                             <li class="nav__item">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/etudes-de-cas/">
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav__item">
@@ -130,12 +134,12 @@
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
-                                                                                <span>Nos études de cas</span>
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
@@ -169,58 +173,60 @@
         </header>
         <div class="container">
         <main>
-              <ul class="breadcrumb">
-    <li class="breadcrumb__item">
-      <a href="/elao_/blog/">Blog</a>
-    </li>
-    <li class="breadcrumb__item">
-      Meteor - Archi. multi-apps connectées
-    </li>
-  </ul>
+                <ul class="breadcrumb">
+        <li class="breadcrumb__item">
+            <a href="/elao_/blog/">Blog</a>
+        </li>
+        <li class="breadcrumb__item">
+            Meteor - Archi. multi-apps connectées
+        </li>
+    </ul>
 
-  <div class="article-banner">
-    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/beer.jpg)"></div>
+    <div class="article-banner">
+        <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/beer.jpg)"></div>
 
-    <div class="article-info">
-                    <div class="article-author ">
-          <div class="article-author__image">
-                          <img src="/elao_/images/authors/default.png" />
-                      </div>
-          <span class="article-author__info">
+        <div class="article-info">
+                                        <div class="article-author ">
+                    <div class="article-author__image">
+                                                    <img src="/elao_/images/authors/default.png"/>
+                                            </div>
+                    <span class="article-author__info">
             Écrit par
-                          <strong>Johan GAULUPEAU</strong>
+                            <strong>Johan GAULUPEAU</strong>
                       </span>
+                </div>
+                        <div class="article-info__date">
+                <span>Publication <strong>23 juin 2015</strong></span>
+                <span>Modification <strong>12 mars 2021</strong></span>
+            </div>
         </div>
-            <div class="article-info__date">
-        <span>Publication <strong>23 juin 2015</strong></span>
-        <span>Modification <strong>12 mars 2021</strong></span>
-      </div>
+
+        <div class="article-header">
+            <h1>Meteor - Archi. multi-apps connectées</h1>
+            <p>Architecture d&#039;une application Meteor décomposée en plusieurs sous-applications connectées à la même base de données MongoDb.</p>
+            <ul class="article-tag-list">
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Meteor" rel="nofollow">#Meteor</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Tips" rel="nofollow">#Tips</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/D%C3%A9veloppement" rel="nofollow">#Développement</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Bonnes%20pratiques" rel="nofollow">#Bonnes pratiques</a>
+                    </li>
+                            </ul>
+        </div>
     </div>
 
-    <div class="article-header">
-      <h1>Meteor - Archi. multi-apps connectées</h1>
-      <p>Architecture d&#039;une application Meteor décomposée en plusieurs sous-applications connectées à la même base de données MongoDb.</p>
-      <ul class="article-tag-list">
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Meteor" rel="nofollow">#Meteor</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Tips" rel="nofollow">#Tips</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/D%C3%A9veloppement" rel="nofollow">#Développement</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Bonnes%20pratiques" rel="nofollow">#Bonnes pratiques</a>
-          </li>
-              </ul>
-    </div>
-  </div>
+    
+    <div class="article-content">
+        <main class="article-content__main">
 
-  
-  <div class="article-content">
-    <main class="article-content__main">
-      <body><p>Etant donnée que Meteor envoie tous les fichiers du projet aux clients web (hormis les dossiers spéciaux tels que <code class="code-inline" id="90ba4f4e30c3bc345088ef67ce3864dd">/server</code>, <code class="code-inline" id="770b76f7b7b90b1c020ff5111c7b62af">/private</code>, <code class="code-inline" id="15276d0be2c414e04b17f65f7b1d8323">/public</code>), toute l'application est packagée et envoyée.<!--more--> Cela pose plusieurs problèmes dont :</p>
+            
+            <body><p>Etant donnée que Meteor envoie tous les fichiers du projet aux clients web (hormis les dossiers spéciaux tels que <code class="code-inline" id="90ba4f4e30c3bc345088ef67ce3864dd">/server</code>, <code class="code-inline" id="770b76f7b7b90b1c020ff5111c7b62af">/private</code>, <code class="code-inline" id="15276d0be2c414e04b17f65f7b1d8323">/public</code>), toute l'application est packagée et envoyée.<!--more--> Cela pose plusieurs problèmes dont :</p>
 <ul>
 <li>la difficulté d'alléger la masse de code envoyé au client (templates html + helpers &amp; libs js + styles css) ;</li>
 <li>la difficulté de "protéger" son application par omission de code (typiquement le code de la partie <code class="code-inline" id="11f6b3285bf71a87811c3dadccb7b166">/admin</code> ne devrait être envoyé qu'aux utilisateurs de type admin).</li>
@@ -271,37 +277,32 @@
 <h2 id="conclusion">Conclusion</h2>
 <p>En conclusion, décomposer une application en plusieurs sous-applications permet de mieux gérer son code et d'intervenir sur les sources envoyées aux clients.</p>
 <p>Cela légitimise la création de packages "applicatifs" (telles que les collections, règles métiers partagées, etc.), ce qui est une bonne pratique !</p></body>
-                        </main>
-    <aside class="article-content__aside">
-      <button class="kudo">
-        <span class="kudo__button" aria-hidden="true"></span>
-        <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label" aria-hidden="true">Kudos</span>
-      </button>
-    </aside>
-  </div>
+                                                </main>
+        <aside class="article-content__aside">
+                    </aside>
+    </div>
 
-  <div class="article-footer">
-                  <div class="article-author">
-          <div class="article-author__image">
-            <img src="/elao_/images/authors/default.png" />
-          </div>
-          <span class="article-author__info">
+    <div class="article-footer">
+                                    <div class="article-author">
+                    <div class="article-author__image">
+                        <img src="/elao_/images/authors/default.png"/>
+                    </div>
+                    <span class="article-author__info">
             Écrit par
             <strong>Johan GAULUPEAU</strong>
           </span>
-          <div class="article-author__social">
-                                      <a href="https://github.com/yoh "class="social social--small">
-                <i class="icon icon--github" aria-hidden="true"></i>
-                <span class="screen-reader">Compte github de Johan GAULUPEAU</span>
-              </a>
-                                      <a href="http://www.elao.com" class="social social--small">
-                <i class="icon icon--website" aria-hidden="true"></i>
-                <span class="screen-reader">Site personnel de Johan GAULUPEAU</span>
-              </a>
-                      </div>
-        </div>
-            </div>
+                    <div class="article-author__social">
+                                                                            <a href="https://github.com/yoh " class="social social--small">
+                                <i class="icon icon--github" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte github de Johan GAULUPEAU</span>
+                            </a>
+                                                                            <a href="http://www.elao.com" class="social social--small">
+                                <i class="icon icon--website" aria-hidden="true"></i>
+                                <span class="screen-reader">Site personnel de Johan GAULUPEAU</span>
+                            </a>
+                                            </div>
+                </div>
+                        </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">
@@ -312,34 +313,28 @@
                     </p>
                     <div class="links">
                         <ul>
-                            <li>
-                                <a href="/elao_/nos-services">Nos services</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/etudes-de-cas/">Nos études de cas</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/blog/">Blog</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/methodo">Notre méthodologie</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/la-tribu/">La tribu</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/contact">Contact</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/nos-valeurs">Nos valeurs</a>
-                            </li>
-                            <li>
-                                                                <a href="/elao_/recrutement/">
-                                    Nous recrutons
-                                                                            <span class="bullet">2</span>
-                                                                    </a>
-                            </li>
-                        </ul>
+                                                            <li>
+                                    <a href="/elao_/nos-services">Nos services</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/la-tribu/">La tribu</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/methodo">Méthodologie</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/blog/">Blog</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/etudes-de-cas/">Études de cas</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/contact">Contact</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/nos-valeurs">Nos valeurs</a>
+                                </li>
+                                                    </ul>
                     </div>
                     <div class="socials">
                         <ul>

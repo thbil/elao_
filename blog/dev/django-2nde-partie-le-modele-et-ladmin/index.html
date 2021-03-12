@@ -61,7 +61,6 @@
                             </svg>
                                             </a>
                 
-                
                                     <!-- Desktop nav -->
                     <nav class="nav">
                         <ul>
@@ -72,7 +71,12 @@
                                 </li>
                                                             <li class="nav__item">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/etudes-de-cas/">
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav__item">
@@ -130,12 +134,12 @@
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
-                                                                                <span>Nos études de cas</span>
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
@@ -169,58 +173,60 @@
         </header>
         <div class="container">
         <main>
-              <ul class="breadcrumb">
-    <li class="breadcrumb__item">
-      <a href="/elao_/blog/">Blog</a>
-    </li>
-    <li class="breadcrumb__item">
-      Django (2nde partie) : le Modèle et l’Admin
-    </li>
-  </ul>
+                <ul class="breadcrumb">
+        <li class="breadcrumb__item">
+            <a href="/elao_/blog/">Blog</a>
+        </li>
+        <li class="breadcrumb__item">
+            Django (2nde partie) : le Modèle et l’Admin
+        </li>
+    </ul>
 
-  <div class="article-banner">
-    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/django.jpg)"></div>
+    <div class="article-banner">
+        <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/django.jpg)"></div>
 
-    <div class="article-info">
-                    <div class="article-author ">
-          <div class="article-author__image">
-                          <img src="/elao_/images/authors/xavierr.jpg" />
-                      </div>
-          <span class="article-author__info">
+        <div class="article-info">
+                                        <div class="article-author ">
+                    <div class="article-author__image">
+                                                    <img src="/elao_/images/authors/xavierr.jpg"/>
+                                            </div>
+                    <span class="article-author__info">
             Écrit par
-                          <strong>Xavier R</strong>
+                            <strong>Xavier R</strong>
                       </span>
+                </div>
+                        <div class="article-info__date">
+                <span>Publication <strong>6 octobre 2010</strong></span>
+                <span>Modification <strong>12 mars 2021</strong></span>
+            </div>
         </div>
-            <div class="article-info__date">
-        <span>Publication <strong>6 octobre 2010</strong></span>
-        <span>Modification <strong>12 mars 2021</strong></span>
-      </div>
+
+        <div class="article-header">
+            <h1>Django (2nde partie) : le Modèle et l’Admin</h1>
+            <p>Django (2nde partie) : le Modèle et l’Admin</p>
+            <ul class="article-tag-list">
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Django" rel="nofollow">#Django</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Framework" rel="nofollow">#Framework</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/MVC" rel="nofollow">#MVC</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/Python" rel="nofollow">#Python</a>
+                    </li>
+                            </ul>
+        </div>
     </div>
 
-    <div class="article-header">
-      <h1>Django (2nde partie) : le Modèle et l’Admin</h1>
-      <p>Django (2nde partie) : le Modèle et l’Admin</p>
-      <ul class="article-tag-list">
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Django" rel="nofollow">#Django</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Framework" rel="nofollow">#Framework</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/MVC" rel="nofollow">#MVC</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/Python" rel="nofollow">#Python</a>
-          </li>
-              </ul>
-    </div>
-  </div>
+    
+    <div class="article-content">
+        <main class="article-content__main">
 
-  
-  <div class="article-content">
-    <main class="article-content__main">
-      <body><p>Bonjour à toutes et à tous,</p>
+            
+            <body><p>Bonjour à toutes et à tous,</p>
 <p>Aujourd'hui, dans notre série consacrée à Django, nous abordons un second volet autrement plus intéressant que le premier (pour ceux qui ont raté l'épisode précédent, c'est <a href="/dev/premiers-pas-avec-le-framework-python-django" target="_blank">ici</a> que ça se passe). En effet, ce billet sera consacré d'une part au Modèle, que nous avions négligé précédemment, d'autre part à l'interface d'administration fournie par Django (<em>Django Admin Site</em>). J'aurais pu consacrer un article entier à la couche "Modèle" et aborder les nombreuses possibilités offertes par le Framework dans ce domaine. Mais mon précédent billet avait essentiellement pour but de nous familiariser avec Django, aussi d'un point de vue purement fonctionnel, le résultat finalement obtenu pouvait nous laisser sur notre faim. J'ai donc choisi ici de dépeindre le modèle dans ses grandes lignes, plutôt que d'entrer dans le détail, afin que nous puissions rapidement mettre en pratique nos connaissances, par le biais de l'interface d'Administration de Django. Mais sachez que les points importants sur lesquels nous ferons l'impasse aujourd'hui feront l'objet de futurs articles.</p>
 <p>Avant de débuter ce tutoriel, assurez-vous que Python et Django sont installés sur votre ordinateur. Si tel n'est pas le cas, référez-vous à notre <a href="/dev/premiers-pas-avec-le-framework-python-django" target="_blank">introduction au Framework Django</a> pour connaître la marche à suivre.</p>
 <h3 id="presentation-du-projet-et-du-modele">Présentation du projet et du modèle</h3>
@@ -473,37 +479,32 @@ Nous ajoutons donc la méthode <em>toggle_public</em> dans le fichier <em>shop/v
 <p>Voilà qui clôt le chapitre consacré à la découverte de l'Admin de Django. Sachez qu'il existe d'autres fonctionnalités que nous n'avons pas explorées (notamment la pagination) et sachez également que si vos besoins le justifient, vous avez la possibilité de rédéfinir les méthodes et les templates de l'Admin. Pour ceux qui souhaitent en savoir plus sur cette possibilité, il existe plusieurs ressources disponibles sur Internet. Je citerais notamment la documentation officielle de Django qui consacre un paragraphe à ce sujet : <a href="http://docs.djangoproject.com/en/dev/ref/contrib/admin/#overriding-admin-templates" target="_blank">Overriding Admin Templates</a>. Pour ce qui concerne plus généralement l'Admin, si vous souhaitez connaître l'ensemble des fonctionnalités disponibles, voici les deux chapitres de la documentation qui traitent de ce sujet : <a href="http://docs.djangoproject.com/en/1.2/ref/contrib/admin/" target="_blank">Admin Site</a> et <a href="http://docs.djangoproject.com/en/1.2/ref/contrib/admin/actions/" target="_blank">Admin Actions</a>.</p>
 <h3 id="conclusion-partielle">Conclusion (partielle)</h3>
 <p>Aujourd'hui, nous avons étendu nos connaissances du framework Django, en abordant le modèle dans ses grandes lignes, et en exploitant certaines fonctionnalités proposées par l'Admin de Django. Au cours d'un prochain article, nous développerons une page qui nous permettra de lister les différents articles disponibles. Cette page comportera un moteur de recherche (assez basique), les résultats seront paginés et pourront être triés à partir des en-têtes de colonnes. Ce sera donc l'occasion de consolider certaines notions déja étudiées, et d'aborder de nouveaux concepts par la pratique, parmi lesquels l'organisation et la réutilisation des templates, la pagination, l'interrogation des données en base de données à l'aide des <em>ModelManagers</em>, la génération de vignettes, la création de <em>fixtures</em> ... <em>Stay tuned !</em></p></body>
-                        </main>
-    <aside class="article-content__aside">
-      <button class="kudo">
-        <span class="kudo__button" aria-hidden="true"></span>
-        <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label" aria-hidden="true">Kudos</span>
-      </button>
-    </aside>
-  </div>
+                                                </main>
+        <aside class="article-content__aside">
+                    </aside>
+    </div>
 
-  <div class="article-footer">
-                  <div class="article-author">
-          <div class="article-author__image">
-            <img src="/elao_/images/authors/xavierr.jpg" />
-          </div>
-          <span class="article-author__info">
+    <div class="article-footer">
+                                    <div class="article-author">
+                    <div class="article-author__image">
+                        <img src="/elao_/images/authors/xavierr.jpg"/>
+                    </div>
+                    <span class="article-author__info">
             Écrit par
             <strong>Xavier R</strong>
           </span>
-          <div class="article-author__social">
-                                      <a href="https://github.com/xavier-rdo "class="social social--small">
-                <i class="icon icon--github" aria-hidden="true"></i>
-                <span class="screen-reader">Compte github de Xavier R</span>
-              </a>
-                                      <a href="http://www.elao.com" class="social social--small">
-                <i class="icon icon--website" aria-hidden="true"></i>
-                <span class="screen-reader">Site personnel de Xavier R</span>
-              </a>
-                      </div>
-        </div>
-            </div>
+                    <div class="article-author__social">
+                                                                            <a href="https://github.com/xavier-rdo " class="social social--small">
+                                <i class="icon icon--github" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte github de Xavier R</span>
+                            </a>
+                                                                            <a href="http://www.elao.com" class="social social--small">
+                                <i class="icon icon--website" aria-hidden="true"></i>
+                                <span class="screen-reader">Site personnel de Xavier R</span>
+                            </a>
+                                            </div>
+                </div>
+                        </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">
@@ -514,34 +515,28 @@ Nous ajoutons donc la méthode <em>toggle_public</em> dans le fichier <em>shop/v
                     </p>
                     <div class="links">
                         <ul>
-                            <li>
-                                <a href="/elao_/nos-services">Nos services</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/etudes-de-cas/">Nos études de cas</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/blog/">Blog</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/methodo">Notre méthodologie</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/la-tribu/">La tribu</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/contact">Contact</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/nos-valeurs">Nos valeurs</a>
-                            </li>
-                            <li>
-                                                                <a href="/elao_/recrutement/">
-                                    Nous recrutons
-                                                                            <span class="bullet">2</span>
-                                                                    </a>
-                            </li>
-                        </ul>
+                                                            <li>
+                                    <a href="/elao_/nos-services">Nos services</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/la-tribu/">La tribu</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/methodo">Méthodologie</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/blog/">Blog</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/etudes-de-cas/">Études de cas</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/contact">Contact</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/nos-valeurs">Nos valeurs</a>
+                                </li>
+                                                    </ul>
                     </div>
                     <div class="socials">
                         <ul>

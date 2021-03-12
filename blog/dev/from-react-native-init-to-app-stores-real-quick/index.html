@@ -61,7 +61,6 @@
                             </svg>
                                             </a>
                 
-                
                                     <!-- Desktop nav -->
                     <nav class="nav">
                         <ul>
@@ -72,7 +71,12 @@
                                 </li>
                                                             <li class="nav__item">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
+                                    </a>
+                                </li>
+                                                            <li class="nav__item">
+                                    <a href="/elao_/etudes-de-cas/">
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav__item">
@@ -130,12 +134,12 @@
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/methodo">
-                                                                                <span>Notre méthodologie</span>
+                                                                                <span>Méthodologie</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
                                     <a href="/elao_/etudes-de-cas/">
-                                                                                <span>Nos études de cas</span>
+                                                                                <span>Études de cas</span>
                                     </a>
                                 </li>
                                                             <li class="nav-mobile__item ">
@@ -169,60 +173,62 @@
         </header>
         <div class="container">
         <main>
-              <ul class="breadcrumb">
-    <li class="breadcrumb__item">
-      <a href="/elao_/blog/">Blog</a>
-    </li>
-    <li class="breadcrumb__item">
-      From react-native init to app stores real quick
-    </li>
-  </ul>
-
-  <div class="article-banner">
-    <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/from-react-native-init-to-app-stores-real-quick.jpg)"></div>
-
-    <div class="article-info">
-                    <div class="article-author ">
-          <div class="article-author__image">
-                          <img src="/elao_/images/authors/tjarrand.jpg" />
-                      </div>
-          <span class="article-author__info">
-            Écrit par
-                          <strong>Thomas Jarrand</strong>
-                      </span>
-        </div>
-            <div class="article-info__date">
-        <span>Publication <strong>9 novembre 2017</strong></span>
-        <span>Modification <strong>12 mars 2021</strong></span>
-      </div>
-    </div>
-
-    <div class="article-header">
-      <h1>From react-native init to app stores real quick</h1>
-      <p>From react-native init to stores real quick</p>
-      <ul class="article-tag-list">
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/react" rel="nofollow">#react</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/react%20native" rel="nofollow">#react native</a>
-          </li>
-                  <li class="article-tag-list__item">
-            <a href="/elao_/blog/tag/mobile" rel="nofollow">#mobile</a>
-          </li>
-              </ul>
-    </div>
-  </div>
-
-      <ul class="table-of-content">
-              <li class="table-of-content__item">
-          <a href="#">Troubles?</a>
+                <ul class="breadcrumb">
+        <li class="breadcrumb__item">
+            <a href="/elao_/blog/">Blog</a>
         </li>
-          </ul>
-  
-  <div class="article-content">
-    <main class="article-content__main">
-      <body><p>Hi, I'm Thomas and I'm gonna show you how to build and release a React Native app to iOS and Android stores on macOS.</p>
+        <li class="breadcrumb__item">
+            From react-native init to app stores real quick
+        </li>
+    </ul>
+
+    <div class="article-banner">
+        <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/from-react-native-init-to-app-stores-real-quick.jpg)"></div>
+
+        <div class="article-info">
+                                        <div class="article-author ">
+                    <div class="article-author__image">
+                                                    <img src="/elao_/images/authors/tjarrand.jpg"/>
+                                            </div>
+                    <span class="article-author__info">
+            Écrit par
+                            <strong>Thomas Jarrand</strong>
+                      </span>
+                </div>
+                        <div class="article-info__date">
+                <span>Publication <strong>9 novembre 2017</strong></span>
+                <span>Modification <strong>12 mars 2021</strong></span>
+            </div>
+        </div>
+
+        <div class="article-header">
+            <h1>From react-native init to app stores real quick</h1>
+            <p>From react-native init to stores real quick</p>
+            <ul class="article-tag-list">
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/react" rel="nofollow">#react</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/react%20native" rel="nofollow">#react native</a>
+                    </li>
+                                    <li class="article-tag-list__item">
+                        <a href="/elao_/blog/tag/mobile" rel="nofollow">#mobile</a>
+                    </li>
+                            </ul>
+        </div>
+    </div>
+
+            <ul class="table-of-content">
+                            <li class="table-of-content__item">
+                    <a href="#">Troubles?</a>
+                </li>
+                    </ul>
+    
+    <div class="article-content">
+        <main class="article-content__main">
+
+            
+            <body><p>Hi, I'm Thomas and I'm gonna show you how to build and release a React Native app to iOS and Android stores on macOS.</p>
 <h2 id="our-goals">Our goals</h2>
 <p>What we aim to accomplish:</p>
 <ul>
@@ -541,41 +547,36 @@ Run the app on any simulated or real android device found, as a release.</li>
 <p>Here's a working example of all we discussed above : <a href="https://github.com/Elao/AcmeApp" target="_blank">https://github.com/Elao/AcmeApp</a></p>
 <p><span class="side-note light">💡</span> <em>Note the handy <a href="https://github.com/Elao/AcmeApp/blob/master/Makefile" target="_blank">Makefile</a> that hides all complex build and release commands behind simple make tasks like:  <code class="code-inline" id="8bc7eb090ecf22d8475382f9253061d5">make run android</code> or <code class="code-inline" id="3a911a966cfb140fa8318a8d7959de55">make release-ios</code></em></p>
 <p>Also don't hesitate to reach out for help in the comment or on social medias.</p></body>
-                        </main>
-    <aside class="article-content__aside">
-      <button class="kudo">
-        <span class="kudo__button" aria-hidden="true"></span>
-        <span class="screen-reader">Cet article m’a été utile</span>
-        <span class="kudo__label" aria-hidden="true">Kudos</span>
-      </button>
-    </aside>
-  </div>
+                                                </main>
+        <aside class="article-content__aside">
+                    </aside>
+    </div>
 
-  <div class="article-footer">
-                  <div class="article-author">
-          <div class="article-author__image">
-            <img src="/elao_/images/authors/tjarrand.jpg" />
-          </div>
-          <span class="article-author__info">
+    <div class="article-footer">
+                                    <div class="article-author">
+                    <div class="article-author__image">
+                        <img src="/elao_/images/authors/tjarrand.jpg"/>
+                    </div>
+                    <span class="article-author__info">
             Écrit par
             <strong>Thomas Jarrand</strong>
           </span>
-          <div class="article-author__social">
-                          <a href="https://twitter.com/tom32i" class="social social--small">
-                <i class="icon icon--twitter" aria-hidden="true"></i>
-                <span class="screen-reader">Compte twitter de Thomas Jarrand</span>
-              </a>
-                                      <a href="https://github.com/Tom32i "class="social social--small">
-                <i class="icon icon--github" aria-hidden="true"></i>
-                <span class="screen-reader">Compte github de Thomas Jarrand</span>
-              </a>
-                                      <a href="https://thomas.jarrand.fr" class="social social--small">
-                <i class="icon icon--website" aria-hidden="true"></i>
-                <span class="screen-reader">Site personnel de Thomas Jarrand</span>
-              </a>
-                      </div>
-        </div>
-            </div>
+                    <div class="article-author__social">
+                                                    <a href="https://twitter.com/tom32i" class="social social--small">
+                                <i class="icon icon--twitter" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte twitter de Thomas Jarrand</span>
+                            </a>
+                                                                            <a href="https://github.com/Tom32i " class="social social--small">
+                                <i class="icon icon--github" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte github de Thomas Jarrand</span>
+                            </a>
+                                                                            <a href="https://thomas.jarrand.fr" class="social social--small">
+                                <i class="icon icon--website" aria-hidden="true"></i>
+                                <span class="screen-reader">Site personnel de Thomas Jarrand</span>
+                            </a>
+                                            </div>
+                </div>
+                        </div>
         </main>
                     <footer class="footer">
                 <section class="footer__links">
@@ -586,34 +587,28 @@ Run the app on any simulated or real android device found, as a release.</li>
                     </p>
                     <div class="links">
                         <ul>
-                            <li>
-                                <a href="/elao_/nos-services">Nos services</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/etudes-de-cas/">Nos études de cas</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/blog/">Blog</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/methodo">Notre méthodologie</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/la-tribu/">La tribu</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/contact">Contact</a>
-                            </li>
-                            <li>
-                                <a href="/elao_/nos-valeurs">Nos valeurs</a>
-                            </li>
-                            <li>
-                                                                <a href="/elao_/recrutement/">
-                                    Nous recrutons
-                                                                            <span class="bullet">2</span>
-                                                                    </a>
-                            </li>
-                        </ul>
+                                                            <li>
+                                    <a href="/elao_/nos-services">Nos services</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/la-tribu/">La tribu</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/methodo">Méthodologie</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/blog/">Blog</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/etudes-de-cas/">Études de cas</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/contact">Contact</a>
+                                </li>
+                                                            <li>
+                                    <a href="/elao_/nos-valeurs">Nos valeurs</a>
+                                </li>
+                                                    </ul>
                     </div>
                     <div class="socials">
                         <ul>
