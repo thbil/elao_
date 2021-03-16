@@ -174,17 +174,26 @@
         <div class="container">
         <main>
                 <div class="page-project">
-        <ul class="breadcrumb">
-            <li class="breadcrumb__item">
-                <a href="/elao_/">Accueil</a>
+        <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a itemprop="item" href="/elao_/">
+                    <span itemprop="name">Accueil</span>
+                </a>
+                <meta itemprop="position" content="1" />
             </li>
-            <li class="breadcrumb__item">
-                <a href="/elao_/etudes-de-cas/">Nos études de cas</a>
+            <li class="breadcrumb__item"  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a itemprop="item" href="/elao_/etudes-de-cas/">
+                    <span itemprop="name">Nos études de cas</span>
+                </a>
+                <meta itemprop="position" content="2" />
             </li>
-            <li class="breadcrumb__item">
-                Curvytron / Lazerdrive
+            <li class="breadcrumb__item"  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a itemprop="item" href="#">
+                    <span itemprop="name">Curvytron / Lazerdrive</span>
+                </a>
+                <meta itemprop="position" content="3" />
             </li>
-        </ul>
+        </ol>
 
         <div class="banner">
             <h1 class="banner__title">Découvrez <span>Curvytron / Lazerdrive</span></h1>
