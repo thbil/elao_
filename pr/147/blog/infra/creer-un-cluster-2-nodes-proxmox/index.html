@@ -249,13 +249,13 @@
 </ul>
 <p>Sous cette forme, une légère modification au niveau du fichier <code class="code-inline" id="ad942c725cd0cae65ca4c63717ec464c">/etc/hosts</code> de chacune de vos machines est nécessaire.
 Avec une configuration standard nous aurons donc dans ce fichier (pour tartanpion)</p>
-<pre class="code-multiline"><code id="7fd28392f9c8437bf98241fa04e5961b">127.0.0.1   localhost.localdomain localhost
-87.37.23.91 tartanpion.elao.local tartanpion</code></pre>
+<pre class="code-multiline language-bash"><code class="language-bash" id="7fd28392f9c8437bf98241fa04e5961b"><span class="token number">127.0</span>.0.1   localhost.localdomain localhost
+<span class="token number">87.37</span>.23.91 tartanpion.elao.local tartanpion</code></pre>
 <p>que nous allons modifier pour avoir:</p>
-<pre class="code-multiline"><code id="e50c45b650ac2784c0dc5b37df994386">127.0.0.1   localhost.localdomain localhost
-87.37.23.91 tartanpion.elao.local
+<pre class="code-multiline language-bash"><code class="language-bash" id="e50c45b650ac2784c0dc5b37df994386"><span class="token number">127.0</span>.0.1   localhost.localdomain localhost
+<span class="token number">87.37</span>.23.91 tartanpion.elao.local
 
-172.16.0.1  tartanpion</code></pre>
+<span class="token number">172.16</span>.0.1  tartanpion</code></pre>
 <p>Avec cette configuration notre noeud Proxmox (tartanpion) s'auto résoudra bien en utilisant son IP privée lors du dialogue avec le deuxième noeud (bismuth).
 Cette modification a pour but de "forcer" les hyperviseurs à dialoguer entre eux via leur IP privée de manière sécurisée, mais également de pouvoir faire du multicast sur ce réseau.
 La modification est bien entendu, à faire sur les deux noeuds qui constituerons notre futur cluster (cette modification est valable pour l'ensemble des machines membres de votre cluster).</p>
@@ -263,32 +263,32 @@ La modification est bien entendu, à faire sur les deux noeuds qui constituerons
 <h2 id="creer-un-cluster-proxmox-et-y-ajouter-des-noeuds">Créer un cluster proxmox et y ajouter des noeuds</h2>
 <p>La création d'un cluster et l'ajout d'un ou plusieurs noeuds ne posent en soit guère de problème, il faudra toutefois faire attention à la notion de quorum dans notre cluster (nous en parlerons plus tard).</p>
 <p>Sur l'un des deux hyperviseurs (peu importe lequel), créons le cluster ayant pour nom "elao":</p>
-<pre class="code-multiline"><code id="d037a64f924566746027b448605c3201">pvecm create elao</code></pre>
+<pre class="code-multiline language-bash"><code class="language-bash" id="d037a64f924566746027b448605c3201">pvecm create elao</code></pre>
 <p>On peut consulter son bon fonctionnement avec la commande <code class="code-inline" id="59ac3009b3f898262a3c565cea44b9d7">pvecm status</code>, qui devrait nous renvoyer les informations suivantes:</p>
-<pre class="code-multiline"><code id="6d18183cd137578d6885e28b21764031">Version: 6.2.0
-Config Version: 1
+<pre class="code-multiline language-bash"><code class="language-bash" id="6d18183cd137578d6885e28b21764031">Version: <span class="token number">6.2</span>.0
+Config Version: <span class="token number">1</span>
 Cluster Name: elao
-Cluster Id: 29348
+Cluster Id: <span class="token number">29348</span>
 Cluster Member: Yes
-Cluster Generation: 48
+Cluster Generation: <span class="token number">48</span>
 Membership state: Cluster-Member
-Nodes: 1
-Expected votes: 1
-Total votes: 1
-Node votes: 1
-Quorum: 1
-Active subsystems: 5
+Nodes: <span class="token number">1</span>
+Expected votes: <span class="token number">1</span>
+Total votes: <span class="token number">1</span>
+Node votes: <span class="token number">1</span>
+Quorum: <span class="token number">1</span>
+Active subsystems: <span class="token number">5</span>
 Flags:
-Ports Bound: 0
+Ports Bound: <span class="token number">0</span>
 Node name: tartanpion
-Node ID: 1
-Multicast addresses: 239.192.114.23
-Node addresses: 172.16.0.1</code></pre>
+Node ID: <span class="token number">1</span>
+Multicast addresses: <span class="token number">239.192</span>.114.23
+Node addresses: <span class="token number">172.16</span>.0.1</code></pre>
 <p>A partir de notre deuxième noeud (bismuth) nous allons procéder à son ajout au cluster avec la commande <code class="code-inline" id="a9a8385de822ce555ae74d24f1074a6f">pvecm add 172.16.0.1</code></p>
-<p>Si tout s'est bien passé la commande <code class="code-inline" id="f9881ef7a0611f3c65eacba56a390b67">pvecm nodes</code> doit à présent renvoyer quelquechose semblable à ce qui suit:</p>
-<pre class="code-multiline"><code id="a74727844ee5855f1079f28b8ce5ea0c">Node  Sts   Inc   Joined               Name
-   1   M     48   2015-01-16 14:25:27  tartanpion
-   2   M     44   2015-01-16 14:25:27  bismuth</code></pre>
+<p>Si tout s'est bien passé la commande <code class="code-inline" id="f9881ef7a0611f3c65eacba56a390b67">pvecm nodes</code> doit à présent renvoyer quelque chose semblable à ce qui suit :</p>
+<pre class="code-multiline language-bash"><code class="language-bash" id="a74727844ee5855f1079f28b8ce5ea0c">Node  Sts   Inc   Joined               Name
+   <span class="token number">1</span>   M     <span class="token number">48</span>   <span class="token number">2015</span>-01-16 <span class="token number">14</span>:25:27  tartanpion
+   <span class="token number">2</span>   M     <span class="token number">44</span>   <span class="token number">2015</span>-01-16 <span class="token number">14</span>:25:27  bismuth</code></pre>
 <h2 id="eviter-la-problematique-du-quorum">Eviter la problématique du Quorum</h2>
 <p>Très important pour la suite nous allons effectuer une manipulation pour éviter de se retrouver avec un hyperviseur en "lecture seule" dans le cas ou le deuxième viendrait à rencontrer un problème (réseau, matériel ...).</p>
 <blockquote>
@@ -298,25 +298,25 @@ Node addresses: 172.16.0.1</code></pre>
 Dans notre cas avec 2 machines nous ne pouvons pas avoir de quorum lors d'un incident, nos noeuds vont donc passer en lecture-seule pour éviter de se retrouver dans un état de <a href="http://en.wikipedia.org/wiki/Split-brain_(computing)" target="_blank">"<strong>split-brain</strong>"</a> (écriture sur les différents noeuds sans concertation). Etat désastreux pour une infra, qui peut amener une perte de données plus ou moins importante.</p>
 <img src="https://placeimg.com/640/480/any" alt="" class="center" id="any">
 <p>Pour l'instant un <code class="code-inline" id="59ac3009b3f898262a3c565cea44b9d7">pvecm status</code> doit retourner quelque chose comme:</p>
-<pre class="code-multiline"><code id="ac2e02fa9189a7564c166cc5895240be">Version: 6.2.0
-Config Version: 2
+<pre class="code-multiline language-bash"><code class="language-bash" id="ac2e02fa9189a7564c166cc5895240be">Version: <span class="token number">6.2</span>.0
+Config Version: <span class="token number">2</span>
 Cluster Name: elao
-Cluster Id: 29348
+Cluster Id: <span class="token number">29348</span>
 Cluster Member: Yes
-Cluster Generation: 48
+Cluster Generation: <span class="token number">48</span>
 Membership state: Cluster-Member
-Nodes: 2
-Expected votes: 1
-Total votes: 2
-Node votes: 1
-Quorum: 2
-Active subsystems: 5
+Nodes: <span class="token number">2</span>
+Expected votes: <span class="token number">1</span>
+Total votes: <span class="token number">2</span>
+Node votes: <span class="token number">1</span>
+Quorum: <span class="token number">2</span>
+Active subsystems: <span class="token number">5</span>
 Flags:
-Ports Bound: 0
+Ports Bound: <span class="token number">0</span>
 Node name: tartanpion
-Node ID: 1
-Multicast addresses: 239.192.114.23
-Node addresses: 172.16.0.1</code></pre>
+Node ID: <span class="token number">1</span>
+Multicast addresses: <span class="token number">239.192</span>.114.23
+Node addresses: <span class="token number">172.16</span>.0.1</code></pre>
 <p>Nous allons donc indiquer à notre cluster que nous acceptons de fonctionner avec un Quorum réduit, la haute disponibilité n'étant pas la question  de ce post.</p>
 <p>Editez le fichier <code class="code-inline" id="a14194a5b29a527b6172a64e47e7e63d">/etc/pve/cluster.conf</code>, commencez par incrémenter le numéro de version du fichier que vous trouverez au niveau de la clé <code class="code-inline" id="d675dc90178f0ee83722dac0b68a5bdc">config_version</code>.</p>
 <p>Une fois cela fait nous allons modifier l'entrée <strong>cman</strong> pour y ajouter les instructions <code class="code-inline" id="bc21637c006dea9a33af18beaf1487f1">two_node="1" expected_votes="1"</code></p>
@@ -333,32 +333,32 @@ Node addresses: 172.16.0.1</code></pre>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cluster</span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>Redémarrer à présent votre cluster avec un  <code class="code-inline" id="68953f5e0364e6c4d7244d3768891d79">/etc/init.d/pve-cluster restart</code> vous devriez avoir à présent comme résultat à <code class="code-inline" id="59ac3009b3f898262a3c565cea44b9d7">pvecm status</code></p>
-<pre class="code-multiline"><code id="0bbaba7be675c09e191747867e7b2032">Version: 6.2.0
-Config Version: 6
+<pre class="code-multiline language-bash"><code class="language-bash" id="0bbaba7be675c09e191747867e7b2032">Version: <span class="token number">6.2</span>.0
+Config Version: <span class="token number">6</span>
 Cluster Name: elao
-Cluster Id: 29348
+Cluster Id: <span class="token number">29348</span>
 Cluster Member: Yes
-Cluster Generation: 48
+Cluster Generation: <span class="token number">48</span>
 Membership state: Cluster-Member
-Nodes: 2
-Expected votes: 1
-Total votes: 2
-Node votes: 1
-Quorum: 1
-Active subsystems: 5
+Nodes: <span class="token number">2</span>
+Expected votes: <span class="token number">1</span>
+Total votes: <span class="token number">2</span>
+Node votes: <span class="token number">1</span>
+Quorum: <span class="token number">1</span>
+Active subsystems: <span class="token number">5</span>
 Flags: 2node
-Ports Bound: 0
+Ports Bound: <span class="token number">0</span>
 Node name: tartanpion
-Node ID: 1
-Multicast addresses: 239.192.114.23
-Node addresses: 172.16.0.1</code></pre>
+Node ID: <span class="token number">1</span>
+Multicast addresses: <span class="token number">239.192</span>.114.23
+Node addresses: <span class="token number">172.16</span>.0.1</code></pre>
 <p>On notera le flag <code class="code-inline" id="45279493f2e701d4216690f6d065ecba">2node</code>, nous voila avec un cluster à 2 noeuds fonctionnel !</p>
 <h2 id="failed-to-access-mount-point">Failed to access mount point</h2>
 <p>Il est possible qu'au cours du redémarrage du cluster vous rencontriez le message suivant:</p>
-<pre class="code-multiline"><code id="1f588c6991b008a95f00d22b84de14f6">Starting pve cluster filesystem : pve-clusterfuse: failed to access mountpoint /etc/pve: Transport endpoint is not connected
-[main] crit: fuse_mount error: Transport endpoint is not connected
-[main] notice: exit proxmox configuration filesystem (-1)
- (warning).</code></pre>
+<pre class="code-multiline language-bash"><code class="language-bash" id="1f588c6991b008a95f00d22b84de14f6">Starting pve cluster filesystem <span class="token builtin class-name">:</span> pve-clusterfuse: failed to access mountpoint /etc/pve: Transport endpoint is not connected
+<span class="token punctuation">[</span>main<span class="token punctuation">]</span> crit: fuse_mount error: Transport endpoint is not connected
+<span class="token punctuation">[</span>main<span class="token punctuation">]</span> notice: <span class="token builtin class-name">exit</span> proxmox configuration filesystem <span class="token punctuation">(</span>-1<span class="token punctuation">)</span>
+ <span class="token punctuation">(</span>warning<span class="token punctuation">)</span>.</code></pre>
 <p>Ce petit soucis peut être rapidement résolu grâce à la commande <code class="code-inline" id="cf059e5cd387b7c3668ff8aab48514b3">umount -f /etc/pve</code>, redémarrez ensuite votre cluster <code class="code-inline" id="c32ac3899aa6c9f05b1c480950797ddf">/etc/init.d/pve-cluster start</code> et tout devrait rentrer dans l'ordre.</p>
 <p>Comme à l'accoutumé cet article est ouvert à toutes critiques, suggestions et corrections.</p></body>
                                                 </main>

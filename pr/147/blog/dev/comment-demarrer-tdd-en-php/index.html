@@ -250,29 +250,27 @@ L'ambition de cet article est d'essayer de créer ce déclic.</p>
 <img src="https://media.giphy.com/media/iKbUlFbs77oI0/giphy.gif" id="giphy-gif">
 <h2 id="outillage">Outillage</h2>
 <p>Installons le framework de test PHPUnit :</p>
-<pre><code id="1fe6cdf9470276222d96a1d7899d5e5a">$ composer require --dev phpunit/phpunit ^7</code></pre>
+<pre class="code-multiline language-bash"><code class="language-bash" id="e292e56a981e7c5f29b48b89e328df80">$ <span class="token function">composer</span> require --dev phpunit/phpunit ^7</code></pre>
 <p>En considérant que notre namespace est <code class="code-inline" id="98832bd23a1a4e070b40c19a58c363c0">MyCompany\App</code> on devrait avoir ceci dans notre composer.json :</p>
-<pre class="code-multiline"><code id="dd2ac14e20e33e5f3c13e253fbeabc8e">{
-  "autoload": {
-    "psr-4": {
-      "MyCompany\\App\\": "src"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "MyCompany\\App\\Tests\\": "tests"
-    }
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^7.0"
-  }
-}</code></pre>
+<pre class="code-multiline language-json"><code class="language-json" id="dd2ac14e20e33e5f3c13e253fbeabc8e"><span class="token punctuation">{</span>
+  <span class="token property">"autoload"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"psr-4"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"MyCompany\\App\\"</span><span class="token operator">:</span> <span class="token string">"src"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"autoload-dev"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"psr-4"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"MyCompany\\App\\Tests\\"</span><span class="token operator">:</span> <span class="token string">"tests"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"require-dev"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"phpunit/phpunit"</span><span class="token operator">:</span> <span class="token string">"^7.0"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <p>Vérifions que tout est en place en lançant :</p>
-<pre><code id="4c39fbf536c038bf2853d34090586b15">$ ./vendor/bin/phpunit</code></pre>
+<pre class="code-multiline language-bash"><code class="language-bash" id="cd2e415c782a0d71567e030ca0a1efba">./vendor/bin/phpunit</code></pre>
 <p>Nous devrions avoir quelque chose comme ça :</p>
-<blockquote>
-<p>No tests executed!</p>
-</blockquote>
+<pre class="code-multiline"><code id="98187fc43eb5a5751aa6f9916a778ec8">&gt; No tests executed!</code></pre>
 <h2 id="notre-exemple">Notre exemple</h2>
 <p>Imaginons que nous intervenons sur un blog.
 Les utilisateurs de ce blog ont besoin de voir la liste des articles.
@@ -403,19 +401,19 @@ Il est important de tester tous les cas. Cela tombe bien, notre besoin est simpl
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>Lançons les tests :</p>
-<pre><code id="4c39fbf536c038bf2853d34090586b15">$ ./vendor/bin/phpunit</code></pre>
+<pre class="code-multiline language-bash"><code class="language-bash" id="ae4f2158f270248ecfd998371868baac">$ ./vendor/bin/phpunit</code></pre>
 <p>Bien sûr, cela échoue :</p>
-<pre><code id="48e36fd97a7f89b801c7a3850f824031">There was 1 failure:
+<pre class="code-multiline language-bash"><code class="language-bash" id="04b56864d7a3be5f917b1465316d24a6">There was <span class="token number">1</span> failure:
 
-1) MyCompany\App\Tests\Post\GetPostsListTest::test_get_new_and_old_posts
-Failed asserting that two arrays are equal.
---- Expected
-+++ Actual
-@@ @@
- Array (
--    0 =&gt; MyCompany\App\Post\PostView Object (...)
--    1 =&gt; MyCompany\App\Post\PostView Object (...)
- )</code></pre>
+    <span class="token number">1</span><span class="token punctuation">)</span> MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Tests<span class="token punctuation">\</span>Post<span class="token punctuation">\</span>GetPostsListTest::test_get_new_and_old_posts
+    Failed asserting that two arrays are equal.
+    --- Expected
+    +++ Actual
+    @@ @@
+     Array <span class="token punctuation">(</span>
+    -    <span class="token number">0</span> <span class="token operator">=</span><span class="token operator">&gt;</span> MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Post<span class="token punctuation">\</span>PostView Object <span class="token punctuation">(</span><span class="token punctuation">..</span>.<span class="token punctuation">)</span>
+    -    <span class="token number">1</span> <span class="token operator">=</span><span class="token operator">&gt;</span> MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Post<span class="token punctuation">\</span>PostView Object <span class="token punctuation">(</span><span class="token punctuation">..</span>.<span class="token punctuation">)</span>
+     <span class="token punctuation">)</span></code></pre>
 <p>Mais pas de panique. Au contraire, faire échouer les tests est la 1ère étape en TDD !</p>
 <p>Complétons le test en faisant un <em>mock</em> de chaque dépendance.
 Le <em>mock</em> nous permet de s'affranchir de l'implémentation de la dépendance et de décider ce que celle-ci renvoie comme
@@ -499,10 +497,8 @@ données.</p>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>Enfin, lançons les tests :</p>
-<pre><code id="4c39fbf536c038bf2853d34090586b15">$ ./vendor/bin/phpunit</code></pre>
-<blockquote>
-<p>OK (1 test, 4 assertions)</p>
-</blockquote>
+<pre class="code-multiline language-bash"><code class="language-bash" id="ae4f2158f270248ecfd998371868baac">$ ./vendor/bin/phpunit</code></pre>
+<pre class="code-multiline"><code id="d864fa1de40a8e770149019f7439139c">&gt; OK (1 test, 4 assertions)</code></pre>
 <h3 id="le-temps-n-attend-pas">Le temps n'attend pas</h3>
 <p>Attention, il y a un piège. Désolé mais ce test ne fonctionnera plus dans quelques jours.
 Pourquoi ?
@@ -545,10 +541,8 @@ ne fasse plus échouer les tests dans quelques jours !</p>
             <span class="token variable">$isLessThanAWeekOld</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">clone</span> <span class="token variable">$post</span><span class="token operator">-&gt;</span><span class="token property">publishedAt</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>DateInterval</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'P1W'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">now</span><span class="token punctuation">;</span>
             <span class="token comment">// ...</span></span></code></pre>
 <p>Vérifions :</p>
-<pre><code id="4c39fbf536c038bf2853d34090586b15">$ ./vendor/bin/phpunit</code></pre>
-<blockquote>
-<p>OK (1 test, 4 assertions)</p>
-</blockquote>
+<pre class="code-multiline"><code id="ae4f2158f270248ecfd998371868baac">    $ ./vendor/bin/phpunit</code></pre>
+<pre class="code-multiline"><code id="d864fa1de40a8e770149019f7439139c">&gt; OK (1 test, 4 assertions)</code></pre>
 <p>Super !</p>
 <p>Vous trouverez le code de cet exemple ici : <a href="https://github.com/supertanuki/TDD-en-PHP" target="_blank">https://github.com/supertanuki/TDD-en-PHP</a></p>
 <h2 id="conclusion">Conclusion</h2>
