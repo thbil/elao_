@@ -215,10 +215,10 @@
                         <a href="/elao_/pr/147/blog/tag/Symfony" rel="nofollow">#Symfony</a>
                     </li>
                                     <li class="article-tag-list__item">
-                        <a href="/elao_/pr/147/blog/tag/error-notifier-bundle" rel="nofollow">#error-notifier-bundle</a>
+                        <a href="/elao_/pr/147/blog/tag/errorNotifierBundle" rel="nofollow">#errorNotifierBundle</a>
                     </li>
                                     <li class="article-tag-list__item">
-                        <a href="/elao_/pr/147/blog/tag/swift-mailer" rel="nofollow">#swift-mailer</a>
+                        <a href="/elao_/pr/147/blog/tag/SwiftMailer" rel="nofollow">#SwiftMailer</a>
                     </li>
                                     <li class="article-tag-list__item">
                         <a href="/elao_/pr/147/blog/tag/Mailer%20transport" rel="nofollow">#Mailer transport</a>
@@ -233,7 +233,7 @@
 
             
             <body><p>Voici une petite astuce que j'ai découvert hier et que j'ai pensé utile de partager !<!--more--></p>
-<h1 id="problematique">Problématique</h1>
+<h1 id="problematique" class="anchor-title"><a href="#problematique">Problématique</a></h1>
 <p><strong>Contexte :</strong></p>
 <ul>
 <li>Votre application Symfony2 utilise un service tiers pour envoyer vos e-mails (comme <a href="https://fr.mailjet.com/" target="_blank">Mailjet</a> par exemple)</li>
@@ -242,13 +242,13 @@
 <p>Imaginez qu’une erreur se produise sur l’une de vos pages et que vous ayez des centaines d’utilisateurs en train de visualiser cette même page.Pour chaque affichage de cette dernière, vous allez recevoir un e-mail de notification.
 Si ces e-mails passent par Mailjet par exemple, votre quota fondra à vue d’œil...
 Au mieux vous atteindrez une limite de quota et les mails suivants seront bloqués, au pire vous ferez un énorme hors forfait qui pourra vous couter très cher...</p>
-<h1 id="solution-proposee">Solution proposée</h1>
+<h1 id="solution-proposee" class="anchor-title"><a href="#solution-proposee">Solution proposée</a></h1>
 <p>La solution que je vous propose pour palier à cela est de créer 2 mailer utilisant 2 transports différents :</p>
 <ul>
 <li>Les e-mails classiques destinés aux utilisateurs de votre application passeront par votre serveur SMTP</li>
 <li>Les e-mails techniques destinés aux administrateurs de votre application seront envoyés via la fonction mail de votre PHP.</li>
 </ul>
-<h1 id="mise-en-oeuvre-de-la-solution">Mise en œuvre de la solution</h1>
+<h1 id="mise-en-oeuvre-de-la-solution" class="anchor-title"><a href="#mise-en-oeuvre-de-la-solution">Mise en œuvre de la solution</a></h1>
 <p>Pour cela rien de plus simple, créez plusieurs mailers dans votre app/config/config.yml :</p>
 <pre class="code-multiline language-yaml"><code class="language-yaml" id="8ed9ff05059474544dd70b097e430e4f"><span class="token comment"># Swiftmailer Configuration</span>
 <span class="token key atrule">swiftmailer</span><span class="token punctuation">:</span>

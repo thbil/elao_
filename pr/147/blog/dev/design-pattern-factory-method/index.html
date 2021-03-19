@@ -226,7 +226,7 @@
         <main class="article-content__main">
 
             
-            <body><h2 id="quelques-reperes-bibliographiques-en-guise-de-preambule">Quelques repères bibliographiques en guise de préambule</h2>
+            <body><h2 id="quelques-reperes-bibliographiques-en-guise-de-preambule" class="anchor-title"><a href="#quelques-reperes-bibliographiques-en-guise-de-preambule">Quelques repères bibliographiques en guise de préambule</a></h2>
 <p>Avant d'entrer dans le vif du sujet en abordant notre premier Design Pattern, permettez-moi de citer deux ouvrages incontournables lorsque l'on évoque ce sujet.</p>
 <figure>
     <img src="/elao_/pr/147/images/posts/design-pattern/biblio-dp-elements-of-reusable.jpeg" alt="Design Patterns: Elements of Reusable Object-Oriented Software" id="design-patterns-elements-of-reusable-object-oriented-software">
@@ -252,7 +252,7 @@
 </figure>
 <p>Complément idéal à la bible des Design Patterns, <em>Head First Design Patterns</em> (O'Reilly 2004) constitue une excellente introduction aux principaux design patterns. Par rapport au premier ouvrage, il adopte une démarche résolument pratique et recourt à un éventail remarquable de techniques pédagogiques pour aborder les design patterns (traits d'humour, schémas explicatifs, dialogues fictifs en situation autour des différents patterns, démarches didactiques, etc.). Apprendre les design patterns peut s'avérer fastidieux, mais rien de tout ça ici ! Je recommande particulièrement cet ouvrage si vous souhaitez vous initier aux design patterns sans drame ... Par ailleurs, la plupart des exemples s'appuient sur le langage Java, beaucoup plus abordable et actuel que Smalltalk.</p>
 <p>Enfin, je ne peux passer sous silence deux autres ouvrages qui me paraissent fondamentaux s'agissant de conception objet, à savoir <em>Domain-Driven Design: Tackling Complexity in the Heart of Software</em> d'Eric Evans (livre pas forcément très digeste mais dont on ne peut pas ignorer l'influence) et <em>Catalog of Patterns of Enterprise Application Architecture</em> de Martin Fowler : qu'est-ce qui définit exactement une entité ? un value object ? un repository ? etc. Nous avons tous une vague idée de ces concepts mais c'est dans cet ouvrage que se trouvent les réponses à ces questions.</p>
-<h2 id="ceci-n-est-pas-une-pipe">Ceci n'est pas une pipe</h2>
+<h2 id="ceci-n-est-pas-une-pipe" class="anchor-title"><a href="#ceci-n-est-pas-une-pipe">Ceci n'est pas une pipe</a></h2>
 <p>Après un préambule assez verbeux j'en conviens, laissez-moi à présent vous gratifier d'une remarque liminaire : cet article est avant tout destiné à présenter le Design Pattern <em>Factory Method</em>, alors précisons d'emblée que ce qui suit n'est pas un pattern (et encore moins une pipe, mais ça, c'est un autre débat ...) :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="315d8d3b287d59fb542aa5c41628a45a"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
     <span class="token keyword">class</span> <span class="token class-name">MyFactory</span> <span class="token punctuation">{</span>
@@ -279,25 +279,25 @@
 <li>etc.</li>
 </ul>
 <p>Mais nous aurons l'occasion d'y revenir ...</p>
-<h2 id="notre-premier-dp-la-factory-method">Notre premier DP : la <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code></h2>
-<h3 id="introduction">Introduction</h3>
+<h2 id="notre-premier-dp-la-factory-method" class="anchor-title"><code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code><a href="#notre-premier-dp-la-factory-method">Notre premier DP : la </a></h2>
+<h3 id="introduction" class="anchor-title"><a href="#introduction">Introduction</a></h3>
 <p>Les principes d'une bonne conception objet recommandent de programmer pour des interfaces plutôt que des implémentations (c'est au demeurant un principe qui s'accommode très bien avec celui de l'injection de dépendance). Concrètement, cela consiste par exemple à privilégier des méthodes de classes qui acceptent en arguments des interfaces (ou classes abstraites) plutôt que des classes concrètes. Cela étant, même si l'on programme pour des interfaces, nous devons nécessairement nous résoudre à instancier des objets concrets pour que notre application s'exécute. Et c'est là qu'entrent en scène les design patterns de création, et notamment les deux Design patterns de <em>Factory</em> identifiés par le <em>Gang of Four</em>, à savoir la <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> et l'<code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code>.</p>
 <p>Pour l'heure, intéressons-nous au premier de ces deux patterns de <em>Factory</em>.</p>
-<h3 id="classification">Classification</h3>
+<h3 id="classification" class="anchor-title"><a href="#classification">Classification</a></h3>
 <p>La <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> est classée dans la catégorie des <strong>Design Patterns de création</strong>.</p>
-<h3 id="definition">Définition</h3>
+<h3 id="definition" class="anchor-title"><a href="#definition">Définition</a></h3>
 <blockquote>
 <p>Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses</p>
 </blockquote>
 <p>Cette définition peut paraître assez obscure à première vue, mais croyez-moi, le pattern est d'une affligeante simplicité.</p>
-<h3 id="schema">Schéma</h3>
+<h3 id="schema" class="anchor-title"><a href="#schema">Schéma</a></h3>
 <figure>
     <img src="/elao_/pr/147/images/posts/design-pattern/creation-factory-method.jpg" alt="Le Design Pattern 'Factory Method'" id="le-design-pattern-factory-method">
     <figcaption>
       <span class="figure__legend">Schéma du Design Pattern 'Factory Method'</span>
     </figcaption>
 </figure>
-<h3 id="participants">Participants</h3>
+<h3 id="participants" class="anchor-title"><a href="#participants">Participants</a></h3>
 <p>On distingue sur le schéma ci-dessus les participants suivants :</p>
 <ul>
 <li>Le créateur : classe concrète ou abstraite notamment chargée de <em>fabriquer</em> l'objet attendu</li>
@@ -305,7 +305,7 @@
 <li>Le produit : c'est l'interface de l'objet à instancier</li>
 <li>Le produit concret : c'est l'objet à instancier</li>
 </ul>
-<h3 id="expose-de-la-problematique">Exposé de la problématique</h3>
+<h3 id="expose-de-la-problematique" class="anchor-title"><a href="#expose-de-la-problematique">Exposé de la problématique</a></h3>
 <pre class="code-multiline language-php"><code class="language-php" id="438c1fddeeed1ec109f41d0f90008f5e"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
     <span class="token keyword">class</span> <span class="token class-name">OrderHandler</span> <span class="token punctuation">{</span>
         <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">orderProduct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Order</span> <span class="token variable">$order</span><span class="token punctuation">,</span> <span class="token keyword type-hint">int</span> <span class="token variable">$qty</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">Product</span> <span class="token punctuation">{</span>
@@ -325,7 +325,7 @@
 <li>nous avons créé un couplage très fort (trop fort ?) entre nos deux classes.</li>
 </ul>
 <p>Il est possible qu'en l'état actuel de l'application, ce code fasse parfaitement l'affaire. Mais il est préférable de rendre son code ouvert aux évolutions, et c'est particulièrement vrai lorsque l'on développe des services destinés à être consommés par des tiers (librairie <em>open source</em> par exemple) ou bien des classes métiers dont les spécifications sont susceptibles d'évoluer fréquemment.</p>
-<h3 id="le-design-pattern-factory-method-a-la-rescousse">Le design pattern <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> à la rescousse</h3>
+<h3 id="le-design-pattern-factory-method-a-la-rescousse" class="anchor-title"><code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> à la rescousse<a href="#le-design-pattern-factory-method-a-la-rescousse">Le design pattern </a></h3>
 <p>Nous allons à présent modifier notre classe <code class="code-inline" id="f454b76d1cda09695d0fe30bb3447acd">OrderHandler</code> pour nous rapprocher du pattern :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="21e2b1250e9a91bef21ab903fc656839"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
     <span class="token keyword">class</span> <span class="token class-name">OrderHandler</span> <span class="token punctuation">{</span>
@@ -350,10 +350,10 @@
 <li>introduire une interface <code class="code-inline" id="b1e2398023779dfea602f3526b414d59">OrderableInterface</code> qu'implémente désormais <code class="code-inline" id="deb10517653c255364175796ace3553f">Product</code></li>
 <li>déporter dans une méthode dédiée (<code class="code-inline" id="1c43c67bab8db278ba27b2e3d4df467e">createProduct</code>) l'instanciation d'un produit concret (<code class="code-inline" id="deb10517653c255364175796ace3553f">Product</code>)</li>
 </ul>
-<h3 id="commentaires">Commentaires</h3>
+<h3 id="commentaires" class="anchor-title"><a href="#commentaires">Commentaires</a></h3>
 <p>On note tout d'abord, comme le laisse deviner la classe <code class="code-inline" id="f454b76d1cda09695d0fe30bb3447acd">OrderHandler</code>, que le pattern <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> est souvent implémenté par des classes dont la création de produit n'est pas la principale responsabilité ; ici <code class="code-inline" id="f454b76d1cda09695d0fe30bb3447acd">OrderHandler</code> est une classe métier qui ne se contente pas d'instancier un produit ; elle est par exemple plus riche fonctionnellement que la classe <code class="code-inline" id="df38f3fff38715f5a828cb4513ec1063">MyFactory</code> que j'avais présentée tout à l'heure.</p>
 <p>En résumé, et comme son nom l'indique, le pattern <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> consiste tout simplement à déporter dans une méthode dédiée l'instanciation de l'objet attendu. Cette méthode se résume finalement à un simple <code class="code-inline" id="376c2c521c8fa91f7f529db30e32047a">return new Product();</code>. Concept d'une extrême simplicité mais qui nous permet d'obtenir une classe ouverte à l'extension, en permettant le cas échéant à ses enfants d'instancier un autre type.</p>
-<h3 id="design-patterns-voisins">Design patterns voisins</h3>
+<h3 id="design-patterns-voisins" class="anchor-title"><a href="#design-patterns-voisins">Design patterns voisins</a></h3>
 <p>Il existe un autre Design pattern <em>Factory</em>, plus riche que le design pattern <code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> car il implique plus de participants (mais il n'est pas nécessairement plus compliqué pour autant) : l'<code class="code-inline" id="1c61beffe031447a2393c8e7e10a2574">Abstact Factory</code>. Il y a fort à parier qu'il fasse l'objet du prochain article de cette série consacrée aux Design Patterns.</p></body>
                                                 </main>
         <aside class="article-content__aside">

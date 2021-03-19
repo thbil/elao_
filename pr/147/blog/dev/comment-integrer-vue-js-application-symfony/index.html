@@ -233,7 +233,7 @@
 
             
             <body><p>Dans mon <a href="/dev/pourquoi-devriez-vous-utiliser-vue-js-dans-vos-projets/">précédent article</a> je vous parlais des avantages de Vue.js et vous expliquais pourquoi vous devriez l'utiliser dans vos projets. Je disais que <strong>Vue.js</strong> était parfait pour ajouter des fonctionnalités frontend à <strong>Symfony</strong>, je vais vous détailler dans cet article comment l'intégrer au framework <strong>PHP</strong>.</p>
-<h2 id="installation">Installation</h2>
+<h2 id="installation" class="anchor-title"><a href="#installation">Installation</a></h2>
 <p>Nous allons tout d'abord installer <strong>Vue.js</strong> :</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="6774c770534f1c94f14a0b2312bb3558"><span class="token function">npm</span> <span class="token function">install</span> vue vue-loader vue-template-compiler</code></pre>
 <p>ou</p>
@@ -260,9 +260,9 @@
 module<span class="token punctuation">.</span><span class="token property-access">exports</span> <span class="token operator">=</span> webpackConfig<span class="token punctuation">;</span></code></pre>
 <p><strong>Webpack Encore</strong> est maintenant paré pour compiler vos composants <strong>Vue.js</strong>.</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="fd3dad3e156d7f8ca10f7dd7b90c9f89"><span class="token function">yarn</span> encore dev --watch --watch-poll</code></pre>
-<h2 id="integration">Integration</h2>
+<h2 id="integration" class="anchor-title"><a href="#integration">Integration</a></h2>
 <p>Vous avez alors plusieurs posibilités pour intégrer des composants <strong>Vue.js</strong> dans votre application <strong>Symfony</strong>. Vous pouvez <a href="#m%C3%A9langer-twig-et-vue-js">intégrer directement vos template Vue.js dans Twig</a> ou utiliser des <a href="#single-file-component">Single File Component</a>.</p>
-<h3 id="melanger-twig-et-vue-js">Mélanger Twig et Vue.js</h3>
+<h3 id="melanger-twig-et-vue-js" class="anchor-title"><a href="#melanger-twig-et-vue-js">Mélanger Twig et Vue.js</a></h3>
 <p>Vous pouvez intégrer directement du templating <strong>Vue.js</strong> dans votre template <strong>Twig</strong>.</p>
 <p>Néanmoins, il faut savoir que Twig et Vue.js utilisent les mêmes délimiteurs pour afficher les variables. S'il est possible de <a href="https://twig.symfony.com/doc/3.x/recipes.html#customizing-the-syntax" target="_blank">modifier les délimiteurs utilisés par Twig</a> comme de modifier ceux par Vue.js. Je recommende plutôt d'encadrer votre template Vue.js par les balises <code class="code-inline" id="11379f73059195615f647a7778127903">{% verbatim %}{% endverbatim %}</code> pour indiquer à Twig de ne pas interpréter le code à l'interieur.</p>
 <pre class="code-multiline language-html"><code class="language-html" id="bd5115574811580b534dd9c65650f98b"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>{{ 'Ce texte est rendu par Twig' }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
@@ -405,14 +405,14 @@ module<span class="token punctuation">.</span><span class="token property-access
   Vous pourrez ainsi utiliser conjointement les deux moteurs de templates :
 
   ```html
-  <h1 id="variable-twig">{{ variable_twig }}</h1>
+  <h1 id="variable-twig" class="anchor-title"><a href="#variable-twig">{{ variable_twig }}</a></h1>
   <p>${ variable_vue }</p><p>
   ```
 </p></div>
 <div style="border-left: 5px solid #ffa600;padding: 20px;margin: 20px 0;">
     Attention néanmoins, le changement de délimiteurs de façon globale peut vous couper des composants tiers que vous pourriez installer et qui embarqueraient leur template avec les anciens délimiteurs.
 </div>
-<h3 id="single-file-component">Single File Component</h3>
+<h3 id="single-file-component" class="anchor-title"><a href="#single-file-component">Single File Component</a></h3>
 <p>Une autre façon d'écrire vos composants est d'utiliser les <a href="https://fr.vuejs.org/v2/guide/single-file-components.html" target="_blank">composants monofichier (Single File Component)</a>. Ces fichiers <code class="code-inline" id="4d08a51ed2edf2965914aea4a2018bbd">.vue</code> contiennent à la fois le script et le template de vos composants.</p>
 <p><code class="code-inline" id="5a7e9f03048678051020d24777c9f8e9">assets/components/Greeting.vue</code> :</p>
 <pre class="code-multiline language-html"><code class="language-html" id="eea8bae1c8addd88bb4c8d218f2b54fa"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
@@ -459,7 +459,7 @@ module<span class="token punctuation">.</span><span class="token property-access
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>Vous ne pourrez plus utiliser <strong>Twig</strong> dans vos templates <strong>Vue</strong>, mais vous aurez l'avantage d'avoir des composants complètement autonomes et réutilisables facilement. Je recommande cette méthode si vous devez inclure une importante partie réactive dans votre application Symfony.</p>
-<h3 id="injecter-des-variables-symfony">Injecter des variables Symfony</h3>
+<h3 id="injecter-des-variables-symfony" class="anchor-title"><a href="#injecter-des-variables-symfony">Injecter des variables Symfony</a></h3>
 <p>En utilise les <strong>composants monofichier (Single File Component)</strong> vous ne pouvez plus injecter de <em>props</em> à vos composant depuis <strong>Twig</strong> comme on pouvait le faire avec les <em>inline template</em>.</p>
 <p>Voici donc une petite astuce pour créer des props à partir des attributs de l'élément sur lequel vous montez votre application <strong>Vue.js</strong>.</p>
 <p><code class="code-inline" id="265247c66b400bba918a79197e19b50a">assets/components/App.vue</code> :</p>
@@ -489,7 +489,7 @@ module<span class="token punctuation">.</span><span class="token property-access
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">$mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span></code></pre>
 <p><code class="code-inline" id="e10435b4ecdef2fc7e70f634592d638f">template/app.html.twig</code> :</p>
 <pre class="code-multiline language-html"><code class="language-html" id="7351f939c178dc737be0883269ea4bed"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span> <span class="token attr-name">data-name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{{ app.user.username }}<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion" class="anchor-title"><a href="#conclusion">Conclusion</a></h2>
 <p>Ces pistes peuvent vous permettre de mettre en place des applications hybrides reposant sur une base de <strong>Symfony</strong> pour certaines choses plus complexe à mettre en place côté client comme la gestion des utilisateurs, l'authentification ou le back-office mais de proposer tout de même une interface réactive et moderne grâce à <strong>Vue.js</strong>.</p></body>
                                                 </main>
         <aside class="article-content__aside">
@@ -514,7 +514,7 @@ module<span class="token punctuation">.</span><span class="token property-access
                                 <i class="icon icon--github" aria-hidden="true"></i>
                                 <span class="screen-reader">Compte github de Maxime COLIN</span>
                             </a>
-                                                                            <a href="http://www.maximecolin.fr" class="social social--small">
+                                                                            <a href="https://www.maximecolin.fr/" class="social social--small">
                                 <i class="icon icon--website" aria-hidden="true"></i>
                                 <span class="screen-reader">Site personnel de Maxime COLIN</span>
                             </a>
