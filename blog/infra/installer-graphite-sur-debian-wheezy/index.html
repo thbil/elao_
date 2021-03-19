@@ -244,7 +244,7 @@
 <li><a href="https://github.com/graphite-project/graphite-web" target="_blank"><strong>Graphite-web</strong></a> qui fourni une interface permettant de créer des graphiques à partir des données collectées par Carbon et Whisper.</li>
 </ul>
 <p>Nous verrons au cours de ce tutoriel la mise en place d'une stack de monitoring basée sur ces différents composants.</p>
-<h2 id="installation-des-paquets">Installation des paquets</h2>
+<h2 id="installation-des-paquets" class="anchor-title"><a href="#installation-des-paquets">Installation des paquets</a></h2>
 <p>Nous allons, dans un premier temps, avoir besoin des paquets suivants (Les versions utilisées pour la réalisation de cet article sont spécifiées):</p>
 <ul>
 <li>nginx (1.6.2)</li>
@@ -257,7 +257,7 @@
 </ul>
 <p>_Attention  l'installation de la version 1.6.2 de Nginx nécessite <a href="http://www.elao.com/fr/blog/utiliser-les-depots-officiels-nginx-sur-debian-wheezy" target="_blank"><strong>d'utiliser les dépôts officiels Nginx</strong></a> et non pas ceux de Debian dans lesquels Nginx est fourni en version 1.2.1._</p>
 <pre class="code-multiline"><code id="1a66362b9bc088062556f4ba758d0169">apt-get install nginx python-dev python-pip memcached  libcairo2-dev pkg-config git libyaml-dev</code></pre>
-<h2 id="installation-de-l-environnement-python">Installation de l'environnement Python</h2>
+<h2 id="installation-de-l-environnement-python" class="anchor-title"><a href="#installation-de-l-environnement-python">Installation de l'environnement Python</a></h2>
 <p>Graphite web exploitant le Framework Django et diverses autres librairies python nous allons les installer:</p>
 <pre class="code-multiline"><code id="58ca34589445f306dec8629327e0edb0">pip install django==1.5 &amp;&amp;
 pip install twisted==11.0.0 &amp;&amp;
@@ -267,7 +267,7 @@ pip install django-tagging==0.3.2 &amp;&amp;
 pip install gunicorn==19.1.1 &amp;&amp;
 pip install git+git://github.com/graphite-project/whisper.git#egg=whisper==0.9.12 &amp;&amp;
 pip install PyYAML==3.11</code></pre>
-<h2 id="installer-cairo">Installer Cairo</h2>
+<h2 id="installer-cairo" class="anchor-title"><a href="#installer-cairo">Installer Cairo</a></h2>
 <p><a href="http://cairographics.org/pycairo/" target="_blank"><strong>Cairo</strong></a> est utilisé pour les rendus par Graphite.</p>
 <pre class="code-multiline"><code id="3f57ee72fcee68ab2d9a4e1f7d52491e">cd /tmp &amp;&amp;
 wget http://cairographics.org/releases/py2cairo-1.8.10.tar.gz &amp;&amp;
@@ -276,13 +276,13 @@ cd pycairo-1.8.10 &amp;&amp;
 ./configure &amp;&amp;
 make &amp;&amp;
 make install</code></pre>
-<h2 id="installer-carbon">Installer Carbon</h2>
+<h2 id="installer-carbon" class="anchor-title"><a href="#installer-carbon">Installer Carbon</a></h2>
 <p>Pour commencer nous allons installer Carbon en suivant les étapes suivants:</p>
 <pre class="code-multiline"><code id="95cc26170805eb57d2a2db055e1a1580">cd /tmp &amp;&amp; git clone https://github.com/graphite-project/carbon.git &amp;&amp;
 cd carbon &amp;&amp;
 python setup.py install</code></pre>
 <p>Le chemin d'installation par défaut est <code class="code-inline" id="8f2568933fd552e97e39c97ac1e84e06">/opt/graphite</code> il est bien sur possible de personnaliser cette installation.</p>
-<h3 id="personnaliser-l-installation-de-carbon">Personnaliser l'installation de Carbon</h3>
+<h3 id="personnaliser-l-installation-de-carbon" class="anchor-title"><a href="#personnaliser-l-installation-de-carbon">Personnaliser l'installation de Carbon</a></h3>
 <p>Si les paramètre d'installation par défaut de Carbon ne vous conviennent pas vous pouvez les modifier avec les options suivantes:</p>
 <ul>
 <li>
@@ -303,16 +303,16 @@ python setup.py install</code></pre>
 <p>Si vous souhaitez donc coller un maximum au shema type des système Linux on peut donc imaginer quelque chose comme:</p>
 <p><code class="code-inline" id="c01554a7070e00951a41b513932b7fd3">python setup.py install --install-scripts=/usr/bin --install-lib=/usr/lib/python2.7/site-packages --install-data=/var/lib/graphite</code></p>
 <p>Attention la version de python dépendra de votre configuration !</p>
-<h3 id="automatiser-le-demarrage-de-carbon">Automatiser le démarrage de Carbon</h3>
+<h3 id="automatiser-le-demarrage-de-carbon" class="anchor-title"><a href="#automatiser-le-demarrage-de-carbon">Automatiser le démarrage de Carbon</a></h3>
 <p>Les scripts init.d fournis avec Carbon fonctionnent mais sont prévus pour RedHat et vont renvoyer une erreur (sans gravité mais qui peut toujours laisser planner un doute), vous trouverez donc ci-après les scripts init.d pour Debian pour chacun des services Carbon (<a href="https://gist.github.com/gfaivre/9cbc5d38bc3ce8586fdf/download" target="_blank"><strong>carbon-aggregator</strong></a>, <a href="https://gist.github.com/gfaivre/09a4870ef6fc429c0bb0/download" target="_blank"><strong>carbon-cache</strong></a>, <a href="https://gist.github.com/gfaivre/090098bae3e8238fd7c6/download" target="_blank"><strong>carbon-relay</strong></a>) en attendant que notre PR soit acceptée.</p>
 <p>Ces scripts sont, bien entendu, à placer dans <code class="code-inline" id="4e285fd03830581d75d447185ef1f39c">/etc/init/d</code> il suffit ensuite de jouer ce <a href="https://gist.github.com/gfaivre/9c9f3bb6eafd6514d57b/download" target="_blank"><strong>script</strong></a> afin de les configurer.</p>
-<h2 id="installer-graphite-web">Installer Graphite Web</h2>
+<h2 id="installer-graphite-web" class="anchor-title"><a href="#installer-graphite-web">Installer Graphite Web</a></h2>
 <p>Graphite web est la partie permettant de créer des graphiques à partir des métriques stockés par Carbon.</p>
 <pre class="code-multiline"><code id="69fece0e9230c06caa9f18b388c36e8d">cd /tmp &amp;&amp; git clone https://github.com/graphite-project/graphite-web.git &amp;&amp;
 cd graphite-web &amp;&amp;
 python setup.py install</code></pre>
 <p>Comme pour Carbon le chemin d'installation est par défaut <code class="code-inline" id="8f2568933fd552e97e39c97ac1e84e06">/opt/graphite</code> il est également possible de personnaliser cette installation.</p>
-<h3 id="personnaliser-l-installation-de-graphite-web">Personnaliser l'installation de Graphite Web</h3>
+<h3 id="personnaliser-l-installation-de-graphite-web" class="anchor-title"><a href="#personnaliser-l-installation-de-graphite-web">Personnaliser l'installation de Graphite Web</a></h3>
 <p>Il est tout à fait possible, comme pour Carbon, de personnaliser notre installation de Graphite web:</p>
 <ul>
 <li><code class="code-inline" id="49d984adc876f8e2cb3158f445cdcae3">--prefix</code> Qui va correspondre au chemin d'installation des répertoire bin/ et conf/ (pour rappel par défaut ils sont installés  dans <code class="code-inline" id="8f2568933fd552e97e39c97ac1e84e06">/opt/graphite</code>)</li>
@@ -325,7 +325,7 @@ python setup.py install</code></pre>
 <p>Si vous souhaitez donc coller un maximum au schema type des système Linux on peut donc imaginer quelque chose comme:</p>
 <p><code class="code-inline" id="c01554a7070e00951a41b513932b7fd3">python setup.py install --install-scripts=/usr/bin --install-lib=/usr/lib/python2.7/site-packages --install-data=/var/lib/graphite</code></p>
 <p>Attention la version de python dépendra de votre configuration !</p>
-<h3 id="configurer-graphite-web">Configurer Graphite-web</h3>
+<h3 id="configurer-graphite-web" class="anchor-title"><a href="#configurer-graphite-web">Configurer Graphite-web</a></h3>
 <p>Recopiez et renommer le fichier <code class="code-inline" id="43806d37d1d9d0b5e81b8163cf868ab9">graphite.wsgi.example</code> que vous trouverez dans <code class="code-inline" id="01b6407b97783a76dc68dc07734f66c1">/opt/graphite/conf</code> en <code class="code-inline" id="bdeb2fc2b66e38166d56b24ab758d710">/opt/graphite/webapp/wsgi.py</code></p>
 <p>Renommez ensuite le fichier <code class="code-inline" id="57f5cea5810c8d0496a5e8fbd5347fde">/opt/graphite/webapp/graphite/local_settings.py.example</code> en <code class="code-inline" id="b00f83069043fbfc221f1fd83dd8441c">local_settings.py</code>.</p>
 <pre class="code-multiline"><code id="081e05ac029a402c456269c04bc989ad">cd /opt/graphite/conf &amp;&amp;

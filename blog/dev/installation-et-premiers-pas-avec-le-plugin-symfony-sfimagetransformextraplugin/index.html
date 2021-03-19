@@ -234,7 +234,7 @@
 <p>Il s'agit d'un plugin très puissant permettant d'appliquer des traitements à des images au moyen de fichiers de configuration, sans qu'il soit donc nécessaire de polluer le code métier. Par ailleurs, il permet d'appliquer plusieurs traitements successifs de manière très intuitive. Il gère lui-même l'emplacement des fichiers générés et propose un système de cache réduisant les délais de transmission des images déjà générées.</p>
 <p>Le sfImageTransformExtraPlugin est dépendant du plugin <a href="http://www.symfony-project.org/plugins/sfImageTransformPlugin" target="_blank">sfImageTransformPlugin</a> mais ne l'installez pas avant d'avoir lu la suite ! Pour faciliter la lecture et éviter toute confusion (les noms des deux plugins sont très proches), dans la suite de l'article je ferai référence au "plugin de base" pour sfImageTransformPlugin et au "plugin Extra" pour sfImageTransformExtraPlugin.</p>
 <p>L'outil est donc très puissant mais sa documentation contient de nombreuses zones d'ombre qui ne facilitent absolument pas sa prise en main. Et les ennuis commencent dès l'installation ! D'où l'intérêt de cet article.</p>
-<h3 id="l-installation-des-plugins-ou-le-debut-des-emm-de-nos-demarches">L'installation des plugins ou le début <del>des emm...</del> de nos démarches</h3>
+<h3 id="l-installation-des-plugins-ou-le-debut-des-emm-de-nos-demarches" class="anchor-title"><del>des emm...</del> de nos démarches<a href="#l-installation-des-plugins-ou-le-debut-des-emm-de-nos-demarches">L'installation des plugins ou le début </a></h3>
 <blockquote>
 <p>Le plugin sfImageTransformPlugin nécessite que GD ou ImageMagick soit installé sur votre machine.</p>
 </blockquote>
@@ -261,7 +261,7 @@
 <blockquote>
 <p>A ce stade des opérations, nous n'activons pas encore le plugin "Extra". La configuration du plugin se fera plus tard car pour l'heure, nous allons tester le plugin sfImageTransformPlugin. Nous nous soucierons du plugin "Extra" plus tard.</p>
 </blockquote>
-<h3 id="a-present-essayons-le-plugin-de-base">A présent, essayons le plugin de base</h3>
+<h3 id="a-present-essayons-le-plugin-de-base" class="anchor-title"><a href="#a-present-essayons-le-plugin-de-base">A présent, essayons le plugin de base</a></h3>
 <p>Nous allons nous assurer dans un premier temps que le plugin de base (sfImageTransformPlugin) est correctement installé et configuré. Pour cela, nous allons créer une page très simple, avec un bouton déclenchant un traitement sur une image de notre choix. Commençons par créer un module "image" dans l'application "Frontend".</p>
 <p>Si elle n'existe pas encore, on crée l'application "Frontend" ...</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="202d18af4f857ffd6327defcd8023c88">./symfony generate:app frontend</code></pre>
@@ -308,7 +308,7 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>Rien de très compliqué, à la soumission du formulaire, nous créons une miniature de notre image d'origine (dimension 100 px) et nous l'affichons dans le navigateur. Cette méthode n'est pas d'un grand intérêt, je l'avoue ; elle a pour seule but de s'assurer que nous avons correctement configuré le plugin de base. A présent, attaquons-nous au plat de résistance :</p>
-<h3 id="la-bete-le-plugin-extra">La bête : le plugin "Extra"</h3>
+<h3 id="la-bete-le-plugin-extra" class="anchor-title"><a href="#la-bete-le-plugin-extra">La bête : le plugin "Extra"</a></h3>
 <p>Nous allons commencer par activer le plugin :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="157bf895e34455b629fcad39f2386bc0"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token comment">// ...</span>
@@ -415,9 +415,9 @@ chmod 777 web/thumbnails</code></pre>
 <p>Si l’image ne s’affiche pas, n’hésitez pas à consulter les logs de Symfony ou d’Apache. A titre d’exemple, à mesure que j’écrivais cet article, je développais l’exemple en parallèle sur un poste informatique plutôt “obsolète” et il s’est avéré que ma librairie graphique GD ne me permettait pas d’appliquer des rotations. Résultat sans appel dans le fichier de log de Symfony :</p>
 <p>[err] {sfImageTransformException} Cannot perform transform: sfImageRotateGD. Your install of GD does not support imagerotate</p>
 </blockquote>
-<h3 id="conclusion-provisoire">Conclusion (provisoire)</h3>
+<h3 id="conclusion-provisoire" class="anchor-title"><a href="#conclusion-provisoire">Conclusion (provisoire)</a></h3>
 <p>Cet article est beaucoup plus long que ce à quoi je m’attendais et pourtant nous n’avons fait qu’effleurer le sujet, tant sont vastes les possibilités offertes par le plugin. sfImageTransformExtraPlugin est indéniablement un outil qui mérite que l’on s’y intéresse mais sa prise en main est assez délicate, en raison notamment d’une documentation que je juge assez approximative (ce qui est tout de même compréhensible, c’est un peu le revers de la médaille : plus un outil est riche, plus la mise à jour de la documentation est problématique). Cet article n’avait donc pas d’autre prétention que de vous initier à ce plugin et vous mettre le pied à l’étrier en évitant les premiers écueils.</p>
-<h3 id="remerciements">Remerciements</h3>
+<h3 id="remerciements" class="anchor-title"><a href="#remerciements">Remerciements</a></h3>
 <p>Je tiens à remercier chaleureusement Yves Heitz sans qui la rédaction de ce billet n’aurait pas été possible. Il a essuyé les plâtres en mettant en oeuvre le plugin sur un projet réel et il a su contourner les nombreux écueils auxquels on se heurte lorsque l’on souhaite utiliser le plugin.</p></body>
                                                 </main>
         <aside class="article-content__aside">

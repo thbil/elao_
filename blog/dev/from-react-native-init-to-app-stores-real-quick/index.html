@@ -226,7 +226,70 @@
 
             <ul class="table-of-content">
                             <li class="table-of-content__item">
-                    <a href="#">Troubles?</a>
+                    <a href="#our-goals">Our goals</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#prerequisite">Prerequisite</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#ios">iOS</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#android">Android</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#create-your-app">Create your app</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#environments-and-variables">Environments and variables</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#enable-vendor-name-in-android">Enable vendor name in Android</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#react-native-config">React Native Config</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#configure-the-release">Configure the release</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#generate-an-android-signing-key">Generate an Android Signing Key</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#configure-the-gradle-build">Configure the gradle build</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#configure-the-ios-build">Configure the iOS build</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#change-the-public-app-name">Change the public app name</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#test-our-setup">Test our setup</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#quick-launch-commands">Quick launch commands</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#store-configuration">Store configuration</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#generate-store-icons">Generate store icons</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#setting-up-a-launch-screen">Setting up a launch screen</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#build-store-release">Build store release</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#ios-release">iOS release</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#android-release">Android release</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#troubles">Troubles?</a>
                 </li>
                     </ul>
     
@@ -235,24 +298,24 @@
 
             
             <body><p>Hi, I'm Thomas and I'm gonna show you how to build and release a React Native app to iOS and Android stores on macOS.</p>
-<h2 id="our-goals">Our goals</h2>
+<h2 id="our-goals" class="anchor-title"><a href="#our-goals">Our goals</a></h2>
 <p>What we aim to accomplish:</p>
 <ul>
 <li>Automated build process that generates signed and <strong>ready-for-stores</strong> release builds.</li>
 <li>Handling different environments (development, staging, production) with different domain-related variables (e.g. URL of the back-end API).</li>
 </ul>
 <p>So let's get to it.</p>
-<h2 id="prerequisite">Prerequisite</h2>
-<h3 id="ios">iOS</h3>
+<h2 id="prerequisite" class="anchor-title"><a href="#prerequisite">Prerequisite</a></h2>
+<h3 id="ios" class="anchor-title"><a href="#ios">iOS</a></h3>
 <p>You'll need a <a href="https://appleid.apple.com/#!&amp;page=signin" target="_blank">Apple ID</a> and <a href="https://facebook.github.io/react-native/docs/getting-started.html#xcode" target="_blank">Xcode is installed on you mac</a>.</p>
 <p>Also ensure that you agreed to Apple's latest terms and conditions (just launch Xcode and click <em>Agree</em>).</p>
-<h3 id="android">Android</h3>
+<h3 id="android" class="anchor-title"><a href="#android">Android</a></h3>
 <p><span class="side-note">🔧</span> Get Android Studio with <a href="https://facebook.github.io/react-native/docs/getting-started.html#1-install-android-studio" target="_blank">tools required by React Native</a></p>
 <p><span class="side-note">🔧</span> Launch Android Studio and install <a href="https://facebook.github.io/react-native/docs/getting-started.html#2-install-the-android-sdk" target="_blank">Android SDK and other required libraries</a> <em>React Native requires Android 6.0 and SDK 23.0.1</em></p>
 <p><span class="side-note">🔧</span> Configure your <a href="https://facebook.github.io/react-native/docs/getting-started.html#3-configure-the-android-home-environment-variable" target="_blank">Android Home environment variable</a> by adding the following lines in your bash profile file:</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="8de9719d05718cda1b7efd8334841c88"><span class="token builtin class-name">export</span> <span class="token assign-left variable">ANDROID_HOME</span><span class="token operator">=</span><span class="token variable">${<span class="token environment constant">HOME</span>}</span>/Library/Android/sdk
 <span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token variable">${<span class="token environment constant">PATH</span>}</span><span class="token builtin class-name">:</span><span class="token variable">${ANDROID_HOME}</span>/tools:<span class="token variable">${ANDROID_HOME}</span>/platform-tools</code></pre>
-<h2 id="create-your-app">Create your app</h2>
+<h2 id="create-your-app" class="anchor-title"><a href="#create-your-app">Create your app</a></h2>
 <p>We won't be using <a href="https://facebook.github.io/react-native/docs/getting-started.html" target="_blank">the default react-native way</a> that relies on <a href="https://expo.io" target="_blank">Expo</a> (a container to run your React-Native code in).</p>
 <p>While <a href="https://expo.io" target="_blank">Expo</a> might be fine for experimenting and quickly bootstraping an App, it's not compatible with setting up a <em>real release process</em> as stated in our goals.</p>
 <p>So instead, let's go to the <a href="https://facebook.github.io/react-native/docs/getting-started.html#the-react-native-cli" target="_blank">Building Projects with Native Code</a> section of the documentation:</p>
@@ -261,7 +324,7 @@
 <p><span class="side-note">🔧</span> Create your app and be careful to <strong>choose a name that contains no dots, spaces or other special characters</strong>.</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="6aa347a2347b00355443ceb7c50086c3">react-native init AcmeApp
 <span class="token builtin class-name">cd</span> AcmeApp</code></pre>
-<h2 id="environments-and-variables">Environments and variables</h2>
+<h2 id="environments-and-variables" class="anchor-title"><a href="#environments-and-variables">Environments and variables</a></h2>
 <p>To build a release of the app, we need to give it a few pieces of information:</p>
 <ul>
 <li>A <strong>unique identifier</strong>: <code class="code-inline" id="758d9ed1b324e4c9b682ea14a4af93cd">com.acme.app</code></li>
@@ -269,23 +332,23 @@
 <li>A <strong>build number</strong>: <code class="code-inline" id="c4ca4238a0b923820dcc509a6f75849b">1</code></li>
 <li>Any <strong>domain-releted variables</strong> we need.</li>
 </ul>
-<h4 id="unique-identifier">Unique identifier</h4>
+<h4 id="unique-identifier" class="anchor-title"><a href="#unique-identifier">Unique identifier</a></h4>
 <p>Note the format of the unique identifier: a reverse domain name, starting with <code class="code-inline" id="4d236d9a2d102c5fe6ad1c50da4bec50">com</code>, then the vendor name and then the app name.</p>
 <p>I strongly recommend that you follow this format and avoid any special character.</p>
 <p>This identifier must not be already used on Google Play Store or Apple's App Store.</p>
 <p>Once published, an app can't change its identifier, so choose a name that can live through the whole life of the app.
 Don't worry though, it's only a technical identifier, it will not be displayed to the public anywhere and you'll have a <em>Display name</em> for that and this one can change anytime you need.</p>
-<h4 id="version-number">Version Number</h4>
+<h4 id="version-number" class="anchor-title"><a href="#version-number">Version Number</a></h4>
 <p>The version number must follow the semver format <code class="code-inline" id="95d209426d2bead51bc37b6066b6ee21">major.minor.patch</code>.</p>
-<h4 id="build-number">Build Number</h4>
+<h4 id="build-number" class="anchor-title"><a href="#build-number">Build Number</a></h4>
 <p>The build number is just an integer as simple as <code class="code-inline" id="c4ca4238a0b923820dcc509a6f75849b">1</code>.</p>
 <p>You'll increment build number <em>every time you publish a release</em>.
 You can't upload a release that has a build number inferior or equal to any build you ever uploaded for this app.</p>
-<h4 id="domain-related-variables">Domain related variables</h4>
+<h4 id="domain-related-variables" class="anchor-title"><a href="#domain-related-variables">Domain related variables</a></h4>
 <p>We might also need some <strong>domain-releated variables</strong> like the address of the API providing the data for the app.</p>
 <p>Such variables will likely have different values in different environments.</p>
 <p>For example, we want to call <code class="code-inline" id="3365bb7a8b9001c64e85950cf3d900fe">http://api.app.acme.test</code> in development mode in the simulator, and <code class="code-inline" id="64ed0b7b82b0661c188fc1db0feb9278">https://api.app.acme.com</code> in a production release for the stores.</p>
-<h3 id="enable-vendor-name-in-android">Enable vendor name in Android</h3>
+<h3 id="enable-vendor-name-in-android" class="anchor-title"><a href="#enable-vendor-name-in-android">Enable vendor name in Android</a></h3>
 <p>Before anything else, we need to configure Android to support the unique identifier we chose for the app.</p>
 <p>The init script generated a unique identifier for Android based on the name you gave it (e.g. <code class="code-inline" id="c04260c014f12e8ddc606200b9a2573a">com.acmeapp</code> for <code class="code-inline" id="3baf44460f7d3b7cac6871bf1eee16b1">AcmeApp</code>).</p>
 <p><span class="side-note light">💡</span> <em>You can see what name was generated by looking for the <code class="code-inline" id="d223b3fbd9e11e77a8cf10b5271013a0">applicationId</code> key in <code class="code-inline" id="dc46f9f5dfe204e394fb41395ccd03cf">android/app/build.gradle</code>.</em></p>
@@ -295,7 +358,7 @@ You can't upload a release that has a build number inferior or equal to any buil
 <pre class="code-multiline language-bash"><code class="language-bash" id="5a8b3782d1c1164b799908d0e1fc09d8"><span class="token function">mkdir</span> android/app/src/main/java/com/acme
 <span class="token function">mv</span> android/app/src/main/java/com/acmeapp android/app/src/main/java/com/acme/app</code></pre>
 <p><span class="side-note light">💡</span> <em>You need a folder level for each dot in the app identifier.</em></p>
-<h3 id="react-native-config">React Native Config</h3>
+<h3 id="react-native-config" class="anchor-title"><a href="#react-native-config">React Native Config</a></h3>
 <p>For setting and accessing the variables described above wherever we need it, I recommend using <a href="https://github.com/luggit/react-native-config" target="_blank">react-native-config</a></p>
 <p><span class="side-note">🔧</span> Install it with:</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="65b1231a68878c043c7247516aef4cf8"><span class="token function">yarn</span> <span class="token function">add</span> react-native-config
@@ -319,8 +382,8 @@ react-native <span class="token function">link</span> react-native-config</code>
 <span class="token constant">APP_VERSION</span><span class="token attr-value"><span class="token punctuation">=</span>0.1.0</span>
 <span class="token constant">APP_BUILD</span><span class="token attr-value"><span class="token punctuation">=</span>1</span>
 <span class="token constant">API_HOST</span><span class="token attr-value"><span class="token punctuation">=</span>http://api.app.acme.com</span></code></pre>
-<h2 id="configure-the-release">Configure the release</h2>
-<h3 id="generate-an-android-signing-key">Generate an Android Signing Key</h3>
+<h2 id="configure-the-release" class="anchor-title"><a href="#configure-the-release">Configure the release</a></h2>
+<h3 id="generate-an-android-signing-key" class="anchor-title"><a href="#generate-an-android-signing-key">Generate an Android Signing Key</a></h3>
 <p>Android requires that you sign APK before releasing them on the Play Store.
 To do so you will need to generate a personal signing key and to configure your Gradle build to use that key.</p>
 <p>Edit your local gradle config file <code class="code-inline" id="93c3aa9c22aaa25b2e9181055b4a1c9d">~/.gradle/gradle.properties</code>:</p>
@@ -346,7 +409,7 @@ Entrez le mot de passe de la clé pour <span class="token operator">&lt;</span>m
 Ressaisissez le nouveau mot de passe <span class="token builtin class-name">:</span> <span class="token punctuation">{</span>MY_RELEASE_KEY_PASSWORD<span class="token punctuation">}</span></code></pre>
 <p><span class="side-note">🔧</span> Finally, link the keystore to the project with a symbolic link:</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="43ef3e05ed35691d79ef8db63a0fa904"><span class="token function">ln</span> -s ~/.gradle/my_release.keystore android/app/my_release.keystore</code></pre>
-<h3 id="configure-the-gradle-build">Configure the gradle build</h3>
+<h3 id="configure-the-gradle-build" class="anchor-title"><a href="#configure-the-gradle-build">Configure the gradle build</a></h3>
 <p>Edit the <code class="code-inline" id="dc46f9f5dfe204e394fb41395ccd03cf">android/app/build.gradle</code> file and apply the following changes:</p>
 <p><span class="side-note">🔧</span> Insert the following line on <em>line 2:</em></p>
 <pre class="code-multiline language-groovy"><code class="language-groovy" id="868b65e0fc196f7a1b7ac57bfc316953">apply from<span class="token punctuation">:</span> <span class="token function">project</span><span class="token punctuation">(</span><span class="token string">':react-native-config'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>projectDir<span class="token punctuation">.</span><span class="token function">getPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string gstring">"/dotenv.gradle"</span></code></pre>
@@ -374,9 +437,9 @@ Ressaisissez le nouveau mot de passe <span class="token builtin class-name">:</s
         signingConfig signingConfigs<span class="token punctuation">.</span>release
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id="configure-the-ios-build">Configure the iOS build</h3>
+<h3 id="configure-the-ios-build" class="anchor-title"><a href="#configure-the-ios-build">Configure the iOS build</a></h3>
 <p>Open your iOS project <code class="code-inline" id="62609704539f3ea39721bf5530ffa1c4">iOS/AcmeApp.xcodeproj</code> with Xcode and select the root item <strong>AcmeApp</strong> in the file browser on the left.</p>
-<h4 id="in-the-general-tab">In the <em>General</em> tab</h4>
+<h4 id="in-the-general-tab" class="anchor-title"><em>General</em> tab<a href="#in-the-general-tab">In the </a></h4>
 <p><span class="side-note">🔧</span> In the <em>Identity</em> section input the following values:</p>
 <ul>
 <li><strong>Bundle Identifier</strong>: Your app unique identifier <code class="code-inline" id="758d9ed1b324e4c9b682ea14a4af93cd">com.acme.app</code> (instead of <em>org.reactjs.native.example.AcmeApp</em>)</li>
@@ -385,7 +448,7 @@ Ressaisissez le nouveau mot de passe <span class="token builtin class-name">:</s
 </ul>
 <p><span class="side-note">🔧</span> In the <em>Signing</em> section, select a <strong>Team</strong></p>
 <img src="/elao_/images/posts/2017/from-react-native-init-to-app-stores-real-quick/xcode_config.png" alt="" title="" id="xcode-config-png">
-<h4 id="in-the-build-settings-tab">In the <em>Build Settings</em> tab</h4>
+<h4 id="in-the-build-settings-tab" class="anchor-title"><em>Build Settings</em> tab<a href="#in-the-build-settings-tab">In the </a></h4>
 <p><span class="side-note">🔧</span> In the <em>All</em> section:</p>
 <ul>
 <li>Search for "preprocess"</li>
@@ -395,13 +458,13 @@ Ressaisissez le nouveau mot de passe <span class="token builtin class-name">:</s
 </ul>
 <img src="/elao_/images/posts/2017/from-react-native-init-to-app-stores-real-quick/xcode_build_settings.png" alt="" title="" id="xcode-build-settings-png">
 <p><span class="side-note light">💡</span> <em>If you don't see those settings, verify that "All" is selected at the top (instead of "Basic").</em></p>
-<h3 id="change-the-public-app-name">Change the public app name</h3>
+<h3 id="change-the-public-app-name" class="anchor-title"><a href="#change-the-public-app-name">Change the public app name</a></h3>
 <p>To change the name that will be displayed to the public on the stores:</p>
-<h4 id="on-ios">On iOS</h4>
+<h4 id="on-ios" class="anchor-title"><a href="#on-ios">On iOS</a></h4>
 <p><span class="side-note">🔧</span> Open your project with XCode and set a <strong>Display Name</strong> in the <em>General</em> &gt; <em>Identify</em> section.</p>
-<h4 id="on-android">On Android</h4>
+<h4 id="on-android" class="anchor-title"><a href="#on-android">On Android</a></h4>
 <p><span class="side-note">🔧</span> Set the <code class="code-inline" id="4498e82679f1b611efb2c09e044ede31">displayName</code> property in the the <code class="code-inline" id="6a1b6963e828b69fcc667e3c45df78bb">app.json</code> file at the root of the project.</p>
-<h2 id="test-our-setup">Test our setup</h2>
+<h2 id="test-our-setup" class="anchor-title"><a href="#test-our-setup">Test our setup</a></h2>
 <p>Here's a simple homepage that displays the app version, build number, environment and platform.
 You can open your <code class="code-inline" id="52e5ffcff7fe2938c152b7c6e0c5b7b3">./App.js</code> file and replace its content with the following code:</p>
 <pre class="code-multiline language-javascript"><code class="language-javascript" id="349d35488240cbca6b1b0ab032544c94"><span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">React</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">Component</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
@@ -439,7 +502,7 @@ You can open your <code class="code-inline" id="52e5ffcff7fe2938c152b7c6e0c5b7b3
     <span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id="quick-launch-commands">Quick launch commands</h3>
+<h3 id="quick-launch-commands" class="anchor-title"><a href="#quick-launch-commands">Quick launch commands</a></h3>
 <p>Start the react-native packager manually : <code class="code-inline" id="8e950678c5261ca9e3319c598add76ce">react-native start</code></p>
 <p>Now a simple <code class="code-inline" id="dd6f9982e5b640955933d9840acd79e7">react-native run-ios</code> should start your app in iOS simulator.</p>
 <ul>
@@ -476,8 +539,8 @@ Run the app on any simulated or real android device found, as a release.</li>
 </tr>
 </tbody>
 </table>
-<h2 id="store-configuration">Store configuration</h2>
-<h3 id="generate-store-icons">Generate store icons</h3>
+<h2 id="store-configuration" class="anchor-title"><a href="#store-configuration">Store configuration</a></h2>
+<h3 id="generate-store-icons" class="anchor-title"><a href="#generate-store-icons">Generate store icons</a></h3>
 <p>Apple's App Store and the Google Play Store both require that you provide icons for your app in various formats.</p>
 <p>Fortunately, there are a few online-services that will generate those icons for you from a high-res source icon.</p>
 <p>I personally use <a href="https://makeappicon.com" target="_blank">https://makeappicon.com</a></p>
@@ -486,12 +549,12 @@ Run the app on any simulated or real android device found, as a release.</li>
 <li>Enter an email (you don't have to subscribe to the newsletter).</li>
 <li>You will receive the icons by email.</li>
 </ul>
-<h4 id="setup-icons-for-ios">Setup icons for iOS</h4>
+<h4 id="setup-icons-for-ios" class="anchor-title"><a href="#setup-icons-for-ios">Setup icons for iOS</a></h4>
 <p><span class="side-note">🔧</span> Move the content of <code class="code-inline" id="1bdf605991920db11cbdf8508204c4eb">iOS</code> in the following path in your project folder: <code class="code-inline" id="a47eaf1dc9a9bc09c7d8c92a916ce8e1">iOS/AcmeApp/Images.xcassets/</code>  (if asked, replace existing content with the new icons).</p>
-<h4 id="setup-icons-for-android">Setup icons for Android</h4>
+<h4 id="setup-icons-for-android" class="anchor-title"><a href="#setup-icons-for-android">Setup icons for Android</a></h4>
 <p><span class="side-note">🔧</span> Move the content of <code class="code-inline" id="c31b32364ce19ca8fcd150a417ecce58">android</code> in the following path in your projet folder: <code class="code-inline" id="17145fd2bbf577dbb02f0eef0de64158">android/app/src/main/res</code>  (if asked, replace existing content with the new icons).</p>
-<h3 id="setting-up-a-launch-screen">Setting up a launch screen</h3>
-<h4 id="generation">Generation</h4>
+<h3 id="setting-up-a-launch-screen" class="anchor-title"><a href="#setting-up-a-launch-screen">Setting up a launch screen</a></h3>
+<h4 id="generation" class="anchor-title"><a href="#generation">Generation</a></h4>
 <p>For splash screen, I use: <a href="http://apetools.webprofusion.com/tools/imagegorilla" target="_blank">http://apetools.webprofusion.com/tools/imagegorilla</a></p>
 <ul>
 <li>Upload a high-res square splash screen (ideally <code class="code-inline" id="e594ce0d769d094255bdd7993a173a97">2048x2048</code>).</li>
@@ -499,8 +562,8 @@ Run the app on any simulated or real android device found, as a release.</li>
 <li>Download the zip file.</li>
 </ul>
 <p><span class="side-note light">🔧</span> Then place the generated launch screen in the same folder as the store icons described above.</p>
-<h4 id="configuration">Configuration</h4>
-<h5 id="ios">iOS</h5>
+<h4 id="configuration" class="anchor-title"><a href="#configuration">Configuration</a></h4>
+<h5 id="ios" class="anchor-title"><a href="#ios">iOS</a></h5>
 <p>Open your project in XCode:</p>
 <ul>
 <li>In the <em>General</em> tab, go to the <em>App Icons and Launch Images</em> section.</li>
@@ -517,7 +580,7 @@ Run the app on any simulated or real android device found, as a release.</li>
 </ul>
 <img src="/elao_/images/posts/2017/from-react-native-init-to-app-stores-real-quick/launch_screen_setup.png" alt="" title="" id="launch-screen-setup-png">
 <p><span class="side-note light">💡</span> <em>You can now delete the <code class="code-inline" id="11fa5fb30c227fb09e3ecd6ab2549700">LaunchScreen.xib</code> in the <code class="code-inline" id="3baf44460f7d3b7cac6871bf1eee16b1">AcmeApp</code> folder.</em></p>
-<h5 id="android">Android</h5>
+<h5 id="android" class="anchor-title"><a href="#android">Android</a></h5>
 <p><span class="side-note">🔧</span> Create a <code class="code-inline" id="ffa5b57ed2f9696d7f234d062718c4d6">android/app/src/main/res/drawable/splash_screen.xml</code> file:</p>
 <pre class="code-multiline language-xml"><code class="language-xml" id="021da6ec49b1eb54bdd00d82684f9366"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>layer-list</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
@@ -535,8 +598,8 @@ Run the app on any simulated or real android device found, as a release.</li>
 </span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   &lt;!-- Customize your theme here. --&gt;
 </span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">    &lt;item name="android:windowBackground"&gt;@drawable/splash_screen&lt;/item&gt;
 </span></span><span class="token deleted-arrow deleted"><span class="token prefix deleted">&lt;</span><span class="token line">/style&gt;</span></span></code></pre>
-<h2 id="build-store-release">Build store release</h2>
-<h3 id="ios-release">iOS release</h3>
+<h2 id="build-store-release" class="anchor-title"><a href="#build-store-release">Build store release</a></h2>
+<h3 id="ios-release" class="anchor-title"><a href="#ios-release">iOS release</a></h3>
 <p>The following command will generate your iOS release:</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="4ab0d89ffcf3c50ada9dc180f560b5df"><span class="token assign-left variable">ENVFILE</span><span class="token operator">=</span>.env.production xcodebuild <span class="token punctuation">\</span>
     -workspace ./iOS/AcmeApp.xcodeproj/project.xcworkspace <span class="token punctuation">\</span>
@@ -545,11 +608,11 @@ Run the app on any simulated or real android device found, as a release.</li>
     -configuration AppStoreDistribution archive <span class="token punctuation">\</span>
     -archivePath ./iOS/release/AcmeApp.xcarchive</code></pre>
 <p>The archive will be available at <code class="code-inline" id="de367db3d4473ac9117df7fe2465fe3b">./iOS/release/AcmeApp.xcarchive</code> and you can open it in Xcode to build an IPA for development purpose or upload it to the App Store.</p>
-<h3 id="android-release">Android release</h3>
+<h3 id="android-release" class="anchor-title"><a href="#android-release">Android release</a></h3>
 <p>The following command will generate your Android release:</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="3129085bf715e59e1ae9e894f5ac4ffa"><span class="token builtin class-name">.</span> ./.env.production <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> android <span class="token operator">&amp;&amp;</span> ./gradlew assembleRelease</code></pre>
 <p>The APK will be available at <code class="code-inline" id="fdce20a38692c13faffcaa69282375c2">./android/app/build/outputs/apk/app-release.apk</code> and you can <a href="https://play.google.com/apps/publish" target="_blank">upload it directly to the Play Store</a>.</p>
-<h2 id="troubles">Troubles?</h2>
+<h2 id="troubles" class="anchor-title"><a href="#troubles">Troubles?</a></h2>
 <p>Here's a working example of all we discussed above : <a href="https://github.com/Elao/AcmeApp" target="_blank">https://github.com/Elao/AcmeApp</a></p>
 <p><span class="side-note light">💡</span> <em>Note the handy <a href="https://github.com/Elao/AcmeApp/blob/master/Makefile" target="_blank">Makefile</a> that hides all complex build and release commands behind simple make tasks like:  <code class="code-inline" id="8bc7eb090ecf22d8475382f9253061d5">make run android</code> or <code class="code-inline" id="3a911a966cfb140fa8318a8d7959de55">make release-ios</code></em></p>
 <p>Also don't hesitate to reach out for help in the comment or on social medias.</p></body>

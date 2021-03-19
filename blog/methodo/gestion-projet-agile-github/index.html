@@ -238,7 +238,7 @@
             <body><p>Nombreux sont les outils de gestion de projets auxquels un développeur peut se frotter durant sa carrière. J'ai moi même eu affaire à plusieurs d'entre eux : des solutions de ticketing (Mantis, BugZilla, Redmine, ...), des boards Kanban (Trello, Taiga), des solutions tout-en-un complexes (Jira), des forges (GitHub, GitLab) et même des solutions manuelles (carnet de note, post-it, noeud à mon mouchoir).</p>
 <p>Certaines solutions étant trop simples pour adresser tous mes besoins (Trello par exemple) ou trop complexes pour être agréables à utiliser (Jira), je me retrouve souvent à jongler entre plusieurs outils qui ne sont en plus pas toujours les mêmes d'un projet à l'autre.</p>
 <p>Mon envie était donc de trouver un moyen d'adresser tous mes besoins à l'aide d'un seul outil, simple et efficace. Et là, GitHub annonce de <a href="https://github.com/blog/2256-a-whole-new-github-universe-announcing-new-tools-forums-and-features" target="_blank">nouvelles fonctionnalités</a> dont GitHub Project (oui je sais, GitLab a sorti une fonctionnalité similaire auparavant, mais je suis moins fan de l'ergonomie GitLab ; d'ailleurs, tout ce que je décris dans cet article est réalisable avec GitLab).</p>
-<h2 id="besoins">Besoins</h2>
+<h2 id="besoins" class="anchor-title"><a href="#besoins">Besoins</a></h2>
 <p>Les besoins que j'ai au quotidien sur un projet sont :</p>
 <ul>
 <li>Système de story/feature (AGILE)</li>
@@ -248,7 +248,7 @@
 <li>Rédaction de spécifications</li>
 <li>Ticketing</li>
 </ul>
-<h3 id="les-stories">Les stories</h3>
+<h3 id="les-stories" class="anchor-title"><a href="#les-stories">Les stories</a></h3>
 <p>J'ai représenté chaque <strong>story</strong> par une <em>issue</em> avec un titre et une description. Dans la description j'ai ajouté les tâches à réaliser avec les petites checkbox mardown de GitHub (<code class="code-inline" id="7ce41264c78fcd60dd055cd34a20eb35">- [ ] TODO</code>) permettant d'afficher un pourcentage de complétion de la story.</p>
 <p>Pour chaque <strong>sprint</strong> j'ai créé une <em>milestone</em> à laquelle j'ai assigné les <em>issues</em>. Il est possible de renseigner une <em>due date</em> pouvant correspondre à la date de fin du sprint ainsi qu'une description parfaite pour le <em>sprint goal</em>. A l'intérieur d'une <em>milestone</em> il est possible de réordonner les <em>issues</em> par <em>drag'n'drop</em>. Un pourcentage de complétion indique le ratio d'<em>issues</em> clôturées. Le filtre <code class="code-inline" id="459f642a67b04b1156523df4e07a5285">no:milestone</code> dans la liste des <em>issues</em> permet d'afficher le backlog.</p>
 <img src="/elao_/images/posts/2017/github-milestones.jpg" alt="GitHub Project" title="GitHub Project" id="github-project">
@@ -259,12 +259,12 @@
 <p>[5] Ma super story</p>
 </blockquote>
 <p>Puis j'ai finalement opté pour la méthode <a href="https://blog.goood.pro/2014/07/25/developper-sans-faire-destimation-le-mouvement-noestimates/" target="_blank">no estimate</a> estimant qu'en découpant correctement les <em>stories</em>, le pourcentage de <em>stories</em> complétées suffisait pour estimer l'avancement du <em>sprint</em>.</p>
-<h3 id="le-board">Le board</h3>
+<h3 id="le-board" class="anchor-title"><a href="#le-board">Le board</a></h3>
 <p>Fonctionalité arrivée récemment, <a href="https://help.github.com/articles/about-projects/" target="_blank">GitHub Project</a> est un <em>card board</em> de type Kanban. Vous pouvez créer plusieurs <em>project</em> créant ainsi un <em>board</em> pour chacun d'eux. Si vous avez déjà utilisé Trello ou Jira, vous ne serez pas dépaysés. L'outil est plutôt simple, vous créez des colonnes et vous y ajoutez des <em>cards</em> que vous pouvez déplacer par <em>drag'n'drop</em>. Par défaut les <em>cards</em> ne contiennent qu'un champ texte. Mais il est possible de les convertir en <em>issues</em>. Vous pouvez également directement ajouter vos <em>issues</em> ou <em>pull requests</em> existantes grâce au bouton <em>Add cards</em>.</p>
 <p>Une fois vos <em>issues</em> ajoutées au <em>board</em>, vous voyez leur titre, leur numéro, leurs labels, leur état (ouvert/fermé) et les personnes affectées à la tâche.</p>
 <p>Cela manque encore un peu de fonctionnalités, comme le fait de pouvoir masquer les <em>issues</em> fermées ou bien de pouvoir assigner ou clore les <em>issues</em> directement depuis le <em>board</em>, mais je suis sûr que l'équipe de GitHub ajoutera ces fonctionnalités dans l'avenir.</p>
 <img src="/elao_/images/posts/2017/github-project.jpg" alt="GitHub Project" title="GitHub Project" id="github-project">
-<h3 id="les-specifications">Les spécifications</h3>
+<h3 id="les-specifications" class="anchor-title"><a href="#les-specifications">Les spécifications</a></h3>
 <p>Concernant les spécifications, las d'avoir des documents Word lourds dont on ne sait jamais où est la dernière version, et toujours dans l'optique de tout centraliser sur GitHub, j'ai proposé de les écrire en <em>markdown</em> directement dans les sources du projet dans un répertoire <code class="code-inline" id="a08ecec277db4a6ed0b3635cfadc9af1">specs</code>. Ainsi elles seraient versionnées au même titre que les sources et il serait possible de conserver l'historique des modifications.</p>
 <p>La création d'une <em>pull request</em> pour les soumettre permet d'ouvrir une discussion avant de les <em>merger</em>. On peut même pousser l'idée en soumettant le code correspondant aux spécifications ajoutées ou modifiées dans la même <em>pull request</em>.</p>
 <p>Bien sûr, une telle pratique nécessite un minimum de connaissances techniques (markdown, git, ...) mais en utilisant l'interface de GitHub pour créer les fichiers, les connaissances requises sont minimes.</p>
@@ -273,7 +273,7 @@
 <p><code class="code-inline" id="8f95e77ccd502ee83e6dd9a520c92f82">git@github.com:Elao/blog.wiki.git</code></p>
 </blockquote>
 <p>Vous pouvez même ajouter un <a href="https://developer.github.com/v3/activity/events/types/#gollumevent" target="_blank">webhook github</a> afin d'être averti à chaque modification du wiki.</p>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion" class="anchor-title"><a href="#conclusion">Conclusion</a></h2>
 <p>J'ai utilisé cette méthode sur un projet de 3 mois avec un développeur (moi), une intégratrice et un <abbr title="Product Owner">PO</abbr> client déjà familier avec GitHub. Le PO s'est bien pris au jeu et a lui-même ouvert de nombreuses discussions sur ses fonctionnalités, qualifié et priorisé ses stories et a ainsi complètement géré la direction de son projet. De mon côté je pouvais donner un avis technique sur la faisabilité et la complexité de la fonctionnalité.</p>
 <p>Il n'y a pas une façon unique de faire de l'<strong>AGILE</strong>, de nombreuses solutions et méthodes existent.
 Pour être efficaces choisissez vos outils avec soin et adaptez vos méthodes à votre client et à votre équipe.</p></body>
