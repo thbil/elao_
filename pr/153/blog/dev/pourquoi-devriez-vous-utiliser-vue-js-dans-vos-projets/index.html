@@ -236,13 +236,13 @@
 
             
             <body><p>A l'heure des frameworks front, et à contre-pied des désormais conventionnels Angular, Riot, Ember ou encore React, j'ai décidé de m'intéresser à <a href="https://vuejs.org/" target="_blank">Vue.js</a>. <strong>Vue.js</strong> est un framework javascript développé par Evan You qui se veut accessible, versatile et performant.</p>
-<h2 id="accessible">Accessible</h2>
+<h2 id="accessible" class="anchor-title"><a href="#accessible">Accessible</a></h2>
 <p>En comparaison de ce que j'ai pu tester avec d'autres frameworks front, j'ai effectivement trouvé que Vue.js est très simple à mettre en place. La création d'une application basique se fait en quelques lignes de code et les résultats sont rapidement là.</p>
 <p>Voici à titre d'exemple une "<a href="https://jsfiddle.net/Lsgc2rhr/9/" target="_blank">TODO List</a>" réalisée en quelques minutes avec seulement une vingtaine de lignes de Javascript.</p>
 <script async src="//jsfiddle.net/Lsgc2rhr/9/embed/js,html,result/"></script>
-<h2 id="versatile">Versatile</h2>
+<h2 id="versatile" class="anchor-title"><a href="#versatile">Versatile</a></h2>
 <p>La versatilité de <strong>Vue.js</strong> vient de la possibilité d'utiliser le framework de différentes façons plus ou moins poussées. Vous pouvez l'utiliser pour créer un petit widget qui s'intégrera sur une page en quelques lignes à la manière d'un plugin jQuery, réaliser des Single Page Application, créer vos propres composants, ou même créer des applications complexes avec du routing et câblées sur une API. Côté rendu, vous pouvez utiliser des templates HTML directement dans le DOM, déclarer des templates inline ou packager votre template avec son composant dans un fichier <code class="code-inline" id="4d08a51ed2edf2965914aea4a2018bbd">.vue</code>. Bref, <strong>Vue.js</strong> s'adapte à vos besoins.</p>
-<h2 id="performant">Performant</h2>
+<h2 id="performant" class="anchor-title"><a href="#performant">Performant</a></h2>
 <p>Que cela soit pour un petit widget ou pour une application multi-pages, je n'ai pas trouvé de problème de performances. Tout est fluide, le rendu est rapide et la synchronisation des données efficace. Je n'ai pas fait de benchmark parce qu'on en trouve déjà plein le web, le site de Vue.js fait lui même une comparaison avec différents frameworks.</p>
 <ul>
 <li><a href="http://www.stefankrause.net/wp/?p=191" target="_blank">JS web frameworks benchmark – Round 1</a></li>
@@ -252,12 +252,12 @@
 <li><a href="https://blog.codeship.com/consider-vuejs-next-web-project/" target="_blank">Consider VueJS for Your Next Web Project</a></li>
 </ul>
 <p>Ils s'accordent tous pour dire que le framework est vraiment performant et compétitif par rapport aux autres solutions. Certains vont même plus loin en affirmant qu'il est plus rapide que des gros frameworks comme React.</p>
-<h2 id="fonctionnalites">Fonctionnalités</h2>
+<h2 id="fonctionnalites" class="anchor-title"><a href="#fonctionnalites">Fonctionnalités</a></h2>
 <p>Le coeur de <strong>Vue.js</strong> se concentre sur la couche de présentation (vue). Il dispose pour cela de fonctionnalités de templating avancées basées sur des directives préfixées d'un <code class="code-inline" id="0b266bbe1ce9ca360bed93cff09a734a">v-</code> à la manière d'Angular et de ses propriétés <code class="code-inline" id="ddb8d346aeb2c8cdf14709c32ba56174">ng:</code>. La création des templates est ainsi simple et rapide, autant pour un développeur que pour un intégrateur.</p>
 <p>Il offre la possibilité de créer ses propre directives, de créer des composants et des mixins (un peu comme les traits de PHP).</p>
 <p>Les composants peuvent être déclarés simplement dans un fichier Javascript et attachés à des templates dans votre HTML ou vous pouvez créer des Single File Components sous la forme de fichiers <code class="code-inline" id="4d08a51ed2edf2965914aea4a2018bbd">.vue</code> rassemblant le template, le javascript et le CSS de votre composant.</p>
 <p>Un systeme d'événement est disponible pour faire communiquer les composants ensemble.</p>
-<h3 id="plugins">Plugins</h3>
+<h3 id="plugins" class="anchor-title"><a href="#plugins">Plugins</a></h3>
 <p><strong>Vue.js</strong> dispose de plugins afin d'apporter d'autres fonctionnalités au framework :</p>
 <ul>
 <li><strong>vue-resources</strong> permet de réaliser des requêtes AJAX sur une API</li>
@@ -266,12 +266,12 @@
 <li><strong>vuex</strong> est un state manager pour Vue.js (équivalent de Flux/Redux)</li>
 <li><a href="https://github.com/vuejs/awesome-vue#libraries--plugins" target="_blank">et bien d'autres</a></li>
 </ul>
-<h3 id="environnement-de-developpement">Environnement de développement</h3>
+<h3 id="environnement-de-developpement" class="anchor-title"><a href="#environnement-de-developpement">Environnement de développement</a></h3>
 <p><strong>Vue.js</strong> est compatible avec <a href="https://webpack.github.io/docs/" target="_blank">WebPack</a> et <a href="http://browserify.org/" target="_blank">Browserify</a>. <a href="https://github.com/vuejs/vue-cli" target="_blank">Vue CLI</a>, un outil en ligne de commande, propose un environnement de développement complet et moderne avec de la génération de boilerplate, de la compilation, du watching, du live reload, ...</p>
-<h2 id="integration-avec-symfony">Intégration avec Symfony</h2>
+<h2 id="integration-avec-symfony" class="anchor-title"><a href="#integration-avec-symfony">Intégration avec Symfony</a></h2>
 <p>Développant majoritairement avec Symfony, un gros plus que j'ai trouvé au framework est qu'il s'intègre très simplement à Symfony. Il est en effet possible de mélanger vos templates <strong>Vue.js</strong> et vos templates <strong>Twig</strong> et il est très simple d'y intégrer des composants voire de cabler une application <strong>Vue.js</strong> sur un template ou un formulaire Symfony.</p>
 <p>Pour plus d'informations sur le sujet, vous pouvez lire mon article "<a href="/fr/dev/comment-integrer-vue-js-application-symfony/">Comment intégrer Vue.js dans une application Symfony</a>"</p>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion" class="anchor-title"><a href="#conclusion">Conclusion</a></h2>
 <p>En conclusion, pour moi sa <strong>versatilité</strong> et sa <strong>flexibilité</strong> sont les plus gros avantages de <strong>Vue.js</strong>. Bien qu'il dispose de tout ce qu'il faut pour développer une SPA ou une application frontend complexe, il est également très simple de réaliser un petit composant. C'est pourquoi je le recommande pour intégrer un peu de dynamisme à une application backend mais également pour développer une application frontend. Ces avantages permettent également une courbe d'apprentissage plus douce qu'avec un framework plus complexe.</p></body>
                                                 </main>
         <aside class="article-content__aside">
@@ -296,7 +296,7 @@
                                 <i class="icon icon--github" aria-hidden="true"></i>
                                 <span class="screen-reader">Compte github de Maxime COLIN</span>
                             </a>
-                                                                            <a href="http://www.maximecolin.fr" class="social social--small">
+                                                                            <a href="https://www.maximecolin.fr/" class="social social--small">
                                 <i class="icon icon--website" aria-hidden="true"></i>
                                 <span class="screen-reader">Site personnel de Maxime COLIN</span>
                             </a>

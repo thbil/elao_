@@ -234,11 +234,11 @@
 <p>Pour aujourd'hui nous verrons une notion simple de cluster sans haute disponibilité basé sur 2 machines physiques seulement. Cette configuration est intéressante lorsqu'il n'y a pas un réel besoin de haute disponibilité, mais un besoin de répartition de charge et/ou de reprise de service anticipé en cas d'incident.</p>
 <p>Le "cluster" Proxmox permet notamment de faire de la migration de container d'une machine à une autre "à chaud", de gérer l'ensemble de ces containers à partir de l'un ou l'autre des hyperviseurs ... bref rien d'indispensable en soit mais pas mal de petites choses foutrement utiles.</p>
 <p>Pour ceux d'entres vous qui souhaitent faire ça entre deux data-centres différents je ne saurais que trop vous recommander la solution vRack fournie par OVH qui remplacera de manière simple, fiable et sécurisée les bons vieux VPN.</p>
-<h2 id="installer-promox">Installer Promox</h2>
+<h2 id="installer-promox" class="anchor-title"><a href="#installer-promox">Installer Promox</a></h2>
 <img src="https://placeimg.com/300/300/any" alt="" class="outside-left" id="any">
 <p>Rien de surprenant ici, la première étape consistera à installer une distribution Proxmox sur vos deux machines.</p>
 <p>L'installation de base de la distribution peut convenir pour tester la solution mais dans le cas d'une exploitation un peu plus poussée je vous conseille de jeter un oeil à <a href="http://www.elao.com/fr/blog/partitionnement-d-un-serveur-proxmox" target="_blank"><strong>ce post</strong></a> qui concerne le partitionement des machines.</p>
-<h2 id="preparer-le-reseau">Préparer le réseau</h2>
+<h2 id="preparer-le-reseau" class="anchor-title"><a href="#preparer-le-reseau">Préparer le réseau</a></h2>
 <img src="https://placeimg.com/400/400/any" alt="" class="outside-right" id="any">
 <p>Condition indispensable à nos machines pour qu'elle puisse fonctionner sous forme de cluster, il faut qu'elles soient capables de faire du "<a href="http://fr.wikipedia.org/wiki/Multicast" target="_blank">multicast</a>".</p>
 <p>Le premier piège à éviter est donc celui de s'assurer que les deux machines peuvent dialoguer sur un même réseau sécurisé. C'est là qu'entre en jeu la technologie <a href="https://www.ovh.com/fr/solutions/vrack/" target="_blank">vRack</a> d'OVH ou un bon vieux VPN.</p>
@@ -260,7 +260,7 @@ Avec une configuration standard nous aurons donc dans ce fichier (pour tartanpio
 Cette modification a pour but de "forcer" les hyperviseurs à dialoguer entre eux via leur IP privée de manière sécurisée, mais également de pouvoir faire du multicast sur ce réseau.
 La modification est bien entendu, à faire sur les deux noeuds qui constituerons notre futur cluster (cette modification est valable pour l'ensemble des machines membres de votre cluster).</p>
 <img src="https://placeimg.com/640/280/any" alt="" class="full" id="any">
-<h2 id="creer-un-cluster-proxmox-et-y-ajouter-des-noeuds">Créer un cluster proxmox et y ajouter des noeuds</h2>
+<h2 id="creer-un-cluster-proxmox-et-y-ajouter-des-noeuds" class="anchor-title"><a href="#creer-un-cluster-proxmox-et-y-ajouter-des-noeuds">Créer un cluster proxmox et y ajouter des noeuds</a></h2>
 <p>La création d'un cluster et l'ajout d'un ou plusieurs noeuds ne posent en soit guère de problème, il faudra toutefois faire attention à la notion de quorum dans notre cluster (nous en parlerons plus tard).</p>
 <p>Sur l'un des deux hyperviseurs (peu importe lequel), créons le cluster ayant pour nom "elao":</p>
 <pre class="code-multiline"><code id="d037a64f924566746027b448605c3201">pvecm create elao</code></pre>
@@ -289,7 +289,7 @@ Node addresses: 172.16.0.1</code></pre>
 <pre class="code-multiline"><code id="a74727844ee5855f1079f28b8ce5ea0c">Node  Sts   Inc   Joined               Name
    1   M     48   2015-01-16 14:25:27  tartanpion
    2   M     44   2015-01-16 14:25:27  bismuth</code></pre>
-<h2 id="eviter-la-problematique-du-quorum">Eviter la problématique du Quorum</h2>
+<h2 id="eviter-la-problematique-du-quorum" class="anchor-title"><a href="#eviter-la-problematique-du-quorum">Eviter la problématique du Quorum</a></h2>
 <p>Très important pour la suite nous allons effectuer une manipulation pour éviter de se retrouver avec un hyperviseur en "lecture seule" dans le cas ou le deuxième viendrait à rencontrer un problème (réseau, matériel ...).</p>
 <blockquote>
 <p>Pour ceux qui sont intéressés par la notion de haute disponibilité je vous invite à jeter un oeil à ce qu'est le <a href="http://en.wikipedia.org/wiki/Quorum" target="_blank"><strong>quorum</strong></a> qui est une notion importante de la HA.</p>
@@ -353,7 +353,7 @@ Node ID: 1
 Multicast addresses: 239.192.114.23
 Node addresses: 172.16.0.1</code></pre>
 <p>On notera le flag <code class="code-inline" id="45279493f2e701d4216690f6d065ecba">2node</code>, nous voila avec un cluster à 2 noeuds fonctionnel !</p>
-<h2 id="failed-to-access-mount-point">Failed to access mount point</h2>
+<h2 id="failed-to-access-mount-point" class="anchor-title"><a href="#failed-to-access-mount-point">Failed to access mount point</a></h2>
 <p>Il est possible qu'au cours du redémarrage du cluster vous rencontriez le message suivant:</p>
 <pre class="code-multiline"><code id="1f588c6991b008a95f00d22b84de14f6">Starting pve cluster filesystem : pve-clusterfuse: failed to access mountpoint /etc/pve: Transport endpoint is not connected
 [main] crit: fuse_mount error: Transport endpoint is not connected
