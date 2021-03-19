@@ -203,7 +203,7 @@
                 </div>
                         <div class="article-info__date">
                 <span>Publication <strong>30 octobre 2018</strong></span>
-                <span>Modification <strong>17 mars 2021</strong></span>
+                <span>Modification <strong>19 mars 2021</strong></span>
             </div>
         </div>
 
@@ -226,7 +226,40 @@
 
             <ul class="table-of-content">
                             <li class="table-of-content__item">
-                    <a href="#">Conclusion</a>
+                    <a href="#pourquoi-faire-du-test-driven-development">Pourquoi faire du Test Driven Development</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#outillage">Outillage</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#notre-exemple">Notre exemple</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#hypotheses">Hypothèses</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#entite">Entité</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#dependances">Dépendances</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#la-plomberie">La plomberie</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#le-service-a-tester">Le service à tester</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#les-enfants-et-les-tests-d-abord">Les enfants et les tests d&#039;abord !</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#enfin-l-implementation">Enfin, l&#039;implémentation</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#le-temps-n-attend-pas">Le temps n&#039;attend pas</a>
+                </li>
+                            <li class="table-of-content__item">
+                    <a href="#conclusion">Conclusion</a>
                 </li>
                     </ul>
     
@@ -238,7 +271,7 @@
 N'ayez pas honte de ne pas savoir par où commencer.
 Beaucoup de personnes parlent de « déclic » lorsqu'il s'agit d'appréhender le TDD.
 L'ambition de cet article est d'essayer de créer ce déclic.</p>
-<h2 id="pourquoi-faire-du-test-driven-development">Pourquoi faire du <em>Test Driven Development</em></h2>
+<h2 id="pourquoi-faire-du-test-driven-development" class="anchor-title"><em>Test Driven Development</em><a href="#pourquoi-faire-du-test-driven-development">Pourquoi faire du </a></h2>
 <p>On trouve pléthore de littérature à ce sujet et voici selon nous les avantages à faire du TDD en vrac :</p>
 <ul>
 <li>tester les différents cas de figure,</li>
@@ -248,7 +281,7 @@ L'ambition de cet article est d'essayer de créer ce déclic.</p>
 <li>gain de temps en validant l'implémentation via la console sans passer par les tests dans le navigateur.</li>
 </ul>
 <img src="https://media.giphy.com/media/iKbUlFbs77oI0/giphy.gif" id="giphy-gif">
-<h2 id="outillage">Outillage</h2>
+<h2 id="outillage" class="anchor-title"><a href="#outillage">Outillage</a></h2>
 <p>Installons le framework de test PHPUnit :</p>
 <pre><code id="1fe6cdf9470276222d96a1d7899d5e5a">$ composer require --dev phpunit/phpunit ^7</code></pre>
 <p>En considérant que notre namespace est <code class="code-inline" id="98832bd23a1a4e070b40c19a58c363c0">MyCompany\App</code> on devrait avoir ceci dans notre composer.json :</p>
@@ -273,12 +306,12 @@ L'ambition de cet article est d'essayer de créer ce déclic.</p>
 <blockquote>
 <p>No tests executed!</p>
 </blockquote>
-<h2 id="notre-exemple">Notre exemple</h2>
+<h2 id="notre-exemple" class="anchor-title"><a href="#notre-exemple">Notre exemple</a></h2>
 <p>Imaginons que nous intervenons sur un blog.
 Les utilisateurs de ce blog ont besoin de voir la liste des articles.
 Pour chaque article, on voit un titre et le nombre de commentaires laissés.
 Si un article a été publié il y a moins d'une semaine, le titre de l'article contient "Nouveau !" en préfixe.</p>
-<h3 id="hypotheses">Hypothèses</h3>
+<h3 id="hypotheses" class="anchor-title"><a href="#hypotheses">Hypothèses</a></h3>
 <p>Les articles sont stockés quelque part, en base de données, fichiers, peu importe...
 Il me faut donc un service qui récupère les données puis les prépare pour être affichées.</p>
 <p>On va considérer que :</p>
@@ -289,7 +322,7 @@ Il me faut donc un service qui récupère les données puis les prépare pour ê
 <p>On va uniquement se focaliser pour cet exemple sur un service qui va préparer les données souhaitées.</p>
 <p>Imaginer quelle est la plus petite entité logique à tester et faire cet effort de réflexion est finalement la
 premère étape en TDD.</p>
-<h3 id="entite">Entité</h3>
+<h3 id="entite" class="anchor-title"><a href="#entite">Entité</a></h3>
 <p>Nous allons uniquement utiliser l'entité suivante <code class="code-inline" id="03d947a2158373c3b9d74325850cb8b9">Post</code> représentant un article du blog :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="bcc87acaf570f24692dcc35c0e6c8e62"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -309,7 +342,7 @@ premère étape en TDD.</p>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">publishedAt</span> <span class="token operator">=</span> <span class="token variable">$publishedAt</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
-<h3 id="dependances">Dépendances</h3>
+<h3 id="dependances" class="anchor-title"><a href="#dependances">Dépendances</a></h3>
 <p>Considérons que nous avons les deux interfaces suivantes permettant d'accéder aux articles
 et au nombre de commentaires par articles.</p>
 <p><code class="code-inline" id="c217921c976603f2f662ed76f16f60ef">PostRepository</code>:</p>
@@ -337,7 +370,7 @@ et au nombre de commentaires par articles.</p>
 <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">countByPost</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Post</span> <span class="token variable">$post</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">int</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></span></code></pre>
-<h3 id="la-plomberie">La plomberie</h3>
+<h3 id="la-plomberie" class="anchor-title"><a href="#la-plomberie">La plomberie</a></h3>
 <p>Créons une classe <code class="code-inline" id="9bf6839f16a04a883768f5c536b2161d">PostView</code> qu'on appelle communément un DTO (data transfer object), un objet de transfert de données
 qui ne contient aucun comportement, que des valeurs :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="0a720120fc3eb466fb3ea3fc92fca898"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
@@ -362,7 +395,7 @@ qui ne contient aucun comportement, que des valeurs :</p>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">isNew</span> <span class="token operator">=</span> <span class="token variable">$isNew</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
-<h2 id="le-service-a-tester">Le service à tester</h2>
+<h2 id="le-service-a-tester" class="anchor-title"><a href="#le-service-a-tester">Le service à tester</a></h2>
 <p>Créons notre service <code class="code-inline" id="4e74d55162d9b39c9ad96294764293ff">GetPostsList</code> qui ne fait en réalité qu'une seule chose, une seule méthode publique, <code class="code-inline" id="41694f07cc1d4017d0ba996850f58e33">_invoke</code> :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="972e3d83ad52eeef3c5d5e8661411cdb"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -375,7 +408,7 @@ qui ne contient aucun comportement, que des valeurs :</p>
         <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
-<h3 id="les-enfants-et-les-tests-d-abord">Les enfants et les tests d'abord !</h3>
+<h3 id="les-enfants-et-les-tests-d-abord" class="anchor-title"><a href="#les-enfants-et-les-tests-d-abord">Les enfants et les tests d'abord !</a></h3>
 <p>Créons maintenant un test de <code class="code-inline" id="4e74d55162d9b39c9ad96294764293ff">GetPostsList</code> qui est censé nous envoyer deux articles, l'un marqué nouveau, l'autre non.
 Il est important de tester tous les cas. Cela tombe bien, notre besoin est simple, on a que deux cas.</p>
 <p>Dans : <code class="code-inline" id="7c85117bec6526ed4f958c8c7cd55358">tests/Post/GetPostsListTest.php</code> :</p>
@@ -458,7 +491,7 @@ données.</p>
         <span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
-<h3 id="enfin-l-implementation">Enfin, l'implémentation</h3>
+<h3 id="enfin-l-implementation" class="anchor-title"><a href="#enfin-l-implementation">Enfin, l'implémentation</a></h3>
 <p>Nous avons tout ce qu'il faut pour implémenter notre code :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="c95953cd07a13f4581ddfee73b231f30"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -503,7 +536,7 @@ données.</p>
 <blockquote>
 <p>OK (1 test, 4 assertions)</p>
 </blockquote>
-<h3 id="le-temps-n-attend-pas">Le temps n'attend pas</h3>
+<h3 id="le-temps-n-attend-pas" class="anchor-title"><a href="#le-temps-n-attend-pas">Le temps n'attend pas</a></h3>
 <p>Attention, il y a un piège. Désolé mais ce test ne fonctionnera plus dans quelques jours.
 Pourquoi ?
 Nous avons une comparaison avec la date "système" dans l'implémentation (<code class="code-inline" id="1ef9214848bdfb5133edf6959967edc5">new \DateTime</code>)
@@ -551,7 +584,7 @@ ne fasse plus échouer les tests dans quelques jours !</p>
 </blockquote>
 <p>Super !</p>
 <p>Vous trouverez le code de cet exemple ici : <a href="https://github.com/supertanuki/TDD-en-PHP" target="_blank">https://github.com/supertanuki/TDD-en-PHP</a></p>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion" class="anchor-title"><a href="#conclusion">Conclusion</a></h2>
 <img src="https://media.giphy.com/media/ds9RZ7gATF0wo/giphy.gif" id="giphy-gif">
 <p>J'espère que cet exemple vous aura convaincu des avantages du <em>Test Driven Development</em>.
 Pour finir, un dernier conseil pour mettre le pied à l'étrier : sur votre projet en cours,

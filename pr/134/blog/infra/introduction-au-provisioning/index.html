@@ -203,7 +203,7 @@
                 </div>
                         <div class="article-info__date">
                 <span>Publication <strong>3 février 2016</strong></span>
-                <span>Modification <strong>17 mars 2021</strong></span>
+                <span>Modification <strong>19 mars 2021</strong></span>
             </div>
         </div>
 
@@ -231,26 +231,26 @@
             
             <body><p>De plus en plus répandu au sein des services IT, l'approvisionnement (ou provisioning en anglais) devient une composante incontournable des environnements techniques. <!--more--> Depuis longtemps utilisé par les sysadmin (soit sous la forme de "simples" scripts shell ou via des technologies spécialisées), l'avènement des DevOps permet aujourd'hui de démocratiser son utilisation. On le retrouve ainsi de plus en plus au sein des environnements de développement comme de production.</p>
 <p>La "culture" DevOps et plus largement AGILE repose sur des principes simples que sont l'automatisation, la réutilisabilité ou encore l'amélioration continue, principes auxquels le provisionning répond largement.</p>
-<h1 id="c-est-quoi-le-provisioning">C'est quoi le provisioning ?</h1>
+<h1 id="c-est-quoi-le-provisioning" class="anchor-title"><a href="#c-est-quoi-le-provisioning">C'est quoi le provisioning ?</a></h1>
 <p>Le provisioning c'est (globalement) l'automatisation de tâches variées et diverses allant de l'installation d'un environnement de développement à la mise en place d'infrastructures extrêmement complexes. Il a été historiquement et très largement utilisé dans l'industrie des télécoms.</p>
 <p>Vous l'aurez compris il s'agit d'automatiser l'installation de certains logiciels, librairies... et d'assurer leur configuration de manière à garantir que notre environnement soit pleinement opérationel.</p>
 <blockquote>
 <p>ATTENTION il ne faut pas confondre <strong>provisioning</strong> et <strong>déploiement applicatif</strong>. En effet bien qu'il soit possible de déployer des applications avec des outils de provisioning, ceux-ci vont beaucoup plus loin puisqu'ils assurent la disponibilité de l'environnement technique d'une application.</p>
 </blockquote>
-<h1 id="pourquoi-le-provisioning">Pourquoi le « provisioning » ?</h1>
+<h1 id="pourquoi-le-provisioning" class="anchor-title"><a href="#pourquoi-le-provisioning">Pourquoi le « provisioning » ?</a></h1>
 <p>Le provisioning répond à un besoin à la fois de robustesse, de rapidité de déploiement et/ou de mise à disposition d'environnements plus ou moins complexes. Nous avons ainsi pour habitude chez <a href="https://www.elao.com" target="_blank">ELAO</a> d'y avoir recours pour l'ensemble de nos environnements "du dev à la prod".</p>
-<h2 id="le-provisionning-apporte-plusieurs-choses-parmis-lesquelles">Le provisionning apporte plusieurs choses parmis lesquelles:</h2>
+<h2 id="le-provisionning-apporte-plusieurs-choses-parmis-lesquelles" class="anchor-title"><a href="#le-provisionning-apporte-plusieurs-choses-parmis-lesquelles">Le provisionning apporte plusieurs choses parmis lesquelles:</a></h2>
 <ul>
 <li>L'automatisation de tâches parfois rébarbatives.</li>
 <li>La garantie de ne pas "oublier" un composant essentiel lors de l'installation d'un nouvel environnement.</li>
 <li>La facilité et la rapidité d'avoir à disposition un environnement parfaitement fonctionnel.</li>
 <li>La garantie d'avoir des environnements les plus identiques possibles.</li>
 </ul>
-<h1 id="quand-automatiser">Quand automatiser ?</h1>
+<h1 id="quand-automatiser" class="anchor-title"><a href="#quand-automatiser">Quand automatiser ?</a></h1>
 <p>Les aficionados vous diront « <em>Tout le temps !</em> ».
 La nécessité d'automatiser une tâche ou un traitement restant à la discretion du technicien (développeur, SysAdmin ...), chez <a href="https://www.elao.com" target="_blank">ELAO</a> nous avons pour parti pris d'automatiser systématiquement tous les projets «Actifs» (Ceux où il y a une activité de développement, de TMA ou encore d'évolution fonctionnelle).
 L'ensemble de nos infras de production et de demo ne dérogent pas à cette règle, ce fonctionnement nous permet d'avoir des environnements <strong>homogènes</strong>, facilement <strong>scalables</strong> et rapidement <strong>reproduisibles</strong>.</p>
-<h1 id="provisionner-oui-mais-avec-quoi">« Provisionner » oui, mais avec quoi ?</h1>
+<h1 id="provisionner-oui-mais-avec-quoi" class="anchor-title"><a href="#provisionner-oui-mais-avec-quoi">« Provisionner » oui, mais avec quoi ?</a></h1>
 <p>Il existe plusieurs outils plus ou moins connus permettant d'automatiser. Quatre d'entres eux sont en «concurrence» directe, leur choix relevant autant du but poursuivi que de l'affinité de chacun avec ceux-ci.</p>
 <ul>
 <li><strong>Le script shell</strong></li>
@@ -274,7 +274,7 @@ L'ensemble de nos infras de production et de demo ne dérogent pas à cette règ
 <p>Ansible est le «petit dernier» si l'on peut dire, il est également écrit en Python et a l'avantage non négligeable d'être facilement accessible même pour des profils ayant peu de compétences et d'affinité avec l'administration système.</p>
 <p>Il fonctionne à base de « roles » plus ou moins spécifiques et de « playbooks ». Il a la particularité d'être  « agentless » et ne nécessite donc pas l'installation d'un quelconque client avant de pouvoir fonctionner à la différence de Chef et Puppet.</p>
 <p>C'est la solution que nous avons choisi d'utiliser chez <a href="https://www.elao.com" target="_blank">ELAO</a>.</p>
-<h1 id="et-la-virtualisation">Et la virtualisation ?</h1>
+<h1 id="et-la-virtualisation" class="anchor-title"><a href="#et-la-virtualisation">Et la virtualisation ?</a></h1>
 <p>Même si la virtualisation n'est pas un pré-requis, il est très commun d'utiliser des outils de provisioning sur des environnements virtualisés, c'est même là où ils trouvent tout leur intérêt.</p>
 <p>En effet cette notion de virtualisation, couplée au provisioning, introduit dans des infras complexes la notion de « <strong>jetabilité</strong> » des instances, celles-ci étant très souvent redondées on peut envisager de les perdre (ou de les détruires) car elles sont  facilement recréables.
 De même il devient beaucoup plus facile (attention je n'ai pas dit simple) d'assurer la scalabilité des applications, encore une fois car la mise à disposition des environnements techniques est plus rapide.</p>

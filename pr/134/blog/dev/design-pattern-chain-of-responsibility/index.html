@@ -203,7 +203,7 @@
                 </div>
                         <div class="article-info__date">
                 <span>Publication <strong>13 mai 2017</strong></span>
-                <span>Modification <strong>17 mars 2021</strong></span>
+                <span>Modification <strong>19 mars 2021</strong></span>
             </div>
         </div>
 
@@ -231,27 +231,27 @@
 </blockquote>
 <p>Aujourd'hui, nous allons nous amuser à enfiler des objets comme des perles grâce au Design Pattern <code class="code-inline" id="0e4c6982c4346789e10bcb3eb7ee3946">Chain of Responsibility</code>.</p>
 <!--more-->
-<h2 id="classification">Classification</h2>
+<h2 id="classification" class="anchor-title"><a href="#classification">Classification</a></h2>
 <p>Selon la classification établie par le <em>GoF</em> (<em>Gang of Four</em>), la <code class="code-inline" id="5b82f7bdfadf92899c4a62fbbad69050">chaîne de responsabilité</code> appartient aux Design patterns comportementaux (<em>behavior</em>).</p>
-<h2 id="definition">Définition</h2>
+<h2 id="definition" class="anchor-title"><a href="#definition">Définition</a></h2>
 <blockquote>
 <p>Avoid coupling the sender of a request to its receiver by giving more than one object a chance to handle the request. Chain the receiving objects and pass the request along the chain until an object handles it.</p>
 </blockquote>
 <p>En résumé, le DP <em>CoR</em> va permettre à son consommateur de transmettre une requête à une chaîne d'objets susceptibles de la traiter, sans avoir conscience de l'objet effectivement responsable du traitement (<em>handler</em>).</p>
 <p>Concrètement, le pattern consiste principalement à construire une chaîne de <em>handlers</em> chargée de traiter une requête (aka <em>command</em>).</p>
-<h2 id="quand-l-utiliser">Quand l'utiliser ?</h2>
+<h2 id="quand-l-utiliser" class="anchor-title"><a href="#quand-l-utiliser">Quand l'utiliser ?</a></h2>
 <p>Voici les différentes situations que référence le <em>GoF</em> :</p>
 <ul>
 <li>il existe plusieurs objets susceptibles de traiter une requête, mais l'objet qui traitera la requête (<em>handler</em>) n'est pas connu <em>a priori</em> (mais doit être déterminé automatiquement par la chaîne)</li>
 <li>vous souhaitez transmettre une requête à un objet parmi plusieurs, sans le désigner explicitement</li>
 <li>la liste des objets susceptibles de traiter la requête devrait être construite dynamiquement</li>
 </ul>
-<h2 id="diagramme-du-design-pattern-chain-of-responsibility">Diagramme du Design pattern <code class="code-inline" id="0e4c6982c4346789e10bcb3eb7ee3946">Chain of Responsibility</code></h2>
+<h2 id="diagramme-du-design-pattern-chain-of-responsibility" class="anchor-title"><code class="code-inline" id="0e4c6982c4346789e10bcb3eb7ee3946">Chain of Responsibility</code><a href="#diagramme-du-design-pattern-chain-of-responsibility">Diagramme du Design pattern </a></h2>
 <p class="text-center">
     {{}}
     <figcaption style="text-align: center;font-style: italic;">Diagramme du Design Pattern 'Chain of Responsility'</figcaption>
 </p>
-<h2 id="participants">Participants</h2>
+<h2 id="participants" class="anchor-title"><a href="#participants">Participants</a></h2>
 <ul>
 <li>Le <strong>Handler</strong> :
 <ul>
@@ -266,7 +266,7 @@
 </ul></li>
 <li>Le <strong>client</strong> est l'émetteur de la requête, qu'il passe à la chaîne</li>
 </ul>
-<h2 id="si-tous-les-fous-du-monde-voulaient-bien-se-donner-la-main"><em>Si tous les fous du monde voulaient bien se donner la main ...</em></h2>
+<h2 id="si-tous-les-fous-du-monde-voulaient-bien-se-donner-la-main" class="anchor-title"><a href="#si-tous-les-fous-du-monde-voulaient-bien-se-donner-la-main"><em>Si tous les fous du monde voulaient bien se donner la main ...</em></a></h2>
 <blockquote>
 <p>Illustrer un Design Pattern à l'aide d'un exemple pertinent ou un tant soit peu réaliste n'est pas toujours chose aisée. Aussi, notez que l'exemple qui suit est <strike>honteusement</strike> largement inspiré d'un article publié sur le blog <a href="http://spaghetti.io/cont/article/a-chain-of-responsibility-implementation-inside-the-symfony-container/15/1.html#.WRcQErzyi-w" target="_blank">spaghetti.io</a>. Je vous invite à consulter cet article puisque l'auteur ne se contente pas de présenter le Design Pattern, mais propose un exemple d'implémentation dans un contexte Symfony, ainsi que des pistes très intéressantes pour construire la chaîne et la configurer dans le DIC (<em>Dependency Injection Container</em>).</p>
 </blockquote>
@@ -309,7 +309,7 @@
 <li><a href="#concrete-handlers">mettre à jour les <em>handlers</em> concrets</a></li>
 <li><a href="#chain-usage">instancier la chaîne et la consommer</a></li>
 </ul>
-<h2 id="logique-de-construction-de-la-chaine"><a name="chain-construct"></a> Logique de construction de la chaîne</h2>
+<h2 id="logique-de-construction-de-la-chaine" class="anchor-title"> Logique de construction de la chaîne<a href="#logique-de-construction-de-la-chaine"><a name="chain-construct"></a></a></h2>
 <blockquote>
 <p>"Tu aimeras ton prochain comme toi-même"</p>
 </blockquote>
@@ -414,7 +414,7 @@
 <p>En résumé, la construction de la chaîne consiste à introduire dans chaque <em>extractor</em> concret une propriété <strong><code class="code-inline" id="6158aab25cad464faed56f676d36648b">$nextHandler</code></strong> de type <code class="code-inline" id="4af8481a07a24cb0483d87ccdcebe0e9">AbstractProductExtractor</code>.</p>
 <p>Le dernier maillon de la chaîne est celui dont sa propriété <code class="code-inline" id="6158aab25cad464faed56f676d36648b">$nextHandler</code> est à <em>null</em>. Les méthodes de construction et de gestion de la chaîne étant communes à tous les <em>extractors</em> concrets, elles sont factorisées dans notre classe abstraite.</p>
 <p>Enfin, c'est la méthode <code class="code-inline" id="434990c8a25d2be94863561ae98bd682">support</code>, qui retourne un booléen, qui permet de déterminer si un <em>handler</em> concret sait traiter une requête ou s'il doit la passer à son successeur.</p>
-<h2 id="mise-a-jour-des-handlers-concrets"><a name="concrete-handlers"></a> Mise à jour des <em>handlers</em> concrets</h2>
+<h2 id="mise-a-jour-des-handlers-concrets" class="anchor-title"> Mise à jour des <em>handlers</em> concrets<a href="#mise-a-jour-des-handlers-concrets"><a name="concrete-handlers"></a></a></h2>
 <p>La classe abstraite <code class="code-inline" id="4af8481a07a24cb0483d87ccdcebe0e9">AbstractProductExtractor</code> se chargeant de gérer la chaîne, les <em>handlers</em> concrets vont continuer à faire ce qu'ils savent faire le mieux, à savoir extraire des données à partir d'un fichier source.</p>
 <p>Voici les modifications à apporter à notre extracteur <code class="code-inline" id="8e2c370970792feb8dbf80c2d05cf8d6">ProductXmlExtractor</code> :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="a04e5fc17600752c6cc5f0c822d4cbc5"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
@@ -436,7 +436,7 @@
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span></span></code></pre>
 <p>Désormais, la classe <code class="code-inline" id="8e2c370970792feb8dbf80c2d05cf8d6">ProductXmlExtractor</code> étend la classe abstraite <code class="code-inline" id="4af8481a07a24cb0483d87ccdcebe0e9">AbstractProductExtractor</code> et implémente donc les deux méthodes attendues (<code class="code-inline" id="434990c8a25d2be94863561ae98bd682">support</code> et <code class="code-inline" id="6beb07d951865e6624d655b75ee8659a">parseContent</code>).</p>
-<h2 id="instancions-et-utilisons-notre-chaine"><a name="chain-usage"></a> Instancions et utilisons notre chaîne</h2>
+<h2 id="instancions-et-utilisons-notre-chaine" class="anchor-title"> Instancions et utilisons notre chaîne<a href="#instancions-et-utilisons-notre-chaine"><a name="chain-usage"></a></a></h2>
 <p>Enfin (et ce n'est pas trop tôt, me direz-vous), voici le code qui permet d'instancier et consommer notre chaîne de <em>handlers</em> :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="16da020d8e887bc6863c76b232c72287"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
     <span class="token comment">// Firstly, build the chain of handlers:</span>

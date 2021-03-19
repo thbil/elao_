@@ -203,7 +203,7 @@
                 </div>
                         <div class="article-info__date">
                 <span>Publication <strong>3 novembre 2016</strong></span>
-                <span>Modification <strong>17 mars 2021</strong></span>
+                <span>Modification <strong>19 mars 2021</strong></span>
             </div>
         </div>
 
@@ -241,9 +241,9 @@
         <main class="article-content__main">
 
             
-            <body><h2 id="introduction">Introduction</h2>
+            <body><h2 id="introduction" class="anchor-title"><a href="#introduction">Introduction</a></h2>
 <p>Dans la continuité de l'émergence des applications full frontend, nous sommes de plus en plus amenés a appeler des API directement en Javascript depuis le client. J'ai récemment été confronté à un cas où l'API à interroger n'était pas sur le même domaine que l'application. Sur un développement backend ce genre de cas ne pose aucun problème mais avec Javascript, pour des raisons de sécurité, les communications <strong>cross-domain</strong> sont bloquées par la <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Same_origin_policy_for_JavaScript" target="_blank">Same Origin Policy</a>.</p>
-<h2 id="cors">CORS</h2>
+<h2 id="cors" class="anchor-title"><a href="#cors">CORS</a></h2>
 <p><a href="http://www.w3.org/TR/cors/" target="_blank">Cross-Origin Resource Sharing</a> (CORS) est une spécification du W3C permettant les requêtes <strong>cross-domain</strong> depuis les navigateurs compatibles. Si l'API que vous interrogez est compatible avec <strong>CORS</strong>, vous pourrez accéder à l'API même si elle n'est pas sur le même domaine que votre application.</p>
 <p>CORS est compatible avec :</p>
 <ul>
@@ -268,7 +268,7 @@ Access-Control-Allow-Methods: GET, POST, OPTIONS
 Access-Control-Max-Age: 86400
 Access-Control-Allow-Headers: Api-Key</code></pre>
 <p>Pour plus d'informations sur le fonctionnement de <strong>CORS</strong>, je vous laisse lire les articles <a href="https://www.eriwen.com/javascript/how-to-cors/" target="_blank">Making Cross-Domain Requests with CORS</a> et <a href="http://blog.inovia-conseil.fr/?p=202" target="_blank">Démystifier CORS (Cross-Origin Resource Sharing)</a> qui sont très complets.</p>
-<h2 id="reverse-proxy">Reverse Proxy</h2>
+<h2 id="reverse-proxy" class="anchor-title"><a href="#reverse-proxy">Reverse Proxy</a></h2>
 <p>Malheureusement l'API que je souhaitais utiliser n'était pas compatible CORS. Si c'est votre cas également, il faudra alors passer par un proxy.</p>
 <p><strong>Nginx</strong> permet simplement de mettre en place ce genre de <em>reverse proxy</em> grace à une configuration de ce type :</p>
 <pre class="code-multiline"><code id="cd0bafd5ad131e16bd297d14ce957274">server {
@@ -314,9 +314,9 @@ Access-Control-Allow-Headers: Api-Key</code></pre>
 <div style="border-left: 5px solid #ffa600;padding: 20px;margin: 20px 0;">
     Attention, <code id="8d68c4c0373523ca5273c49e75df63a5">Access-Control-Allow-Origin: '*'</code> autorise les requêtes <em>cross-origin</em> depuis n'importe quel domaine, en dev cela permet de facilement mettre CORS en place mais dans un soucis de sécurité il faudrait être plus restrictif.
 </div>
-<h2 id="bonus">Bonus</h2>
+<h2 id="bonus" class="anchor-title"><a href="#bonus">Bonus</a></h2>
 <p>Vous pouvez encore améliorer votre proxy par exemple en ajoutant automatiquement des headers d'authentification si l'API en nécessite ou encore des headers de cache afin de reduire le temps de réponse ou d'économiser un éventuel quota imposé par l'API.</p>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion" class="anchor-title"><a href="#conclusion">Conclusion</a></h2>
 <p>Grâce a <strong>nginx</strong> vous pouvez donc créer un <em>reverse proxy</em> qui vous permettra d'accéder à une API directement depuis votre application front sur un domaine différent en contournant de façon sécurisée la <strong>Same Origin Policy</strong>.</p></body>
                                                 </main>
         <aside class="article-content__aside">
@@ -341,7 +341,7 @@ Access-Control-Allow-Headers: Api-Key</code></pre>
                                 <i class="icon icon--github" aria-hidden="true"></i>
                                 <span class="screen-reader">Compte github de Maxime COLIN</span>
                             </a>
-                                                                            <a href="http://www.maximecolin.fr" class="social social--small">
+                                                                            <a href="https://www.maximecolin.fr/" class="social social--small">
                                 <i class="icon icon--website" aria-hidden="true"></i>
                                 <span class="screen-reader">Site personnel de Maxime COLIN</span>
                             </a>
