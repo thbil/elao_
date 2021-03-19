@@ -238,76 +238,75 @@
             <body><p>Bonjour à tous,</p>
 <p>Aujourd'hui nous allons faire le tour d'une solution fort sympathique que nous utilisons @elao pour faire tourner certains services applicatifs.</p>
 <p>Son petit nom ? <a href="http://supervisord.org/" target="_blank"><strong>Supervisor</strong></a>.</p>
-<h1 id="introduction" class="anchor-title"><a href="#introduction">Introduction</a></h1>
+<h2 id="introduction" class="anchor-title"><a href="#introduction">Introduction</a></h2>
 <p>Supervisor est un petit outil codé en Python et permettant d'assurer le suivi et le contrôle de services/processus applicatifs sur des systèmes de type UNIX.</p>
 <p>On peut le comparer à launchd (utilisé par OSX) ou <a href="http://smarden.org/runit/" target="_blank"><strong>runit</strong></a>. Attention toutefois il n'est pas destiné à remplacer le process init des systèmes UNIX. Il est par contre le parfait allié pour lancer et suivre des services applicatifs liés à un projet et qui doivent être démarrés et disponibles en permanence.</p>
 <p>On peut notamment penser à des services NodeJS ou autres.</p>
 <p>Supervisor est disponible en paquet Debian en version 3.0, l'installation est donc très facile :</p>
-<pre class="code-multiline"><code id="a47b359ccd7dcf8a0f9ebaf1023ffb84">apt-get install supervisor</code></pre>
+<pre class="code-multiline language-bash"><code class="language-bash" id="a47b359ccd7dcf8a0f9ebaf1023ffb84"><span class="token function">apt-get</span> <span class="token function">install</span> supervisor</code></pre>
 <p>Supervisor est divisé en deux composants différents.</p>
 <h2 id="supervisord" class="anchor-title"><a href="#supervisord">Supervisord</a></h2>
 <p>Supervisord est la partie qui a la responsabilité de démarrer les services configurés et de les redémarrer en cas de crash.
 Il est configurable via le fichier <code class="code-inline" id="53585b857fac1155a055cfb706951271">/etc/supervisor/supervisord.conf</code></p>
 <h2 id="supervisorctl" class="anchor-title"><a href="#supervisorctl">Supervisorctl</a></h2>
 <p><strong>Supervisorctl</strong> est le client permettant d'administrer les services gérés par supervisor. Il est capable de se connecter à plusieurs démons <strong>supervisord</strong>  et permet de démarrer / arrêter des services. Il est possible de les faire fonctionner soit via une socket soit via TCP. Il est également possible de gérer une authentification lors de la connexion au démon.</p>
-<h1 id="utiliser-supervisor" class="anchor-title"><a href="#utiliser-supervisor">Utiliser supervisor</a></h1>
-<h2 id="ajouter-un-service-a-supervisor" class="anchor-title"><a href="#ajouter-un-service-a-supervisor">Ajouter un service à Supervisor</a></h2>
+<h2 id="utiliser-supervisor" class="anchor-title"><a href="#utiliser-supervisor">Utiliser supervisor</a></h2>
+<h3 id="ajouter-un-service-a-supervisor" class="anchor-title"><a href="#ajouter-un-service-a-supervisor">Ajouter un service à Supervisor</a></h3>
 <p>Pour ajouter un service à supervisor il suffit de le déclarer en ajoutant un fichier dans <code class="code-inline" id="35dd810a7ec81a0bcfadd24ef5eb125f">/etc/supervisor/conf.d</code>.</p>
 <p>Attention celui-ci doit se terminer par l'extension <code class="code-inline" id="a2b11a8323f2bacebd54851aea409219">.conf</code> pour être correctement pris en compte par le démon.</p>
-<pre class="code-multiline"><code id="f2217f03b1b5f1dba9b87ab670009370">[program:blogd]
-command=node node_modules/bin/blogd
+<pre class="code-multiline language-bash"><code class="language-bash" id="f2217f03b1b5f1dba9b87ab670009370"><span class="token punctuation">[</span>program:blogd<span class="token punctuation">]</span>
+<span class="token assign-left variable">command</span><span class="token operator">=</span>node node_modules/bin/blogd
 
-directory=/srv/my_project
+<span class="token assign-left variable">directory</span><span class="token operator">=</span>/srv/my_project
 
-autostart=true
-autorestart=true
-startretries=20
-numprocs=1
-stdout_logfile=/var/log/blogd.log
-redirect_stderr=true</code></pre>
+<span class="token assign-left variable">autostart</span><span class="token operator">=</span>true
+<span class="token assign-left variable">autorestart</span><span class="token operator">=</span>true
+<span class="token assign-left variable">startretries</span><span class="token operator">=</span><span class="token number">20</span>
+<span class="token assign-left variable">numprocs</span><span class="token operator">=</span><span class="token number">1</span>
+<span class="token assign-left variable">stdout_logfile</span><span class="token operator">=</span>/var/log/blogd.log
+<span class="token assign-left variable">redirect_stderr</span><span class="token operator">=</span>true</code></pre>
 <p>Après redémarrage de supervisor (<code class="code-inline" id="5da9f0106c3ef53be3458314b5d0c56d">/etc/init.d/supervisor restart</code>) nous pouvons ensuite vérifier le bon fonctionnement du/des service(s) via le client :</p>
-<pre class="code-multiline"><code id="534d42e3b4580903a065afd854ceab27">elao@bismuth:/etc/supervisor/conf.d|
+<pre class="code-multiline language-bash"><code class="language-bash" id="534d42e3b4580903a065afd854ceab27">elao@bismuth:/etc/supervisor/conf.d<span class="token operator">|</span>
 ⇒  supervisorctl
-mailcatcher                      RUNNING    pid 7840, uptime 2 days, 4:51:46
-phantomjs                        RUNNING    pid 7842, uptime 2 days, 4:51:46
-blogd                            RUNNING    pid 11929, uptime 0:02:41</code></pre>
-<h2 id="redemarrer-un-service" class="anchor-title"><a href="#redemarrer-un-service">Redémarrer un service</a></h2>
+mailcatcher                      RUNNING    pid <span class="token number">7840</span>, <span class="token function">uptime</span> <span class="token number">2</span> days, <span class="token number">4</span>:51:46
+phantomjs                        RUNNING    pid <span class="token number">7842</span>, <span class="token function">uptime</span> <span class="token number">2</span> days, <span class="token number">4</span>:51:46
+blogd                            RUNNING    pid <span class="token number">11929</span>, <span class="token function">uptime</span> <span class="token number">0</span>:02:41</code></pre>
+<h3 id="redemarrer-un-service" class="anchor-title"><a href="#redemarrer-un-service">Redémarrer un service</a></h3>
 <p>La syntaxe pour redémarrer un service est on ne peut plus simple.</p>
-<pre class="code-multiline"><code id="5d2352073b3e1618a3c7fdbfb1a7cc59">supervisor&gt; restart blogd
+<pre class="code-multiline language-bash"><code class="language-bash" id="5d2352073b3e1618a3c7fdbfb1a7cc59">supervisor<span class="token operator">&gt;</span> restart blogd
 blogd: stopped
 blogd: started</code></pre>
-<h2 id="parcourir-les-logs-depuis-le-client" class="anchor-title"><a href="#parcourir-les-logs-depuis-le-client">Parcourir les logs depuis le client</a></h2>
-<pre class="code-multiline"><code id="d042d12f0d27934aaf2cf404b5d380ef">supervisor&gt; tail -f blogd
-==&gt; Press Ctrl-C to exit &lt;==
-var/blog/content/posts/images/ =&gt; web/blog/medias
-[ASSETS] Copying folders succeed
+<h3 id="parcourir-les-logs-depuis-le-client" class="anchor-title"><a href="#parcourir-les-logs-depuis-le-client">Parcourir les logs depuis le client</a></h3>
+<pre class="code-multiline language-bash"><code class="language-bash" id="d042d12f0d27934aaf2cf404b5d380ef">supervisor<span class="token operator">&gt;</span> <span class="token function">tail</span> -f blogd
+<span class="token operator">==</span><span class="token operator">&gt;</span> Press Ctrl-C to <span class="token builtin class-name">exit</span> <span class="token operator">&lt;</span><span class="token operator">==</span>
+var/blog/content/posts/images/ <span class="token operator">=</span><span class="token operator">&gt;</span> web/blog/medias
+<span class="token punctuation">[</span>ASSETS<span class="token punctuation">]</span> Copying folders succeed
 Assets copied
-Listening on 127.0.0.1:5555
+Listening on <span class="token number">127.0</span>.0.1:5555
 Config: /srv/site/silex/package.json
-Backup file var/blog/current.json not found or unreadable
+Backup <span class="token function">file</span> var/blog/current.json not found or unreadable
 Loading fresh content
-Refreshing data from source
-Loading posts...
-Loading users...
-Loading tags...
-Checking data...
+Refreshing data from <span class="token builtin class-name">source</span>
+Loading posts<span class="token punctuation">..</span>.
+Loading users<span class="token punctuation">..</span>.
+Loading tags<span class="token punctuation">..</span>.
+Checking data<span class="token punctuation">..</span>.
 Data checked status success
 Copying assets
-[ASSETS] from var/blog/content/posts/images/ =&gt; web/blog/medias
-[ASSETS] Copying folders succeed
+<span class="token punctuation">[</span>ASSETS<span class="token punctuation">]</span> from var/blog/content/posts/images/ <span class="token operator">=</span><span class="token operator">&gt;</span> web/blog/medias
+<span class="token punctuation">[</span>ASSETS<span class="token punctuation">]</span> Copying folders succeed
 Assets copied
-Listening on 127.0.0.1:5555
-</code></pre>
-<h2 id="activer-l-interface-web" class="anchor-title"><a href="#activer-l-interface-web">Activer l'interface web</a></h2>
+Listening on <span class="token number">127.0</span>.0.1:5555</code></pre>
+<h3 id="activer-l-interface-web" class="anchor-title"><a href="#activer-l-interface-web">Activer l'interface web</a></h3>
 <p>Pour finir supervisor fournit également une interface web qui est activable via la section <code class="code-inline" id="9b27884b577f2c1581c4dddcdd09920e">[inet_http_server]</code> et qui permet de gérer les services de la même façon que le client en console.</p>
 <p class="text-center">
 ![Supervisor - Interface web supervisor](images/posts/2014/supervisor_web.png)
 </p>
 <p>Il suffit de créer un nouveau fichier dans <code class="code-inline" id="35dd810a7ec81a0bcfadd24ef5eb125f">/etc/supervisor/conf.d</code> s'appelant par exemple <code class="code-inline" id="9942e7a7112d0f92178c8b313160b9a9">inet_http_server.conf</code> et d'y recopier le contenu suivant :</p>
-<pre class="code-multiline"><code id="d81d62cf7611c17ecd48f05ac6f87e31">[inet_http_server]
-port      = :9001
-username  = elao
-password  = boumbo</code></pre>
+<pre class="code-multiline language-bash"><code class="language-bash" id="d81d62cf7611c17ecd48f05ac6f87e31"><span class="token punctuation">[</span>inet_http_server<span class="token punctuation">]</span>
+port      <span class="token operator">=</span> :9001
+username  <span class="token operator">=</span> elao
+password  <span class="token operator">=</span> boumbo</code></pre>
 <p>Si vous ne souhaitez pas d'authentification il suffit de supprimer les deux lignes correspondantes.</p>
 <p>Remarques, commentaires et corrections sont les bienvenus comme toujours, n'hésitez pas à proposer vos <a href="https://github.com/Elao/blog" target="_blank"><strong>PR</strong></a>.</p></body>
                                                 </main>

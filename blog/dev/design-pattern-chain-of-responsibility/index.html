@@ -227,7 +227,8 @@
 
             
             <body><blockquote>
-<p>"<em>Quelqu'un pourrait me passer le sel, s'il vous plaît ?</em>" (Martin Fowler, sept. 2015)</p>
+<p>"<em>Quelqu'un pourrait me passer le sel, s'il vous plaît ?</em>"
+<cite>Martin Fowler, sept. 2015</cite></p>
 </blockquote>
 <p>Aujourd'hui, nous allons nous amuser à enfiler des objets comme des perles grâce au Design Pattern <code class="code-inline" id="0e4c6982c4346789e10bcb3eb7ee3946">Chain of Responsibility</code>.</p>
 <!--more-->
@@ -247,10 +248,12 @@
 <li>la liste des objets susceptibles de traiter la requête devrait être construite dynamiquement</li>
 </ul>
 <h2 id="diagramme-du-design-pattern-chain-of-responsibility" class="anchor-title"><code class="code-inline" id="0e4c6982c4346789e10bcb3eb7ee3946">Chain of Responsibility</code><a href="#diagramme-du-design-pattern-chain-of-responsibility">Diagramme du Design pattern </a></h2>
-<p class="text-center">
-    {{}}
-    <figcaption style="text-align: center;font-style: italic;">Diagramme du Design Pattern 'Chain of Responsility'</figcaption>
-</p>
+<figure>
+    <img src="/elao_/images/posts/design-pattern/behavior-cor.gif" alt="Le Design Pattern 'Chain of Responsibility'" id="le-design-pattern-chain-of-responsibility">
+    <figcaption>
+      <span class="figure__legend">Diagramme du Design Pattern 'Chain of Responsility'</span>
+    </figcaption>
+</figure>
 <h2 id="participants" class="anchor-title"><a href="#participants">Participants</a></h2>
 <ul>
 <li>Le <strong>Handler</strong> :
@@ -311,7 +314,8 @@
 </ul>
 <h2 id="logique-de-construction-de-la-chaine" class="anchor-title"> Logique de construction de la chaîne<a href="#logique-de-construction-de-la-chaine"><a name="chain-construct"></a></a></h2>
 <blockquote>
-<p>"Tu aimeras ton prochain comme toi-même"</p>
+<p>"Tu aimeras ton prochain comme toi-même"
+<cite>Xavier R.</cite></p>
 </blockquote>
 <p>Nous allons faire évoluer notre classe concrète <code class="code-inline" id="8e2c370970792feb8dbf80c2d05cf8d6">ProductXmlExtractor</code> : au lieu d'implémenter l'interface <code class="code-inline" id="8a5dbb05e8dd7ae606674bfe535f9eb1">ProductExtractorInterface</code>, elle va en effet étendre une classe abstraite chargée notamment de construire la chaîne des <em>handlers</em> et d'exposer les méthodes métiers attendues par ses héritiers. Voici le code de cette classe abstraite <code class="code-inline" id="4af8481a07a24cb0483d87ccdcebe0e9">AbstractProductExtractor</code>, abondamment commentée pour expliquer le principe :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="91446c2eb19bd443dbac8684febda15f"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>

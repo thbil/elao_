@@ -218,13 +218,7 @@
                         <a href="/elao_/blog/tag/Javascript" rel="nofollow">#Javascript</a>
                     </li>
                                     <li class="article-tag-list__item">
-                        <a href="/elao_/blog/tag/Front" rel="nofollow">#Front</a>
-                    </li>
-                                    <li class="article-tag-list__item">
                         <a href="/elao_/blog/tag/Frontend" rel="nofollow">#Frontend</a>
-                    </li>
-                                    <li class="article-tag-list__item">
-                        <a href="/elao_/blog/tag/Framework" rel="nofollow">#Framework</a>
                     </li>
                                     <li class="article-tag-list__item">
                         <a href="/elao_/blog/tag/Symfony" rel="nofollow">#Symfony</a>
@@ -238,18 +232,18 @@
         <main class="article-content__main">
 
             
-            <body><p>Dans mon <a href="/fr/dev/pourquoi-devriez-vous-utiliser-vue-js-dans-vos-projets/">précédent article</a> je vous parlais des avantages de Vue.js et vous expliquais pourquoi vous devriez l'utiliser dans vos projets. Je disais que <strong>Vue.js</strong> était parfait pour ajouter des fonctionnalités frontend à <strong>Symfony</strong>, je vais vous détailler dans cet article comment l'intégrer au framework <strong>PHP</strong>.</p>
+            <body><p>Dans mon <a href="/dev/pourquoi-devriez-vous-utiliser-vue-js-dans-vos-projets/">précédent article</a> je vous parlais des avantages de Vue.js et vous expliquais pourquoi vous devriez l'utiliser dans vos projets. Je disais que <strong>Vue.js</strong> était parfait pour ajouter des fonctionnalités frontend à <strong>Symfony</strong>, je vais vous détailler dans cet article comment l'intégrer au framework <strong>PHP</strong>.</p>
 <h2 id="installation" class="anchor-title"><a href="#installation">Installation</a></h2>
-<p>Nous allons tout d'abbord installer <strong>Vue.js</strong> :</p>
-<pre class="code-multiline"><code id="6774c770534f1c94f14a0b2312bb3558">npm install vue vue-loader vue-template-compiler</code></pre>
+<p>Nous allons tout d'abord installer <strong>Vue.js</strong> :</p>
+<pre class="code-multiline language-bash"><code class="language-bash" id="6774c770534f1c94f14a0b2312bb3558"><span class="token function">npm</span> <span class="token function">install</span> vue vue-loader vue-template-compiler</code></pre>
 <p>ou</p>
-<pre class="code-multiline"><code id="e4955264a871009a5bcbc02bc85d09f9">yarn add vue vue-loader vue-template-compiler</code></pre>
+<pre class="code-multiline language-bash"><code class="language-bash" id="e4955264a871009a5bcbc02bc85d09f9"><span class="token function">yarn</span> <span class="token function">add</span> vue vue-loader vue-template-compiler</code></pre>
 <p>Puis <strong>Webpack Encore</strong> :</p>
-<pre class="code-multiline"><code id="36ff8084c85b00df19811fd393b07ed9">npm install @symfony/webpack-encore --save-dev
-composer require symfony/webpack-encore-bundle</code></pre>
+<pre class="code-multiline language-bash"><code class="language-bash" id="36ff8084c85b00df19811fd393b07ed9"><span class="token function">npm</span> <span class="token function">install</span> @symfony/webpack-encore --save-dev
+<span class="token function">composer</span> require symfony/webpack-encore-bundle</code></pre>
 <p>ou</p>
-<pre class="code-multiline"><code id="81fd96432bf1c2346366701ca9fda0ab">yarn add @symfony/webpack-encore --dev
-composer require symfony/webpack-encore-bundle</code></pre>
+<pre class="code-multiline language-bash"><code class="language-bash" id="81fd96432bf1c2346366701ca9fda0ab"><span class="token function">yarn</span> <span class="token function">add</span> @symfony/webpack-encore --dev
+<span class="token function">composer</span> require symfony/webpack-encore-bundle</code></pre>
 <p>Dans <code class="code-inline" id="11e9f7f953edc64ba14b0cc350ae7b9d">webpack.config.js</code>, activez le <em>vue loader</em> avec <code class="code-inline" id="e0608e83cd72a47eb8f9c1d4dccab0b2">enableVueLoader()</code> :</p>
 <pre class="code-multiline language-javascript"><code class="language-javascript" id="044f99e9ea7431df133830b455c3d718"><span class="token keyword">var</span> <span class="token maybe-class-name">Encore</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@symfony/webpack-encore'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -265,7 +259,7 @@ composer require symfony/webpack-encore-bundle</code></pre>
 
 module<span class="token punctuation">.</span><span class="token property-access">exports</span> <span class="token operator">=</span> webpackConfig<span class="token punctuation">;</span></code></pre>
 <p><strong>Webpack Encore</strong> est maintenant paré pour compiler vos composants <strong>Vue.js</strong>.</p>
-<pre class="code-multiline"><code id="fd3dad3e156d7f8ca10f7dd7b90c9f89">yarn encore dev --watch --watch-poll</code></pre>
+<pre class="code-multiline language-bash"><code class="language-bash" id="fd3dad3e156d7f8ca10f7dd7b90c9f89"><span class="token function">yarn</span> encore dev --watch --watch-poll</code></pre>
 <h2 id="integration" class="anchor-title"><a href="#integration">Integration</a></h2>
 <p>Vous avez alors plusieurs posibilités pour intégrer des composants <strong>Vue.js</strong> dans votre application <strong>Symfony</strong>. Vous pouvez <a href="#m%C3%A9langer-twig-et-vue-js">intégrer directement vos template Vue.js dans Twig</a> ou utiliser des <a href="#single-file-component">Single File Component</a>.</p>
 <h3 id="melanger-twig-et-vue-js" class="anchor-title"><a href="#melanger-twig-et-vue-js">Mélanger Twig et Vue.js</a></h3>

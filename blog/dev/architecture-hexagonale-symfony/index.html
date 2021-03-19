@@ -272,9 +272,12 @@
 <p>Le <strong>code technique</strong> c'est tout l'environnement nécessaire à votre application sans faire partie de son coeur métier. Tout ou partie de ce code peut être remplacé sans impacter votre métier. Cela comprend — entre autres — la persistance (base de données), le système de fichier, le cache, l'applicatif externe (API, binaires, ...), les bibliothèques et frameworks, etc.</p>
 <p>Le <strong>code métier</strong> c'est tout le code qui traduit le métier de votre client. Il s'agit des règles métier, de la logique métier, du code purement applicatif, ... Ce code est irremplaçable et constitue le coeur de votre application.</p>
 <h2 id="une-architecture-en-couches-ou-en-oignon" class="anchor-title"><a href="#une-architecture-en-couches-ou-en-oignon">Une architecture en couches (ou en oignon)</a></h2>
-<p class="text-center">
+<figure>
     <img src="/elao_/images/posts/2017/onionman.jpg" alt="Onion man" id="onion-man">
-</p>
+    <figcaption>
+      <span class="figure__legend">Onion man</span>
+    </figcaption>
+</figure>
 <p>Afin d'aller encore un peu plus loin dans le découplage de mon code et de me donner un cadre facilitant la séparation du code technique et du code métier, je me suis également inspiré de deux autres architectures proches dans l'idée :</p>
 <ul>
 <li><a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank">The Clean Architecture</a> de Uncle Bob</li>
@@ -289,10 +292,13 @@
 <li>Ui</li>
 </ul>
 <p>L'idée est que chaque couche peut utiliser une couche inférieure mais jamais une couche supérieure, ou en tout cas pas directement.</p>
-<p class="text-center">
+<figure>
     <img src="/elao_/images/posts/2017/clean-architecture.png" alt="Clean architecture" id="clean-architecture">
-</p>
-<p>Les seules moyens de traverser une couche supérieure sont les <strong>événements</strong>, les <strong>exceptions</strong> et les <strong>adapteurs</strong>.</p>
+    <figcaption>
+      <span class="figure__legend">Clean architecture</span>
+    </figcaption>
+</figure>
+<p>Les seuls moyens de traverser une couche supérieure sont les <strong>événements</strong>, les <strong>exceptions</strong> et les <strong>adapteurs</strong>.</p>
 <p>Les <strong>événements</strong> et les <strong>exceptions</strong> peuvent être lancés dans une couche inférieure et traités dans une couche supérieure. Quand au design pattern <strong>adapter</strong>, il permet de définir une interface du service dont vous avez besoin mais située dans une couche supérieure. L'adapteur correspondant sera implémenté dans ladite couche et l'injection de dépendances permettra d'assembler le tout en conservant le principe de séparation des couches.</p>
 <p>Cette séparation en couches n'est pas indispensable à l'architecture hexagonale mais offre un cadre strict permettant de bien séparer votre code applicatif de votre infrastructure ainsi que les différentes parties de votre code. Vous pouvez vous contenter de séparer Domain/Application (code métier) de Infrastructure/UI (code technique).</p>
 <h2 id="qu-est-ce-qu-on-met-dedans" class="anchor-title"><a href="#qu-est-ce-qu-on-met-dedans">Qu'est ce qu'on met dedans ?</a></h2>
@@ -337,9 +343,12 @@
 </li>
 </ol>
 <p>Au final, l'investissement de départ est un peu plus grand, quoiqu'avec l'habitude pas tant, mais est largement amorti sur la durée de vie du projet tant les évolutions et la testabilité sont simplifiées.</p>
-<p class="text-center">
+<figure>
     <img src="/elao_/images/posts/2017/good-work-chuck-norris.jpg" alt="Good work" id="good-work">
-</p>
+    <figcaption>
+      <span class="figure__legend">Good work</span>
+    </figcaption>
+</figure>
 <h1 id="et-symfony-dans-tout-ca" class="anchor-title"><a href="#et-symfony-dans-tout-ca">Et Symfony dans tout ça ?</a></h1>
 <p>Tout d'abord j'essaie de créer le moins possible de bundles, voire pas du tout. Cette fonctionnalité de Symfony n'est d'aucune utilité pour cette architecture, elle reste néanmoins indispensable sur certaines fonctions selon la version du framework.</p>
 <p>Symfony tend d'ailleurs vers le <em>no bundle</em> dans ses versions les plus récentes (3.3 sortie dernièrement et 4.0 à venir).</p>
