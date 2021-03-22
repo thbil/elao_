@@ -266,8 +266,8 @@
 <p>Vous pouvez ajouter dans votre mapping des <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-boost.html" target="_blank">boost</a> sur certaines propriétés afin de privilégier automatiquement ces propriétés lors du calcul de pertinence.</p>
 <div class="tabs">
 <div class="nav">
-<a href="#mapping-boost-json" class="active">json</a>
-<a href="#mapping-boost-yaml">yaml</a>
+<a href="/elao_/#mapping-boost-json" class="active">json</a>
+<a href="/elao_/#mapping-boost-yaml">yaml</a>
 </div>
 <div class="tab active" id="mapping-boost-json">
 <pre class="language-json"><code class="language-json" id="aadb47214e407b79fba4d287cf8f310c"><span class="token punctuation">{</span>
@@ -309,8 +309,8 @@
 <p>Les scores des résultats seront bien évidemment impactés par ces options.</p>
 <div class="tabs">
 <div class="nav">
-<a href="#query-analyzer-json" class="active">json</a>
-<a href="#query-analyzer-php">php</a>
+<a href="/elao_/#query-analyzer-json" class="active">json</a>
+<a href="/elao_/#query-analyzer-php">php</a>
 </div>
 <div class="tab active" id="query-analyzer-json">
 <pre class="language-json"><code class="language-json" id="7f0e38e3693bc85dc2c928b22a4342e2"><span class="token punctuation">{</span>
@@ -343,8 +343,8 @@
 <p>Dans l'exemple suivant, nous faisons une recherche de la chaine <code class="code-inline" id="89d5739baabbbe65be35cbe61c88e06d">Foobar</code> sur un document ayant un titre et un contenu. Grâce aux <code class="code-inline" id="99d6df7b870935548ca9349c37ad45b7">boost</code> nous pouvons donner plus d'importance aux titres qu'aux contenus.</p>
 <div class="tabs">
 <div class="nav">
-<a href="#boost-json" class="active">json</a>
-<a href="#boost-php">php</a>
+<a href="/elao_/#boost-json" class="active">json</a>
+<a href="/elao_/#boost-php">php</a>
 </div>
 <div class="tab active" id="boost-json">
 <pre class="language-json"><code class="language-json" id="04672654d7a530987ea45a2db68fec22"><span class="token punctuation">{</span>
@@ -377,8 +377,8 @@
 <p>Vous pouvez également utiliser plusieurs <code class="code-inline" id="99d6df7b870935548ca9349c37ad45b7">boost</code> sur la même propriété mais avec plusieurs valeurs afin d'augmenter le score par palier.</p>
 <div class="tabs">
 <div class="nav">
-<a href="#boost-step-json" class="active">json</a>
-<a href="#boost-step-php">php</a>
+<a href="/elao_/#boost-step-json" class="active">json</a>
+<a href="/elao_/#boost-step-php">php</a>
 </div>
 <div class="tab active" id="boost-step-json">
 <pre class="language-json"><code class="language-json" id="7068156bb700a0e649151a25cbae1d31"><span class="token punctuation">{</span>
@@ -431,8 +431,8 @@
 <p>Les scripts de score (<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html#function-script-score" target="_blank"><code class="code-inline" id="c0d970d59d173f0eb4e832a989fe82b2">script_score</code></a>) vous permettent de modifier le score de vos résultats à partir d'un script ou d'une formule de votre choix. Vous avez accès au document dont vous modifiez le score et pouvez donc utiliser l'une de ses propriétés dans le calcul. <code class="code-inline" id="94051e850d51ff2bd7aca7151d3561f8">_score</code> est une variable qui contient le score original.</p>
 <div class="tabs">
 <div class="nav">
-<a href="#script-functions-json" class="active">json</a>
-<a href="#script-functions-php">php</a>
+<a href="/elao_/#script-functions-json" class="active">json</a>
+<a href="/elao_/#script-functions-php">php</a>
 </div>
 <div class="tab active" id="script-functions-json">
 <pre class="language-json"><code class="language-json" id="04b0726dbd3bccfed810fdde6261296f"><span class="token punctuation">{</span>
@@ -459,8 +459,8 @@
 <p>Cette fonction de score (<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html#function-field-value-factor" target="_blank"><code class="code-inline" id="fb6f378b0f8be7fac90fa554969399d0">field_value_factor</code></a>) vous permet d'appliquer un facteur de multiplication (<code class="code-inline" id="742f32c65ffd18b766fa307f8de2d47d">factor</code>), une valeur par defaut (<code class="code-inline" id="ea21841da70e6405af19fabc4ff8bdd9">missing</code>) ainsi qu'une fonction mathématique (<code class="code-inline" id="3ad7320fa61b1cfad6b5a97fcb565315">modifier</code>) à une propriété de votre document. Plusieurs fonctions mathématiques sont disponibles (<code class="code-inline" id="dc1d71bbb5c4d2a5e936db79ef10c19f">log</code>, <code class="code-inline" id="dd1de98e8b0e34d5cf5396e83036f4d5">sqrt</code>, <code class="code-inline" id="f8e19f449f17c9d37dcc93dd244ec3bb">ln</code>, ...).</p>
 <div class="tabs">
 <div class="nav">
-<a href="#factor-functions-json" class="active">json</a>
-<a href="#factor-functions-php">php</a>
+<a href="/elao_/#factor-functions-json" class="active">json</a>
+<a href="/elao_/#factor-functions-php">php</a>
 </div>
 <div class="tab active" id="factor-functions-json">
 <pre class="language-json"><code class="language-json" id="ecf5aaa9d25f8c3fe8b012140419ef47"><span class="token punctuation">{</span>
@@ -490,8 +490,8 @@
 <p>Les fonctions de décroissance (<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html#function-decay" target="_blank"><code class="code-inline" id="18e62ab37e43c39ac5759a0c39b2baf6">decay function</code></a>) sont une autre méthode pour modifier le score de vos résultats. Elles se basent sur des fonctions mathématiques pour réduire le score de vos résultats.</p>
 <div class="tabs">
 <div class="nav">
-<a href="#decay-functions-json" class="active">json</a>
-<a href="#decay-functions-php">php</a>
+<a href="/elao_/#decay-functions-json" class="active">json</a>
+<a href="/elao_/#decay-functions-php">php</a>
 </div>
 <div class="tab active" id="decay-functions-json">
 <pre class="language-json"><code class="language-json" id="29bd04b7a69de43077b3fe8e180d0539"><span class="token punctuation">{</span>

@@ -308,11 +308,11 @@
 <p>Noter que pour l'heure, <code class="code-inline" id="8e2c370970792feb8dbf80c2d05cf8d6">ProductXmlExtractor</code> (tout comme les deux autres <em>extractors</em>) implémente une interface <code class="code-inline" id="8a5dbb05e8dd7ae606674bfe535f9eb1">ProductExtractorInterface</code> qui expose simplement une méthode <code class="code-inline" id="79ee7205c96c30ec2f60b3eab7ee8af4">extractProducts</code>. J'utilise également pour les valeurs de retour une classe <code class="code-inline" id="797dcf4ee098d79bad677ebcc403cfca">ProductDto</code> (c'est un bête conteneur de données, pardonnez-moi le pléonasme).</p>
 <p>Voici à présent ce que nous allons faire :</p>
 <ul>
-<li><a href="#chain-construct">construire la chaîne dans une classe abstraite dédiée</a></li>
-<li><a href="#concrete-handlers">mettre à jour les <em>handlers</em> concrets</a></li>
-<li><a href="#chain-usage">instancier la chaîne et la consommer</a></li>
+<li><a href="/elao_/#chain-construct">construire la chaîne dans une classe abstraite dédiée</a></li>
+<li><a href="/elao_/#concrete-handlers">mettre à jour les <em>handlers</em> concrets</a></li>
+<li><a href="/elao_/#chain-usage">instancier la chaîne et la consommer</a></li>
 </ul>
-<h2 id="logique-de-construction-de-la-chaine" class="anchor-title"> Logique de construction de la chaîne<a href="#logique-de-construction-de-la-chaine"><a name="chain-construct"></a></a></h2>
+<h2 id="logique-de-construction-de-la-chaine" class="anchor-title"> Logique de construction de la chaîne<a href="#logique-de-construction-de-la-chaine"><a name="chain-construct" href=""></a></a></h2>
 <blockquote>
 <p>"Tu aimeras ton prochain comme toi-même"
 <cite>Xavier R.</cite></p>
@@ -418,7 +418,7 @@
 <p>En résumé, la construction de la chaîne consiste à introduire dans chaque <em>extractor</em> concret une propriété <strong><code class="code-inline" id="6158aab25cad464faed56f676d36648b">$nextHandler</code></strong> de type <code class="code-inline" id="4af8481a07a24cb0483d87ccdcebe0e9">AbstractProductExtractor</code>.</p>
 <p>Le dernier maillon de la chaîne est celui dont sa propriété <code class="code-inline" id="6158aab25cad464faed56f676d36648b">$nextHandler</code> est à <em>null</em>. Les méthodes de construction et de gestion de la chaîne étant communes à tous les <em>extractors</em> concrets, elles sont factorisées dans notre classe abstraite.</p>
 <p>Enfin, c'est la méthode <code class="code-inline" id="434990c8a25d2be94863561ae98bd682">support</code>, qui retourne un booléen, qui permet de déterminer si un <em>handler</em> concret sait traiter une requête ou s'il doit la passer à son successeur.</p>
-<h2 id="mise-a-jour-des-handlers-concrets" class="anchor-title"> Mise à jour des <em>handlers</em> concrets<a href="#mise-a-jour-des-handlers-concrets"><a name="concrete-handlers"></a></a></h2>
+<h2 id="mise-a-jour-des-handlers-concrets" class="anchor-title"> Mise à jour des <em>handlers</em> concrets<a href="#mise-a-jour-des-handlers-concrets"><a name="concrete-handlers" href=""></a></a></h2>
 <p>La classe abstraite <code class="code-inline" id="4af8481a07a24cb0483d87ccdcebe0e9">AbstractProductExtractor</code> se chargeant de gérer la chaîne, les <em>handlers</em> concrets vont continuer à faire ce qu'ils savent faire le mieux, à savoir extraire des données à partir d'un fichier source.</p>
 <p>Voici les modifications à apporter à notre extracteur <code class="code-inline" id="8e2c370970792feb8dbf80c2d05cf8d6">ProductXmlExtractor</code> :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="a04e5fc17600752c6cc5f0c822d4cbc5"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
@@ -440,7 +440,7 @@
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span></span></code></pre>
 <p>Désormais, la classe <code class="code-inline" id="8e2c370970792feb8dbf80c2d05cf8d6">ProductXmlExtractor</code> étend la classe abstraite <code class="code-inline" id="4af8481a07a24cb0483d87ccdcebe0e9">AbstractProductExtractor</code> et implémente donc les deux méthodes attendues (<code class="code-inline" id="434990c8a25d2be94863561ae98bd682">support</code> et <code class="code-inline" id="6beb07d951865e6624d655b75ee8659a">parseContent</code>).</p>
-<h2 id="instancions-et-utilisons-notre-chaine" class="anchor-title"> Instancions et utilisons notre chaîne<a href="#instancions-et-utilisons-notre-chaine"><a name="chain-usage"></a></a></h2>
+<h2 id="instancions-et-utilisons-notre-chaine" class="anchor-title"> Instancions et utilisons notre chaîne<a href="#instancions-et-utilisons-notre-chaine"><a name="chain-usage" href=""></a></a></h2>
 <p>Enfin (et ce n'est pas trop tôt, me direz-vous), voici le code qui permet d'instancier et consommer notre chaîne de <em>handlers</em> :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="16da020d8e887bc6863c76b232c72287"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
     <span class="token comment">// Firstly, build the chain of handlers:</span>
