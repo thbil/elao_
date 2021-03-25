@@ -279,8 +279,7 @@
 <li>Toutes les données collectées sont stockées sur votre serveur et sont soumises à votre contrôle. Ainsi, <strong>les informations de suivi de chaque visiteur ne sont pas partagées avec des tiers</strong> contrairement à Google Analytics;</li>
 <li>Matomo peut être utilisé pour tous vos sites web, extranet et intranet.</li>
 </ul>
-<img src="/elao_/pr/177/resized/images/posts/2019/matomo/logo-matomo.jpg/87f328860e38884e52dac6845e249a5d" alt="Matomo" title="Matomo" srcset="/elao_/pr/177/resized/images/posts/2019/matomo/logo-matomo.jpg/87f328860e38884e52dac6845e249a5d 1x,
-/elao_/pr/177/resized/images/posts/2019/matomo/logo-matomo.jpg/db412253a303799927180b8f9e954373 2x," id="matomo">
+<img src="/elao_/pr/177/images/posts/2019/matomo/logo-matomo.jpg" alt="Matomo" title="Matomo" id="matomo">
 <h2 id="de-quoi-aurez-vous-besoin-pour-installer-matomo" class="anchor-title"><a href="#de-quoi-aurez-vous-besoin-pour-installer-matomo">De quoi aurez-vous besoin pour installer Matomo ?</a></h2>
 <p>Il est possible d'installer un serveur spécialement pour Matomo et d'y configurer plusieurs sites, de la même façon que fonctionne le multi-compte de Google Analytics.</p>
 <p>Les minima requis pour installer Matomo sont :</p>
@@ -298,8 +297,7 @@
 <li>solution <a href="&lt;https://matomo.org/pricing/&gt;">hébergée par matomo</a>.</li>
 </ul>
 <p>Matomo indique quelques conseils pour <a href="https://matomo.org/docs/optimize/" target="_blank">optimiser son infrastructure</a> pour les sites à très fort trafic / volumétrie. Bref, cette solution semble s'appliquer à toutes sortes de besoins.</p>
-<img src="/elao_/pr/177/resized/images/posts/2019/matomo/install-matomo.png/403b0f578bb6cfdf815b84a5562d2107" alt="Installation de Matomo" title="Installation de Matomo" srcset="/elao_/pr/177/resized/images/posts/2019/matomo/install-matomo.png/403b0f578bb6cfdf815b84a5562d2107 1x,
-/elao_/pr/177/resized/images/posts/2019/matomo/install-matomo.png/d66c13688a0534960000cacf5a309285 2x," id="installation-de-matomo">
+<img src="/elao_/pr/177/images/posts/2019/matomo/install-matomo.png" alt="Installation de Matomo" title="Installation de Matomo" id="installation-de-matomo">
 <h2 id="comment-l-utiliser-sur-vos-sites-web" class="anchor-title"><a href="#comment-l-utiliser-sur-vos-sites-web">Comment l'utiliser sur vos sites web ?</a></h2>
 <p><strong>Matomo fonctionne grâce à un marqueur JavaScript à insérer dans le header de votre site web</strong>. Celui-ci vous est communiqué au moment de la création d'un compte pour un nouveau site. Tout comme le marqueur de Google Analytics, celui-ci est à insérer avant la fermeture de la balise <code class="code-inline" id="0efa13d18e21e1c280569064dccd2d9f">&lt;/head&gt;</code>.</p>
 <h2 id="conformite-avec-la-rgpd" class="anchor-title"><a href="#conformite-avec-la-rgpd">Conformité avec la RGPD</a></h2>
@@ -311,7 +309,8 @@
 <li><strong>Les données de fréquentation brutes associant un identifiant</strong> ne doivent pas non plus être conservées plus de 13 mois.</li>
 <li><strong>Mettre en place une solution d'Opt-out</strong> pour permettre aux utilisateurs de s’opposer au dépôt de cookies. Pour cela il suffit d’insérer par exemple dans une page "Politique de confidentialité", l'iframe qui est fournie dans les paramètres Vie privée / Désinscription des utilisateurs.</li>
 </ul>
-<img src="https://media.giphy.com/media/wO9EzKpgf3pao/giphy.gif" id="giphy-gif">
+<img src="https://media.giphy.com/media/wO9EzKpgf3pao/giphy.gif" srcset="https://media.giphy.com/media/wO9EzKpgf3pao/giphy.gif 1x,
+https://media.giphy.com/media/wO9EzKpgf3pao/giphy.gif 2x," id="giphy-gif">
 <p>L'interface de Matomo permet de facilement configurer ces choix, puisqu'un menu est dédié à la vie privée, mêlant à la fois documentation et réglages. A noter que ces réglages se font au niveau de l'instance, donc <strong>ces choix s'appliqueront sur tous les sites configurés</strong>. Il n'est pour l'instant pas possible de les régler site par site.</p>
 <p>Les réglages possibles concernent :</p>
 <ul>
@@ -328,8 +327,7 @@
 <p>⚠️ : le <a href="https://www.cnil.fr/sites/default/files/typo/document/Configuration_piwik.pdf" target="_blank">guide de conformité de Piwik (ancien nom de Matomo) proposé par la CNIL</a> ne semble plus à jour, puisqu'il pointe une modification du tag de tracking permettant d'indiquer une durée de timeout du cookie à 13 mois, alors que cette durée est désormais paramétrée par défaut, comme nous l'indique la <a href="https://developer.matomo.org/api-reference/tracking-javascript" target="_blank">documentation de Matomo</a> (voir au paragraphe "Configuration of Tracking Cookies", pour la méthode <code class="code-inline" id="cd0c628d9b501b5fa5fb43434dde3320">setVisitorCookieTimeout</code>.</p>
 <h2 id="les-fonctionnalites-proposees-par-matomo-vs-google-analytics" class="anchor-title"><a href="#les-fonctionnalites-proposees-par-matomo-vs-google-analytics">Les fonctionnalités proposées par Matomo vs Google Analytics</a></h2>
 <p>Pour les habitués de Google Analytics, le passage à une nouvelle ergonomie n'est pas évidente. En comparant deux périodes sur l'année, nous avons déjà pu nous assurer qu'aucun visiteur n'est laissé au bord de la route : les données semblent cohérentes.</p>
-<img src="/elao_/pr/177/resized/images/posts/2019/matomo/Evolution-trafic-matomo.png/740701fceafc9735f4ab5446540f3282" alt="Evolution de traffic" title="Evolution de traffic" srcset="/elao_/pr/177/resized/images/posts/2019/matomo/Evolution-trafic-matomo.png/740701fceafc9735f4ab5446540f3282 1x,
-/elao_/pr/177/resized/images/posts/2019/matomo/Evolution-trafic-matomo.png/7af7168aa81dff2c0d2bea99019ebad1 2x," id="evolution-de-traffic">
+<img src="/elao_/pr/177/images/posts/2019/matomo/Evolution-trafic-matomo.png" alt="Evolution de traffic" title="Evolution de traffic" id="evolution-de-traffic">
 <p>On retrouve les fondamentaux :</p>
 <ul>
 <li><strong>Données relatives à l'audience,</strong> c'est à dire toutes les infos qui concernent les visiteurs (provenances géographiques, logiciels utilisés);</li>
@@ -338,8 +336,7 @@
 <li><strong>Les informations concernant le comportement des visiteurs</strong> : les pages d'entrées, de sorties, etc.</li>
 <li><strong>La mise en place d'objectifs</strong> et les informations qui en résultent.</li>
 </ul>
-<img src="/elao_/pr/177/resized/images/posts/2019/matomo/canaux-matomo.png/1fe76528aaaa703b859d1b74b49cddc8" alt="Canaux d'acquisition" title="Canaux d'acquisition" srcset="/elao_/pr/177/resized/images/posts/2019/matomo/canaux-matomo.png/1fe76528aaaa703b859d1b74b49cddc8 1x,
-/elao_/pr/177/resized/images/posts/2019/matomo/canaux-matomo.png/8516d494840a251ba78c02ee35a40981 2x," id="canaux-d-acquisition">
+<img src="/elao_/pr/177/images/posts/2019/matomo/canaux-matomo.png" alt="Canaux d'acquisition" title="Canaux d'acquisition" id="canaux-d-acquisition">
 <p>On peut noter quelques fonctionnalités remarquables de Matomo  :</p>
 <ul>
 <li><strong>Matomo permet un accès facilité aux différents logs</strong> : par exemple, on peut accéder via l'interface à la liste des visites avec toutes les informations collectées (localisation, OS, action...);</li>
@@ -354,8 +351,7 @@
 <ul>
 <li>Matomo propose depuis peu un <a href="https://matomo.org/docs/tag-manager/" target="_blank">Tag Manager</a>, qui permet de mettre en place un plan de marquage, d'ajouter des scripts de tracking ou encore des liens d'affiliation, par exemple, depuis la même interface.</li>
 </ul>
-<img src="/elao_/pr/177/resized/images/posts/2019/matomo/features-analytics.png/49cb951c073882c1351bb38992e02d28" alt="Fonctionnalités de Matomo" title="Fonctionnalités de Matomo" srcset="/elao_/pr/177/resized/images/posts/2019/matomo/features-analytics.png/49cb951c073882c1351bb38992e02d28 1x,
-/elao_/pr/177/resized/images/posts/2019/matomo/features-analytics.png/8c1e460483951cb2ac4553b1a189aade 2x," id="fonctionnalites-de-matomo">
+<img src="/elao_/pr/177/images/posts/2019/matomo/features-analytics.png" alt="Fonctionnalités de Matomo" title="Fonctionnalités de Matomo" id="fonctionnalites-de-matomo">
 <h2 id="fonctionnalites-payantes" class="anchor-title"><a href="#fonctionnalites-payantes">Fonctionnalités payantes</a></h2>
 <p>Utiliser les outils Google habitue à la "gratuité", mais n'oublions pas que Google tire profit des données qu'il stocke pour nous, relatives à la fréquentation de nos sites. Matomo se rémunère grâce aux dons et aux fonctionnalités vendues à ses utilisateurs.</p>
 <p><a href="&lt;https://matomo.org/docs/ecommerce-analytics/&gt;">Des fonctionnalités supplémentaires pour les sites e-commerce</a>, que nous n'avons pas eu l'occasion de tester pour l'instant, existent et proposent des features telles que l'analyse du panier, des produits cliqués, etc.);</p>
