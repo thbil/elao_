@@ -189,7 +189,23 @@
     </ol>
 
     <div class="article-banner">
-        <div class="article-banner__cover" style="background: #f1f1f1 url(/elao_/images/posts/thumbnails/tdd.jpg)"></div>
+        <div class="article-banner__cover" style="background: #f1f1f1 url('/elao_/resized/images/posts/thumbnails/tdd.jpg/01241d538db4ae5fe99c7b99421f8271');
+    background: #f1f1f1 -webkit-image-set(
+        url('/elao_/resized/images/posts/thumbnails/tdd.jpg/01241d538db4ae5fe99c7b99421f8271') 1x,
+        url('/elao_/resized/images/posts/thumbnails/tdd.jpg/e04bbde8def82d8e2a899f6804074326') 2x
+    );
+    background: #f1f1f1 -moz-image-set(
+        url('/elao_/resized/images/posts/thumbnails/tdd.jpg/01241d538db4ae5fe99c7b99421f8271') 1x,
+        url('/elao_/resized/images/posts/thumbnails/tdd.jpg/e04bbde8def82d8e2a899f6804074326') 2x
+    );
+    background: #f1f1f1 -ms-image-set(
+        url('/elao_/resized/images/posts/thumbnails/tdd.jpg/01241d538db4ae5fe99c7b99421f8271') 1x,
+        url('/elao_/resized/images/posts/thumbnails/tdd.jpg/e04bbde8def82d8e2a899f6804074326') 2x
+    );
+    background: #f1f1f1 image-set(
+        url('/elao_/resized/images/posts/thumbnails/tdd.jpg/01241d538db4ae5fe99c7b99421f8271') 1x,
+        url('/elao_/resized/images/posts/thumbnails/tdd.jpg/e04bbde8def82d8e2a899f6804074326') 2x
+    );"></div>
 
         <div class="article-info">
                                         <div class="article-author ">
@@ -203,7 +219,7 @@
                 </div>
                         <div class="article-info__date">
                 <span>Publication <strong>30 octobre 2018</strong></span>
-                <span>Modification <strong>25 mars 2021</strong></span>
+                <span>Modification <strong>26 mars 2021</strong></span>
             </div>
         </div>
 
@@ -280,7 +296,8 @@ L'ambition de cet article est d'essayer de créer ce déclic.</p>
 <li>poser une première implémentation puis optimiser ou/et refactoriser et à chaque fois la valider grâce aux tests,</li>
 <li>gain de temps en validant l'implémentation via la console sans passer par les tests dans le navigateur.</li>
 </ul>
-<img src="https://media.giphy.com/media/iKbUlFbs77oI0/giphy.gif" id="giphy-gif">
+<img src="https://media.giphy.com/media/iKbUlFbs77oI0/giphy.gif" srcset="https://media.giphy.com/media/iKbUlFbs77oI0/giphy.gif 1x,
+https://media.giphy.com/media/iKbUlFbs77oI0/giphy.gif 2x," id="giphy-gif">
 <h2 id="outillage" class="anchor-title"><a href="#outillage">Outillage</a></h2>
 <p>Installons le framework de test PHPUnit :</p>
 <pre class="code-multiline language-bash"><code class="language-bash" id="e292e56a981e7c5f29b48b89e328df80">$ <span class="token function">composer</span> require --dev phpunit/phpunit ^7</code></pre>
@@ -579,7 +596,8 @@ ne fasse plus échouer les tests dans quelques jours !</p>
 <p>Super !</p>
 <p>Vous trouverez le code de cet exemple ici : <a href="https://github.com/supertanuki/TDD-en-PHP" target="_blank">https://github.com/supertanuki/TDD-en-PHP</a></p>
 <h2 id="conclusion" class="anchor-title"><a href="#conclusion">Conclusion</a></h2>
-<img src="https://media.giphy.com/media/ds9RZ7gATF0wo/giphy.gif" id="giphy-gif">
+<img src="https://media.giphy.com/media/ds9RZ7gATF0wo/giphy.gif" srcset="https://media.giphy.com/media/ds9RZ7gATF0wo/giphy.gif 1x,
+https://media.giphy.com/media/ds9RZ7gATF0wo/giphy.gif 2x," id="giphy-gif">
 <p>J'espère que cet exemple vous aura convaincu des avantages du <em>Test Driven Development</em>.
 Pour finir, un dernier conseil pour mettre le pied à l'étrier : sur votre projet en cours,
 dès que vous devez faire un service qui fait quelque chose

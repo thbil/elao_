@@ -189,7 +189,23 @@
     </ol>
 
     <div class="article-banner">
-        <div class="article-banner__cover" style="background: #f1f1f1 url(https://images.unsplash.com/photo-1533142266415-ac591a4deae9?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60)"></div>
+        <div class="article-banner__cover" style="background: #f1f1f1 url('https://images.unsplash.com/photo-1533142266415-ac591a4deae9?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60');
+    background: #f1f1f1 -webkit-image-set(
+        url('https://images.unsplash.com/photo-1533142266415-ac591a4deae9?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60') 1x,
+        url('https://images.unsplash.com/photo-1533142266415-ac591a4deae9?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60') 2x
+    );
+    background: #f1f1f1 -moz-image-set(
+        url('https://images.unsplash.com/photo-1533142266415-ac591a4deae9?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60') 1x,
+        url('https://images.unsplash.com/photo-1533142266415-ac591a4deae9?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60') 2x
+    );
+    background: #f1f1f1 -ms-image-set(
+        url('https://images.unsplash.com/photo-1533142266415-ac591a4deae9?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60') 1x,
+        url('https://images.unsplash.com/photo-1533142266415-ac591a4deae9?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60') 2x
+    );
+    background: #f1f1f1 image-set(
+        url('https://images.unsplash.com/photo-1533142266415-ac591a4deae9?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60') 1x,
+        url('https://images.unsplash.com/photo-1533142266415-ac591a4deae9?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60') 2x
+    );"></div>
 
         <div class="article-info">
                                         <div class="article-author article-author--multi">
@@ -205,7 +221,7 @@
                 </div>
                         <div class="article-info__date">
                 <span>Publication <strong>23 septembre 2020</strong></span>
-                <span>Modification <strong>25 mars 2021</strong></span>
+                <span>Modification <strong>26 mars 2021</strong></span>
             </div>
         </div>
 
@@ -287,7 +303,8 @@
 <h2 id="les-images" class="anchor-title"><a href="#les-images">Les images</a></h2>
 <p>Une image (qui a du sens, ça n'inclut pas les gifs rigolos) a toujours une légende, et si possible on crédite son auteur·ice.</p>
 <figure>
-    <img src="https://images.unsplash.com/photo-1530023868717-cdb5554aea96?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=788&amp;q=80" alt="vivamus bibendum" id="vivamus-bibendum">
+    <img src="https://images.unsplash.com/photo-1530023868717-cdb5554aea96?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=788&amp;q=80" alt="vivamus bibendum" srcset="https://images.unsplash.com/photo-1530023868717-cdb5554aea96?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=788&amp;q=80 1x,
+https://images.unsplash.com/photo-1530023868717-cdb5554aea96?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=788&amp;q=80 2x," id="vivamus-bibendum">
     <figcaption>
       <span class="figure__legend">David sous l'eau 🐬</span>
       <span class="figure__credits">Crédit photo : <a href="https://unsplash.com/@jbsinger1970" target="_blank">Jonathan Singer</a></span>
