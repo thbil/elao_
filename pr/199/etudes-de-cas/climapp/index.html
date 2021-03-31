@@ -291,7 +291,7 @@
         <div class="page-project__content">
             <body><h2 id="le-contexte-du-projet" class="anchor-title"><a href="#le-contexte-du-projet">Le contexte du projet</a></h2>
 <p><strong>Climalife est un leader européen des fluides frigorifiques pour la
-réfrigération et la climatisation</strong> et fournissent une gamme de produits étant
+réfrigération et la climatisation</strong> et fourni une gamme de produits
 amenés à être manipulés par des professionnels. Le suivi des déchets dangereux
 en résultant
 étant <a href="https://www.service-public.fr/professionnels-entreprises/vosdroits/R43122" target="_blank">encadré</a>
@@ -299,39 +299,45 @@ par la génération de documents spécifiques, les techniciens sur site sont en
 charge de remplir au fur et à mesure de leurs interventions toutes les infos
 nécessaires.</p>
 <p>C'est dans ce contexte que Climalife a souhaité proposer une application mobile
-permettant de faciliter la récolte des données et la génération des documents
-réglementaires, tout en assurant la traçabilité de leurs produits.</p>
+permettant de faciliter la saisie des données par les techniciens et automatiser
+la génération des documents réglementaires, tout en assurant la traçabilité de
+leurs produits.</p>
 <h2 id="l-expertise-elao-deployee-pour-l-application-clim-app" class="anchor-title"><a href="#l-expertise-elao-deployee-pour-l-application-clim-app">L'expertise Elao déployée pour l'application Clim'app</a></h2>
 <h3 id="ateliers-de-recueil-du-besoin" class="anchor-title"><a href="#ateliers-de-recueil-du-besoin">Ateliers de recueil du besoin</a></h3>
 <p>L'équipe Elao s'est déplacée sur site afin de comprendre la façon dont
 travaillent les techniciens et proposer une solution pertinente quant à leurs
 besoins. Jusqu'alors, tout était saisi manuellement sur les documents
 réglementaires, ne facilitant pas le travail des techniciens.</p>
-<p>Suite à nos observations ainsi qu'à partir d'ateliers avec Climalife, nous avons
+<p>Suite à nos observations et plusieurs ateliers avec Climalife, nous avons
 été en mesure de proposer <strong>une ergonomie adaptée à la récolte des informations
-tout en accompagnant le technicien durant son intervention</strong>.</p>
+tout en accompagnant le technicien durant son intervention</strong> de manière à lui
+simplifier la tâche.</p>
 <h3 id="phase-de-build-developpement" class="anchor-title"><a href="#phase-de-build-developpement">Phase de build (développement)</a></h3>
 <p>Thomas, Maxime, Arnaud et Christophe ont mené la phase de développement en
 <strong>récoltant besoins et spécifications fonctionnelles</strong> au cours de nombreux
 ateliers avec Climalife.<br>
-Donnant lieux à <strong>plusieurs cycles de développement et livraisons itératives</strong>
+Donnant lieu à <strong>plusieurs cycles de développement et livraisons itératives</strong>
 ils ont pu assurer régulièrement que le fonctionnel était en accord avec le
-besoin exprimé grâce à la <strong>recette fonctionnelle</strong>.</p>
+besoin exprimé grâce à la <strong>recette et validation fonctionnelle</strong> par Climalife.</p>
 <h3 id="phase-de-run-evolutions-fonctionnelles-et-maintenance-applicative" class="anchor-title"><a href="#phase-de-run-evolutions-fonctionnelles-et-maintenance-applicative">Phase de run (évolutions fonctionnelles et maintenance applicative)</a></h3>
 <p>Depuis la mise en production de Clim'app, Cliamlife fait appel à Elao de façon
-régulière pour faire évoluer son produit en fonction des besoins remontés par
+récurrente pour faire évoluer son produit en fonction des besoins remontés par
 ses clients.</p>
+<p>L'application s'est ouverte à l'international et gère de nouveaux types de documents,
+propres aux réglementations en vigueur dans chaque pays.</p>
 <h2 id="les-applications" class="anchor-title"><a href="#les-applications">Les applications</a></h2>
-<h3 id="pour-les-techniciens-sur-site-une-application-fluide-une-saisie-simplifiee" class="anchor-title"><a href="#pour-les-techniciens-sur-site-une-application-fluide-une-saisie-simplifiee">Pour les techniciens sur site : une application fluide &amp; une saisie simplifiée</a></h3>
-<p>Clim'app avait besoin de faciliter la saisie des données d'interventions par les
+<h3 id="pour-les-techniciens-sur-site-une-application-fluide-et-une-saisie-simplifiee" class="anchor-title"><a href="#pour-les-techniciens-sur-site-une-application-fluide-et-une-saisie-simplifiee">Pour les techniciens sur site : une application fluide et une saisie simplifiée</a></h3>
+<p>Clim'app souhaite faciliter la saisie des données d'interventions par les
 techniciens sur les installations avec manipulation de fluides frigorigènes,
-dans le but de pouvoir générer automatiquement les documents</p>
+dans le but de pouvoir générer automatiquement les documents règlementaires.</p>
 <p><strong>Les contraintes étaient les suivantes :</strong></p>
 <ul>
 <li>Une ergonomie pensée pour des professionnels du froid, devant accompagner
 ceux-ci durant leurs interventions.</li>
-<li>La gestion du mode hors-ligne : un enjeu majeur pour les techniciens devant
-intervenir sur des sites où possiblement aucune connexion n'est disponible.</li>
+<li>Supprimer la nécéssité de saisir des informations redondantes et rébarbative
+en centralisant ces informations dans une base de données.</li>
+<li>La gestion du mode hors-ligne : un enjeu majeur pour les techniciens pouvant
+être amenés à intervenir sur des sites sans aucune connexion disponible.</li>
 </ul>
 <p>Pour répondre à ces besoins et aux spécifications fonctionnelles du produit,
 l'équipe technique d'Elao a fait le choix d’utiliser React Native, un framework
@@ -343,7 +349,7 @@ fois pour iOS et Android.</p>
       <span class="figure__legend">L'application Clim'app</span>
     </figcaption>
 </figure>
-<p>A l'issue d'une intervention à a sa synchronisation une fois la connexion réseau
+<p>A l'issue d'une intervention, après synchronisation une fois la connexion réseau
 rétabli, Clim'app génère automatiquement les <strong>fiches d'intervention et autres
 documents règlementaires</strong>, lesquels sont alors disponibles depuis
 l'application.</p>
@@ -355,11 +361,11 @@ l'application.</p>
 </figure>
 <h3 id="pour-les-gestionnaires-un-suivi-des-interventions-et-des-metriques-des-installations-de-leurs-clients" class="anchor-title"><a href="#pour-les-gestionnaires-un-suivi-des-interventions-et-des-metriques-des-installations-de-leurs-clients">Pour les gestionnaires : un suivi des interventions et des métriques des installations de leurs clients</a></h3>
 <p><strong>Une interface d'administration permet à Climalife de proposer à ses clients un
-suivi des interventions réalisées ainsi que de leur parc d'installations &amp;
+suivi des interventions réalisées ainsi que de leur parc d'installations et
 matériels (détecteurs, contenants, ...).</strong></p>
 <p>Il est par exemple possible de suivre l'utilisation de leurs contenants, accéder
-aux documents réglementaires générés suite aux interventions, consulter la liste
-des installations nécessitant un contrôle, …</p>
+aux documents réglementaires générés suite aux interventions, visualiser les
+déplacements de contenants ou consulter la liste des matériels nécessitant un contrôle.</p>
 <figure>
     <img src="/elao_/pr/199/images/casestudies/climapp/desktop-dashboard.png" alt="Interface d'administration et de suivi" id="interface-d-administration-et-de-suivi">
     <figcaption>
@@ -405,30 +411,30 @@ des installations nécessitant un contrôle, …</p>
             <h2 class="h2--dash">D'autres études de cas</h2>
             <ul class="article-list">
                                                         <li class="miniature miniature--large">
-                        <a href="/elao_/pr/199/etudes-de-cas/ngtv" class="miniature__image">
-                            <span class="image" style="background: #f1f1f1 url('/elao_/pr/199/resized/images/casestudies/headers/ngtv-banner.jpg/fff3ccedacedfb9135c3bb5087b8c71b');
+                        <a href="/elao_/pr/199/etudes-de-cas/onsort" class="miniature__image">
+                            <span class="image" style="background: #f1f1f1 url('/elao_/pr/199/resized/images/casestudies/headers/onsort-banner.jpg/082af0b1a9dbf6694c53686ea2fb3ace');
     background: #f1f1f1 -webkit-image-set(
-        url('/elao_/pr/199/resized/images/casestudies/headers/ngtv-banner.jpg/fff3ccedacedfb9135c3bb5087b8c71b') 1x,
-        url('/elao_/pr/199/resized/images/casestudies/headers/ngtv-banner.jpg/19bd2a547876bcf035f2a67dde599736') 2x
+        url('/elao_/pr/199/resized/images/casestudies/headers/onsort-banner.jpg/082af0b1a9dbf6694c53686ea2fb3ace') 1x,
+        url('/elao_/pr/199/resized/images/casestudies/headers/onsort-banner.jpg/602b40beb47212a7b9bedb5901cda688') 2x
     );
     background: #f1f1f1 -moz-image-set(
-        url('/elao_/pr/199/resized/images/casestudies/headers/ngtv-banner.jpg/fff3ccedacedfb9135c3bb5087b8c71b') 1x,
-        url('/elao_/pr/199/resized/images/casestudies/headers/ngtv-banner.jpg/19bd2a547876bcf035f2a67dde599736') 2x
+        url('/elao_/pr/199/resized/images/casestudies/headers/onsort-banner.jpg/082af0b1a9dbf6694c53686ea2fb3ace') 1x,
+        url('/elao_/pr/199/resized/images/casestudies/headers/onsort-banner.jpg/602b40beb47212a7b9bedb5901cda688') 2x
     );
     background: #f1f1f1 -ms-image-set(
-        url('/elao_/pr/199/resized/images/casestudies/headers/ngtv-banner.jpg/fff3ccedacedfb9135c3bb5087b8c71b') 1x,
-        url('/elao_/pr/199/resized/images/casestudies/headers/ngtv-banner.jpg/19bd2a547876bcf035f2a67dde599736') 2x
+        url('/elao_/pr/199/resized/images/casestudies/headers/onsort-banner.jpg/082af0b1a9dbf6694c53686ea2fb3ace') 1x,
+        url('/elao_/pr/199/resized/images/casestudies/headers/onsort-banner.jpg/602b40beb47212a7b9bedb5901cda688') 2x
     );
     background: #f1f1f1 image-set(
-        url('/elao_/pr/199/resized/images/casestudies/headers/ngtv-banner.jpg/fff3ccedacedfb9135c3bb5087b8c71b') 1x,
-        url('/elao_/pr/199/resized/images/casestudies/headers/ngtv-banner.jpg/19bd2a547876bcf035f2a67dde599736') 2x
+        url('/elao_/pr/199/resized/images/casestudies/headers/onsort-banner.jpg/082af0b1a9dbf6694c53686ea2fb3ace') 1x,
+        url('/elao_/pr/199/resized/images/casestudies/headers/onsort-banner.jpg/602b40beb47212a7b9bedb5901cda688') 2x
     );"></span>
                         </a>
                         <div class="miniature__content">
-                            <span class="info">Example Corp.</span>
-                            <a href="/elao_/pr/199/etudes-de-cas/ngtv" class="title">NGTV Experience</a>
-                            <p class="description">NGTV filme des matchs de football en salle. A partir des images, NGTV génère des statistiques variées de performances individuelles et d&#039;équipe. Ces stats ciblent l&#039;attaque, la défense ou encore la performance physique. Grâce à un compte personnel, les joueurs peuvent ensuite consulter leurs données et celles de leur équipe.</p>
-                            <a href="/elao_/pr/199/etudes-de-cas/ngtv" class="btn btn--secondary btn--animated">
+                            <span class="info">Mairie d&#039;Orléans</span>
+                            <a href="/elao_/pr/199/etudes-de-cas/onsort" class="title">On sort !</a>
+                            <p class="description">L&#039;application On Sort ! est un agenda des sorties dans la métropole orléanaise. Les organisateurs peuvent suggérer leurs événements en quelques clics.</p>
+                            <a href="/elao_/pr/199/etudes-de-cas/onsort" class="btn btn--secondary btn--animated">
                                 <span>
                                     Voir l'étude de cas
                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 40 20">
@@ -440,30 +446,30 @@ des installations nécessitant un contrôle, …</p>
                         </div>
                     </li>
                                         <li class="miniature miniature--large">
-                        <a href="/elao_/pr/199/etudes-de-cas/m6" class="miniature__image">
-                            <span class="image" style="background: #f1f1f1 url('/elao_/pr/199/resized/images/casestudies/headers/6play-banner.jpg/20a3e1afcba1d8c85065e6064dc9fd5c');
+                        <a href="/elao_/pr/199/etudes-de-cas/example" class="miniature__image">
+                            <span class="image" style="background: #f1f1f1 url('http://placekitten.com/630/380');
     background: #f1f1f1 -webkit-image-set(
-        url('/elao_/pr/199/resized/images/casestudies/headers/6play-banner.jpg/20a3e1afcba1d8c85065e6064dc9fd5c') 1x,
-        url('/elao_/pr/199/resized/images/casestudies/headers/6play-banner.jpg/0917104acb6224f4afe0b98fb1e9a48d') 2x
+        url('http://placekitten.com/630/380') 1x,
+        url('http://placekitten.com/630/380') 2x
     );
     background: #f1f1f1 -moz-image-set(
-        url('/elao_/pr/199/resized/images/casestudies/headers/6play-banner.jpg/20a3e1afcba1d8c85065e6064dc9fd5c') 1x,
-        url('/elao_/pr/199/resized/images/casestudies/headers/6play-banner.jpg/0917104acb6224f4afe0b98fb1e9a48d') 2x
+        url('http://placekitten.com/630/380') 1x,
+        url('http://placekitten.com/630/380') 2x
     );
     background: #f1f1f1 -ms-image-set(
-        url('/elao_/pr/199/resized/images/casestudies/headers/6play-banner.jpg/20a3e1afcba1d8c85065e6064dc9fd5c') 1x,
-        url('/elao_/pr/199/resized/images/casestudies/headers/6play-banner.jpg/0917104acb6224f4afe0b98fb1e9a48d') 2x
+        url('http://placekitten.com/630/380') 1x,
+        url('http://placekitten.com/630/380') 2x
     );
     background: #f1f1f1 image-set(
-        url('/elao_/pr/199/resized/images/casestudies/headers/6play-banner.jpg/20a3e1afcba1d8c85065e6064dc9fd5c') 1x,
-        url('/elao_/pr/199/resized/images/casestudies/headers/6play-banner.jpg/0917104acb6224f4afe0b98fb1e9a48d') 2x
+        url('http://placekitten.com/630/380') 1x,
+        url('http://placekitten.com/630/380') 2x
     );"></span>
                         </a>
                         <div class="miniature__content">
-                            <span class="info">M6 Web</span>
-                            <a href="/elao_/pr/199/etudes-de-cas/m6" class="title">M6 web</a>
-                            <p class="description">Nous avons participé à la refonte de 6play, l&#039;application qui gère la partie interactive des chaînes du groupe M6. Les fortes contraintes du projet nous ont permis de nous forger une belle expérience sur les applicatifs Front, et plus particulièrement ReactJS. Nous avons également été sollicités sur un certain nombre de leurs applicatifs et sites thématiques pour des missions d’expertise ou du développement.</p>
-                            <a href="/elao_/pr/199/etudes-de-cas/m6" class="btn btn--secondary btn--animated">
+                            <span class="info">Example Corp.</span>
+                            <a href="/elao_/pr/199/etudes-de-cas/example" class="title">Exemple</a>
+                            <p class="description">Nunc auctor est dolor, eget placerat lorem semper sit amet. Integer aliquet mi orci, et eleifend urna fermetum. Nullam pelletesque frigilla vulputate.</p>
+                            <a href="/elao_/pr/199/etudes-de-cas/example" class="btn btn--secondary btn--animated">
                                 <span>
                                     Voir l'étude de cas
                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 40 20">
