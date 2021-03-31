@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.05006272.css">
+                    <link rel="stylesheet" href="/elao_/build/style.447c8203.css">
             </head>
     <body>
         <header class="header">
@@ -344,6 +344,11 @@ https://images.unsplash.com/photo-1530023868717-cdb5554aea96?ixlib=rb-1.2.1&amp;
                                             </div>
                                     </main>
         <aside class="article-content__aside">
+                            <a href="https://twitter.com/intent/like?tweet_id=1369737350830583811" class="kudo" target="_blank">
+                    <span class="kudo__button" aria-hidden="true"></span>
+                    <span class="screen-reader">Cet article m’a été utile</span>
+                    <span class="kudo__label" aria-hidden="true">Kudos</span>
+                </a>
                     </aside>
     </div>
 
@@ -353,9 +358,10 @@ https://images.unsplash.com/photo-1530023868717-cdb5554aea96?ixlib=rb-1.2.1&amp;
                         <img src="/elao_/images/authors/adefrance.jpg"/>
                     </div>
                     <span class="article-author__info">
-            Écrit par
-            <strong>Amélie Defrance</strong>
-          </span>
+                        Écrit par
+                        <strong>Amélie Defrance</strong>
+                    </span>
+
                     <div class="article-author__social">
                                                                             <a href="https://github.com/ameliedefrance " class="social social--small">
                                 <i class="icon icon--github" aria-hidden="true"></i>
@@ -368,9 +374,10 @@ https://images.unsplash.com/photo-1530023868717-cdb5554aea96?ixlib=rb-1.2.1&amp;
                         <img src="/elao_/images/authors/tjarrand.jpg"/>
                     </div>
                     <span class="article-author__info">
-            Co-écrit par
-            <strong>Thomas Jarrand</strong>
-          </span>
+                        Co-écrit par
+                        <strong>Thomas Jarrand</strong>
+                    </span>
+
                     <div class="article-author__social">
                                                     <a href="https://twitter.com/tom32i" class="social social--small">
                                 <i class="icon icon--twitter" aria-hidden="true"></i>
@@ -386,8 +393,21 @@ https://images.unsplash.com/photo-1530023868717-cdb5554aea96?ixlib=rb-1.2.1&amp;
                             </a>
                                             </div>
                 </div>
-                                </div>
-        </main>
+                        </div>
+
+            <div class="bricks">
+            <div class="brick-comment">
+                <p class="title">Commenter</p>
+                <p>
+                    Des commentaires ?
+                    <a href="https://twitter.com/Elao/status/1369737350830583811" target="_blank" class="animated-link animated-link--light">
+                        Poursuivons la discussion sur twitter !
+                    </a>
+                </p>
+                <div id="tweet-container" class="tweet-container" data-tweet-id="1369737350830583811"></div>
+            </div>
+        </div>
+            </main>
                     <footer class="footer">
                 <section class="footer__links">
                     <p class="h1">
@@ -450,6 +470,24 @@ https://images.unsplash.com/photo-1530023868717-cdb5554aea96?ixlib=rb-1.2.1&amp;
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
-                    </body>
+                                <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
+        
+
+            <script src="https://platform.twitter.com/widgets.js"></script>
+        <script>
+            window.onload = (function(){
+                var tweet = document.getElementById('tweet-container');
+                // https://developer.twitter.com/en/docs/twitter-for-websites/embedded-tweets/guides/embedded-tweet-parameter-reference
+                twttr.widgets.createTweet(tweet.getAttribute('data-tweet-id'), tweet, {
+                    conversation: 'none',
+                    cards: 'hidden',
+                    theme: 'light',
+                    lang: 'fr',
+                    align: 'center',
+                    width: 550, // default
+                    dnt: true,
+                })
+            });
+        </script>
+                </body>
 </html>
