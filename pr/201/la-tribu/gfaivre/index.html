@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="no-js">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,7 +36,12 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/pr/201/build/style.2013e0af.css">
+        <script>
+            // Detect as soon as possible if JS is available
+            document.querySelector('html').classList.remove('no-js');
+        </script>
+
+                    <link rel="stylesheet" href="/elao_/pr/201/build/style.e293eeba.css">
             </head>
     <body>
         <header class="header">
@@ -196,33 +201,34 @@
 
     <div class="member">
         <div class="member__infos">
-            <h1>
+            <h1 data-aos="flip-down">
                 Découvrez
                 <span>Guewen FAIVRE</span>
             </h1>
 
             <div class="member__image member__image--mobile">
+                                <!-- image de profil : 500 x 680px -->
                 <img     src="/elao_/pr/201/resized/images/members/gfaivre.jpg/86f1468e67618482ce4b03e3bee9198d"
     srcset="
         /elao_/pr/201/resized/images/members/gfaivre.jpg/86f1468e67618482ce4b03e3bee9198d 1x,
         /elao_/pr/201/resized/images/members/gfaivre.jpg/1868fa8a8b1a5a06f9a029d88f4c6354 2x
     "
  alt="Portrait de Guewen FAIVRE">
-                <div class="seniority">
+                <div class="seniority" data-aos="zoom-in">
                                                                                 <span>15 ans</span>
                     dans la tribu
                 </div>
-            </div>
+                            </div>
 
             <p class="job">Gérant @Elao.
 Développeur / SysAdmin
 </p>
 
-            <div class="description">
+            <div class="description" data-aos="fade-in">
                 
             </div>
 
-            <div class="socials socials--inline">
+            <div class="socials socials--inline" data-aos="fade-in">
                 <ul>
                                             <li>
                             <a href="http://www.elao.com">
@@ -247,25 +253,26 @@ Développeur / SysAdmin
 
             <!-- Facultatif -->
             
-                            <ul class="interests">
+                            <ul class="interests" data-aos="fade-in">
                                             <li>🎲</li>
                                             <li>🎮</li>
                                             <li>📷</li>
                                     </ul>
                     </div>
 
-        <div class="member__image">
-            <!-- image de profil : 440 x 590px -->
-            <img     src="/elao_/pr/201/resized/images/members/gfaivre.jpg/86f1468e67618482ce4b03e3bee9198d"
+        <div class="member__image" data-aos="fade-left">
+                            <!-- image de profil : 500 x 680px -->
+                <img     src="/elao_/pr/201/resized/images/members/gfaivre.jpg/86f1468e67618482ce4b03e3bee9198d"
     srcset="
         /elao_/pr/201/resized/images/members/gfaivre.jpg/86f1468e67618482ce4b03e3bee9198d 1x,
         /elao_/pr/201/resized/images/members/gfaivre.jpg/1868fa8a8b1a5a06f9a029d88f4c6354 2x
     "
  alt="Portrait de Guewen FAIVRE">
-            <div class="seniority">
-                                                                <span>15 ans</span>
-                dans la tribu
-            </div>
+                <div class="seniority" data-aos="zoom-in">
+                                                                                <span>15 ans</span>
+                    dans la tribu
+                </div>
+                
         </div>
 
                     <div class="member__contributions">
@@ -273,7 +280,7 @@ Développeur / SysAdmin
                 <!-- Facultatif -->
                                     <div class="article-list">
                         <h2 class="h2--dash">Ses derniers articles</h2>
-                                                    <div class="miniature-inline miniature-inline--small">
+                                                    <div class="miniature-inline miniature-inline--small" data-aos="fade-in" data-aos-delay="0">
                                 <a href="/elao_/pr/201/blog/elao/nuit-du-hack-XV" class="miniature-inline__image">
                                     <span class="image" style="background: #f1f1f1 url('/elao_/pr/201/resized/images/posts/thumbnails/ndhxv.png/c912bf40ca69ff53a94115953cfd18d4');
     background: #f1f1f1 -webkit-image-set(
@@ -297,7 +304,7 @@ Développeur / SysAdmin
                                     <a href="/elao_/pr/201/blog/elao/nuit-du-hack-XV" class="title">Nuit du Hack XV</a>
                                 </div>
                             </div>
-                                                    <div class="miniature-inline miniature-inline--small">
+                                                    <div class="miniature-inline miniature-inline--small" data-aos="fade-in" data-aos-delay="100">
                                 <a href="/elao_/pr/201/blog/elao/dotscale-paris-2017" class="miniature-inline__image">
                                     <span class="image" style="background: #f1f1f1 url('/elao_/pr/201/resized/images/posts/thumbnails/dotscale.jpg/597621eb545fb3243ecca277cd4a18b2');
     background: #f1f1f1 -webkit-image-set(
@@ -321,7 +328,7 @@ Développeur / SysAdmin
                                     <a href="/elao_/pr/201/blog/elao/dotscale-paris-2017" class="title">DotScale Paris 2017</a>
                                 </div>
                             </div>
-                                                    <div class="miniature-inline miniature-inline--small">
+                                                    <div class="miniature-inline miniature-inline--small" data-aos="fade-in" data-aos-delay="200">
                                 <a href="/elao_/pr/201/blog/infra/utiliser-l-api-openstack-ovh" class="miniature-inline__image">
                                     <span class="image" style="background: #f1f1f1 url('/elao_/pr/201/resized/images/posts/thumbnails/openstack.png/131f338bb819a5105ee939ebbfb1f67d');
     background: #f1f1f1 -webkit-image-set(
@@ -351,7 +358,7 @@ Développeur / SysAdmin
     </div>
 
     <aside class="bricks">
-        <div class="brick-visit">
+        <div class="brick-visit" data-aos="zoom-in-up" data-aos-delay="150">
     <h3 class="title">Venir nous voir</h3>
     <p class="address">
         <i class="icon icon--location"></i>
@@ -361,7 +368,7 @@ Développeur / SysAdmin
         </span>
     </p>
 </div>
-        <div class="brick-contact">
+        <div class="brick-contact" data-aos="zoom-in-up" data-aos-delay="150">
     <h3 class="title">Nous contacter</h3>
     <p>
         <i class="icon icon--phone"></i>
@@ -440,6 +447,6 @@ Développeur / SysAdmin
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/pr/201/build/runtime.86a2af5f.js" defer></script><script src="/elao_/pr/201/build/188.be66eae9.js" defer></script><script src="/elao_/pr/201/build/app.e02207ec.js" defer></script>
+                            <script src="/elao_/pr/201/build/runtime.c4ab4e85.js" defer></script><script src="/elao_/pr/201/build/284.af4c34f6.js" defer></script><script src="/elao_/pr/201/build/app.8d923640.js" defer></script>
                     </body>
 </html>

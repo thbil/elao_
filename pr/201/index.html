@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="no-js">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,7 +37,12 @@
 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/pr/201/build/style.2013e0af.css">
+        <script>
+            // Detect as soon as possible if JS is available
+            document.querySelector('html').classList.remove('no-js');
+        </script>
+
+                    <link rel="stylesheet" href="/elao_/pr/201/build/style.e293eeba.css">
             </head>
     <body>
         <header class="header">
@@ -176,17 +181,33 @@
         <main>
                 <div class="page-home">
         <div class="banner-home">
-            <h1 class="banner-home__title">
+            <h1 class="banner-home__title" data-aos="flip-down">
                 elao
                 <span>développe</span>
                 <span>du lien</span>
             </h1>
-            <div class="banner-home__content">
+            <div class="banner-home__content" data-aos="zoom-in">
                 <p>Elao est un atelier de co-conception d&#039;applications web et mobile sur mesure.</p>
             </div>
-                        <div class="banner-home__image">
+                        <div class="banner-home__image" data-aos="fade-left">
                 <figure>
-                    <div class="image" style="background: url('https://www.fillmurray.com/510/330')"></div>
+                    <div class="image" style="background: #f1f1f1 url('/elao_/pr/201/resized/images/casestudies/headers/tribu-banner.jpg/7ba00acd7488a2d45cd1ca0c20aee7ab');
+    background: #f1f1f1 -webkit-image-set(
+        url('/elao_/pr/201/resized/images/casestudies/headers/tribu-banner.jpg/7ba00acd7488a2d45cd1ca0c20aee7ab') 1x,
+        url('/elao_/pr/201/resized/images/casestudies/headers/tribu-banner.jpg/5635ac6306904ebdc6e649b80163a715') 2x
+    );
+    background: #f1f1f1 -moz-image-set(
+        url('/elao_/pr/201/resized/images/casestudies/headers/tribu-banner.jpg/7ba00acd7488a2d45cd1ca0c20aee7ab') 1x,
+        url('/elao_/pr/201/resized/images/casestudies/headers/tribu-banner.jpg/5635ac6306904ebdc6e649b80163a715') 2x
+    );
+    background: #f1f1f1 -ms-image-set(
+        url('/elao_/pr/201/resized/images/casestudies/headers/tribu-banner.jpg/7ba00acd7488a2d45cd1ca0c20aee7ab') 1x,
+        url('/elao_/pr/201/resized/images/casestudies/headers/tribu-banner.jpg/5635ac6306904ebdc6e649b80163a715') 2x
+    );
+    background: #f1f1f1 image-set(
+        url('/elao_/pr/201/resized/images/casestudies/headers/tribu-banner.jpg/7ba00acd7488a2d45cd1ca0c20aee7ab') 1x,
+        url('/elao_/pr/201/resized/images/casestudies/headers/tribu-banner.jpg/5635ac6306904ebdc6e649b80163a715') 2x
+    );"></div>
                     <figcaption>
                         <span>Tribü</span>
                         Solution de déchets d&#039;entreprise
@@ -203,14 +224,14 @@
                 </a>
             </div>
             <ul class="banner-home__list">
-                <li>
+                                <li data-aos="fade-in" data-aos-duration="600" data-aos-delay="0">
                     <div class="item">
                                                 <span class="number">16</span>
                         ans d'expérience
                         <small>(et d'expérimentations)</small>
                     </div>
                 </li>
-                <li>
+                                <li data-aos="fade-in" data-aos-duration="600" data-aos-delay="200">
                     <a href="/elao_/pr/201/la-tribu/" class="item">
                         <span class="number">15</span>
                         expert·e·s passionné·e·s
@@ -220,7 +241,7 @@
                         </span>
                     </a>
                 </li>
-                <li>
+                                <li data-aos="fade-in" data-aos-duration="600" data-aos-delay="400">
                     <a href="/elao_/pr/201/etudes-de-cas/" class="item">
                         <span class="number">200+</span>
                         projets
@@ -230,10 +251,10 @@
                         </span>
                     </a>
                 </li>
-            </ul>
+                            </ul>
         </div>
 
-        <section class="section-home">
+        <section class="section-home" data-aos="fade-left">
             <div class="section-home__content">
                 <div class="dash" aria-hidden="true"></div>
                 <h2>Contribuer à des projets vertueux, utiles à notre société</h2>
@@ -266,7 +287,7 @@
             </div>
         </section>
 
-        <section class="section-home section-home--reverse">
+        <section class="section-home section-home--reverse" data-aos="fade-right">
             <div class="section-home__image">
                 <picture>
                     <source
@@ -316,7 +337,7 @@
             </div>
         </section>
 
-        <section class="section-home">
+        <section class="section-home" data-aos="fade-left">
             <div class="section-home__content">
                 <div class="dash" aria-hidden="true"></div>
                 <h2>Mettre ensemble l'énergie là où elle a le plus de valeur</h2>
@@ -365,7 +386,7 @@
                     </span>
                 </a>
             </div>
-            <div class="section-home__links">
+            <div class="section-home__links" data-aos="fade-in" data-aos-delay="200">
                 <a class="animated-block">
                     <div class="animated-block__icon">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="45px" height="30" viewBox="0 0 45 30" class="browser">
@@ -404,7 +425,7 @@
                         <p>Core team Symfony</p>
                     </div>
                 </a>
-                <a href="#" class="animated-block">
+                <a href="#" class="animated-block" data-aos="fade-in" data-aos-delay="400">
                     <div class="animated-block__icon">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="45" height="30" viewBox="0 0 45 30" class="bulb">
                             <path d="M20.4,12.4c0-4.4-3.6-8-8-8 c-4.4,0-8,3.6-8,8c0,2.7,2.8,5.8,3.3,7.3s0,4.8,0,4.8c0,1,0.8,1.8,1.8,1.8h6.2c1,0,1.8-0.8,1.8-1.8c0,0-0.6-3.3,0-4.8 C18,18.2,20.4,14.9,20.4,12.4z"/>
@@ -431,7 +452,7 @@
                         <p>Elao Summer Talk #2</p>
                     </div>
                 </a>
-                <a href="/elao_/pr/201/blog/styleguide/example" class="animated-block">
+                <a href="/elao_/pr/201/blog/styleguide/example" class="animated-block" data-aos="fade-in" data-aos-delay="600">
                     <div class="animated-block__icon">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="45" height="30" viewBox="0 0 45 30" class="pen">
                             <rect x="0.6" y="28.4" height="1"/>
@@ -451,12 +472,12 @@
         </section>
 
         <aside class="bricks">
-            <div class="brick-conception">
+            <div class="brick-conception" data-aos="zoom-in-down">
                 <p>Et surtout...</p>
                 <h3 class="title">Prendre du plaisir à concevoir avec vous, pour vos utilisateurs et utilisatrices</h3>
             </div>
 
-            <div class="brick-visit">
+            <div class="brick-visit" data-aos="zoom-in-up" data-aos-delay="150">
     <h3 class="title">Venir nous voir</h3>
     <p class="address">
         <i class="icon icon--location"></i>
@@ -466,7 +487,7 @@
         </span>
     </p>
 </div>
-            <div class="brick-contact">
+            <div class="brick-contact" data-aos="zoom-in-up" data-aos-delay="150">
     <h3 class="title">Nous contacter</h3>
     <p>
         <i class="icon icon--phone"></i>
@@ -547,6 +568,6 @@
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/pr/201/build/runtime.86a2af5f.js" defer></script><script src="/elao_/pr/201/build/188.be66eae9.js" defer></script><script src="/elao_/pr/201/build/app.e02207ec.js" defer></script>
+                            <script src="/elao_/pr/201/build/runtime.c4ab4e85.js" defer></script><script src="/elao_/pr/201/build/284.af4c34f6.js" defer></script><script src="/elao_/pr/201/build/app.8d923640.js" defer></script>
                     </body>
 </html>
