@@ -41,7 +41,7 @@
             document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/build/style.0cf02d01.css">
+                    <link rel="stylesheet" href="/elao_/build/style.c3673a71.css">
             </head>
     <body>
         <header class="header">
@@ -263,16 +263,16 @@
   user guewen password 84375611a53741f7e94b09eb49127f41
   user flo insecure-password ela0pAssWd
   user vincent insecure-password MyAwesomePassword</code></pre>
-<p>On remarquera qu'il est possible de définir des groupes pour les différents utilisateurs et de choisir de stocker le mot de passe en clair ou de manière cryptée.</p>
-<p>Pour information haproxy utilise la fonction <code class="code-inline" id="f7bd616b6c841d2538735f76d1e02b57">crypt</code> pour évaluer les "hash" de mot de passe, les algorithmes de cryptage supportés dépendent donc directement du système utilisé.</p>
-<p>Sur des systèmes basés sur Linux les algos de cryptage suivants sont donc supportés:</p>
+<p>On remarquera qu'il est possible de définir des groupes pour les différents utilisateurs et de choisir de stocker le mot de passe en clair ou de manière chiffrée.</p>
+<p>Pour information haproxy utilise la fonction <code class="code-inline" id="f7bd616b6c841d2538735f76d1e02b57">crypt</code> pour évaluer les "hash" de mot de passe, les fonctions de hachage supportées dépendent donc directement du système utilisé.</p>
+<p>Sur des systèmes basés sur Linux les fonctions de hachage suivantes sont donc supportées:</p>
 <ul>
 <li>MD5</li>
 <li>SHA-256</li>
 <li>SHA-512</li>
 <li>DES</li>
 </ul>
-<p>Il ne reste ensuite plus qu'a rajouter un ACL basé sur l'authentification du client.</p>
+<p>Il ne reste ensuite plus qu'a rajouter une ACL basée sur l'authentification du client.</p>
 <pre class="code-multiline"><code id="c69dafc8768ef2b10f865891bd33265b">backend HttpElaoServers
   acl AuthOK_ELAO http_auth(ELAO)
   http-request auth realm ELAO if !AuthOK_ELAO</code></pre>
