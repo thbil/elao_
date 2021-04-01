@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="no-js">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,7 +36,12 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4b5511be.css">
+        <script>
+            // Detect as soon as possible if JS is available
+            document.querySelector('html').classList.remove('no-js');
+        </script>
+
+                    <link rel="stylesheet" href="/elao_/build/style.0cf02d01.css">
             </head>
     <body>
         <header class="header">
@@ -196,27 +201,28 @@
 
     <div class="member">
         <div class="member__infos">
-            <h1>
+            <h1 data-aos="flip-down">
                 Découvrez
                 <span>Xavier GORSE</span>
             </h1>
 
             <div class="member__image member__image--mobile">
+                                <!-- image de profil : 500 x 680px -->
                 <img     src="/elao_/resized/images/members/xgorse.jpg/e972ab06a645e57c19f9c6044ebc7d2f"
     srcset="
         /elao_/resized/images/members/xgorse.jpg/e972ab06a645e57c19f9c6044ebc7d2f 1x,
         /elao_/resized/images/members/xgorse.jpg/1a527ae4679b7f52f6a54ca22ec602d4 2x
     "
  alt="Portrait de Xavier GORSE">
-                <div class="seniority">
+                <div class="seniority" data-aos="zoom-in">
                                                                                 <span>16 ans</span>
                     dans la tribu
                 </div>
-            </div>
+                            </div>
 
             <p class="job">Facilitateur du quotidien</p>
 
-            <div class="description">
+            <div class="description" data-aos="fade-in">
                 <p>Xavier a co-fondé Elao avec un seul but en tête : prendre du plaisir à se lever chaque jour.<br />
 L’équilibre de son équipe est pour lui aussi important que la satisfaction de ses clients et partenaires. Expert technique et entrepreneur dans l’âme, il prend beaucoup de plaisir à challenger les idées des clients pour les aligner aux besoins de leurs utilisateurs.<br />
 <br />
@@ -226,7 +232,7 @@ Il pousse d’ailleurs au quotidien son équipe pour assister à des conférence
 Quand il n’anime pas un atelier projet, il apprécie particulièrement ses 25 km à vélo quotidiens en bord du Rhône, la rando en montagne avec la tribu et la photo.<br /></p>
             </div>
 
-            <div class="socials socials--inline">
+            <div class="socials socials--inline" data-aos="fade-in">
                 <ul>
                                             <li>
                             <a href="http://www.elao.com">
@@ -257,7 +263,7 @@ Quand il n’anime pas un atelier projet, il apprécie particulièrement ses 25 
 
             <!-- Facultatif -->
             
-                            <ul class="interests">
+                            <ul class="interests" data-aos="fade-in">
                                             <li>🏔</li>
                                             <li>🎮</li>
                                             <li>🚲</li>
@@ -267,24 +273,25 @@ Quand il n’anime pas un atelier projet, il apprécie particulièrement ses 25 
                                     </ul>
                     </div>
 
-        <div class="member__image">
-            <!-- image de profil : 440 x 590px -->
-            <img     src="/elao_/resized/images/members/xgorse.jpg/e972ab06a645e57c19f9c6044ebc7d2f"
+        <div class="member__image" data-aos="fade-left">
+                            <!-- image de profil : 500 x 680px -->
+                <img     src="/elao_/resized/images/members/xgorse.jpg/e972ab06a645e57c19f9c6044ebc7d2f"
     srcset="
         /elao_/resized/images/members/xgorse.jpg/e972ab06a645e57c19f9c6044ebc7d2f 1x,
         /elao_/resized/images/members/xgorse.jpg/1a527ae4679b7f52f6a54ca22ec602d4 2x
     "
  alt="Portrait de Xavier GORSE">
-            <div class="seniority">
-                                                                <span>16 ans</span>
-                dans la tribu
-            </div>
+                <div class="seniority" data-aos="zoom-in">
+                                                                                <span>16 ans</span>
+                    dans la tribu
+                </div>
+                
         </div>
 
                     <div class="member__contributions">
                                     <div class="article-list">
                         <h2 class="h2--dash">Ses derniers projets</h2>
-                                                    <div class="miniature-inline miniature-inline--small">
+                                                    <div class="miniature-inline miniature-inline--small" data-aos="fade-in" data-aos-delay="0">
                                 <a href="/elao_/etudes-de-cas/tribu" class="miniature-inline__image">
                                     <span class="image" style="background: #f1f1f1 url('/elao_/resized/images/casestudies/headers/tribu-banner.jpg/4f8b3b7e47e2f6bc91df3bbda6fd4af8');
     background: #f1f1f1 -webkit-image-set(
@@ -316,7 +323,7 @@ Quand il n’anime pas un atelier projet, il apprécie particulièrement ses 25 
     </div>
 
     <aside class="bricks">
-        <div class="brick-visit">
+        <div class="brick-visit" data-aos="zoom-in-up" data-aos-delay="150">
     <h3 class="title">Venir nous voir</h3>
     <p class="address">
         <i class="icon icon--location"></i>
@@ -326,7 +333,7 @@ Quand il n’anime pas un atelier projet, il apprécie particulièrement ses 25 
         </span>
     </p>
 </div>
-        <div class="brick-contact">
+        <div class="brick-contact" data-aos="zoom-in-up" data-aos-delay="150">
     <h3 class="title">Nous contacter</h3>
     <p>
         <i class="icon icon--phone"></i>
@@ -405,6 +412,6 @@ Quand il n’anime pas un atelier projet, il apprécie particulièrement ses 25 
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
+                            <script src="/elao_/build/runtime.8231825b.js" defer></script><script src="/elao_/build/284.af4c34f6.js" defer></script><script src="/elao_/build/app.8d923640.js" defer></script>
                     </body>
 </html>

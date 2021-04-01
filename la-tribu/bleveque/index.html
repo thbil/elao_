@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="no-js">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,7 +36,12 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4b5511be.css">
+        <script>
+            // Detect as soon as possible if JS is available
+            document.querySelector('html').classList.remove('no-js');
+        </script>
+
+                    <link rel="stylesheet" href="/elao_/build/style.0cf02d01.css">
             </head>
     <body>
         <header class="header">
@@ -196,31 +201,32 @@
 
     <div class="member">
         <div class="member__infos">
-            <h1>
+            <h1 data-aos="flip-down">
                 Découvrez
                 <span>Benjamin Lévêque</span>
             </h1>
 
             <div class="member__image member__image--mobile">
+                                <!-- image de profil : 500 x 680px -->
                 <img     src="/elao_/resized/images/members/bleveque.jpg/8d29be92cfbc04e6b8d31c7c77b9260d"
     srcset="
         /elao_/resized/images/members/bleveque.jpg/8d29be92cfbc04e6b8d31c7c77b9260d 1x,
         /elao_/resized/images/members/bleveque.jpg/96699a8775175483661ffaa4f6c754c4 2x
     "
  alt="Portrait de Benjamin Lévêque">
-                <div class="seniority">
+                <div class="seniority" data-aos="zoom-in">
                                                                                 <span>12 ans</span>
                     dans la tribu
                 </div>
-            </div>
+                            </div>
 
             <p class="job">Responsable Technique</p>
 
-            <div class="description">
+            <div class="description" data-aos="fade-in">
                 <p>Benjamin est responsable technique d&#039;Elao, mais avant tout développeur Symfony passionné par son métier. Il est également photographe argentique amateur de grand talent, féru de cuisine et randonneur chevronné. Bien qu&#039;il vive à Lyon, son coeur est en Ardèche.</p>
             </div>
 
-            <div class="socials socials--inline">
+            <div class="socials socials--inline" data-aos="fade-in">
                 <ul>
                                             <li>
                             <a href="http://www.elao.com">
@@ -244,7 +250,7 @@
             </div>
 
             <!-- Facultatif -->
-                            <div class="certification-list">
+                            <div class="certification-list" data-aos="zoom-in">
                     <ul>
                                                                                 <li class="certification">
                                 <img src="/elao_/build/images/certifications/symfony.5719e944.svg" alt="" />
@@ -261,7 +267,7 @@
                                             </ul>
                 </div>
             
-                            <ul class="interests">
+                            <ul class="interests" data-aos="fade-in">
                                             <li>🌰</li>
                                             <li>🥾</li>
                                             <li>👨‍🍳</li>
@@ -270,24 +276,25 @@
                                     </ul>
                     </div>
 
-        <div class="member__image">
-            <!-- image de profil : 440 x 590px -->
-            <img     src="/elao_/resized/images/members/bleveque.jpg/8d29be92cfbc04e6b8d31c7c77b9260d"
+        <div class="member__image" data-aos="fade-left">
+                            <!-- image de profil : 500 x 680px -->
+                <img     src="/elao_/resized/images/members/bleveque.jpg/8d29be92cfbc04e6b8d31c7c77b9260d"
     srcset="
         /elao_/resized/images/members/bleveque.jpg/8d29be92cfbc04e6b8d31c7c77b9260d 1x,
         /elao_/resized/images/members/bleveque.jpg/96699a8775175483661ffaa4f6c754c4 2x
     "
  alt="Portrait de Benjamin Lévêque">
-            <div class="seniority">
-                                                                <span>12 ans</span>
-                dans la tribu
-            </div>
+                <div class="seniority" data-aos="zoom-in">
+                                                                                <span>12 ans</span>
+                    dans la tribu
+                </div>
+                
         </div>
 
                     <div class="member__contributions">
                                     <div class="article-list">
                         <h2 class="h2--dash">Ses derniers projets</h2>
-                                                    <div class="miniature-inline miniature-inline--small">
+                                                    <div class="miniature-inline miniature-inline--small" data-aos="fade-in" data-aos-delay="0">
                                 <a href="/elao_/etudes-de-cas/gba" class="miniature-inline__image">
                                     <span class="image" style="background: #f1f1f1 url('/elao_/resized/images/casestudies/headers/geantdesbeauxarts-banner.jpg/59409907e0f56a8531dcc2c2c6d0ecde');
     background: #f1f1f1 -webkit-image-set(
@@ -311,7 +318,7 @@
                                     <a href="/elao_/etudes-de-cas/gba" class="title">Géant des Beaux-Arts</a>
                                 </div>
                             </div>
-                                                    <div class="miniature-inline miniature-inline--small">
+                                                    <div class="miniature-inline miniature-inline--small" data-aos="fade-in" data-aos-delay="100">
                                 <a href="/elao_/etudes-de-cas/ngtv" class="miniature-inline__image">
                                     <span class="image" style="background: #f1f1f1 url('/elao_/resized/images/casestudies/headers/ngtv-banner.jpg/3271e411841494cf5196b2ee7ec1245c');
     background: #f1f1f1 -webkit-image-set(
@@ -343,7 +350,7 @@
     </div>
 
     <aside class="bricks">
-        <div class="brick-visit">
+        <div class="brick-visit" data-aos="zoom-in-up" data-aos-delay="150">
     <h3 class="title">Venir nous voir</h3>
     <p class="address">
         <i class="icon icon--location"></i>
@@ -353,7 +360,7 @@
         </span>
     </p>
 </div>
-        <div class="brick-contact">
+        <div class="brick-contact" data-aos="zoom-in-up" data-aos-delay="150">
     <h3 class="title">Nous contacter</h3>
     <p>
         <i class="icon icon--phone"></i>
@@ -432,6 +439,6 @@
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
+                            <script src="/elao_/build/runtime.8231825b.js" defer></script><script src="/elao_/build/284.af4c34f6.js" defer></script><script src="/elao_/build/app.8d923640.js" defer></script>
                     </body>
 </html>

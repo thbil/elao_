@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="no-js">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,7 +36,12 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/build/style.4b5511be.css">
+        <script>
+            // Detect as soon as possible if JS is available
+            document.querySelector('html').classList.remove('no-js');
+        </script>
+
+                    <link rel="stylesheet" href="/elao_/build/style.0cf02d01.css">
             </head>
     <body>
         <header class="header">
@@ -196,33 +201,34 @@
 
     <div class="member">
         <div class="member__infos">
-            <h1>
+            <h1 data-aos="flip-down">
                 Découvrez
                 <span>Thomas Jarrand</span>
             </h1>
 
             <div class="member__image member__image--mobile">
+                                <!-- image de profil : 500 x 680px -->
                 <img     src="/elao_/resized/images/members/tjarrand.jpg/b966296398731d477497b36058297649"
     srcset="
         /elao_/resized/images/members/tjarrand.jpg/b966296398731d477497b36058297649 1x,
         /elao_/resized/images/members/tjarrand.jpg/907ed100eb7096e83027384974d02536 2x
     "
  alt="Portrait de Thomas Jarrand">
-                <div class="seniority">
+                <div class="seniority" data-aos="zoom-in">
                                                                                 <span>8 ans</span>
                     dans la tribu
                 </div>
-            </div>
+                            </div>
 
             <p class="job">Développeur Web</p>
 
-            <div class="description">
+            <div class="description" data-aos="fade-in">
                 <p>Développeur web depuis 10 ans, Thomas code des deux cotés de la requête HTTP.<br />
 Poussé par sa curiosité et son enthousiasme, il explore les possibilités du web à travers des projets innovants et en développant des jeux vidéo dans le navigateur.<br />
 Fondateur du club vélo d&#039;élao, vous pourrez aussi trouver par beau temps l&#039;une de ses longboard contre un mur de l&#039;open-space.<br /></p>
             </div>
 
-            <div class="socials socials--inline">
+            <div class="socials socials--inline" data-aos="fade-in">
                 <ul>
                                             <li>
                             <a href="https://thomas.jarrand.fr">
@@ -246,7 +252,7 @@ Fondateur du club vélo d&#039;élao, vous pourrez aussi trouver par beau temps 
             </div>
 
             <!-- Facultatif -->
-                            <div class="certification-list">
+                            <div class="certification-list" data-aos="zoom-in">
                     <ul>
                                                                                 <li class="certification">
                                 <img src="/elao_/build/images/certifications/symfony.5719e944.svg" alt="" />
@@ -257,7 +263,7 @@ Fondateur du club vélo d&#039;élao, vous pourrez aussi trouver par beau temps 
                                             </ul>
                 </div>
             
-                            <ul class="interests">
+                            <ul class="interests" data-aos="fade-in">
                                             <li>🏔</li>
                                             <li>🚲</li>
                                             <li>🌊</li>
@@ -267,24 +273,25 @@ Fondateur du club vélo d&#039;élao, vous pourrez aussi trouver par beau temps 
                                     </ul>
                     </div>
 
-        <div class="member__image">
-            <!-- image de profil : 440 x 590px -->
-            <img     src="/elao_/resized/images/members/tjarrand.jpg/b966296398731d477497b36058297649"
+        <div class="member__image" data-aos="fade-left">
+                            <!-- image de profil : 500 x 680px -->
+                <img     src="/elao_/resized/images/members/tjarrand.jpg/b966296398731d477497b36058297649"
     srcset="
         /elao_/resized/images/members/tjarrand.jpg/b966296398731d477497b36058297649 1x,
         /elao_/resized/images/members/tjarrand.jpg/907ed100eb7096e83027384974d02536 2x
     "
  alt="Portrait de Thomas Jarrand">
-            <div class="seniority">
-                                                                <span>8 ans</span>
-                dans la tribu
-            </div>
+                <div class="seniority" data-aos="zoom-in">
+                                                                                <span>8 ans</span>
+                    dans la tribu
+                </div>
+                
         </div>
 
                     <div class="member__contributions">
                                     <div class="article-list">
                         <h2 class="h2--dash">Ses derniers projets</h2>
-                                                    <div class="miniature-inline miniature-inline--small">
+                                                    <div class="miniature-inline miniature-inline--small" data-aos="fade-in" data-aos-delay="0">
                                 <a href="/elao_/etudes-de-cas/example" class="miniature-inline__image">
                                     <span class="image" style="background: #f1f1f1 url('http://placekitten.com/630/380');
     background: #f1f1f1 -webkit-image-set(
@@ -308,7 +315,7 @@ Fondateur du club vélo d&#039;élao, vous pourrez aussi trouver par beau temps 
                                     <a href="/elao_/etudes-de-cas/example" class="title">Exemple</a>
                                 </div>
                             </div>
-                                                    <div class="miniature-inline miniature-inline--small">
+                                                    <div class="miniature-inline miniature-inline--small" data-aos="fade-in" data-aos-delay="100">
                                 <a href="/elao_/etudes-de-cas/tribu" class="miniature-inline__image">
                                     <span class="image" style="background: #f1f1f1 url('/elao_/resized/images/casestudies/headers/tribu-banner.jpg/4f8b3b7e47e2f6bc91df3bbda6fd4af8');
     background: #f1f1f1 -webkit-image-set(
@@ -332,7 +339,7 @@ Fondateur du club vélo d&#039;élao, vous pourrez aussi trouver par beau temps 
                                     <a href="/elao_/etudes-de-cas/tribu" class="title">Tribü</a>
                                 </div>
                             </div>
-                                                    <div class="miniature-inline miniature-inline--small">
+                                                    <div class="miniature-inline miniature-inline--small" data-aos="fade-in" data-aos-delay="200">
                                 <a href="/elao_/etudes-de-cas/spine" class="miniature-inline__image">
                                     <span class="image" style="background: #f1f1f1 url('/elao_/resized/images/casestudies/headers/spine-banner.jpg/f9f652bbb8d74f24d4a4d63777c5fdd6');
     background: #f1f1f1 -webkit-image-set(
@@ -361,7 +368,7 @@ Fondateur du club vélo d&#039;élao, vous pourrez aussi trouver par beau temps 
                 <!-- Facultatif -->
                                     <div class="article-list">
                         <h2 class="h2--dash">Ses derniers articles</h2>
-                                                    <div class="miniature-inline miniature-inline--small">
+                                                    <div class="miniature-inline miniature-inline--small" data-aos="fade-in" data-aos-delay="0">
                                 <a href="/elao_/blog/dev/webpack-encore-alias-namespace" class="miniature-inline__image">
                                     <span class="image" style="background: #f1f1f1 url('/elao_/resized/images/posts/thumbnails/webpack-encore-alias.jpg/302d517038032d2b2cb9460c4ed5963e');
     background: #f1f1f1 -webkit-image-set(
@@ -385,7 +392,7 @@ Fondateur du club vélo d&#039;élao, vous pourrez aussi trouver par beau temps 
                                     <a href="/elao_/blog/dev/webpack-encore-alias-namespace" class="title">Des namespaces en JavaScript ? C’est possible avec les alias Webpack Encore !</a>
                                 </div>
                             </div>
-                                                    <div class="miniature-inline miniature-inline--small">
+                                                    <div class="miniature-inline miniature-inline--small" data-aos="fade-in" data-aos-delay="100">
                                 <a href="/elao_/blog/dev/manalize-virtualiser-son-environnement-de-developpement" class="miniature-inline__image">
                                     <span class="image" style="background: #f1f1f1 url('/elao_/resized/images/posts/thumbnails/manalize-virtualiser-son-environnement-de-developpement.jpg/0d91204d86689f780cbcaca70bd48f23');
     background: #f1f1f1 -webkit-image-set(
@@ -409,7 +416,7 @@ Fondateur du club vélo d&#039;élao, vous pourrez aussi trouver par beau temps 
                                     <a href="/elao_/blog/dev/manalize-virtualiser-son-environnement-de-developpement" class="title">Virtualiser son environnement de développement avec Manalize ✨</a>
                                 </div>
                             </div>
-                                                    <div class="miniature-inline miniature-inline--small">
+                                                    <div class="miniature-inline miniature-inline--small" data-aos="fade-in" data-aos-delay="200">
                                 <a href="/elao_/blog/dev/react-native-font-icon" class="miniature-inline__image">
                                     <span class="image" style="background: #f1f1f1 url('/elao_/resized/images/posts/thumbnails/harpal-singh-396280-unsplash.jpg/df26726fc808b1553b99ccdd4c4b2fb2');
     background: #f1f1f1 -webkit-image-set(
@@ -439,7 +446,7 @@ Fondateur du club vélo d&#039;élao, vous pourrez aussi trouver par beau temps 
     </div>
 
     <aside class="bricks">
-        <div class="brick-visit">
+        <div class="brick-visit" data-aos="zoom-in-up" data-aos-delay="150">
     <h3 class="title">Venir nous voir</h3>
     <p class="address">
         <i class="icon icon--location"></i>
@@ -449,7 +456,7 @@ Fondateur du club vélo d&#039;élao, vous pourrez aussi trouver par beau temps 
         </span>
     </p>
 </div>
-        <div class="brick-contact">
+        <div class="brick-contact" data-aos="zoom-in-up" data-aos-delay="150">
     <h3 class="title">Nous contacter</h3>
     <p>
         <i class="icon icon--phone"></i>
@@ -528,6 +535,6 @@ Fondateur du club vélo d&#039;élao, vous pourrez aussi trouver par beau temps 
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/build/runtime.1d230ad8.js" defer></script><script src="/elao_/build/188.be66eae9.js" defer></script><script src="/elao_/build/app.e02207ec.js" defer></script>
+                            <script src="/elao_/build/runtime.8231825b.js" defer></script><script src="/elao_/build/284.af4c34f6.js" defer></script><script src="/elao_/build/app.8d923640.js" defer></script>
                     </body>
 </html>
