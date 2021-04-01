@@ -36,7 +36,7 @@
                                 
         <!-- Optional no-index -->
         
-                    <link rel="stylesheet" href="/elao_/pr/197/build/style.61c61403.css">
+                    <link rel="stylesheet" href="/elao_/pr/197/build/style.06709c75.css">
             </head>
     <body>
         <header class="header">
@@ -219,7 +219,7 @@
                 </div>
                         <div class="article-info__date">
                 <span>Publication <strong>31 juillet 2020</strong></span>
-                <span>Modification <strong>31 mars 2021</strong></span>
+                <span>Modification <strong>1 avril 2021</strong></span>
             </div>
         </div>
 
@@ -309,6 +309,11 @@
                                             </div>
                                     </main>
         <aside class="article-content__aside">
+                            <a href="https://twitter.com/intent/like?tweet_id=1289132577694121985" class="kudo" target="_blank">
+                    <span class="kudo__button" aria-hidden="true"></span>
+                    <span class="screen-reader">Cet article m’a été utile</span>
+                    <span class="kudo__label" aria-hidden="true">Kudos</span>
+                </a>
                     </aside>
     </div>
 
@@ -318,9 +323,10 @@
                         <img src="/elao_/pr/197/images/authors/tjarrand.jpg"/>
                     </div>
                     <span class="article-author__info">
-            Écrit par
-            <strong>Thomas Jarrand</strong>
-          </span>
+                        Écrit par
+                        <strong>Thomas Jarrand</strong>
+                    </span>
+
                     <div class="article-author__social">
                                                     <a href="https://twitter.com/tom32i" class="social social--small">
                                 <i class="icon icon--twitter" aria-hidden="true"></i>
@@ -336,9 +342,21 @@
                             </a>
                                             </div>
                 </div>
-                                        <p>Des remarques ? Ou simplement envie d'en discuter ? <a href="https://twitter.com/Elao/status/1289132577694121985 " target="_blank">Poursuivons sur twitter !</a></p>
+                        </div>
+
+            <div class="bricks">
+            <div class="brick-comment">
+                <p class="title">Commenter</p>
+                <p>
+                    Des commentaires ?
+                    <a href="https://twitter.com/Elao/status/1289132577694121985" target="_blank" class="animated-link animated-link--light">
+                        Poursuivons la discussion sur twitter !
+                    </a>
+                </p>
+                <div id="tweet-container" class="tweet-container" data-tweet-id="1289132577694121985"></div>
             </div>
-        </main>
+        </div>
+            </main>
                     <footer class="footer">
                 <section class="footer__links">
                     <p class="h1">
@@ -405,6 +423,24 @@
                 </section>
             </footer>
         </div>
-                            <script src="/elao_/pr/197/build/runtime.ae91bf19.js" defer></script><script src="/elao_/pr/197/build/188.be66eae9.js" defer></script><script src="/elao_/pr/197/build/app.e02207ec.js" defer></script>
-                    </body>
+                                <script src="/elao_/pr/197/build/runtime.ae91bf19.js" defer></script><script src="/elao_/pr/197/build/188.be66eae9.js" defer></script><script src="/elao_/pr/197/build/app.e02207ec.js" defer></script>
+        
+
+            <script src="https://platform.twitter.com/widgets.js"></script>
+        <script>
+            window.onload = (function(){
+                var tweet = document.getElementById('tweet-container');
+                // https://developer.twitter.com/en/docs/twitter-for-websites/embedded-tweets/guides/embedded-tweet-parameter-reference
+                twttr.widgets.createTweet(tweet.getAttribute('data-tweet-id'), tweet, {
+                    conversation: 'none',
+                    cards: 'hidden',
+                    theme: 'light',
+                    lang: 'fr',
+                    align: 'center',
+                    width: 550, // default
+                    dnt: true,
+                })
+            });
+        </script>
+                </body>
 </html>
