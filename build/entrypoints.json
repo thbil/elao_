@@ -3,8 +3,8 @@
     "app": {
       "js": [
         "/elao_/build/runtime.8231825b.js",
-        "/elao_/build/284.af4c34f6.js",
-        "/elao_/build/app.8d923640.js"
+        "/elao_/build/40.38998a60.js",
+        "/elao_/build/app.ce61d338.js"
       ]
     },
     "style": {
@@ -12,7 +12,7 @@
         "/elao_/build/runtime.8231825b.js"
       ],
       "css": [
-        "/elao_/build/style.c3673a71.css"
+        "/elao_/build/style.999fe474.css"
       ]
     }
   }
