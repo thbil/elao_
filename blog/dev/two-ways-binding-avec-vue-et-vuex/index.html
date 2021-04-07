@@ -259,131 +259,131 @@
 
             
             <body><p>Vue permet déjà de faire du Two-Way Binding grâce à la directive <code class="code-inline" id="088dc68c3dcfc8e6946dcc4faab5b96c">v-model</code>. C'est à dire mettre à jour l'interface lorsque le modèle change et vice et versa.</p>
-<pre class="code-multiline"><code id="d0d1334c3aed16d3f8d0b995a3609c28">&lt;script&gt;
-export default {
-  data() {
-    return {
-      foobar: 'Lorem ipsum'
-    }
-  }
-}
-&lt;/script&gt;
+<pre class="code-multiline language-html"><code class="language-html" id="d0d1334c3aed16d3f8d0b995a3609c28"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token punctuation">{</span>
+      foobar<span class="token operator">:</span> <span class="token string">'Lorem ipsum'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
 
-&lt;template&gt;
-  &lt;form&gt;
-    &lt;input type="text" v-model="foobar" /&gt;
-  &lt;/form&gt;
-&lt;/template&gt;</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>foobar<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>Dans ce composant par exemple, lorsque la variable <code class="code-inline" id="3858f62230ac3c915f300c664312c63f">foobar</code> est modifié, le contenu du champ est mis à jour et lorsque le contenu du champ est modifié, la variable <code class="code-inline" id="3858f62230ac3c915f300c664312c63f">foobar</code> est modifiée.</p>
 <p>Si nous introduisons Vuex (ou un autre state manager), les variables du store n'étant pas modifiable par les composants, nous ne pouvons faire que du One-Way Binding (lorsque le modèle change, l'interface est mise à jour, l'inverse n'est pas possible).</p>
-<pre class="code-multiline"><code id="39a1a60cb6d14683ddcbfab2f6226254">&lt;template&gt;
-  &lt;form&gt;
-    &lt;input type="text" v-model="$store.state.foobar" /&gt;
-  &lt;/form&gt;
-&lt;/template&gt;</code></pre>
+<pre class="code-multiline language-html"><code class="language-html" id="39a1a60cb6d14683ddcbfab2f6226254"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>$store.state.foobar<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>Un composant comme celui-ci par exemple violerait le principe selon lequel les variables du store ne peuvent être modifiées que par une mutation et jamais directement. Vous obtiendrez d'ailleurs un warning de la part de Vue.</p>
 <p>La solution pour faire du Two-Way Binding est donc d'utiliser un computed avec un getter et un setter. Le getter renvoie la valeur stockée dans le store et le setter met à jour le store grâce à une mutation.</p>
-<pre class="code-multiline"><code id="98ed0fb82a15daf43632e56ca22e1b32">&lt;script&gt;
-export default {
-  computed: {
-    foobar: {
-      get() { return this.$store.state.foobar },
-      set(value) { this.$store.commit('UPDATE_FOOBAR', value) }
-    }
-  }
-}
-&lt;/script&gt;
+<pre class="code-multiline language-html"><code class="language-html" id="98ed0fb82a15daf43632e56ca22e1b32"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token punctuation">{</span>
+  computed<span class="token operator">:</span> <span class="token punctuation">{</span>
+    foobar<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">$store</span><span class="token punctuation">.</span><span class="token property-access">state</span><span class="token punctuation">.</span><span class="token property-access">foobar</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function">set</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">$store</span><span class="token punctuation">.</span><span class="token method function property-access">commit</span><span class="token punctuation">(</span><span class="token string">'UPDATE_FOOBAR'</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
 
-&lt;template&gt;
-  &lt;form&gt;
-    &lt;input type="text" v-model="foobar" /&gt;
-  &lt;/form&gt;
-&lt;/template&gt;</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>foobar<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>On retrouve alors un Two-Way Binding tout en respectant le principe de non modification directe du state.</p>
 <p>L'ennui avec cette méthode est qu'elle nécessite autant de getter/setter que de champs, ce qui peut vite vous amener à écrire beaucoup de code lorsque vous avez de gros formulaires. Je vous propose une astuce pour simplifier tout ça.</p>
 <p>On va s'inspirer des helpers <code class="code-inline" id="efde5407efde52376a9d88b23cf1bd7b">mapState</code>, <code class="code-inline" id="5983f2437b4348c81ebc76032eaa6c8b">mapGetters</code> et <code class="code-inline" id="bb015b733b7fcdbbf57dee47b7a5a4ab">mapActions</code> de Vuex.</p>
 <p>Par exemple :</p>
-<pre class="code-multiline"><code id="36428d8c65b77e03c231a648957169f8">&lt;script&gt;
-export default {
-  computed: {
-    ...mapState(['foobar', 'barfoo'])
-  }
-}
-&lt;/script&gt;</code></pre>
+<pre class="code-multiline language-html"><code class="language-html" id="36428d8c65b77e03c231a648957169f8"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token punctuation">{</span>
+  computed<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token spread operator">...</span><span class="token method function property-access">mapState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'foobar'</span><span class="token punctuation">,</span> <span class="token string">'barfoo'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>Permet d'obtenir le même résultat que :</p>
-<pre class="code-multiline"><code id="e7f1b87671584c45777912fd3e7ff328">&lt;script&gt;
-export default {
-  computed: {
-    foobar() {
-      return this.$store.state.foobar
-    },
-    barfoo() {
-      return this.$store.state.barfoo
-    }
-  }
-}
-&lt;/script&gt;</code></pre>
+<pre class="code-multiline language-html"><code class="language-html" id="e7f1b87671584c45777912fd3e7ff328"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token punctuation">{</span>
+  computed<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">foobar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">$store</span><span class="token punctuation">.</span><span class="token property-access">state</span><span class="token punctuation">.</span><span class="token property-access">foobar</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">barfoo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">$store</span><span class="token punctuation">.</span><span class="token property-access">state</span><span class="token punctuation">.</span><span class="token property-access">barfoo</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>Cela permet de réduire considérablement la quantité de code lorsque l'on a un grand nombre de variables à mapper. On va donc créer une fonction similaire à <code class="code-inline" id="efde5407efde52376a9d88b23cf1bd7b">mapState</code> qui ne va pas seulement créer de simples <code class="code-inline" id="5a317d3dd3f7a2f675975a6d0c11c629">computed</code> mais également les getters et setters nécessaires au Two-Way Binding.</p>
-<pre class="code-multiline"><code id="f8e2b8fc8eb660903d7cc8996bf99a47">function mapFields(fields) {
-  let computeds = {}
+<pre class="code-multiline language-js"><code class="language-js" id="f8e2b8fc8eb660903d7cc8996bf99a47"><span class="token keyword">function</span> <span class="token function">mapFields</span><span class="token punctuation">(</span><span class="token parameter">fields</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> computeds <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 
-  for (field of fields) {
-    computeds[field] = {
-      get() {
-        return this.$store.state[field]
-      },
-      set(value) {
-        this.$store.commit('UPDATE_' + field.toUpperCase(), value)
-      }
-    }
-  }
+  <span class="token keyword control-flow">for</span> <span class="token punctuation">(</span>field <span class="token keyword">of</span> fields<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    computeds<span class="token punctuation">[</span>field<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword control-flow">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">$store</span><span class="token punctuation">.</span><span class="token property-access">state</span><span class="token punctuation">[</span>field<span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function">set</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">$store</span><span class="token punctuation">.</span><span class="token method function property-access">commit</span><span class="token punctuation">(</span><span class="token string">'UPDATE_'</span> <span class="token operator">+</span> field<span class="token punctuation">.</span><span class="token method function property-access">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
 
-  return computeds
-}</code></pre>
+  <span class="token keyword control-flow">return</span> computeds
+<span class="token punctuation">}</span></code></pre>
 <p>Vous pouvez désormais utiliser cette fonction avec le <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/Syntaxe_d%C3%A9composition" target="_blank">spread operator</a> pour générer vos computed properties.</p>
-<pre class="code-multiline"><code id="10da1960e3dd5f74d021b36aeb610ab3">&lt;script&gt;
-export default {
-  computed: {
-    ...mapFields(['foobar', 'barfoo'])
-  }
-}
-&lt;/script&gt;
+<pre class="code-multiline language-html"><code class="language-html" id="10da1960e3dd5f74d021b36aeb610ab3"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token punctuation">{</span>
+  computed<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token spread operator">...</span><span class="token method function property-access">mapFields</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'foobar'</span><span class="token punctuation">,</span> <span class="token string">'barfoo'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
 
-&lt;template&gt;
-  &lt;form&gt;
-    &lt;input type="text" v-model="foobar" /&gt;
-    &lt;input type="text" v-model="barfoo" /&gt;
-  &lt;/form&gt;
-&lt;/template&gt;</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>foobar<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>barfoo<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>Ici, cela nécessite évidemment que vous disposiez des mutations pour chacune de vos variables nommées de la même façon (<code class="code-inline" id="277b85a1bf0deb91fba91f3f5a9fc664">UPDATE_FOOBAR</code> et <code class="code-inline" id="db06a11579f865e3288db6eeb8a3dd9f">UPDATE_BARFOO</code>).</p>
-<pre class="code-multiline"><code id="2f0916608f1913a2e6b45d15a3d82947">new Vuex.Store({
-  state: {
-    foobar: null,
-    barfoo: null,
-  },
-  mutation: {
-    UPDATE_FOOBAR (state, value) { state.foobar = value },
-    UPDATE_BARFOO (state, value) { state.barfoo = value },
-  }
-})</code></pre>
+<pre class="code-multiline language-js"><code class="language-js" id="2f0916608f1913a2e6b45d15a3d82947"><span class="token keyword">new</span> <span class="token class-name">Vuex<span class="token punctuation">.</span>Store</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  state<span class="token operator">:</span> <span class="token punctuation">{</span>
+    foobar<span class="token operator">:</span> <span class="token keyword null nil">null</span><span class="token punctuation">,</span>
+    barfoo<span class="token operator">:</span> <span class="token keyword null nil">null</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  mutation<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token constant">UPDATE_FOOBAR</span> <span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> state<span class="token punctuation">.</span><span class="token property-access">foobar</span> <span class="token operator">=</span> value <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token constant">UPDATE_BARFOO</span> <span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> state<span class="token punctuation">.</span><span class="token property-access">barfoo</span> <span class="token operator">=</span> value <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>Vous pouvez bien entendu complexifier cette fonction selon vos besoins et vos habitudes ou en créer plusieurs correspondant à vos différents use-cases. L'idée peut être même appliquée à d'autres cas que les computed et le <strong>two-way binding</strong>. On peut par exemple imaginer des fonctions pour générer des méthodes ou watchers.</p>
-<pre class="code-multiline"><code id="f95e082d30e2e0b47c78bbaf268578ae">function mapWatcher(fields) {
-  let watchers = {}
+<pre class="code-multiline language-js"><code class="language-js" id="f95e082d30e2e0b47c78bbaf268578ae"><span class="token keyword">function</span> <span class="token function">mapWatcher</span><span class="token punctuation">(</span><span class="token parameter">fields</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> watchers <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 
-  for (field of fields) {
-    watchers[field] = function (newValue) {
-      this.$emit(`${field}_updated`, newValue)
-    }
-  }
+  <span class="token keyword control-flow">for</span> <span class="token punctuation">(</span>field <span class="token keyword">of</span> fields<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    watchers<span class="token punctuation">[</span>field<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">newValue</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">$emit</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>field<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">_updated</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> newValue<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
 
-  return watchers
-}</code></pre>
+  <span class="token keyword control-flow">return</span> watchers
+<span class="token punctuation">}</span></code></pre>
 <p>Cette fonction permet de créer un watcher qui émettra un événement à la modification pour chaque propriété passée en argument.</p>
-<pre class="code-multiline"><code id="02da82502182bd5165d1a8cf84478118">export default {
-  watch: {
-    ...mapWatcher(['foobar', 'barfoo'])
-  }
-}</code></pre></body>
+<pre class="code-multiline language-js"><code class="language-js" id="02da82502182bd5165d1a8cf84478118"><span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token punctuation">{</span>
+  watch<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token spread operator">...</span><span class="token method function property-access">mapWatcher</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'foobar'</span><span class="token punctuation">,</span> <span class="token string">'barfoo'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></body>
                                                 </main>
         <aside class="article-content__aside">
                     </aside>
