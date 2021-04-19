@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Ecrire des tests Behat proches de son domaine</title>
+        <title>Écrire des tests Behat proches de son domaine</title>
 
         <!-- Favicon -->
         <link rel="apple-touch-icon" sizes="180x180" href="/elao_/pr/273/apple-touch-icon.png">
@@ -21,7 +21,7 @@
             <link rel="canonical" href="https://elao.github.io/elao_/pr/273/blog/dev/ecrire-des-tests-behat-proches-de-son-domaine" />
 
             <!-- Open Graph / Facebook -->
-            <meta property="og:title" content="Ecrire des tests Behat proches de son domaine" />
+            <meta property="og:title" content="Écrire des tests Behat proches de son domaine" />
             <meta property="og:locale" content="fr" />
             <meta property="og:description" content="" />
             <meta property="og:url" content="https://elao.github.io/elao_/pr/273/blog/dev/ecrire-des-tests-behat-proches-de-son-domaine" />
@@ -30,7 +30,7 @@
             
             <!-- Twitter -->
             <meta property="twitter:card" content="summary_large_image">
-            <meta property="twitter:title" content="Ecrire des tests Behat proches de son domaine">
+            <meta property="twitter:title" content="Écrire des tests Behat proches de son domaine">
             <meta property="twitter:description" content="">
             <meta property="twitter:site" content="@elao">
             <meta property="twitter:creator" content="@elao">
@@ -41,7 +41,7 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/273/build/style.547b4348.css">
+                    <link rel="stylesheet" href="/elao_/pr/273/build/style.ea57d271.css">
         
             </head>
     <body>
@@ -52,7 +52,7 @@
                         - only on homepage : on scroll .logo.logo--animated becomes .logo.logo--animated.logo--active (triggers its animation)
                      -->
                     <a href="/elao_/pr/273/">
-                        <span class="screen-reader">Ecrire des tests Behat proches de son domaine</span>
+                        <span class="screen-reader">Écrire des tests Behat proches de son domaine</span>
                                                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 300 100" class="logo logo--animated">
                                 <path d="M61.6,61.6H19.7C21,69,24.8,72.2,32.6,72.2c5.9,0,8.8-1.9,11.7-7.8l16.1,6.9C56.2,82,46.9,87.8,32.1,87.8
                                     c-19.1,0-32-12.6-32-31.6c0-19.5,12.6-32.6,31.4-32.6c18.1,0,30.3,12.6,30.3,31.6C61.7,57.2,61.7,58.9,61.6,61.6z M19.6,49.3h23.6
@@ -188,7 +188,7 @@
         </li>
         <li class="breadcrumb__item"  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
             <a itemprop="item" href="#">
-                <span itemprop="name">Ecrire des tests Behat proches de son domaine</span>
+                <span itemprop="name">Écrire des tests Behat proches de son domaine</span>
             </a>
             <meta itemprop="position" content="2" />
         </li>
@@ -230,12 +230,12 @@
                 </div>
                         <div class="article-info__date">
                 <span>Publication <strong>17 juin 2018</strong></span>
-                <span>Modification <strong>16 avril 2021</strong></span>
+                <span>Modification <strong>19 avril 2021</strong></span>
             </div>
         </div>
 
         <div class="article-header" data-aos="zoom-in-up">
-            <h1>Ecrire des tests Behat proches de son domaine</h1>
+            <h1>Écrire des tests Behat proches de son domaine</h1>
             <p></p>
             <ul class="article-tag-list">
                                     <li class="article-tag-list__item">
@@ -258,10 +258,10 @@
             
             <body><p>Il y a quelque temps nous publiions un article sur <a href="/fr/dev/behat-3-test-fonctionnel-symfony/">l'utilisation Behat 3 pour l'écriture des tests fonctionnels Symfony</a>. Depuis les choses ont beaucoup changé sur les différents projets où nous posons du Behat pour nos tests fonctionnels.
 Dans cet article nous allons voir comment nous écrivons désormais nos tests en partant d'une approche Domaine.</p>
-<h1 id="cheminement" class="anchor-title"><a href="#cheminement">Cheminement 📖</a></h1>
+<h2 id="cheminement" class="anchor-title"><a href="#cheminement">Cheminement 📖</a></h2>
 <p>L'ajout et le maintien des tests fonctionnels se sont avérés de plus en plus complexes à réaliser sur plusieurs de nos projets avec une grande complexité métier. Certains parcours utilisateur étaient compliqués à mettre en place. Le maintien à jour des fixtures de tests devenait difficile, les dépendances entre les entités testées les rendant encore plus complexes.</p>
 <p>Dans de nombreux cas, nous en arrivions à faire une fixture particulière pour chaque test plutôt que de réutiliser certaines d'entre elles pour être totalement maître du contexte. A chaque modification du <em>model</em>, la mise à jour de toutes les fixtures étaient une réelle perte de temps.</p>
-<p>La plupart des projets chez <a href="https://www.elao.com" target="_blank">élao</a> ont <a href="/fr/dev/architecture-hexagonale-symfony">une architecture hexagonale</a> et sont orientés DDD, Domain Driven Design. Nous avons donc déjà toutes les méthodes métiers nécessaires pour créer des entités pour les contextes qui nous intéressent.</p>
+<p>La plupart des projets chez <a href="https://www.elao.com" target="_blank">Elao</a> ont <a href="/fr/dev/architecture-hexagonale-symfony">une architecture hexagonale</a> et sont orientés DDD, Domain Driven Design. Nous avons donc déjà toutes les méthodes métiers nécessaires pour créer des entités pour les contextes qui nous intéressent.</p>
 <p>Par exemple, nous avons dans notre classe métier «Produit» des méthodes nous permettant de créer directement des produits de différent <em>types</em> comme des formules. Ces méthodes permettent d'abstraire certaines informations inutiles à faire figurer à chaque endroit du code et simplifient la création de ces produits.
 Nos <em>commands</em> utilisent donc déjà ces méthodes pour créer des formules, et sont très flexibles pour chaque besoin différent.</p>
 <pre class="code-multiline language-php"><code class="language-php" id="215969978c1f38f746eed6939cb5d160"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
@@ -308,7 +308,7 @@ Nos <em>commands</em> utilisent donc déjà ces méthodes pour créer des formul
 <blockquote>
 <p>Comment mettre tout cela en place avec Behat ?</p>
 </blockquote>
-<h1 id="mise-en-place" class="anchor-title"><a href="#mise-en-place">Mise en place 🔧</a></h1>
+<h2 id="mise-en-place" class="anchor-title"><a href="#mise-en-place">Mise en place 🔧</a></h2>
 <p>Tout d'abord, nous avons besoin d'installer Behat en <em>dev-dependencies</em> de notre composer.json</p>
 <pre class="code-multiline language-json"><code class="language-json" id="f6373660aa6874baed3c403ae6ba159c"><span class="token property">"require-dev"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"behat/behat"</span><span class="token operator">:</span> <span class="token string">"^3.1"</span><span class="token punctuation">,</span>
@@ -330,9 +330,7 @@ Nos <em>commands</em> utilisent donc déjà ces méthodes pour créer des formul
 <p>Le point d'entrée est donc le repertoire <code class="code-inline" id="9a1a4359f87a67855aa82c0560dc9571">features/</code> dans lequel nous stockons à la fois nos tests mais aussi nos services et contextes.</p>
 <p>Expliquons ensuite comment réaliser un <em>step</em> comme <code class="code-inline" id="73b4fff7735084f3eb0f3d9cdbc6d654">And there is a plan named "Premium" with a price of 100</code>.</p>
 <p>Nous allons donc créer un <em>Manager</em> qui nous permettra d'appeler nos méthodes de création de produits, de modifier des paramètres, d'appeler les <em>repositories</em> pour persister en base de données ce qui doit l'être etc...</p>
-<blockquote>
-<p>features/Behat/Manager/ProductManager.php</p>
-</blockquote>
+<pre class="code-multiline"><code id="aaa1d04de6c84d5bf9464df58d679a7d">features/Behat/Manager/ProductManager.php</code></pre>
 <pre class="code-multiline language-php"><code class="language-php" id="fe7fa3f394caf75aa456cf69c1767bcf"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Tests<span class="token punctuation">\</span>Behat<span class="token punctuation">\</span>Manager</span><span class="token punctuation">;</span>
@@ -361,9 +359,7 @@ Nos <em>commands</em> utilisent donc déjà ces méthodes pour créer des formul
 <span class="token punctuation">}</span></span></code></pre>
 <p>Ce <em>Manager</em> utilise la méthode <em>static</em> que nous avons vue précédemment qui est également utilisée dans notre code métier. Nous aurions pu utiliser notre <em>Command Handler</em> métier qui permet de créer une formule et donc ne pas à avoir à dupliquer certaines parties de notre code, mais pour des raisons de simplifications, nous partirons sur cet exemple.</p>
 <p>Nous allons ensuite créer un service qui va nous servir de <em>proxy</em>, sous la forme d'un passe-plat, pour pouvoir appeler notre <em>Manager</em> dans nos contextes Behat.</p>
-<blockquote>
-<p>features/Behat/Proxy/ProductProxy.php</p>
-</blockquote>
+<pre class="code-multiline"><code id="5d027ae4f1ef6f346d38949eb501b214">features/Behat/Proxy/ProductProxy.php</code></pre>
 <pre class="code-multiline language-php"><code class="language-php" id="65631bd34a1dc239da6b4d378a2a0a45"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Tests<span class="token punctuation">\</span>Behat<span class="token punctuation">\</span>Proxy</span><span class="token punctuation">;</span>
@@ -384,9 +380,7 @@ Nos <em>commands</em> utilisent donc déjà ces méthodes pour créer des formul
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>Et enfin, nous allons créer un <em>ProductContext</em> afin de créer notre <em>step</em> Gherkin</p>
-<blockquote>
-<p>features/Behat/Context/ProductProxy.php</p>
-</blockquote>
+<pre class="code-multiline"><code id="fc3176115fcdda706d153bd9a65a0e41">features/Behat/Context/ProductProxy.php</code></pre>
 <pre class="code-multiline language-php"><code class="language-php" id="dc1733b9884ee697e6b05c8f164e2d50"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Tests<span class="token punctuation">\</span>Behat<span class="token punctuation">\</span>Context</span><span class="token punctuation">;</span>
@@ -415,9 +409,7 @@ Nos <em>commands</em> utilisent donc déjà ces méthodes pour créer des formul
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>Ensuite, nous n'avons plus qu'à modifier notre fichier <code class="code-inline" id="2bf3b3125ba5785a8776c7139dc87da1">default.yml</code> afin de lui spécifier l'utilisation du nouveau contexte que nous venons de créer.</p>
-<blockquote>
-<p>features/Behat/Resources/config/default.yml</p>
-</blockquote>
+<pre class="code-multiline"><code id="bf92f44b6fa6c31bf31a75b778452a6b">features/Behat/Resources/config/default.yml</code></pre>
 <pre class="code-multiline language-yaml"><code class="language-yaml" id="a00614c37c30e64fbcdd98ece787be71"><span class="token key atrule">default</span><span class="token punctuation">:</span>
     <span class="token key atrule">extensions</span><span class="token punctuation">:</span>
         <span class="token key atrule">Behat\Symfony2Extension</span><span class="token punctuation">:</span>
@@ -478,15 +470,13 @@ Nous allons réaliser le <em>step</em> précédent <code class="code-inline" id=
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>Et c'est tout, pas besoin de <em>parser</em> le <em>DOM</em> pour retrouver la valeur du prix de la formule et vérifier si il est égale à A ou B. Cela rend les <em>steps</em> Behat beaucoup plus lisibles.</p>
-<h1 id="passage-d-informations-entre-step" class="anchor-title"><em>step</em> 📦<a href="#passage-d-informations-entre-step">Passage d'informations entre </a></h1>
+<h2 id="passage-d-informations-entre-step" class="anchor-title"><a href="#passage-d-informations-entre-step">Passage d'informations entre step 📦</a></h2>
 <p>Au fur et à mesure de l'utilisation de ce système, vous vous rendrez compte qu'il manque quelque chose... En effet, les différents <em>steps</em> sont distincts les uns des autres, ne communiquant pas, ils ne peuvent pas utiliser les valeurs des autres <em>steps</em>.
 Imaginons que vous souhaitez créer une formule "Early bird" et que celle-ci soit disponible uniquement jusqu'à une certaine date. Pour réaliser ce <em>step</em> il vous faudra donc soit créer un nouveau <em>step</em> qui permet de créer une formule avec une référence, un prix et une date de fin de disponibilité. Cela nous fait dupliquer une partie du code précédent et ce n'est pas forcément pertinent.</p>
 <p>Pour éviter cela, il est intéresant de pouvoir récupérer un élément du <em>step</em> précédent dans le <em>step</em> suivant afin de modifier certaines valeurs.</p>
 <p>Afin de réaliser cette tâche, nous avons ajouté un service qui sert de réceptacle de données entre nos <em>steps</em>.
 Ce <em>Storage</em> contient simplement un tableau indexé par type de donnée stockée et nous offre l'accès à un getter et un setter pour récupérer ou écraser la donnée.</p>
-<blockquote>
-<p>features/Behat/Storage/Storage.php</p>
-</blockquote>
+<pre class="code-multiline"><code id="4d9c329ff84633c2d826e6bd1de99d9b">features/Behat/Storage/Storage.php</code></pre>
 <pre class="code-multiline language-php"><code class="language-php" id="4bc9a6020de0d683d1049ccbc0b75bcd"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Tests<span class="token punctuation">\</span>Behat<span class="token punctuation">\</span>Storage</span><span class="token punctuation">;</span>
@@ -624,7 +614,7 @@ Ce <em>Storage</em> contient simplement un tableau indexé par type de donnée s
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>À la lecture de notre test fonctionnel, nous comprenons tout de suite dans quel contexte nous nous trouvons, avec une formule non disponible, et nous testons qu'elle n'est plus achetable par un utilisateur.</p>
-<h1 id="axes-d-amelioration" class="anchor-title"><a href="#axes-d-amelioration">Axes d'amélioration 🚀</a></h1>
+<h2 id="axes-d-amelioration" class="anchor-title"><a href="#axes-d-amelioration">Axes d'amélioration 🚀</a></h2>
 <p>Afin de rendre nos tests fonctionnels encore plus compréhensibles, nous avons de futurs axes d'amélioration comme pouvoir naviguer sur le site sans faire mention des urls qui n'ont pas toujours de notion métier.
 Ce qui permettrait la rédaction de <em>steps</em> tel que:</p>
 <pre class="code-multiline language-diff"><code class="language-diff" id="cdf5813eb74a194e4fa6ba939ea6d8a6"><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line"> When I go to this page "/fr/buy"
@@ -638,7 +628,7 @@ Ce qui permettrait la rédaction de <em>steps</em> tel que:</p>
 </span><span class="token prefix inserted">+</span><span class="token line">   | price     | 20         |
 </span><span class="token prefix inserted">+</span><span class="token line">   | reference | Early bird |</span></span></code></pre>
 <p>Mais tout ceci demande de coder tous les contextes, les <em>steps</em>, les <em>proxies</em>, ce qui est très verbeux. Cependant la valeur ajoutée d'avoir une bonne couverture de tests fonctionnels est importante et le temps passé à coder les tests est du temps gagné en débogage.</p>
-<h1 id="en-conclusion" class="anchor-title"><a href="#en-conclusion">En conclusion 🎬</a></h1>
+<h2 id="en-conclusion" class="anchor-title"><a href="#en-conclusion">En conclusion 🎬</a></h2>
 <p>Avant, nous avions beaucoup de tests avec des fixtures lourdes à maintenir qui cachaient une grande partie de ce qui était chargé. Nous avons maintenant des <em>steps</em> qui décrivent le contexte dans lequel le test s'effectue. Le code métier directement utilisé est plus maintenable.</p>
 <p>Nos tests sont lisibles ce qui facilite la code review par nos pairs. Ils sont réutilisables pour différents contextes.</p></body>
                                                 </main>

@@ -41,7 +41,7 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/273/build/style.547b4348.css">
+                    <link rel="stylesheet" href="/elao_/pr/273/build/style.ea57d271.css">
         
             </head>
     <body>
@@ -230,7 +230,7 @@
                 </div>
                         <div class="article-info__date">
                 <span>Publication <strong>27 avril 2017</strong></span>
-                <span>Modification <strong>16 avril 2021</strong></span>
+                <span>Modification <strong>19 avril 2021</strong></span>
             </div>
         </div>
 
@@ -292,12 +292,15 @@
 <h3 id="boost" class="anchor-title"><a href="#boost">Boost</a></h3>
 <p>Vous pouvez ajouter dans votre mapping des <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-boost.html" target="_blank">boost</a> sur certaines propriétés afin de privilégier automatiquement ces propriétés lors du calcul de pertinence.</p>
 <div class="tabs">
-<div class="nav">
-<a href="/elao_/pr/273/#mapping-boost-json" class="active">json</a>
-<a href="/elao_/pr/273/#mapping-boost-yaml">yaml</a>
+<div class="tabs__nav">
+  <a href="/elao_/pr/273/#mapping-boost-json" class="active">json</a>
+  <a href="/elao_/pr/273/#mapping-boost-yaml">yaml</a>
 </div>
-<div class="tab active" id="mapping-boost-json">
-<pre class="language-json"><code class="language-json" id="aadb47214e407b79fba4d287cf8f310c"><span class="token punctuation">{</span>
+
+<div class="tabs__content">
+<div class="item active" id="mapping-boost-json">
+<pre class="language-json">
+<code class="language-json" id="aadb47214e407b79fba4d287cf8f310c"><span class="token punctuation">{</span>
   <span class="token property">"mappings"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"article"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token property">"properties"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -311,22 +314,29 @@
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span></code>
+</pre>
 </div>
-<div class="tab" id="mapping-boost-yaml">
-<pre class="language-yaml"><code class="language-yaml" id="4a60445c9deb2238571534f2b1c0b20f"><span class="token key atrule">fos_elastica</span><span class="token punctuation">:</span>
+<div class="item" id="mapping-boost-yaml">
+<pre class="language-yaml">
+<code class="language-yaml" id="4a60445c9deb2238571534f2b1c0b20f"><span class="token key atrule">fos_elastica</span><span class="token punctuation">:</span>
   <span class="token key atrule">indexes</span><span class="token punctuation">:</span>
     <span class="token key atrule">app</span><span class="token punctuation">:</span>
       <span class="token key atrule">types</span><span class="token punctuation">:</span>
         <span class="token key atrule">article</span><span class="token punctuation">:</span>
           <span class="token key atrule">mappings</span><span class="token punctuation">:</span>
             <span class="token key atrule">title</span><span class="token punctuation">:</span>   <span class="token punctuation">{</span> <span class="token key atrule">analyzer</span><span class="token punctuation">:</span> my_analyzer<span class="token punctuation">,</span> <span class="token key atrule">boost</span><span class="token punctuation">:</span> <span class="token number">3</span> <span class="token punctuation">}</span>
-            <span class="token key atrule">content</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token key atrule">analyzer</span><span class="token punctuation">:</span> my_analyzer <span class="token punctuation">}</span></code></pre>
+            <span class="token key atrule">content</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token key atrule">analyzer</span><span class="token punctuation">:</span> my_analyzer <span class="token punctuation">}</span></code>
+</pre>
+</div>
 </div>
 </div>
 <p>Dans cet exemple, le titre aura 3 fois plus de poids que le contenu lors du calcul de pertinence.</p>
-<div style="border-left: 5px solid #ffa600;padding: 20px;margin: 20px 0;">
-    Attention, les `boosts` indiqués au `mapping` ne fonctionneront que sur les requêtes de type `term`. Pour les requêtes de type `range` ou `match` par exemple, il faudra préciser les `boosts` dans la requête comme expliqué dans la suite de l'article.
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>
+    Les <code class="code-inline" id="100888b93fa9f3820b482ad26f3a4cfd">boosts</code> indiqués au <code class="code-inline" id="f84f4a69bdc03d4a4251db12ee746ce3">mapping</code> ne fonctionneront que sur les requêtes de type <code class="code-inline" id="b4dad0fe5fbef2c0e24d9db1cc69e5a2">term</code>. Pour les requêtes de type <code class="code-inline" id="37b19816109a32106d109e83bbb3c97d">range</code> ou <code class="code-inline" id="e3cc92c14a5e6dd1a7d94b6ff634d7fc">match</code> par exemple, il faudra préciser les <code class="code-inline" id="100888b93fa9f3820b482ad26f3a4cfd">boosts</code> dans la requête comme expliqué dans la suite de l'article.
+</p>
 </div>
 <h2 id="requeter" class="anchor-title"><a href="#requeter">Requêter</a></h2>
 <h3 id="analyzer" class="anchor-title"><a href="#analyzer">Analyzer</a></h3>
@@ -335,12 +345,14 @@
 <p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#fuzziness" target="_blank"><code class="code-inline" id="b4160057229b3295e34dce5a9618e79f">fuzziness</code></a> permet de rechercher des termes malgré des fautes de frappe (inversion de lettre, lettre manquante, ...) en utilisant la <a href="https://fr.wikipedia.org/wiki/Distance_de_Levenshtein" target="_blank">Distance de Levenshtein</a>.</p>
 <p>Les scores des résultats seront bien évidemment impactés par ces options.</p>
 <div class="tabs">
-<div class="nav">
-<a href="/elao_/pr/273/#query-analyzer-json" class="active">json</a>
-<a href="/elao_/pr/273/#query-analyzer-php">php</a>
+<div class="tabs__nav">
+  <a href="/elao_/pr/273/#query-analyzer-json" class="active">json</a>
+  <a href="/elao_/pr/273/#query-analyzer-php">php</a>
 </div>
-<div class="tab active" id="query-analyzer-json">
-<pre class="language-json"><code class="language-json" id="7f0e38e3693bc85dc2c928b22a4342e2"><span class="token punctuation">{</span>
+<div class="tabs__content">
+<div class="item active" id="query-analyzer-json">
+<pre class="language-json">
+<code class="language-json" id="7f0e38e3693bc85dc2c928b22a4342e2"><span class="token punctuation">{</span>
   <span class="token property">"query"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"bool"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token property">"must"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
@@ -355,26 +367,32 @@
       <span class="token punctuation">]</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span></code>
+</pre>
 </div>
-<div class="tab" id="query-analyzer-php">
-<pre class="language-php"><code class="language-php" id="6ddc85eaecb6d373cd6c6e127ce5530f"><span class="token function">setFieldQuery</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'title'</span><span class="token punctuation">,</span> <span class="token variable">$search</span><span class="token punctuation">)</span>
+<div class="item" id="query-analyzer-php">
+<pre class="language-php">
+<code class="language-php" id="88553ba8db4286a4ae8ab3e6b1d98654"><span class="token function">setFieldQuery</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'title'</span><span class="token punctuation">,</span> <span class="token variable">$search</span><span class="token punctuation">)</span>
     <span class="token operator">-&gt;</span><span class="token function">setFieldAnalyzer</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'title'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'my_analyzer'</span><span class="token punctuation">)</span>
     <span class="token operator">-&gt;</span><span class="token function">setFieldFuzziness</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'title'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'AUTO'</span><span class="token punctuation">)</span>
     <span class="token operator">-&gt;</span><span class="token function">setFieldMinimumShouldMatch</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'title'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'70%'</span><span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code>
+</pre>
+</div>
 </div>
 </div>
 <h3 id="boost" class="anchor-title"><a href="#boost">Boost</a></h3>
 <p>Les <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/_boosting_query_clauses.html" target="_blank"><code class="code-inline" id="99d6df7b870935548ca9349c37ad45b7">boost</code></a> permettent également d'augmenter le poids d'une clause de votre rêquete. Plus le boost est élevé, plus votre clause pèsera sur le score.</p>
 <p>Dans l'exemple suivant, nous faisons une recherche de la chaine <code class="code-inline" id="89d5739baabbbe65be35cbe61c88e06d">Foobar</code> sur un document ayant un titre et un contenu. Grâce aux <code class="code-inline" id="99d6df7b870935548ca9349c37ad45b7">boost</code> nous pouvons donner plus d'importance aux titres qu'aux contenus.</p>
 <div class="tabs">
-<div class="nav">
-<a href="/elao_/pr/273/#boost-json" class="active">json</a>
-<a href="/elao_/pr/273/#boost-php">php</a>
+<div class="tabs__nav">
+  <a href="/elao_/pr/273/#boost-json" class="active">json</a>
+  <a href="/elao_/pr/273/#boost-php">php</a>
 </div>
-<div class="tab active" id="boost-json">
-<pre class="language-json"><code class="language-json" id="04672654d7a530987ea45a2db68fec22"><span class="token punctuation">{</span>
+<div class="tabs__content">
+<div class="item active" id="boost-json">
+<pre class="language-json">
+<code class="language-json" id="04672654d7a530987ea45a2db68fec22"><span class="token punctuation">{</span>
   <span class="token property">"query"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"bool"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token property">"should"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
@@ -387,10 +405,12 @@
       <span class="token punctuation">]</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span></code>
+</pre>
 </div>
-<div class="tab" id="boost-php">
-<pre class="language-php"><code class="language-php" id="56ffd820b56db9ad2dbf14b51a6394df"><span class="token function">addShould</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified">Query<span class="token punctuation">\</span>Match</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<div class="item" id="boost-php">
+<pre class="language-php">
+<code class="language-php" id="56ffd820b56db9ad2dbf14b51a6394df"><span class="token function">addShould</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified">Query<span class="token punctuation">\</span>Match</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token operator">-&gt;</span><span class="token function">setFieldQuery</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'title'</span><span class="token punctuation">,</span> <span class="token variable">$search</span><span class="token punctuation">)</span>
     <span class="token operator">-&gt;</span><span class="token function">setFieldBoost</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'title'</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -398,17 +418,21 @@
 <span class="token variable">$query</span><span class="token operator">-&gt;</span><span class="token function">addShould</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified">Query<span class="token punctuation">\</span>Match</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token operator">-&gt;</span><span class="token function">setFieldQuery</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'content'</span><span class="token punctuation">,</span> <span class="token variable">$search</span><span class="token punctuation">)</span>
     <span class="token operator">-&gt;</span><span class="token function">setFieldBoost</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'content'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code>
+</pre>
+</div>
 </div>
 </div>
 <p>Vous pouvez également utiliser plusieurs <code class="code-inline" id="99d6df7b870935548ca9349c37ad45b7">boost</code> sur la même propriété mais avec plusieurs valeurs afin d'augmenter le score par palier.</p>
 <div class="tabs">
-<div class="nav">
-<a href="/elao_/pr/273/#boost-step-json" class="active">json</a>
-<a href="/elao_/pr/273/#boost-step-php">php</a>
+<div class="tabs__nav">
+  <a href="/elao_/pr/273/#boost-step-json" class="active">json</a>
+  <a href="/elao_/pr/273/#boost-step-php">php</a>
 </div>
-<div class="tab active" id="boost-step-json">
-<pre class="language-json"><code class="language-json" id="7068156bb700a0e649151a25cbae1d31"><span class="token punctuation">{</span>
+<div class="tabs__content">
+<div class="item active" id="boost-step-json">
+<pre class="language-json">
+<code class="language-json" id="7068156bb700a0e649151a25cbae1d31"><span class="token punctuation">{</span>
   <span class="token property">"query"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"bool"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token property">"should"</span> <span class="token operator">:</span> <span class="token punctuation">[</span>
@@ -424,10 +448,12 @@
       <span class="token punctuation">]</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span></code>
+</pre>
 </div>
-<div class="tab" id="boost-step-php">
-<pre class="language-php"><code class="language-php" id="adddd9b8955b0f4732967ba8f1a3e0a4"><span class="token function">addShould</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified">Query<span class="token punctuation">\</span>Range</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'publishedAt'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
+<div class="item" id="boost-step-php">
+<pre class="language-php">
+<code class="language-php" id="adddd9b8955b0f4732967ba8f1a3e0a4"><span class="token function">addShould</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified">Query<span class="token punctuation">\</span>Range</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'publishedAt'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
     <span class="token string single-quoted-string">'boost'</span> <span class="token operator">=&gt;</span> <span class="token number">5</span><span class="token punctuation">,</span>
     <span class="token string single-quoted-string">'gte'</span>   <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>DateTime</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'-1 month'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'c'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -440,7 +466,9 @@
 <span class="token variable">$query</span><span class="token operator">-&gt;</span><span class="token function">addShould</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified">Query<span class="token punctuation">\</span>Range</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'publishedAt'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
     <span class="token string single-quoted-string">'boost'</span> <span class="token operator">=&gt;</span> <span class="token number">3</span><span class="token punctuation">,</span>
     <span class="token string single-quoted-string">'gte'</span>   <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>DateTime</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'-3 months'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'c'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code>
+</pre>
+</div>
 </div>
 </div>
 <h3 id="les-fonctions-de-score" class="anchor-title"><a href="#les-fonctions-de-score">Les fonctions de score</a></h3>
@@ -457,50 +485,60 @@
 <h4 id="les-scripts-de-score" class="anchor-title"><a href="#les-scripts-de-score">Les scripts de score</a></h4>
 <p>Les scripts de score (<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html#function-script-score" target="_blank"><code class="code-inline" id="c0d970d59d173f0eb4e832a989fe82b2">script_score</code></a>) vous permettent de modifier le score de vos résultats à partir d'un script ou d'une formule de votre choix. Vous avez accès au document dont vous modifiez le score et pouvez donc utiliser l'une de ses propriétés dans le calcul. <code class="code-inline" id="94051e850d51ff2bd7aca7151d3561f8">_score</code> est une variable qui contient le score original.</p>
 <div class="tabs">
-<div class="nav">
-<a href="/elao_/pr/273/#script-functions-json" class="active">json</a>
-<a href="/elao_/pr/273/#script-functions-php">php</a>
+<div class="tabs__nav">
+  <a href="/elao_/pr/273/#script-functions-json" class="active">json</a>
+  <a href="/elao_/pr/273/#script-functions-php">php</a>
 </div>
-<div class="tab active" id="script-functions-json">
-<pre class="language-json"><code class="language-json" id="04b0726dbd3bccfed810fdde6261296f"><span class="token punctuation">{</span>
+<div class="tabs__content">
+<div class="item active" id="script-functions-json">
+<pre class="language-json">
+<code class="language-json" id="04b0726dbd3bccfed810fdde6261296f"><span class="token punctuation">{</span>
     <span class="token property">"script_score"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token property">"script"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
           <span class="token property">"lang"</span><span class="token operator">:</span> <span class="token string">"painless"</span><span class="token punctuation">,</span>
           <span class="token property">"inline"</span><span class="token operator">:</span> <span class="token string">"_score * doc['my_numeric_field'].value"</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span></code>
+</pre>
 </div>
-<div class="tab" id="script-functions-php">
-<pre class="language-php"><code class="language-php" id="e7fcd60c764c9cbfe08b0874f877b4c6"><span class="token function">addScriptScoreFunction</span><span class="token punctuation">(</span>
+<div class="item" id="script-functions-php">
+<pre class="language-php">
+<code class="language-php" id="e7fcd60c764c9cbfe08b0874f877b4c6"><span class="token function">addScriptScoreFunction</span><span class="token punctuation">(</span>
     <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>Elastica<span class="token punctuation">\</span>Script</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"_score * doc['my_numeric_field'].value"</span><span class="token punctuation">)</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token variable">$score</span><span class="token operator">-&gt;</span><span class="token function">setQuery</span><span class="token punctuation">(</span><span class="token variable">$bool</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token variable">$query</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Query</span><span class="token punctuation">(</span><span class="token variable">$score</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<span class="token variable">$query</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Query</span><span class="token punctuation">(</span><span class="token variable">$score</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code>
+</pre>
+</div>
 </div>
 </div>
 <p>Vous pouvez ainsi utiliser une valeur ou une formule métier pour calculer la pertinence de vos résultats.</p>
 <h4 id="facteur" class="anchor-title"><a href="#facteur">Facteur</a></h4>
 <p>Cette fonction de score (<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html#function-field-value-factor" target="_blank"><code class="code-inline" id="fb6f378b0f8be7fac90fa554969399d0">field_value_factor</code></a>) vous permet d'appliquer un facteur de multiplication (<code class="code-inline" id="742f32c65ffd18b766fa307f8de2d47d">factor</code>), une valeur par defaut (<code class="code-inline" id="ea21841da70e6405af19fabc4ff8bdd9">missing</code>) ainsi qu'une fonction mathématique (<code class="code-inline" id="3ad7320fa61b1cfad6b5a97fcb565315">modifier</code>) à une propriété de votre document. Plusieurs fonctions mathématiques sont disponibles (<code class="code-inline" id="dc1d71bbb5c4d2a5e936db79ef10c19f">log</code>, <code class="code-inline" id="dd1de98e8b0e34d5cf5396e83036f4d5">sqrt</code>, <code class="code-inline" id="f8e19f449f17c9d37dcc93dd244ec3bb">ln</code>, ...).</p>
 <div class="tabs">
-<div class="nav">
-<a href="/elao_/pr/273/#factor-functions-json" class="active">json</a>
-<a href="/elao_/pr/273/#factor-functions-php">php</a>
+<div class="tabs__nav">
+  <a href="/elao_/pr/273/#factor-functions-json" class="active">json</a>
+  <a href="/elao_/pr/273/#factor-functions-php">php</a>
 </div>
-<div class="tab active" id="factor-functions-json">
-<pre class="language-json"><code class="language-json" id="ecf5aaa9d25f8c3fe8b012140419ef47"><span class="token punctuation">{</span>
+<div class="tabs__content">
+<div class="item active" id="factor-functions-json">
+<pre class="language-json">
+<code class="language-json" id="ecf5aaa9d25f8c3fe8b012140419ef47"><span class="token punctuation">{</span>
     <span class="token property">"field_value_factor"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token property">"field"</span><span class="token operator">:</span> <span class="token string">"rate"</span><span class="token punctuation">,</span>
         <span class="token property">"factor"</span><span class="token operator">:</span> <span class="token number">1.1</span><span class="token punctuation">,</span>
         <span class="token property">"modifier"</span><span class="token operator">:</span> <span class="token string">"sqrt"</span><span class="token punctuation">,</span>
         <span class="token property">"missing"</span><span class="token operator">:</span> <span class="token number">1</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span></code>
+</pre>
 </div>
-<div class="tab" id="factor-functions-php">
-<pre class="language-php"><code class="language-php" id="9958daacb636fb0f0ab6b5c150f23884"><span class="token function">addFieldValueFactorFunction</span><span class="token punctuation">(</span>
+<div class="item" id="factor-functions-php">
+<pre class="language-php">
+<code class="language-php" id="9958daacb636fb0f0ab6b5c150f23884"><span class="token function">addFieldValueFactorFunction</span><span class="token punctuation">(</span>
     <span class="token string single-quoted-string">'rate'</span><span class="token punctuation">,</span>
     <span class="token number">1.1</span><span class="token punctuation">,</span>
     <span class="token scope">Query<span class="token punctuation">\</span>FunctionScore<span class="token punctuation">::</span></span><span class="token constant">FIELD_VALUE_FACTOR_MODIFIER_SQRT</span><span class="token punctuation">,</span>
@@ -509,19 +547,23 @@
 
 <span class="token variable">$score</span><span class="token operator">-&gt;</span><span class="token function">setQuery</span><span class="token punctuation">(</span><span class="token variable">$bool</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token variable">$query</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Query</span><span class="token punctuation">(</span><span class="token variable">$score</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<span class="token variable">$query</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Query</span><span class="token punctuation">(</span><span class="token variable">$score</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code>
+</pre>
+</div>
 </div>
 </div>
 <p>Dans cet exemple, la pertinence d'un résultat repose sur la note du document via la formule suivante : <code class="code-inline" id="ac7021b97cb43f55588beffe0da83ba5">sqrt(1.1 * doc.rate)</code>.</p>
 <h4 id="les-fonctions-de-decroissance" class="anchor-title"><a href="#les-fonctions-de-decroissance">Les fonctions de décroissance</a></h4>
 <p>Les fonctions de décroissance (<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html#function-decay" target="_blank"><code class="code-inline" id="18e62ab37e43c39ac5759a0c39b2baf6">decay function</code></a>) sont une autre méthode pour modifier le score de vos résultats. Elles se basent sur des fonctions mathématiques pour réduire le score de vos résultats.</p>
 <div class="tabs">
-<div class="nav">
-<a href="/elao_/pr/273/#decay-functions-json" class="active">json</a>
-<a href="/elao_/pr/273/#decay-functions-php">php</a>
+<div class="tabs__nav">
+  <a href="/elao_/pr/273/#decay-functions-json" class="active">json</a>
+  <a href="/elao_/pr/273/#decay-functions-php">php</a>
 </div>
-<div class="tab active" id="decay-functions-json">
-<pre class="language-json"><code class="language-json" id="29bd04b7a69de43077b3fe8e180d0539"><span class="token punctuation">{</span>
+<div class="tabs__content">
+<div class="item active" id="decay-functions-json">
+<pre class="language-json">
+<code class="language-json" id="29bd04b7a69de43077b3fe8e180d0539"><span class="token punctuation">{</span>
     <span class="token property">"DECAY_FUNCTION"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token property">"FIELD_NAME"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
               <span class="token property">"origin"</span><span class="token operator">:</span> <span class="token string">"2017-04-24"</span><span class="token punctuation">,</span>
@@ -530,10 +572,12 @@
               <span class="token property">"decay"</span><span class="token operator">:</span> <span class="token number">0.5</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span></code>
+</pre>
 </div>
-<div class="tab" id="decay-functions-php">
-<pre class="language-php"><code class="language-php" id="11eb5b53b9229e8f50fffaa2ba41f37c"><span class="token function">addDecayFunction</span><span class="token punctuation">(</span>
+<div class="item" id="decay-functions-php">
+<pre class="language-php">
+<code class="language-php" id="11eb5b53b9229e8f50fffaa2ba41f37c"><span class="token function">addDecayFunction</span><span class="token punctuation">(</span>
     <span class="token scope">Query<span class="token punctuation">\</span>FunctionScore<span class="token punctuation">::</span></span><span class="token constant">DECAY_LINEAR</span><span class="token punctuation">,</span>
     <span class="token string single-quoted-string">'publishedAt'</span><span class="token punctuation">,</span>
     <span class="token string single-quoted-string">'2017-04-24'</span><span class="token punctuation">,</span>
@@ -544,7 +588,9 @@
 
 <span class="token variable">$score</span><span class="token operator">-&gt;</span><span class="token function">setQuery</span><span class="token punctuation">(</span><span class="token variable">$bool</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token variable">$query</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Query</span><span class="token punctuation">(</span><span class="token variable">$score</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<span class="token variable">$query</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Query</span><span class="token punctuation">(</span><span class="token variable">$score</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code>
+</pre>
+</div>
 </div>
 </div>
 <p>Chaque fonction de décroissance est caratérisée par les propriétés <code class="code-inline" id="7c49b153d4b59f8c0cf8c3e18dc80cb7">origin</code>, <code class="code-inline" id="7a86c157ee9713c34fbd7a1ee40f0c5a">offset</code>, <code class="code-inline" id="0cb47aeb6e5f9323f0969e628c4e59f5">scale</code> et <code class="code-inline" id="63faabca234a29640f3344e74c0672da">decay</code>.</p>
@@ -562,20 +608,12 @@
 <h2 id="conclusion" class="anchor-title"><a href="#conclusion">Conclusion</a></h2>
 <p>Avec toutes ces fonctionnalités, vous dévriez être capables de gérer la pertinence de votre moteur de recherche assez finement. Attention néanmoins, cet article n'est pas exhaustif, <strong>ElasticSearch</strong> propose bien d'autres possibilités.</p>
 <p>L'important est de ne pas se limiter à la configuration de base et d'adapter l'algorithme de score à vos données et vos besoins.</p>
-<style type="text/css">
-    .container .tabs .nav { background: #ccc; }
-    .container .tabs .nav:before, .tabs .nav:after { content: ""; display: table; clear: both; }
-    .container .tabs .nav a { float: left; display: block; padding: 5px 10px; margin: 0; text-decoration: none; }
-    .container .tabs .nav a.active { background-color: #444; color: #fff; }
-    .container .tabs .tab { display: none; clear: both; }
-    .container .tabs .tab.active { display: block; }
-</style>
 <script type="text/javascript">
     function Tabs (element)
     {
         this.element = element;
-        this.links   = element.querySelectorAll('.nav a');
-        this.tabs    = element.querySelectorAll('.tab');
+        this.links   = element.querySelectorAll('.tabs__nav a');
+        this.tabs    = element.querySelectorAll('.tabs__content .item');
 
         [].forEach.call(this.links, function (link) {
             link.addEventListener('click', function (event) {
