@@ -41,7 +41,7 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/build/style.31259d3b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.2c014ff1.css">
         
             </head>
     <body>
@@ -276,7 +276,7 @@
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>Dans ce composant par exemple, lorsque la variable <code class="code-inline" id="3858f62230ac3c915f300c664312c63f">foobar</code> est modifié, le contenu du champ est mis à jour et lorsque le contenu du champ est modifié, la variable <code class="code-inline" id="3858f62230ac3c915f300c664312c63f">foobar</code> est modifiée.</p>
-<p>Si nous introduisons Vuex (ou un autre state manager), les variables du store n'étant pas modifiable par les composants, nous ne pouvons faire que du One-Way Binding (lorsque le modèle change, l'interface est mise à jour, l'inverse n'est pas possible).</p>
+<p>Si nous introduisons Vuex (ou un autre state manager), les variables du store n'étant pas modifiables par les composants, nous ne pouvons faire que du One-Way Binding (lorsque le modèle change, l'interface est mise à jour, l'inverse n'est pas possible).</p>
 <pre class="code-multiline language-html"><code class="language-html" id="39a1a60cb6d14683ddcbfab2f6226254"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>$store.state.foobar<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>

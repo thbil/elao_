@@ -41,7 +41,7 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/build/style.31259d3b.css">
+                    <link rel="stylesheet" href="/elao_/build/style.2c014ff1.css">
         
             </head>
     <body>
@@ -259,46 +259,13 @@
                     <a href="#exploiter-le-routing-de-symfony">Exploiter le routing de Symfony ?</a>
                 </li>
                             <li class="table-of-content__item">
-                    <a href="#recuperer-toutes-les-routes-de-l-application">Récupérer toutes les routes de l&#039;application</a>
-                </li>
-                            <li class="table-of-content__item">
-                    <a href="#humaniser-les-noms-de-route">Humaniser les noms de route</a>
-                </li>
-                            <li class="table-of-content__item">
-                    <a href="#generer-l-url">Générer l&#039;url</a>
-                </li>
-                            <li class="table-of-content__item">
-                    <a href="#demo">Démo</a>
-                </li>
-                            <li class="table-of-content__item">
                     <a href="#deviner-des-parametres-de-route">Deviner des paramètres de route</a>
-                </li>
-                            <li class="table-of-content__item">
-                    <a href="#recuperer-les-requirements-d-une-route">Récupérer les requirements d&#039;une route</a>
-                </li>
-                            <li class="table-of-content__item">
-                    <a href="#recuperer-les-metadata-du-controller-d-une-route">Récupérer les metadata du controller d&#039;une route</a>
-                </li>
-                            <li class="table-of-content__item">
-                    <a href="#resolver-dedie">Resolver dédié</a>
                 </li>
                             <li class="table-of-content__item">
                     <a href="#ameliorations">Améliorations</a>
                 </li>
                             <li class="table-of-content__item">
-                    <a href="#resolver-doctrine">Resolver Doctrine ?</a>
-                </li>
-                            <li class="table-of-content__item">
-                    <a href="#traduction-des-noms-de-route">Traduction des noms de route</a>
-                </li>
-                            <li class="table-of-content__item">
                     <a href="#bilan">Bilan</a>
-                </li>
-                            <li class="table-of-content__item">
-                    <a href="#resultat">Résultat</a>
-                </li>
-                            <li class="table-of-content__item">
-                    <a href="#inconvenients">Inconvénients</a>
                 </li>
                             <li class="table-of-content__item">
                     <a href="#commander-par-la-voix">Commander par la voix ?</a>
@@ -316,9 +283,7 @@ pour enfin pouvoir modifier une donnée.</p>
 <p>Nous allons voir comment on peut ajouter à une application Symfony une UI différente,
 une interface de commande par texte avec autocompletion.</p>
 <h2 id="le-contexte" class="anchor-title"><a href="#le-contexte">Le contexte</a></h2>
-<p class="text-center">
-    <img src="/elao_/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/backoffice.png" alt="Backoffice" id="backoffice">
-</p>
+<img src="/elao_/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/backoffice.png" alt="Interface d'administration" id="interface-d-administration">
 <p>Ceci est une capture d'écran d'interface d'administration d'une application classique.
 Il y a des listes, des boutons, des menus...
 Pour accéder à une ressource ou à une fonctionnalité, plusieurs clics sont nécessaires.</p>
@@ -331,12 +296,12 @@ plus rapidement et plus efficacement aux ressources d'une application.</p>
     <img src="/elao_/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/search.png" alt="Recherche avec suggestion de résultats" id="recherche-avec-suggestion-de-resultats">
 </p>
 <p>Cela serait pas mal d'avoir la même chose dans notre application, n'est-ce pas ?</p>
-<h2 id="exploiter-le-routing-de-symfony" class="anchor-title"><em>routing</em> de Symfony ?<a href="#exploiter-le-routing-de-symfony">Exploiter le </a></h2>
+<h2 id="exploiter-le-routing-de-symfony" class="anchor-title"><a href="#exploiter-le-routing-de-symfony">Exploiter le routing de Symfony ?</a></h2>
 <p>Symfony dispose des commandes <em>Console</em> mais cette interface est dédiée aux développeurs.
 L'idée est d'avoir un moteur de recherche dans le navigateur qui suggère des résultats qui irait piocher dans notre
 application sans forcément écrire complètement une API côté Backend. Et pourquoi pas exploiter le <em>Routing</em> de Symfony ?
 Nous allons voir pas à pas comment nous avons exploité le <em>routing</em> pour répondre à notre besoin.</p>
-<h3 id="recuperer-toutes-les-routes-de-l-application" class="anchor-title"><em>routes</em> de l'application<a href="#recuperer-toutes-les-routes-de-l-application">Récupérer toutes les </a></h3>
+<h3 id="recuperer-toutes-les-routes-de-l-application" class="anchor-title"><a href="#recuperer-toutes-les-routes-de-l-application">Récupérer toutes les routes de l'application</a></h3>
 <pre class="code-multiline language-php"><code class="language-php" id="336b82c393fc5e1187ca218c08887030"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Routing<span class="token punctuation">\</span>Route</span><span class="token punctuation">;</span>
@@ -413,7 +378,7 @@ des utilisateurs pouvant être modifiés :</p>
 <p>Cela signifie que côté frontend, lorsqu'on aura tapé "User update" + un espace (très important l'espace),
 une requête XMLHttpRequest (Ajax pour les intimes) sera déclenchée afin de récupérer les <em>routes</em> contenant
 les noms des utilisateurs.</p>
-<h3 id="recuperer-les-requirements-d-une-route" class="anchor-title"><em>requirements</em> d'une <em>route</em><a href="#recuperer-les-requirements-d-une-route">Récupérer les </a></h3>
+<h3 id="recuperer-les-requirements-d-une-route" class="anchor-title"><a href="#recuperer-les-requirements-d-une-route">Récupérer les requirements d'une route</a></h3>
 <p>Considérons que l'on a cette <em>route</em> :</p>
 <pre class="code-multiline language-yaml"><code class="language-yaml" id="d3e33de1ec4c5ac3d34004a49134b355"><span class="token comment"># Routing</span>
 <span class="token key atrule">admin_user_update</span><span class="token punctuation">:</span>
@@ -450,23 +415,15 @@ de la classe <code class="code-inline" id="8f9bfe9d1345237cb3b2b205864da075">Use
 <p>Le principe est de récupérer les arguments d'un <em>controller</em> d'une <em>route</em> et de voir de quelle classe
 il s'agit.</p>
 <p>On a besoin de deux choses :</p>
-<ul>
-<li>
 <ol>
 <li>Récupérer le <em>controller</em> d'une <em>route</em> :</li>
 </ol>
-</li>
-</ul>
 <pre class="code-multiline language-php"><code class="language-php" id="f4ca91954cf26dc7949ceb2b1c5610e5"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpKernel<span class="token punctuation">\</span>Controller<span class="token punctuation">\</span>ControllerResolverInterface</span> <span class="token parameter">$controllerResolver</span> */</span>
 <span class="token variable">$controllerResolver</span><span class="token operator">-&gt;</span><span class="token function">getController</span><span class="token punctuation">(</span><span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
-<ul>
-<li>
 <ol start="2">
 <li>Récupérer les metadata des arguments d'un <em>controller</em> :</li>
 </ol>
-</li>
-</ul>
 <pre class="code-multiline language-php"><code class="language-php" id="f18b75d345f11ad4e40f1d6c7e258987"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpKernel<span class="token punctuation">\</span>ControllerMetadata<span class="token punctuation">\</span>ArgumentMetadataFactoryInterface</span> <span class="token parameter">$argumentMetadataFactory</span> */</span>
 <span class="token variable">$argumentMetadataFactory</span><span class="token operator">-&gt;</span><span class="token function">createArgumentMetadata</span><span class="token punctuation">(</span><span class="token variable">$controller</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></code></pre>
@@ -526,7 +483,7 @@ il s'agit.</p>
 <p>On a donc une variable <code class="code-inline" id="ee11cbb19052e40b07aac0ca060c23ee">user</code> dont le type est <code class="code-inline" id="eb0c10d335fd66810062ce2b4fadcd78">App\Domain\Model\User</code>.</p>
 <p>Cela devient intéressant !</p>
 <p>Voyons voir ce que l'on peut en faire...</p>
-<h3 id="resolver-dedie" class="anchor-title"> dédié<a href="#resolver-dedie"><em>Resolver</em></a></h3>
+<h3 id="resolver-dedie" class="anchor-title"><a href="#resolver-dedie">Resolver dédié</a></h3>
 <p>Nous allons coder un <em>Resolver</em> dédié pour un paramètre dès lors qu'il est de type <code class="code-inline" id="eb0c10d335fd66810062ce2b4fadcd78">App\Domain\Model\User</code>.</p>
 <p>Ici on sait que notre classe <code class="code-inline" id="8f9bfe9d1345237cb3b2b205864da075">User</code> est une classe d'entité <em>Doctrine</em>. Nous allons faire appel à un <em>repository
 Doctrine</em> pour récupèrer une liste des utilisateurs depuis la base de données. On prend soin de retourner le résultat
@@ -583,7 +540,7 @@ en précisant que la valeur du paramètre <code class="code-inline" id="ee11cbb1
   }</code></pre>
 <p>On peut donc maintenant proposer à l'utilisateur d'accéder à des <em>routes</em> ayant un paramètre.</p>
 <h2 id="ameliorations" class="anchor-title"><a href="#ameliorations">Améliorations</a></h2>
-<h3 id="resolver-doctrine" class="anchor-title"> ?<a href="#resolver-doctrine"><em>Resolver Doctrine</em></a></h3>
+<h3 id="resolver-doctrine" class="anchor-title"><a href="#resolver-doctrine">Resolver Doctrine ?</a></h3>
 <p>Pourrait-on avoir un <em>resolver</em> générique dédié à nos classes d'entité <em>Doctrine</em> ?</p>
 <p>L'idée est de tester si une classe donnée est une entité <em>Doctrine</em>, c'est à dire via le <code class="code-inline" id="f19eae7a9282542454f845b2c940fa9b">ManagerRegistry</code> chercher
 un éventuel <code class="code-inline" id="08f9949041c5b2858bc754a5985db3f3">EntityManager</code>. Puis avec cet <code class="code-inline" id="08f9949041c5b2858bc754a5985db3f3">EntityManager</code>, utiliser le bon <code class="code-inline" id="33fcf2b3ec4686d9cd06051c726d0ba2">Repository</code>
@@ -753,7 +710,7 @@ recognition<span class="token punctuation">.</span><span class="token method fun
     <img src="/elao_/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/caniuse-speech-recognition.png" alt="Can I Use SpeechRecognition" id="can-i-use-speechrecognition">
 </p>
 <p><a href="https://www.google.com/intl/en/chrome/demos/speech.html" target="_blank">Démo ici</a> (à tester avec Chrome seulement au jour où cet article a été écrit).</p>
-<p>C'est une technologie assez promoteuse. A suivre donc !</p>
+<p>C'est une technologie assez promoteuse. À suivre donc !</p>
 <hr>
 <p>Photo by Anthony Martino on Unsplash</p></body>
                                                 </main>
