@@ -268,11 +268,14 @@
 <pre class="code-multiline"><code id="1e0c7f9cbada52cf0c41236cfac8cf4f">$ vue init &lt;template-name&gt; &lt;project-name&gt;</code></pre>
 <p>Plusieurs templates sont disponibles, proposant différentes fonctionnalités et bundlers (webpack ou browserify). J'ai testé le template <code class="code-inline" id="424516ca53b4ad4bef37ed04f8795a88">webpack</code> qui propose la compilation avec <strong>Webpack</strong>, <strong>Babel</strong>, le <strong>hot reload</strong>, le <strong>code linting</strong>, les <strong>tests unitaires</strong> et les <strong>tests fonctionnels</strong>. Vous pouvez utiliser un template fourni ou un template externe.</p>
 <p>La commande vous invitera ensuite à rentrer les informations nécessaires à la configuration de votre projet puis générera une arborescence avec une base de projet type "Hello world".</p>
-<img src="/elao_/images/posts/2016/vuecli-console.jpg" alt="Console" id="console">
+<img src="/elao_/resized/images/posts/2016/vuecli-console.jpg/71cbae5a750f887605f21f6e9381e784.jpg" alt="Console" srcset="/elao_/resized/images/posts/2016/vuecli-console.jpg/71cbae5a750f887605f21f6e9381e784.jpg 1x,
+/elao_/resized/images/posts/2016/vuecli-console.jpg/8b0fd8f6a0706b25674aa41629e1fa3e.jpg 2x," id="console">
 <p>Vous exécutez ensuite les commandes <code class="code-inline" id="d53119ba0bc09eb2a1dac8ee89c2cae2">npm install</code> et <code class="code-inline" id="e3abe2c5ba9bd31f6c329fe110e7abe5">npm run dev</code>, votre application sera accessible sur l'url <code class="code-inline" id="9825c2a542dd888e55b9b0e06b04f672">http://localhost:8080/</code></p>
-<img src="/elao_/images/posts/2016/vuecli-app.jpg" alt="Application" id="application">
+<img src="/elao_/resized/images/posts/2016/vuecli-app.jpg/9c2d9b7ded667cf143add4e8c7077f0f.jpg" alt="Application" srcset="/elao_/resized/images/posts/2016/vuecli-app.jpg/9c2d9b7ded667cf143add4e8c7077f0f.jpg 1x,
+/elao_/resized/images/posts/2016/vuecli-app.jpg/2ee93162cb4fc81cfdfa891d550c0f9f.jpg 2x," id="application">
 <h2 id="architecture" class="anchor-title"><a href="#architecture">Architecture</a></h2>
-<img src="/elao_/images/posts/2016/vuecli-tree.jpg" alt="Tree" style="float:right;max-width:30%;margin-left: 20px;margin-bottom: 20px;" id="tree">
+<img src="/elao_/resized/images/posts/2016/vuecli-tree.jpg/8daa6c24413199a798fbe5ce4ec057a1.jpg" alt="Tree" style="float:right;max-width:30%;margin-left: 20px;margin-bottom: 20px;" srcset="/elao_/resized/images/posts/2016/vuecli-tree.jpg/8daa6c24413199a798fbe5ce4ec057a1.jpg 1x,
+/elao_/resized/images/posts/2016/vuecli-tree.jpg/c79b6d17483c2ec441a2a940aeb23774.jpg 2x," id="tree">
 <p>L'application est composée d'un fichier <code class="code-inline" id="7a9076d6d94e62c13d641aa71f19ae8e">main.js</code> servant de point d'entrée, d'un fichier <code class="code-inline" id="eacf331f0ffc35d4b482f1d15a887d3b">index.html</code> affichant votre application et de composants sous la forme de fichiers <code class="code-inline" id="4d08a51ed2edf2965914aea4a2018bbd">.vue</code>. De base vous aurez 2 composants, <code class="code-inline" id="26cdacf7bea11d02e03bd06f5d44a5fa">App.vue</code> qui sera votre <em>root component</em> et <code class="code-inline" id="0e80a33e5e46d7db0b912548f49c5267">Hello.vue</code> qui est votre <em>Hello world</em>.</p>
 <p>Vous avez un répertoire <code class="code-inline" id="4725dcf446a342f1473a8228e42dfa48">components</code> pour vos composants et un répertoire <code class="code-inline" id="32bb636196f91ed59d7a49190e26b42c">assets</code> pour vos images, css, etc.</p>
 <p>Les fichiers <code class="code-inline" id="4d08a51ed2edf2965914aea4a2018bbd">.vue</code> permettent de définir des <a href="https://vuejs.org/guide/single-file-components.html" target="_blank">Single File Components</a> réutilisables et de bien découper votre application. Ces fichiers encapsulent le code Javascript, le template et le CSS de leur composant respectivement dans des balises <code class="code-inline" id="8cd03c2da7b97e107ce990e50b6886cf">&lt;script&gt;</code>, <code class="code-inline" id="0c9bcca8221cc72b9ae442fa5a94a879">&lt;template&gt;</code> et <code class="code-inline" id="ef054765b291879329b1814c2a61e6e3">&lt;style&gt;</code>. Par defaut les composants sont développés en <strong>ES6</strong> qui sera transpilé grâce à <strong>Babel</strong>.</p>
@@ -316,7 +319,8 @@ h1 {
 <h2 id="dev-tool" class="anchor-title"><a href="#dev-tool">Dev tool</a></h2>
 <p>Je n'en avais pas encore parlé mais Vue.js propose un <a href="https://github.com/vuejs/vue-devtools" target="_blank">dev tool</a> très pratique sous la forme d'une extension chrome. Cette extension se place dans un onglet du <strong>dev tool</strong> de Chrome et vous permet d'accéder à l'état de tous vos composants et de facilement débuguer votre application.</p>
 <figure>
-    <img src="/elao_/images/posts/2016/vuecli-devtool.png" alt="Application" id="application">
+    <img src="/elao_/resized/images/posts/2016/vuecli-devtool.png/c3e5c0c61820921c2c9d2efd781d2acf.png" alt="Application" srcset="/elao_/resized/images/posts/2016/vuecli-devtool.png/c3e5c0c61820921c2c9d2efd781d2acf.png 1x,
+/elao_/resized/images/posts/2016/vuecli-devtool.png/5625179e797687594911e40df12ea042.png 2x," id="application">
     <figcaption style="text-align: center;font-style: italic;">Devtools Vue.js</figcaption>
 </figure></body>
                                                 </main>
