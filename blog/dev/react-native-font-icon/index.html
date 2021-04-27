@@ -290,15 +290,12 @@
 <p>Pour générer une police de caractères à partir d'icônes au format SVG, plusieurs outils existent déjà.
 Chez élao, nous travaillons généralement avec <a href="https://icomoon.io/app/#/select" target="_blank">IcoMoon</a>.</p>
 <p>1 . Créez votre suite d'icônes en sélectionnant parmi les polices proposées et/ou en uploadant vos propres pictogrammes au format SVG.</p>
-<img src="/elao_/resized/images/posts/2018/react-native-font-icon/compose_font.png/5168c0f5d838afe1d7af99d6b8c661e3.png" alt="" title="" srcset="/elao_/resized/images/posts/2018/react-native-font-icon/compose_font.png/5168c0f5d838afe1d7af99d6b8c661e3.png 1x,
-/elao_/resized/images/posts/2018/react-native-font-icon/compose_font.png/6f0235a2cc09fe9da1e9e9a641ff236a.png 2x," id="5168c0f5d838afe1d7af99d6b8c661e3-png">
+<img src="/elao_/images/posts/2018/react-native-font-icon/compose_font.png" alt="" title="" id="compose-font-png">
 <p>2 . Cliquez sur <em>Generate Font</em> puis ouvrez les propriétés de la police (à côté du bouton <em>Download</em>) et saisissez un nom pour votre police qui ne contienne que des lettres standards [a-z], minuscules et/ou majuscules (ex : <code class="code-inline" id="174b743c3b074e21f62d551c846b3c9f">acmeIcon</code>).</p>
-<img src="/elao_/resized/images/posts/2018/react-native-font-icon/customize_font_name.png/1c84a137bbcbb7efb7503cfea65068c3.png" alt="" title="" srcset="/elao_/resized/images/posts/2018/react-native-font-icon/customize_font_name.png/1c84a137bbcbb7efb7503cfea65068c3.png 1x,
-/elao_/resized/images/posts/2018/react-native-font-icon/customize_font_name.png/7a2e12a49f5e6c258b8bea616960503d.png 2x," id="1c84a137bbcbb7efb7503cfea65068c3-png">
+<img src="/elao_/images/posts/2018/react-native-font-icon/customize_font_name.png" alt="" title="" id="customize-font-name-png">
 <p>3 . Fermez la pop-in pour valider votre changement puis téléchargez votre police grâce au bouton <em>Download</em>. Enfin décompressez le fichier ZIP téléchargé.</p>
 <p>4 . Dans le dossier obtenu, récuperez la police au format <code class="code-inline" id="3188a8301b98ccdc7d297e902041bd68">ttf</code> contenu dans le répertoire <code class="code-inline" id="980d14c0c85495b48b9a9134658e6121">fonts</code> et placez-la dans votre projet dans un répertoire de votre choix (ex: <code class="code-inline" id="2d54a9e10452ba4dbef547c662be0e23">./assets/fonts/acmeIcon.ttf</code>).</p>
-<img src="/elao_/resized/images/posts/2018/react-native-font-icon/icon.ttf.png/15360cf806ede2e41d60ca2c2955657b.png" alt="" title="" srcset="/elao_/resized/images/posts/2018/react-native-font-icon/icon.ttf.png/15360cf806ede2e41d60ca2c2955657b.png 1x,
-/elao_/resized/images/posts/2018/react-native-font-icon/icon.ttf.png/ee57f1177d65d76319737d22b06c0478.png 2x," id="15360cf806ede2e41d60ca2c2955657b-png">
+<img src="/elao_/images/posts/2018/react-native-font-icon/icon.ttf.png" alt="" title="" id="icon-ttf-png">
 <p>⚠️ <em>Note :</em> Attention, pour bien fonctionner sur iOS et Android, le nom du fichier <code class="code-inline" id="ed5ec62ffb50b66e93585010d1df8b2b">.ttf</code> doit correspondre <strong>exactement</strong> au nom de la police choisie dans l'étape 2.</p>
 <h2 id="integrer-la-police-au-build-react-native" class="anchor-title"><a href="#integrer-la-police-au-build-react-native">Intégrer la police au build React Native</a></h2>
 <p><em>Note :</em> Ici je ne fais que répéter les étapes décrites dans cet article assez complet <a href="https://medium.com/react-native-training/react-native-custom-fonts-ccc9aacf9e5e" target="_blank">"React Native Custom Fonts" 🇬🇧</a></p>
@@ -334,8 +331,7 @@ Chez élao, nous travaillons généralement avec <a href="https://icomoon.io/app
 <pre class="code-multiline language-jsx"><code class="language-jsx" id="c53188776792d8974f248560defafcb2"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Text</span></span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> fontFamily<span class="token operator">:</span> <span class="token string">'acmeIcon'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{</span><span class="token string">'\u{e902}'</span><span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Text</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>💡 <em>Petite subtilité :</em> si le caractère UTF-8 en CSS se note <code class="code-inline" id="d120c377c3b46a9487aaeefd3db595b5">"\e902"</code>, en Javascript c'est <code class="code-inline" id="008b791ab45460d4af5c6c1475495cb6">'\u{e902}'</code>.
 La partie variable pour chaque icône ici est <code class="code-inline" id="67250417dc7b14fd0a8e8ff7f1eaf518">e902</code>. IcoMoon vous fournit ce code unique pour chaque pictogramme, à vous de l'adapter au format Javascript.</p>
-<img src="/elao_/resized/images/posts/2018/react-native-font-icon/icon_code.png/56c248ed1887c6e014282a5b8d867bd9.png" alt="" title="" srcset="/elao_/resized/images/posts/2018/react-native-font-icon/icon_code.png/56c248ed1887c6e014282a5b8d867bd9.png 1x,
-/elao_/resized/images/posts/2018/react-native-font-icon/icon_code.png/c199878778bf5f559627c6929b0332f4.png 2x," id="56c248ed1887c6e014282a5b8d867bd9-png">
+<img src="/elao_/images/posts/2018/react-native-font-icon/icon_code.png" alt="" title="" id="icon-code-png">
 <p>Bien que cette notation fonctionne, je vous propose de créer un composant réutilisable et plus simple à utiliser !</p>
 <h3 id="creer-un-composant-icon" class="anchor-title"><a href="#creer-un-composant-icon">Créer un composant Icon</a></h3>
 <p>Nous allons maintenant créer un composant <code class="code-inline" id="817434295a673aed431435658b65d9a7">Icon</code> chargé de rendre une icône.</p>
@@ -401,8 +397,7 @@ La partie variable pour chaque icône ici est <code class="code-inline" id="6725
   <span class="token maybe-class-name">Retour</span> à l'accueil
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Text</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>Et le résultat !</p>
-<img src="/elao_/resized/images/posts/2018/react-native-font-icon/result.png/afe4fd82b155ef5c46e8255a5c225efe.png" alt="" title="" srcset="/elao_/resized/images/posts/2018/react-native-font-icon/result.png/afe4fd82b155ef5c46e8255a5c225efe.png 1x,
-/elao_/resized/images/posts/2018/react-native-font-icon/result.png/860d4c6f2c40bb986d5904cc141cd825.png 2x," id="afe4fd82b155ef5c46e8255a5c225efe-png"></body>
+<img src="/elao_/images/posts/2018/react-native-font-icon/result.png" alt="" title="" id="result-png"></body>
                                                 <div class="article-credits">
                         Crédits: photo de couverture par
                                                     <a href="https://unsplash.com/@aquatium">
