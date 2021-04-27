@@ -230,7 +230,7 @@
                 </div>
                         <div class="article-info__date">
                 <span>Publication <strong>4 juillet 2017</strong></span>
-                <span>Modification <strong>26 avril 2021</strong></span>
+                <span>Modification <strong>27 avril 2021</strong></span>
             </div>
         </div>
 
@@ -281,8 +281,7 @@
 <li>Une milestone "Backlog" contient toutes les autres stories.</li>
 </ul>
 <p>Ça nous convient bien et GitHub nous fournit un aperçu de l'avancée de la milestone (et donc du sprint) en cours :</p>
-<img src="/elao_/pr/260/resized/images/posts/2017/github-agile-dashboard/github-milestone.png/f7642220428f7aabd23c8db5c5d38a39.png" alt="github-milestone" title="github-milestone" srcset="/elao_/pr/260/resized/images/posts/2017/github-agile-dashboard/github-milestone.png/f7642220428f7aabd23c8db5c5d38a39.png 1x,
-/elao_/pr/260/resized/images/posts/2017/github-agile-dashboard/github-milestone.png/5c69ea98d067f82604096b2498a24dcb.png 2x," id="github-milestone">
+<img src="/elao_/pr/260/images/posts/2017/github-agile-dashboard/github-milestone.png" alt="github-milestone" title="github-milestone" id="github-milestone">
 <p>Le problème, c'est que GitHub ne connait pas notre convention décrivant la valeur en point des stories et ne peut donc pas l'exploiter.</p>
 <p>L'avancement proposé en nombre de ticket clos n'est pas représentatif de l'avancement en terme de points, qu'on doit obtenir en additionnant les points de toutes les issues.</p>
 <p><em>Et puis un jour, on en a eu marre de faire ces totaux à la main</em> 😇</p>
@@ -296,19 +295,16 @@
 <p>À partir de ces données, il est très simple de classer les stories du sprint en cours par état (<em>todo</em>, <em>doing</em>, <em>ready-to-review</em> et <em>done</em>) et de calculer les sommes de points respectives.</p>
 <p>Comme toutes ces données sont horodatées, on a même de quoi générer un petit <strong>burndown chart</strong> !</p>
 <p>Dans le répertoire de notre projet, si on tape <code class="code-inline" id="5873cade84adddbdd85ce9248ea2a629">gad sprint</code>, on obtient :</p>
-<img src="/elao_/pr/260/resized/images/posts/2017/github-agile-dashboard/sprint.png/eb4f946a8e36238195be4542f91ca169.png" alt="gad sprint" title="gad sprint" srcset="/elao_/pr/260/resized/images/posts/2017/github-agile-dashboard/sprint.png/eb4f946a8e36238195be4542f91ca169.png 1x,
-/elao_/pr/260/resized/images/posts/2017/github-agile-dashboard/sprint.png/5235be4839355bf815bde4cdd6a3f85d.png 2x," id="gad-sprint">
+<img src="/elao_/pr/260/images/posts/2017/github-agile-dashboard/sprint.png" alt="gad sprint" title="gad sprint" id="gad-sprint">
 <p>Dès que nous avons identifié un besoin qui revenait souvent, on a rajouté une commande à GAD :</p>
 <blockquote>
 <p>Combien de points reste-t-il dans le backlog ?</p>
 </blockquote>
-<img src="/elao_/pr/260/resized/images/posts/2017/github-agile-dashboard/backlog.png/1f6c910d63218f95684478548093df28.png" alt="gad backlog" title="gad backlog" srcset="/elao_/pr/260/resized/images/posts/2017/github-agile-dashboard/backlog.png/1f6c910d63218f95684478548093df28.png 1x,
-/elao_/pr/260/resized/images/posts/2017/github-agile-dashboard/backlog.png/d5c9ec107ed56e97704492e962acd718.png 2x," id="gad-backlog">
+<img src="/elao_/pr/260/images/posts/2017/github-agile-dashboard/backlog.png" alt="gad backlog" title="gad backlog" id="gad-backlog">
 <blockquote>
 <p>Est-ce qu'il y a des PR que je n'ai pas encore review ?</p>
 </blockquote>
-<img src="/elao_/pr/260/resized/images/posts/2017/github-agile-dashboard/review.png/e42e99f4becffd68b4fba0b59439f264.png" alt="gad review" title="gad review" srcset="/elao_/pr/260/resized/images/posts/2017/github-agile-dashboard/review.png/e42e99f4becffd68b4fba0b59439f264.png 1x,
-/elao_/pr/260/resized/images/posts/2017/github-agile-dashboard/review.png/0909b1578269c84ca0f0ce9a0472b176.png 2x," id="gad-review">
+<img src="/elao_/pr/260/images/posts/2017/github-agile-dashboard/review.png" alt="gad review" title="gad review" id="gad-review">
 <h2 id="faire-son-propre-cli-avec-node" class="anchor-title"><a href="#faire-son-propre-cli-avec-node">Faire son propre CLI avec Node</a></h2>
 <p>GAD est codé en <em>Node</em>, mais de nombreux languages seront capables de répondre à une telle problématique.</p>
 <p>Node fournit quelques outils pratiques pour réaliser rapidement un petit outil en ligne de commande :</p>

@@ -230,7 +230,7 @@
                 </div>
                         <div class="article-info__date">
                 <span>Publication <strong>29 janvier 2019</strong></span>
-                <span>Modification <strong>26 avril 2021</strong></span>
+                <span>Modification <strong>27 avril 2021</strong></span>
             </div>
         </div>
 
@@ -319,16 +319,13 @@
 <p>Pour l'exemple, je vais créer un nouveau projet <a href="https://symfony.com/download" target="_blank">Symfony</a> vide avec :</p>
 <pre class="code-multiline"><code id="4e9124da01ad69ef06a89ac4384ee23f">symfony new --full acme
 cd acme</code></pre>
-<img src="/elao_/pr/260/resized/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project.png/6376b9be9d226b9d0b252d62412fa55c.png" alt="" title="" srcset="/elao_/pr/260/resized/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project.png/6376b9be9d226b9d0b252d62412fa55c.png 1x,
-/elao_/pr/260/resized/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project.png/ccf8b5eab53a6dd4cbab81adeae7fff0.png 2x," id="6376b9be9d226b9d0b252d62412fa55c-png">
-<img src="/elao_/pr/260/resized/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project_browser.png/b364cb6d54c8b526a5cb792f142e619a.png" alt="" title="" srcset="/elao_/pr/260/resized/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project_browser.png/b364cb6d54c8b526a5cb792f142e619a.png 1x,
-/elao_/pr/260/resized/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project_browser.png/6cf06237f295b1e6dacb71a853d3ca41.png 2x," id="b364cb6d54c8b526a5cb792f142e619a-png">
+<img src="/elao_/pr/260/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project.png" alt="" title="" id="empty-symfony-project-png">
+<img src="/elao_/pr/260/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project_browser.png" alt="" title="" id="empty-symfony-project-browser-png">
 <p>Puis créer un environnement virtuel Manala pour cette application :</p>
 <pre class="code-multiline"><code id="be798b2aba437dca70435f4c6d61d29c">manalize setup .</code></pre>
 <p>À travers son outil de setup interactif, Manala me demande de faire un certain nombre de choix concernant les technologies nécessaires au fonctionnement de mon projet à intégrer dans la VM.</p>
 <p>Puisque nous travaillons beaucoup avec Symfony chez élao, Manala propose une pré-configuration adaptée aux projets Symfony, embarquant entre autres PHP et Mysql. C'est ce que j'utiliserai ici :</p>
-<img src="/elao_/pr/260/resized/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/setup.png/47e08457fc7a1190c96add8d6308dea0.png" alt="" title="" srcset="/elao_/pr/260/resized/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/setup.png/47e08457fc7a1190c96add8d6308dea0.png 1x,
-/elao_/pr/260/resized/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/setup.png/070af74df19f5fea1256f9cf9724a0d3.png 2x," id="47e08457fc7a1190c96add8d6308dea0-png">
+<img src="/elao_/pr/260/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/setup.png" alt="" title="" id="setup-png">
 <p><em>💡 Qu'est-ce qui est créé ?</em></p>
 <ul>
 <li><code class="code-inline" id="12387cce3d2ee154f0b73f9197c96398">Vangrantfile</code> : Décrit les propriétés de la machine virtuelle pour Vagrant.</li>
@@ -345,8 +342,7 @@ cd acme</code></pre>
 <p>Ensuite, je n'aurai plus qu'a lancer cette VM à chaque fois que je démarre mon ordinateur et que je veux développer sur ce projet :</p>
 <pre class="code-multiline"><code id="34e05760adec124bdbf614a6c496e863">vagrant up</code></pre>
 <p>Mon app est maintenant disponible à l'adresse suivante : <a href="http://acme.vm" target="_blank">http://acme.vm</a></p>
-<img src="/elao_/pr/260/resized/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_in_vm.png/264d96bcc3cf49cce2e0a92704bc8fd5.png" alt="" title="" srcset="/elao_/pr/260/resized/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_in_vm.png/264d96bcc3cf49cce2e0a92704bc8fd5.png 1x,
-/elao_/pr/260/resized/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_in_vm.png/623a646895a85e92d75bd2b26292aa98.png 2x," id="264d96bcc3cf49cce2e0a92704bc8fd5-png">
+<img src="/elao_/pr/260/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_in_vm.png" alt="" title="" id="symfony-in-vm-png">
 <p>Mission accomplie ! 🎉</p>
 <h4 id="entrer-dans-la-vm" class="anchor-title"><a href="#entrer-dans-la-vm">Entrer dans la VM</a></h4>
 <p>Mon projet ne tourne pas localement sur mon poste, mais dans une machine virtuelle (c'était le but).</p>
@@ -354,8 +350,7 @@ cd acme</code></pre>
 <p>Pour cela, je me connecte en SSH à la VM (comme je le ferais à un serveur web distant hébergeant mon application), grâce à la commande suivante fournie par vagrant :</p>
 <pre class="code-multiline"><code id="198135fc83653d13345f16358ba83b5d">vagrant ssh</code></pre>
 <p>Une fois connecté, je suis dans le répertoire de mon application et peux accéder à la console Symfony :</p>
-<img src="/elao_/pr/260/resized/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_cli_in_vm.png/a5a6a0005087e9454758d59487e8de3f.png" alt="" title="" srcset="/elao_/pr/260/resized/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_cli_in_vm.png/a5a6a0005087e9454758d59487e8de3f.png 1x,
-/elao_/pr/260/resized/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_cli_in_vm.png/190c4614a425493a3f5ab3a2c6d771c7.png 2x," id="a5a6a0005087e9454758d59487e8de3f-png">
+<img src="/elao_/pr/260/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_cli_in_vm.png" alt="" title="" id="symfony-cli-in-vm-png">
 <p><em>💡 Notez le chemin du répertoire courant :</em> je suis dans le système de fichiers de la VM, plus sur ma machine !</p>
 <h2 id="le-tester-c-est-l-adopter" class="anchor-title"><a href="#le-tester-c-est-l-adopter">Le tester, c'est l'adopter !</a></h2>
 <p>Nous utilisons <a href="http://manala.io" target="_blank">Manala</a> depuis plusieurs années pour nos environnements de développement, l'outil est maintenant mature et stable.</p>
