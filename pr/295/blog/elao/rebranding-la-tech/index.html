@@ -234,17 +234,24 @@
         /elao_/pr/295/resized/images/members/avatars/adefrance.jpg/abc26f8103364a2cb8d14aead16694bc.jpg 2x
     "
  />
+                                                                                                                <img     src="/elao_/pr/295/resized/images/members/avatars/aldeboissieu.jpg/9ebc97e20e031e3028ef51c5cb7437e2.jpg"
+    srcset="
+        /elao_/pr/295/resized/images/members/avatars/aldeboissieu.jpg/9ebc97e20e031e3028ef51c5cb7437e2.jpg 1x,
+        /elao_/pr/295/resized/images/members/avatars/aldeboissieu.jpg/4d4ca3e8acdc8dc02e75752dd71aa33e.jpg 2x
+    "
+ />
                                                                         </div>
                     <span class="article-author__info">
             Écrit par
                             <strong>Thomas Jarrand</strong>
                             <strong>Maxime Steinhausser</strong>
                             <strong>Amélie Defrance</strong>
+                            <strong>Anne‑Laure de Boissieu</strong>
                       </span>
                 </div>
                         <div class="article-info__date">
                 <span>Publication <strong>3 mai 2021</strong></span>
-                <span>Modification <strong>28 avril 2021</strong></span>
+                <span>Modification <strong>30 avril 2021</strong></span>
             </div>
         </div>
 
@@ -276,7 +283,15 @@
 
                                     </li>
                             <li class="table-of-content__item">
-                    <a href="#deploiement-continu">Deploiement continu</a>
+                    <a href="#seo">SEO</a>
+
+                                    </li>
+                            <li class="table-of-content__item">
+                    <a href="#images-et-performances">Images et performances</a>
+
+                                    </li>
+                            <li class="table-of-content__item">
+                    <a href="#deploiement-continu">Déploiement continu</a>
 
                                     </li>
                             <li class="table-of-content__item">
@@ -290,11 +305,11 @@
 
             
             <body><h2 id="du-sur-mesure" class="anchor-title"><a href="#du-sur-mesure">Du sur mesure</a></h2>
-<p>Pour notre site, on avait été séduit par l'approche du site statique généré automatiquement à partir de contenus en Markdown. Pour la précédente version de celui-ci, on utilisait <a href="https://gohugo.io/" target="_blank">Hugo</a>, mais on a aussi testé pas mal d'outils existant pour générer de la documention par exemple.</p>
-<p>Ça a l'avantage de servir un site très performant, peu sujet aux attaques et dont les contenus son pilotés à travers un workflow git : un article s'écrit comme une feature, via une PR, avec la relecture et la validation des collègues.</p>
+<p>Pour notre site, on avait été séduit par l'approche du site statique généré automatiquement à partir de contenus en Markdown. Pour la précédente version de celui-ci, on utilisait <a href="https://gohugo.io/" target="_blank">Hugo</a>, mais on a aussi testé de nombreux outils existants pour générer de la documentation, par exemple.</p>
+<p>Ça a l'avantage de servir un site très performant, peu sujet aux attaques et dont les contenus sont pilotés à travers un workflow git : un article s'écrit comme une feature, via une PR, avec la relecture et la validation des collègues.</p>
 <p>Le concept nous a bien plu, mais on s'est plusieurs fois sentie limité par ces solutions : avec par exemple un code source trop fermé ou difficile à étendre. Du coup, soit on adapte notre besoin à ce qu'est capable de proposer la solution, soit on bricole ...</p>
 <p>Mais chez Elao, on est des artisans. Alors cette fois, on voulait être complètement libres, avoir un contrôle total sur notre vitrine en ligne et ne plus dépendre d'une solution qu'on ne maitrise pas bien.</p>
-<p>Du sur mesure quoi, comme pour les projets client !</p>
+<p>Du sur-mesure quoi, comme pour les projets client !</p>
 <h2 id="symfony-statique-stenope" class="anchor-title"><a href="#symfony-statique-stenope">Symfony + Statique = Stenope</a></h2>
 <p>En tant qu'experts Symfony chez Elao, ça nous a paru évident : pour maîtriser complètement notre base de code, développons notre site avec Symfony, puis servons-le en statique !</p>
 <p>Et ça tombait bien ... <a href="/elao_/pr/295/la-tribu/tjarrand">Thomas</a> et <a href="/elao_/pr/295/la-tribu/msteinhausser">Maxime</a>, de l'équipe, étaient justement en train de plancher sur un projet open-source avec cette idée en tête.</p>
@@ -315,7 +330,7 @@
 <li>Stenope vous donne un grand contrôle sur la manière dont sont récupérés et hydratés ces contenus.</li>
 <li>Il ne vous reste qu'à utiliser vos objets métier comme bon vous semble, par exemple dans des controllers et des templates twig.</li>
 </ul>
-<p>Stenope n'est pas un générateur de site statique prêt à l'emploi (l'open-source compte déjà de nombreux projets de qualité répondant à ce besoin) : Stenope c'est un ensemble d'outils pour générer des sites statiques sur mesure dans Symfony !</p>
+<p>Stenope n'est pas un générateur de site statique prêt à l'emploi (l'open-source compte déjà de nombreux projets de qualité répondant à ce besoin) : Stenope c'est un ensemble d'outils pour générer des sites statiques sur-mesure dans Symfony !</p>
 <h2 id="accessibilite" class="anchor-title"><a href="#accessibilite">Accessibilité</a></h2>
 <p>Sur notre site comme dans nos articles de blog, nous mettons l’accent sur le niveau d’exigence d’intégration, le respect des standards et des bonnes pratiques. Cela prend plusieurs formes, notamment pour n'en citer que certaines :</p>
 <ul>
@@ -327,11 +342,41 @@
 <li>la possibilité d'accéder au contenu quelle que soit la taille de son écran ou le niveau de son zoom</li>
 </ul>
 <p>Dans la pratique, l'accessibilité ce sont aussi des optimisations en cours de projet, et nous allons continuer à y travailler avec les évolutions du site. Notre démarche d'accessibilité se veut poussée tout en étant consciente des compromis qu'elle doit faire avec le temps et le coût du projet. C'est un chantier qui s'étalera dans le temps.</p>
-<h2 id="deploiement-continu" class="anchor-title"><a href="#deploiement-continu">Deploiement continu</a></h2>
+<h2 id="seo" class="anchor-title"><a href="#seo">SEO</a></h2>
+<p>La refonte et plus globalement la nouvelle identité graphique a donné lieu à une réflexion sur le positionnement d'Elao. Nous en avons donc profité pour écrire du contenu frais, réecrire les <code class="code-inline" id="d5d3db1765287eef77d7927cc956f50a">title</code> et <code class="code-inline" id="648e867e764be130f6d604824924139c">meta description</code>, revoir l'arborescence des pages, etc.
+Bien entendu, dans le cadre d'une refonte, n'oublions pas les fondamentaux:</p>
+<ul>
+<li>Penser aux redirections (301) des pages si les urls changent</li>
+<li>En profiter pour améliorer les performances des pages 🚀</li>
+<li>Ne pas indexer la preprod 🥳</li>
+<li>Déterminer un plan d'indexation des pages pour le crawl des robots</li>
+</ul>
+<p>Afin de faciliter cette mise en oeuvre qui peut être laborieuse, nous avons développé un petit outil visible dans la toolbar et le profiler de Symfony. Celui-ci comporte deux onglets : SEO et Accessibilité, et apporte des informations sur la page. En vrac, quelques exemples : </p>
+<ul>
+<li>SEO : Title, meta description, hiérarchie des titres, directives pour les robots, données hreflangs, partage sur les réseaux sociaux</li>
+<li>Accessibilité : images sans balise alt, icones non-explicitées, formulaires non-accessibles, statut des liens internes et externes</li>
+</ul>
+<p>Cet outil s'appelle Accesseo, il fait encore l'objet de quelques ajustements à la suite du test intensif qu'il a subi. Nous le rendrons bientôt accessible, et espérons qu'il vous servira peut-être !</p>
+<h2 id="images-et-performances" class="anchor-title"><a href="#images-et-performances">Images et performances</a></h2>
+<p>Différentes options se sont présentées pour afficher dans les images dans la bonne taille, tout en bénéficiant de bonnes performances de chargement. Nous avions évoqué un CDN Thumbor, mais finalement, notre choix s'est porté sur <a href="https://glide.thephpleague.com/" target="_blank">Glide</a>. Nous obtenons une intégration souple et facile à utiliser. </p>
+<p>Chaque image du site existe en 2 versions au minimum :</p>
+<ul>
+<li>l’une (la plus grande) pour permettre un affichage optimal sur les écrans haute résolution
+l’autre afin de ne pas charger des images inutilement lourdes sur des écrans de résolution standard</li>
+<li>L’attribut <code class="code-inline" id="3eededccf6cec86e36ed9ba3433dedb6">srcset</code> nous permet de gérer l’affichage de l’une ou l’autre des versions selon la résolution directement dans le html.</li>
+</ul>
+<p><code class="code-inline" id="a764d8be3910d4e9daf059047b878804">&lt;img src="image.jpg" srcset="image.jpg 1x, image@2x.jpg 2x" alt="image" /&gt;</code></p>
+<p>Pour un affichage des images encore plus performant, l’attribut <code class="code-inline" id="3eededccf6cec86e36ed9ba3433dedb6">srcset</code> permet également de charger une certaine version de l’image en fonction de la taille de l’écran. Par exemple pour afficher une version mobile de l’image, de taille réduite et plus légère.
+Dans la même logique de performance liée aux images, nous utilisons le format <a href="https://developers.google.com/speed/webp" target="_blank">Webp</a> là où nous le pouvons. Il offre un niveau de compression supérieur aux formats habituels pour les photos (JPEG, etc). Il est donc intéressant pour <a href="https://caniuse.com/?search=webp" target="_blank">les navigateurs qui supportent le Webp</a>.</p>
+<p>Les navigateurs qui ne supportent par le WebP verront quand même les images en JPEG.</p>
+<h2 id="deploiement-continu" class="anchor-title"><a href="#deploiement-continu">Déploiement continu</a></h2>
+<p>Par nature, le déploiement d'un site statique est simple et pas prise de tête (💘) : on build, et déploie les fichiers statiques sur un serveur en ssh (via scp ou rsync). Ainsi, c'est assez simple ensuite de mettre en place un Github workflow. Nous avons même poussé pour obtenir un deploy directement sur GithubPage et des previews par PR, ce qui est fortement appréciable pour commenter en équipe un rendu ou un contenu avec de le merger. </p>
 <h2 id="sources" class="anchor-title"><a href="#sources">Sources</a></h2>
 <ul>
 <li>Le site elao<em> (propulsé par Stenope) : <a href="https://github.com/Elao/elao" target="_blank">https://github.com/Elao/elao</a></em></li>
 <li>Stenope : <a href="https://github.com/StenopePHP/Stenope" target="_blank">https://github.com/StenopePHP/Stenope</a></li>
+<li>Glide : <a href="https://glide.thephpleague.com/" target="_blank">https://glide.thephpleague.com/</a></li>
+<li>Github Actions : <a href="https://docs.github.com/en/actions/learn-github-actions" target="_blank">https://docs.github.com/en/actions/learn-github-actions</a></li>
 </ul></body>
                                                 <div class="article-credits">
                         Crédits: photo de couverture par
@@ -423,6 +468,31 @@
                                 <span class="screen-reader">Compte github de Amélie Defrance</span>
                             </a>
                                                                     </div>
+                </div>
+                            <div class="article-author">
+                    <div class="article-author__image">
+                        <img     src="/elao_/pr/295/resized/images/members/avatars/aldeboissieu.jpg/9ebc97e20e031e3028ef51c5cb7437e2.jpg"
+    srcset="
+        /elao_/pr/295/resized/images/members/avatars/aldeboissieu.jpg/9ebc97e20e031e3028ef51c5cb7437e2.jpg 1x,
+        /elao_/pr/295/resized/images/members/avatars/aldeboissieu.jpg/4d4ca3e8acdc8dc02e75752dd71aa33e.jpg 2x
+    "
+ />
+                    </div>
+                    <span class="article-author__info">
+                        Co-écrit par
+                        <strong>Anne‑Laure de Boissieu</strong>
+                    </span>
+
+                    <div class="article-author__social">
+                                                                            <a href="https://github.com/al2b " class="social social--small">
+                                <i class="icon icon--github" aria-hidden="true"></i>
+                                <span class="screen-reader">Compte github de Anne‑Laure de Boissieu</span>
+                            </a>
+                                                                            <a href="https://mixitconf.org/" class="social social--small">
+                                <i class="icon icon--website" aria-hidden="true"></i>
+                                <span class="screen-reader">Site personnel de Anne‑Laure de Boissieu</span>
+                            </a>
+                                            </div>
                 </div>
                         </div>
 
