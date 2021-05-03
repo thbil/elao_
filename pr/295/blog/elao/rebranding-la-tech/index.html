@@ -41,7 +41,7 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/295/build/style.60fac0a2.css">
+                    <link rel="stylesheet" href="/elao_/pr/295/build/style.d889054c.css">
         
             </head>
     <body>
@@ -334,6 +334,7 @@
 <li>Stenope vous donne un grand contrôle sur la manière dont sont récupérés et hydratés ces contenus.</li>
 <li>Il ne vous reste qu'à utiliser vos objets métier comme bon vous semble, par exemple dans des controllers et des templates twig.</li>
 </ul>
+<img src="/elao_/pr/295/images/posts/2021/rebranding-la-tech/stenope.png" alt="stenope-cli" title="stenope-cli" id="stenope-cli">
 <p>Stenope n'est pas un générateur de site statique prêt à l'emploi (l'open-source compte déjà de nombreux projets de qualité répondant à ce besoin) : Stenope c'est un ensemble d'outils pour générer des sites statiques sur-mesure dans Symfony !</p>
 <h2 id="setup-du-projet" class="anchor-title"><a href="#setup-du-projet">Setup du projet</a></h2>
 <p>Comme à notre habitude chez Elao, nous utilisons notre outil fait-maison qui nous permet d’industrialiser nos environnements de travail : <a href="https://www.manala.io/" target="_blank">Manala</a>. Pour ce besoin précis d’obtenir un site qui tourne - rapidement - sous Symfony, notre collègue <a href="/elao_/pr/295/la-tribu/frey">nervo</a> - principal mainteneur du projet - nous a concocté une recipe nommée <a href="https://manala.github.io/manala-recipes/recipes/lazy.symfony/" target="_blank">lazy.symfony</a>, qui, comme son nom l’indique, promet de ne pas trop s'en faire. Rien à installer, mis à part Docker.</p>
@@ -356,7 +357,7 @@ Bien entendu, dans le cadre d'une refonte, n'oublions pas les fondamentaux:</p>
 <li>En profiter pour améliorer les performances des pages 🚀</li>
 <li>Déterminer un plan d'indexation des pages pour le crawl des robots</li>
 </ul>
-<p>Afin de faciliter cette mise en oeuvre qui peut être laborieuse, nous avons développé un petit outil visible dans la toolbar et le profiler de Symfony. Celui-ci comporte deux onglets : SEO et Accessibilité, et apporte des informations sur la page. En vrac, quelques exemples : </p>
+<p>Afin de faciliter cette mise en oeuvre qui peut être laborieuse, nous avons développé un petit outil visible dans la toolbar et le profiler de Symfony. Celui-ci comporte deux onglets : SEO et Accessibilité, et apporte des informations sur la page. En vrac, quelques exemples :</p>
 <ul>
 <li>SEO : Title, meta description, hiérarchie des titres, directives pour les robots, données hreflangs, partage sur les réseaux sociaux</li>
 <li>Accessibilité : images sans balise alt, icones non-explicitées, formulaires non-accessibles, statut des liens internes et externes</li>
@@ -364,7 +365,7 @@ Bien entendu, dans le cadre d'une refonte, n'oublions pas les fondamentaux:</p>
 <p>Cet outil s'appelle Accesseo, il fait encore l'objet de quelques ajustements à la suite du test intensif qu'il a subi. Nous le rendrons bientôt accessible, et espérons qu'il vous servira peut-être !</p>
 <img src="/elao_/pr/295/images/posts/2021/rebranding-la-tech/accesseo.png" alt="" title="" id="accesseo-png">
 <h2 id="images-et-performances" class="anchor-title"><a href="#images-et-performances">Images et performances</a></h2>
-<p>Stenope ne fournit rien pour le resize d'images : le choix de l'outil et de son implémentation est libre. Pour nous, différentes options se sont présentées pour afficher dans les images dans la bonne taille, tout en bénéficiant de bonnes performances de chargement. Nous avions évoqué un CDN Thumbor, mais finalement, notre choix s'est porté sur <a href="https://glide.thephpleague.com/" target="_blank">Glide</a>. Nous obtenons une intégration souple et facile à utiliser. </p>
+<p>Stenope ne fournit rien pour le resize d'images : le choix de l'outil et de son implémentation est libre. Pour nous, différentes options se sont présentées pour afficher dans les images dans la bonne taille, tout en bénéficiant de bonnes performances de chargement. Nous avions évoqué un CDN Thumbor, mais finalement, notre choix s'est porté sur <a href="https://glide.thephpleague.com/" target="_blank">Glide</a>. Nous obtenons une intégration souple et facile à utiliser.</p>
 <p>Chaque image du site existe en 2 versions au minimum :</p>
 <ul>
 <li>l’une (la plus grande) pour permettre un affichage optimal sur les écrans haute résolution</li>
