@@ -11,7 +11,7 @@ shortDescription: "Recrutement par cooptation."
 clients: MyJob.Company
 size: 6 mois
 services: ["Refonte", "Développement"]
-technologies: ["symfony", "elasticsearch", "vue-js", "html", "css"]
+technologies: ["symfony", "elasticsearch", "vue-js", "html", "css", "payment"]
 members: ["mcolin", "adefrance"]
 images: ["images/casestudies/headers/mjc-banner.jpg"]
 ---
