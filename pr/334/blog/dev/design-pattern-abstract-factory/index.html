@@ -260,18 +260,24 @@
             <body><p>Deuxième article d'une série consacrée aux Design Patterns. Aujourd'hui, le pattern <code class="code-inline" id="65e83a834deb2a41513d933cb5fa5570">AbstractFactory</code> où il sera question de produits, de familles et de fabriques (<em>factories</em>, au pluriel s'il vous plaît).</p>
 <table width="100%">
     <tr>
-        <td width="50%" align="center">
-            {{}}
-    <figcaption style="text-align: center;font-style: italic;">Une gentille famille américaine</figcaption>
+        <td>
+            <figure>
+                <img src="/elao_/pr/334/images/posts/design-pattern/img/ingals-family.jpeg" alt="Une gentille famille américaine" id="une-gentille-famille-americaine">
+                <figcaption style="text-align: center;font-style: italic;">Une gentille famille américaine</figcaption>
+            </figure>
         </td>
-        <td width="50%" align="center">
-            {{}}
-<figcaption style="text-align: center;font-style: italic;">Une <strike>gentille</strike> famille américaine</figcaption>
+        <td>
+            <figure>
+                <img src="/elao_/pr/334/images/posts/design-pattern/img/chainsaw-family.jpeg" alt="Une famille américaine" id="une-famille-americaine">
+                <figcaption style="text-align: center;font-style: italic;">Une <strike>gentille</strike> famille américaine</figcaption>
+            </figure>
         </td>
     </tr>
 </table>
-<div style="border-left: 5px solid #ffa600;padding: 20px;margin: 20px 0;">
-    Le livre <strong><i>Head First Design Patterns</i></strong> (<a href="/fr/dev/design-pattern-factory-method">dont j'ai déjà vanté les mérites</a>) regroupe les deux patterns <code id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> et <code id="65e83a834deb2a41513d933cb5fa5570">AbstractFactory</code> dans un même chapitre consultable en ligne et intitulé <a href="https://www.safaribooksonline.com/library/view/head-first-design/0596007124/ch04.html" target="_blank">The Factory Pattern: Baking with OO Goodness</a>. Je ne saurais trop vous encourager à le consulter !
+<div class="admonition info">
+<p>
+    Le livre <strong><strong>Head First Design Patterns</strong></strong> (<a href="/elao_/pr/334/../design-pattern-factory-method.md">dont j'ai déjà vanté les mérites</a>) regroupe les deux patterns <code id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> et <code id="65e83a834deb2a41513d933cb5fa5570">AbstractFactory</code> dans un même chapitre consultable en ligne et intitulé <a href="https://www.safaribooksonline.com/library/view/head-first-design/0596007124/ch04.html" target="_blank">The Factory Pattern: Baking with OO Goodness</a>. Je ne saurais trop vous encourager à le consulter !
+</p>
 </div>
 <h2 id="classification" class="anchor-title"><a href="#classification">Classification</a></h2>
 <p>Le pattern <code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code> est classé dans la catégorie des <strong>Design Patterns de création</strong>.</p>
@@ -281,10 +287,10 @@
 </blockquote>
 <p>C'est une très jolie définition dont je ne me lasse pas ... (Comme toute définition, elle paraît assez barbare tant que l'on n'a pas approfondi le concept, ce que je vous propose de faire dans les paragraphes qui suivent).</p>
 <p>En résumé, le pattern <code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code> va nous permettre d'instancier des familles de produits dépendant les uns des autres sans qu'il soit nécessaire de préciser leur type concret (je ne suis pas sûr qu'on soit plus avancé ...)</p>
-<h2 id="schema-du-design-pattern-abstract-factory" class="anchor-title"><code class="code-inline" id="3266b075d74acc656ed95e166300fd26">Abstract Factory</code><a href="#schema-du-design-pattern-abstract-factory">Schéma du design pattern </a></h2>
-<p class="text-center">
-    {{}}
-</p>
+<h2 id="schema-du-design-pattern-abstract-factory" class="anchor-title"><a href="#schema-du-design-pattern-abstract-factory">Schéma du design pattern Abstract Factory</a></h2>
+<figure>
+    <img class="text-center" src="/elao_/pr/334/images/posts/design-pattern/creation-abstract-factory.png" alt="Le Design Pattern 'Abstract Factory'" id="le-design-pattern-abstract-factory">
+</figure>
 <p>Ne vous laissez pas impressionner par la densité du schéma et le nombre de participants. Le pattern n'a rien d'insurmontable et peut s'avérer utile dans de nombreuses situations.</p>
 <p>Pour l'heure, et pour y voir un peu plus clair, je vous suggère de diviser mentalement le schéma en deux :</p>
 <ul>
@@ -301,7 +307,7 @@
 <li>la seconde classe <code class="code-inline" id="8f962f457dd44b50ac847fd857dcc106">GithubParser</code> sait parser les données brutes retournées par mon crawler pour en extraire les données épurées (débarrassées des tags HTML notamment) et les structurer</li>
 </ul>
 <p>Mon client est aux anges et souhaite donc étendre ce fonctionnel aux projets hébergés sur Gitlab (vous la voyez arriver la nouvelle <code class="code-inline" id="ed81c0311eb5364a8d6d1d1b63f3c51d">famille</code> ?). Bien évidemment, la structure HTML des pages Gitlab est complètement différente des pages Github, et mon parser Github est tout à fait incapable de comprendre les données retournées par mon crawler Gitlab ... La contrainte est donc la suivante : si mon crawler est un crawler Github, alors je dois utiliser le parser Github ; si mon crawler est un crawler Gitlab, alors je dois utiliser le parser Gitlab. Et mon client ne compte pas s'arrêter là, il souhaite bien évidemment aussi gérer les pages Bitbucket ...</p>
-<h2 id="resolution-de-la-problematique-a-l-aide-du-dp-abstractfactory" class="anchor-title"><code class="code-inline" id="65e83a834deb2a41513d933cb5fa5570">AbstractFactory</code><a href="#resolution-de-la-problematique-a-l-aide-du-dp-abstractfactory">Résolution de la problématique à l'aide du DP </a></h2>
+<h2 id="resolution-de-la-problematique-a-l-aide-du-dp-abstractfactory" class="anchor-title"><a href="#resolution-de-la-problematique-a-l-aide-du-dp-abstractfactory">Résolution de la problématique à l'aide du DP AbstractFactory</a></h2>
 <p>Vous l'aurez sans doute deviné, nous nous trouvons en présence de trois familles de produits différentes : la famille des produits Github, la famille des produits Gitlab et la famille des produits Bickbucket. Dans chacune de ces familles, on retrouve un produit <code class="code-inline" id="820d17d3f859f4391cce177be0c93fde">Crawler</code> et un produit <code class="code-inline" id="9a83ab0d60fed7c37d928ccb30d1b6ae">Parser</code> conçus pour collaborer ensemble.</p>
 <p>Comment garantir que j'utilise des produits d'une même famille ? Réponse : le pattern <strong>Abstract Factory</strong>. Ce qui nous donne le récapitulatif suivant :</p>
 <table>
@@ -314,11 +320,9 @@
     <tr>
         <td>SCMCrawlerInterface:</td>
         <td colspan="3">
-            <pre class="code">
-public function getProjectNameHtml();
-public function getSummaryHtml();
-public function getCommittedFilesHtml();
-            </pre>
+            <pre class="code-multiline language-php"><code class="language-php" id="a89c4bdd1cdd5f381f2f8cd1d8c61b85"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getProjectNameHtml</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getSummaryHtml</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getCommittedFilesHtml</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
         </td>
     </tr>
     <tr>
@@ -330,11 +334,9 @@ public function getCommittedFilesHtml();
     <tr>
         <td>SCMParserInterface:</td>
         <td colspan="3">
-            <pre class="code">
-public function parseProjectName($projectNameHtml);
-public function parseSummary($summaryHtml);
-public function parseCommittedFiles($committedFilesHtml);
-            </pre>
+            <pre class="code-multiline language-php"><code class="language-php" id="c1512041f08ef2e667b7106a08e464b4"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">parseProjectName</span><span class="token punctuation">(</span><span class="token variable">$projectNameHtml</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">parseSummary</span><span class="token punctuation">(</span><span class="token variable">$summaryHtml</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">parseCommittedFiles</span><span class="token punctuation">(</span><span class="token variable">$committedFilesHtml</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
         </td>
     </tr>
     <tr>
@@ -346,10 +348,8 @@ public function parseCommittedFiles($committedFilesHtml);
     <tr>
         <td>SCMFactoryInterface</td>
         <td colspan="3">
-            <pre class="code">
-public function getCrawler();
-public function getParser();
-            </pre>
+            <pre class="code-multiline language-php"><code class="language-php" id="5b01ec97eafb2f26f34465c8998965e9"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getCrawler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getParser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
         </td>
     </tr>
     <tr>
