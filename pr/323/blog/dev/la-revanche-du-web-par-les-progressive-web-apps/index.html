@@ -42,7 +42,7 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/323/build/style.c8d98849.css">
+                    <link rel="stylesheet" href="/elao_/pr/323/build/style.1f879fdf.css">
         
             </head>
     <body>
@@ -217,17 +217,21 @@
         <div class="article-info" data-aos="zoom-in">
                                         <div class="article-author ">
                     <div class="article-author__image">
-                                                                                    <img     src="/elao_/pr/323/resized/images/members/avatars/rhanna.jpg/e91f8b59b1fbd05c8665c6522465c7fc.jpg"
+                                                    <a>
+                                <img     src="/elao_/pr/323/resized/images/members/avatars/rhanna.jpg/e91f8b59b1fbd05c8665c6522465c7fc.jpg"
     srcset="
         /elao_/pr/323/resized/images/members/avatars/rhanna.jpg/e91f8b59b1fbd05c8665c6522465c7fc.jpg 1x,
         /elao_/pr/323/resized/images/members/avatars/rhanna.jpg/719665b424643e26de5d0bb24d130585.jpg 2x
     "
  />
-                                                                        </div>
+                            </a>
+                                            </div>
                     <span class="article-author__info">
-            Écrit par
+                    Écrit par
+                                            <a>
                             <strong>Richard Hanna</strong>
-                      </span>
+                        </a>
+                                      </span>
                 </div>
                         <div class="article-info__date">
                 <span>Publication <strong>5 décembre 2016</strong></span>
@@ -398,7 +402,7 @@ Ces ressources sont mises en cache et n'ont pas besoin d'être retéléchargées
 Ensuite, les données sont récupérées via des <em>fetch</em> d'API par exemple et viennent s'insérer dans votre présentation à l'aide par exemple de votre framework Frontend préféré.
 Les requêtes à ces API peuvent elles-mêmes être mises en cache.</p>
 <p class="text-center">
-    <img src="/elao_/pr/323/images/posts/2016/pwa/appshell.png" alt="Appshell" style="max-width:80%" id="appshell">
+    <img src="images/posts/2016/pwa/appshell.png" alt="Appshell" style="max-width:80%" id="appshell">
 </p>
 <h3 id="c-est-reserve-aux-apps-mobiles" class="anchor-title"><a href="#c-est-reserve-aux-apps-mobiles">C'est réservé aux apps mobiles ?</a></h3>
 <p>Il est vrai que le problème de connectivité, on l'a surtout en position de mobilité et grâce à la gestion du cache, une web app reste utilisable même en mode déconnecté.
@@ -409,7 +413,7 @@ Les mastodontes tels que Gmail ou Facebook les utilisent couramment.</p>
 offrant aux utilisateurs un accès plus rapide.</p>
 <p>L'ouverture du site dans le navigateur se présente comme une application native avec également un Splash Screen :</p>
 <p class="text-center">
-    <img src="/elao_/pr/323/images/posts/2016/pwa/splashscreen.gif" alt="splashscreen" style="max-width:80%" id="splashscreen">
+    <img src="images/posts/2016/pwa/splashscreen.gif" alt="splashscreen" style="max-width:80%" id="splashscreen">
 </p>
 <p>Ce Web App Manifest se présente sous forme d'un fichier json :</p>
 <pre class="code-multiline language-json"><code class="language-json" id="0896c690edd9ccd39b2c1244905a3083"><span class="token punctuation">{</span>
@@ -607,12 +611,12 @@ Un article à lire à ce sujet : <a href="https://medium.com/@AdityaPunjani/buil
 <p>Le panel "Application" de Developer Tools de Chrome est déjà assez riche en fonctionnalités pour débuguer toutes les facettes d'une Progressive Web App.</p>
 <p>Il permet de consulter le Cache Storage :</p>
 <p class="text-center">
-    <img src="/elao_/pr/323/images/posts/2016/pwa/chrome-devtools-cachestorage.png" alt="Cache storage" style="max-width:80%" id="cache-storage">
+    <img src="images/posts/2016/pwa/chrome-devtools-cachestorage.png" alt="Cache storage" style="max-width:80%" id="cache-storage">
 </p>
 <p>Vérifier le contenu du Web App Manifest et simuler l'ajout à l'écran d'accueil.
 Sous Chrome desktop, l'ajout sera effectivement fait dans les onglets Applications.</p>
 <p class="text-center">
-    <img src="/elao_/pr/323/images/posts/2016/pwa/chrome-devtools-manifest.png" alt="service worker" style="max-width:80%" id="service-worker">
+    <img src="images/posts/2016/pwa/chrome-devtools-manifest.png" alt="service worker" style="max-width:80%" id="service-worker">
 </p>
 <p>Consulter le Service Worker utilisé et avoir différentes options parmi lesquelles :</p>
 <ul>
@@ -621,11 +625,11 @@ Sous Chrome desktop, l'ajout sera effectivement fait dans les onglets Applicatio
 <li>contourner le service worker pour obliger le navigateur à récupérer une ressource depuis le réseau (au lieu du cache) avec "Bypass for network".</li>
 </ul>
 <p class="text-center">
-    <img src="/elao_/pr/323/images/posts/2016/pwa/chrome-devtools-serviceworker.png" alt="service worker" style="max-width:80%" id="service-worker">
+    <img src="images/posts/2016/pwa/chrome-devtools-serviceworker.png" alt="service worker" style="max-width:80%" id="service-worker">
 </p>
 <p>Enfin, une fonction "Clear storage" permet de tout réinitialiser :</p>
 <p class="text-center">
-    <img src="/elao_/pr/323/images/posts/2016/pwa/chrome-devtools-clearstorage.png" alt="service worker" style="max-width:80%" id="service-worker">
+    <img src="images/posts/2016/pwa/chrome-devtools-clearstorage.png" alt="service worker" style="max-width:80%" id="service-worker">
 </p>
 <p>Pour en savoir plus, voir cet article <a href="https://developers.google.com/web/tools/chrome-devtools/progressive-web-apps" target="_blank">Debug Progressive Web Apps</a>.</p>
 <p>De plus, voici d'autres outils - tous propulsés par Google - pour faciliter le développement d'une Progressive Web App :</p>
@@ -663,16 +667,20 @@ Cependant c'est très prometteur. A suivre donc de près !</p></body>
     <div class="article-footer" data-aos="fade-in">
                                     <div class="article-author">
                     <div class="article-author__image">
-                        <img     src="/elao_/pr/323/resized/images/members/avatars/rhanna.jpg/e91f8b59b1fbd05c8665c6522465c7fc.jpg"
+                        <a>
+                            <img     src="/elao_/pr/323/resized/images/members/avatars/rhanna.jpg/e91f8b59b1fbd05c8665c6522465c7fc.jpg"
     srcset="
         /elao_/pr/323/resized/images/members/avatars/rhanna.jpg/e91f8b59b1fbd05c8665c6522465c7fc.jpg 1x,
         /elao_/pr/323/resized/images/members/avatars/rhanna.jpg/719665b424643e26de5d0bb24d130585.jpg 2x
     "
  />
+                        </a>
                     </div>
                     <span class="article-author__info">
                         Écrit par
-                        <strong>Richard Hanna</strong>
+                        <a>
+                            <strong>Richard Hanna</strong>
+                        </a>
                     </span>
 
                     <div class="article-author__social">
@@ -739,7 +747,15 @@ Cependant c'est très prometteur. A suivre donc de près !</p></body>
                                     <a href="/elao_/pr/323/contact">Contact</a>
                                 </li>
                                                         </ul>
-                                            </div>
+                                                <ul>
+                            <li>
+                                                                <a href="/elao_/pr/323/recrutement">
+                                    Nous recrutons
+                                                                            <span class="bullet">2</span>
+                                                                    </a>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="socials">
                         <ul>
                             <li>

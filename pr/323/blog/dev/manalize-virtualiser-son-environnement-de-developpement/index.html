@@ -42,7 +42,7 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/323/build/style.c8d98849.css">
+                    <link rel="stylesheet" href="/elao_/pr/323/build/style.1f879fdf.css">
         
             </head>
     <body>
@@ -217,17 +217,21 @@
         <div class="article-info" data-aos="zoom-in">
                                         <div class="article-author ">
                     <div class="article-author__image">
-                                                                                    <img     src="/elao_/pr/323/resized/images/members/avatars/tjarrand.jpg/b3562a4b09bd2f84aec5902b5a086110.jpg"
+                                                    <a href="/elao_/pr/323/la-tribu/tjarrand">
+                                <img     src="/elao_/pr/323/resized/images/members/avatars/tjarrand.jpg/b3562a4b09bd2f84aec5902b5a086110.jpg"
     srcset="
         /elao_/pr/323/resized/images/members/avatars/tjarrand.jpg/b3562a4b09bd2f84aec5902b5a086110.jpg 1x,
         /elao_/pr/323/resized/images/members/avatars/tjarrand.jpg/b2d9a2b5911cee9107c2a7ec22935509.jpg 2x
     "
  />
-                                                                        </div>
+                            </a>
+                                            </div>
                     <span class="article-author__info">
-            Écrit par
+                    Écrit par
+                                            <a href="/elao_/pr/323/la-tribu/tjarrand">
                             <strong>Thomas Jarrand</strong>
-                      </span>
+                        </a>
+                                      </span>
                 </div>
                         <div class="article-info__date">
                 <span>Publication <strong>29 janvier 2019</strong></span>
@@ -319,13 +323,13 @@
 <p>Pour l'exemple, je vais créer un nouveau projet <a href="https://symfony.com/download" target="_blank">Symfony</a> vide avec :</p>
 <pre class="code-multiline"><code id="4e9124da01ad69ef06a89ac4384ee23f">symfony new --full acme
 cd acme</code></pre>
-<img src="/elao_/pr/323/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project.png" alt="" title="" id="empty-symfony-project-png">
-<img src="/elao_/pr/323/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project_browser.png" alt="" title="" id="empty-symfony-project-browser-png">
+<img src="images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project.png" alt="" title="" id="empty-symfony-project-png">
+<img src="images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/empty_symfony_project_browser.png" alt="" title="" id="empty-symfony-project-browser-png">
 <p>Puis créer un environnement virtuel Manala pour cette application :</p>
 <pre class="code-multiline"><code id="be798b2aba437dca70435f4c6d61d29c">manalize setup .</code></pre>
 <p>À travers son outil de setup interactif, Manala me demande de faire un certain nombre de choix concernant les technologies nécessaires au fonctionnement de mon projet à intégrer dans la VM.</p>
 <p>Puisque nous travaillons beaucoup avec Symfony chez élao, Manala propose une pré-configuration adaptée aux projets Symfony, embarquant entre autres PHP et Mysql. C'est ce que j'utiliserai ici :</p>
-<img src="/elao_/pr/323/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/setup.png" alt="" title="" id="setup-png">
+<img src="images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/setup.png" alt="" title="" id="setup-png">
 <p><em>💡 Qu'est-ce qui est créé ?</em></p>
 <ul>
 <li><code class="code-inline" id="12387cce3d2ee154f0b73f9197c96398">Vangrantfile</code> : Décrit les propriétés de la machine virtuelle pour Vagrant.</li>
@@ -342,7 +346,7 @@ cd acme</code></pre>
 <p>Ensuite, je n'aurai plus qu'a lancer cette VM à chaque fois que je démarre mon ordinateur et que je veux développer sur ce projet :</p>
 <pre class="code-multiline"><code id="34e05760adec124bdbf614a6c496e863">vagrant up</code></pre>
 <p>Mon app est maintenant disponible à l'adresse suivante : <a href="http://acme.vm" target="_blank">http://acme.vm</a></p>
-<img src="/elao_/pr/323/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_in_vm.png" alt="" title="" id="symfony-in-vm-png">
+<img src="images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_in_vm.png" alt="" title="" id="symfony-in-vm-png">
 <p>Mission accomplie ! 🎉</p>
 <h4 id="entrer-dans-la-vm" class="anchor-title"><a href="#entrer-dans-la-vm">Entrer dans la VM</a></h4>
 <p>Mon projet ne tourne pas localement sur mon poste, mais dans une machine virtuelle (c'était le but).</p>
@@ -350,7 +354,7 @@ cd acme</code></pre>
 <p>Pour cela, je me connecte en SSH à la VM (comme je le ferais à un serveur web distant hébergeant mon application), grâce à la commande suivante fournie par vagrant :</p>
 <pre class="code-multiline"><code id="198135fc83653d13345f16358ba83b5d">vagrant ssh</code></pre>
 <p>Une fois connecté, je suis dans le répertoire de mon application et peux accéder à la console Symfony :</p>
-<img src="/elao_/pr/323/images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_cli_in_vm.png" alt="" title="" id="symfony-cli-in-vm-png">
+<img src="images/posts/2019/manalize-virtualiser-son-environnement-de-developpement/symfony_cli_in_vm.png" alt="" title="" id="symfony-cli-in-vm-png">
 <p><em>💡 Notez le chemin du répertoire courant :</em> je suis dans le système de fichiers de la VM, plus sur ma machine !</p>
 <h2 id="le-tester-c-est-l-adopter" class="anchor-title"><a href="#le-tester-c-est-l-adopter">Le tester, c'est l'adopter !</a></h2>
 <p>Nous utilisons <a href="http://manala.io" target="_blank">Manala</a> depuis plusieurs années pour nos environnements de développement, l'outil est maintenant mature et stable.</p>
@@ -374,16 +378,20 @@ Mais ça fera l'objet d'un prochain article. 😉</p></body>
     <div class="article-footer" data-aos="fade-in">
                                     <div class="article-author">
                     <div class="article-author__image">
-                        <img     src="/elao_/pr/323/resized/images/members/avatars/tjarrand.jpg/b3562a4b09bd2f84aec5902b5a086110.jpg"
+                        <a href="/elao_/pr/323/la-tribu/tjarrand">
+                            <img     src="/elao_/pr/323/resized/images/members/avatars/tjarrand.jpg/b3562a4b09bd2f84aec5902b5a086110.jpg"
     srcset="
         /elao_/pr/323/resized/images/members/avatars/tjarrand.jpg/b3562a4b09bd2f84aec5902b5a086110.jpg 1x,
         /elao_/pr/323/resized/images/members/avatars/tjarrand.jpg/b2d9a2b5911cee9107c2a7ec22935509.jpg 2x
     "
  />
+                        </a>
                     </div>
                     <span class="article-author__info">
                         Écrit par
-                        <strong>Thomas Jarrand</strong>
+                        <a href="/elao_/pr/323/la-tribu/tjarrand">
+                            <strong>Thomas Jarrand</strong>
+                        </a>
                     </span>
 
                     <div class="article-author__social">
@@ -450,7 +458,15 @@ Mais ça fera l'objet d'un prochain article. 😉</p></body>
                                     <a href="/elao_/pr/323/contact">Contact</a>
                                 </li>
                                                         </ul>
-                                            </div>
+                                                <ul>
+                            <li>
+                                                                <a href="/elao_/pr/323/recrutement">
+                                    Nous recrutons
+                                                                            <span class="bullet">2</span>
+                                                                    </a>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="socials">
                         <ul>
                             <li>

@@ -42,7 +42,7 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/323/build/style.c8d98849.css">
+                    <link rel="stylesheet" href="/elao_/pr/323/build/style.1f879fdf.css">
         
             </head>
     <body>
@@ -217,24 +217,32 @@
         <div class="article-info" data-aos="zoom-in">
                                         <div class="article-author article-author--multi">
                     <div class="article-author__image">
-                                                                                    <img     src="/elao_/pr/323/resized/images/members/avatars/mcolin.jpg/af86390e2b7d0a64114a4c1e367d5122.jpg"
+                                                    <a href="/elao_/pr/323/la-tribu/mcolin">
+                                <img     src="/elao_/pr/323/resized/images/members/avatars/mcolin.jpg/af86390e2b7d0a64114a4c1e367d5122.jpg"
     srcset="
         /elao_/pr/323/resized/images/members/avatars/mcolin.jpg/af86390e2b7d0a64114a4c1e367d5122.jpg 1x,
         /elao_/pr/323/resized/images/members/avatars/mcolin.jpg/7e327ccc07dda93e8704225e05160663.jpg 2x
     "
  />
-                                                                                                                <img     src="/elao_/pr/323/resized/images/members/avatars/aldeboissieu.jpg/9ebc97e20e031e3028ef51c5cb7437e2.jpg"
+                            </a>
+                                                    <a href="/elao_/pr/323/la-tribu/aldeboissieu">
+                                <img     src="/elao_/pr/323/resized/images/members/avatars/aldeboissieu.jpg/9ebc97e20e031e3028ef51c5cb7437e2.jpg"
     srcset="
         /elao_/pr/323/resized/images/members/avatars/aldeboissieu.jpg/9ebc97e20e031e3028ef51c5cb7437e2.jpg 1x,
         /elao_/pr/323/resized/images/members/avatars/aldeboissieu.jpg/4d4ca3e8acdc8dc02e75752dd71aa33e.jpg 2x
     "
  />
-                                                                        </div>
+                            </a>
+                                            </div>
                     <span class="article-author__info">
-            Écrit par
+                    Écrit par
+                                            <a href="/elao_/pr/323/la-tribu/mcolin">
                             <strong>Maxime Colin</strong>
+                        </a>
+                                            <a href="/elao_/pr/323/la-tribu/aldeboissieu">
                             <strong>Anne‑Laure de Boissieu</strong>
-                      </span>
+                        </a>
+                                      </span>
                 </div>
                         <div class="article-info__date">
                 <span>Publication <strong>10 juillet 2019</strong></span>
@@ -275,7 +283,7 @@ Bien sûr, dans les deux cas, les robots ne peuvent pas accéder aux pages, emp�
 <p>Néanmoins, ces deux solutions peuvent parfois entraîner de nombreuses contraintes, par exemple si vous utilisez différents sous-domaines pour vos assets ou pour vos apis. La recette peut alors se compliquer sur les features les plus importantes du site.</p>
 <h3 id="le-plan-b-l-en-tete-de-reponse-http" class="anchor-title"><a href="#le-plan-b-l-en-tete-de-reponse-http">Le plan B 👍 : l'en-tête de réponse HTTP</a></h3>
 <p>Cette <strong>instruction X-Robots-Tag indiquera aux robots de ne pas indexer la page</strong>. Attention, cette méthode ne doit pas être couplée avec une directive de disallow de l'intégralité du robots.txt, puisque les bots n'auraient jamais accès à ce tag.</p>
-<p>Une des variantes est la balise meta robots noindex, <a href="&lt;https://support.google.com/webmasters/answer/93710?hl=fr&gt;">c'est une des solutions décrites par Google dans sa documentation officielle</a>.</p>
+<p>Une des variantes est la balise meta robots noindex, <a href="https://support.google.com/webmasters/answer/93710?hl=fr" target="_blank">c'est une des solutions décrites par Google dans sa documentation officielle</a>.</p>
 <h3 id="comment-parametrer-ce-tag-sur-symfony" class="anchor-title"><a href="#comment-parametrer-ce-tag-sur-symfony">Comment paramétrer ce tag sur Symfony ?</a></h3>
 <p>Depuis Symfony 4.3, <a href="https://symfony.com/blog/new-in-symfony-4-3-automatic-search-engine-protection" target="_blank">une configuration</a> permet d'ajouter automatiquement le header <code class="code-inline" id="a413952fa0d6ba133500f98763c6f807">X-Robots-Tag: noindex</code> aux réponses de Symfony.</p>
 <pre class="code-multiline language-yaml"><code class="language-yaml" id="c3fe005ec8c78f177157f61dc8716a63"><span class="token comment"># config/packages/framework.yaml</span>
@@ -298,7 +306,7 @@ Bien sûr, dans les deux cas, les robots ne peuvent pas accéder aux pages, emp�
 <p>Grâce à la directive <code class="code-inline" id="948f1aaceb85fb33069817d3d356b762">disallow</code>, on pense pouvoir empêcher les robots de visiter et d'indexer les pages de notre site. Mais ce n'est pas tout à fait l'objectif de <code class="code-inline" id="948f1aaceb85fb33069817d3d356b762">disallow</code>, <strong>qui n'empêche pas l'indexation mais le crawl</strong>. Résultat : vous pouvez retrouver des pages indexées dans les moteurs de recherche, même si le robot ne remonte ni meta description, ni title. Vous pouvez ainsi lire le fameux message :</p>
 <p><code class="code-inline" id="cb147c23623a83dc80765e1d812833b6">A description for this result is not available because of this sites's robots.txt</code></p>
 <p>De plus, il n'est pas rare de trouver en production des fichiers <code class="code-inline" id="aa2646a667ee1cd83235786dccef4a26">robots.txt</code> paramétrés pour le staging, car ils auraient été oubliés lors de la mise en production 🙀.</p>
-<p>Bon à savoir : la directive Noindex, qui était rarement utilisée, <a href="&lt;https://webmasters.googleblog.com/2019/07/a-note-on-unsupported-rules-in-robotstxt.html&gt;">a été officiellement abandonnée par Google</a>.</p>
+<p>Bon à savoir : la directive Noindex, qui était rarement utilisée, <a href="https://webmasters.googleblog.com/2019/07/a-note-on-unsupported-rules-in-robotstxt.html" target="_blank">a été officiellement abandonnée par Google</a>.</p>
 <h2 id="oups-mon-site-avec-des-urls-de-staging-a-ete-indexe" class="anchor-title"><a href="#oups-mon-site-avec-des-urls-de-staging-a-ete-indexe">Oups, mon site avec des urls de staging a été indexé ...</a></h2>
 <p>Faites le nécessaire pour empêcher les futures visites de robots. Vous pouvez ensuite utiliser <a href="https://www.google.com/webmasters/tools/removals" target="_blank">l'outil de suppression d'URL de la Search Console</a>, et demander la suppression des URLs problématiques.</p></body>
                                                 </main>
@@ -309,16 +317,20 @@ Bien sûr, dans les deux cas, les robots ne peuvent pas accéder aux pages, emp�
     <div class="article-footer" data-aos="fade-in">
                                     <div class="article-author">
                     <div class="article-author__image">
-                        <img     src="/elao_/pr/323/resized/images/members/avatars/mcolin.jpg/af86390e2b7d0a64114a4c1e367d5122.jpg"
+                        <a href="/elao_/pr/323/la-tribu/mcolin">
+                            <img     src="/elao_/pr/323/resized/images/members/avatars/mcolin.jpg/af86390e2b7d0a64114a4c1e367d5122.jpg"
     srcset="
         /elao_/pr/323/resized/images/members/avatars/mcolin.jpg/af86390e2b7d0a64114a4c1e367d5122.jpg 1x,
         /elao_/pr/323/resized/images/members/avatars/mcolin.jpg/7e327ccc07dda93e8704225e05160663.jpg 2x
     "
  />
+                        </a>
                     </div>
                     <span class="article-author__info">
                         Écrit par
-                        <strong>Maxime Colin</strong>
+                        <a href="/elao_/pr/323/la-tribu/mcolin">
+                            <strong>Maxime Colin</strong>
+                        </a>
                     </span>
 
                     <div class="article-author__social">
@@ -338,16 +350,20 @@ Bien sûr, dans les deux cas, les robots ne peuvent pas accéder aux pages, emp�
                 </div>
                             <div class="article-author">
                     <div class="article-author__image">
-                        <img     src="/elao_/pr/323/resized/images/members/avatars/aldeboissieu.jpg/9ebc97e20e031e3028ef51c5cb7437e2.jpg"
+                        <a href="/elao_/pr/323/la-tribu/aldeboissieu">
+                            <img     src="/elao_/pr/323/resized/images/members/avatars/aldeboissieu.jpg/9ebc97e20e031e3028ef51c5cb7437e2.jpg"
     srcset="
         /elao_/pr/323/resized/images/members/avatars/aldeboissieu.jpg/9ebc97e20e031e3028ef51c5cb7437e2.jpg 1x,
         /elao_/pr/323/resized/images/members/avatars/aldeboissieu.jpg/4d4ca3e8acdc8dc02e75752dd71aa33e.jpg 2x
     "
  />
+                        </a>
                     </div>
                     <span class="article-author__info">
                         Co-écrit par
-                        <strong>Anne‑Laure de Boissieu</strong>
+                        <a href="/elao_/pr/323/la-tribu/aldeboissieu">
+                            <strong>Anne‑Laure de Boissieu</strong>
+                        </a>
                     </span>
 
                     <div class="article-author__social">
@@ -410,7 +426,15 @@ Bien sûr, dans les deux cas, les robots ne peuvent pas accéder aux pages, emp�
                                     <a href="/elao_/pr/323/contact">Contact</a>
                                 </li>
                                                         </ul>
-                                            </div>
+                                                <ul>
+                            <li>
+                                                                <a href="/elao_/pr/323/recrutement">
+                                    Nous recrutons
+                                                                            <span class="bullet">2</span>
+                                                                    </a>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="socials">
                         <ul>
                             <li>

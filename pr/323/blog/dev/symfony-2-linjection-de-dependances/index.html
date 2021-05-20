@@ -42,7 +42,7 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/323/build/style.c8d98849.css">
+                    <link rel="stylesheet" href="/elao_/pr/323/build/style.1f879fdf.css">
         
             </head>
     <body>
@@ -217,17 +217,21 @@
         <div class="article-info" data-aos="zoom-in">
                                         <div class="article-author ">
                     <div class="article-author__image">
-                                                                                    <img     src="/elao_/pr/323/resized/images/members/avatars/vbouzeran.jpg/3b6891205f4674a5bc6f55bc8c7adb7d.jpg"
+                                                    <a>
+                                <img     src="/elao_/pr/323/resized/images/members/avatars/vbouzeran.jpg/3b6891205f4674a5bc6f55bc8c7adb7d.jpg"
     srcset="
         /elao_/pr/323/resized/images/members/avatars/vbouzeran.jpg/3b6891205f4674a5bc6f55bc8c7adb7d.jpg 1x,
         /elao_/pr/323/resized/images/members/avatars/vbouzeran.jpg/967ce9f8bbcc173f6b9fdef6f71eba15.jpg 2x
     "
  />
-                                                                        </div>
+                            </a>
+                                            </div>
                     <span class="article-author__info">
-            Écrit par
+                    Écrit par
+                                            <a>
                             <strong>Vincent Bouzeran</strong>
-                      </span>
+                        </a>
+                                      </span>
                 </div>
                         <div class="article-info__date">
                 <span>Publication <strong>3 juin 2010</strong></span>
@@ -255,7 +259,7 @@
             
             <body><p><strong>Avertissement :</strong>
 Depuis la rédaction de cet article sur l'injection de dépendances, le coeur de Symfony2 a évolué de façon notable, en particulier certaines classes du répertoire <strong>DependencyInjection</strong> mentionnées dans cet article ont été renommées, révisées, ou refondues. Toutefois, les principes généraux décrits dans cet article restent d'actualité.</p>
-<img src="/elao_/pr/323/images/posts/2010/dependency-injection-symfony.png" alt='dependency injection symfony Symfony 2 Linjection de dépendances" width="278" height="236' title='dependency injection symfony Symfony 2 Linjection de dépendances" width="278" height="236' id="dependency-injection-symfony-symfony-2-linjection-de-dependances-width-278-height-236">
+<img src="images/posts/2010/dependency-injection-symfony.png" alt='dependency injection symfony Symfony 2 Linjection de dépendances" width="278" height="236' title='dependency injection symfony Symfony 2 Linjection de dépendances" width="278" height="236' id="dependency-injection-symfony-symfony-2-linjection-de-dependances-width-278-height-236">
 <p>Cet article est le premier d'une série à venir sur Symfony 2. Pour commencer, je vous invite à télécharger la <a href="http://symfony-reloaded.org/code" target="_blank">sandbox</a> de Symfony 2. J'ai décidé de commencer par l'injection de dépendances car il s'agit d'un composant clé de Symfony 2, et que la bonne compréhension de cette nouvelle version du Framework doit forcément en passer par là. L'injection de dépendance est réellement au coeur du Framework.</p>
 <p>Nous allons commencer par tenter d'éclaircir cette notion (ou ce design pattern), puis nous verrons plus concrètement l'implémentation qui en est faite au sein de Symfony 2. Commençons par une petite définition.</p>
 <blockquote>
@@ -362,7 +366,7 @@ Depuis la rédaction de cet article sur l'injection de dépendances, le coeur de
 En premier lieu, je vous conseille vivement la lecture de la documentation de Fabien Potencier dédiée au composant:
 <a href="http://components.symfony-project.org/dependency-injection/trunk/book/00-Introduction" target="_blank">Symfony Dependency Injection</a> (il s'agit du composant php 5.2, mais la documentation est toujours d'actualité dans le sens où le fonctionnement est identique).</p>
 <p>Jetons un oeil aux sources du composant (<em>/sandbox/src/vendor/symfony/src/Symfony/Components/DependencyInjection</em>) :</p>
-<img src="/elao_/pr/323/images/posts/2010/di-folder.png" alt='di folder Symfony 2   Linjection de dépendances" width="284" height="253' title='di folder Symfony 2   Linjection de dépendances" width="284" height="253' id="di-folder-symfony-2-linjection-de-dependances-width-284-height-253">
+<img src="images/posts/2010/di-folder.png" alt='di folder Symfony 2   Linjection de dépendances" width="284" height="253' title='di folder Symfony 2   Linjection de dépendances" width="284" height="253' id="di-folder-symfony-2-linjection-de-dependances-width-284-height-253">
 <ul>
 <li>Le répertoire <strong>*Dumper<strong> <em>va contenir les classes permettant de dumper un </em></strong>Builder*</strong> sous un format spécifique (Yaml, Xml, PHP, Graphviz).</li>
 <li>Le répertoire <strong><em>Loader</em></strong> var contenir les classes permettant de charger des <strong><em>BuilderConfiguration</em></strong> à partir de formats spécifiques (Yaml, Xml, Ini)</li>
@@ -374,7 +378,7 @@ En premier lieu, je vous conseille vivement la lecture de la documentation de Fa
 <p>Le fonctionnement est somme toute assez simple. Les différents loaders vont permettre de générer des objets du type BuilderConfiguration (qui contiendront des objets Definition) qui seront mergés au sein du Builder pour aboutir à notre Container. Les dumpers permettront de faire l'opération inverse, à savoir : générer un fichier de définitions pour les formats Yaml et Xml, un output Graphviz et enfin un objet php Container en ce qui concerne le dumper PHP.
 Un schéma valant mieux qu'un long discours, on peut synthétiser le fonctionnement comme suit :
 Note: Le loader de fichiers .ini n'a pas été représenté puisqu'il ne permet que de définir des paramètres.</p>
-<img src="/elao_/pr/323/images/posts/2010/injection-dependances.png" alt='injection dependances Symfony 2   Linjection de dépendances" width="846" height="468' title='injection dependances Symfony 2   Linjection de dépendances" width="846" height="468' id="injection-dependances-symfony-2-linjection-de-dependances-width-846-height-468">
+<img src="images/posts/2010/injection-dependances.png" alt='injection dependances Symfony 2   Linjection de dépendances" width="846" height="468' title='injection dependances Symfony 2   Linjection de dépendances" width="846" height="468' id="injection-dependances-symfony-2-linjection-de-dependances-width-846-height-468">
 <p><strong>Le dumper Graphviz</strong>: Ce dumper a pour objectif de générer un dump exploitable par le logiciel <a href="http://graphviz.org/" target="_blank">Graphviz</a> ; il va nous permettre d'obtenir un graphique représentant nos services et leurs dépendances.
 <strong><strong>Le cache:</strong></strong> Afin d'accélérer le fonctionnement des applications utilisant l'injection de dépendances, il est évident que les différents fichiers de configuration ne seront pas reparsés à chaque appel. En réalité, le container sera dumpé sous la forme d'une classe PHP et mise en cache.</p>
 <p>Attardons nous un peu sur ces fameuses définitions de services qui sont un peu la pierre angulaire de l'injection de dépendances.</p>
@@ -691,16 +695,20 @@ Nous allons simplement modifier la classe associée dans la définition de ce se
     <div class="article-footer" data-aos="fade-in">
                                     <div class="article-author">
                     <div class="article-author__image">
-                        <img     src="/elao_/pr/323/resized/images/members/avatars/vbouzeran.jpg/3b6891205f4674a5bc6f55bc8c7adb7d.jpg"
+                        <a>
+                            <img     src="/elao_/pr/323/resized/images/members/avatars/vbouzeran.jpg/3b6891205f4674a5bc6f55bc8c7adb7d.jpg"
     srcset="
         /elao_/pr/323/resized/images/members/avatars/vbouzeran.jpg/3b6891205f4674a5bc6f55bc8c7adb7d.jpg 1x,
         /elao_/pr/323/resized/images/members/avatars/vbouzeran.jpg/967ce9f8bbcc173f6b9fdef6f71eba15.jpg 2x
     "
  />
+                        </a>
                     </div>
                     <span class="article-author__info">
                         Écrit par
-                        <strong>Vincent Bouzeran</strong>
+                        <a>
+                            <strong>Vincent Bouzeran</strong>
+                        </a>
                     </span>
 
                     <div class="article-author__social">
@@ -763,7 +771,15 @@ Nous allons simplement modifier la classe associée dans la définition de ce se
                                     <a href="/elao_/pr/323/contact">Contact</a>
                                 </li>
                                                         </ul>
-                                            </div>
+                                                <ul>
+                            <li>
+                                                                <a href="/elao_/pr/323/recrutement">
+                                    Nous recrutons
+                                                                            <span class="bullet">2</span>
+                                                                    </a>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="socials">
                         <ul>
                             <li>

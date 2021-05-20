@@ -42,7 +42,7 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/323/build/style.c8d98849.css">
+                    <link rel="stylesheet" href="/elao_/pr/323/build/style.1f879fdf.css">
         
             </head>
     <body>
@@ -217,17 +217,21 @@
         <div class="article-info" data-aos="zoom-in">
                                         <div class="article-author ">
                     <div class="article-author__image">
-                                                                                    <img     src="/elao_/pr/323/resized/images/members/avatars/rhanna.jpg/e91f8b59b1fbd05c8665c6522465c7fc.jpg"
+                                                    <a>
+                                <img     src="/elao_/pr/323/resized/images/members/avatars/rhanna.jpg/e91f8b59b1fbd05c8665c6522465c7fc.jpg"
     srcset="
         /elao_/pr/323/resized/images/members/avatars/rhanna.jpg/e91f8b59b1fbd05c8665c6522465c7fc.jpg 1x,
         /elao_/pr/323/resized/images/members/avatars/rhanna.jpg/719665b424643e26de5d0bb24d130585.jpg 2x
     "
  />
-                                                                        </div>
+                            </a>
+                                            </div>
                     <span class="article-author__info">
-            Écrit par
+                    Écrit par
+                                            <a>
                             <strong>Richard Hanna</strong>
-                      </span>
+                        </a>
+                                      </span>
                 </div>
                         <div class="article-info__date">
                 <span>Publication <strong>25 octobre 2018</strong></span>
@@ -289,7 +293,7 @@ pour enfin pouvoir modifier une donnée.</p>
 <p>Nous allons voir comment on peut ajouter à une application Symfony une UI différente,
 une interface de commande par texte avec autocompletion.</p>
 <h2 id="le-contexte" class="anchor-title"><a href="#le-contexte">Le contexte</a></h2>
-<img src="/elao_/pr/323/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/backoffice.png" alt="Interface d'administration" id="interface-d-administration">
+<img src="images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/backoffice.png" alt="Interface d'administration" id="interface-d-administration">
 <p>Ceci est une capture d'écran d'interface d'administration d'une application classique.
 Il y a des listes, des boutons, des menus...
 Pour accéder à une ressource ou à une fonctionnalité, plusieurs clics sont nécessaires.</p>
@@ -299,7 +303,7 @@ plus rapidement et plus efficacement aux ressources d'une application.</p>
 <p>S'inspirer des <strong>suggestions de résultats</strong> comme sur Google, Spotlight ou Alfred sous Mac ?</p>
 <p>Exemple lorsqu'on tape "Modifier document" sur Google :</p>
 <p class="text-center">
-    <img src="/elao_/pr/323/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/search.png" alt="Recherche avec suggestion de résultats" id="recherche-avec-suggestion-de-resultats">
+    <img src="images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/search.png" alt="Recherche avec suggestion de résultats" id="recherche-avec-suggestion-de-resultats">
 </p>
 <p>Cela serait pas mal d'avoir la même chose dans notre application, n'est-ce pas ?</p>
 <h2 id="exploiter-le-routing-de-symfony" class="anchor-title"><a href="#exploiter-le-routing-de-symfony">Exploiter le routing de Symfony ?</a></h2>
@@ -333,7 +337,7 @@ Nous allons voir pas à pas comment nous avons exploité le <em>routing</em> pou
 <span class="token punctuation">}</span></span></code></pre>
 <p>Cela donne comme résultat :</p>
 <p class="text-center">
-    <img src="/elao_/pr/323/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/all-routes-dump.png" alt="Dump de *routes* les *routes* de l'application" style="width: 50%" id="dump-de-routes-les-routes-de-l-application">
+    <img src="images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/all-routes-dump.png" alt="Dump de *routes* les *routes* de l'application" style="width: 50%" id="dump-de-routes-les-routes-de-l-application">
 </p>
 <p>Filtrons maintenant les <em>routes</em> en ne gardant que les <em>routes</em> avec méthode GET :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="e942fcea16b842aa3c26305edd48de61"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
@@ -372,7 +376,7 @@ nous avons choisi une librairie assez légère et facilement configurable, notam
 <a href="https://github.com/Pixabay/JavaScript-autoComplete" target="_blank">Pixabay/JavaScript-autoComplete</a>.</p>
 <p>Et cela donne comme résultat :</p>
 <p class="text-center">
-    <img src="/elao_/pr/323/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/demo1.gif" alt="Démo" id="demo">
+    <img src="images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/demo1.gif" alt="Démo" id="demo">
 </p>
 <h2 id="deviner-des-parametres-de-route" class="anchor-title"><a href="#deviner-des-parametres-de-route">Deviner des paramètres de route</a></h2>
 <p>Que faire maintenant si nos <em>routes</em> attendent des paramètres ? En terme d'expérience utilisateur, on souhaite que
@@ -668,7 +672,7 @@ service, on a :</p>
         <span class="token punctuation">-</span> <span class="token string">'@translator'</span></code></pre>
 <h3 id="demo" class="anchor-title"><a href="#demo">Démo</a></h3>
 <p class="text-center">
-    <img src="/elao_/pr/323/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/demo2.gif" alt="Démo avec paramètre" id="demo-avec-parametre">
+    <img src="images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/demo2.gif" alt="Démo avec paramètre" id="demo-avec-parametre">
 </p>
 <h2 id="bilan" class="anchor-title"><a href="#bilan">Bilan</a></h2>
 <h3 id="resultat" class="anchor-title"><a href="#resultat">Résultat</a></h3>
@@ -713,7 +717,7 @@ recognition<span class="token punctuation">.</span><span class="token method-var
 recognition<span class="token punctuation">.</span><span class="token method function property-access">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Le support de l'API SpeechRecognition est très limité pour l'instant :</p>
 <p class="text-center">
-    <img src="/elao_/pr/323/images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/caniuse-speech-recognition.png" alt="Can I Use SpeechRecognition" id="can-i-use-speechrecognition">
+    <img src="images/posts/2018/commander-au-clavier-app-symfony-grace-au-routing/caniuse-speech-recognition.png" alt="Can I Use SpeechRecognition" id="can-i-use-speechrecognition">
 </p>
 <p><a href="https://www.google.com/intl/en/chrome/demos/speech.html" target="_blank">Démo ici</a> (à tester avec Chrome seulement au jour où cet article a été écrit).</p>
 <p>C'est une technologie assez promoteuse. À suivre donc !</p>
@@ -727,16 +731,20 @@ recognition<span class="token punctuation">.</span><span class="token method fun
     <div class="article-footer" data-aos="fade-in">
                                     <div class="article-author">
                     <div class="article-author__image">
-                        <img     src="/elao_/pr/323/resized/images/members/avatars/rhanna.jpg/e91f8b59b1fbd05c8665c6522465c7fc.jpg"
+                        <a>
+                            <img     src="/elao_/pr/323/resized/images/members/avatars/rhanna.jpg/e91f8b59b1fbd05c8665c6522465c7fc.jpg"
     srcset="
         /elao_/pr/323/resized/images/members/avatars/rhanna.jpg/e91f8b59b1fbd05c8665c6522465c7fc.jpg 1x,
         /elao_/pr/323/resized/images/members/avatars/rhanna.jpg/719665b424643e26de5d0bb24d130585.jpg 2x
     "
  />
+                        </a>
                     </div>
                     <span class="article-author__info">
                         Écrit par
-                        <strong>Richard Hanna</strong>
+                        <a>
+                            <strong>Richard Hanna</strong>
+                        </a>
                     </span>
 
                     <div class="article-author__social">
@@ -803,7 +811,15 @@ recognition<span class="token punctuation">.</span><span class="token method fun
                                     <a href="/elao_/pr/323/contact">Contact</a>
                                 </li>
                                                         </ul>
-                                            </div>
+                                                <ul>
+                            <li>
+                                                                <a href="/elao_/pr/323/recrutement">
+                                    Nous recrutons
+                                                                            <span class="bullet">2</span>
+                                                                    </a>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="socials">
                         <ul>
                             <li>
