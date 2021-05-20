@@ -234,7 +234,7 @@
                                       </span>
                 </div>
                         <div class="article-info__date">
-                <span>Publication <strong>18 mai 2021</strong></span>
+                <span>Publication <strong>20 mai 2021</strong></span>
                             </div>
         </div>
 
@@ -327,9 +327,8 @@
 <p>Le second atelier faisait l'objet d'un brainstorming en groupe afin de trouver des idées pour faire rayonner Elao à l'extérieur, avec la contrainte de proposer une présentation uniquement visuelle, permettant ainsi d'éviter de s'enquiller des présentations PPT de plusieurs pages. </p>
 <p>Plein de très bonnes idées en sont ressorties, que vous ne manquerez pas de voir prochainement prendre vie (enfin, on l'espère !).</p>
 <p>Voici une petite sélection de présentations d'idées, à vous de deviner de quoi il s'agit…</p>
-<img src="/elao_/pr/293/images/posts/2021/teambuilding/solution1.jpg" alt="" title="" id="solution1-jpg">
-<img src="/elao_/pr/293/images/posts/2021/teambuilding/solution2.jpg" alt="" title="" id="solution2-jpg">
 <img src="/elao_/pr/293/images/posts/2021/teambuilding/solution3.jpg" alt="" title="" id="solution3-jpg">
+<img src="/elao_/pr/293/images/posts/2021/teambuilding/solution2.jpg" alt="" title="" id="solution2-jpg">
 <img src="/elao_/pr/293/images/posts/2021/teambuilding/solution5.jpg" alt="" title="" id="solution5-jpg">
 <h4 id="troisieme-atelier-seance-de-q-a" class="anchor-title"><a href="#troisieme-atelier-seance-de-q-a">Troisième atelier : séance de Q&amp;A</a></h4>
 <p>À la toute fin des deux journées et après avoir digéré la masse d'informations, l'équipe a eu la possibilité de poser toutes les questions restant en suspens. Finir là-dessus permet de faire émerger des discussions  très riches et surtout de lever toute ambiguïté qui aurait pu se créer concernant les messages passés. </p>
@@ -378,6 +377,11 @@
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></body>
                                                 </main>
         <aside class="article-content__aside">
+                            <a href="https://twitter.com/intent/like?tweet_id=1395285448122150913" class="kudo" target="_blank">
+                    <span class="kudo__button" aria-hidden="true"></span>
+                    <span class="screen-reader">Cet article m’a été utile</span>
+                    <span class="kudo__label" aria-hidden="true">Kudos</span>
+                </a>
                     </aside>
     </div>
 
@@ -406,6 +410,16 @@
                         </div>
 
             <div class="bricks">
+                            <div class="brick-comment">
+                    <p class="title">Commenter</p>
+                    <p>
+                        Des commentaires ?
+                        <a href="https://twitter.com/Elao/status/1395285448122150913" target="_blank" class="animated-link animated-link--light">
+                            Poursuivons la discussion sur twitter !
+                        </a>
+                    </p>
+                    <div id="tweet-container" class="tweet-container" data-tweet-id="1395285448122150913"></div>
+                </div>
             
                             <div class="brick-contribute">
                     <p>
@@ -494,5 +508,21 @@
                                 <script src="/elao_/pr/293/build/runtime.123f6f40.js" defer></script><script src="/elao_/pr/293/build/40.38998a60.js" defer></script><script src="/elao_/pr/293/build/app.118167f3.js" defer></script>
         
 
+            <script src="https://platform.twitter.com/widgets.js"></script>
+        <script>
+            window.onload = (function(){
+                var tweet = document.getElementById('tweet-container');
+                // https://developer.twitter.com/en/docs/twitter-for-websites/embedded-tweets/guides/embedded-tweet-parameter-reference
+                twttr.widgets.createTweet(tweet.getAttribute('data-tweet-id'), tweet, {
+                    conversation: 'none',
+                    cards: 'hidden',
+                    theme: 'light',
+                    lang: 'fr',
+                    align: 'center',
+                    width: 550, // default
+                    dnt: true,
+                })
+            });
+        </script>
         </body>
 </html>
