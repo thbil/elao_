@@ -42,7 +42,7 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/319/build/style.41b28418.css">
+                    <link rel="stylesheet" href="/elao_/pr/319/build/style.0aca64e1.css">
         
             </head>
     <body>
@@ -217,17 +217,21 @@
         <div class="article-info" data-aos="zoom-in">
                                         <div class="article-author ">
                     <div class="article-author__image">
-                                                                                    <img     src="/elao_/pr/319/resized/images/members/avatars/mcolin.jpg/af86390e2b7d0a64114a4c1e367d5122.jpg"
+                                                    <a href="/elao_/pr/319/la-tribu/mcolin">
+                                <img     src="/elao_/pr/319/resized/images/members/avatars/mcolin.jpg/af86390e2b7d0a64114a4c1e367d5122.jpg"
     srcset="
         /elao_/pr/319/resized/images/members/avatars/mcolin.jpg/af86390e2b7d0a64114a4c1e367d5122.jpg 1x,
         /elao_/pr/319/resized/images/members/avatars/mcolin.jpg/7e327ccc07dda93e8704225e05160663.jpg 2x
     "
  />
-                                                                        </div>
+                            </a>
+                                            </div>
                     <span class="article-author__info">
-            Écrit par
+                    Écrit par
+                                            <a href="/elao_/pr/319/la-tribu/mcolin">
                             <strong>Maxime Colin</strong>
-                      </span>
+                        </a>
+                                      </span>
                 </div>
                         <div class="article-info__date">
                 <span>Publication <strong>4 novembre 2016</strong></span>
@@ -259,13 +263,13 @@
         <main class="article-content__main">
 
             
-            <body><p>Dans mes précédents articles je vous présentais <a href="/fr/dev/pourquoi-devriez-vous-utiliser-vue-js-dans-vos-projets/">pourquoi utiliser Vue.js dans vos projets</a> et <a href="/fr/dev/comment-integrer-vue-js-application-symfony/">comment intégrer Vue.js à une application Symfony</a>. Je vais maintenant vous présenter une autre facette du framework d'Evan You, la création d'applications frontend grâce à l'outil <a href="https://github.com/vuejs/vue-cli" target="_blank">vue-cli</a>.</p>
+            <body><p>Dans mes précédents articles je vous présentais <a href="/elao_/pr/319/blog/dev/pourquoi-devriez-vous-utiliser-vue-js-dans-vos-projets">pourquoi utiliser Vue.js dans vos projets</a> et <a href="/elao_/pr/319/blog/dev/comment-integrer-vue-js-application-symfony">comment intégrer Vue.js à une application Symfony</a>. Je vais maintenant vous présenter une autre facette du framework d'Evan You, la création d'applications frontend grâce à l'outil <a href="https://github.com/vuejs/vue-cli" target="_blank">vue-cli</a>.</p>
 <h2 id="vue-cli" class="anchor-title"><a href="#vue-cli">vue-cli</a></h2>
 <p>Comme je l'avais annoncé, le framework est très <strong>polyvalent</strong>. Facile à utiliser et à intégrer à une technologie backend, il permet également de réaliser des applications frontend. Et pour nous faciliter la chose, le framework met à notre disposition <code class="code-inline" id="72520653c6aea38df112ee7055ff92e7">vue-cli</code>, un outil en ligne de commande qui encapsule et automatise tout ce dont vous aurez besoin pour créer votre application <strong>Vue.js</strong>.</p>
 <p>L'installation se fait simplement grâce à <code class="code-inline" id="bb30e85411b56df41296726ab445dc8f">npm</code> :</p>
-<pre class="code-multiline"><code id="407d06e408d0d1f601f05c167eba85dc">$ npm install -g vue-cli</code></pre>
+<pre class="code-multiline language-shell"><code class="language-shell" id="1a8e90fea47cf7b8e7b550e5a7ee6c69"><span class="token function">npm</span> <span class="token function">install</span> -g vue-cli</code></pre>
 <p>L'outil permet en premier lieu d'initialiser votre projet, grâce à la commande suivante :</p>
-<pre class="code-multiline"><code id="1e0c7f9cbada52cf0c41236cfac8cf4f">$ vue init &lt;template-name&gt; &lt;project-name&gt;</code></pre>
+<pre class="code-multiline language-shell"><code class="language-shell" id="d1124cf1d4dba97775ba067e7b2dec36">vue init <span class="token operator">&lt;</span>template-name<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>project-name<span class="token operator">&gt;</span></code></pre>
 <p>Plusieurs templates sont disponibles, proposant différentes fonctionnalités et bundlers (webpack ou browserify). J'ai testé le template <code class="code-inline" id="424516ca53b4ad4bef37ed04f8795a88">webpack</code> qui propose la compilation avec <strong>Webpack</strong>, <strong>Babel</strong>, le <strong>hot reload</strong>, le <strong>code linting</strong>, les <strong>tests unitaires</strong> et les <strong>tests fonctionnels</strong>. Vous pouvez utiliser un template fourni ou un template externe.</p>
 <p>La commande vous invitera ensuite à rentrer les informations nécessaires à la configuration de votre projet puis générera une arborescence avec une base de projet type "Hello world".</p>
 <img src="/elao_/pr/319/images/posts/2016/vuecli-console.jpg" alt="Console" id="console">
@@ -278,32 +282,29 @@
 <p>Les fichiers <code class="code-inline" id="4d08a51ed2edf2965914aea4a2018bbd">.vue</code> permettent de définir des <a href="https://vuejs.org/guide/single-file-components.html" target="_blank">Single File Components</a> réutilisables et de bien découper votre application. Ces fichiers encapsulent le code Javascript, le template et le CSS de leur composant respectivement dans des balises <code class="code-inline" id="8cd03c2da7b97e107ce990e50b6886cf">&lt;script&gt;</code>, <code class="code-inline" id="0c9bcca8221cc72b9ae442fa5a94a879">&lt;template&gt;</code> et <code class="code-inline" id="ef054765b291879329b1814c2a61e6e3">&lt;style&gt;</code>. Par defaut les composants sont développés en <strong>ES6</strong> qui sera transpilé grâce à <strong>Babel</strong>.</p>
 <p>Un attribut <code class="code-inline" id="a755c6edffa79477aeaccd799e63f0f9">scoped</code> sur la balise de style vous permettra de limiter le CSS à son composant uniquement. Vous pouvez néanmoins tout à fait gérer votre style globalement dans des fichiers CSS inclus depuis le fichier <code class="code-inline" id="eacf331f0ffc35d4b482f1d15a887d3b">index.html</code> ou compiler du <strong>SASS</strong> ou du <strong>LESS</strong> en configurant <strong>Webpack</strong> dans le répertoire <em>build</em>.</p>
 <p>Grâce au <strong>hot reload</strong>, la moindre modification de code rechargera automatiquement votre navigateur.</p>
-<div style="clear:both;"></div>
+<pre class="code-multiline language-html"><code class="language-html" id="7e7a92536dfab9fdad1cf923f960d0f8"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hello<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>{{ msg }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword module">export</span> <span class="token keyword module">default</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token string">'hello'</span><span class="token punctuation">,</span>
+    <span class="token function">data</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword control-flow">return</span> <span class="token punctuation">{</span>
+            msg<span class="token operator">:</span> <span class="token string">'Welcome to Your Vue.js App'</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">scoped</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+<span class="token selector">h1</span> <span class="token punctuation">{</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span></code></pre>
 <figure>
-{{<highlight html>}}
-<template>
-    <div class="hello">
-        <h1 id="msg" class="anchor-title"><a href="#msg">{{ msg }}</a></h1>
-    </div>
-</template>
-
-<script>
-export default {
-    name: 'hello',
-    data () {
-        return {
-            msg: 'Welcome to Your Vue.js App'
-        }
-    }
-}
-</script>
-
-<style scoped>
-h1 {
-    font-weight: normal;
-}
-</style>
-{{</highlight>}}
     <figcaption style="text-align: center;font-style: italic;">Contenu d'un fichier .vue</figcaption>
 </figure>
 <h2 id="template" class="anchor-title"><a href="#template">Template</a></h2>
@@ -327,16 +328,20 @@ h1 {
     <div class="article-footer" data-aos="fade-in">
                                     <div class="article-author">
                     <div class="article-author__image">
-                        <img     src="/elao_/pr/319/resized/images/members/avatars/mcolin.jpg/af86390e2b7d0a64114a4c1e367d5122.jpg"
+                        <a href="/elao_/pr/319/la-tribu/mcolin">
+                            <img     src="/elao_/pr/319/resized/images/members/avatars/mcolin.jpg/af86390e2b7d0a64114a4c1e367d5122.jpg"
     srcset="
         /elao_/pr/319/resized/images/members/avatars/mcolin.jpg/af86390e2b7d0a64114a4c1e367d5122.jpg 1x,
         /elao_/pr/319/resized/images/members/avatars/mcolin.jpg/7e327ccc07dda93e8704225e05160663.jpg 2x
     "
  />
+                        </a>
                     </div>
                     <span class="article-author__info">
                         Écrit par
-                        <strong>Maxime Colin</strong>
+                        <a href="/elao_/pr/319/la-tribu/mcolin">
+                            <strong>Maxime Colin</strong>
+                        </a>
                     </span>
 
                     <div class="article-author__social">
@@ -403,7 +408,15 @@ h1 {
                                     <a href="/elao_/pr/319/contact">Contact</a>
                                 </li>
                                                         </ul>
-                                            </div>
+                                                <ul>
+                            <li>
+                                                                <a href="/elao_/pr/319/recrutement">
+                                    Nous recrutons
+                                                                            <span class="bullet">1</span>
+                                                                    </a>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="socials">
                         <ul>
                             <li>
