@@ -42,7 +42,7 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/323/build/style.410558e2.css">
+                    <link rel="stylesheet" href="/elao_/pr/323/build/style.70efd325.css">
         
             </head>
     <body>
@@ -280,7 +280,7 @@
 </ul>
 <h2 id="diagramme-du-design-pattern-chain-of-responsibility" class="anchor-title"><code class="code-inline" id="0e4c6982c4346789e10bcb3eb7ee3946">Chain of Responsibility</code><a href="#diagramme-du-design-pattern-chain-of-responsibility">Diagramme du Design pattern </a></h2>
 <figure>
-    <img src="images/posts/design-pattern/behavior-cor.gif" alt="Le Design Pattern 'Chain of Responsibility'" id="le-design-pattern-chain-of-responsibility">
+    <img src="/elao_/pr/323/images/posts/design-pattern/behavior-cor.gif" alt="Le Design Pattern 'Chain of Responsibility'" id="le-design-pattern-chain-of-responsibility">
     <figcaption>
       <span class="figure__legend">Diagramme du Design Pattern 'Chain of Responsility'</span>
     </figcaption>
@@ -343,7 +343,7 @@
 <li><a href="#concrete-handlers">mettre à jour les <em>handlers</em> concrets</a></li>
 <li><a href="#chain-usage">instancier la chaîne et la consommer</a></li>
 </ul>
-<h2 id="logique-de-construction-de-la-chaine" class="anchor-title"> Logique de construction de la chaîne<a href="#logique-de-construction-de-la-chaine"><a name="chain-construct" href=""></a></a></h2>
+<h2 id="logique-de-construction-de-la-chaine" class="anchor-title"> Logique de construction de la chaîne<a href="#logique-de-construction-de-la-chaine"><a name="chain-construct" href="/elao_/pr/323/"></a></a></h2>
 <blockquote>
 <p>"Tu aimeras ton prochain comme toi-même"
 <cite>Xavier R.</cite></p>
@@ -449,7 +449,7 @@
 <p>En résumé, la construction de la chaîne consiste à introduire dans chaque <em>extractor</em> concret une propriété <strong><code class="code-inline" id="6158aab25cad464faed56f676d36648b">$nextHandler</code></strong> de type <code class="code-inline" id="4af8481a07a24cb0483d87ccdcebe0e9">AbstractProductExtractor</code>.</p>
 <p>Le dernier maillon de la chaîne est celui dont sa propriété <code class="code-inline" id="6158aab25cad464faed56f676d36648b">$nextHandler</code> est à <em>null</em>. Les méthodes de construction et de gestion de la chaîne étant communes à tous les <em>extractors</em> concrets, elles sont factorisées dans notre classe abstraite.</p>
 <p>Enfin, c'est la méthode <code class="code-inline" id="434990c8a25d2be94863561ae98bd682">support</code>, qui retourne un booléen, qui permet de déterminer si un <em>handler</em> concret sait traiter une requête ou s'il doit la passer à son successeur.</p>
-<h2 id="mise-a-jour-des-handlers-concrets" class="anchor-title"> Mise à jour des <em>handlers</em> concrets<a href="#mise-a-jour-des-handlers-concrets"><a name="concrete-handlers" href=""></a></a></h2>
+<h2 id="mise-a-jour-des-handlers-concrets" class="anchor-title"> Mise à jour des <em>handlers</em> concrets<a href="#mise-a-jour-des-handlers-concrets"><a name="concrete-handlers" href="/elao_/pr/323/"></a></a></h2>
 <p>La classe abstraite <code class="code-inline" id="4af8481a07a24cb0483d87ccdcebe0e9">AbstractProductExtractor</code> se chargeant de gérer la chaîne, les <em>handlers</em> concrets vont continuer à faire ce qu'ils savent faire le mieux, à savoir extraire des données à partir d'un fichier source.</p>
 <p>Voici les modifications à apporter à notre extracteur <code class="code-inline" id="8e2c370970792feb8dbf80c2d05cf8d6">ProductXmlExtractor</code> :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="a04e5fc17600752c6cc5f0c822d4cbc5"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
@@ -471,7 +471,7 @@
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span></span></code></pre>
 <p>Désormais, la classe <code class="code-inline" id="8e2c370970792feb8dbf80c2d05cf8d6">ProductXmlExtractor</code> étend la classe abstraite <code class="code-inline" id="4af8481a07a24cb0483d87ccdcebe0e9">AbstractProductExtractor</code> et implémente donc les deux méthodes attendues (<code class="code-inline" id="434990c8a25d2be94863561ae98bd682">support</code> et <code class="code-inline" id="6beb07d951865e6624d655b75ee8659a">parseContent</code>).</p>
-<h2 id="instancions-et-utilisons-notre-chaine" class="anchor-title"> Instancions et utilisons notre chaîne<a href="#instancions-et-utilisons-notre-chaine"><a name="chain-usage" href=""></a></a></h2>
+<h2 id="instancions-et-utilisons-notre-chaine" class="anchor-title"> Instancions et utilisons notre chaîne<a href="#instancions-et-utilisons-notre-chaine"><a name="chain-usage" href="/elao_/pr/323/"></a></a></h2>
 <p>Enfin (et ce n'est pas trop tôt, me direz-vous), voici le code qui permet d'instancier et consommer notre chaîne de <em>handlers</em> :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="16da020d8e887bc6863c76b232c72287"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
     <span class="token comment">// Firstly, build the chain of handlers:</span>
@@ -582,7 +582,7 @@
                             <li>
                                                                 <a href="/elao_/pr/323/recrutement">
                                     Nous recrutons
-                                                                            <span class="bullet">3</span>
+                                                                            <span class="bullet">2</span>
                                                                     </a>
                             </li>
                         </ul>
