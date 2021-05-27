@@ -390,6 +390,11 @@ De cette édition, je retiendrai surtout la programmation vraiment exceptionnell
 </ul></body>
                                                 </main>
         <aside class="article-content__aside">
+                            <a href="https://twitter.com/intent/like?tweet_id=1397886962527309826" class="kudo" target="_blank">
+                    <span class="kudo__button" aria-hidden="true"></span>
+                    <span class="screen-reader">Cet article m’a été utile</span>
+                    <span class="kudo__label" aria-hidden="true">Kudos</span>
+                </a>
                     </aside>
     </div>
 
@@ -426,6 +431,16 @@ De cette édition, je retiendrai surtout la programmation vraiment exceptionnell
                         </div>
 
             <div class="bricks">
+                            <div class="brick-comment">
+                    <p class="title">Commenter</p>
+                    <p>
+                        Des commentaires ?
+                        <a href="https://twitter.com/Elao/status/1397886962527309826" target="_blank" class="animated-link animated-link--light">
+                            Poursuivons la discussion sur twitter !
+                        </a>
+                    </p>
+                    <div id="tweet-container" class="tweet-container" data-tweet-id="1397886962527309826"></div>
+                </div>
             
                             <div class="brick-contribute">
                     <p>
@@ -514,5 +529,21 @@ De cette édition, je retiendrai surtout la programmation vraiment exceptionnell
                                 <script src="/elao_/build/runtime.8231825b.js" defer></script><script src="/elao_/build/40.38998a60.js" defer></script><script src="/elao_/build/app.118167f3.js" defer></script>
         
 
+            <script src="https://platform.twitter.com/widgets.js"></script>
+        <script>
+            window.onload = (function(){
+                var tweet = document.getElementById('tweet-container');
+                // https://developer.twitter.com/en/docs/twitter-for-websites/embedded-tweets/guides/embedded-tweet-parameter-reference
+                twttr.widgets.createTweet(tweet.getAttribute('data-tweet-id'), tweet, {
+                    conversation: 'none',
+                    cards: 'hidden',
+                    theme: 'light',
+                    lang: 'fr',
+                    align: 'center',
+                    width: 550, // default
+                    dnt: true,
+                })
+            });
+        </script>
         </body>
 </html>
