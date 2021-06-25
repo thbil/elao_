@@ -1,0 +1,31 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/elao_/pr/364/build/runtime.9f1432a5.js",
+        "/elao_/pr/364/build/414.0a9316bf.js",
+        "/elao_/pr/364/build/958.e92ca0f2.js",
+        "/elao_/pr/364/build/app.b2d40425.js"
+      ],
+      "css": [
+        "/elao_/pr/364/build/321.0ff314be.css"
+      ]
+    },
+    "see": {
+      "js": [
+        "/elao_/pr/364/build/runtime.9f1432a5.js",
+        "/elao_/pr/364/build/414.0a9316bf.js",
+        "/elao_/pr/364/build/286.cd925c20.js",
+        "/elao_/pr/364/build/see.52fe7ade.js"
+      ]
+    },
+    "style": {
+      "js": [
+        "/elao_/pr/364/build/runtime.9f1432a5.js"
+      ],
+      "css": [
+        "/elao_/pr/364/build/321.0ff314be.css"
+      ]
+    }
+  }
+}
