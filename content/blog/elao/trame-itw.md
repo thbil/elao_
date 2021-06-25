@@ -5,7 +5,7 @@ date: '2021-06-25' # Au format YYYY-MM-DD
 description: 'lorem ipsum'
 author: cmozzati # author|authors (multiple acceptés)
 #tableOfContent: true # `true` pour activer ou `3` pour lister les titres sur 3 niveaux.
-tags: [elao, orga]
+tags: [elao, team]
 thumbnail: images/posts/thumbnails/trame-itw.jpg
 #banner: images/posts/headers/trame-itw.jpg # Uniquement si différent de la minitature (thumbnail)
 #credit: { name: 'Thomas Jarrand', url: 'https://unsplash.com/@tom32i' } # Pour créditer la photo utilisée en miniature
