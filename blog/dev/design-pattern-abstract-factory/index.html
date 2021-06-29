@@ -42,9 +42,9 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/build/app.ff193ef4.css">
+                    <link rel="stylesheet" href="/elao_/build/app.f05e76e3.css">
         
-        <script src="/elao_/build/runtime.9de4732b.js" defer></script><script src="/elao_/build/40.6bb9d388.js" defer></script><script src="/elao_/build/app.8e45e17b.js" defer></script>
+        <script src="/elao_/build/runtime.9de4732b.js" defer></script><script src="/elao_/build/40.b2235a80.js" defer></script><script src="/elao_/build/app.8e45e17b.js" defer></script>
 
             </head>
     <body>
@@ -352,9 +352,9 @@
     <tr>
         <td>SCMCrawlerInterface:</td>
         <td colspan="3">
-            <pre class="code-multiline language-php"><code class="language-php" id="a89c4bdd1cdd5f381f2f8cd1d8c61b85"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getProjectNameHtml</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getSummaryHtml</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getCommittedFilesHtml</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <pre class="code-multiline language-php"><code class="language-php" id="a89c4bdd1cdd5f381f2f8cd1d8c61b85"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">getProjectNameHtml</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">getSummaryHtml</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">getCommittedFilesHtml</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
         </td>
     </tr>
     <tr>
@@ -366,9 +366,9 @@
     <tr>
         <td>SCMParserInterface:</td>
         <td colspan="3">
-            <pre class="code-multiline language-php"><code class="language-php" id="c1512041f08ef2e667b7106a08e464b4"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">parseProjectName</span><span class="token punctuation">(</span><span class="token variable">$projectNameHtml</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">parseSummary</span><span class="token punctuation">(</span><span class="token variable">$summaryHtml</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">parseCommittedFiles</span><span class="token punctuation">(</span><span class="token variable">$committedFilesHtml</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <pre class="code-multiline language-php"><code class="language-php" id="c1512041f08ef2e667b7106a08e464b4"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">parseProjectName</span><span class="token punctuation">(</span><span class="token variable">$projectNameHtml</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">parseSummary</span><span class="token punctuation">(</span><span class="token variable">$summaryHtml</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">parseCommittedFiles</span><span class="token punctuation">(</span><span class="token variable">$committedFilesHtml</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
         </td>
     </tr>
     <tr>
@@ -380,8 +380,8 @@
     <tr>
         <td>SCMFactoryInterface</td>
         <td colspan="3">
-            <pre class="code-multiline language-php"><code class="language-php" id="5b01ec97eafb2f26f34465c8998965e9"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getCrawler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getParser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <pre class="code-multiline language-php"><code class="language-php" id="5b01ec97eafb2f26f34465c8998965e9"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">getCrawler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">getParser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
         </td>
     </tr>
     <tr>
@@ -404,11 +404,11 @@
 </ul>
 <p>Voici à titre d'exemple le code de la fabrique <code class="code-inline" id="5e7d2048a6b87680ad0b18e6e85f9789">GithubFactory</code> (je vous épargne le code des deux autres fabriques):</p>
 <pre class="code-multiline language-php"><code class="language-php" id="8e6c53d0aa62ee99dbe0adbcf59513ac"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token keyword">class</span> <span class="token class-name">GithubFactory</span> <span class="token keyword">implements</span> <span class="token class-name">SCMFactoryInterface</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getCrawler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">SCMCrawlerInterface</span> <span class="token punctuation">{</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">GithubFactory</span> <span class="token keyword">implements</span> <span class="token class-name">SCMFactoryInterface</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">getCrawler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">SCMCrawlerInterface</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">GithubCrawler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getParser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">SCMParserInterface</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">getParser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">SCMParserInterface</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">GithubParser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></span></code></pre>

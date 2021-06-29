@@ -42,9 +42,9 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/build/app.ff193ef4.css">
+                    <link rel="stylesheet" href="/elao_/build/app.f05e76e3.css">
         
-        <script src="/elao_/build/runtime.9de4732b.js" defer></script><script src="/elao_/build/40.6bb9d388.js" defer></script><script src="/elao_/build/app.8e45e17b.js" defer></script>
+        <script src="/elao_/build/runtime.9de4732b.js" defer></script><script src="/elao_/build/40.b2235a80.js" defer></script><script src="/elao_/build/app.8e45e17b.js" defer></script>
 
             </head>
     <body>
@@ -291,14 +291,14 @@
 <span class="token doc-comment comment">/**
  * Default Controller of the PremiumBundle
  */</span>
-<span class="token keyword">class</span> <span class="token class-name">DefaultController</span> <span class="token keyword">extends</span> <span class="token class-name">Controller</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">DefaultController</span> <span class="token keyword">extends</span> <span class="token class-name">Controller</span>
 <span class="token punctuation">{</span>
     <span class="token doc-comment comment">/**
      * @Route("/<span class="token punctuation">{</span>_locale<span class="token punctuation">}</span>/payment/<span class="token punctuation">{</span>id<span class="token punctuation">}</span>/cancel", name="payment_cancel", requirements=<span class="token punctuation">{</span>"_locale" = "en|fr"<span class="token punctuation">}</span>)
      * @Template()
      * @Secure(roles="ROLE_USER")
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">cancelAction</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Order</span> <span class="token variable">$order</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">cancelAction</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Order</span> <span class="token variable">$order</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$order</span><span class="token operator">-&gt;</span><span class="token function">setStatus</span><span class="token punctuation">(</span><span class="token scope">Order<span class="token punctuation">::</span></span><span class="token constant">STATUS_CANCEL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -317,7 +317,7 @@
      * @Template()
      * @Secure(roles="ROLE_USER")
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">completeAction</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Order</span> <span class="token variable">$order</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">completeAction</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Order</span> <span class="token variable">$order</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token comment">// Lot of business logic I removed for the tutorial purpose</span>
         <span class="token variable">$order</span><span class="token operator">-&gt;</span><span class="token function">setStatus</span><span class="token punctuation">(</span><span class="token scope">Order<span class="token punctuation">::</span></span><span class="token constant">STATUS_VALID</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -339,7 +339,7 @@
      *
      * <span class="token keyword">@return</span> <span class="token class-name">EntityManager</span>
      */</span>
-    <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">getEntityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function-definition function">getEntityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token function">getDoctrine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">getEntityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
@@ -348,7 +348,7 @@
 
 <span class="token keyword">namespace</span> <span class="token package">SeekTeam<span class="token punctuation">\</span>PremiumBundle<span class="token punctuation">\</span>Event</span><span class="token punctuation">;</span>
 
-<span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">Events</span>
+<span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name-definition class-name">Events</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">const</span> <span class="token constant">PREMIUM_START</span>   <span class="token operator">=</span> <span class="token string single-quoted-string">'gamercertified.premium.start'</span><span class="token punctuation">;</span>
     <span class="token keyword">const</span> <span class="token constant">PREMIUM_SUCCESS</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'gamercertified.premium.success'</span><span class="token punctuation">;</span>
@@ -366,18 +366,18 @@
 
 <span class="token keyword">use</span> <span class="token package">SeekTeam<span class="token punctuation">\</span>PremiumBundle<span class="token punctuation">\</span>Event<span class="token punctuation">\</span>Events</span><span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name">StatsListener</span> <span class="token keyword">implements</span> <span class="token class-name">EventSubscriberInterface</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">StatsListener</span> <span class="token keyword">implements</span> <span class="token class-name">EventSubscriberInterface</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">protected</span> <span class="token variable">$statsdFactory</span><span class="token punctuation">;</span>
     <span class="token keyword">protected</span> <span class="token variable">$statsdClient</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$statsdFactory</span><span class="token punctuation">,</span> <span class="token variable">$statsdClient</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token variable">$statsdFactory</span><span class="token punctuation">,</span> <span class="token variable">$statsdClient</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">statsdFactory</span> <span class="token operator">=</span> <span class="token variable">$statsdFactory</span><span class="token punctuation">;</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">statsdClient</span>  <span class="token operator">=</span> <span class="token variable">$statsdClient</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">getSubscribedEvents</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function-definition function">getSubscribedEvents</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
             <span class="token scope">Events<span class="token punctuation">::</span></span><span class="token constant">PREMIUM_SUCCESS</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'onPremiumSuccess'</span><span class="token punctuation">,</span>
@@ -387,25 +387,25 @@
         <span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">onPremiumSuccess</span><span class="token punctuation">(</span><span class="token class-name type-declaration">GenericEvent</span> <span class="token variable">$event</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">onPremiumSuccess</span><span class="token punctuation">(</span><span class="token class-name type-declaration">GenericEvent</span> <span class="token variable">$event</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">statsdFactory</span><span class="token operator">-&gt;</span><span class="token function">createStatsDataIncrement</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'premium.success'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">statsdClient</span><span class="token operator">-&gt;</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">onPremiumCancel</span><span class="token punctuation">(</span><span class="token class-name type-declaration">GenericEvent</span> <span class="token variable">$event</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">onPremiumCancel</span><span class="token punctuation">(</span><span class="token class-name type-declaration">GenericEvent</span> <span class="token variable">$event</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">statsdFactory</span><span class="token operator">-&gt;</span><span class="token function">createStatsDataIncrement</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'premium.cancel'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">statsdClient</span><span class="token operator">-&gt;</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">onPremiumStart</span><span class="token punctuation">(</span><span class="token class-name type-declaration">GenericEvent</span> <span class="token variable">$event</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">onPremiumStart</span><span class="token punctuation">(</span><span class="token class-name type-declaration">GenericEvent</span> <span class="token variable">$event</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">statsdFactory</span><span class="token operator">-&gt;</span><span class="token function">createStatsDataIncrement</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'premium.start'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">statsdClient</span><span class="token operator">-&gt;</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">onPremiumError</span><span class="token punctuation">(</span><span class="token class-name type-declaration">GenericEvent</span> <span class="token variable">$event</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">onPremiumError</span><span class="token punctuation">(</span><span class="token class-name type-declaration">GenericEvent</span> <span class="token variable">$event</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">statsdFactory</span><span class="token operator">-&gt;</span><span class="token function">createStatsDataIncrement</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'premium.error'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">statsdClient</span><span class="token operator">-&gt;</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>

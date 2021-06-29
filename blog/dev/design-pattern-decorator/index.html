@@ -42,9 +42,9 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/build/app.ff193ef4.css">
+                    <link rel="stylesheet" href="/elao_/build/app.f05e76e3.css">
         
-        <script src="/elao_/build/runtime.9de4732b.js" defer></script><script src="/elao_/build/40.6bb9d388.js" defer></script><script src="/elao_/build/app.8e45e17b.js" defer></script>
+        <script src="/elao_/build/runtime.9de4732b.js" defer></script><script src="/elao_/build/40.b2235a80.js" defer></script><script src="/elao_/build/app.8e45e17b.js" defer></script>
 
             </head>
     <body>
@@ -326,21 +326,21 @@
 <p>Voici le code de la classe responsable de la modération :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="2dda0e552cc92b28342b3f2b1ef6535e"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
-<span class="token keyword">interface</span> <span class="token class-name">ModeratorInterface</span>
+<span class="token keyword">interface</span> <span class="token class-name-definition class-name">ModeratorInterface</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">moderate</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">moderate</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">class</span> <span class="token class-name">Moderator</span> <span class="token keyword">implements</span> <span class="token class-name">ModeratorInterface</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Moderator</span> <span class="token keyword">implements</span> <span class="token class-name">ModeratorInterface</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token variable">$replacements</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token keyword type-hint">array</span> <span class="token variable">$replacements</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token keyword type-hint">array</span> <span class="token variable">$replacements</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">replacements</span> <span class="token operator">=</span> <span class="token variable">$replacements</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">moderate</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">moderate</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token function">strtr</span><span class="token punctuation">(</span><span class="token variable">$text</span><span class="token punctuation">,</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">replacements</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
@@ -361,19 +361,19 @@
 <p>Nous allons rédiger une classe qui va ajouter des fonctionnalités de modération en décorant notre classe initiale <code class="code-inline" id="ca65a68e10b3c65ac897ff8b89f9f728">Moderator</code> :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="1878f22fcb86c4054ed3942db2903506"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
-<span class="token keyword">class</span> <span class="token class-name">PhoneNumberModerator</span> <span class="token keyword">implements</span> <span class="token class-name">ModeratorInterface</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">PhoneNumberModerator</span> <span class="token keyword">implements</span> <span class="token class-name">ModeratorInterface</span>
 <span class="token punctuation">{</span>
     <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name">ModeratorInterface</span> */</span>
     <span class="token keyword">private</span> <span class="token variable">$decorated</span><span class="token punctuation">;</span>
 
     <span class="token keyword">static</span> <span class="token keyword">private</span> <span class="token variable">$phonePattern</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'/[0-9]{10}/'</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">ModeratorInterface</span> <span class="token variable">$baseModerator</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">ModeratorInterface</span> <span class="token variable">$baseModerator</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">decorated</span> <span class="token operator">=</span> <span class="token variable">$baseModerator</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">moderate</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">moderate</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span>
             <span class="token scope"><span class="token keyword">self</span><span class="token punctuation">::</span></span><span class="token variable">$phonePattern</span><span class="token punctuation">,</span>

@@ -42,9 +42,9 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/build/app.ff193ef4.css">
+                    <link rel="stylesheet" href="/elao_/build/app.f05e76e3.css">
         
-        <script src="/elao_/build/runtime.9de4732b.js" defer></script><script src="/elao_/build/40.6bb9d388.js" defer></script><script src="/elao_/build/app.8e45e17b.js" defer></script>
+        <script src="/elao_/build/runtime.9de4732b.js" defer></script><script src="/elao_/build/40.b2235a80.js" defer></script><script src="/elao_/build/app.8e45e17b.js" defer></script>
 
             </head>
     <body>
@@ -309,17 +309,17 @@
 
 <span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Infrastructure</span><span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name">MigrationAuthenticator</span> <span class="token keyword">implements</span> <span class="token class-name">SimpleFormAuthenticatorInterface</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">MigrationAuthenticator</span> <span class="token keyword">implements</span> <span class="token class-name">SimpleFormAuthenticatorInterface</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token variable">$encoder</span><span class="token punctuation">,</span> <span class="token variable">$em</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">UserPasswordEncoderInterface</span> <span class="token variable">$encoder</span><span class="token punctuation">,</span> <span class="token class-name type-declaration">EntityManager</span> <span class="token variable">$em</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">UserPasswordEncoderInterface</span> <span class="token variable">$encoder</span><span class="token punctuation">,</span> <span class="token class-name type-declaration">EntityManager</span> <span class="token variable">$em</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">encoder</span> <span class="token operator">=</span> <span class="token variable">$encoder</span><span class="token punctuation">;</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">em</span>      <span class="token operator">=</span> <span class="token variable">$em</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">authenticateToken</span><span class="token punctuation">(</span><span class="token class-name type-declaration">TokenInterface</span> <span class="token variable">$token</span><span class="token punctuation">,</span> <span class="token class-name type-declaration">UserProviderInterface</span> <span class="token variable">$userProvider</span><span class="token punctuation">,</span> <span class="token variable">$providerKey</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">authenticateToken</span><span class="token punctuation">(</span><span class="token class-name type-declaration">TokenInterface</span> <span class="token variable">$token</span><span class="token punctuation">,</span> <span class="token class-name type-declaration">UserProviderInterface</span> <span class="token variable">$userProvider</span><span class="token punctuation">,</span> <span class="token variable">$providerKey</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$user</span> <span class="token operator">=</span> <span class="token variable">$userProvider</span><span class="token operator">-&gt;</span><span class="token function">loadUserByUsername</span><span class="token punctuation">(</span><span class="token variable">$token</span><span class="token operator">-&gt;</span><span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token variable">$password</span> <span class="token operator">=</span> <span class="token variable">$token</span><span class="token operator">-&gt;</span><span class="token function">getCredentials</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -356,13 +356,13 @@
         <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">BadCredentialsException</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'Invalid username or password'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">supportsToken</span><span class="token punctuation">(</span><span class="token class-name type-declaration">TokenInterface</span> <span class="token variable">$token</span><span class="token punctuation">,</span> <span class="token variable">$providerKey</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">supportsToken</span><span class="token punctuation">(</span><span class="token class-name type-declaration">TokenInterface</span> <span class="token variable">$token</span><span class="token punctuation">,</span> <span class="token variable">$providerKey</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token variable">$token</span> <span class="token keyword">instanceof</span> <span class="token class-name">UsernamePasswordToken</span>
             <span class="token operator">&amp;&amp;</span> <span class="token variable">$token</span><span class="token operator">-&gt;</span><span class="token function">getProviderKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token variable">$providerKey</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">createToken</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Request</span> <span class="token variable">$request</span><span class="token punctuation">,</span> <span class="token variable">$username</span><span class="token punctuation">,</span> <span class="token variable">$password</span><span class="token punctuation">,</span> <span class="token variable">$providerKey</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">createToken</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Request</span> <span class="token variable">$request</span><span class="token punctuation">,</span> <span class="token variable">$username</span><span class="token punctuation">,</span> <span class="token variable">$password</span><span class="token punctuation">,</span> <span class="token variable">$providerKey</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">UsernamePasswordToken</span><span class="token punctuation">(</span><span class="token variable">$username</span><span class="token punctuation">,</span> <span class="token variable">$password</span><span class="token punctuation">,</span> <span class="token variable">$providerKey</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
