@@ -42,9 +42,9 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/368/build/app.19c880a6.css">
+                    <link rel="stylesheet" href="/elao_/pr/368/build/app.c6a1377f.css">
         
-        <script src="/elao_/pr/368/build/runtime.d398ae8a.js" defer></script><script src="/elao_/pr/368/build/40.6bb9d388.js" defer></script><script src="/elao_/pr/368/build/app.8e45e17b.js" defer></script>
+        <script src="/elao_/pr/368/build/runtime.d398ae8a.js" defer></script><script src="/elao_/pr/368/build/40.b2235a80.js" defer></script><script src="/elao_/pr/368/build/app.8e45e17b.js" defer></script>
 
             </head>
     <body>
@@ -298,14 +298,14 @@
 <p><strong>N.B.:</strong> Le contexte <strong>global</strong> est particulier car non-défini explicitement. Toute directive spécifiée hors d'un contexte est considérée comme appartenant au contexte <strong>global</strong>.</p>
 </blockquote>
 <h3 id="exemple" class="anchor-title"><a href="#exemple">Exemple</a></h3>
-<pre class="code-multiline language-nginx"><code class="language-nginx" id="2ea402a233cb394bb023721a569531a8"><span class="token keyword">user</span> www<span class="token operator">-</span>data<span class="token punctuation">;</span>
-<span class="token keyword">worker_processes</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<pre class="code-multiline language-nginx"><code class="language-nginx" id="2ea402a233cb394bb023721a569531a8"><span class="token directive"><span class="token keyword">user</span> www-data</span><span class="token punctuation">;</span>
+<span class="token directive"><span class="token keyword">worker_processes</span> <span class="token number">1</span></span><span class="token punctuation">;</span>
 
-<span class="token keyword">error_log</span> <span class="token operator">/</span>var<span class="token operator">/</span>log<span class="token operator">/</span>nginx<span class="token operator">/</span>error<span class="token punctuation">.</span>log warn<span class="token punctuation">;</span>
-<span class="token keyword">pid</span> <span class="token operator">/</span>var<span class="token operator">/</span>run<span class="token operator">/</span>nginx<span class="token punctuation">.</span><span class="token keyword">pid</span><span class="token punctuation">;</span>
+<span class="token directive"><span class="token keyword">error_log</span> /var/log/nginx/error.log warn</span><span class="token punctuation">;</span>
+<span class="token directive"><span class="token keyword">pid</span> /var/run/nginx.pid</span><span class="token punctuation">;</span>
 
-<span class="token keyword">events</span> <span class="token punctuation">{</span>
-    <span class="token keyword">worker_connections</span> <span class="token number">1024</span><span class="token punctuation">;</span>
+<span class="token directive"><span class="token keyword">events</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">worker_connections</span> <span class="token number">1024</span></span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <h1 id="les-directives-de-type-chaine" class="anchor-title"><a href="#les-directives-de-type-chaine">Les directives de type chaîne</a></h1>
 <p>Il est très important de garder à l'esprit que les directives de configuration s'appliquent <strong>toujours</strong> vers le bas, il n'y a aucune chance qu'une directive ait un impact sur une directive de plus haut ou de même niveau.
@@ -313,16 +313,16 @@ Même lorsqu'une directive <code class="code-inline" id="d5189de027922f81005951e
 <p>A l'inverse les contextes pouvant être imbriqués les uns dans les autres, Nginx considère également l'héritage des directives de configuration, la règle étant que si une directive est valide dans deux contextes imbriqués, une directive déclarée dans un contexte parent s'appliquera à ses enfants comme valeur par défaut.</p>
 <p><strong>Le contexte enfant pouvant, bien entendu, surcharger ces directives.</strong></p>
 <h2 id="exemple" class="anchor-title"><a href="#exemple">Exemple:</a></h2>
-<pre class="code-multiline language-nginx"><code class="language-nginx" id="ce3318e6430a1d28afad545e05d58983"><span class="token keyword">server</span> <span class="token punctuation">{</span>
-    <span class="token keyword">root</span> <span class="token operator">/</span>srv<span class="token operator">/</span>app<span class="token operator">/</span>symfony<span class="token operator">/</span>web<span class="token punctuation">;</span>
+<pre class="code-multiline language-nginx"><code class="language-nginx" id="ce3318e6430a1d28afad545e05d58983"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">root</span> /srv/app/symfony/web</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">location</span> <span class="token operator">/</span>app <span class="token punctuation">{</span>
-        <span class="token keyword">root</span> <span class="token operator">/</span>usr<span class="token operator">/</span>share<span class="token punctuation">;</span> <span class="token comment"># Nous modifions le répertoire racine vers /usr/share/app</span>
+    <span class="token directive"><span class="token keyword">location</span> /app</span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">root</span> /usr/share</span><span class="token punctuation">;</span> <span class="token comment"># Nous modifions le répertoire racine vers /usr/share/app</span>
                          <span class="token comment"># Toutes les URI de type /app/* seront servies</span>
                          <span class="token comment"># à partir de ce répertoire.</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">location</span> <span class="token operator">/</span>app2 <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">location</span> /app2</span> <span class="token punctuation">{</span>
         <span class="token comment"># La directive root du contexte "Server" s'applique</span>
         <span class="token comment"># Une URI de type /app2/user/profil sera servie</span>
         <span class="token comment"># à partir de /srv/app/symfony/web</span>
@@ -336,8 +336,8 @@ Même lorsqu'une directive <code class="code-inline" id="d5189de027922f81005951e
 <h2 id="a-l-interieur-d-un-meme-contexte" class="anchor-title"><a href="#a-l-interieur-d-un-meme-contexte">A l'intérieur d'un même contexte</a></h2>
 <p>La redéfinition d'une directive array-type à l'intérieur d'un même bloc, par exemple un bloc <code class="code-inline" id="d5189de027922f81005951e6efe0efd5">location</code>, entraine l'ajout de la nouvelle clé à la structure.</p>
 <h3 id="exemple" class="anchor-title"><a href="#exemple">Exemple</a></h3>
-<pre class="code-multiline language-nginx"><code class="language-nginx" id="09af2b6ecfe2636d0501e469a3939f31"><span class="token keyword">fastcgi_param</span> SCRIPT_FILENAME <span class="token variable">$document_root</span><span class="token variable">$fastcgi_script_name</span><span class="token punctuation">;</span>
-<span class="token keyword">fastcgi_param</span> <span class="token keyword">HTTPS</span> off<span class="token punctuation">;</span></code></pre>
+<pre class="code-multiline language-nginx"><code class="language-nginx" id="09af2b6ecfe2636d0501e469a3939f31"><span class="token directive"><span class="token keyword">fastcgi_param</span> SCRIPT_FILENAME <span class="token variable">$document_root</span><span class="token variable">$fastcgi_script_name</span></span><span class="token punctuation">;</span>
+<span class="token directive"><span class="token keyword">fastcgi_param</span> HTTPS <span class="token boolean">off</span></span><span class="token punctuation">;</span></code></pre>
 <p>Dans ce cas la directive <code class="code-inline" id="78ba1199d4698c55f33d27103f2ce07d">fastcgi_param</code> contient les données suivantes:</p>
 <pre class="code-multiline language-yaml"><code class="language-yaml" id="e246bc7375cca80278484310647a481b"><span class="token key atrule">fastcgi_param</span><span class="token punctuation">:</span>
     <span class="token punctuation">-</span> <span class="token key atrule">SCRIPT_FILENAME</span><span class="token punctuation">:</span> $document_root$fastcgi_script_name
@@ -346,16 +346,16 @@ Même lorsqu'une directive <code class="code-inline" id="d5189de027922f81005951e
 <p>Dans ce cas le comportement sera le même qu'une <strong>surcharge de directive</strong>, la nouvelle définition écrasant la précédente, il ne faut donc pas considérer que l'on ajoute une nouvelle clé à un tableau existant car n'oubliez pas, les directives n'ont d'existence que dans <strong>le contexte auquel elles appartiennent</strong>.
 Ce comportement justifie souvent d'avoir une même configuration qui se répête dans deux blocs différents alors qu'une seule clé est modifiée.</p>
 <h3 id="exemple" class="anchor-title"><a href="#exemple">Exemple</a></h3>
-<pre class="code-multiline language-nginx"><code class="language-nginx" id="3db0a95767729ed846d8fe590a33e8ea"><span class="token keyword">location</span> <span class="token operator">~</span> <span class="token operator">^</span><span class="token operator">/</span><span class="token punctuation">(</span>frontend<span class="token punctuation">)</span>\<span class="token punctuation">.</span><span class="token function">php</span><span class="token punctuation">(</span><span class="token operator">/</span><span class="token operator">|</span>$<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">include</span> conf<span class="token punctuation">.</span>d<span class="token operator">/</span>php_fpm_params<span class="token punctuation">;</span>
-        <span class="token keyword">fastcgi_param</span> SCRIPT_FILENAME <span class="token variable">$document_root</span><span class="token variable">$fastcgi_script_name</span><span class="token punctuation">;</span>
-        <span class="token keyword">fastcgi_param</span> <span class="token keyword">HTTPS</span> on<span class="token punctuation">;</span>
+<pre class="code-multiline language-nginx"><code class="language-nginx" id="3db0a95767729ed846d8fe590a33e8ea"><span class="token directive"><span class="token keyword">location</span> ~ ^/(frontend)\.php(/|$)</span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">include</span> conf.d/php_fpm_params</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">fastcgi_param</span> SCRIPT_FILENAME <span class="token variable">$document_root</span><span class="token variable">$fastcgi_script_name</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">fastcgi_param</span> HTTPS <span class="token boolean">on</span></span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">location</span> <span class="token operator">~</span> <span class="token operator">^</span><span class="token operator">/</span><span class="token punctuation">(</span>backend<span class="token punctuation">)</span>\<span class="token punctuation">.</span><span class="token function">php</span><span class="token punctuation">(</span><span class="token operator">/</span><span class="token operator">|</span>$<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">include</span> conf<span class="token punctuation">.</span>d<span class="token operator">/</span>php_fpm_params<span class="token punctuation">;</span>
-        <span class="token keyword">fastcgi_param</span> SCRIPT_FILENAME <span class="token variable">$document_root</span><span class="token variable">$fastcgi_script_name</span><span class="token punctuation">;</span>
-        <span class="token keyword">fastcgi_param</span> <span class="token keyword">HTTPS</span> off<span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">location</span> ~ ^/(backend)\.php(/|$)</span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">include</span> conf.d/php_fpm_params</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">fastcgi_param</span> SCRIPT_FILENAME <span class="token variable">$document_root</span><span class="token variable">$fastcgi_script_name</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">fastcgi_param</span> HTTPS <span class="token boolean">off</span></span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span></code></pre>
 <blockquote>
 <p>ATTENTION: certaines directives sont propres à un contexte et ne peuvent donc pas être utilisées hors de celui-ci.</p>
@@ -365,11 +365,11 @@ Ce comportement justifie souvent d'avoir une même configuration qui se répête
 Elles peuvent toutefois, être utilisées dans plusieurs contextes et être exécutées pour chacun d'entre eux.</p>
 <p>La directive <code class="code-inline" id="7b4639e8d528d7a3eedafe23e9cdfee1">rewrite</code> est un bon exemple car elle peut être utilisée à la fois dans le contexte <code class="code-inline" id="cf1e8c14e54505f60aa10ceb8d5d8ab3">server</code> et dans le contexte <code class="code-inline" id="d5189de027922f81005951e6efe0efd5">location</code> et être exécutée dans les deux.</p>
 <h3 id="exemple" class="anchor-title"><a href="#exemple">Exemple</a></h3>
-<pre class="code-multiline language-nginx"><code class="language-nginx" id="c94c129a971b431f971cbca05a8089e8"><span class="token keyword">server</span> <span class="token punctuation">{</span>
-    <span class="token keyword">rewrite</span> <span class="token operator">^</span><span class="token operator">/</span>elao<span class="token operator">-</span><span class="token function">lyon</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token operator">/</span>lyon$<span class="token number">1</span> permanent<span class="token punctuation">;</span> <span class="token comment"># Cette règle est toujours évaluée.</span>
+<pre class="code-multiline language-nginx"><code class="language-nginx" id="c94c129a971b431f971cbca05a8089e8"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">rewrite</span> ^/elao-lyon(.*) /lyon<span class="token variable">$1</span> permanent</span><span class="token punctuation">;</span> <span class="token comment"># Cette règle est toujours évaluée.</span>
 
-    <span class="token keyword">location</span> <span class="token operator">/</span>lyon <span class="token punctuation">{</span>
-        <span class="token keyword">rewrite</span> <span class="token operator">^</span> <span class="token operator">/</span><span class="token keyword">index</span><span class="token punctuation">.</span>php<span class="token punctuation">;</span> <span class="token comment"># Ne surcharge pas la précédente et</span>
+    <span class="token directive"><span class="token keyword">location</span> /lyon</span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">rewrite</span> ^ /index.php</span><span class="token punctuation">;</span> <span class="token comment"># Ne surcharge pas la précédente et</span>
                               <span class="token comment"># PEUT être évaluée en complément de la précédente.</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></body>

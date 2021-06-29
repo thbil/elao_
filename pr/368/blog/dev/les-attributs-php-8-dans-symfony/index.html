@@ -42,9 +42,9 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/368/build/app.19c880a6.css">
+                    <link rel="stylesheet" href="/elao_/pr/368/build/app.c6a1377f.css">
         
-        <script src="/elao_/pr/368/build/runtime.d398ae8a.js" defer></script><script src="/elao_/pr/368/build/40.6bb9d388.js" defer></script><script src="/elao_/pr/368/build/app.8e45e17b.js" defer></script>
+        <script src="/elao_/pr/368/build/runtime.d398ae8a.js" defer></script><script src="/elao_/pr/368/build/40.b2235a80.js" defer></script><script src="/elao_/pr/368/build/app.8e45e17b.js" defer></script>
 
             </head>
     <body>
@@ -295,21 +295,21 @@
 <h2 id="annotation-vs-attributs" class="anchor-title"><a href="#annotation-vs-attributs">Annotation vs. Attributs</a></h2>
 <p><strong>Quelles sont donc les différences entre les annotations et les attributs ?</strong></p>
 <p>Les annotations commencent par <code class="code-inline" id="518ed29525738cebdac49c49e60ea9d3">@</code> et se place dans un docblock. <a href="https://www.doctrine-project.org/projects/doctrine-annotations/en/1.10/index.html" target="_blank">Un parser écrit en PHP</a> lit ces annotations en parsant le fichier <code class="code-inline" id="ad6f7b6e406aeacc3d3e084929fdce9a">.php</code> pour en extraire les méta données.</p>
-<pre class="code-multiline"><code id="85e385a11b46bb8aa1f4b85afec41e70">use App\MetaData\Foobar;
+<pre class="code-multiline language-php"><code class="language-php" id="85e385a11b46bb8aa1f4b85afec41e70"><span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>MetaData<span class="token punctuation">\</span>Foobar</span><span class="token punctuation">;</span>
 
-class Foo {
-  /**
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Foo</span> <span class="token punctuation">{</span>
+  <span class="token doc-comment comment">/**
    * @Foobar
-   */
-  private string $foobar  
-}</code></pre>
-<p>Les attributs ont une syntaxe un peu différente mais s'utilisent de la même façon au détail près qu'il s'agit d'une <strong>fonctionnalité native de PHP</strong>. Il n'y a donc pas besoin de parser tiers, les attributs sont parsés par PHP en même temps que le reste du code.</p>
-<pre class="code-multiline"><code id="04932bce9373583594b9f9398571a3e8">use App\MetaData\Foobar;
+   */</span>
+  <span class="token keyword">private</span> <span class="token keyword type-declaration">string</span> <span class="token variable">$foobar</span>  
+<span class="token punctuation">}</span></code></pre>
+<p>Les attributs ont une syntaxe un peu différente mais s'utilisent de la même façon au détail près qu'il s'agit d'une <strong>fonctionnalité native de PHP</strong>. Il n'y a donc pas besoin de parser tiers, les attributs sont interprétés par PHP en même temps que le reste du code.</p>
+<pre class="code-multiline language-php"><code class="language-php" id="04932bce9373583594b9f9398571a3e8"><span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>MetaData<span class="token punctuation">\</span>Foobar</span><span class="token punctuation">;</span>
 
-class Foo {
-  #[Foobar]
-  private string $foobar  
-}</code></pre>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Foo</span> <span class="token punctuation">{</span>
+  <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name">Foobar</span></span><span class="token delimiter punctuation">]</span></span>
+  <span class="token keyword">private</span> <span class="token keyword type-declaration">string</span> <span class="token variable">$foobar</span>  
+<span class="token punctuation">}</span></code></pre>
 <h2 id="dans-symfony" class="anchor-title"><a href="#dans-symfony">Dans Symfony</a></h2>
 <p>Dans un projet Symfony, il y a plusieurs endroits où vous pouvez avoir à écrire des annotations. Vous pouvez les utilisez pour <a href="https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/routing.html" target="_blank">déclarer une route</a>, pour configurer <a href="https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/converters.html" target="_blank">la conversion de paramètres</a>, pour décrire une <a href="https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/security.html" target="_blank">règle de sécurité</a> ou pour configurer <a href="https://symfony.com/doc/current/validation.html" target="_blank">des contraintes de validations</a> par exemple. Si vous utilisez <a href="https://www.doctrine-project.org/" target="_blank">Doctrine</a> vous pouvez également les utiliser pour déclarer votre mapping d'ORM.</p>
 <p>Et bien il est désormais possible <strong>d'utiliser des attributs à la place des annotations</strong> pour faire tout cela, ou presque.</p>
@@ -318,33 +318,33 @@ class Foo {
 <p>Dans les contrôleurs, globalement y a pas grand chose qui change, vous pouvez utiliser les annotations existantes en attributs avec quasiment la même syntaxe :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="f979f8daa35be5e0c15c34fcf88c1dd5"><span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Routing<span class="token punctuation">\</span>Annotation<span class="token punctuation">\</span>Route</span><span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name">DefaultController</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractController</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">DefaultController</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractController</span>
 <span class="token punctuation">{</span>
   #<span class="token punctuation">[</span><span class="token function">Route</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'GET'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string double-quoted-string">"homepage"</span><span class="token punctuation">)</span>
-  <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">homepage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">homepage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token punctuation">{</span>
   <span class="token punctuation">}</span>
 
   #<span class="token punctuation">[</span><span class="token function">Route</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/foobar/{foo_id}/{bar_id}'</span><span class="token punctuation">)</span>
   <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name">ParamConverter</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'foo'</span><span class="token punctuation">,</span> <span class="token attribute-class-name class-name">options</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'mapping'</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'foo_id'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span></span><span class="token delimiter punctuation">]</span></span>
   <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name">ParamConverter</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'bar'</span><span class="token punctuation">,</span> <span class="token attribute-class-name class-name">options</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'mapping'</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'bar_id'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span></span><span class="token delimiter punctuation">]</span></span>
-  <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">foobar</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Foo</span> <span class="token variable">$foo</span><span class="token punctuation">,</span> <span class="token class-name type-declaration">Bar</span> <span class="token variable">$bar</span><span class="token punctuation">)</span>
+  <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">foobar</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Foo</span> <span class="token variable">$foo</span><span class="token punctuation">,</span> <span class="token class-name type-declaration">Bar</span> <span class="token variable">$bar</span><span class="token punctuation">)</span>
   <span class="token punctuation">{</span>
   <span class="token punctuation">}</span>
 
   #<span class="token punctuation">[</span><span class="token function">Route</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/article/{article_slug}'</span><span class="token punctuation">)</span>
   <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name">Entity</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'article'</span><span class="token punctuation">,</span> <span class="token attribute-class-name class-name">expr</span><span class="token operator">=</span><span class="token string single-quoted-string">'repository.findOneBySlug(article_slug)'</span><span class="token punctuation">)</span></span><span class="token delimiter punctuation">]</span></span>
-  <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">article</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Article</span> <span class="token variable">$article</span><span class="token punctuation">)</span>
+  <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">article</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Article</span> <span class="token variable">$article</span><span class="token punctuation">)</span>
   <span class="token punctuation">{</span>
   <span class="token punctuation">}</span>
 
   <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name">IsGranted</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'ROLE_ADMIN'</span><span class="token punctuation">)</span></span><span class="token delimiter punctuation">]</span></span>
-  <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">admin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">admin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token punctuation">{</span>
   <span class="token punctuation">}</span>
 
   <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name">Security</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"is_granted('ROLE_ADMIN') and is_granted('ROLE_SUPER_ADMIN')"</span><span class="token punctuation">)</span></span><span class="token delimiter punctuation">]</span></span>
-  <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">dashboard</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">dashboard</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token punctuation">{</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
@@ -354,7 +354,7 @@ class Foo {
 <p>Comme pour le reste des annotation fournit par Symfony, vous pouvez réutiliser la plupart des contraintes de validations en attributs :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="111d729a058c432cb9c5ed13907d2690"><span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Validator<span class="token punctuation">\</span>Constraints</span> <span class="token keyword">as</span> Assert<span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name">Foobar</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Foobar</span>
 <span class="token punctuation">{</span>
   <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name class-name-fully-qualified">Assert<span class="token punctuation">\</span>NotBlank</span></span><span class="token delimiter punctuation">]</span></span>
   <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name class-name-fully-qualified">Assert<span class="token punctuation">\</span>Type</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'string'</span><span class="token punctuation">)</span></span><span class="token delimiter punctuation">]</span></span>
@@ -364,7 +364,7 @@ class Foo {
 <p>Ça se gâte lorsque vous souhaitez utiliser des contraintes de validations imbriquées comme avec <a href="https://symfony.com/doc/current/reference/constraints/AtLeastOneOf.html" target="_blank">AtLeastOneOf</a>, <a href="https://symfony.com/doc/current/reference/constraints/All.html" target="_blank">All</a> ou <a href="https://symfony.com/doc/current/reference/constraints/Collection.html" target="_blank">Collection</a> par exemple.</p>
 <pre class="code-multiline language-php"><code class="language-php" id="f31ec42b73f1f1eeb9974e96dfa91c6d"><span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Validator<span class="token punctuation">\</span>Constraints</span> <span class="token keyword">as</span> Assert<span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name">Foobar</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Foobar</span>
 <span class="token punctuation">{</span>
   <span class="token doc-comment comment">/**
    * @Assert\All(<span class="token punctuation">{</span>
@@ -390,22 +390,22 @@ class Foo {
 <span class="token punctuation">}</span></code></pre>
 <p>En effet, <strong>les attributs PHP ne peuvent pas s'imbriquer</strong>, il n'est donc pas possible de reproduire cette configuration avec les attributs.</p>
 <p><a href="https://github.com/symfony/symfony/issues/38503" target="_blank">Une issue est ouverte sur le GitHub de Symfony</a> sur ce sujet. La conclusion est qu'il faut <strong>attendre une évolution des attributs dans une prochaine version de PHP</strong> pour pouvoir instancier des objets dans les attributs et utiliser une syntaxe de ce style :</p>
-<pre class="code-multiline"><code id="1cd9530eb1f103035cdf35c9ba21842a">use Symfony\Component\Validator\Constraints as Assert;
+<pre class="code-multiline language-php"><code class="language-php" id="1cd9530eb1f103035cdf35c9ba21842a"><span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Validator<span class="token punctuation">\</span>Constraints</span> <span class="token keyword">as</span> Assert<span class="token punctuation">;</span>
 
-class Foobar
-{
-  #[Assert\Collection(fields=[
-    'email' =&gt; [
-      new Assert\NotBlank,
-      new Assert\Email,
-    ],
-    'description' =&gt; [
-      new Assert\NotBlank,
-      new Assert\Length(min=10, max=255, message="Lorem ipsum")
-    ]
-  ]]
-  protected $contact;
-}</code></pre>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Foobar</span>
+<span class="token punctuation">{</span>
+  <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name class-name-fully-qualified">Assert<span class="token punctuation">\</span>Collection</span><span class="token punctuation">(</span><span class="token attribute-class-name class-name">fields</span><span class="token operator">=</span><span class="token punctuation">[</span>
+    <span class="token string single-quoted-string">'email'</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span>
+      <span class="token attribute-class-name class-name">new</span> <span class="token attribute-class-name class-name class-name-fully-qualified">Assert<span class="token punctuation">\</span>NotBlank</span><span class="token punctuation">,</span>
+      <span class="token attribute-class-name class-name">new</span> <span class="token attribute-class-name class-name class-name-fully-qualified">Assert<span class="token punctuation">\</span>Email</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'description'</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span>
+      <span class="token attribute-class-name class-name">new</span> <span class="token attribute-class-name class-name class-name-fully-qualified">Assert<span class="token punctuation">\</span>NotBlank</span><span class="token punctuation">,</span>
+      <span class="token attribute-class-name class-name">new</span> <span class="token attribute-class-name class-name class-name-fully-qualified">Assert<span class="token punctuation">\</span>Length</span><span class="token punctuation">(</span><span class="token attribute-class-name class-name">min</span><span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token attribute-class-name class-name">max</span><span class="token operator">=</span><span class="token number">255</span><span class="token punctuation">,</span> <span class="token attribute-class-name class-name">message</span><span class="token operator">=</span><span class="token string double-quoted-string">"Lorem ipsum"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">]</span></span><span class="token delimiter punctuation">]</span></span>
+  <span class="token keyword">protected</span> <span class="token variable">$contact</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>En attendant, la solution la plus simple pour ce genre de cas est de créer une contrainte custom. Ceci a été rendu très simple depuis l'ajout de la contrainte <a href="https://symfony.com/doc/current/reference/constraints/Compound.html" target="_blank"><code class="code-inline" id="26154ea007c65f860de5333a555a56cf">Compound</code></a>.</p>
 <p>En PHP, pas de limitation, vous pouvez imbriquer les contraintes comme vous le souhaitez :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="5d88c1f4ffbd746975282c46ebd3789c"><span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Validator<span class="token punctuation">\</span>Constraints</span><span class="token punctuation">;</span>
@@ -413,9 +413,9 @@ class Foobar
 <span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Validator<span class="token punctuation">\</span>Constraints</span> <span class="token keyword">as</span> Assert\Assert<span class="token punctuation">;</span>
 
 <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content">\<span class="token attribute-class-name class-name">Attribute</span><span class="token punctuation">(</span><span class="token attribute-class-name class-name class-name-fully-qualified"><span class="token punctuation">\</span>Attribute</span><span class="token operator">::</span><span class="token constant">TARGET_PROPERTY</span> <span class="token operator">|</span> <span class="token attribute-class-name class-name class-name-fully-qualified"><span class="token punctuation">\</span>Attribute</span><span class="token operator">::</span><span class="token constant">TARGET_METHOD</span> <span class="token operator">|</span> <span class="token attribute-class-name class-name class-name-fully-qualified"><span class="token punctuation">\</span>Attribute</span><span class="token operator">::</span><span class="token constant">IS_REPEATABLE</span><span class="token punctuation">)</span></span><span class="token delimiter punctuation">]</span></span>
-<span class="token keyword">class</span> <span class="token class-name">Contact</span> <span class="token keyword">extends</span> <span class="token class-name">Compound</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Contact</span> <span class="token keyword">extends</span> <span class="token class-name">Compound</span>
 <span class="token punctuation">{</span>
-  <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">getConstraints</span><span class="token punctuation">(</span><span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span>
+  <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function-definition function">getConstraints</span><span class="token punctuation">(</span><span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span>
   <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token punctuation">[</span>
       <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified">Assert<span class="token punctuation">\</span>Collection</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
@@ -437,7 +437,7 @@ class Foobar
 <p>Vous pouvez ensuite ajouter votre contrainte en tant qu'attribut :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="dae119fbaa86cb54a7de47d7cb0f3a0e"><span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Validator<span class="token punctuation">\</span>Constraints</span><span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name">Foobar</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Foobar</span>
 <span class="token punctuation">{</span>
   <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name">Constraints</span><span class="token operator">/</span><span class="token attribute-class-name class-name">Contact</span></span><span class="token delimiter punctuation">]</span></span>
   <span class="token keyword">protected</span> <span class="token variable">$contact</span><span class="token punctuation">;</span>
@@ -448,8 +448,8 @@ class Foobar
 <pre class="code-multiline language-php"><code class="language-php" id="fdbefbaabcff5a467cebf0a7c75c02f9"><span class="token keyword">use</span> <span class="token package">Doctrine<span class="token punctuation">\</span>DBAL<span class="token punctuation">\</span>Types<span class="token punctuation">\</span>Types</span><span class="token punctuation">;</span>
 <span class="token keyword">use</span> <span class="token package">Doctrine<span class="token punctuation">\</span>ORM<span class="token punctuation">\</span>Mapping</span> <span class="token keyword">AS</span> <span class="token constant">ORM</span><span class="token punctuation">;</span>
 
-<span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name class-name-fully-qualified">ORM<span class="token punctuation">\</span>Entity</span><span class="token punctuation">(</span><span class="token attribute-class-name class-name">repositoryClass</span><span class="token punctuation">:</span> <span class="token attribute-class-name class-name">PostRepository</span><span class="token operator">::</span>class<span class="token punctuation">)</span></span><span class="token delimiter punctuation">]</span></span>
-<span class="token keyword">class</span> <span class="token class-name">Foobar</span>
+<span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name class-name-fully-qualified">ORM<span class="token punctuation">\</span>Entity</span><span class="token punctuation">(</span><span class="token attribute-class-name class-name">repositoryClass</span><span class="token punctuation">:</span> <span class="token attribute-class-name class-name">PostRepository</span><span class="token operator">::</span><span class="token constant">class</span><span class="token punctuation">)</span></span><span class="token delimiter punctuation">]</span></span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Foobar</span>
 <span class="token punctuation">{</span>
   <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name class-name-fully-qualified">ORM<span class="token punctuation">\</span>Column</span><span class="token punctuation">(</span><span class="token attribute-class-name class-name">type</span><span class="token punctuation">:</span> <span class="token attribute-class-name class-name">Types</span><span class="token operator">::</span><span class="token constant">INTEGER</span><span class="token punctuation">)</span></span><span class="token delimiter punctuation">]</span></span>
   <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name class-name-fully-qualified">ORM<span class="token punctuation">\</span>Id</span><span class="token punctuation">,</span> <span class="token attribute-class-name class-name class-name-fully-qualified">ORM<span class="token punctuation">\</span>GeneratedValue</span><span class="token punctuation">(</span><span class="token attribute-class-name class-name">strategy</span><span class="token punctuation">:</span> <span class="token string single-quoted-string">'AUTO'</span><span class="token punctuation">)</span></span><span class="token delimiter punctuation">]</span></span>
@@ -461,13 +461,13 @@ class Foobar
   <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name class-name-fully-qualified">ORM<span class="token punctuation">\</span>Column</span><span class="token punctuation">(</span><span class="token attribute-class-name class-name">type</span><span class="token punctuation">:</span> <span class="token attribute-class-name class-name">Types</span><span class="token operator">::</span><span class="token constant">SIMPLE_ARRAY</span><span class="token punctuation">)</span></span><span class="token delimiter punctuation">]</span></span>
   <span class="token keyword">private</span> <span class="token keyword type-declaration">array</span> <span class="token variable">$contents</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-  <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name class-name-fully-qualified">ORM<span class="token punctuation">\</span>ManyToOne</span><span class="token punctuation">(</span><span class="token attribute-class-name class-name">targetEntity</span><span class="token punctuation">:</span> <span class="token attribute-class-name class-name">User</span><span class="token operator">::</span>class<span class="token punctuation">)</span></span><span class="token delimiter punctuation">]</span></span>
+  <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name class-name-fully-qualified">ORM<span class="token punctuation">\</span>ManyToOne</span><span class="token punctuation">(</span><span class="token attribute-class-name class-name">targetEntity</span><span class="token punctuation">:</span> <span class="token attribute-class-name class-name">User</span><span class="token operator">::</span><span class="token constant">class</span><span class="token punctuation">)</span></span><span class="token delimiter punctuation">]</span></span>
   <span class="token keyword">public</span> <span class="token variable">$owner</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>Comme Symfony, Doctrine réutilise les mêmes classes que pour leur annotations pour leur attributs.</p>
 <p>Doctrine fait également face à l'impossibilité d'imbriquer les attributs comme cela était fait avec les annotations <code class="code-inline" id="52e2e23d0a7edf60595fd9d8971dba59">@JoinTable</code> ou <code class="code-inline" id="dbb62aaa6026829bcb63eef8c7319805">@JoinColumns</code> mais a résolu cela en créant de nouveaux attributs à placer au même niveau.</p>
 <p>Avec les annotations (imbriquées) :</p>
-<pre class="code-multiline language-php"><code class="language-php" id="85935bc5c95d997fd856139ab34d2804"><span class="token keyword">class</span> Post
+<pre class="code-multiline language-php"><code class="language-php" id="85935bc5c95d997fd856139ab34d2804"><span class="token keyword">class</span> <span class="token class-name-definition class-name">Post</span>
 <span class="token punctuation">{</span>
   <span class="token doc-comment comment">/**
    * @ManyToMany(targetEntity="Tag")
@@ -483,9 +483,9 @@ class Foobar
    <span class="token keyword">public</span> <span class="token class-name type-declaration">Collection</span> <span class="token variable">$tags</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>Avec les attributs (au même niveau) :</p>
-<pre class="code-multiline language-php"><code class="language-php" id="c8146e4ab9bad6fe883696e0b9d2c564"><span class="token keyword">class</span> Post
+<pre class="code-multiline language-php"><code class="language-php" id="c8146e4ab9bad6fe883696e0b9d2c564"><span class="token keyword">class</span> <span class="token class-name-definition class-name">Post</span>
 <span class="token punctuation">{</span>
-  <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name class-name-fully-qualified">ORM<span class="token punctuation">\</span>ManyToMany</span><span class="token punctuation">(</span><span class="token attribute-class-name class-name">targetEntity</span><span class="token punctuation">:</span> <span class="token attribute-class-name class-name">Tag</span><span class="token operator">::</span>class<span class="token punctuation">)</span></span><span class="token delimiter punctuation">]</span></span>
+  <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name class-name-fully-qualified">ORM<span class="token punctuation">\</span>ManyToMany</span><span class="token punctuation">(</span><span class="token attribute-class-name class-name">targetEntity</span><span class="token punctuation">:</span> <span class="token attribute-class-name class-name">Tag</span><span class="token operator">::</span><span class="token constant">class</span><span class="token punctuation">)</span></span><span class="token delimiter punctuation">]</span></span>
   <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name class-name-fully-qualified">ORM<span class="token punctuation">\</span>JoinTable</span><span class="token punctuation">(</span><span class="token attribute-class-name class-name">name</span><span class="token punctuation">:</span> <span class="token string double-quoted-string">"post_tags"</span><span class="token punctuation">)</span></span><span class="token delimiter punctuation">]</span></span>
   <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name class-name-fully-qualified">ORM<span class="token punctuation">\</span>JoinColumn</span><span class="token punctuation">(</span><span class="token attribute-class-name class-name">name</span><span class="token punctuation">:</span> <span class="token string double-quoted-string">"post_id"</span><span class="token punctuation">,</span> <span class="token attribute-class-name class-name">referencedColumnName</span><span class="token punctuation">:</span> <span class="token string double-quoted-string">"id"</span><span class="token punctuation">)</span></span><span class="token delimiter punctuation">]</span></span>
   <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name class-name-fully-qualified">ORM<span class="token punctuation">\</span>InverseJoinColumn</span><span class="token punctuation">(</span><span class="token attribute-class-name class-name">name</span><span class="token punctuation">:</span> <span class="token string double-quoted-string">"tag_id"</span><span class="token punctuation">,</span> <span class="token attribute-class-name class-name">referencedColumnName</span><span class="token punctuation">:</span> <span class="token string double-quoted-string">"id"</span><span class="token punctuation">)</span></span><span class="token delimiter punctuation">]</span></span>

@@ -42,9 +42,9 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/368/build/app.19c880a6.css">
+                    <link rel="stylesheet" href="/elao_/pr/368/build/app.c6a1377f.css">
         
-        <script src="/elao_/pr/368/build/runtime.d398ae8a.js" defer></script><script src="/elao_/pr/368/build/40.6bb9d388.js" defer></script><script src="/elao_/pr/368/build/app.8e45e17b.js" defer></script>
+        <script src="/elao_/pr/368/build/runtime.d398ae8a.js" defer></script><script src="/elao_/pr/368/build/40.b2235a80.js" defer></script><script src="/elao_/pr/368/build/app.8e45e17b.js" defer></script>
 
             </head>
     <body>
@@ -305,7 +305,7 @@ Australia/Sydney</code></pre>
 <p>La timezone permet également de savoir si on doit appliquer l'heure d'été ou d'hiver. En effet, il peut exister plusieurs timezones correspondant au même fuseau horaire car elles n'appliquent pas l'heure d'été ou d'hiver aux mêmes dates, voir l'une d'elle ne la pratique pas du tout.</p>
 <h2 id="php" class="anchor-title"><a href="#php">PHP</a></h2>
 <p>Si vous avez déjà travaillé avec des dates en PHP, vous avez surement été confronté à des problèmes de timezone. La plupart du temps, vous avez résolu le problème en remplaçant la timezone par defaut par la vôtre.</p>
-<pre class="code-multiline language-ini"><code class="language-ini" id="d06a3a8ea469f18ab96eea52d7040016"><span class="token constant">date.timezone</span> <span class="token attr-value"><span class="token punctuation">=</span> Europe/Paris</span></code></pre>
+<pre class="code-multiline language-ini"><code class="language-ini" id="d06a3a8ea469f18ab96eea52d7040016"><span class="token key attr-name">date.timezone</span> <span class="token punctuation">=</span> <span class="token value attr-value">Europe/Paris</span></code></pre>
 <p>Si cette solution règle votre souci immédiatement, nous allons voir que sur le long terme, ce n'est pas forcement une bonne idée.</p>
 <h2 id="les-problemes" class="anchor-title"><a href="#les-problemes">Les problèmes</a></h2>
 <p>Si vous persistez vos dates dans une base de données, sachez que la plupart des SGBD ne stockent pas la timezone sur les champs de type <code class="code-inline" id="dfeaaeb4316477bd556ea5e8c3295887">datetime</code> ou <code class="code-inline" id="d7e6d55ba379a13d08c25d15faf2a23b">timestamp</code>. Vous perdez donc cette information.</p>
@@ -345,7 +345,7 @@ Australia/Sydney</code></pre>
 <p>Pour la saisie de date dans vos formulaires, si vous utilisez les formulaires de date natifs de Symfony comme le  <a href="https://symfony.com/doc/current/reference/forms/types/datetime.html" target="_blank">DateTimeType</a>, penchez-vous sur les options <a href="https://symfony.com/doc/current/reference/forms/types/datetime.html#model-timezone" target="_blank"><code class="code-inline" id="f3a978ebd00d2ca47db6ef4f31de9dc4">model_timezone</code></a> et <a href="https://symfony.com/doc/current/reference/forms/types/datetime.html#view-timezone" target="_blank"><code class="code-inline" id="2f4e515f049becdaabb90473387444d6">view_timezone</code></a>.</p>
 <p>L'option <code class="code-inline" id="f3a978ebd00d2ca47db6ef4f31de9dc4">model_timezone</code> vous permet de préciser la timezone dans laquelle les dates seront stockées. Normalement pas besoin d'y toucher, sa valeur par defaut correspond à la timezone de PHP.</p>
 <p>L'option <code class="code-inline" id="2f4e515f049becdaabb90473387444d6">view_timezone</code> vous permet de préciser la timezone dans laquelle l'utilisateur saisit les dates. Il faut donc la renseigner avec la timezone souhaitée, celle de l'utilisateur que vous stockez sur son profil par exemple.</p>
-<pre class="code-multiline language-php"><code class="language-php" id="b595b6b37f8112d7c5bf18544dbb7dab"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">buildForm</span><span class="token punctuation">(</span><span class="token class-name type-declaration">FormBuilderInterface</span> <span class="token variable">$builder</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
+<pre class="code-multiline language-php"><code class="language-php" id="b595b6b37f8112d7c5bf18544dbb7dab"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">buildForm</span><span class="token punctuation">(</span><span class="token class-name type-declaration">FormBuilderInterface</span> <span class="token variable">$builder</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
   <span class="token variable">$builder</span><span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'datetime'</span><span class="token punctuation">,</span> <span class="token scope">DateTimeType<span class="token punctuation">::</span></span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
     <span class="token string single-quoted-string">'view_timezone'</span> <span class="token operator">=&gt;</span> <span class="token variable">$options</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'user'</span><span class="token punctuation">]</span><span class="token operator">-&gt;</span><span class="token function">getTimezone</span><span class="token punctuation">(</span><span class="token punctuation">)</span>

@@ -42,9 +42,9 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/368/build/app.19c880a6.css">
+                    <link rel="stylesheet" href="/elao_/pr/368/build/app.c6a1377f.css">
         
-        <script src="/elao_/pr/368/build/runtime.d398ae8a.js" defer></script><script src="/elao_/pr/368/build/40.6bb9d388.js" defer></script><script src="/elao_/pr/368/build/app.8e45e17b.js" defer></script>
+        <script src="/elao_/pr/368/build/runtime.d398ae8a.js" defer></script><script src="/elao_/pr/368/build/40.b2235a80.js" defer></script><script src="/elao_/pr/368/build/app.8e45e17b.js" defer></script>
 
             </head>
     <body>
@@ -455,30 +455,30 @@ hors-ligne sans que l'url ait été visitée au préalable, il est quasi indispe
 
 <span class="token keyword module">export</span> <span class="token keyword module">default</span> gql<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token graphql language-graphql">
   <span class="token punctuation">{</span>
-    currentDate
-    user <span class="token punctuation">{</span>
-      uuid
-      firstName
-      lastName
-      country
-      phoneNumber
-      locale
+    <span class="token property">currentDate</span>
+    <span class="token object">user</span> <span class="token punctuation">{</span>
+      <span class="token property">uuid</span>
+      <span class="token property">firstName</span>
+      <span class="token property">lastName</span>
+      <span class="token property">country</span>
+      <span class="token property">phoneNumber</span>
+      <span class="token property">locale</span>
     <span class="token punctuation">}</span>
-    courses <span class="token punctuation">{</span>
-      uuid
-      title
-      updatedAt
-      folders <span class="token punctuation">{</span>
-        uuid
-        title
-        updatedAt
-        sessions <span class="token punctuation">{</span>
-          uuid
-          title
-          updatedAt
-          files <span class="token punctuation">{</span>
-            url
-            updatedAt
+    <span class="token object">courses</span> <span class="token punctuation">{</span>
+      <span class="token property">uuid</span>
+      <span class="token property">title</span>
+      <span class="token property">updatedAt</span>
+      <span class="token object">folders</span> <span class="token punctuation">{</span>
+        <span class="token property">uuid</span>
+        <span class="token property">title</span>
+        <span class="token property">updatedAt</span>
+        <span class="token object">sessions</span> <span class="token punctuation">{</span>
+          <span class="token property">uuid</span>
+          <span class="token property">title</span>
+          <span class="token property">updatedAt</span>
+          <span class="token object">files</span> <span class="token punctuation">{</span>
+            <span class="token property">url</span>
+            <span class="token property">updatedAt</span>
           <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
       <span class="token punctuation">}</span>
@@ -620,7 +620,7 @@ fonctionnalités du Back-Office.</p>
 <span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpFoundation<span class="token punctuation">\</span>Session<span class="token punctuation">\</span>Flash<span class="token punctuation">\</span>FlashBagInterface</span><span class="token punctuation">;</span>
 <span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Routing<span class="token punctuation">\</span>RouterInterface</span><span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name">AssignUserAction</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">AssignUserAction</span>
 <span class="token punctuation">{</span>
     <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name">EngineInterface</span> */</span>
     <span class="token keyword">private</span> <span class="token variable">$engine</span><span class="token punctuation">;</span>
@@ -637,7 +637,7 @@ fonctionnalités du Back-Office.</p>
     <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name">FlashBagInterface</span> */</span>
     <span class="token keyword">private</span> <span class="token variable">$flashBag</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span>
         <span class="token class-name type-declaration">EngineInterface</span> <span class="token variable">$engine</span><span class="token punctuation">,</span>
         <span class="token class-name type-declaration">CommandBusInterface</span> <span class="token variable">$commandBus</span><span class="token punctuation">,</span>
         <span class="token class-name type-declaration">FormFactoryInterface</span> <span class="token variable">$formFactory</span><span class="token punctuation">,</span>
@@ -651,7 +651,7 @@ fonctionnalités du Back-Office.</p>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">flashBag</span> <span class="token operator">=</span> <span class="token variable">$flashBag</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__invoke</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Request</span> <span class="token variable">$request</span><span class="token punctuation">,</span> <span class="token class-name type-declaration">Course</span> <span class="token variable">$course</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">Response</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__invoke</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Request</span> <span class="token variable">$request</span><span class="token punctuation">,</span> <span class="token class-name type-declaration">Course</span> <span class="token variable">$course</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">Response</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$assign</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AssignUser</span><span class="token punctuation">(</span><span class="token variable">$course</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token variable">$form</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">formFactory</span><span class="token operator">-&gt;</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token scope">AssignUserType<span class="token punctuation">::</span></span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token variable">$assign</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
