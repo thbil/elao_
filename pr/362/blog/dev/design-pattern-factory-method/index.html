@@ -42,9 +42,9 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/362/build/app.3573b915.css">
+                    <link rel="stylesheet" href="/elao_/pr/362/build/app.e69d71f6.css">
         
-        <script src="/elao_/pr/362/build/runtime.15181caa.js" defer></script><script src="/elao_/pr/362/build/40.6bb9d388.js" defer></script><script src="/elao_/pr/362/build/app.8e45e17b.js" defer></script>
+        <script src="/elao_/pr/362/build/runtime.15181caa.js" defer></script><script src="/elao_/pr/362/build/40.b2235a80.js" defer></script><script src="/elao_/pr/362/build/app.8e45e17b.js" defer></script>
 
             </head>
     <body>
@@ -302,8 +302,8 @@
 <h2 id="ceci-n-est-pas-une-pipe" class="anchor-title"><a href="#ceci-n-est-pas-une-pipe">Ceci n'est pas une pipe</a></h2>
 <p>Après un préambule assez verbeux j'en conviens, laissez-moi à présent vous gratifier d'une remarque liminaire : cet article est avant tout destiné à présenter le Design Pattern <em>Factory Method</em>, alors précisons d'emblée que ce qui suit n'est pas un pattern (et encore moins une pipe, mais ça, c'est un autre débat ...) :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="315d8d3b287d59fb542aa5c41628a45a"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-    <span class="token keyword">class</span> <span class="token class-name">MyFactory</span> <span class="token punctuation">{</span>
-        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token variable">$type</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">class</span> <span class="token class-name-definition class-name">MyFactory</span> <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function-definition function">getInstance</span><span class="token punctuation">(</span><span class="token variable">$type</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">switch</span><span class="token punctuation">(</span><span class="token variable">$type</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 <span class="token keyword">case</span> <span class="token string double-quoted-string">"a"</span><span class="token punctuation">:</span>
                     <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -354,8 +354,8 @@
 </ul>
 <h3 id="expose-de-la-problematique" class="anchor-title"><a href="#expose-de-la-problematique">Exposé de la problématique</a></h3>
 <pre class="code-multiline language-php"><code class="language-php" id="438c1fddeeed1ec109f41d0f90008f5e"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-    <span class="token keyword">class</span> <span class="token class-name">OrderHandler</span> <span class="token punctuation">{</span>
-        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">orderProduct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Order</span> <span class="token variable">$order</span><span class="token punctuation">,</span> <span class="token keyword type-hint">int</span> <span class="token variable">$qty</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">Product</span> <span class="token punctuation">{</span>
+    <span class="token keyword">class</span> <span class="token class-name-definition class-name">OrderHandler</span> <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">orderProduct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Order</span> <span class="token variable">$order</span><span class="token punctuation">,</span> <span class="token keyword type-hint">int</span> <span class="token variable">$qty</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">Product</span> <span class="token punctuation">{</span>
             <span class="token variable">$orderedProduct</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Product</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token variable">$orderedProduct</span><span class="token operator">-&gt;</span><span class="token function">setOrder</span><span class="token punctuation">(</span><span class="token variable">$order</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token variable">$orderedProduct</span><span class="token operator">-&gt;</span><span class="token function">setQty</span><span class="token punctuation">(</span><span class="token variable">$qty</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -375,8 +375,8 @@
 <h3 id="le-design-pattern-factory-method-a-la-rescousse" class="anchor-title"><code class="code-inline" id="d021d5f9d4069111c20ea6ad534fd22c">Factory Method</code> à la rescousse<a href="#le-design-pattern-factory-method-a-la-rescousse">Le design pattern </a></h3>
 <p>Nous allons à présent modifier notre classe <code class="code-inline" id="f454b76d1cda09695d0fe30bb3447acd">OrderHandler</code> pour nous rapprocher du pattern :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="21e2b1250e9a91bef21ab903fc656839"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-    <span class="token keyword">class</span> <span class="token class-name">OrderHandler</span> <span class="token punctuation">{</span>
-        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">orderProduct</span><span class="token punctuation">(</span>
+    <span class="token keyword">class</span> <span class="token class-name-definition class-name">OrderHandler</span> <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">orderProduct</span><span class="token punctuation">(</span>
             <span class="token class-name type-declaration">Order</span> <span class="token variable">$order</span><span class="token punctuation">,</span>
             <span class="token keyword type-hint">int</span> <span class="token variable">$qty</span> <span class="token operator">=</span> <span class="token number">1</span>
         <span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">OrderableInterface</span> <span class="token punctuation">{</span>
@@ -388,7 +388,7 @@
             <span class="token keyword">return</span> <span class="token variable">$orderedProduct</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
 
-        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">createProduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">Product</span> <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">createProduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">Product</span> <span class="token punctuation">{</span>
             <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Product</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span></span></code></pre>

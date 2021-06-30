@@ -42,9 +42,9 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/362/build/app.3573b915.css">
+                    <link rel="stylesheet" href="/elao_/pr/362/build/app.e69d71f6.css">
         
-        <script src="/elao_/pr/362/build/runtime.15181caa.js" defer></script><script src="/elao_/pr/362/build/40.6bb9d388.js" defer></script><script src="/elao_/pr/362/build/app.8e45e17b.js" defer></script>
+        <script src="/elao_/pr/362/build/runtime.15181caa.js" defer></script><script src="/elao_/pr/362/build/40.b2235a80.js" defer></script><script src="/elao_/pr/362/build/app.8e45e17b.js" defer></script>
 
             </head>
     <body>
@@ -366,7 +366,7 @@ Ce qui va intialiser le répertoire <code class="code-inline" id="b10716f0f6bfde
 <span class="token doc-comment comment">/**
  * Defines application features from the specific context.
  */</span>
-<span class="token keyword">class</span> <span class="token class-name">FeatureContext</span> <span class="token keyword">extends</span> <span class="token class-name">MinkContext</span> <span class="token keyword">implements</span> <span class="token class-name">KernelAwareContext</span><span class="token punctuation">,</span> SnippetAcceptingContext
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">FeatureContext</span> <span class="token keyword">extends</span> <span class="token class-name">MinkContext</span> <span class="token keyword">implements</span> <span class="token class-name">KernelAwareContext</span><span class="token punctuation">,</span> SnippetAcceptingContext
 <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token variable">$kernel</span><span class="token punctuation">;</span>
 
@@ -377,14 +377,14 @@ Ce qui va intialiser le répertoire <code class="code-inline" id="b10716f0f6bfde
      * You can also pass arbitrary arguments to the
      * context constructor through behat.yml.
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
     <span class="token punctuation">}</span>
 
     <span class="token doc-comment comment">/**
      * <span class="token keyword">@param</span> <span class="token class-name"><span class="token punctuation">\</span>Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpKernel<span class="token punctuation">\</span>KernelInterface</span> <span class="token parameter">$kernel</span>
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setKernel</span><span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified type-declaration"><span class="token punctuation">\</span>Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpKernel<span class="token punctuation">\</span>KernelInterface</span> <span class="token variable">$kernel</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">setKernel</span><span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified type-declaration"><span class="token punctuation">\</span>Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpKernel<span class="token punctuation">\</span>KernelInterface</span> <span class="token variable">$kernel</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">kernel</span> <span class="token operator">=</span> <span class="token variable">$kernel</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>

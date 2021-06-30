@@ -42,9 +42,9 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/362/build/app.3573b915.css">
+                    <link rel="stylesheet" href="/elao_/pr/362/build/app.e69d71f6.css">
         
-        <script src="/elao_/pr/362/build/runtime.15181caa.js" defer></script><script src="/elao_/pr/362/build/40.6bb9d388.js" defer></script><script src="/elao_/pr/362/build/app.8e45e17b.js" defer></script>
+        <script src="/elao_/pr/362/build/runtime.15181caa.js" defer></script><script src="/elao_/pr/362/build/40.b2235a80.js" defer></script><script src="/elao_/pr/362/build/app.8e45e17b.js" defer></script>
 
             </head>
     <body>
@@ -296,9 +296,9 @@
 <span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>OptionsResolver<span class="token punctuation">\</span>OptionsResolverInterface</span><span class="token punctuation">;</span>
 <span class="token keyword">use</span> <span class="token package">Elao<span class="token punctuation">\</span>UserBundle<span class="token punctuation">\</span>Form<span class="token punctuation">\</span>Type<span class="token punctuation">\</span>GroupType</span><span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name">RegisterType</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractType</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">RegisterType</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractType</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">buildForm</span><span class="token punctuation">(</span><span class="token class-name type-declaration">FormBuilderInterface</span> <span class="token variable">$builder</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">buildForm</span><span class="token punctuation">(</span><span class="token class-name type-declaration">FormBuilderInterface</span> <span class="token variable">$builder</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$builder</span>
             <span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'firstname'</span><span class="token punctuation">,</span> <span class="token constant">null</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'label'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'register.labels.firstname'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
@@ -323,7 +323,7 @@
             <span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setDefaultOptions</span><span class="token punctuation">(</span><span class="token class-name type-declaration">OptionsResolverInterface</span> <span class="token variable">$resolver</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">setDefaultOptions</span><span class="token punctuation">(</span><span class="token class-name type-declaration">OptionsResolverInterface</span> <span class="token variable">$resolver</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$resolver</span><span class="token operator">-&gt;</span><span class="token function">setDefaults</span><span class="token punctuation">(</span>
             <span class="token punctuation">[</span>
@@ -332,7 +332,7 @@
         <span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token string single-quoted-string">'register'</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
@@ -345,14 +345,14 @@
 <span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Form<span class="token punctuation">\</span>FormBuilderInterface</span><span class="token punctuation">;</span>
 <span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>OptionsResolver<span class="token punctuation">\</span>OptionsResolverInterface</span><span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name">GroupType</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractType</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">GroupType</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractType</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">buildForm</span><span class="token punctuation">(</span><span class="token class-name type-declaration">FormBuilderInterface</span> <span class="token variable">$builder</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">buildForm</span><span class="token punctuation">(</span><span class="token class-name type-declaration">FormBuilderInterface</span> <span class="token variable">$builder</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$builder</span><span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'name'</span><span class="token punctuation">,</span> <span class="token constant">null</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'label'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'register.labels.team.name'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setDefaultOptions</span><span class="token punctuation">(</span><span class="token class-name type-declaration">OptionsResolverInterface</span> <span class="token variable">$resolver</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">setDefaultOptions</span><span class="token punctuation">(</span><span class="token class-name type-declaration">OptionsResolverInterface</span> <span class="token variable">$resolver</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$resolver</span><span class="token operator">-&gt;</span><span class="token function">setDefaults</span><span class="token punctuation">(</span>
             <span class="token punctuation">[</span>
@@ -361,7 +361,7 @@
         <span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token string single-quoted-string">'group'</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
@@ -392,9 +392,9 @@
 <span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>OptionsResolver<span class="token punctuation">\</span>OptionsResolverInterface</span><span class="token punctuation">;</span>
 <span class="token keyword">use</span> <span class="token package">Elao<span class="token punctuation">\</span>UserBundle<span class="token punctuation">\</span>Form<span class="token punctuation">\</span>Type<span class="token punctuation">\</span>GroupType</span><span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name">RegisterType</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractType</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">RegisterType</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractType</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">buildForm</span><span class="token punctuation">(</span><span class="token class-name type-declaration">FormBuilderInterface</span> <span class="token variable">$builder</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">buildForm</span><span class="token punctuation">(</span><span class="token class-name type-declaration">FormBuilderInterface</span> <span class="token variable">$builder</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$builder</span>
             <span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'firstname'</span><span class="token punctuation">)</span>
@@ -415,9 +415,9 @@
 <span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Form<span class="token punctuation">\</span>FormBuilderInterface</span><span class="token punctuation">;</span>
 <span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>OptionsResolver<span class="token punctuation">\</span>OptionsResolverInterface</span><span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name">GroupType</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractType</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">GroupType</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractType</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">buildForm</span><span class="token punctuation">(</span><span class="token class-name type-declaration">FormBuilderInterface</span> <span class="token variable">$builder</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">buildForm</span><span class="token punctuation">(</span><span class="token class-name type-declaration">FormBuilderInterface</span> <span class="token variable">$builder</span><span class="token punctuation">,</span> <span class="token keyword type-hint">array</span> <span class="token variable">$options</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$builder</span><span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>

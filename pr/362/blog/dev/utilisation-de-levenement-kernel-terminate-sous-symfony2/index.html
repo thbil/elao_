@@ -42,9 +42,9 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/362/build/app.3573b915.css">
+                    <link rel="stylesheet" href="/elao_/pr/362/build/app.e69d71f6.css">
         
-        <script src="/elao_/pr/362/build/runtime.15181caa.js" defer></script><script src="/elao_/pr/362/build/40.6bb9d388.js" defer></script><script src="/elao_/pr/362/build/app.8e45e17b.js" defer></script>
+        <script src="/elao_/pr/362/build/runtime.15181caa.js" defer></script><script src="/elao_/pr/362/build/40.b2235a80.js" defer></script><script src="/elao_/pr/362/build/app.8e45e17b.js" defer></script>
 
             </head>
     <body>
@@ -294,7 +294,7 @@
 <span class="token doc-comment comment">/**
  * Class GuzzleExceptionListener
  */</span>
-<span class="token keyword">class</span> <span class="token class-name">GuzzleExceptionListener</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">GuzzleExceptionListener</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token variable">$statsManager</span><span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token variable">$fail</span> <span class="token operator">=</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
@@ -304,12 +304,12 @@
      *
      * <span class="token keyword">@param</span> <span class="token class-name">StatsManager</span> <span class="token parameter">$manager</span> The stats Manager
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">StatsManager</span> <span class="token variable">$manager</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">StatsManager</span> <span class="token variable">$manager</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">statsManager</span> <span class="token operator">=</span> <span class="token variable">$manager</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">onKernelException</span><span class="token punctuation">(</span><span class="token class-name type-declaration">GetResponseForExceptionEvent</span> <span class="token variable">$event</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">onKernelException</span><span class="token punctuation">(</span><span class="token class-name type-declaration">GetResponseForExceptionEvent</span> <span class="token variable">$event</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$exception</span> <span class="token operator">=</span> <span class="token variable">$event</span><span class="token operator">-&gt;</span><span class="token function">getException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -320,7 +320,7 @@
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">onKernelTerminate</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">onKernelTerminate</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant boolean">false</span> <span class="token operator">===</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">fail</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">return</span><span class="token punctuation">;</span>
@@ -355,7 +355,7 @@
 <span class="token doc-comment comment">/**
  * Class GuzzleExceptionListener
  */</span>
-<span class="token keyword">class</span> <span class="token class-name">GuzzleExceptionListener</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">GuzzleExceptionListener</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token variable">$statsManager</span><span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token variable">$dispatcher</span><span class="token punctuation">;</span>
@@ -367,13 +367,13 @@
      * <span class="token keyword">@param</span> <span class="token class-name">StatsManager</span> <span class="token parameter">$manager</span> The stats Manager
      * <span class="token keyword">@param</span>
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">StatsManager</span> <span class="token variable">$manager</span><span class="token punctuation">,</span> <span class="token class-name type-declaration">EventDispatcher</span> <span class="token variable">$dispatcher</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">StatsManager</span> <span class="token variable">$manager</span><span class="token punctuation">,</span> <span class="token class-name type-declaration">EventDispatcher</span> <span class="token variable">$dispatcher</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">statsManager</span> <span class="token operator">=</span> <span class="token variable">$manager</span><span class="token punctuation">;</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">dispatcher</span>   <span class="token operator">=</span> <span class="token variable">$dispatcher</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">onKernelException</span><span class="token punctuation">(</span><span class="token class-name type-declaration">GetResponseForExceptionEvent</span> <span class="token variable">$event</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">onKernelException</span><span class="token punctuation">(</span><span class="token class-name type-declaration">GetResponseForExceptionEvent</span> <span class="token variable">$event</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$exception</span> <span class="token operator">=</span> <span class="token variable">$event</span><span class="token operator">-&gt;</span><span class="token function">getException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token variable">$statsManager</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">statsManager</span><span class="token punctuation">;</span>

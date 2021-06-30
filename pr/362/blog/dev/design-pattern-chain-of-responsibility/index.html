@@ -42,9 +42,9 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/362/build/app.3573b915.css">
+                    <link rel="stylesheet" href="/elao_/pr/362/build/app.e69d71f6.css">
         
-        <script src="/elao_/pr/362/build/runtime.15181caa.js" defer></script><script src="/elao_/pr/362/build/40.6bb9d388.js" defer></script><script src="/elao_/pr/362/build/app.8e45e17b.js" defer></script>
+        <script src="/elao_/pr/362/build/runtime.15181caa.js" defer></script><script src="/elao_/pr/362/build/40.b2235a80.js" defer></script><script src="/elao_/pr/362/build/app.8e45e17b.js" defer></script>
 
             </head>
     <body>
@@ -356,9 +356,9 @@
 </blockquote>
 <p>Voici à quoi ressemble un <em>extractor</em> avant que nous n'appliquions le pattern <em>CoR</em> :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="6829fd82bdc38da5d949835b4725fc9f"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-    <span class="token keyword">class</span> <span class="token class-name">ProductXmlExtractor</span> <span class="token keyword">implements</span> <span class="token class-name">ProductExtractorInterface</span> <span class="token punctuation">{</span>
+    <span class="token keyword">class</span> <span class="token class-name-definition class-name">ProductXmlExtractor</span> <span class="token keyword">implements</span> <span class="token class-name">ProductExtractorInterface</span> <span class="token punctuation">{</span>
 
-        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">extractProducts</span><span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified type-declaration"><span class="token punctuation">\</span>SplFileObject</span> <span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span> <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">extractProducts</span><span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified type-declaration"><span class="token punctuation">\</span>SplFileObject</span> <span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span> <span class="token punctuation">{</span>
             <span class="token variable">$content</span> <span class="token operator">=</span> <span class="token variable">$file</span><span class="token operator">-&gt;</span><span class="token function">fread</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token operator">-&gt;</span><span class="token function">getSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token variable">$xml</span> <span class="token operator">=</span> <span class="token function">simplexml_load_string</span><span class="token punctuation">(</span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token variable">$products</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -401,7 +401,7 @@
  * instance can handle the request, then it handles it,
  * otherwise it delegates the request to the next handler in the chain.
  */</span>
-<span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">AbstractProductExtractor</span>
+<span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name-definition class-name">AbstractProductExtractor</span>
 <span class="token punctuation">{</span>
     <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name">AbstractProductExtractor<span class="token punctuation">|</span><span class="token keyword">null</span></span> */</span>
     <span class="token keyword">private</span> <span class="token variable">$nextHandler</span><span class="token punctuation">;</span>
@@ -412,7 +412,7 @@
      *
      * <span class="token keyword">@param</span> <span class="token class-name">AbstractProductExtractor<span class="token punctuation">|</span><span class="token keyword">null</span></span> <span class="token parameter">$nextHandler</span>
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">AbstractProductExtractor</span> <span class="token variable">$nextHandler</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">AbstractProductExtractor</span> <span class="token variable">$nextHandler</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">nextHandler</span> <span class="token operator">=</span> <span class="token variable">$nextHandler</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
@@ -425,7 +425,7 @@
      *
      * <span class="token keyword">@param</span> <span class="token class-name">AbstractProductExtractor</span> <span class="token parameter">$nextHandler</span>
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setNextHandler</span><span class="token punctuation">(</span><span class="token class-name type-declaration">AbstractProductExtractor</span> <span class="token variable">$nextHandler</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">setNextHandler</span><span class="token punctuation">(</span><span class="token class-name type-declaration">AbstractProductExtractor</span> <span class="token variable">$nextHandler</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">null</span> <span class="token operator">===</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">nextHandler</span> <span class="token punctuation">{</span>
             <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">nextHandler</span> <span class="token operator">=</span> <span class="token variable">$nextHandler</span><span class="token punctuation">;</span>
@@ -446,7 +446,7 @@
      *
      * <span class="token keyword">@throws</span> <span class="token class-name"><span class="token punctuation">\</span>InvalidArgumentException</span> If no handler can handle the request
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">extractProducts</span><span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified type-declaration"><span class="token punctuation">\</span>SplFileObject</span> <span class="token variable">$file</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">extractProducts</span><span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified type-declaration"><span class="token punctuation">\</span>SplFileObject</span> <span class="token variable">$file</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token function">support</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token function">handle</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -474,7 +474,7 @@
      *
      * <span class="token keyword">@return</span> <span class="token class-name">ProductDto<span class="token punctuation">[</span><span class="token punctuation">]</span></span>
      */</span>
-    <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">handle</span><span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified type-declaration"><span class="token punctuation">\</span>SplFileObject</span> <span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span>
+    <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function-definition function">handle</span><span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified type-declaration"><span class="token punctuation">\</span>SplFileObject</span> <span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span>
     <span class="token punctuation">{</span>
         <span class="token comment">// The following line of code is only for debug &amp; demo purposes:</span>
         <span class="token keyword">echo</span> <span class="token scope"><span class="token keyword">static</span><span class="token punctuation">::</span></span><span class="token keyword">CLASS</span><span class="token operator">.</span><span class="token string double-quoted-string">" is the handler for <span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$file</span><span class="token operator">-&gt;</span><span class="token function">getExtension</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span> files\n"</span><span class="token punctuation">;</span>
@@ -483,8 +483,8 @@
         <span class="token keyword">return</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token function">parseContent</span><span class="token punctuation">(</span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">abstract</span> <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">support</span><span class="token punctuation">(</span><span class="token class-name type-declaration">SplFileObject</span> <span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">bool</span><span class="token punctuation">;</span>
-    <span class="token keyword">abstract</span> <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">parseContent</span><span class="token punctuation">(</span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span><span class="token punctuation">;</span>
+    <span class="token keyword">abstract</span> <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function-definition function">support</span><span class="token punctuation">(</span><span class="token class-name type-declaration">SplFileObject</span> <span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">bool</span><span class="token punctuation">;</span>
+    <span class="token keyword">abstract</span> <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function-definition function">parseContent</span><span class="token punctuation">(</span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p>En résumé, la construction de la chaîne consiste à introduire dans chaque <em>extractor</em> concret une propriété <strong><code class="code-inline" id="6158aab25cad464faed56f676d36648b">$nextHandler</code></strong> de type <code class="code-inline" id="4af8481a07a24cb0483d87ccdcebe0e9">AbstractProductExtractor</code>.</p>
 <p>Le dernier maillon de la chaîne est celui dont sa propriété <code class="code-inline" id="6158aab25cad464faed56f676d36648b">$nextHandler</code> est à <em>null</em>. Les méthodes de construction et de gestion de la chaîne étant communes à tous les <em>extractors</em> concrets, elles sont factorisées dans notre classe abstraite.</p>
@@ -493,18 +493,18 @@
 <p>La classe abstraite <code class="code-inline" id="4af8481a07a24cb0483d87ccdcebe0e9">AbstractProductExtractor</code> se chargeant de gérer la chaîne, les <em>handlers</em> concrets vont continuer à faire ce qu'ils savent faire le mieux, à savoir extraire des données à partir d'un fichier source.</p>
 <p>Voici les modifications à apporter à notre extracteur <code class="code-inline" id="8e2c370970792feb8dbf80c2d05cf8d6">ProductXmlExtractor</code> :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="a04e5fc17600752c6cc5f0c822d4cbc5"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-    <span class="token keyword">class</span> <span class="token class-name">ProductXmlExtractor</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractProductExtractor</span> <span class="token punctuation">{</span>
+    <span class="token keyword">class</span> <span class="token class-name-definition class-name">ProductXmlExtractor</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractProductExtractor</span> <span class="token punctuation">{</span>
         <span class="token doc-comment comment">/**
          * <span class="token punctuation">{</span><span class="token keyword">@inheritdoc</span><span class="token punctuation">}</span>
          */</span>
-        <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">support</span><span class="token punctuation">(</span><span class="token class-name type-declaration">SplFileObject</span> <span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">bool</span> <span class="token punctuation">{</span>
+        <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function-definition function">support</span><span class="token punctuation">(</span><span class="token class-name type-declaration">SplFileObject</span> <span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">bool</span> <span class="token punctuation">{</span>
             <span class="token keyword">return</span> <span class="token variable">$file</span><span class="token operator">-&gt;</span><span class="token function">getExtension</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string single-quoted-string">'xml'</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
 
         <span class="token doc-comment comment">/**
          * <span class="token punctuation">{</span><span class="token keyword">@inheritdoc</span><span class="token punctuation">}</span>
          */</span>
-        <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">parseContent</span><span class="token punctuation">(</span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span> <span class="token punctuation">{</span>
+        <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function-definition function">parseContent</span><span class="token punctuation">(</span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span> <span class="token punctuation">{</span>
             <span class="token variable">$xml</span> <span class="token operator">=</span> <span class="token function">simplexml_load_string</span><span class="token punctuation">(</span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token comment">// ... Le reste sans changement ...</span>
             <span class="token keyword">return</span> <span class="token variable">$products</span><span class="token punctuation">;</span>

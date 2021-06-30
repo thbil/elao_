@@ -42,9 +42,9 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/362/build/app.3573b915.css">
+                    <link rel="stylesheet" href="/elao_/pr/362/build/app.e69d71f6.css">
         
-        <script src="/elao_/pr/362/build/runtime.15181caa.js" defer></script><script src="/elao_/pr/362/build/40.6bb9d388.js" defer></script><script src="/elao_/pr/362/build/app.8e45e17b.js" defer></script>
+        <script src="/elao_/pr/362/build/runtime.15181caa.js" defer></script><script src="/elao_/pr/362/build/40.b2235a80.js" defer></script><script src="/elao_/pr/362/build/app.8e45e17b.js" defer></script>
 
             </head>
     <body>
@@ -310,39 +310,39 @@ WSGISocketPrefix /var/run/apache2/wsgi</code></pre>
 <span class="token function">cp</span> carbon.conf.example carbon.conf
 <span class="token function">cp</span> storage-schemas.conf.example storage-schemas.conf</code></pre>
 <pre class="code-multiline language-ini"><code class="language-ini" id="382ad2f3bc7a89867b2447df4477a8a5"><span class="token comment"># Edit storage-schemas.conf in order to include a custom tweak provided by stats.d</span>
-<span class="token selector">[stats]</span>
-<span class="token constant">pattern</span> <span class="token attr-value"><span class="token punctuation">=</span> ^stats.*</span>
-<span class="token constant">retentions</span> <span class="token attr-value"><span class="token punctuation">=</span> 10:2160,60:10080,600:262974</span>
+<span class="token header"><span class="token punctuation">[</span><span class="token section-name selector">stats</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">pattern</span> <span class="token punctuation">=</span> <span class="token value attr-value">^stats.*</span>
+<span class="token key attr-name">retentions</span> <span class="token punctuation">=</span> <span class="token value attr-value">10:2160,60:10080,600:262974</span>
 
-<span class="token selector">[carbon]</span>
-<span class="token constant">pattern</span> <span class="token attr-value"><span class="token punctuation">=</span> ^carbon\.</span>
-<span class="token constant">retentions</span> <span class="token attr-value"><span class="token punctuation">=</span> 60:90d</span>
+<span class="token header"><span class="token punctuation">[</span><span class="token section-name selector">carbon</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">pattern</span> <span class="token punctuation">=</span> <span class="token value attr-value">^carbon\.</span>
+<span class="token key attr-name">retentions</span> <span class="token punctuation">=</span> <span class="token value attr-value">60:90d</span>
 
-<span class="token selector">[default_1min_for_1day]</span>
-<span class="token constant">pattern</span> <span class="token attr-value"><span class="token punctuation">=</span> .*</span>
-<span class="token constant">retentions</span> <span class="token attr-value"><span class="token punctuation">=</span> 60s:1d</span></code></pre>
+<span class="token header"><span class="token punctuation">[</span><span class="token section-name selector">default_1min_for_1day</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">pattern</span> <span class="token punctuation">=</span> <span class="token value attr-value">.*</span>
+<span class="token key attr-name">retentions</span> <span class="token punctuation">=</span> <span class="token value attr-value">60s:1d</span></code></pre>
 <pre class="code-multiline language-bash"><code class="language-bash" id="cb0f037e6ee67f65e203394f1c09c211"><span class="token comment"># Create a vi storage-aggregation.conf</span>
 <span class="token function">vi</span> storage-aggregation.conf</code></pre>
 <pre class="code-multiline language-ini"><code class="language-ini" id="fe63e757d5eae401274ffc8fa4b4e89f"><span class="token comment"># Then copy paste in it the following parameters</span>
-<span class="token selector">[min]</span>
-<span class="token constant">pattern</span> <span class="token attr-value"><span class="token punctuation">=</span> \.min$</span>
-<span class="token constant">xFilesFactor</span> <span class="token attr-value"><span class="token punctuation">=</span> 0.1</span>
-<span class="token constant">aggregationMethod</span> <span class="token attr-value"><span class="token punctuation">=</span> min</span>
+<span class="token header"><span class="token punctuation">[</span><span class="token section-name selector">min</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">pattern</span> <span class="token punctuation">=</span> <span class="token value attr-value">\.min$</span>
+<span class="token key attr-name">xFilesFactor</span> <span class="token punctuation">=</span> <span class="token value attr-value">0.1</span>
+<span class="token key attr-name">aggregationMethod</span> <span class="token punctuation">=</span> <span class="token value attr-value">min</span>
 
-<span class="token selector">[max]</span>
-<span class="token constant">pattern</span> <span class="token attr-value"><span class="token punctuation">=</span> \.max$</span>
-<span class="token constant">xFilesFactor</span> <span class="token attr-value"><span class="token punctuation">=</span> 0.1</span>
-<span class="token constant">aggregationMethod</span> <span class="token attr-value"><span class="token punctuation">=</span> max</span>
+<span class="token header"><span class="token punctuation">[</span><span class="token section-name selector">max</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">pattern</span> <span class="token punctuation">=</span> <span class="token value attr-value">\.max$</span>
+<span class="token key attr-name">xFilesFactor</span> <span class="token punctuation">=</span> <span class="token value attr-value">0.1</span>
+<span class="token key attr-name">aggregationMethod</span> <span class="token punctuation">=</span> <span class="token value attr-value">max</span>
 
-<span class="token selector">[sum]</span>
-<span class="token constant">pattern</span> <span class="token attr-value"><span class="token punctuation">=</span> \.count$</span>
-<span class="token constant">xFilesFactor</span> <span class="token attr-value"><span class="token punctuation">=</span> 0</span>
-<span class="token constant">aggregationMethod</span> <span class="token attr-value"><span class="token punctuation">=</span> sum</span>
+<span class="token header"><span class="token punctuation">[</span><span class="token section-name selector">sum</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">pattern</span> <span class="token punctuation">=</span> <span class="token value attr-value">\.count$</span>
+<span class="token key attr-name">xFilesFactor</span> <span class="token punctuation">=</span> <span class="token value attr-value">0</span>
+<span class="token key attr-name">aggregationMethod</span> <span class="token punctuation">=</span> <span class="token value attr-value">sum</span>
 
-<span class="token selector">[default_average]</span>
-<span class="token constant">pattern</span> <span class="token attr-value"><span class="token punctuation">=</span> .*</span>
-<span class="token constant">xFilesFactor</span> <span class="token attr-value"><span class="token punctuation">=</span> 0.3</span>
-<span class="token constant">aggregationMethod</span> <span class="token attr-value"><span class="token punctuation">=</span> average</span></code></pre>
+<span class="token header"><span class="token punctuation">[</span><span class="token section-name selector">default_average</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">pattern</span> <span class="token punctuation">=</span> <span class="token value attr-value">.*</span>
+<span class="token key attr-name">xFilesFactor</span> <span class="token punctuation">=</span> <span class="token value attr-value">0.3</span>
+<span class="token key attr-name">aggregationMethod</span> <span class="token punctuation">=</span> <span class="token value attr-value">average</span></code></pre>
 <h1 id="let-s-go-back-to-the-installation-process" class="anchor-title"><a href="#let-s-go-back-to-the-installation-process">Let's go back to the installation process</a></h1>
 <pre class="code-multiline language-bash"><code class="language-bash" id="cfe5036c5416682c827647795ba43a0d"><span class="token builtin class-name">cd</span> /opt/graphite/webapp/graphite
 python manage.py syncdb
@@ -395,9 +395,9 @@ graphitePort<span class="token operator">:</span> <span class="token number">200
 <pre class="code-multiline language-php"><code class="language-php" id="deb330f165a9c71a838d13b56dc31bdd">// After running php composer.phar update liuggio/statsd-client-bundle
 // Enable the Bundle in AppKernel.php
 <span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token keyword">class</span> <span class="token class-name">AppKernel</span> <span class="token keyword">extends</span> <span class="token class-name">Kernel</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">AppKernel</span> <span class="token keyword">extends</span> <span class="token class-name">Kernel</span>
  <span class="token punctuation">{</span>
-     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">registerBundles</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">registerBundles</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
      <span class="token punctuation">{</span>
          <span class="token variable">$bundles</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
          <span class="token comment">// ...</span>
