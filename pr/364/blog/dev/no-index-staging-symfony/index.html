@@ -42,12 +42,12 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/364/build/321.0ff314be.css">
+                    <link rel="stylesheet" href="/elao_/pr/364/build/321.ded86cbf.css">
         
-                        <script src="/elao_/pr/364/build/runtime.9f1432a5.js" defer></script><script src="/elao_/pr/364/build/618.d2ce99e3.js" defer></script><script src="/elao_/pr/364/build/323.7c6ad0b6.js" defer></script><script src="/elao_/pr/364/build/app.4350a7a8.js" defer></script>
+                        <script src="/elao_/pr/364/build/runtime.9f1432a5.js" defer></script><script src="/elao_/pr/364/build/17.c81b2e4a.js" defer></script><script src="/elao_/pr/364/build/190.206b924f.js" defer></script><script src="/elao_/pr/364/build/app.1b5286d1.js" defer></script>
 
             <!-- S.E.E. -->
-            <meta name="see" content="&#x5B;&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;pr&#x5C;&#x2F;364&#x5C;&#x2F;build&#x5C;&#x2F;286.cd925c20.js&quot;,&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;pr&#x5C;&#x2F;364&#x5C;&#x2F;build&#x5C;&#x2F;see.8d85b7b7.js&quot;&#x5D;">
+            <meta name="see" content="&#x5B;&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;pr&#x5C;&#x2F;364&#x5C;&#x2F;build&#x5C;&#x2F;585.6cf73403.js&quot;,&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;pr&#x5C;&#x2F;364&#x5C;&#x2F;build&#x5C;&#x2F;see.080e0c0d.js&quot;&#x5D;">
 
                     
 
@@ -313,10 +313,10 @@ Bien sûr, dans les deux cas, les robots ne peuvent pas accéder aux pages, emp�
 <p>Néanmoins, <strong>vous ne pouvez modifier cette configuration qu'en fonction de l'environnement Symfony</strong> (<code class="code-inline" id="e77989ed21758e78331b20e477fc5582">dev</code>, <code class="code-inline" id="d6e4a9b6646c62fc48baa6dd6150d1f7">prod</code>, <code class="code-inline" id="098f6bcd4621d373cade4e832627b4f6">test</code>, ...), et non en fonction du serveur. L'idée serait d'ajouter ce header sur les serveurs de staging, demo ou recette par exemple, et de ne pas l'ajouter sur le serveur de production, peu importe l'environnement Symfony qui est utilisé.</p>
 <p>Malheureusement, <strong>cette configuration ne peux pas être pilotée par une variable d'environnement</strong> car elle impacte directement le container (définition d'un listener) et Symfony ne permet pas de faire cela au runtime. Je conseille donc de ne pas utiliser cette configuration.</p>
 <p>La solution est de passer par la configuration <strong>nginx</strong> ou <strong>Apache</strong> de votre serveur pour ajouter le header. Par exemple avec nginx:</p>
-<pre class="code-multiline language-nginx"><code class="language-nginx" id="c5258a060d3fdfcded375136410e638d"><span class="token keyword">server</span> <span class="token punctuation">{</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token keyword">add_header</span> X<span class="token operator">-</span>Robots<span class="token operator">-</span>Tag <span class="token string">"noindex"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<pre class="code-multiline language-nginx"><code class="language-nginx" id="c5258a060d3fdfcded375136410e638d"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+    ...
+    <span class="token directive"><span class="token keyword">add_header</span> X-Robots-Tag <span class="token string">"noindex"</span></span><span class="token punctuation">;</span>
+    ...
 <span class="token punctuation">}</span></code></pre>
 <p>Et avec Apache (sous réserve que le mod header soit activé) :</p>
 <pre class="code-multiline language-apacheconf"><code class="language-apacheconf" id="3aab7872f2d2bda5de12f1086b44b205">...
