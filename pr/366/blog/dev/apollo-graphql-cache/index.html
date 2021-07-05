@@ -42,11 +42,17 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/366/build/app.caa39bad.css">
+                    <link rel="stylesheet" href="/elao_/pr/366/build/321.8c7408ac.css">
         
-        <script src="/elao_/pr/366/build/runtime.a1dfeb83.js" defer></script><script src="/elao_/pr/366/build/40.6bb9d388.js" defer></script><script src="/elao_/pr/366/build/app.8e45e17b.js" defer></script>
+                        <script src="/elao_/pr/366/build/runtime.2470d41b.js" defer></script><script src="/elao_/pr/366/build/17.c81b2e4a.js" defer></script><script src="/elao_/pr/366/build/190.206b924f.js" defer></script><script src="/elao_/pr/366/build/app.f28e2b71.js" defer></script>
 
-            </head>
+                    
+
+    
+        <!-- S.E.E. -->
+        <meta name="see" content="&#x5B;&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;pr&#x5C;&#x2F;366&#x5C;&#x2F;build&#x5C;&#x2F;690.ad961276.js&quot;,&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;pr&#x5C;&#x2F;366&#x5C;&#x2F;build&#x5C;&#x2F;see.ff1a2fcf.js&quot;&#x5D;">
+        <meta name="see_style" content="&#x5B;&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;pr&#x5C;&#x2F;366&#x5C;&#x2F;build&#x5C;&#x2F;see_style.24930bce.css&quot;&#x5D;">
+    </head>
     <body>
         <header class="header">
             <div class="container">
@@ -342,11 +348,11 @@
 client
   <span class="token punctuation">.</span><span class="token method function property-access">query</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     query<span class="token operator">:</span> gql<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token graphql language-graphql">
-      <span class="token keyword">query</span> Todos <span class="token punctuation">{</span>
-        todos <span class="token punctuation">{</span>
-          id
-          text
-          completed
+      <span class="token keyword">query</span> <span class="token definition-query function">Todos</span> <span class="token punctuation">{</span>
+        <span class="token object">todos</span> <span class="token punctuation">{</span>
+          <span class="token property">id</span>
+          <span class="token property">text</span>
+          <span class="token property">completed</span>
         <span class="token punctuation">}</span>
       <span class="token punctuation">}</span>
     </span><span class="token template-punctuation string">`</span></span>
@@ -361,10 +367,10 @@ client
 client
   <span class="token punctuation">.</span><span class="token method function property-access">mutate</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     mutation<span class="token operator">:</span> gql<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token graphql language-graphql">
-      <span class="token keyword">mutation</span> AddTodo<span class="token punctuation">(</span><span class="token variable">$text</span><span class="token punctuation">:</span> String<span class="token operator">!</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        addTodo<span class="token punctuation">(</span><span class="token attr-name">text</span><span class="token punctuation">:</span> <span class="token variable">$text</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          id
-          completed
+      <span class="token keyword">mutation</span> <span class="token definition-mutation function">AddTodo</span><span class="token punctuation">(</span><span class="token variable variable-input">$text</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token operator">!</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token property-query property-mutation">addTodo</span><span class="token punctuation">(</span><span class="token attr-name">text</span><span class="token punctuation">:</span> <span class="token variable variable-input">$text</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token property">id</span>
+          <span class="token property">completed</span>
         <span class="token punctuation">}</span>
       <span class="token punctuation">}</span>
     </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
@@ -384,11 +390,11 @@ client
 <p>Pour cela nous allons utiliser les méthodes <code class="code-inline" id="6049d14e5ad8b9569d7bfc875e1e19f5">readQuery</code> et <code class="code-inline" id="487ef08341270e780f4c1f508fdb096a">writeQuery</code>. Attention, il faut appeler ces méthodes avec exactement la même requête GraphQL (variables inclues) que celle utilisée pour recupérer les données.</p>
 <p>Pour cela nous allons utliser la méthode <code class="code-inline" id="6049d14e5ad8b9569d7bfc875e1e19f5">readQuery</code> pour lire les données attaché à la requête :</p>
 <pre class="code-multiline language-javascript"><code class="language-javascript" id="c3d8b40b54d5343066b9f93ab6f68026"><span class="token keyword">const</span> <span class="token constant">TODOS</span> <span class="token operator">=</span> gql<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token graphql language-graphql">
-  <span class="token keyword">query</span> Todos <span class="token punctuation">{</span>
-    todos <span class="token punctuation">{</span>
-      id
-      text
-      completed
+  <span class="token keyword">query</span> <span class="token definition-query function">Todos</span> <span class="token punctuation">{</span>
+    <span class="token object">todos</span> <span class="token punctuation">{</span>
+      <span class="token property">id</span>
+      <span class="token property">text</span>
+      <span class="token property">completed</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 </span><span class="token template-punctuation string">`</span></span>
@@ -403,11 +409,11 @@ client
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>En combinant l'utilisation de ce deux méthodes dans l'<code class="code-inline" id="3ac340832f29c11538fbe2d6f75e8bcc">update</code> de la mutation, nous pouvons ainsi mettre à jour notre cache :</p>
 <pre class="code-multiline language-javascript"><code class="language-javascript" id="812eaf42575a8940e5beae696df6c371"><span class="token keyword">const</span> <span class="token constant">ADD_TODO</span> <span class="token operator">=</span> gql<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token graphql language-graphql">
-  <span class="token keyword">mutation</span> AddTodo<span class="token punctuation">(</span><span class="token variable">$text</span><span class="token punctuation">:</span> String<span class="token operator">!</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    addTodo<span class="token punctuation">(</span><span class="token attr-name">text</span><span class="token punctuation">:</span> <span class="token variable">$text</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      id
-      text
-      completed
+  <span class="token keyword">mutation</span> <span class="token definition-mutation function">AddTodo</span><span class="token punctuation">(</span><span class="token variable variable-input">$text</span><span class="token punctuation">:</span> <span class="token scalar">String</span><span class="token operator">!</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property-query property-mutation">addTodo</span><span class="token punctuation">(</span><span class="token attr-name">text</span><span class="token punctuation">:</span> <span class="token variable variable-input">$text</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token property">id</span>
+      <span class="token property">text</span>
+      <span class="token property">completed</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 </span><span class="token template-punctuation string">`</span></span>
@@ -435,28 +441,28 @@ client
 <p>De la même manière qu'avec <code class="code-inline" id="6049d14e5ad8b9569d7bfc875e1e19f5">readQuery</code> et <code class="code-inline" id="487ef08341270e780f4c1f508fdb096a">writeQuery</code>, il est possible de mettre à jour des portions de requêtes utilisant le même fragment avec les méthodes <code class="code-inline" id="2bd958871bf3808abd7ce8a031471b3e">readFragment</code> et <code class="code-inline" id="154246f31f1ad6339c54f814319845e6">writeFragment</code>.</p>
 <p>Par exemple avec les requêtes suivantes :</p>
 <pre class="code-multiline language-graphql"><code class="language-graphql" id="2d22997fc5d2e3057a10684ea59b5160"><span class="token keyword">fragment</span> <span class="token fragment function">TodoFields</span> <span class="token keyword">on</span> <span class="token class-name">Todo</span> <span class="token punctuation">{</span>
-  id
-  text
-  completed
+  <span class="token property">id</span>
+  <span class="token property">text</span>
+  <span class="token property">completed</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">query</span> Todo<span class="token punctuation">(</span><span class="token variable">$id</span><span class="token punctuation">:</span> ID<span class="token operator">!</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  todo<span class="token punctuation">(</span><span class="token attr-name">id</span><span class="token punctuation">:</span> <span class="token variable">$id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">query</span> <span class="token definition-query function">Todo</span><span class="token punctuation">(</span><span class="token variable">$id</span><span class="token punctuation">:</span> <span class="token scalar">ID</span><span class="token operator">!</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token property-query">todo</span><span class="token punctuation">(</span><span class="token attr-name">id</span><span class="token punctuation">:</span> <span class="token variable">$id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token operator">...</span><span class="token fragment function">TodoFields</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">query</span> Todos <span class="token punctuation">{</span>
-  todos <span class="token punctuation">{</span>
+<span class="token keyword">query</span> <span class="token definition-query function">Todos</span> <span class="token punctuation">{</span>
+  <span class="token object">todos</span> <span class="token punctuation">{</span>
     <span class="token operator">...</span><span class="token fragment function">TodoFields</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>Le même fragment est utilisé dans deux requêtes, il est possible de mettre à jour le fragment dans les deux requêtes en une fois à condition qu'il contienne l'identifiant d'un objet.</p>
 <pre class="code-multiline language-javascript"><code class="language-javascript" id="0eaa6085e29a43587ea3c14eca591b43"><span class="token keyword">const</span> <span class="token maybe-class-name">TodoFields</span> <span class="token operator">=</span> gql<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token graphql language-graphql">
   <span class="token keyword">fragment</span> <span class="token fragment function">TodoFields</span> <span class="token keyword">on</span> <span class="token class-name">Todo</span> <span class="token punctuation">{</span>
-    id
-    text
-    completed
+    <span class="token property">id</span>
+    <span class="token property">text</span>
+    <span class="token property">completed</span>
   <span class="token punctuation">}</span>
 </span><span class="token template-punctuation string">`</span></span>
 
@@ -473,16 +479,16 @@ client
 <p>Heureusement, il n'est pas toujours obligatoire de mettre manuellement à jour le cache comme ci-dessus. Il y a certains cas où le cache est automatiquement mis à jour par Apollo.</p>
 <p>Lorsque vous réalisez une requête récupérant des données contenant un <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code>, par exemple :</p>
 <pre class="code-multiline language-graphql"><code class="language-graphql" id="964c827ae030b525dbe7c35cd91eadf1"><span class="token keyword">query</span> <span class="token punctuation">{</span>
-  Foobar<span class="token punctuation">(</span><span class="token attr-name">id</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    id
-    name
+  <span class="token property-query">Foobar</span><span class="token punctuation">(</span><span class="token attr-name">id</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property">id</span>
+    <span class="token property">name</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>Puis une mutation utilisante le même <code class="code-inline" id="b80bb7740288fda1f201890375a60c8f">id</code> :</p>
 <pre class="code-multiline language-graphql"><code class="language-graphql" id="a44cf8166e9b714e21778608ecb99831"><span class="token keyword">mutation</span> <span class="token punctuation">{</span>
-  UpdateFoobar<span class="token punctuation">(</span><span class="token attr-name">id</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token attr-name">name</span><span class="token punctuation">:</span> <span class="token string">"Updated name"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    id
-    name
+  <span class="token property-query property-mutation">UpdateFoobar</span><span class="token punctuation">(</span><span class="token attr-name">id</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token attr-name">name</span><span class="token punctuation">:</span> <span class="token string">"Updated name"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property">id</span>
+    <span class="token property">name</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>Apollo a compris que vous intervenez sur le même objet (même type et meme id). Le cache sera alors automatiquement mis à jour et la propriété <code class="code-inline" id="b068931cc450442b63f5b3d276ea4297">name</code> sera modifiée partout. Attention par contre, le cache sera mis à jour avec les données renvoyées par la mutation, il faut donc bien faire attention à sélectionner les données que l'on souhaite modifier dans le cache.</p>
@@ -516,19 +522,19 @@ client
 <h2 id="redirection-de-cache" class="anchor-title"><a href="#redirection-de-cache">Redirection de cache</a></h2>
 <p>Dans certains cas, les données que vous requêtez peuvent déjà être présentes dans le cache d'une autre requête. L'exemple typique est lorsque vous fait un requête listant des objets, puis plus tard une requête avec les mêmes données retournant l'un de ces objets.</p>
 <p>Par exemple pour la liste :</p>
-<pre class="code-multiline language-graphql"><code class="language-graphql" id="fcb50093e482c3648ce36593546aabbf"><span class="token keyword">query</span> Todos <span class="token punctuation">{</span>
-  todos <span class="token punctuation">{</span>
-    id
-    text
-    completed
+<pre class="code-multiline language-graphql"><code class="language-graphql" id="fcb50093e482c3648ce36593546aabbf"><span class="token keyword">query</span> <span class="token definition-query function">Todos</span> <span class="token punctuation">{</span>
+  <span class="token object">todos</span> <span class="token punctuation">{</span>
+    <span class="token property">id</span>
+    <span class="token property">text</span>
+    <span class="token property">completed</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>Puis pour les détails :</p>
-<pre class="code-multiline language-graphql"><code class="language-graphql" id="50b5f800bf6d61baf71ee6269a8627f2"><span class="token keyword">query</span> Todo<span class="token punctuation">(</span><span class="token variable">$id</span><span class="token punctuation">:</span> ID<span class="token operator">!</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  todo<span class="token punctuation">(</span><span class="token attr-name">id</span><span class="token punctuation">:</span> <span class="token variable">$id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    id
-    text
-    completed
+<pre class="code-multiline language-graphql"><code class="language-graphql" id="50b5f800bf6d61baf71ee6269a8627f2"><span class="token keyword">query</span> <span class="token definition-query function">Todo</span><span class="token punctuation">(</span><span class="token variable">$id</span><span class="token punctuation">:</span> <span class="token scalar">ID</span><span class="token operator">!</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token property-query">todo</span><span class="token punctuation">(</span><span class="token attr-name">id</span><span class="token punctuation">:</span> <span class="token variable">$id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property">id</span>
+    <span class="token property">text</span>
+    <span class="token property">completed</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>Les deux requêtes utilisent les même données mais Apollo fera la seconde requête même si l'objet est déjà dans le case de la première car les données ne sont pas stockées avec la même clé de cache.</p>
@@ -547,9 +553,9 @@ client
 <p>Si la mise à jour automatique est simple (un objet identifié par son ID peut être mise à jour automatiquement pour toutes les requêtes dans le cache), c'est un peu plus compliqué pour les suppressions.</p>
 <p>Comme pour l'ajout, vous allez devoir mettre à jour manuellement le cache de chaque requête retournant la donnée supprimée.</p>
 <pre class="code-multiline language-javascript"><code class="language-javascript" id="d6e8c8cd16f739f59b5c3b9899bae2bc"><span class="token keyword">const</span> <span class="token constant">REMOVE_TODO</span> <span class="token operator">=</span> gql<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token graphql language-graphql">
-  <span class="token keyword">mutation</span> RemoveTodo<span class="token punctuation">(</span><span class="token variable">$id</span><span class="token punctuation">:</span> ID<span class="token operator">!</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    RemoveTodo<span class="token punctuation">(</span><span class="token attr-name">id</span><span class="token punctuation">:</span> <span class="token variable">$id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      id
+  <span class="token keyword">mutation</span> <span class="token definition-mutation function">RemoveTodo</span><span class="token punctuation">(</span><span class="token variable variable-input">$id</span><span class="token punctuation">:</span> <span class="token scalar">ID</span><span class="token operator">!</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token property-query property-mutation">RemoveTodo</span><span class="token punctuation">(</span><span class="token attr-name">id</span><span class="token punctuation">:</span> <span class="token variable variable-input">$id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token property">id</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 </span><span class="token template-punctuation string">`</span></span>
@@ -753,7 +759,7 @@ client
                 <li>
                                         <a href="/elao_/pr/366/recrutement">
                         Nous recrutons
-                                                    <span class="bullet">2</span>
+                                                    <span class="bullet">1</span>
                                             </a>
                 </li>
             </ul>
@@ -785,11 +791,10 @@ client
         <span>© 2005 - 2021 - ELAO - Tous droits réservés</span>
         <a href="/elao_/pr/366/legal">Mentions légales</a>
         <a href="/elao_/pr/366/confidentialite">Protection des données</a>
+        <a id="see" href="#ssss">🐍</a>
     </section>
 </footer>
 
                     </div>
-            
-
-        </body>
+    </body>
 </html>

@@ -42,11 +42,17 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/366/build/app.caa39bad.css">
+                    <link rel="stylesheet" href="/elao_/pr/366/build/321.8c7408ac.css">
         
-        <script src="/elao_/pr/366/build/runtime.a1dfeb83.js" defer></script><script src="/elao_/pr/366/build/40.6bb9d388.js" defer></script><script src="/elao_/pr/366/build/app.8e45e17b.js" defer></script>
+                        <script src="/elao_/pr/366/build/runtime.2470d41b.js" defer></script><script src="/elao_/pr/366/build/17.c81b2e4a.js" defer></script><script src="/elao_/pr/366/build/190.206b924f.js" defer></script><script src="/elao_/pr/366/build/app.f28e2b71.js" defer></script>
 
-            </head>
+                    
+
+    
+        <!-- S.E.E. -->
+        <meta name="see" content="&#x5B;&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;pr&#x5C;&#x2F;366&#x5C;&#x2F;build&#x5C;&#x2F;690.ad961276.js&quot;,&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;pr&#x5C;&#x2F;366&#x5C;&#x2F;build&#x5C;&#x2F;see.ff1a2fcf.js&quot;&#x5D;">
+        <meta name="see_style" content="&#x5B;&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;pr&#x5C;&#x2F;366&#x5C;&#x2F;build&#x5C;&#x2F;see_style.24930bce.css&quot;&#x5D;">
+    </head>
     <body>
         <header class="header">
             <div class="container">
@@ -308,10 +314,10 @@ Bien sûr, dans les deux cas, les robots ne peuvent pas accéder aux pages, emp�
 <p>Néanmoins, <strong>vous ne pouvez modifier cette configuration qu'en fonction de l'environnement Symfony</strong> (<code class="code-inline" id="e77989ed21758e78331b20e477fc5582">dev</code>, <code class="code-inline" id="d6e4a9b6646c62fc48baa6dd6150d1f7">prod</code>, <code class="code-inline" id="098f6bcd4621d373cade4e832627b4f6">test</code>, ...), et non en fonction du serveur. L'idée serait d'ajouter ce header sur les serveurs de staging, demo ou recette par exemple, et de ne pas l'ajouter sur le serveur de production, peu importe l'environnement Symfony qui est utilisé.</p>
 <p>Malheureusement, <strong>cette configuration ne peux pas être pilotée par une variable d'environnement</strong> car elle impacte directement le container (définition d'un listener) et Symfony ne permet pas de faire cela au runtime. Je conseille donc de ne pas utiliser cette configuration.</p>
 <p>La solution est de passer par la configuration <strong>nginx</strong> ou <strong>Apache</strong> de votre serveur pour ajouter le header. Par exemple avec nginx:</p>
-<pre class="code-multiline language-nginx"><code class="language-nginx" id="c5258a060d3fdfcded375136410e638d"><span class="token keyword">server</span> <span class="token punctuation">{</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token keyword">add_header</span> X<span class="token operator">-</span>Robots<span class="token operator">-</span>Tag <span class="token string">"noindex"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<pre class="code-multiline language-nginx"><code class="language-nginx" id="c5258a060d3fdfcded375136410e638d"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+    ...
+    <span class="token directive"><span class="token keyword">add_header</span> X-Robots-Tag <span class="token string">"noindex"</span></span><span class="token punctuation">;</span>
+    ...
 <span class="token punctuation">}</span></code></pre>
 <p>Et avec Apache (sous réserve que le mod header soit activé) :</p>
 <pre class="code-multiline language-apacheconf"><code class="language-apacheconf" id="3aab7872f2d2bda5de12f1086b44b205">...
@@ -446,7 +452,7 @@ Bien sûr, dans les deux cas, les robots ne peuvent pas accéder aux pages, emp�
                 <li>
                                         <a href="/elao_/pr/366/recrutement">
                         Nous recrutons
-                                                    <span class="bullet">2</span>
+                                                    <span class="bullet">1</span>
                                             </a>
                 </li>
             </ul>
@@ -478,11 +484,10 @@ Bien sûr, dans les deux cas, les robots ne peuvent pas accéder aux pages, emp�
         <span>© 2005 - 2021 - ELAO - Tous droits réservés</span>
         <a href="/elao_/pr/366/legal">Mentions légales</a>
         <a href="/elao_/pr/366/confidentialite">Protection des données</a>
+        <a id="see" href="#ssss">🐍</a>
     </section>
 </footer>
 
                     </div>
-            
-
-        </body>
+    </body>
 </html>

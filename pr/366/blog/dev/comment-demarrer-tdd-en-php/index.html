@@ -42,11 +42,17 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/366/build/app.caa39bad.css">
+                    <link rel="stylesheet" href="/elao_/pr/366/build/321.8c7408ac.css">
         
-        <script src="/elao_/pr/366/build/runtime.a1dfeb83.js" defer></script><script src="/elao_/pr/366/build/40.6bb9d388.js" defer></script><script src="/elao_/pr/366/build/app.8e45e17b.js" defer></script>
+                        <script src="/elao_/pr/366/build/runtime.2470d41b.js" defer></script><script src="/elao_/pr/366/build/17.c81b2e4a.js" defer></script><script src="/elao_/pr/366/build/190.206b924f.js" defer></script><script src="/elao_/pr/366/build/app.f28e2b71.js" defer></script>
 
-            </head>
+                    
+
+    
+        <!-- S.E.E. -->
+        <meta name="see" content="&#x5B;&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;pr&#x5C;&#x2F;366&#x5C;&#x2F;build&#x5C;&#x2F;690.ad961276.js&quot;,&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;pr&#x5C;&#x2F;366&#x5C;&#x2F;build&#x5C;&#x2F;see.ff1a2fcf.js&quot;&#x5D;">
+        <meta name="see_style" content="&#x5B;&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;pr&#x5C;&#x2F;366&#x5C;&#x2F;build&#x5C;&#x2F;see_style.24930bce.css&quot;&#x5D;">
+    </head>
     <body>
         <header class="header">
             <div class="container">
@@ -343,7 +349,7 @@ premère étape en TDD.</p>
 
 <span class="token keyword">namespace</span> <span class="token package">MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Post</span><span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name">Post</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Post</span>
 <span class="token punctuation">{</span>
     <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name"><span class="token keyword">string</span></span> */</span>
     <span class="token keyword">public</span> <span class="token variable">$title</span><span class="token punctuation">;</span>
@@ -351,7 +357,7 @@ premère étape en TDD.</p>
     <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name"><span class="token punctuation">\</span>DateTime</span> */</span>
     <span class="token keyword">public</span> <span class="token variable">$publishedAt</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$title</span><span class="token punctuation">,</span> <span class="token class-name class-name-fully-qualified type-declaration"><span class="token punctuation">\</span>DateTime</span> <span class="token variable">$publishedAt</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$title</span><span class="token punctuation">,</span> <span class="token class-name class-name-fully-qualified type-declaration"><span class="token punctuation">\</span>DateTime</span> <span class="token variable">$publishedAt</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">title</span> <span class="token operator">=</span> <span class="token variable">$title</span><span class="token punctuation">;</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">publishedAt</span> <span class="token operator">=</span> <span class="token variable">$publishedAt</span><span class="token punctuation">;</span>
@@ -367,12 +373,12 @@ et au nombre de commentaires par articles.</p>
 
 <span class="token keyword">use</span> <span class="token package">MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Post<span class="token punctuation">\</span>Post</span><span class="token punctuation">;</span>
 
-<span class="token keyword">interface</span> <span class="token class-name">PostRepository</span>
+<span class="token keyword">interface</span> <span class="token class-name-definition class-name">PostRepository</span>
 <span class="token punctuation">{</span>
     <span class="token doc-comment comment">/**
      * <span class="token keyword">@return</span> <span class="token class-name">Post<span class="token punctuation">[</span><span class="token punctuation">]</span></span>
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">getAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></span></code></pre>
 <p><code class="code-inline" id="7f2c2dae0da64c4e29698b0a02084fa0">CommentRepository</code>:</p>
 <pre class="code-multiline language-php"><code class="language-php" id="4640ace2c39a732d059094af225730aa"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
@@ -381,9 +387,9 @@ et au nombre de commentaires par articles.</p>
 
 <span class="token keyword">use</span> <span class="token package">MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Post<span class="token punctuation">\</span>Post</span><span class="token punctuation">;</span>
 
-<span class="token keyword">interface</span> <span class="token class-name">CommentRepository</span>
+<span class="token keyword">interface</span> <span class="token class-name-definition class-name">CommentRepository</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">countByPost</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Post</span> <span class="token variable">$post</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">int</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">countByPost</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Post</span> <span class="token variable">$post</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">int</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></span></code></pre>
 <h3 id="la-plomberie" class="anchor-title"><a href="#la-plomberie">La plomberie</a></h3>
 <p>Créons une classe <code class="code-inline" id="9bf6839f16a04a883768f5c536b2161d">PostView</code> qu'on appelle communément un DTO (data transfer object), un objet de transfert de données
@@ -392,7 +398,7 @@ qui ne contient aucun comportement, que des valeurs :</p>
 
 <span class="token keyword">namespace</span> <span class="token package">MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Post</span><span class="token punctuation">;</span>
 
-<span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">PostView</span>
+<span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name-definition class-name">PostView</span>
 <span class="token punctuation">{</span>
     <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name"><span class="token keyword">string</span></span> */</span>
     <span class="token keyword">public</span> <span class="token variable">$title</span><span class="token punctuation">;</span>
@@ -403,7 +409,7 @@ qui ne contient aucun comportement, que des valeurs :</p>
     <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name"><span class="token keyword">bool</span></span> */</span>
     <span class="token keyword">public</span> <span class="token variable">$isNew</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$title</span><span class="token punctuation">,</span> <span class="token keyword type-hint">int</span> <span class="token variable">$commentsNumber</span><span class="token punctuation">,</span> <span class="token keyword type-hint">bool</span> <span class="token variable">$isNew</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$title</span><span class="token punctuation">,</span> <span class="token keyword type-hint">int</span> <span class="token variable">$commentsNumber</span><span class="token punctuation">,</span> <span class="token keyword type-hint">bool</span> <span class="token variable">$isNew</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">title</span> <span class="token operator">=</span> <span class="token variable">$title</span><span class="token punctuation">;</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">commentsNumber</span> <span class="token operator">=</span> <span class="token variable">$commentsNumber</span><span class="token punctuation">;</span>
@@ -416,9 +422,9 @@ qui ne contient aucun comportement, que des valeurs :</p>
 
 <span class="token keyword">namespace</span> <span class="token package">MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Post</span><span class="token punctuation">;</span>
 
-<span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">GetPostsList</span>
+<span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name-definition class-name">GetPostsList</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__invoke</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__invoke</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
@@ -435,9 +441,9 @@ Il est important de tester tous les cas. Cela tombe bien, notre besoin est simpl
 <span class="token keyword">use</span> <span class="token package">MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Post<span class="token punctuation">\</span>PostView</span><span class="token punctuation">;</span>
 <span class="token keyword">use</span> <span class="token package">PHPUnit<span class="token punctuation">\</span>Framework<span class="token punctuation">\</span>TestCase</span><span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name">GetPostsListTest</span> <span class="token keyword">extends</span> <span class="token class-name">TestCase</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">GetPostsListTest</span> <span class="token keyword">extends</span> <span class="token class-name">TestCase</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">test_get_new_and_old_posts</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">test_get_new_and_old_posts</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$getPostsList</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GetPostsList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -479,9 +485,9 @@ données.</p>
 <span class="token keyword">use</span> <span class="token package">MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Repository<span class="token punctuation">\</span>PostRepository</span><span class="token punctuation">;</span>
 <span class="token keyword">use</span> <span class="token package">PHPUnit<span class="token punctuation">\</span>Framework<span class="token punctuation">\</span>TestCase</span><span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name">GetPostsListTest</span> <span class="token keyword">extends</span> <span class="token class-name">TestCase</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">GetPostsListTest</span> <span class="token keyword">extends</span> <span class="token class-name">TestCase</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">test_get_new_and_old_posts</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">test_get_new_and_old_posts</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$post1</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Post</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'TDD c\'est bien'</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>DateTime</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'2018-10-29'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token variable">$post2</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Post</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'Tester ce n\'est pas douter'</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>DateTime</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'2018-10-01'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -515,7 +521,7 @@ données.</p>
 <span class="token keyword">use</span> <span class="token package">MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Repository<span class="token punctuation">\</span>CommentRepository</span><span class="token punctuation">;</span>
 <span class="token keyword">use</span> <span class="token package">MyCompany<span class="token punctuation">\</span>App<span class="token punctuation">\</span>Repository<span class="token punctuation">\</span>PostRepository</span><span class="token punctuation">;</span>
 
-<span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">GetPostsList</span>
+<span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name-definition class-name">GetPostsList</span>
 <span class="token punctuation">{</span>
     <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name">PostRepository</span> */</span>
     <span class="token keyword">private</span> <span class="token variable">$postRepository</span><span class="token punctuation">;</span>
@@ -523,13 +529,13 @@ données.</p>
     <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name">CommentRepository</span> */</span>
     <span class="token keyword">private</span> <span class="token variable">$commentRepository</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">PostRepository</span> <span class="token variable">$postRepository</span><span class="token punctuation">,</span> <span class="token class-name type-declaration">CommentRepository</span> <span class="token variable">$commentRepository</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">PostRepository</span> <span class="token variable">$postRepository</span><span class="token punctuation">,</span> <span class="token class-name type-declaration">CommentRepository</span> <span class="token variable">$commentRepository</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">postRepository</span> <span class="token operator">=</span> <span class="token variable">$postRepository</span><span class="token punctuation">;</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">commentRepository</span> <span class="token operator">=</span> <span class="token variable">$commentRepository</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__invoke</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__invoke</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$postViews</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
@@ -558,9 +564,9 @@ alors que les dates sont fixes dans les tests.</p>
 ne fasse plus échouer les tests dans quelques jours !</p>
 <pre class="code-multiline language-php"><code class="language-php" id="87a58a21342be75c54c359a034f38869"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token comment">// ...</span>
-<span class="token keyword">class</span> <span class="token class-name">GetPostsListTest</span> <span class="token keyword">extends</span> <span class="token class-name">TestCase</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">GetPostsListTest</span> <span class="token keyword">extends</span> <span class="token class-name">TestCase</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">test_get_new_and_old_posts</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">test_get_new_and_old_posts</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$now</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>DateTime</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'2018-10-30'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment">// ...</span>
@@ -569,21 +575,21 @@ ne fasse plus échouer les tests dans quelques jours !</p>
 <p>Supprimons maintenant le <code class="code-inline" id="1ef9214848bdfb5133edf6959967edc5">new \DateTime</code> dans la class GetPostsList et utilisons la date en dépendance :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="9a14db50129055475b638fa1c71aac51"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token comment">// ...</span>
-<span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">GetPostsList</span>
+<span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name-definition class-name">GetPostsList</span>
 <span class="token punctuation">{</span>
     <span class="token comment">// ...</span>
 
     <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name"><span class="token punctuation">\</span>DateTime</span> */</span>
     <span class="token keyword">private</span> <span class="token variable">$now</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">PostRepository</span> <span class="token variable">$postRepository</span><span class="token punctuation">,</span> <span class="token class-name type-declaration">CommentRepository</span> <span class="token variable">$commentRepository</span><span class="token punctuation">,</span> <span class="token class-name class-name-fully-qualified type-declaration"><span class="token punctuation">\</span>DateTime</span> <span class="token variable">$now</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">PostRepository</span> <span class="token variable">$postRepository</span><span class="token punctuation">,</span> <span class="token class-name type-declaration">CommentRepository</span> <span class="token variable">$commentRepository</span><span class="token punctuation">,</span> <span class="token class-name class-name-fully-qualified type-declaration"><span class="token punctuation">\</span>DateTime</span> <span class="token variable">$now</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">postRepository</span> <span class="token operator">=</span> <span class="token variable">$postRepository</span><span class="token punctuation">;</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">commentRepository</span> <span class="token operator">=</span> <span class="token variable">$commentRepository</span><span class="token punctuation">;</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">now</span> <span class="token operator">=</span> <span class="token variable">$now</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__invoke</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__invoke</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$postViews</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
@@ -697,7 +703,7 @@ ledit service.</p>
                 <li>
                                         <a href="/elao_/pr/366/recrutement">
                         Nous recrutons
-                                                    <span class="bullet">2</span>
+                                                    <span class="bullet">1</span>
                                             </a>
                 </li>
             </ul>
@@ -729,11 +735,10 @@ ledit service.</p>
         <span>© 2005 - 2021 - ELAO - Tous droits réservés</span>
         <a href="/elao_/pr/366/legal">Mentions légales</a>
         <a href="/elao_/pr/366/confidentialite">Protection des données</a>
+        <a id="see" href="#ssss">🐍</a>
     </section>
 </footer>
 
                     </div>
-            
-
-        </body>
+    </body>
 </html>

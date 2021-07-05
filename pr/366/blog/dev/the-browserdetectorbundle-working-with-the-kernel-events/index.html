@@ -42,11 +42,17 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/366/build/app.caa39bad.css">
+                    <link rel="stylesheet" href="/elao_/pr/366/build/321.8c7408ac.css">
         
-        <script src="/elao_/pr/366/build/runtime.a1dfeb83.js" defer></script><script src="/elao_/pr/366/build/40.6bb9d388.js" defer></script><script src="/elao_/pr/366/build/app.8e45e17b.js" defer></script>
+                        <script src="/elao_/pr/366/build/runtime.2470d41b.js" defer></script><script src="/elao_/pr/366/build/17.c81b2e4a.js" defer></script><script src="/elao_/pr/366/build/190.206b924f.js" defer></script><script src="/elao_/pr/366/build/app.f28e2b71.js" defer></script>
 
-            </head>
+                    
+
+    
+        <!-- S.E.E. -->
+        <meta name="see" content="&#x5B;&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;pr&#x5C;&#x2F;366&#x5C;&#x2F;build&#x5C;&#x2F;690.ad961276.js&quot;,&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;pr&#x5C;&#x2F;366&#x5C;&#x2F;build&#x5C;&#x2F;see.ff1a2fcf.js&quot;&#x5D;">
+        <meta name="see_style" content="&#x5B;&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;pr&#x5C;&#x2F;366&#x5C;&#x2F;build&#x5C;&#x2F;see_style.24930bce.css&quot;&#x5D;">
+    </head>
     <body>
         <header class="header">
             <div class="container">
@@ -292,7 +298,7 @@
 <span class="token doc-comment comment">/**
  * Class GuzzleExceptionListener
  */</span>
-<span class="token keyword">class</span> <span class="token class-name">GuzzleExceptionListener</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">GuzzleExceptionListener</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token variable">$statsManager</span><span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token variable">$fail</span> <span class="token operator">=</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
@@ -302,12 +308,12 @@
      *
      * <span class="token keyword">@param</span> <span class="token class-name">StatsManager</span> <span class="token parameter">$manager</span> The stats Manager
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">StatsManager</span> <span class="token variable">$manager</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">StatsManager</span> <span class="token variable">$manager</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">statsManager</span> <span class="token operator">=</span> <span class="token variable">$manager</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">onKernelException</span><span class="token punctuation">(</span><span class="token class-name type-declaration">GetResponseForExceptionEvent</span> <span class="token variable">$event</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">onKernelException</span><span class="token punctuation">(</span><span class="token class-name type-declaration">GetResponseForExceptionEvent</span> <span class="token variable">$event</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$exception</span> <span class="token operator">=</span> <span class="token variable">$event</span><span class="token operator">-&gt;</span><span class="token function">getException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -318,7 +324,7 @@
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">onKernelTerminate</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">onKernelTerminate</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant boolean">false</span> <span class="token operator">===</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">fail</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">return</span><span class="token punctuation">;</span>
@@ -353,7 +359,7 @@
 <span class="token doc-comment comment">/**
  * Class GuzzleExceptionListener
  */</span>
-<span class="token keyword">class</span> <span class="token class-name">GuzzleExceptionListener</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">GuzzleExceptionListener</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token variable">$statsManager</span><span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token variable">$dispatcher</span><span class="token punctuation">;</span>
@@ -365,13 +371,13 @@
      * <span class="token keyword">@param</span> <span class="token class-name">StatsManager</span> <span class="token parameter">$manager</span> The stats Manager
      * <span class="token keyword">@param</span>
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">StatsManager</span> <span class="token variable">$manager</span><span class="token punctuation">,</span> <span class="token class-name type-declaration">EventDispatcher</span> <span class="token variable">$dispatcher</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">StatsManager</span> <span class="token variable">$manager</span><span class="token punctuation">,</span> <span class="token class-name type-declaration">EventDispatcher</span> <span class="token variable">$dispatcher</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">statsManager</span> <span class="token operator">=</span> <span class="token variable">$manager</span><span class="token punctuation">;</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">dispatcher</span>   <span class="token operator">=</span> <span class="token variable">$dispatcher</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">onKernelException</span><span class="token punctuation">(</span><span class="token class-name type-declaration">GetResponseForExceptionEvent</span> <span class="token variable">$event</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">onKernelException</span><span class="token punctuation">(</span><span class="token class-name type-declaration">GetResponseForExceptionEvent</span> <span class="token variable">$event</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$exception</span> <span class="token operator">=</span> <span class="token variable">$event</span><span class="token operator">-&gt;</span><span class="token function">getException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token variable">$statsManager</span> <span class="token operator">=</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">statsManager</span><span class="token punctuation">;</span>
@@ -481,7 +487,7 @@
                 <li>
                                         <a href="/elao_/pr/366/recrutement">
                         Nous recrutons
-                                                    <span class="bullet">2</span>
+                                                    <span class="bullet">1</span>
                                             </a>
                 </li>
             </ul>
@@ -513,11 +519,10 @@
         <span>© 2005 - 2021 - ELAO - Tous droits réservés</span>
         <a href="/elao_/pr/366/legal">Mentions légales</a>
         <a href="/elao_/pr/366/confidentialite">Protection des données</a>
+        <a id="see" href="#ssss">🐍</a>
     </section>
 </footer>
 
                     </div>
-            
-
-        </body>
+    </body>
 </html>

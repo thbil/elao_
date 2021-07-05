@@ -42,11 +42,17 @@
                         document.querySelector('html').classList.remove('no-js');
         </script>
 
-                    <link rel="stylesheet" href="/elao_/pr/366/build/app.caa39bad.css">
+                    <link rel="stylesheet" href="/elao_/pr/366/build/321.8c7408ac.css">
         
-        <script src="/elao_/pr/366/build/runtime.a1dfeb83.js" defer></script><script src="/elao_/pr/366/build/40.6bb9d388.js" defer></script><script src="/elao_/pr/366/build/app.8e45e17b.js" defer></script>
+                        <script src="/elao_/pr/366/build/runtime.2470d41b.js" defer></script><script src="/elao_/pr/366/build/17.c81b2e4a.js" defer></script><script src="/elao_/pr/366/build/190.206b924f.js" defer></script><script src="/elao_/pr/366/build/app.f28e2b71.js" defer></script>
 
-            </head>
+                    
+
+    
+        <!-- S.E.E. -->
+        <meta name="see" content="&#x5B;&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;pr&#x5C;&#x2F;366&#x5C;&#x2F;build&#x5C;&#x2F;690.ad961276.js&quot;,&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;pr&#x5C;&#x2F;366&#x5C;&#x2F;build&#x5C;&#x2F;see.ff1a2fcf.js&quot;&#x5D;">
+        <meta name="see_style" content="&#x5B;&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;pr&#x5C;&#x2F;366&#x5C;&#x2F;build&#x5C;&#x2F;see_style.24930bce.css&quot;&#x5D;">
+    </head>
     <body>
         <header class="header">
             <div class="container">
@@ -326,21 +332,21 @@
 <p>Voici le code de la classe responsable de la modération :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="2dda0e552cc92b28342b3f2b1ef6535e"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
-<span class="token keyword">interface</span> <span class="token class-name">ModeratorInterface</span>
+<span class="token keyword">interface</span> <span class="token class-name-definition class-name">ModeratorInterface</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">moderate</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">moderate</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">class</span> <span class="token class-name">Moderator</span> <span class="token keyword">implements</span> <span class="token class-name">ModeratorInterface</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Moderator</span> <span class="token keyword">implements</span> <span class="token class-name">ModeratorInterface</span>
 <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token variable">$replacements</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token keyword type-hint">array</span> <span class="token variable">$replacements</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token keyword type-hint">array</span> <span class="token variable">$replacements</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">replacements</span> <span class="token operator">=</span> <span class="token variable">$replacements</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">moderate</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">moderate</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token function">strtr</span><span class="token punctuation">(</span><span class="token variable">$text</span><span class="token punctuation">,</span> <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">replacements</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
@@ -361,19 +367,19 @@
 <p>Nous allons rédiger une classe qui va ajouter des fonctionnalités de modération en décorant notre classe initiale <code class="code-inline" id="ca65a68e10b3c65ac897ff8b89f9f728">Moderator</code> :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="1878f22fcb86c4054ed3942db2903506"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
-<span class="token keyword">class</span> <span class="token class-name">PhoneNumberModerator</span> <span class="token keyword">implements</span> <span class="token class-name">ModeratorInterface</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">PhoneNumberModerator</span> <span class="token keyword">implements</span> <span class="token class-name">ModeratorInterface</span>
 <span class="token punctuation">{</span>
     <span class="token doc-comment comment">/** <span class="token keyword">@var</span> <span class="token class-name">ModeratorInterface</span> */</span>
     <span class="token keyword">private</span> <span class="token variable">$decorated</span><span class="token punctuation">;</span>
 
     <span class="token keyword">static</span> <span class="token keyword">private</span> <span class="token variable">$phonePattern</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'/[0-9]{10}/'</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">ModeratorInterface</span> <span class="token variable">$baseModerator</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">ModeratorInterface</span> <span class="token variable">$baseModerator</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token this">$this</span><span class="token operator">-&gt;</span><span class="token property">decorated</span> <span class="token operator">=</span> <span class="token variable">$baseModerator</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">moderate</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">moderate</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span>
             <span class="token scope"><span class="token keyword">self</span><span class="token punctuation">::</span></span><span class="token variable">$phonePattern</span><span class="token punctuation">,</span>
@@ -498,7 +504,7 @@
                 <li>
                                         <a href="/elao_/pr/366/recrutement">
                         Nous recrutons
-                                                    <span class="bullet">2</span>
+                                                    <span class="bullet">1</span>
                                             </a>
                 </li>
             </ul>
@@ -530,11 +536,10 @@
         <span>© 2005 - 2021 - ELAO - Tous droits réservés</span>
         <a href="/elao_/pr/366/legal">Mentions légales</a>
         <a href="/elao_/pr/366/confidentialite">Protection des données</a>
+        <a id="see" href="#ssss">🐍</a>
     </section>
 </footer>
 
                     </div>
-            
-
-        </body>
+    </body>
 </html>
