@@ -48,6 +48,22 @@
 
                     
 
+            <script src="https://platform.twitter.com/widgets.js"></script>
+        <script>
+            window.onload = (function(){
+                var tweet = document.getElementById('tweet-container');
+                // https://developer.twitter.com/en/docs/twitter-for-websites/embedded-tweets/guides/embedded-tweet-parameter-reference
+                twttr.widgets.createTweet(tweet.getAttribute('data-tweet-id'), tweet, {
+                    conversation: 'none',
+                    cards: 'hidden',
+                    theme: 'light',
+                    lang: 'fr',
+                    align: 'center',
+                    width: 550, // default
+                    dnt: true,
+                })
+            });
+        </script>
     
         <!-- S.E.E. -->
         <meta name="see" content="&#x5B;&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;build&#x5C;&#x2F;690.ad961276.js&quot;,&quot;&#x5C;&#x2F;elao_&#x5C;&#x2F;build&#x5C;&#x2F;see.ff1a2fcf.js&quot;&#x5D;">
@@ -301,18 +317,20 @@
 <h2 id="annotation-vs-attributs" class="anchor-title"><a href="#annotation-vs-attributs">Annotation vs. Attributs</a></h2>
 <p><strong>Quelles sont donc les différences entre les annotations et les attributs ?</strong></p>
 <p>Les annotations commencent par <code class="code-inline" id="518ed29525738cebdac49c49e60ea9d3">@</code> et se place dans un docblock. <a href="https://www.doctrine-project.org/projects/doctrine-annotations/en/1.10/index.html" target="_blank">Un parser écrit en PHP</a> lit ces annotations en parsant le fichier <code class="code-inline" id="ad6f7b6e406aeacc3d3e084929fdce9a">.php</code> pour en extraire les méta données.</p>
-<pre class="code-multiline language-php"><code class="language-php" id="85e385a11b46bb8aa1f4b85afec41e70"><span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>MetaData<span class="token punctuation">\</span>Foobar</span><span class="token punctuation">;</span>
+<pre class="code-multiline language-php"><code class="language-php" id="4445925dfe7be2bcf2fed22183b9ad51"><span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>MetaData<span class="token punctuation">\</span>Foobar</span><span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name-definition class-name">Foo</span> <span class="token punctuation">{</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Foo</span> 
+<span class="token punctuation">{</span>
   <span class="token doc-comment comment">/**
    * @Foobar
    */</span>
   <span class="token keyword">private</span> <span class="token keyword type-declaration">string</span> <span class="token variable">$foobar</span>  
 <span class="token punctuation">}</span></code></pre>
 <p>Les attributs ont une syntaxe un peu différente mais s'utilisent de la même façon au détail près qu'il s'agit d'une <strong>fonctionnalité native de PHP</strong>. Il n'y a donc pas besoin de parser tiers, les attributs sont interprétés par PHP en même temps que le reste du code.</p>
-<pre class="code-multiline language-php"><code class="language-php" id="04932bce9373583594b9f9398571a3e8"><span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>MetaData<span class="token punctuation">\</span>Foobar</span><span class="token punctuation">;</span>
+<pre class="code-multiline language-php"><code class="language-php" id="683e4b0dada7b20211432f25a91bbdcb"><span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>MetaData<span class="token punctuation">\</span>Foobar</span><span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name-definition class-name">Foo</span> <span class="token punctuation">{</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Foo</span> 
+<span class="token punctuation">{</span>
   <span class="token attribute"><span class="token delimiter punctuation">#[</span><span class="token attribute-content"><span class="token attribute-class-name class-name">Foobar</span></span><span class="token delimiter punctuation">]</span></span>
   <span class="token keyword">private</span> <span class="token keyword type-declaration">string</span> <span class="token variable">$foobar</span>  
 <span class="token punctuation">}</span></code></pre>
@@ -358,7 +376,7 @@
 <p>Pour plus de détails, reportez vous aux différentes documentations qui intêgrent désormais, en plus des exemples d'anotations, leurs équivalents avec les attributs.</p>
 <img src="/elao_/images/posts/2021/php-attributes-symfony/symfony-attributes-doc.png" alt="Les attributs PHP dans Symfony" title="Les attributs PHP dans Symfony" id="les-attributs-php-dans-symfony">
 <h2 id="les-contraintes-de-validation" class="anchor-title"><a href="#les-contraintes-de-validation">Les contraintes de validation</a></h2>
-<p>Comme pour le reste des annotation fournit par Symfony, vous pouvez réutiliser la plupart des contraintes de validations en attributs :</p>
+<p>Comme pour le reste des annotations fournies par Symfony, vous pouvez réutiliser la plupart des contraintes de validations en attributs :</p>
 <pre class="code-multiline language-php"><code class="language-php" id="111d729a058c432cb9c5ed13907d2690"><span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Validator<span class="token punctuation">\</span>Constraints</span> <span class="token keyword">as</span> Assert<span class="token punctuation">;</span>
 
 <span class="token keyword">class</span> <span class="token class-name-definition class-name">Foobar</span>
@@ -505,11 +523,16 @@
 <li><a href="https://symfony.com/blog/new-in-symfony-5-3-service-autowiring-with-attributes" target="_blank">L'autowiring de service</a></li>
 <li><a href="https://symfony.com/blog/new-in-symfony-5-2-controller-argument-attributes" target="_blank">L'argument resolver CurrentUser</a></li>
 <li><a href="https://symfony.com/doc/current/components/serializer.html#attributes-groups" target="_blank">La configuration du serializer</a></li>
-<li><a href="https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/cache.html" target="_blank">La configuration du cache http</a></li>
+<li><a href="https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/cache.html" target="_blank">La configuration du cache HTTP</a></li>
 </ul>
 <p>Avec le temps, je suis certain qu'ils seront adoptés par tous et montreront tout leur potentiel.</p></body>
                                                 </main>
         <aside class="article-content__aside">
+                            <a href="https://twitter.com/intent/like?tweet_id=1412341801734791169" class="kudo" target="_blank">
+                    <span class="kudo__button" aria-hidden="true"></span>
+                    <span class="screen-reader">Cet article m’a été utile</span>
+                    <span class="kudo__label" aria-hidden="true">Kudos</span>
+                </a>
                     </aside>
     </div>
 
@@ -550,6 +573,16 @@
                         </div>
 
             <div class="bricks">
+                            <div class="brick-comment">
+                    <p class="title">Commenter</p>
+                    <p>
+                        Des commentaires ?
+                        <a href="https://twitter.com/Elao/status/1412341801734791169" target="_blank" class="animated-link animated-link--light">
+                            Poursuivons la discussion sur twitter !
+                        </a>
+                    </p>
+                    <div id="tweet-container" class="tweet-container" data-tweet-id="1412341801734791169"></div>
+                </div>
             
                             <div class="brick-contribute">
                     <p>
